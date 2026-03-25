@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-editor-bg: #1E1E2E;
+  --color-editor-sidebar: #181825;
+  --color-editor-surface: #313244;
+  --color-editor-border: #45475A;
+  --color-editor-text: #CDD6F4;
+  --color-editor-muted: #6C7086;
+  --color-editor-hover: #3B3D54;
+
+  --color-neon-blue: #89B4FA;
+  --color-neon-green: #A6E3A1;
+  --color-neon-purple: #CBA6F7;
+  --color-neon-pink: #F5C2E7;
+  --color-neon-yellow: #F9E2AF;
+  --color-neon-red: #F38BA8;
+  --color-neon-orange: #FAB387;
+  --color-neon-teal: #94E2D5;
+
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-editor-bg);
+  color: var(--color-editor-text);
+  font-family: var(--font-sans);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-editor-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-editor-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-editor-muted);
+}
+
+/* Code font */
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(137, 180, 250, 0.3);
+  color: var(--color-editor-text);
+}
