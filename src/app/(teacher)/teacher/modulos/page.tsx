@@ -15,6 +15,8 @@ const categories: { key: ModuleCategory; label: string; color: string; badge: st
   { key: "intro", label: "Introduccion", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
   { key: "intermediate", label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue" },
   { key: "advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
+  { key: "preprocessors", label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink" },
+  { key: "frameworks", label: "Frameworks CSS", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
 ];
 
 export default function TeacherModulosPage() {
