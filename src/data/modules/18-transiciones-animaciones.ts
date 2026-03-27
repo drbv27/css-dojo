@@ -6,6 +6,7 @@ export const transicionesAnimacionesModule: ModuleData = {
   description:
     "Da vida a tus interfaces con transiciones suaves entre estados y animaciones personalizadas usando @keyframes.",
   order: 18,
+  dojo: "css" as const,
   category: "advanced",
   icon: "Play",
   lessons: [

@@ -11,7 +11,9 @@ export type Difficulty = 1 | 2 | 3;
 
 export type UserRole = "student" | "teacher";
 
-export type ModuleCategory = "intro" | "intermediate" | "advanced" | "preprocessors" | "frameworks";
+export type DojoType = "css" | "js";
+
+export type ModuleCategory = "intro" | "intermediate" | "advanced" | "preprocessors" | "frameworks" | "js-fundamentals" | "js-intermediate" | "js-advanced" | "js-projects";
 
 export type ValidationType = "exact" | "regex" | "includes" | "visual";
 
@@ -86,6 +88,7 @@ export interface ModuleData {
   title: string;
   description: string;
   order: number;
+  dojo: DojoType;
   category: ModuleCategory;
   icon: string;
   lessons: Lesson[];

@@ -3,11 +3,25 @@
 import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { AuthContext, type AuthUser } from "@/hooks/useAuth";
+import { DojoContext, type DojoType } from "@/hooks/useDojo";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeDojo, setActiveDojo] = useState<DojoType>("css");
   const router = useRouter();
+
+  useEffect(() => {
+    const stored = localStorage.getItem("activeDojo");
+    if (stored === "css" || stored === "js") {
+      setActiveDojo(stored);
+    }
+  }, []);
+
+  const handleSetActiveDojo = useCallback((dojo: DojoType) => {
+    setActiveDojo(dojo);
+    localStorage.setItem("activeDojo", dojo);
+  }, []);
 
   const refreshUser = useCallback(async () => {
     try {
@@ -63,7 +77,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ user, loading, login, register, logout, refreshUser }}>
-      {children}
+      <DojoContext.Provider value={{ activeDojo, setActiveDojo: handleSetActiveDojo }}>
+        {children}
+      </DojoContext.Provider>
     </AuthContext.Provider>
   );
 }

@@ -6,6 +6,7 @@ export const propiedadesBasicasModule: ModuleData = {
   description:
     "Domina las propiedades fundamentales de CSS: color de texto, fondos y bordes para dar vida a tus elementos.",
   order: 3,
+  dojo: "css" as const,
   category: "intro",
   icon: "Palette",
   lessons: [
