@@ -6,7 +6,6 @@ export const sassFundamentosModule: ModuleData = {
   description:
     "Aprende las bases del preprocesador CSS mas popular: variables, nesting, mixins, funciones, partials y la organizacion de archivos con Sass/SCSS.",
   order: 21,
-  dojo: "css" as const,
   category: "preprocessors",
   icon: "paintbrush",
   lessons: [

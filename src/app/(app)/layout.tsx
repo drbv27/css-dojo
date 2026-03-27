@@ -5,7 +5,6 @@ import LogoutButton from "@/components/auth/LogoutButton";
 import SidebarXP from "@/components/gamification/SidebarXP";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import ApprovalGate from "@/components/auth/ApprovalGate";
-import DojoSwitcher from "@/components/layout/DojoSwitcher";
 
 export default async function AppLayout({
   children,
@@ -43,9 +42,6 @@ export default async function AppLayout({
           </div>
           <span className="text-lg font-bold text-editor-text">CSS Dojo</span>
         </div>
-
-        {/* Dojo Switcher */}
-        <DojoSwitcher />
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">

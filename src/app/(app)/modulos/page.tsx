@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ALL_MODULES } from "@/data/modules";
 import { useProgress } from "@/hooks/useProgress";
-import { useDojo } from "@/hooks/useDojo";
 import type { ModuleCategory } from "@/types";
 
 const categories = [
@@ -13,17 +12,11 @@ const categories = [
   { key: "advanced" as const, label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
   { key: "preprocessors" as const, label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink" },
   { key: "frameworks" as const, label: "Frameworks CSS", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "js-fundamentals" as const, label: "JS Fundamentos", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow" },
-  { key: "js-intermediate" as const, label: "JS Intermedio", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "js-advanced" as const, label: "JS Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red" },
-  { key: "js-projects" as const, label: "JS Proyectos", color: "text-neon-teal", badge: "bg-neon-teal/10 text-neon-teal" },
 ];
 
 export default function ModulosPage() {
   const { getModuleProgress } = useProgress();
-  const { activeDojo } = useDojo();
   const [enabledSlugs, setEnabledSlugs] = useState<string[] | null>(null);
-  const filteredModules = ALL_MODULES.filter((mod) => mod.dojo === activeDojo);
 
   useEffect(() => {
     fetch("/api/modules/enabled")
@@ -36,17 +29,15 @@ export default function ModulosPage() {
     <div className="max-w-6xl mx-auto space-y-10">
       <div>
         <h1 className="text-2xl font-bold text-editor-text mb-2">
-          {activeDojo === "css" ? "Modulos de CSS" : "Modulos de JavaScript"}
+          Modulos de Aprendizaje
         </h1>
         <p className="text-editor-muted">
-          {activeDojo === "css"
-            ? "Avanza a tu ritmo desde los fundamentos hasta tecnicas avanzadas de CSS"
-            : "Avanza a tu ritmo desde los fundamentos hasta tecnicas avanzadas de JavaScript"}
+          Avanza a tu ritmo desde los fundamentos hasta tecnicas avanzadas de CSS
         </p>
       </div>
 
       {categories.map((cat) => {
-        const catModules = filteredModules.filter((m) => m.category === cat.key);
+        const catModules = ALL_MODULES.filter((m) => m.category === cat.key);
         if (catModules.length === 0) return null;
         return (
           <div key={cat.key}>

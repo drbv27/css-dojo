@@ -6,7 +6,6 @@ export const tailwindModule: ModuleData = {
   description:
     "Domina el framework utility-first mas moderno: construye interfaces completas usando clases utilitarias, responsive design, estados interactivos y dark mode con Tailwind CSS.",
   order: 24,
-  dojo: "css" as const,
   category: "frameworks",
   icon: "wind",
   lessons: [

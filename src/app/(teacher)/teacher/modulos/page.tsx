@@ -5,7 +5,6 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { ALL_MODULES } from "@/data/modules";
 import type { ModuleCategory } from "@/types";
-import type { DojoType } from "@/hooks/useDojo";
 
 interface ModuleSetting {
   slug: string;
@@ -18,18 +17,12 @@ const categories: { key: ModuleCategory; label: string; color: string; badge: st
   { key: "advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
   { key: "preprocessors", label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink" },
   { key: "frameworks", label: "Frameworks CSS", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "js-fundamentals", label: "JS Fundamentos", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow" },
-  { key: "js-intermediate", label: "JS Intermedio", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "js-advanced", label: "JS Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red" },
-  { key: "js-projects", label: "JS Proyectos", color: "text-neon-teal", badge: "bg-neon-teal/10 text-neon-teal" },
 ];
 
 export default function TeacherModulosPage() {
   const [settings, setSettings] = useState<ModuleSetting[]>([]);
   const [loading, setLoading] = useState(true);
   const [toggling, setToggling] = useState<string | null>(null);
-  const [dojoFilter, setDojoFilter] = useState<DojoType>("css");
-  const filteredModules = ALL_MODULES.filter((mod) => mod.dojo === dojoFilter);
 
   useEffect(() => {
     fetch("/api/teacher/modules")
@@ -104,35 +97,10 @@ export default function TeacherModulosPage() {
         <p className="text-editor-muted">
           Activa o desactiva modulos para tus estudiantes. Los modulos desactivados se muestran como &quot;Proximamente&quot;.
         </p>
-
-        <div className="flex gap-2 mt-4">
-          <button
-            onClick={() => setDojoFilter("css")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
-              dojoFilter === "css"
-                ? "bg-neon-blue/20 border-neon-blue text-neon-blue"
-                : "border-editor-border text-editor-muted hover:text-editor-text hover:bg-editor-hover"
-            }`}
-          >
-            <span className="font-mono font-bold mr-2">{"{ }"}</span>
-            CSS Dojo
-          </button>
-          <button
-            onClick={() => setDojoFilter("js")}
-            className={`px-4 py-2 rounded-lg text-sm font-medium border transition-all ${
-              dojoFilter === "js"
-                ? "bg-neon-yellow/20 border-neon-yellow text-neon-yellow"
-                : "border-editor-border text-editor-muted hover:text-editor-text hover:bg-editor-hover"
-            }`}
-          >
-            <span className="font-mono font-bold mr-2">JS</span>
-            JS Dojo
-          </button>
-        </div>
       </div>
 
       {categories.map((cat) => {
-        const catModules = filteredModules.filter((m) => m.category === cat.key);
+        const catModules = ALL_MODULES.filter((m) => m.category === cat.key);
         if (catModules.length === 0) return null;
 
         return (

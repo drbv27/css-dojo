@@ -6,7 +6,6 @@ export const tipografiasModule: ModuleData = {
   description:
     "Aprende a controlar las fuentes de tu sitio web: familias tipograficas, tamanos, estilos y pesos.",
   order: 4,
-  dojo: "css" as const,
   category: "intro",
   icon: "Type",
   lessons: [

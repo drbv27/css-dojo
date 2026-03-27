@@ -1,7 +1,6 @@
 "use client";
 
 import { useAuth } from "@/hooks/useAuth";
-import { useDojo } from "@/hooks/useDojo";
 import { getRank, getXPProgress } from "@/lib/xp";
 import { ALL_MODULES } from "@/data/modules";
 import Link from "next/link";
@@ -32,8 +31,6 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export default function DashboardPage() {
   const { user, loading } = useAuth();
-  const { activeDojo } = useDojo();
-  const filteredModules = ALL_MODULES.filter((mod) => mod.dojo === activeDojo);
 
   if (loading) {
     return <LoadingSpinner />;
@@ -61,7 +58,7 @@ export default function DashboardPage() {
           Bienvenido de vuelta, <span className="text-neon-blue">{name}</span>
         </h1>
         <p className="text-editor-muted mt-1">
-          {activeDojo === "css" ? "Continua tu ruta de CSS" : "Continua tu ruta de JavaScript"}
+          Continua tu camino hacia el dominio de CSS
         </p>
       </div>
 
@@ -93,7 +90,7 @@ export default function DashboardPage() {
           Continuar aprendiendo
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredModules.map((mod, i) => (
+          {ALL_MODULES.map((mod, i) => (
             <Link
               key={mod.slug}
               href={`/modulos/${mod.slug}`}
