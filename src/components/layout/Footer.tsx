@@ -3,7 +3,7 @@ export default function Footer() {
     <footer className="w-full py-4 px-6 border-t border-editor-border bg-editor-sidebar/50">
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-editor-muted">
         <p>
-          &copy; {new Date().getFullYear()} CSS Dojo &mdash; Creado por{" "}
+          &copy; {new Date().getFullYear()} Dev Dojo &mdash; Creado por{" "}
           <span className="text-editor-text font-medium">Diego Bonilla</span>
         </p>
         <div className="flex items-center gap-1.5">

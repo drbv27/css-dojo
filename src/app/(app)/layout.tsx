@@ -5,6 +5,7 @@ import LogoutButton from "@/components/auth/LogoutButton";
 import SidebarXP from "@/components/gamification/SidebarXP";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import ApprovalGate from "@/components/auth/ApprovalGate";
+import DojoSwitcher from "@/components/layout/DojoSwitcher";
 
 export default async function AppLayout({
   children,
@@ -37,11 +38,16 @@ export default async function AppLayout({
       <aside className="hidden lg:flex lg:flex-col lg:w-64 bg-editor-sidebar border-r border-editor-border shrink-0">
         {/* Logo */}
         <div className="flex items-center gap-3 px-6 h-16 border-b border-editor-border">
-          <div className="w-8 h-8 rounded-lg bg-neon-blue/10 border border-neon-blue/20 flex items-center justify-center">
-            <span className="text-sm font-bold font-mono text-neon-blue">{"{ }"}</span>
+          <div className="w-8 h-8 rounded-lg bg-neon-teal/10 border border-neon-teal/20 flex items-center justify-center">
+            <span className="text-sm font-bold font-mono text-neon-teal">{"</>"}</span>
           </div>
-          <span className="text-lg font-bold text-editor-text">CSS Dojo</span>
+          <span className="text-lg font-bold text-editor-text">Dev Dojo</span>
         </div>
+
+        {/* Track Selector */}
+        <DojoSwitcher />
+
+        <div className="mx-3 border-t border-editor-border" />
 
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">

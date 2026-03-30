@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { use, useState, useEffect } from "react";
 import { ALL_MODULES } from "@/data/modules";
+import { useAuth } from "@/hooks/useAuth";
 import type { ExerciseType } from "@/types";
 
 const exerciseTypeLabels: Record<ExerciseType, { label: string; icon: string; color: string }> = {
@@ -19,6 +20,8 @@ export default function ModuleDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = use(params);
+  const { user } = useAuth();
+  const isTeacher = user?.role === "teacher";
   const [activeTab, setActiveTab] = useState<"lecciones" | "ejercicios">("lecciones");
   const [moduleDisabled, setModuleDisabled] = useState(false);
   const [checkingEnabled, setCheckingEnabled] = useState(true);
@@ -48,7 +51,7 @@ export default function ModuleDetailPage({
     );
   }
 
-  if (moduleDisabled) {
+  if (moduleDisabled && !isTeacher) {
     return (
       <div className="max-w-4xl mx-auto space-y-8">
         <Link

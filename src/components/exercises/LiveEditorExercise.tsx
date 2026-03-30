@@ -4,24 +4,30 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import type { Exercise } from "@/types";
 import CSSEditor from "@/components/editor/CSSEditor";
+import TabCodeEditor from "@/components/editor/TabCodeEditor";
 import LivePreview from "@/components/editor/LivePreview";
 import HintButton from "./HintButton";
 
 interface LiveEditorExerciseProps {
   exercise: Exercise;
   onSubmit: (css: string) => void;
+  showJS?: boolean;
 }
 
 export default function LiveEditorExercise({
   exercise,
   onSubmit,
+  showJS = false,
 }: LiveEditorExerciseProps) {
   const template = exercise.codeTemplate;
   const initialCSS = template?.cssPrefix ?? "";
   const html = template?.html ?? "<div>Preview</div>";
 
   const [css, setCss] = useState(initialCSS);
+  const [js, setJs] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  const needsJS = showJS || (template?.html?.includes("<script") ?? false);
 
   const handleSubmit = () => {
     setSubmitted(true);
@@ -41,31 +47,57 @@ export default function LiveEditorExercise({
         animate={{ opacity: 1, y: 0 }}
         className="grid grid-cols-1 lg:grid-cols-2 gap-4"
       >
-        {/* CSS Editor */}
+        {/* Editor */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 px-1">
-            <span className="w-2 h-2 rounded-full bg-neon-blue" />
-            <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
-              Editor CSS
-            </span>
-          </div>
-          <CSSEditor
-            value={css}
-            onChange={setCss}
-            height="300px"
-            readOnly={submitted}
-          />
+          {needsJS ? (
+            <TabCodeEditor
+              html={html}
+              css={css}
+              js={js}
+              onCSSChange={setCss}
+              onJSChange={setJs}
+              showHTML={true}
+              showCSS={true}
+              showJS={true}
+              readOnlyHTML={true}
+              readOnlyCSS={submitted}
+              readOnlyJS={submitted}
+              height="300px"
+            />
+          ) : (
+            <>
+              <div className="flex items-center gap-2 px-1">
+                <span className="w-2 h-2 rounded-full bg-neon-blue" />
+                <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
+                  Editor CSS
+                </span>
+              </div>
+              <CSSEditor
+                value={css}
+                onChange={setCss}
+                height="300px"
+                readOnly={submitted}
+              />
+            </>
+          )}
         </div>
 
         {/* Live Preview */}
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 px-1">
-            <span className="w-2 h-2 rounded-full bg-neon-green" />
-            <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
-              Vista Previa
-            </span>
-          </div>
-          <LivePreview html={html} css={css} className="flex-1 min-h-[300px]" />
+          {!needsJS && (
+            <div className="flex items-center gap-2 px-1">
+              <span className="w-2 h-2 rounded-full bg-neon-green" />
+              <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
+                Vista Previa
+              </span>
+            </div>
+          )}
+          <LivePreview
+            html={html}
+            css={css}
+            js={needsJS ? js : undefined}
+            className="flex-1 min-h-[300px]"
+          />
         </div>
       </motion.div>
 

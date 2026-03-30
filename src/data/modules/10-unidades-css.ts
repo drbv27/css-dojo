@@ -6,6 +6,7 @@ export const unidadesCSSModule: ModuleData = {
   description:
     "Conoce todas las unidades de medida en CSS: absolutas (px, cm, pt), relativas (%, em, rem) y de viewport (vw, vh). Aprende cuando usar cada una.",
   order: 10,
+  dojo: "css" as const,
   category: "intermediate",
   icon: "Scaling",
   lessons: [

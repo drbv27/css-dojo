@@ -6,6 +6,7 @@ export const queEsCSSModule: ModuleData = {
   description:
     "Descubre que es CSS, como funciona y las distintas formas de agregar estilos a tus documentos HTML.",
   order: 1,
+  dojo: "css" as const,
   category: "intro",
   icon: "Paintbrush",
   lessons: [
@@ -78,7 +79,7 @@ main {
 
 > **Importante:** No olvides el punto y coma al final de cada declaracion. Olvidarlo es uno de los errores mas comunes para principiantes.`,
       codeExample: {
-        html: `<main>\n  <h2>Bienvenido al CSS Dojo</h2>\n  <p>Aprende CSS paso a paso.</p>\n</main>`,
+        html: `<main>\n  <h2>Bienvenido al Dev Dojo</h2>\n  <p>Aprende CSS paso a paso.</p>\n</main>`,
         css: `main {\n  background-color: lightslategray;\n  color: white;\n  padding: 20px;\n  border-radius: 8px;\n}`,
         editable: false,
       },
@@ -197,8 +198,8 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       prompt:
         "Completa el selector para que esta regla CSS aplique estilos a todos los elementos <p> del documento:",
       codeTemplate: {
-        html: `<p>Primer parrafo</p>\n<p>Segundo parrafo</p>`,
-        cssPrefix: "",
+        html: "",
+        cssPrefix: "___",
         cssSuffix: " {\n  color: red;\n}",
         blanks: ["p"],
       },

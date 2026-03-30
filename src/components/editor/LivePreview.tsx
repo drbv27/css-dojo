@@ -6,26 +6,30 @@ import { RefreshCw } from "lucide-react";
 interface LivePreviewProps {
   html: string;
   css: string;
+  js?: string;
   className?: string;
 }
 
 export default function LivePreview({
   html,
   css,
+  js = "",
   className = "",
 }: LivePreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [key, setKey] = useState(0);
   const [debouncedHtml, setDebouncedHtml] = useState(html);
   const [debouncedCss, setDebouncedCss] = useState(css);
+  const [debouncedJs, setDebouncedJs] = useState(js);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setDebouncedHtml(html);
       setDebouncedCss(css);
+      setDebouncedJs(js);
     }, 300);
     return () => clearTimeout(timer);
-  }, [html, css]);
+  }, [html, css, js]);
 
   const srcdoc = useMemo(
     () =>
@@ -39,9 +43,12 @@ export default function LivePreview({
     ${debouncedCss}
   </style>
 </head>
-<body>${debouncedHtml}</body>
+<body>
+  ${debouncedHtml}
+  ${debouncedJs ? `<script>${debouncedJs}<\/script>` : ""}
+</body>
 </html>`,
-    [debouncedHtml, debouncedCss]
+    [debouncedHtml, debouncedCss, debouncedJs]
   );
 
   return (

@@ -6,7 +6,7 @@ const JWT_SECRET = new TextEncoder().encode(
   process.env.JWT_SECRET || "css-dojo-secret-key-cambiar-en-produccion"
 );
 
-const COOKIE_NAME = "css-dojo-token";
+const COOKIE_NAME = "dev-dojo-token";
 
 export interface JWTPayload {
   id: string;

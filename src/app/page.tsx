@@ -17,7 +17,7 @@ const codeSnippet = `.hero {
 
 export default async function HomePage() {
   const cookieStore = await cookies();
-  const hasSession = cookieStore.has("css-dojo-token");
+  const hasSession = cookieStore.has("dev-dojo-token");
 
   return (
     <div className="h-screen flex flex-col bg-editor-bg overflow-hidden relative">
@@ -55,7 +55,7 @@ export default async function HomePage() {
                     "linear-gradient(135deg, #89B4FA 0%, #CBA6F7 50%, #F5C2E7 100%)",
                 }}
               >
-                CSS Dojo
+                Dev Dojo
               </span>
             </h1>
 
@@ -64,7 +64,7 @@ export default async function HomePage() {
 
             {/* Subtitle */}
             <p className="text-xl sm:text-2xl text-editor-muted max-w-lg mb-8 mx-auto lg:mx-0">
-              Domina CSS paso a paso con retos interactivos y un editor en tiempo real
+              Domina HTML, CSS, JavaScript y React paso a paso
             </p>
 
             {/* CTA Buttons */}
@@ -100,8 +100,8 @@ export default async function HomePage() {
             {/* Stats */}
             <div className="flex gap-10 mt-10 justify-center lg:justify-start">
               {[
-                { value: "24", label: "Modulos" },
-                { value: "190+", label: "Ejercicios" },
+                { value: "80+", label: "Modulos" },
+                { value: "375+", label: "Ejercicios" },
                 { value: "5", label: "Tipos de Retos" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center">

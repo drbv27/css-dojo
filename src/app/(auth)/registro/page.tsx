@@ -45,9 +45,9 @@ export default function RegisterPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-4">
             <div className="w-12 h-12 rounded-xl bg-neon-green/10 border border-neon-green/20 flex items-center justify-center">
-              <span className="text-xl font-bold font-mono text-neon-green">{"{ }"}</span>
+              <span className="text-xl font-bold font-mono text-neon-green">{"</>"}</span>
             </div>
-            <h1 className="text-3xl font-bold text-editor-text">CSS Dojo</h1>
+            <h1 className="text-3xl font-bold text-editor-text">Dev Dojo</h1>
           </div>
           <p className="text-editor-muted">Crea tu cuenta para empezar a aprender</p>
         </div>

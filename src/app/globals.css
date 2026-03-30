@@ -4,7 +4,7 @@
   --color-editor-bg: #1E1E2E;
   --color-editor-sidebar: #181825;
   --color-editor-surface: #313244;
-  --color-editor-border: #45475A;
+  --color-editor-border: #383952;
   --color-editor-text: #CDD6F4;
   --color-editor-muted: #6C7086;
   --color-editor-hover: #3B3D54;
@@ -12,6 +12,10 @@
   --color-neon-blue: #89B4FA;
   --color-neon-green: #A6E3A1;
   --color-neon-purple: #CBA6F7;
+  --color-css-purple: #8B5CF6;
+  --color-ts-blue: #3B82F6;
+  --color-css-purple: #A855F7;
+  --color-ts-blue: #3B82F6;
   --color-neon-pink: #F5C2E7;
   --color-neon-yellow: #F9E2AF;
   --color-neon-red: #F38BA8;

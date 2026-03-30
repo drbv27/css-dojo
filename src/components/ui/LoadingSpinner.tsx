@@ -27,7 +27,7 @@ export default function LoadingSpinner({
       )}
       {!label && fullPage && (
         <span className="text-sm font-mono text-editor-muted">
-          CSS <span className="text-neon-blue">Dojo</span>
+          Dev <span className="text-neon-blue">Dojo</span>
         </span>
       )}
     </div>

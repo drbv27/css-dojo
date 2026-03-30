@@ -127,23 +127,30 @@ function highlightCSS(code: string): string {
 }
 
 function highlightHTML(code: string): string {
-  // Simple HTML highlighting
-  let result = escapeHtml(code);
-  // Tags
-  result = result.replace(
-    /&lt;(\/?)([\w-]+)/g,
-    '&lt;$1<span class="text-neon-blue">$2</span>'
+  const escaped = escapeHtml(code);
+
+  // Comments first
+  let result = escaped.replace(
+    /&lt;!--(.*?)--&gt;/g,
+    (m) => `<span class="text-editor-muted italic">${m}</span>`
   );
-  // Attributes
+
+  // Process each HTML tag as a single unit so attribute highlighting
+  // doesn't corrupt the <span> tags we insert for syntax coloring.
   result = result.replace(
-    /\s([\w-]+)=/g,
-    ' <span class="text-neon-yellow">$1</span>='
+    /&lt;(\/?)([\w!][\w-]*)(.*?)(\/?&gt;)/g,
+    (_, slash, tagName, middle, close) => {
+      let out = `&lt;${slash}<span class="text-neon-blue">${tagName}</span>`;
+      if (middle.trim()) {
+        out += middle.replace(
+          /([\w-]+)(=&quot;)(.*?)(&quot;)/g,
+          '<span class="text-neon-yellow">$1</span>$2<span class="text-neon-green">$3</span>$4'
+        );
+      }
+      return out + close;
+    }
   );
-  // Strings
-  result = result.replace(
-    /(&quot;[^&]*&quot;)/g,
-    '<span class="text-neon-green">$1</span>'
-  );
+
   return result;
 }
 

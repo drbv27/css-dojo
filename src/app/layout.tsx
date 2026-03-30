@@ -16,8 +16,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CSS Dojo",
-  description: "Aprende CSS de forma interactiva",
+  title: "Dev Dojo",
+  description: "Dev Dojo - Aprende desarrollo web de forma interactiva",
 };
 
 export default function RootLayout({

@@ -11,7 +11,34 @@ export type Difficulty = 1 | 2 | 3;
 
 export type UserRole = "student" | "teacher";
 
-export type ModuleCategory = "intro" | "intermediate" | "advanced" | "preprocessors" | "frameworks";
+export type ModuleCategory =
+  | "html-fundamentals"
+  | "html-intermediate"
+  | "html-advanced"
+  | "intro"
+  | "intermediate"
+  | "advanced"
+  | "preprocessors"
+  | "frameworks"
+  | "js-fundamentals"
+  | "js-intermediate"
+  | "js-advanced"
+  | "js-async"
+  | "js-dom"
+  | "js-projects"
+  | "js-typescript"
+  | "react-fundamentals"
+  | "react-intermediate"
+  | "react-advanced"
+  | "react-projects"
+  | "react-eco-routing"
+  | "react-eco-state"
+  | "react-eco-ui"
+  | "react-eco-forms"
+  | "react-eco-data"
+  | "nextjs-fundamentals"
+  | "nextjs-intermediate"
+  | "nextjs-advanced";
 
 export type ValidationType = "exact" | "regex" | "includes" | "visual";
 
@@ -44,6 +71,7 @@ export interface CodeTemplate {
 export interface CodeExample {
   html: string;
   css: string;
+  js?: string;
   editable: boolean;
 }
 
@@ -81,6 +109,8 @@ export interface Exercise {
 
 // ==================== Module ====================
 
+export type DojoType = "html" | "css" | "js" | "react" | "react-eco" | "nextjs";
+
 export interface ModuleData {
   slug: string;
   title: string;
@@ -88,6 +118,7 @@ export interface ModuleData {
   order: number;
   category: ModuleCategory;
   icon: string;
+  dojo: DojoType;
   lessons: Lesson[];
   exercises: Exercise[];
 }

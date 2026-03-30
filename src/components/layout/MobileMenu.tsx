@@ -14,7 +14,6 @@ import {
   User,
   GraduationCap,
   Settings,
-  Braces,
   LogOut,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
@@ -112,9 +111,9 @@ export function MobileMenu() {
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-editor-border">
           <div className="flex items-center gap-2">
-            <Braces className="h-6 w-6 text-neon-blue" />
-            <span className="text-lg font-bold font-mono tracking-tight text-neon-blue">
-              CSS <span className="text-editor-text">Dojo</span>
+            <span className="text-lg font-bold font-mono tracking-tight text-neon-teal">&lt;/&gt;</span>
+            <span className="text-lg font-bold tracking-tight text-editor-text">
+              Dev Dojo
             </span>
           </div>
           <button

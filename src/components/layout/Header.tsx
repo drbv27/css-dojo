@@ -27,7 +27,7 @@ export function Header() {
     <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-editor-border bg-editor-sidebar/80 backdrop-blur px-6">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-sm">
-        <span className="text-editor-muted">CSS Dojo</span>
+        <span className="text-editor-muted">Dev Dojo</span>
         <ChevronRight className="h-4 w-4 text-editor-muted/50" />
         <span className="font-medium text-editor-text">{pageLabel}</span>
       </div>

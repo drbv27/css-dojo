@@ -9,6 +9,7 @@ interface CSSEditorProps {
   height?: string;
   readOnly?: boolean;
   language?: string;
+  noBorder?: boolean;
 }
 
 export default function CSSEditor({
@@ -17,6 +18,7 @@ export default function CSSEditor({
   height = "300px",
   readOnly = false,
   language = "css",
+  noBorder = false,
 }: CSSEditorProps) {
   const handleMount: OnMount = useCallback((editor, monaco) => {
     monaco.editor.defineTheme("css-dojo", {
@@ -48,7 +50,7 @@ export default function CSSEditor({
   const isFullHeight = height === "100%";
 
   return (
-    <div className={`overflow-hidden ${isFullHeight ? "h-full" : "rounded-lg border border-editor-border"}`}>
+    <div className={`overflow-hidden ${isFullHeight || noBorder ? "h-full" : "rounded-lg border border-editor-border"}`}>
       <Editor
         height={height}
         language={language}

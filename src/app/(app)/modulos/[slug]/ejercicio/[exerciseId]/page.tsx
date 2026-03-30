@@ -17,7 +17,8 @@ export default function ExercisePage({
   const [achievement, setAchievement] = useState<{ title: string; description: string; icon: string } | null>(null);
   const [moduleDisabled, setModuleDisabled] = useState(false);
   const [checkingEnabled, setCheckingEnabled] = useState(true);
-  const { refreshUser } = useAuth();
+  const { user, refreshUser } = useAuth();
+  const isTeacher = user?.role === "teacher";
 
   useEffect(() => {
     fetch("/api/modules/enabled")
@@ -52,11 +53,11 @@ export default function ExercisePage({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            moduleSlug: slug,
+            moduleId: slug,
             exerciseId,
-            correct: result.correct,
+            exerciseType: exercise?.type,
+            difficulty: exercise?.difficulty,
             score: result.score,
-            xpEarned: result.xpEarned,
             userAnswer: result.userAnswer,
           }),
         });
@@ -90,7 +91,7 @@ export default function ExercisePage({
     );
   }
 
-  if (moduleDisabled) {
+  if (moduleDisabled && !isTeacher) {
     return (
       <div className="max-w-4xl mx-auto space-y-6">
         <Link
@@ -174,10 +175,6 @@ export default function ExercisePage({
           </div>
           <span className="text-sm font-mono text-neon-yellow">+{exercise.xpReward} XP</span>
         </div>
-
-        <h1 className="text-xl font-bold text-editor-text mb-2">
-          {exercise.prompt}
-        </h1>
       </div>
 
       {/* Exercise renderer */}

@@ -1,6 +1,6 @@
 import type { Rank, NavItem } from "@/types";
 
-export const APP_NAME = "CSS Dojo";
+export const APP_NAME = "Dev Dojo";
 
 export const TEACHER_EMAIL = process.env.TEACHER_EMAIL ?? "";
 

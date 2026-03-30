@@ -6,6 +6,7 @@ export const selectoresDescendientesModule: ModuleData = {
   description:
     "Domina los selectores descendientes, hijos directos (>), hermanos adyacentes (+) y hermanos generales (~) para crear reglas CSS mas precisas.",
   order: 6,
+  dojo: "css" as const,
   category: "intermediate",
   icon: "GitBranch",
   lessons: [
@@ -367,7 +368,7 @@ div.card {
       xpReward: 10,
       order: 4,
       prompt:
-        "Dado el HTML: <ul class=\"menu\"><li>A</li><li>B<ul><li>C</li></ul></li></ul>, el selector .menu > li selecciona:",
+        "Una lista .menu tiene dos items directos: A y B. Dentro de B hay otra lista con un item C. El selector .menu > li selecciona:",
       options: [
         { id: "a", text: "Solo A y B", isCorrect: true },
         { id: "b", text: "A, B y C", isCorrect: false },

@@ -24,7 +24,8 @@ export async function POST(request: Request) {
 
   await dbConnect();
   const body = await request.json();
-  const { moduleId, exerciseId, exerciseType, score, userAnswer } = body;
+  const moduleId = body.moduleId ?? body.moduleSlug;
+  const { exerciseId, exerciseType, score, userAnswer } = body;
 
   const xpEarned = calculateXP(body.difficulty || 1, score);
 

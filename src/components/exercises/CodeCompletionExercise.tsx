@@ -50,13 +50,15 @@ export default function CodeCompletionExercise({
   const canSubmit = answers.every((a) => a.trim().length > 0);
 
   // Build the rendered code with inline inputs
-  // We split cssPrefix on ___BLANK___ markers, or we render blanks sequentially
+  // Fall back to html field only when cssPrefix AND cssSuffix are both empty
+  // (i.e. the blanks are inside the html template itself, like HTML exercises)
   const renderCode = () => {
-    const prefix = template?.cssPrefix ?? "";
-    const suffix = template?.cssSuffix ?? "";
+    const hasCSS = !!(template?.cssPrefix || template?.cssSuffix);
+    const prefix = hasCSS ? (template?.cssPrefix ?? "") : (template?.html ?? "");
+    const suffix = hasCSS ? (template?.cssSuffix ?? "") : "";
 
-    // Split the prefix on placeholder markers "___"
-    const parts = prefix.split(/___/);
+    // Split on placeholder markers (3 or more underscores)
+    const parts = prefix.split(/_{3,}/);
 
     const elements: React.ReactNode[] = [];
     let blankIdx = 0;
@@ -173,7 +175,7 @@ export default function CodeCompletionExercise({
           <span className="w-3 h-3 rounded-full bg-neon-yellow/60" />
           <span className="w-3 h-3 rounded-full bg-neon-green/60" />
           <span className="ml-3 text-xs text-editor-muted font-mono">
-            styles.css
+            {exercise.id.startsWith("html") ? "index.html" : exercise.id.startsWith("ts") ? "index.ts" : exercise.id.startsWith("js") || exercise.id.startsWith("reco") || exercise.id.startsWith("njs") ? "index.js" : "styles.css"}
           </span>
         </div>
 

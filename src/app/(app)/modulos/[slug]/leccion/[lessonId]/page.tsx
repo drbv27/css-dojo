@@ -3,12 +3,19 @@
 import Link from "next/link";
 import { use, useEffect, useState } from "react";
 import { ALL_MODULES } from "@/data/modules";
+import { useAuth } from "@/hooks/useAuth";
 import CodeBlock from "@/components/editor/CodeBlock";
-import EditorPlayground from "@/components/editor/EditorPlayground";
+import TabEditorPlayground from "@/components/editor/TabEditorPlayground";
 
 function renderContent(content: string) {
+  // Ensure code fences are always separated by double newlines
+  // so the block splitter never merges them with adjacent text.
+  const normalized = content
+    .replace(/([^\n])\n(```)/g, "$1\n\n$2")
+    .replace(/(```[^\n]*)\n([^\n])/g, "$1\n\n$2");
+
   // Split by double newlines into blocks
-  const blocks = content.split(/\n\n+/);
+  const blocks = normalized.split(/\n\n+/);
   const elements: React.ReactNode[] = [];
 
   let inCodeBlock = false;
@@ -58,21 +65,38 @@ function renderContent(content: string) {
       continue;
     }
 
-    // Headers
-    if (block.startsWith("### ")) {
-      elements.push(
-        <h3 key={`h3-${i}`} className="text-lg font-semibold text-editor-text mt-6 mb-2">
-          {block.slice(4)}
-        </h3>
-      );
-      continue;
-    }
-    if (block.startsWith("## ")) {
-      elements.push(
-        <h2 key={`h2-${i}`} className="text-xl font-bold text-editor-text mt-6 mb-2">
-          {block.slice(3)}
-        </h2>
-      );
+    // Headers (check most specific first)
+    // If a header block contains more lines (e.g. a code fence right after),
+    // only take the first line as the header and re-queue the rest.
+    if (block.startsWith("#### ") || block.startsWith("### ") || block.startsWith("## ")) {
+      const nlIdx = block.indexOf("\n");
+      const headerLine = nlIdx === -1 ? block : block.slice(0, nlIdx);
+      const remaining = nlIdx === -1 ? null : block.slice(nlIdx + 1);
+
+      if (headerLine.startsWith("#### ")) {
+        elements.push(
+          <h4 key={`h4-${i}`} className="text-base font-semibold text-editor-text mt-4 mb-1">
+            {renderInline(headerLine.slice(5))}
+          </h4>
+        );
+      } else if (headerLine.startsWith("### ")) {
+        elements.push(
+          <h3 key={`h3-${i}`} className="text-lg font-semibold text-editor-text mt-6 mb-2">
+            {renderInline(headerLine.slice(4))}
+          </h3>
+        );
+      } else {
+        elements.push(
+          <h2 key={`h2-${i}`} className="text-xl font-bold text-editor-text mt-6 mb-2">
+            {renderInline(headerLine.slice(3))}
+          </h2>
+        );
+      }
+
+      // Re-insert remaining content back into the blocks array
+      if (remaining && remaining.trim()) {
+        blocks.splice(i + 1, 0, remaining);
+      }
       continue;
     }
 
@@ -100,6 +124,58 @@ function renderContent(content: string) {
               </li>
             ))}
         </ul>
+      );
+      continue;
+    }
+
+    // Markdown table (lines with |)
+    if (lines.length >= 2 && lines[0].includes("|") && lines[1].includes("---")) {
+      const headerCells = lines[0].split("|").map((c) => c.trim()).filter(Boolean);
+      const bodyRows = lines.slice(2).filter((l) => l.includes("|"));
+      elements.push(
+        <div key={`table-${i}`} className="overflow-x-auto rounded-lg border border-editor-border">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-editor-border bg-editor-bg">
+                {headerCells.map((cell, j) => (
+                  <th key={j} className="px-4 py-2.5 text-left font-semibold text-editor-text">
+                    {renderInline(cell)}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {bodyRows.map((row, j) => {
+                const cells = row.split("|").map((c) => c.trim()).filter(Boolean);
+                return (
+                  <tr key={j} className="border-b border-editor-border last:border-0">
+                    {cells.map((cell, k) => (
+                      <td key={k} className="px-4 py-2 text-editor-muted">
+                        {renderInline(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      );
+      continue;
+    }
+
+    // Ordered list (lines starting with number.)
+    if (lines.every((l) => /^\d+\.\s/.test(l.trim()) || l.trim() === "")) {
+      elements.push(
+        <ol key={`ol-${i}`} className="space-y-2 text-editor-muted list-decimal list-inside">
+          {lines
+            .filter((l) => /^\d+\.\s/.test(l.trim()))
+            .map((l, j) => (
+              <li key={j}>
+                {renderInline(l.trim().replace(/^\d+\.\s/, ""))}
+              </li>
+            ))}
+        </ol>
       );
       continue;
     }
@@ -151,6 +227,8 @@ export default function LessonPage({
   params: Promise<{ slug: string; lessonId: string }>;
 }) {
   const { slug, lessonId } = use(params);
+  const { user } = useAuth();
+  const isTeacher = user?.role === "teacher";
   const [moduleDisabled, setModuleDisabled] = useState(false);
   const [checkingEnabled, setCheckingEnabled] = useState(true);
 
@@ -193,7 +271,7 @@ export default function LessonPage({
     );
   }
 
-  if (moduleDisabled) {
+  if (moduleDisabled && !isTeacher) {
     return (
       <div className="max-w-4xl mx-auto space-y-6">
         <Link
@@ -279,10 +357,14 @@ export default function LessonPage({
           <h3 className="text-sm font-medium text-editor-muted mb-3 uppercase tracking-wider">
             Ejemplo interactivo
           </h3>
-          <EditorPlayground
+          <TabEditorPlayground
             initialHTML={lesson.codeExample.html}
             initialCSS={lesson.codeExample.css}
-            editableHTML={lesson.codeExample.editable}
+            initialJS={lesson.codeExample.js ?? ""}
+            showHTML={true}
+            showCSS={true}
+            showJS={mod.dojo === "js"}
+            readOnlyHTML={!lesson.codeExample.editable}
             height="300px"
           />
         </div>
