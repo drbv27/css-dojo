@@ -36,11 +36,15 @@ export default function ExerciseRenderer({
 
       switch (v.type) {
         case "exact": {
-          const expected = String(v.answer).trim().toLowerCase();
-          const actual = Array.isArray(userAnswer)
-            ? userAnswer.map((a: string) => a.trim().toLowerCase()).join("|")
-            : String(userAnswer).trim().toLowerCase();
-          const correct = actual === expected;
+          // Both answer and userAnswer can be arrays or strings
+          const expectedArr = Array.isArray(v.answer) ? v.answer : [v.answer];
+          const actualArr = Array.isArray(userAnswer) ? userAnswer : [userAnswer];
+          const correct =
+            expectedArr.length === actualArr.length &&
+            expectedArr.every(
+              (exp: string, i: number) =>
+                String(exp).trim().toLowerCase() === String(actualArr[i]).trim().toLowerCase()
+            );
           return { correct, score: correct ? 100 : 0 };
         }
 
