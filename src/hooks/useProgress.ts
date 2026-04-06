@@ -21,26 +21,34 @@ export function useProgress() {
   const [progress, setProgress] = useState<ProgressEntry[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const fetchProgress = useCallback(async () => {
+    try {
+      const res = await fetch("/api/progress");
+      if (res.ok) {
+        const data = await res.json();
+        setProgress(data);
+      }
+    } catch {
+      // ignore
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
-    let cancelled = false;
-    async function fetchProgress() {
-      try {
-        const res = await fetch("/api/progress");
-        if (res.ok) {
-          const data = await res.json();
-          if (!cancelled) setProgress(data);
-        }
-      } catch {
-        // ignore
-      } finally {
-        if (!cancelled) setLoading(false);
+    fetchProgress();
+  }, [fetchProgress]);
+
+  // Refetch when tab becomes visible (user returns from exercise page)
+  useEffect(() => {
+    function handleVisibilityChange() {
+      if (document.visibilityState === "visible") {
+        fetchProgress();
       }
     }
-    fetchProgress();
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, [fetchProgress]);
 
   const getModuleProgress = useCallback(
     (moduleId: string, totalExercises: number): ModuleProgress => {
@@ -55,5 +63,5 @@ export function useProgress() {
     [progress]
   );
 
-  return { progress, loading, getModuleProgress };
+  return { progress, loading, getModuleProgress, refetch: fetchProgress };
 }

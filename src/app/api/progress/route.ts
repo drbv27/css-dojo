@@ -28,18 +28,27 @@ export async function POST(request: Request) {
   const { exerciseId, exerciseType, score, userAnswer } = body;
 
   const xpEarned = calculateXP(body.difficulty || 1, score);
+  const isCompleted = score >= 70;
+
+  // Check if this exercise was already completed before
+  const existing = await Progress.findOne({
+    userId: session.id,
+    moduleId,
+    exerciseId,
+  }).lean();
+  const wasAlreadyCompleted = existing?.completed === true;
 
   const progress = await Progress.findOneAndUpdate(
     { userId: session.id, moduleId, exerciseId },
     {
       $set: {
         exerciseType,
-        completed: score >= 70,
+        completed: isCompleted,
         score,
         xpEarned,
         userAnswer,
         lastAttemptAt: new Date(),
-        ...(score >= 70 ? { completedAt: new Date() } : {}),
+        ...(isCompleted ? { completedAt: new Date() } : {}),
       },
       $inc: { attempts: 1 },
     },
@@ -49,7 +58,8 @@ export async function POST(request: Request) {
   let userXP = 0;
   let userStreak = 0;
 
-  if (score >= 70) {
+  // Only award XP if newly completed (not already completed before)
+  if (isCompleted && !wasAlreadyCompleted) {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -80,12 +90,43 @@ export async function POST(request: Request) {
       userStreak = user.currentStreak;
     }
   } else {
-    const user = await User.findById(session.id).lean();
-    if (user) {
-      userXP = (user as any).xp ?? 0;
-      userStreak = (user as any).currentStreak ?? 0;
+    // Still update streak if active today but no new XP
+    if (isCompleted) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const user = await User.findById(session.id);
+      if (user) {
+        const lastActive = user.lastActiveDate ? new Date(user.lastActiveDate) : null;
+        if (lastActive) {
+          lastActive.setHours(0, 0, 0, 0);
+          const diffDays = Math.floor((today.getTime() - lastActive.getTime()) / (1000 * 60 * 60 * 24));
+          if (diffDays === 1) {
+            user.currentStreak += 1;
+            if (user.currentStreak > user.longestStreak) {
+              user.longestStreak = user.currentStreak;
+            }
+          } else if (diffDays > 1) {
+            user.currentStreak = 1;
+          }
+        }
+        user.lastActiveDate = new Date();
+        await user.save();
+        userXP = user.xp;
+        userStreak = user.currentStreak;
+      }
+    } else {
+      const user = await User.findById(session.id).lean();
+      if (user) {
+        userXP = (user as any).xp ?? 0;
+        userStreak = (user as any).currentStreak ?? 0;
+      }
     }
   }
 
-  return NextResponse.json({ progress, xpEarned, userXP, userStreak });
+  return NextResponse.json({
+    progress,
+    xpEarned: wasAlreadyCompleted ? 0 : xpEarned,
+    userXP,
+    userStreak,
+  });
 }

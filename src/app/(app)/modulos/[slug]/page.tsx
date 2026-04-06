@@ -4,6 +4,7 @@ import Link from "next/link";
 import { use, useState, useEffect } from "react";
 import { ALL_MODULES } from "@/data/modules";
 import { useAuth } from "@/hooks/useAuth";
+import { useProgress } from "@/hooks/useProgress";
 import type { ExerciseType } from "@/types";
 
 const exerciseTypeLabels: Record<ExerciseType, { label: string; icon: string; color: string }> = {
@@ -21,6 +22,7 @@ export default function ModuleDetailPage({
 }) {
   const { slug } = use(params);
   const { user } = useAuth();
+  const { progress, getModuleProgress } = useProgress();
   const isTeacher = user?.role === "teacher";
   const [activeTab, setActiveTab] = useState<"lecciones" | "ejercicios">("lecciones");
   const [moduleDisabled, setModuleDisabled] = useState(false);
@@ -103,8 +105,20 @@ export default function ModuleDetailPage({
 
   const lessons = [...mod.lessons].sort((a, b) => a.order - b.order);
   const exercises = [...mod.exercises].sort((a, b) => a.order - b.order);
-  const totalItems = lessons.length + exercises.length;
-  const progressPercent = 0; // Will connect real progress later
+  const modProgress = getModuleProgress(mod.slug, exercises.length);
+  const progressPercent = modProgress.percentage;
+
+  // Build a map of exerciseId -> progress entry for status indicators
+  const exerciseProgressMap = new Map<string, { completed: boolean; score: number; attempts: number }>();
+  for (const p of progress) {
+    if (p.moduleId === slug) {
+      exerciseProgressMap.set(p.exerciseId, {
+        completed: p.completed,
+        score: p.score,
+        attempts: p.attempts,
+      });
+    }
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -129,14 +143,25 @@ export default function ModuleDetailPage({
         <div className="flex items-center gap-4">
           <div className="flex-1 h-2 bg-editor-surface rounded-full overflow-hidden">
             <div
-              className="h-full bg-neon-blue rounded-full transition-all"
+              className={`h-full rounded-full transition-all duration-500 ${
+                progressPercent === 100 ? "bg-neon-green" : "bg-neon-blue"
+              }`}
               style={{ width: `${progressPercent}%` }}
             />
           </div>
-          <span className="text-sm font-mono text-editor-muted whitespace-nowrap">
+          <span className={`text-sm font-mono whitespace-nowrap ${
+            progressPercent === 100 ? "text-neon-green font-semibold" : "text-editor-muted"
+          }`}>
             {progressPercent}% completado
           </span>
         </div>
+
+        {/* Progress summary */}
+        {modProgress.completed > 0 && (
+          <p className="text-xs text-editor-muted mt-2">
+            {modProgress.completed} de {modProgress.total} ejercicios completados
+          </p>
+        )}
       </div>
 
       {/* Tabs */}
@@ -197,11 +222,21 @@ export default function ModuleDetailPage({
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {exercises.map((exercise) => {
             const typeInfo = exerciseTypeLabels[exercise.type] ?? exerciseTypeLabels.quiz;
+            const ep = exerciseProgressMap.get(exercise.id);
+            // Status: completed (score >= 70), attempted (has attempts but not completed), pending
+            const status = ep?.completed ? "completed" : ep?.attempts ? "attempted" : "pending";
+
             return (
               <Link
                 key={exercise.id}
                 href={`/modulos/${slug}/ejercicio/${exercise.id}`}
-                className="bg-editor-surface border border-editor-border rounded-xl p-5 hover:border-editor-muted/50 transition-all group"
+                className={`bg-editor-surface border rounded-xl p-5 hover:border-editor-muted/50 transition-all group ${
+                  status === "completed"
+                    ? "border-neon-green/30"
+                    : status === "attempted"
+                    ? "border-neon-orange/30"
+                    : "border-editor-border"
+                }`}
               >
                 <div className="flex items-start justify-between mb-3">
                   {/* Type icon */}
@@ -210,10 +245,29 @@ export default function ModuleDetailPage({
                   >
                     {typeInfo.icon}
                   </div>
-                  {/* Type badge */}
-                  <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${typeInfo.color}`}>
-                    {typeInfo.label}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    {/* Status indicator */}
+                    {status === "completed" && (
+                      <span className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-neon-green/10 text-neon-green font-medium">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                        </svg>
+                        Completado
+                      </span>
+                    )}
+                    {status === "attempted" && (
+                      <span className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-neon-orange/10 text-neon-orange font-medium">
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01" />
+                        </svg>
+                        Intentado
+                      </span>
+                    )}
+                    {/* Type badge */}
+                    <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${typeInfo.color}`}>
+                      {typeInfo.label}
+                    </span>
+                  </div>
                 </div>
 
                 <h3 className="text-sm font-medium text-editor-text group-hover:text-neon-blue transition-colors mb-2">
@@ -241,8 +295,14 @@ export default function ModuleDetailPage({
                     ))}
                   </div>
                   {/* XP */}
-                  <span className="text-xs font-mono text-neon-yellow">
-                    +{exercise.xpReward} XP
+                  <span className={`text-xs font-mono ${
+                    status === "completed" ? "text-neon-green" : "text-neon-yellow"
+                  }`}>
+                    {status === "completed" ? (
+                      <>{ep?.score ?? 100}pts</>
+                    ) : (
+                      <>+{exercise.xpReward} XP</>
+                    )}
                   </span>
                 </div>
               </Link>

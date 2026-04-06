@@ -45,6 +45,7 @@ export function getXPProgress(xp: number): XPProgress {
 
 export function calculateXP(difficulty: number, score: number): number {
   const baseXP = XP_REWARDS[difficulty] ?? 10;
-  // score is expected to be between 0 and 1
-  return Math.round(baseXP * Math.max(0, Math.min(1, score)));
+  // score comes as 0-100 from exercises
+  const normalized = score > 1 ? score / 100 : score;
+  return Math.round(baseXP * Math.max(0, Math.min(1, normalized)));
 }
