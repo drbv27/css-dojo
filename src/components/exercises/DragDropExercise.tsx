@@ -49,31 +49,38 @@ function DraggableItem({
   );
 }
 
-/* ─── Droppable zone ─── */
+/* ─── Droppable zone (supports multiple items) ─── */
 function DroppableZone({
   zone,
-  placedItem,
-  result,
+  placedItemIds,
+  itemResults,
   submitted,
   allItems,
   onRemove,
   disabled,
 }: {
   zone: DropZone;
-  placedItem: string | null;
-  result?: boolean;
+  placedItemIds: string[];
+  itemResults?: Map<string, boolean>;
   submitted: boolean;
   allItems: DragItem[];
   onRemove: (itemId: string) => void;
   disabled: boolean;
 }) {
   const { isOver, setNodeRef } = useDroppable({ id: zone.id });
-  const item = allItems.find((i) => i.id === placedItem);
+  const placedItems = placedItemIds
+    .map((id) => allItems.find((i) => i.id === id))
+    .filter(Boolean) as DragItem[];
+
+  const allCorrect = submitted && placedItems.length > 0 && placedItems.every((item) => itemResults?.get(item.id));
+  const anyWrong = submitted && placedItems.some((item) => itemResults?.get(item.id) === false);
 
   const borderClass = submitted
-    ? result
+    ? allCorrect
       ? "border-neon-green bg-neon-green/5"
-      : "border-neon-red bg-neon-red/5"
+      : anyWrong
+      ? "border-neon-red bg-neon-red/5"
+      : "border-editor-border"
     : isOver
     ? "border-neon-blue bg-neon-blue/5"
     : "border-editor-border";
@@ -82,34 +89,41 @@ function DroppableZone({
     <div
       ref={setNodeRef}
       className={`relative rounded-lg border-2 border-dashed p-4 min-h-[60px] transition-colors ${borderClass} ${
-        !placedItem ? "bg-editor-bg" : "bg-editor-surface"
+        placedItems.length === 0 ? "bg-editor-bg" : "bg-editor-surface"
       }`}
     >
       <span className="text-xs font-semibold text-editor-muted uppercase tracking-wider">
         {zone.label}
       </span>
 
-      {item ? (
-        <div className="mt-2 flex items-center justify-between gap-2">
-          <span className="font-mono text-sm text-neon-blue">{item.content}</span>
-          <div className="flex items-center gap-1">
-            {submitted && result !== undefined && (
-              result ? (
-                <Check className="w-4 h-4 text-neon-green" />
-              ) : (
-                <X className="w-4 h-4 text-neon-red" />
-              )
-            )}
-            {!disabled && (
-              <button
-                onClick={() => onRemove(item.id)}
-                className="p-1 rounded hover:bg-editor-hover text-editor-muted hover:text-editor-text transition-colors"
-                title="Quitar"
-              >
-                <X className="w-3.5 h-3.5" />
-              </button>
-            )}
-          </div>
+      {placedItems.length > 0 ? (
+        <div className="mt-2 flex flex-col gap-1.5">
+          {placedItems.map((item) => {
+            const correct = itemResults?.get(item.id);
+            return (
+              <div key={item.id} className="flex items-center justify-between gap-2">
+                <span className="font-mono text-sm text-neon-blue">{item.content}</span>
+                <div className="flex items-center gap-1">
+                  {submitted && correct !== undefined && (
+                    correct ? (
+                      <Check className="w-4 h-4 text-neon-green" />
+                    ) : (
+                      <X className="w-4 h-4 text-neon-red" />
+                    )
+                  )}
+                  {!disabled && (
+                    <button
+                      onClick={() => onRemove(item.id)}
+                      className="p-1 rounded hover:bg-editor-hover text-editor-muted hover:text-editor-text transition-colors"
+                      title="Quitar"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div className="mt-2 text-xs text-editor-muted italic">
@@ -133,8 +147,8 @@ export default function DragDropExercise({
   const items = exercise.dragItems ?? [];
   const zones = exercise.dropZones ?? [];
 
-  // placements: zoneId -> itemId
-  const [placements, setPlacements] = useState<Record<string, string>>({});
+  // placements: zoneId -> itemId[] (multiple items per zone)
+  const [placements, setPlacements] = useState<Record<string, string[]>>({});
   const [activeId, setActiveId] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
@@ -142,7 +156,7 @@ export default function DragDropExercise({
     useSensor(PointerSensor, { activationConstraint: { distance: 5 } })
   );
 
-  const placedItemIds = new Set(Object.values(placements));
+  const placedItemIds = new Set(Object.values(placements).flat());
 
   const handleDragStart = (event: DragStartEvent) => {
     setActiveId(String(event.active.id));
@@ -160,22 +174,23 @@ export default function DragDropExercise({
     if (!zones.find((z) => z.id === zoneId)) return;
 
     setPlacements((prev) => {
-      const next = { ...prev };
-      // Remove item from any previous zone
-      for (const key of Object.keys(next)) {
-        if (next[key] === itemId) delete next[key];
+      const next: Record<string, string[]> = {};
+      // Deep copy and remove item from any previous zone
+      for (const [key, arr] of Object.entries(prev)) {
+        next[key] = arr.filter((id) => id !== itemId);
       }
-      // Place in new zone
-      next[zoneId] = itemId;
+      // Add to new zone
+      if (!next[zoneId]) next[zoneId] = [];
+      next[zoneId].push(itemId);
       return next;
     });
   };
 
   const handleRemove = (itemId: string) => {
     setPlacements((prev) => {
-      const next = { ...prev };
-      for (const key of Object.keys(next)) {
-        if (next[key] === itemId) delete next[key];
+      const next: Record<string, string[]> = {};
+      for (const [key, arr] of Object.entries(prev)) {
+        next[key] = arr.filter((id) => id !== itemId);
       }
       return next;
     });
@@ -183,23 +198,32 @@ export default function DragDropExercise({
 
   const handleSubmit = () => {
     setSubmitted(true);
-    // Convert from zoneId->itemId to itemId->zoneId for the callback
+    // Convert to itemId->zoneId for the callback
     const result: Record<string, string> = {};
-    for (const [zoneId, itemId] of Object.entries(placements)) {
-      result[itemId] = zoneId;
+    for (const [zoneId, itemIds] of Object.entries(placements)) {
+      for (const itemId of itemIds) {
+        result[itemId] = zoneId;
+      }
     }
     onSubmit(result);
   };
 
-  const getZoneResult = (zoneId: string): boolean | undefined => {
-    if (!submitted) return undefined;
-    const itemId = placements[zoneId];
-    if (!itemId) return false;
-    const item = items.find((i) => i.id === itemId);
-    return item?.correctZone === zoneId;
+  // Per-item results for display
+  const getItemResults = (): Map<string, boolean> => {
+    const results = new Map<string, boolean>();
+    if (!submitted) return results;
+    for (const [zoneId, itemIds] of Object.entries(placements)) {
+      for (const itemId of itemIds) {
+        const item = items.find((i) => i.id === itemId);
+        results.set(itemId, item?.correctZone === zoneId);
+      }
+    }
+    return results;
   };
 
+  const itemResults = getItemResults();
   const allPlaced = items.length > 0 && placedItemIds.size === items.length;
+  const allCorrect = submitted && items.every((item) => itemResults.get(item.id) === true);
   const activeItem = items.find((i) => i.id === activeId);
 
   return (
@@ -255,8 +279,8 @@ export default function DragDropExercise({
               <DroppableZone
                 key={zone.id}
                 zone={zone}
-                placedItem={placements[zone.id] ?? null}
-                result={getZoneResult(zone.id)}
+                placedItemIds={placements[zone.id] ?? []}
+                itemResults={submitted ? itemResults : undefined}
                 submitted={submitted}
                 allItems={items}
                 onRemove={handleRemove}
@@ -284,12 +308,12 @@ export default function DragDropExercise({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium ${
-              zones.every((z) => getZoneResult(z.id))
+              allCorrect
                 ? "bg-neon-green/10 border-neon-green/30 text-neon-green"
                 : "bg-neon-red/10 border-neon-red/30 text-neon-red"
             }`}
           >
-            {zones.every((z) => getZoneResult(z.id)) ? (
+            {allCorrect ? (
               <>
                 <Check className="w-5 h-5" />
                 Todas las colocaciones son correctas!
