@@ -109,12 +109,13 @@ export default function ModuleDetailPage({
   const progressPercent = modProgress.percentage;
 
   // Build a map of exerciseId -> progress entry for status indicators
-  const exerciseProgressMap = new Map<string, { completed: boolean; score: number; attempts: number }>();
+  const exerciseProgressMap = new Map<string, { completed: boolean; score: number; xpEarned: number; attempts: number }>();
   for (const p of progress) {
     if (p.moduleId === slug) {
       exerciseProgressMap.set(p.exerciseId, {
         completed: p.completed,
         score: p.score,
+        xpEarned: p.xpEarned,
         attempts: p.attempts,
       });
     }
@@ -299,7 +300,7 @@ export default function ModuleDetailPage({
                     status === "completed" ? "text-neon-green" : "text-neon-yellow"
                   }`}>
                     {status === "completed" ? (
-                      <>{ep?.score ?? 100}pts</>
+                      <>+{ep?.xpEarned ?? exercise.xpReward} XP</>
                     ) : (
                       <>+{exercise.xpReward} XP</>
                     )}
