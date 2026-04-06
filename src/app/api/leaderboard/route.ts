@@ -12,8 +12,8 @@ export async function GET(request: NextRequest) {
 
   // General leaderboard — sorted by total XP
   if (!dojo) {
-    const users = await User.find({ role: "student" })
-      .select("name email image xp currentStreak")
+    const users = await User.find({ xp: { $gt: 0 } })
+      .select("name email image xp currentStreak role")
       .sort({ xp: -1 })
       .limit(50)
       .lean();
