@@ -15,6 +15,7 @@ import {
   GraduationCap,
   Settings,
   LogOut,
+  Gamepad2,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
@@ -24,6 +25,7 @@ import type { NavItem } from "@/types";
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   LayoutDashboard,
   BookOpen,
+  Gamepad2,
   Code,
   Trophy,
   User,

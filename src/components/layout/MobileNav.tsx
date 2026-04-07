@@ -13,6 +13,7 @@ import {
   Trophy,
   User,
   GraduationCap,
+  Gamepad2,
   Braces,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
@@ -23,6 +24,7 @@ import type { NavItem } from "@/types";
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   LayoutDashboard,
   BookOpen,
+  Gamepad2,
   Code,
   Trophy,
   User,

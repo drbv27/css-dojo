@@ -21,6 +21,7 @@ export default async function AppLayout({
   const navItems = [
     { href: "/dashboard", icon: "home", label: "Dashboard" },
     { href: "/modulos", icon: "book", label: "Modulos" },
+    { href: "/juegos", icon: "gamepad", label: "Juegos CSS" },
     { href: "/playground", icon: "code", label: "Playground" },
     { href: "/leaderboard", icon: "trophy", label: "Leaderboard" },
     { href: "/perfil", icon: "user", label: "Perfil" },
@@ -134,6 +135,12 @@ function NavIcon({ name }: { name: string }) {
     trophy: (
       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 21h8m-4-4v4m-4.5-9.5L12 7l4.5 4.5M5 3h14a1 1 0 011 1v3a6 6 0 01-6 6h-4a6 6 0 01-6-6V4a1 1 0 011-1z" />
+      </svg>
+    ),
+    gamepad: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
     user: (
