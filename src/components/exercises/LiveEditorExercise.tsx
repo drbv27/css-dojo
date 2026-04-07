@@ -21,9 +21,13 @@ export default function LiveEditorExercise({
 }: LiveEditorExerciseProps) {
   const template = exercise.codeTemplate;
   const initialCSS = template?.cssPrefix ?? "";
-  const html = template?.html ?? "<div>Preview</div>";
+  const htmlTemplate = template?.html ?? "<div>Preview</div>";
+
+  // Detect if this is an HTML-only exercise (no CSS prefix/suffix, html is a placeholder comment)
+  const isHTMLExercise = !template?.cssPrefix && !template?.cssSuffix;
 
   const [css, setCss] = useState(initialCSS);
+  const [htmlCode, setHtmlCode] = useState(isHTMLExercise ? htmlTemplate : "");
   const [js, setJs] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -31,8 +35,16 @@ export default function LiveEditorExercise({
 
   const handleSubmit = () => {
     setSubmitted(true);
-    onSubmit(css);
+    if (isHTMLExercise) {
+      onSubmit(htmlCode);
+    } else {
+      onSubmit(css);
+    }
   };
+
+  // For HTML exercises: the preview uses user's HTML directly
+  const previewHTML = isHTMLExercise ? htmlCode : htmlTemplate;
+  const previewCSS = isHTMLExercise ? "" : css;
 
   return (
     <div className="flex flex-col gap-6">
@@ -49,9 +61,9 @@ export default function LiveEditorExercise({
       >
         {/* Editor */}
         <div className="flex flex-col gap-2">
-          {needsJS ? (
+          {needsJS && !isHTMLExercise ? (
             <TabCodeEditor
-              html={html}
+              html={htmlTemplate}
               css={css}
               js={js}
               onCSSChange={setCss}
@@ -67,16 +79,17 @@ export default function LiveEditorExercise({
           ) : (
             <>
               <div className="flex items-center gap-2 px-1">
-                <span className="w-2 h-2 rounded-full bg-neon-blue" />
+                <span className={`w-2 h-2 rounded-full ${isHTMLExercise ? "bg-neon-orange" : "bg-neon-blue"}`} />
                 <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
-                  Editor CSS
+                  {isHTMLExercise ? "Editor HTML" : "Editor CSS"}
                 </span>
               </div>
               <CSSEditor
-                value={css}
-                onChange={setCss}
+                value={isHTMLExercise ? htmlCode : css}
+                onChange={isHTMLExercise ? setHtmlCode : setCss}
                 height="300px"
                 readOnly={submitted}
+                language={isHTMLExercise ? "html" : "css"}
               />
             </>
           )}
@@ -93,8 +106,8 @@ export default function LiveEditorExercise({
             </div>
           )}
           <LivePreview
-            html={html}
-            css={css}
+            html={previewHTML}
+            css={previewCSS}
             js={needsJS ? js : undefined}
             className="flex-1 min-h-[300px]"
           />
