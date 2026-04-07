@@ -2,10 +2,12 @@
 
 import { useAuth } from "@/hooks/useAuth";
 import { getRank } from "@/lib/xp";
+import { RANKS } from "@/lib/constants";
 import { useEffect, useState } from "react";
 import { FaHtml5, FaReact } from "react-icons/fa";
 import { SiCss, SiJavascript, SiNextdotjs } from "react-icons/si";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import { LevelBadge } from "@/components/gamification/LevelBadge";
 import type { DojoType } from "@/types";
 
 interface LeaderboardEntry {
@@ -32,11 +34,69 @@ const filters: { key: DojoType | "general"; label: string; Icon?: React.Componen
   { key: "nextjs", label: "Next.js", Icon: SiNextdotjs, accent: "text-neon-blue", accentBg: "bg-neon-blue/10" },
 ];
 
+function RanksDialog({ open, onClose }: { open: boolean; onClose: () => void }) {
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
+
+      {/* Dialog */}
+      <div className="relative bg-editor-surface border border-editor-border rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-editor-border flex items-center justify-between">
+          <h2 className="text-lg font-bold text-editor-text">Sistema de Rangos</h2>
+          <button
+            onClick={onClose}
+            className="p-1.5 rounded-lg hover:bg-editor-hover text-editor-muted hover:text-editor-text transition-colors"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        {/* Ranks list */}
+        <div className="px-6 py-4 space-y-3 max-h-[60vh] overflow-y-auto">
+          <p className="text-xs text-editor-muted mb-4">
+            Completa ejercicios para ganar XP y subir de rango. Cada cinturon representa tu progreso como desarrollador.
+          </p>
+          {RANKS.map((rank, i) => {
+            const nextRank = RANKS[i + 1];
+            const xpRange = nextRank
+              ? `${rank.minXP.toLocaleString()} - ${(nextRank.minXP - 1).toLocaleString()} XP`
+              : `${rank.minXP.toLocaleString()}+ XP`;
+
+            return (
+              <div
+                key={rank.name}
+                className="flex items-center gap-3 p-3 rounded-xl border border-editor-border bg-editor-bg"
+              >
+                <LevelBadge rank={rank} size="md" />
+                <span className="ml-auto text-xs font-mono text-editor-muted">{xpRange}</span>
+              </div>
+            );
+          })}
+
+          <div className="pt-3 border-t border-editor-border">
+            <p className="text-[11px] text-editor-muted leading-relaxed">
+              <span className="font-semibold text-editor-text">XP por ejercicio:</span>{" "}
+              Dificultad 1 = 10 XP, Dificultad 2 = 25 XP, Dificultad 3 = 50 XP
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function LeaderboardPage() {
   const { user } = useAuth();
   const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState<DojoType | "general">("general");
+  const [ranksOpen, setRanksOpen] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -66,14 +126,28 @@ export default function LeaderboardPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-8">
       {/* Header */}
-      <div>
-        <h1 className="text-2xl font-bold text-editor-text mb-2">
-          Tabla de Posiciones
-        </h1>
-        <p className="text-editor-muted">
-          Compite con otros estudiantes y sube en el ranking
-        </p>
+      <div className="flex items-start justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-editor-text mb-2">
+            Tabla de Posiciones
+          </h1>
+          <p className="text-editor-muted">
+            Compite con otros estudiantes y sube en el ranking
+          </p>
+        </div>
+        <button
+          onClick={() => setRanksOpen(true)}
+          className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-editor-surface border border-editor-border text-xs font-medium text-editor-muted hover:text-editor-text hover:border-editor-muted/50 transition-colors shrink-0"
+        >
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+          </svg>
+          Ver rangos
+        </button>
       </div>
+
+      {/* Ranks dialog */}
+      <RanksDialog open={ranksOpen} onClose={() => setRanksOpen(false)} />
 
       {/* Filter tabs */}
       <div className="flex gap-1.5 flex-wrap">
@@ -137,11 +211,11 @@ export default function LeaderboardPage() {
                     <div className={`w-14 h-14 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center text-lg font-bold mb-3 ring-2 ${colors.ring}`}>
                       {getAvatar(entry.name)}
                     </div>
-                    <h3 className="font-semibold text-editor-text text-sm text-center mb-1">
+                    <h3 className="font-semibold text-editor-text text-sm text-center mb-2">
                       {entry.name}
                     </h3>
-                    <p className="text-xs text-editor-muted mb-2">{entryRank.name}</p>
-                    <p className={`text-sm font-mono font-medium ${activeFilterMeta.accent}`}>
+                    <LevelBadge rank={entryRank} size="sm" />
+                    <p className={`text-sm font-mono font-medium mt-2 ${activeFilterMeta.accent}`}>
                       {entry.xp.toLocaleString()} XP
                     </p>
                   </div>
@@ -203,10 +277,9 @@ export default function LeaderboardPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-editor-muted">
-                        {entryRank.name}
-                        {entry.exercisesCompleted != null && ` · ${entry.exercisesCompleted} ej.`}
-                      </p>
+                      <div className="mt-1">
+                        <LevelBadge rank={entryRank} size="sm" />
+                      </div>
                     </div>
 
                     <div className="text-right">
