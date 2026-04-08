@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { getRank, getXPProgress, getNextRank } from "@/lib/xp";
-import { SEED_ACHIEVEMENTS } from "@/lib/achievements";
+import { SEED_ACHIEVEMENTS } from "@/lib/achievements-list";
 import { Eye, EyeOff, Lock, Check } from "lucide-react";
 
 export default function PerfilPage() {
