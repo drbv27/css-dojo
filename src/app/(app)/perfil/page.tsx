@@ -139,25 +139,25 @@ export default function PerfilPage() {
         <h2 className="text-lg font-semibold text-editor-text mb-4">
           Insignias ({badges.length}/{SEED_ACHIEVEMENTS.length})
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3">
           {SEED_ACHIEVEMENTS.map((achievement) => {
             const earned = badges.includes(achievement.slug);
             return (
               <div
                 key={achievement.slug}
-                className={`flex flex-col items-center p-4 rounded-xl border text-center ${
+                className={`flex flex-col items-center p-4 rounded-xl border text-center transition-all ${
                   earned
-                    ? "bg-neon-yellow/5 border-neon-yellow/20"
-                    : "bg-editor-surface border-editor-border opacity-40"
+                    ? "bg-neon-yellow/5 border-neon-yellow/20 hover:border-neon-yellow/40"
+                    : "bg-editor-surface border-editor-border opacity-40 grayscale"
                 }`}
               >
-                <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-2 ${
-                  earned ? "bg-neon-yellow/10 text-neon-yellow" : "bg-editor-bg text-editor-muted"
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-2 text-2xl ${
+                  earned ? "bg-editor-bg" : "bg-editor-bg"
                 }`}>
                   {earned ? (
-                    <Check className="w-5 h-5" />
+                    <span>{achievement.icon}</span>
                   ) : (
-                    <Lock className="w-4 h-4" />
+                    <Lock className="w-5 h-5 text-editor-muted" />
                   )}
                 </div>
                 <span className={`text-xs font-semibold mb-1 ${earned ? "text-editor-text" : "text-editor-muted"}`}>
