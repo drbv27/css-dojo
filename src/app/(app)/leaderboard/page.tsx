@@ -20,7 +20,7 @@ interface LeaderboardEntry {
 
 const rankColors: Record<number, { bg: string; text: string; ring: string }> = {
   1: { bg: "bg-neon-yellow/10", text: "text-neon-yellow", ring: "ring-neon-yellow/30" },
-  2: { bg: "bg-editor-muted/10", text: "text-editor-muted", ring: "ring-editor-muted/30" },
+  2: { bg: "bg-[#C0C0C0]/10", text: "text-[#D1D5DB]", ring: "ring-[#C0C0C0]/30" },
   3: { bg: "bg-neon-orange/10", text: "text-neon-orange", ring: "ring-neon-orange/30" },
 };
 
@@ -82,7 +82,7 @@ function RanksDialog({ open, onClose }: { open: boolean; onClose: () => void }) 
           <div className="pt-3 border-t border-editor-border">
             <p className="text-[11px] text-editor-muted leading-relaxed">
               <span className="font-semibold text-editor-text">XP por ejercicio:</span>{" "}
-              Dificultad 1 = 10 XP, Dificultad 2 = 25 XP, Dificultad 3 = 50 XP
+              Dificultad 1 = 10 XP, Dificultad 2 = 20 XP, Dificultad 3 = 30 XP
             </p>
           </div>
         </div>
@@ -190,25 +190,29 @@ export default function LeaderboardPage() {
         <>
           {/* Top 3 podium */}
           {entries.length >= 3 && (
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-3 gap-4 items-end">
               {[entries[1] ?? null, entries[0] ?? null, entries[2] ?? null].map((entry, i) => {
                 if (!entry) return <div key={`empty-${i}`} />;
                 const order = [2, 1, 3][i];
                 const colors = rankColors[order] ?? { bg: "bg-editor-surface", text: "text-editor-muted", ring: "" };
                 const isFirst = order === 1;
+                const isSecond = order === 2;
                 const entryRank = getRank(entry.xp);
+                // Heights: 1st = tallest, 2nd = medium, 3rd = shortest
+                const podiumHeight = isFirst ? "pb-8" : isSecond ? "pb-4" : "pb-2";
+                const avatarSize = isFirst ? "w-16 h-16 text-xl" : "w-14 h-14 text-lg";
 
                 return (
                   <div
                     key={`podium-${entry._id}-${i}`}
-                    className={`flex flex-col items-center p-5 rounded-xl border border-editor-border bg-editor-surface ${
-                      isFirst ? "ring-1 ring-neon-yellow/20 -mt-4" : "mt-0"
+                    className={`flex flex-col items-center p-5 ${podiumHeight} rounded-xl border border-editor-border bg-editor-surface ${
+                      isFirst ? "ring-1 ring-neon-yellow/20" : ""
                     }`}
                   >
                     <div className={`w-8 h-8 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center text-sm font-bold mb-3`}>
                       {order}
                     </div>
-                    <div className={`w-14 h-14 rounded-full ${colors.bg} ${colors.text} flex items-center justify-center text-lg font-bold mb-3 ring-2 ${colors.ring}`}>
+                    <div className={`${avatarSize} rounded-full ${colors.bg} ${colors.text} flex items-center justify-center font-bold mb-3 ring-2 ${colors.ring}`}>
                       {getAvatar(entry.name)}
                     </div>
                     <h3 className="font-semibold text-editor-text text-sm text-center mb-2">
