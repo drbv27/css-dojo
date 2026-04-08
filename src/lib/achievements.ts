@@ -35,16 +35,16 @@ export const SEED_ACHIEVEMENTS: Achievement[] = [
   {
     slug: "medio-camino",
     title: "Medio Camino",
-    description: "Alcanza 500 XP",
+    description: "Alcanza 800 XP (Cinturon Verde)",
     icon: "milestone",
-    condition: { type: "xp", value: 500 },
+    condition: { type: "xp", value: 800 },
   },
   {
-    slug: "css-master",
-    title: "CSS Master",
-    description: "Alcanza 1000 XP",
+    slug: "avanzado",
+    title: "Avanzado",
+    description: "Alcanza 2500 XP (Cinturon Morado)",
     icon: "crown",
-    condition: { type: "xp", value: 1000 },
+    condition: { type: "xp", value: 2500 },
   },
   {
     slug: "perfeccionista",
@@ -92,7 +92,7 @@ export async function checkAchievements(userId: string): Promise<string[]> {
   });
 
   const totalCompleted = completedProgress.length;
-  const perfectScores = completedProgress.filter((p) => p.score === 1).length;
+  const perfectScores = completedProgress.filter((p) => p.score === 100 || p.score === 1).length;
   const uniqueModules = new Set(completedProgress.map((p) => p.moduleId));
 
   // Count modules where ALL exercises are completed
