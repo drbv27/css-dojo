@@ -197,7 +197,7 @@ export default function DashboardPage() {
             />
           </div>
           <p className="text-[11px] text-editor-muted mt-2">
-            {nextRank ? `Siguiente: ${nextRank.name}` : "Rango maximo"}
+            {nextRank ? `Faltan ${nextRank.minXP - xp} XP para ${nextRank.name}` : "Rango maximo"}
           </p>
         </div>
 

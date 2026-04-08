@@ -39,7 +39,7 @@ export default function SidebarXP() {
             <span className="font-semibold text-editor-text">{user.xp}</span> XP
           </span>
           {nextRank ? (
-            <span>{nextRank.name}: {nextRank.minXP} XP</span>
+            <span>Faltan <span className="text-editor-text font-semibold">{nextRank.minXP - user.xp}</span> para {nextRank.name}</span>
           ) : (
             <span>Rango maximo</span>
           )}
