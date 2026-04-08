@@ -303,7 +303,7 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -322,8 +322,8 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa el pseudo-elemento para estilizar la primera letra de los parrafos:",
@@ -341,8 +341,8 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Que propiedad es OBLIGATORIA para que ::before y ::after se muestren?",
@@ -360,7 +360,7 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -393,8 +393,8 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa la propiedad para que ::after muestre un asterisco rojo despues del label:",
@@ -412,8 +412,8 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Escribe CSS para crear una linea decorativa despues del h2 usando ::after. La linea debe ser un bloque (display: block) con width: 80px, height: 3px, background-color: tomato y margin-top: 8px. Recuerda la propiedad content.",
@@ -436,8 +436,8 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt:
         "En que tipo de elementos NO funcionan ::before y ::after?",
@@ -459,7 +459,7 @@ Crear triangulos, circulos y otras formas:
     {
       id: "08-ej-08",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

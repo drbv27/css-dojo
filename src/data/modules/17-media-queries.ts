@@ -260,7 +260,7 @@ img {
     {
       id: "17-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -279,8 +279,8 @@ img {
     {
       id: "17-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la media query para que los estilos se apliquen en pantallas de 768px o mas (enfoque mobile-first):",
@@ -298,8 +298,8 @@ img {
     {
       id: "17-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "En un enfoque mobile-first, cual es el orden correcto de las media queries?",
@@ -317,7 +317,7 @@ img {
     {
       id: "17-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -350,8 +350,8 @@ img {
     {
       id: "17-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Escribe una media query mobile-first que cambie el background-color de .caja a #27ae60 cuando la pantalla sea de al menos 600px. Los estilos base de .caja son: padding: 20px; background-color: #e74c3c; color: white;",
@@ -380,8 +380,8 @@ img {
     {
       id: "17-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa la funcion CSS para crear un font-size fluido con un minimo de 1rem, un valor ideal de 3vw, y un maximo de 2rem:",
@@ -399,7 +399,7 @@ img {
     {
       id: "17-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -431,8 +431,8 @@ img {
     {
       id: "17-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Que hace la declaracion 'font-size: clamp(1rem, 2.5vw, 2rem)'?",

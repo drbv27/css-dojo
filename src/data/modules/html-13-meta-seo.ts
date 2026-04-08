@@ -261,7 +261,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que meta tag es esencial para que un sitio se vea correctamente en moviles?",
@@ -279,7 +279,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que meta tag controla el texto que aparece en los resultados de Google?",
@@ -297,8 +297,8 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa la meta tag para definir el titulo que se muestra al compartir en Facebook:",
       codeTemplate: {
@@ -315,8 +315,8 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que valor de meta robots evita que Google indexe una pagina?",
       options: [
@@ -333,7 +333,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica cada meta tag segun su proposito:",
@@ -365,8 +365,8 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Para que sirve la etiqueta <link rel='canonical'>?",
       options: [
@@ -383,8 +383,8 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
     {
       id: "html13-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que formato se usa para escribir datos estructurados (Schema.org) recomendado por Google?",
       options: [

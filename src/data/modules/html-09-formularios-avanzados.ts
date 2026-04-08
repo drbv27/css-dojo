@@ -239,7 +239,7 @@ button {
     {
       id: "html09-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que tipo de input muestra un control deslizante para seleccionar un valor numerico?",
@@ -257,7 +257,7 @@ button {
     {
       id: "html09-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que elemento HTML proporciona una lista de sugerencias para un campo de texto?",
@@ -275,8 +275,8 @@ button {
     {
       id: "html09-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa el codigo para hacer que el campo de email sea obligatorio:",
       codeTemplate: {
@@ -293,8 +293,8 @@ button {
     {
       id: "html09-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual es la diferencia entre disabled y readonly en un input?",
       options: [
@@ -311,7 +311,7 @@ button {
     {
       id: "html09-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica cada atributo segun su funcion en formularios:",
@@ -341,8 +341,8 @@ button {
     {
       id: "html09-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Completa el atributo para que el input solo acepte numeros entre 1 y 10:",
       codeTemplate: {
@@ -359,8 +359,8 @@ button {
     {
       id: "html09-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que hace el atributo pattern en un campo de texto?",
       options: [

@@ -270,7 +270,7 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -289,8 +289,8 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la funcion CSS para usar la variable --color-primario como color de fondo:",
@@ -308,8 +308,8 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Que hace la declaracion 'color: var(--color-texto, #333)'?",
@@ -327,7 +327,7 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -360,8 +360,8 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Define tres variables en :root: --color-primario (#e74c3c), --color-fondo (#f8f9fa) y --espaciado (16px). Luego crea una clase .caja que use estas variables para background, border-color y padding.",
@@ -392,8 +392,8 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa el selector CSS para que las variables se apliquen cuando el documento tenga el atributo data-tema='oscuro':",
@@ -411,7 +411,7 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -444,8 +444,8 @@ Detecta automaticamente la preferencia del sistema operativo:
     {
       id: "19-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Si declaras --color: blue en :root y --color: red en .seccion, que color tendra un <p> dentro de .seccion?",

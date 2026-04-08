@@ -367,7 +367,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "En un componente controlado, quien controla el valor del input?",
@@ -384,8 +384,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa el evento para prevenir el envio por defecto del formulario:",
       codeTemplate: {
@@ -401,8 +401,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que atributo se usa en un componente NO controlado para establecer un valor inicial?",
       options: [
@@ -418,8 +418,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Completa para manejar multiples inputs con un solo handler usando name dinamico:",
       codeTemplate: {
@@ -435,7 +435,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica: componente controlado o no controlado?",
@@ -458,8 +458,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Como se maneja un textarea en React?",
       options: [
@@ -475,8 +475,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que libreria de formularios React es conocida por minimizar los re-renders?",
       options: [
@@ -492,8 +492,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
     {
       id: "react11-ej-08",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Completa la validacion para verificar que el email contiene '@':",
       codeTemplate: {

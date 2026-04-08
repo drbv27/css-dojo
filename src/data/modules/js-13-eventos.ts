@@ -197,7 +197,7 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual es la forma moderna de escuchar un evento en JavaScript?",
@@ -214,7 +214,7 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que propiedad del objeto evento indica que elemento disparo el evento?",
@@ -231,8 +231,8 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa para escuchar el evento click en un boton:",
       codeTemplate: {
@@ -248,8 +248,8 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que metodo previene el comportamiento por defecto de un evento?",
       options: [
@@ -265,8 +265,8 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que es la delegacion de eventos?",
       options: [
@@ -282,8 +282,8 @@ document.getElementById("agregar").addEventListener("click", function() {
     {
       id: "js13-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que propiedad del evento keydown devuelve el valor de la tecla presionada?",
       options: [

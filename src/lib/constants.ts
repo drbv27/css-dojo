@@ -19,8 +19,8 @@ export const RANKS: Rank[] = [
 
 export const XP_REWARDS: Record<number, number> = {
   1: 10,
-  2: 25,
-  3: 50,
+  2: 20,
+  3: 30,
 };
 
 export const NAV_ITEMS: NavItem[] = [

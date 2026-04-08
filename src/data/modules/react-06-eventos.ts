@@ -330,7 +330,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Como se escribe un evento de clic en JSX?",
@@ -348,7 +348,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es el error en este codigo? <button onClick={handleClick()}>Clic</button>",
@@ -366,8 +366,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa el handler para prevenir el comportamiento por defecto del formulario:",
       codeTemplate: {
@@ -384,8 +384,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que es un componente controlado en React?",
       options: [
@@ -402,8 +402,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el input controlado para que actualice el estado 'nombre' al cambiar:",
       codeTemplate: {
@@ -420,7 +420,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Asocia cada evento de React con su caso de uso principal:",
@@ -452,8 +452,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
     {
       id: "react06-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Como pasas un argumento adicional a un event handler en JSX?",
       options: [

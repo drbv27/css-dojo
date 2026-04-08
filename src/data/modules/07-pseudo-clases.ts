@@ -229,7 +229,7 @@ p:not(:empty) {
     {
       id: "07-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -248,8 +248,8 @@ p:not(:empty) {
     {
       id: "07-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la pseudo-clase para que el boton cambie de color al pasar el cursor:",
@@ -267,8 +267,8 @@ p:not(:empty) {
     {
       id: "07-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Cual es la diferencia entre li:first-child y li:first-of-type?",
@@ -302,7 +302,7 @@ p:not(:empty) {
     {
       id: "07-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -338,8 +338,8 @@ p:not(:empty) {
     {
       id: "07-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa el selector para aplicar un fondo gris a las filas pares de una tabla:",
@@ -357,8 +357,8 @@ p:not(:empty) {
     {
       id: "07-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Escribe CSS para que: 1) Los enlaces cambien a color tomato al pasar el cursor (:hover). 2) El primer <li> de la lista tenga font-weight: bold.",
@@ -381,8 +381,8 @@ p:not(:empty) {
     {
       id: "07-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Que selecciona el selector li:not(:last-child)?",
@@ -404,7 +404,7 @@ p:not(:empty) {
     {
       id: "07-ej-08",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

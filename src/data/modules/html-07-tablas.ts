@@ -179,7 +179,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que etiqueta define una celda de encabezado en una tabla HTML?",
@@ -197,8 +197,8 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa la estructura para crear una fila con dos celdas de datos:",
       codeTemplate: {
@@ -215,8 +215,8 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que atributo permite que una celda ocupe multiples columnas?",
       options: [
@@ -233,7 +233,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Arrastra cada seccion de tabla a su funcion:",
@@ -260,8 +260,8 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una tabla con caption 'Notas del curso', thead con una fila de 3 encabezados (Estudiante, Nota, Estado), y tbody con al menos 2 filas de datos.",
@@ -281,7 +281,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-06",
       type: "code-completion",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Completa el atributo para que esta celda ocupe 3 filas:",
@@ -299,8 +299,8 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
     {
       id: "html-07-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Para que sirve el atributo scope en un <th>?",
       options: [

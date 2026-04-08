@@ -718,7 +718,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Por que Context es ideal para el carrito de compras?",
@@ -735,8 +735,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-02",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Completa para calcular el total del carrito:",
       codeTemplate: {
@@ -752,8 +752,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que debe pasar al agregar un producto que ya esta en el carrito?",
       options: [
@@ -769,7 +769,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Asocia cada componente con su responsabilidad:",
@@ -792,8 +792,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Por que los totales del carrito deben ser valores derivados y no estado?",
       options: [
@@ -809,8 +809,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-ej-06",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt: "Completa la CSS Grid para un layout responsive de productos:",
       codeTemplate: {

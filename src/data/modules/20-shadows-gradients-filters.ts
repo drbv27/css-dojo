@@ -290,7 +290,7 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -309,8 +309,8 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la propiedad para agregar una sombra de caja con 4px de desplazamiento horizontal, 4px vertical, 10px de desenfoque y color negro con 20% de opacidad:",
@@ -328,7 +328,7 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -361,8 +361,8 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Completa el valor para crear un degradado lineal de izquierda a derecha, de #3498db a #8e44ad:",
@@ -380,8 +380,8 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea un efecto de glassmorphism: un contenedor .glass-container con fondo de degradado, y dentro un .glass-card con background rgba(255,255,255,0.15), backdrop-filter: blur(10px), border de 1px solid rgba(255,255,255,0.2), padding de 24px y border-radius de 12px.",
@@ -410,8 +410,8 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Cual es la diferencia entre 'filter' y 'backdrop-filter'?",
@@ -429,7 +429,7 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -461,8 +461,8 @@ Los filtros son excelentes para interacciones:
     {
       id: "20-ej-08",
       type: "live-editor",
-      difficulty: 3,
-      xpReward: 25,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Crea un elemento con clase 'imagen-filtro' que tenga un fondo de degradado (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamano: 200px por 150px con border-radius de 12px.",

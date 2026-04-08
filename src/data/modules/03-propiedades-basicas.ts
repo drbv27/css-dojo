@@ -198,7 +198,7 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que propiedad CSS cambia el color del texto de un elemento?",
@@ -216,8 +216,8 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la propiedad CSS para cambiar el color del texto del titulo a rojo (#FF0000):",
@@ -235,8 +235,8 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-03",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Aplica color de fondo lightblue al body y color de texto darkblue a todos los parrafos.",
@@ -266,7 +266,7 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -300,8 +300,8 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa la propiedad border para que la caja tenga un borde solido rojo. El ancho ya esta definido como 2px:",
@@ -319,7 +319,7 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-06",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 6,
       prompt:
@@ -355,7 +355,7 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-07",
       type: "live-editor",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -389,8 +389,8 @@ Redondea las esquinas de un elemento:
     {
       id: "03-ej-08",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 8,
       prompt: "Cuantos nombres de colores estandar reconoce CSS?",
       options: [

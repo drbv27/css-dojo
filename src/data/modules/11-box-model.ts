@@ -268,7 +268,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -287,8 +287,8 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt:
         "Un elemento tiene width: 200px, padding: 15px, border: 5px solid black, y usa box-sizing: content-box. Cual es su ancho visible (sin contar margin)?",
@@ -306,8 +306,8 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt:
         "Completa la propiedad para que el width incluya padding y border en el calculo del tamano:",
@@ -325,7 +325,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -374,8 +374,8 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una caja con clase 'tarjeta' que use box-sizing: border-box, width: 350px, padding: 25px, border: 3px solid #333, y background-color: #f9f9f9.",
@@ -407,7 +407,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-06",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 6,
       prompt:
@@ -441,8 +441,8 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-07",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt:
         "Completa el reset universal para que todos los elementos y pseudo-elementos usen border-box:",
@@ -460,8 +460,8 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     {
       id: "11-ej-08",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 8,
       prompt:
         "Cual es la principal diferencia entre outline y border respecto al Box Model?",

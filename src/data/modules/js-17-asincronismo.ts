@@ -257,7 +257,7 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cuantos hilos de ejecucion tiene JavaScript?",
@@ -274,7 +274,7 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cuales son los tres estados de una Promise?",
@@ -291,8 +291,8 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa la palabra clave para declarar una funcion asincrona:",
       codeTemplate: {
@@ -308,8 +308,8 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que metodo de Promise se usa para manejar errores?",
       options: [
@@ -325,8 +325,8 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que hace Promise.all()?",
       options: [
@@ -342,8 +342,8 @@ document.getElementById("cargar").addEventListener("click", function() {
     {
       id: "js17-ej-06",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt: "Que sucede si usas await fuera de una funcion async?",
       options: [

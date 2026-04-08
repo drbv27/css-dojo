@@ -322,7 +322,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual es la convencion de nombres para componentes en React?",
@@ -340,8 +340,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa la definicion de un componente de funcion en React:",
       codeTemplate: {
@@ -358,7 +358,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Como se usa un componente llamado MiBoton dentro de JSX?",
@@ -376,8 +376,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que es la prop 'children' en React?",
       options: [
@@ -394,8 +394,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el componente para que renderice su contenido hijo dentro de un div:",
       codeTemplate: {
@@ -412,7 +412,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Ordena la jerarquia de componentes de una aplicacion tipica, del mas externo al mas interno:",
@@ -444,8 +444,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react03-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Por que React recomienda componentes de funcion sobre componentes de clase?",
       options: [

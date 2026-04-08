@@ -345,7 +345,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual es la forma correcta de mostrar un elemento solo si una condicion es verdadera en JSX?",
@@ -363,7 +363,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cuando es mejor usar el operador ternario en vez de && para renderizado condicional?",
@@ -381,8 +381,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa el renderizado condicional: si 'logueado' es true muestra 'Dashboard', si no muestra 'Login':",
       codeTemplate: {
@@ -399,8 +399,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que problema tiene este codigo? {count && <p>Items: {count}</p>}",
       options: [
@@ -417,8 +417,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el retorno temprano para cuando no hay usuario:",
       codeTemplate: {
@@ -435,7 +435,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Asocia cada patron de renderizado condicional con su caso de uso:",
@@ -467,8 +467,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react07-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Cual es la forma correcta de aplicar una clase CSS condicional en JSX?",
       options: [

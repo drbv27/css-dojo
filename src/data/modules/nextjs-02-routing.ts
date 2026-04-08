@@ -147,7 +147,7 @@ layout.tsx      <- estructura
     {
       id: "njs02-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Como creas una ruta dinamica en Next.js App Router?",
@@ -164,8 +164,8 @@ layout.tsx      <- estructura
     {
       id: "njs02-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Para que sirven los route groups como (auth)?",
       options: [
@@ -181,8 +181,8 @@ layout.tsx      <- estructura
     {
       id: "njs02-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que archivo se muestra automaticamente mientras una pagina carga en el servidor?",
       options: [
@@ -198,8 +198,8 @@ layout.tsx      <- estructura
     {
       id: "njs02-ej-04",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 4,
       prompt: "Asocia cada archivo especial con su funcion:",
       dragItems: [

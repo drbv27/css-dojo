@@ -185,7 +185,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cuantos niveles de encabezados tiene HTML?",
@@ -203,7 +203,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es la diferencia principal entre <strong> y <b>?",
@@ -221,8 +221,8 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa la etiqueta para crear un encabezado de nivel 2:",
       codeTemplate: {
@@ -239,7 +239,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Arrastra cada etiqueta a su funcion correcta:",
@@ -268,8 +268,8 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una pagina con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Articulo', un parrafo con texto que incluya una palabra en negrita usando <strong>, y una linea horizontal <hr> seguida de otro parrafo.",
@@ -289,8 +289,8 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Completa el codigo para mostrar una cita en bloque:",
       codeTemplate: {
@@ -307,8 +307,8 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Que etiqueta se usa para insertar un salto de linea dentro de un parrafo?",
       options: [
@@ -325,7 +325,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
     {
       id: "html-03-ej-08",
       type: "live-editor",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

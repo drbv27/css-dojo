@@ -330,7 +330,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que propiedad de useRef se usa para acceder al valor almacenado?",
@@ -347,7 +347,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que pasa cuando cambias el valor de useRef.current?",
@@ -364,8 +364,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa para enfocar el input usando useRef:",
       codeTemplate: {
@@ -381,8 +381,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual es la diferencia principal entre useMemo y useCallback?",
       options: [
@@ -398,7 +398,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica cada hook segun su proposito principal:",
@@ -422,8 +422,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Cual es la regla mas importante de los hooks?",
       options: [
@@ -439,8 +439,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-07",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Completa el nombre del custom hook (debe empezar con 'use'):",
       codeTemplate: {
@@ -456,8 +456,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react10-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Para que sirve el hook useId de React?",
       options: [

@@ -370,7 +370,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que hace React.memo?",
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que componente de React se usa como fallback mientras se carga un componente lazy?",
@@ -404,8 +404,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa para cargar un componente de forma lazy:",
       codeTemplate: {
@@ -421,7 +421,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Asocia cada herramienta de optimizacion con su proposito:",
@@ -444,8 +444,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Por que pasar una funcion inline como prop puede anular el efecto de React.memo?",
       options: [
@@ -461,8 +461,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Cual es la mejor estrategia antes de aplicar optimizaciones?",
       options: [
@@ -478,8 +478,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-07",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Completa para memorizar un componente con React.memo:",
       codeTemplate: {
@@ -495,8 +495,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react16-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Que tecnica evita re-renders sin usar memo ni useMemo?",
       options: [

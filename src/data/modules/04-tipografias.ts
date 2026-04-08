@@ -260,7 +260,7 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -279,8 +279,8 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la familia generica de respaldo para esta lista de fuentes serif:",
@@ -298,7 +298,7 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -332,8 +332,8 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-04",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Aplica a todos los parrafos (<p>): fuente Arial, tamano de 18px, peso 600 y estilo italica.",
@@ -365,8 +365,8 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Si el tamano base del documento es 16px (valor por defecto), cuanto es 2rem en pixeles?",
@@ -384,8 +384,8 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-06",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 6,
       prompt:
         "El diseno pide que el titulo h1 este en negrita. Completa el valor de font-weight:",
@@ -403,7 +403,7 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -438,7 +438,7 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
     {
       id: "04-ej-08",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 8,
       prompt: "Que propiedad CSS convierte el texto a cursiva?",

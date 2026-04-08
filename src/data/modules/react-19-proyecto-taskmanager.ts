@@ -679,7 +679,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Por que useReducer es mejor que useState para un Task Manager?",
@@ -696,8 +696,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-02",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Completa la accion del reducer para marcar una tarea como completada/no completada:",
       codeTemplate: {
@@ -713,8 +713,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Como se inicializa useReducer leyendo de localStorage?",
       options: [
@@ -730,7 +730,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Ordena la estructura de carpetas correcta para un proyecto React limpio:",
@@ -753,8 +753,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Cual es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
       options: [
@@ -770,8 +770,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react19-ej-06",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt: "Completa para guardar el estado en localStorage cada vez que cambie:",
       codeTemplate: {

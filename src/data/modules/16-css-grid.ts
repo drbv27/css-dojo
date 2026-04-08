@@ -279,7 +279,7 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -298,8 +298,8 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la propiedad para crear una cuadricula de 3 columnas iguales usando la unidad fraccion:",
@@ -317,7 +317,7 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -366,8 +366,8 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-04",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Crea un layout con CSS Grid: un contenedor con clase 'layout' que tenga 3 columnas (200px, 1fr, 1fr), 2 filas de 150px, y un gap de 15px. Agrega display: grid.",
@@ -397,8 +397,8 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Que hace la declaracion 'grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))'?",
@@ -416,8 +416,8 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa la propiedad para que el elemento .header ocupe desde la columna 1 hasta la columna 4 (las 3 columnas completas):",
@@ -435,7 +435,7 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -466,8 +466,8 @@ Valores de \`grid-auto-flow\`:
     {
       id: "16-ej-08",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Arrastra cada valor a la propiedad grid-template-areas correcta para crear un layout clasico:",

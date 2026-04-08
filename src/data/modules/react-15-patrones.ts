@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que patron fundamental usa React en vez de herencia?",
@@ -404,7 +404,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que es la prop especial 'children' en React?",
@@ -421,8 +421,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que es un Higher-Order Component (HOC)?",
       options: [
@@ -438,7 +438,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Asocia cada patron con su descripcion:",
@@ -461,8 +461,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "En React moderno, que ha reemplazado en gran parte a Render Props y HOCs?",
       options: [
@@ -478,8 +478,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Completa el render prop para mostrar las coordenadas del mouse:",
       codeTemplate: {
@@ -495,8 +495,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "En el patron Compound Components, como comparten estado los componentes hijos?",
       options: [
@@ -512,8 +512,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react15-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Cual es la diferencia entre el patron Container y Presentational?",
       options: [

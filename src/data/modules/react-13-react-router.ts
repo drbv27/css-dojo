@@ -380,7 +380,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que componente de React Router envuelve toda la aplicacion para habilitar el enrutamiento?",
@@ -397,7 +397,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que componente se usa en vez de <a href> para la navegacion interna?",
@@ -414,8 +414,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa para definir una ruta con parametro dinamico para el ID de usuario:",
       codeTemplate: {
@@ -431,8 +431,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que hook se usa para navegar programaticamente (ej: despues de un login)?",
       options: [
@@ -448,8 +448,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa para leer el parametro 'id' de la URL /producto/:id:",
       codeTemplate: {
@@ -465,7 +465,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Asocia cada componente/hook con su funcion en React Router:",
@@ -492,8 +492,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que hace path='*' en una ruta de React Router?",
       options: [
@@ -509,8 +509,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
     {
       id: "react13-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "En rutas anidadas, que componente se usa dentro del layout padre para renderizar las rutas hijas?",
       options: [

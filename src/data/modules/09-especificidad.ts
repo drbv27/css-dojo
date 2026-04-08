@@ -255,7 +255,7 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -274,7 +274,7 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-02",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 2,
       prompt:
@@ -307,8 +307,8 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Cual es la especificidad del selector #header .nav a?",
@@ -326,8 +326,8 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "El texto deberia ser rojo, pero la clase .azul lo esta sobreescribiendo. Completa la declaracion para forzar que sea rojo sin cambiar el selector:",
@@ -345,8 +345,8 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Que selector gana? A: .card .titulo { color: blue; } vs B: #principal p { color: red; }. El parrafo tiene clase 'titulo', esta dentro de .card y de #principal.",
@@ -364,8 +364,8 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-06",
       type: "live-editor",
-      difficulty: 3,
-      xpReward: 25,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt:
         "El parrafo deberia ser de color steelblue, pero la regla existente lo pone rojo. Escribe un selector con suficiente especificidad para que sea steelblue SIN usar !important. Pista: usa el ID del contenedor.",
@@ -387,8 +387,8 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-07",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 25,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Arrastra cada selector a su especificidad calculada:",
@@ -420,7 +420,7 @@ En lugar de usar \`!important\`, puedes:
     {
       id: "09-ej-08",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

@@ -237,7 +237,7 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que metodo se usa para hacer peticiones HTTP en JavaScript moderno?",
@@ -254,7 +254,7 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que metodo convierte la respuesta de fetch a un objeto JavaScript?",
@@ -271,8 +271,8 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "fetch rechaza la Promise cuando el servidor devuelve un error 404?",
       options: [
@@ -288,8 +288,8 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Completa el header para indicar que envias datos JSON:",
       codeTemplate: {
@@ -305,8 +305,8 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que propiedad de response indica si la peticion fue exitosa (status 200-299)?",
       options: [
@@ -322,8 +322,8 @@ document.getElementById("error").addEventListener("click", function() {
     {
       id: "js18-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que metodo HTTP se usa para enviar nuevos datos al servidor?",
       options: [

@@ -293,7 +293,7 @@ div.card {
     {
       id: "06-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -312,8 +312,8 @@ div.card {
     {
       id: "06-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa el selector para aplicar estilos solo a los enlaces (<a>) que estan dentro del <nav>:",
@@ -331,7 +331,7 @@ div.card {
     {
       id: "06-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -364,8 +364,8 @@ div.card {
     {
       id: "06-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Una lista .menu tiene dos items directos: A y B. Dentro de B hay otra lista con un item C. El selector .menu > li selecciona:",
@@ -383,8 +383,8 @@ div.card {
     {
       id: "06-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa el selector para aplicar estilos solo al primer parrafo que aparece inmediatamente despues de un <h2>:",
@@ -402,8 +402,8 @@ div.card {
     {
       id: "06-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Escribe CSS para que los enlaces (<a>) dentro de #principal tengan color tomato y los <li> hijos directos de .menu tengan font-weight: bold.",
@@ -426,8 +426,8 @@ div.card {
     {
       id: "06-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Cual es la diferencia entre h2 + p y h2 ~ p?",
@@ -461,7 +461,7 @@ div.card {
     {
       id: "06-ej-08",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

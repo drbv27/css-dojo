@@ -206,7 +206,7 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Como se escribe la propiedad CSS 'background-color' en JavaScript?",
@@ -223,7 +223,7 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que metodo se usa para leer los estilos computados de un elemento?",
@@ -240,8 +240,8 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa para cambiar el color de fondo de un elemento:",
       codeTemplate: {
@@ -257,8 +257,8 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Como modificas una CSS variable desde JavaScript?",
       options: [
@@ -274,8 +274,8 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que es mejor practica: modificar estilos directamente o usar classList?",
       options: [
@@ -291,8 +291,8 @@ tabs.forEach(function(tab) {
     {
       id: "js14-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
       options: [

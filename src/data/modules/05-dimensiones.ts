@@ -256,7 +256,7 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -275,8 +275,8 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-02",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt:
         "Completa la propiedad para limitar el ancho maximo del contenedor a 800px, permitiendo que sea mas pequeno en pantallas chicas:",
@@ -294,8 +294,8 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-03",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Crea una caja con la clase 'caja' que tenga: ancho de 300px, alto de 200px, padding de 20px y margin de 10px. Agrega background-color: lightblue para visualizarla.",
@@ -327,7 +327,7 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -378,8 +378,8 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "En la declaracion `padding: 10px 20px 30px;`, que valor tiene padding-left?",
@@ -397,8 +397,8 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa el valor de margin para centrar horizontalmente este contenedor de 600px de ancho:",
@@ -416,7 +416,7 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -451,8 +451,8 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
     {
       id: "05-ej-08",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 8,
       prompt:
         "Centra horizontalmente un div con clase 'centrado' de 400px de ancho usando margin auto. Agrega background-color: lightyellow y padding: 20px para visualizarlo.",

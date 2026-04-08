@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual es la filosofia principal de React Testing Library?",
@@ -464,7 +464,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es la query preferida en React Testing Library?",
@@ -481,8 +481,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa para encontrar un boton con el texto 'Enviar':",
       codeTemplate: {
@@ -498,7 +498,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Asocia cada query con su caso de uso:",
@@ -521,8 +521,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
       options: [
@@ -538,8 +538,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-06",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt: "Completa para esperar a que aparezca un elemento asincrono:",
       codeTemplate: {
@@ -555,8 +555,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que debes mockear al testear un componente que hace fetch?",
       options: [
@@ -572,8 +572,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Que tipo de testing da mas confianza pero es mas lento y fragil?",
       options: [

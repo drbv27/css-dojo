@@ -297,7 +297,7 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -316,7 +316,7 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-02",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 2,
       prompt:
@@ -365,8 +365,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Completa la propiedad logica para centrar horizontalmente este contenedor (equivalente a 'margin-left: auto; margin-right: auto'):",
@@ -384,8 +384,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "En un documento con writing-mode: vertical-rl, que dimension controla inline-size?",
@@ -403,8 +403,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una tarjeta (clase 'tarjeta') usando solo propiedades logicas: max-inline-size: 400px, margin-inline: auto, padding-inline: 25px, padding-block: 20px, border-inline-start: 4px solid steelblue, y background-color: #f0f4f8.",
@@ -435,8 +435,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-06",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 6,
       prompt:
         "Completa la propiedad para agregar padding de 20px a los lados superior e inferior usando la propiedad logica shorthand:",
@@ -454,8 +454,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-07",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 25,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Arrastra cada shorthand logico a lo que reemplaza en modo de escritura horizontal:",
@@ -505,8 +505,8 @@ Controla la orientacion de los caracteres en texto vertical:
     {
       id: "14-ej-08",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 8,
       prompt:
         "Cual es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",

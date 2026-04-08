@@ -317,7 +317,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -336,8 +336,8 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la propiedad para centrar los items horizontalmente en el eje principal:",
@@ -355,7 +355,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -416,8 +416,8 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-04",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Crea un centrado perfecto: el contenedor (clase 'centrado') debe usar display: flex, justify-content: center, align-items: center, height: 200px, y background-color: #f0f0f0. El item (clase 'caja') debe tener padding: 20px, background-color: steelblue, color: white y border-radius: 8px.",
@@ -448,8 +448,8 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Que hace flex-wrap: wrap en un contenedor flex?",
@@ -467,8 +467,8 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa el shorthand flex para que el sidebar tenga un ancho fijo de 250px sin crecer ni encogerse:",
@@ -486,7 +486,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -521,8 +521,8 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
     {
       id: "15-ej-08",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 25,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Arrastra cada propiedad flex al elemento donde se aplica (contenedor o item):",

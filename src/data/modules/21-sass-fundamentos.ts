@@ -530,7 +530,7 @@ Diferencias clave:
     {
       id: "21-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -549,7 +549,7 @@ Diferencias clave:
     {
       id: "21-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt:
@@ -568,8 +568,8 @@ Diferencias clave:
     {
       id: "21-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt:
         "Completa la declaracion de la variable Sass para definir un color primario. Recuerda que las variables Sass usan un simbolo especial:",
@@ -587,8 +587,8 @@ Diferencias clave:
     {
       id: "21-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Completa el selector padre de Sass para generar '.boton:hover':",
@@ -606,8 +606,8 @@ Diferencias clave:
     {
       id: "21-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Cual es la diferencia entre un @mixin y una @function en Sass?",
@@ -625,8 +625,8 @@ Diferencias clave:
     {
       id: "21-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa la directiva para incluir (usar) un mixin llamado 'flex-center' dentro de un selector:",
@@ -644,7 +644,7 @@ Diferencias clave:
     {
       id: "21-ej-07",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 7,
       prompt:
@@ -677,8 +677,8 @@ Diferencias clave:
     {
       id: "21-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "En Sass moderno, cual es la forma recomendada de importar archivos parciales?",

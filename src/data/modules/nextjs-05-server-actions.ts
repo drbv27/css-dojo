@@ -163,8 +163,8 @@ revalidateTag("posts");
     {
       id: "njs05-ej-01",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 1,
       prompt: 'Que directiva marca una funcion como Server Action?',
       options: [
@@ -180,8 +180,8 @@ revalidateTag("posts");
     {
       id: "njs05-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Como se conecta una Server Action a un formulario?",
       options: [
@@ -197,8 +197,8 @@ revalidateTag("posts");
     {
       id: "njs05-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que hace revalidatePath('/posts') despues de una Server Action?",
       options: [
@@ -214,8 +214,8 @@ revalidateTag("posts");
     {
       id: "njs05-ej-04",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 4,
       prompt: "Ordena el flujo de una Server Action con formulario:",
       dragItems: [

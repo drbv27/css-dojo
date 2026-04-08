@@ -134,7 +134,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
     {
       id: "njs03-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "En Next.js App Router, los componentes son Server o Client por defecto?",
@@ -151,8 +151,8 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
     {
       id: "njs03-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: 'Que directiva convierte un componente en Client Component?',
       options: [
@@ -168,7 +168,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
     {
       id: "njs03-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt: "Clasifica cada funcionalidad como Server o Client Component:",
@@ -192,8 +192,8 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
     {
       id: "njs03-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual es el patron recomendado para combinar Server y Client Components?",
       options: [

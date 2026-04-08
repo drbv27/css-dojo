@@ -131,7 +131,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que significa HTML?",
@@ -149,7 +149,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Quien creo HTML y en que ano?",
@@ -167,8 +167,8 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa la declaracion que le indica al navegador que usamos HTML5:",
       codeTemplate: {
@@ -185,7 +185,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -213,8 +213,8 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Escribe la estructura basica de un documento HTML5 con un titulo 'Mi Web' en el head y un encabezado h1 que diga 'Bienvenido' en el body.",
@@ -234,8 +234,8 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
     {
       id: "html-01-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que sucede si omites la declaracion <!DOCTYPE html> en tu documento?",
       options: [

@@ -274,7 +274,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que atributo de <form> define a donde se envian los datos?",
@@ -292,7 +292,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual metodo HTTP es mas seguro para enviar contrasenas?",
@@ -310,8 +310,8 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa el label y el input para que esten correctamente asociados:",
       codeTemplate: {
@@ -328,7 +328,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Arrastra cada tipo de input a su uso mas apropiado:",
@@ -357,7 +357,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-05",
       type: "code-completion",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Completa el select para crear una lista desplegable con opciones:",
@@ -375,8 +375,8 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Crea un formulario de registro con: form (action='/registro', method='POST'), un campo de texto para nombre con su label, un campo email con su label, un campo password con su label, y un boton de tipo submit que diga 'Registrarse'.",
@@ -396,8 +396,8 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Que sucede si un <button> dentro de un <form> no tiene atributo type?",
       options: [
@@ -414,7 +414,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
     {
       id: "html-08-ej-08",
       type: "live-editor",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

@@ -164,7 +164,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que es React?",
@@ -182,7 +182,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que problema resuelve el Virtual DOM?",
@@ -200,7 +200,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Que es una SPA (Single-Page Application)?",
@@ -218,7 +218,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Clasifica cada concepto segun corresponda a React o al desarrollo web tradicional:",
@@ -248,8 +248,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el codigo para renderizar un componente React en el elemento con id 'root':",
       codeTemplate: {
@@ -266,8 +266,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react01-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Cual es la herramienta recomendada actualmente para crear un nuevo proyecto React?",
       options: [

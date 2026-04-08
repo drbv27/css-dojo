@@ -251,7 +251,7 @@ function procesar(datos) {
     {
       id: "js21-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que estructura se usa para capturar errores en JavaScript?",
@@ -268,7 +268,7 @@ function procesar(datos) {
     {
       id: "js21-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que bloque se ejecuta siempre, haya o no haya error?",
@@ -285,8 +285,8 @@ function procesar(datos) {
     {
       id: "js21-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa para lanzar un error personalizado:",
       codeTemplate: {
@@ -302,8 +302,8 @@ function procesar(datos) {
     {
       id: "js21-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que tipo de error se produce al acceder a una variable que no existe?",
       options: [
@@ -319,8 +319,8 @@ function procesar(datos) {
     {
       id: "js21-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que propiedad del objeto error contiene la descripcion del error?",
       options: [
@@ -336,8 +336,8 @@ function procesar(datos) {
     {
       id: "js21-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que hace la palabra clave debugger en el codigo?",
       options: [

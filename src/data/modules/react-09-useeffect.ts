@@ -362,7 +362,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cuando se ejecuta un useEffect con array de dependencias vacio []?",
@@ -379,7 +379,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que causa un loop infinito en useEffect?",
@@ -396,8 +396,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa el hook para que el efecto se ejecute solo cuando cambie 'query':",
       codeTemplate: {
@@ -413,7 +413,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Clasifica cada caso: debe usar useEffect o un event handler?",
@@ -436,8 +436,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa la funcion de limpieza para limpiar un intervalo:",
       codeTemplate: {
@@ -453,8 +453,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Cuando se ejecuta la funcion de cleanup de useEffect?",
       options: [
@@ -470,8 +470,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Cual de estos NO es un buen uso de useEffect?",
       options: [
@@ -487,8 +487,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
     {
       id: "react09-ej-08",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Completa para cancelar una peticion fetch con AbortController en el cleanup:",
       codeTemplate: {

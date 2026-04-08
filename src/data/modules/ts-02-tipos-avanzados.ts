@@ -144,7 +144,7 @@ function procesar(valor: string | number | boolean) {
     {
       id: "ts02-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que define una interface en TypeScript?",
@@ -161,8 +161,8 @@ function procesar(valor: string | number | boolean) {
     {
       id: "ts02-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: 'Que tipo describe un valor que puede ser "exito", "error" o "pendiente"?',
       options: [
@@ -178,8 +178,8 @@ function procesar(valor: string | number | boolean) {
     {
       id: "ts02-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa el tipo para que acepte string O number:",
       codeTemplate: {
@@ -195,8 +195,8 @@ function procesar(valor: string | number | boolean) {
     {
       id: "ts02-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que hace el operador & en TypeScript?",
       options: [
@@ -212,8 +212,8 @@ function procesar(valor: string | number | boolean) {
     {
       id: "ts02-ej-05",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 5,
       prompt: "Asocia cada concepto con su uso:",
       dragItems: [

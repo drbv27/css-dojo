@@ -277,7 +277,7 @@ button:focus {
     {
       id: "html11-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que atributo global crea un identificador unico para un elemento HTML?",
@@ -295,7 +295,7 @@ button:focus {
     {
       id: "html11-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es la diferencia principal entre id y class?",
@@ -313,8 +313,8 @@ button:focus {
     {
       id: "html11-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa el atributo para almacenar un precio personalizado en el elemento:",
       codeTemplate: {
@@ -331,8 +331,8 @@ button:focus {
     {
       id: "html11-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que atributo hace que el contenido de un elemento sea editable por el usuario?",
       options: [
@@ -349,7 +349,7 @@ button:focus {
     {
       id: "html11-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica cada atributo global segun su proposito:",
@@ -382,8 +382,8 @@ button:focus {
     {
       id: "html11-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: 'Que valor de tabindex hace que un elemento sea enfocable solo por JavaScript pero NO con la tecla Tab?',
       options: [
@@ -400,8 +400,8 @@ button:focus {
     {
       id: "html11-ej-07",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Completa el atributo para ocultar un elemento de la pagina:",
       codeTemplate: {

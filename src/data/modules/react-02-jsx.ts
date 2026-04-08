@@ -302,7 +302,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que es JSX?",
@@ -320,8 +320,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "En JSX, cual es el atributo correcto para asignar una clase CSS? Completa: <div ___=\"caja\">",
       codeTemplate: {
@@ -338,7 +338,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Como se inserta una expresion JavaScript dentro de JSX?",
@@ -356,8 +356,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual de estas opciones es JSX valido?",
       options: [
@@ -374,7 +374,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Clasifica cada atributo segun si pertenece a HTML o JSX:",
@@ -408,8 +408,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Completa el codigo para usar un Fragment corto que envuelva dos elementos:",
       codeTemplate: {
@@ -426,8 +426,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Como se aplica un estilo inline en JSX?",
       options: [
@@ -444,8 +444,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react02-ej-08",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Completa el codigo para renderizar una lista de nombres usando map(). Cada <li> necesita una prop unica:",
       codeTemplate: {

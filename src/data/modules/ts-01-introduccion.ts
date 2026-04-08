@@ -119,7 +119,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
     {
       id: "ts01-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que es TypeScript?",
@@ -136,7 +136,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
     {
       id: "ts01-ej-02",
       type: "code-completion",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Completa la declaracion de tipo para que 'edad' solo acepte numeros:",
@@ -153,8 +153,8 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
     {
       id: "ts01-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que pasa si intentas asignar un string a una variable tipada como number?",
       options: [
@@ -170,8 +170,8 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
     {
       id: "ts01-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que indica el signo ? despues de un parametro en TypeScript?",
       options: [
@@ -187,7 +187,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
     {
       id: "ts01-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Asocia cada valor con su tipo en TypeScript:",

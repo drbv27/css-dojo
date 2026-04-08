@@ -165,7 +165,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que atributo de la etiqueta <img> es obligatorio por accesibilidad?",
@@ -183,8 +183,8 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa la etiqueta para insertar una imagen:",
       codeTemplate: {
@@ -201,7 +201,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Que etiqueta se usa para agregar una leyenda o descripcion a una imagen?",
@@ -219,7 +219,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Arrastra cada atributo de video a su funcion correcta:",
@@ -248,8 +248,8 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea un elemento <figure> que contenga una imagen con src='foto.jpg', alt='Paisaje de montana', width='400' y height='300'. Agrega un <figcaption> que diga 'Vista panoramica de los Andes'.",
@@ -269,7 +269,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-06",
       type: "code-completion",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Completa la etiqueta de video para que muestre controles y se reproduzca sin sonido:",
@@ -287,8 +287,8 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
     {
       id: "html-05-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Para que sirve la etiqueta <picture> en HTML?",
       options: [

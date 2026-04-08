@@ -390,7 +390,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que son las props en React?",
@@ -408,8 +408,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa la desestructuracion de props en este componente:",
       codeTemplate: {
@@ -426,7 +426,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Como se pasa un numero como prop en JSX?",
@@ -444,8 +444,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Puede un componente hijo modificar las props que recibe?",
       options: [
@@ -462,8 +462,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa la prop con un valor por defecto de \"Invitado\":",
       codeTemplate: {
@@ -480,7 +480,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Clasifica cada tipo de valor segun como se pasa en JSX (con comillas o con llaves):",
@@ -514,8 +514,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Que es el prop drilling?",
       options: [
@@ -532,8 +532,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-ej-08",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Completa el codigo para pasar todas las propiedades del objeto 'datos' como props al componente:",
       codeTemplate: {

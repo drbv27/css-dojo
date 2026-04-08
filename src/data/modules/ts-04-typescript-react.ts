@@ -143,7 +143,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
     {
       id: "ts04-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Como se tipan las props de un componente React en TypeScript?",
@@ -160,8 +160,8 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
     {
       id: "ts04-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Como tipas un useState que puede ser un objeto Usuario o null?",
       options: [
@@ -177,8 +177,8 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
     {
       id: "ts04-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Cual es el tipo correcto para el evento onChange de un input?",
       options: [
@@ -194,8 +194,8 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
     {
       id: "ts04-ej-04",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 4,
       prompt: "Asocia cada evento con su tipo React:",
       dragItems: [
@@ -218,8 +218,8 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
     {
       id: "ts04-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que tipo se usa para la prop children en React con TypeScript?",
       options: [

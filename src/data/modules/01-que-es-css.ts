@@ -152,7 +152,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que significa CSS?",
@@ -170,7 +170,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es la forma recomendada de anadir estilos CSS a un sitio web?",
@@ -192,8 +192,8 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt:
         "Completa el selector para que esta regla CSS aplique estilos a todos los elementos <p> del documento:",
@@ -211,7 +211,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -249,8 +249,8 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa la etiqueta HTML para importar correctamente una hoja de estilos externa llamada 'estilos.css':",
@@ -268,8 +268,8 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     {
       id: "01-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Cual de estas formas de anadir estilos CSS es considerada un anti-patron en proyectos profesionales?",

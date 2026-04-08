@@ -374,7 +374,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que problema resuelve la Context API de React?",
@@ -391,7 +391,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cuales son los tres pasos para usar Context?",
@@ -408,8 +408,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Completa para consumir el contexto de tema dentro de un componente:",
       codeTemplate: {
@@ -425,7 +425,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Clasifica: es mejor usar Props o Context para este caso?",
@@ -448,8 +448,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que pasa cuando cambia el value del Provider?",
       options: [
@@ -465,8 +465,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Completa el Provider para pasar el valor del tema:",
       codeTemplate: {
@@ -482,8 +482,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Por que es mejor separar contextos no relacionados en lugar de tener uno solo?",
       options: [
@@ -499,8 +499,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Cual es una buena practica al crear un contexto con estado?",
       options: [

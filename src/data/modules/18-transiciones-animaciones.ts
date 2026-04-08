@@ -316,7 +316,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -335,8 +335,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la propiedad para que el cambio de color del boton dure 0.3 segundos con curva ease:",
@@ -354,7 +354,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-03",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 3,
       prompt:
@@ -387,8 +387,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Completa la regla para definir una animacion llamada 'girar' que rote el elemento 360 grados:",
@@ -406,8 +406,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una animacion @keyframes llamada 'fadeIn' que cambie opacity de 0 a 1. Aplica esta animacion a un elemento con clase 'aparecer' con duracion de 1s, ease-out, y animation-fill-mode: forwards.",
@@ -436,8 +436,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Que valor de animation-fill-mode hace que el elemento mantenga los estilos del ultimo keyframe despues de terminar la animacion?",
@@ -455,7 +455,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -486,8 +486,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
     {
       id: "18-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Cuales son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",

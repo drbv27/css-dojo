@@ -355,7 +355,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que etiqueta semantica representa el contenido principal de una pagina?",
@@ -373,7 +373,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que etiqueta se usa para la navegacion principal de un sitio?",
@@ -391,8 +391,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-03",
       type: "drag-drop",
-      difficulty: 1,
-      xpReward: 20,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Clasifica cada etiqueta como semantica o no semantica:",
       dragItems: [
@@ -423,8 +423,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Completa la etiqueta para crear un widget desplegable nativo en HTML:",
       codeTemplate: {
@@ -441,8 +441,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Cual es la diferencia principal entre <article> y <section>?",
       options: [
@@ -459,8 +459,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Que elemento se usa para asociar una leyenda o descripcion a una imagen?",
       options: [
@@ -477,7 +477,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-07",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 7,
       prompt: "Organiza las etiquetas segun donde van en la estructura tipica de una pagina:",
@@ -508,8 +508,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
     {
       id: "html10-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt: "Cuantos elementos <main> deberia tener una pagina HTML bien estructurada?",
       options: [

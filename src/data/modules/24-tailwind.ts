@@ -517,7 +517,7 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -536,8 +536,8 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt:
         "Completa la clase de Tailwind para agregar padding de 1rem (16px) a un elemento:",
@@ -555,7 +555,7 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt:
@@ -574,7 +574,7 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt:
@@ -607,8 +607,8 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Completa el prefijo de Tailwind para que el fondo solo cambie en pantallas medianas (768px) y superiores:",
@@ -626,8 +626,8 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un boton con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver mas'.",
@@ -656,8 +656,8 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Como se aplica un estilo de hover al padre que afecte a un hijo en Tailwind?",
@@ -675,8 +675,8 @@ Los prefijos se pueden combinar:
     {
       id: "24-ej-08",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Completa el prefijo de Tailwind para aplicar un fondo oscuro cuando el modo oscuro esta activo:",

@@ -222,7 +222,7 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que metodo se usa para guardar un dato en localStorage?",
@@ -239,7 +239,7 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que tipo de datos acepta localStorage?",
@@ -256,8 +256,8 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa para convertir un objeto a string JSON:",
       codeTemplate: {
@@ -273,8 +273,8 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que diferencia hay entre localStorage y sessionStorage?",
       options: [
@@ -290,8 +290,8 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que metodo convierte un string JSON de vuelta a un objeto?",
       options: [
@@ -307,8 +307,8 @@ nota.addEventListener("input", function() {
     {
       id: "js15-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Por que es importante usar try/catch al leer de localStorage?",
       options: [

@@ -294,7 +294,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual de las siguientes es una unidad ABSOLUTA en CSS?",
@@ -312,7 +312,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-02",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 2,
       prompt:
@@ -348,8 +348,8 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Si html { font-size: 16px; }, cuanto equivale 1.5rem?",
@@ -367,8 +367,8 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-04",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Completa la unidad para que la seccion hero ocupe exactamente el 100% de la altura de la ventana:",
@@ -386,8 +386,8 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Cual es la diferencia principal entre em y rem?",
@@ -421,8 +421,8 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Crea un contenedor responsivo con clase 'contenedor' que use: width: 90%, max-width: 800px, margin: 0 auto, padding: 1.5rem. Agrega un h1 con font-size: 2rem y un parrafo con font-size: 1rem y line-height: 1.6.",
@@ -458,8 +458,8 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-07",
       type: "code-completion",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt:
         "Completa la unidad del padding para que escale proporcionalmente con el font-size del propio boton (no con el root):",
@@ -477,7 +477,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
     {
       id: "10-ej-08",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 8,
       prompt:

@@ -287,7 +287,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que es un IIFE?",
@@ -304,8 +304,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Que patron se usa cuando necesitas notificar a multiples componentes sobre un cambio?",
       options: [
@@ -321,8 +321,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que garantiza el patron Singleton?",
       options: [
@@ -338,8 +338,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Que patron usarias para crear objetos de diferentes tipos con una funcion comun?",
       options: [
@@ -355,8 +355,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "addEventListener del DOM es un ejemplo de que patron?",
       options: [
@@ -372,8 +372,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
     {
       id: "js22-ej-06",
       type: "drag-drop",
-      difficulty: 3,
-      xpReward: 20,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 6,
       prompt: "Asocia cada patron con su caso de uso principal:",
       dragItems: [

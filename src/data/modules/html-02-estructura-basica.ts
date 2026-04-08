@@ -175,7 +175,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Cual es la funcion principal de la etiqueta <head> en un documento HTML?",
@@ -193,8 +193,8 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa la etiqueta meta para definir la codificacion de caracteres como UTF-8:",
       codeTemplate: {
@@ -211,7 +211,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Para que sirve el atributo lang en la etiqueta <html>?",
@@ -229,7 +229,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-04",
       type: "code-completion",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Completa la meta etiqueta viewport para dispositivos moviles:",
@@ -247,7 +247,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-05",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 5,
       prompt: "Arrastra cada elemento a la seccion del documento HTML donde debe ir:",
@@ -272,8 +272,8 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-06",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Crea un documento HTML5 completo con: DOCTYPE, html con lang='es', head con meta charset UTF-8, meta viewport, titulo 'Dev Dojo', y un body con un parrafo que diga 'Aprendiendo HTML'.",
@@ -293,8 +293,8 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
     {
       id: "html-02-ej-07",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 7,
       prompt: "Cual es la sintaxis correcta para escribir un comentario en HTML?",
       options: [

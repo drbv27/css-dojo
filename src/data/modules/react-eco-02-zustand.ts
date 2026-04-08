@@ -150,7 +150,7 @@ const useUsers = create<UsersStore>((set) => ({
     {
       id: "reco02-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que funcion se usa para crear un store en Zustand?",
@@ -167,8 +167,8 @@ const useUsers = create<UsersStore>((set) => ({
     {
       id: "reco02-ej-02",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 2,
       prompt: "Cual es la ventaja principal de usar selectores en Zustand?",
       options: [
@@ -184,8 +184,8 @@ const useUsers = create<UsersStore>((set) => ({
     {
       id: "reco02-ej-03",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt: "Que middleware de Zustand guarda el estado en localStorage?",
       options: [
@@ -201,7 +201,7 @@ const useUsers = create<UsersStore>((set) => ({
     {
       id: "reco02-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Asocia cada caracteristica con la solucion correcta:",

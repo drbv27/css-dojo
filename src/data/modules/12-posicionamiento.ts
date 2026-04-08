@@ -269,7 +269,7 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt:
@@ -288,7 +288,7 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-02",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 2,
       prompt:
@@ -349,8 +349,8 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-03",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 3,
       prompt:
         "Completa la propiedad del contenedor para que su hijo absoluto se posicione respecto a el, no respecto al viewport:",
@@ -368,8 +368,8 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-04",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt:
         "Crea un boton flotante fijo en la esquina inferior derecha. Usa position: fixed, bottom: 20px, right: 20px. Dale padding: 15px 20px, background-color: tomato, color: white, border: none y border-radius: 50%.",
@@ -400,8 +400,8 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Un elemento tiene position: absolute y esta dentro de un div con position: static, que a su vez esta dentro de un div con position: relative. Respecto a cual se posiciona?",
@@ -419,8 +419,8 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-06",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt:
         "Completa la propiedad para crear un encabezado que se pegue al top del contenedor al hacer scroll:",
@@ -438,7 +438,7 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-07",
       type: "visual-match",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:
@@ -471,8 +471,8 @@ Define una escala organizada para tu proyecto:
     {
       id: "12-ej-08",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 8,
       prompt:
         "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, cual se muestra encima?",

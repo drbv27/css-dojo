@@ -334,7 +334,7 @@ function borrar() {
     {
       id: "html15-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que herramienta oficial verifica que tu HTML cumple con los estandares web?",
@@ -352,7 +352,7 @@ function borrar() {
     {
       id: "html15-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Cual es la alternativa moderna a la etiqueta obsoleta <center>?",
@@ -370,8 +370,8 @@ function borrar() {
     {
       id: "html15-ej-03",
       type: "drag-drop",
-      difficulty: 1,
-      xpReward: 20,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Clasifica cada etiqueta como obsoleta o vigente en HTML5:",
       dragItems: [
@@ -402,8 +402,8 @@ function borrar() {
     {
       id: "html15-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual es la diferencia entre <strong> y <b>?",
       options: [
@@ -420,8 +420,8 @@ function borrar() {
     {
       id: "html15-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el atributo para que el script se ejecute cuando el DOM este listo, sin bloquear la carga:",
       codeTemplate: {
@@ -438,7 +438,7 @@ function borrar() {
     {
       id: "html15-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Clasifica cada estrategia de carga segun su proposito:",
@@ -468,8 +468,8 @@ function borrar() {
     {
       id: "html15-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 15,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Que API de HTML5 permite guardar datos en el navegador de forma persistente?",
       options: [

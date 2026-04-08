@@ -379,7 +379,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que metodo de JavaScript se usa para renderizar listas en React?",
@@ -397,8 +397,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa el codigo para renderizar una lista de nombres con map():",
       codeTemplate: {
@@ -415,7 +415,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Para que sirve la prop 'key' en listas de React?",
@@ -433,8 +433,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cuando es SEGURO usar el index como key?",
       options: [
@@ -451,8 +451,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-05",
       type: "code-completion",
-      difficulty: 2,
-      xpReward: 15,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Completa el codigo para filtrar solo los productos en stock antes de renderizar:",
       codeTemplate: {
@@ -469,7 +469,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-06",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Clasifica cada valor segun si es una BUENA o MALA key para una lista dinamica:",
@@ -501,8 +501,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-ej-07",
       type: "quiz",
-      difficulty: 3,
-      xpReward: 10,
+      difficulty: 3 ,
+      xpReward: 30,
       order: 7,
       prompt: "Por que se debe crear una copia del array con [...array] antes de usar sort()?",
       options: [

@@ -170,7 +170,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que etiqueta se usa para crear una lista no ordenada?",
@@ -188,8 +188,8 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-02",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 2,
       prompt: "Completa las etiquetas de apertura y cierre para que esta sea una lista ordenada:",
       codeTemplate: {
@@ -206,7 +206,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-03",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 3,
       prompt: "Que atributo de <ol> hace que la numeracion vaya de mayor a menor?",
@@ -224,7 +224,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-04",
       type: "drag-drop",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 4,
       prompt: "Arrastra cada etiqueta de lista de descripcion a su funcion:",
@@ -249,8 +249,8 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-05",
       type: "live-editor",
-      difficulty: 2,
-      xpReward: 25,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt:
         "Crea una lista no ordenada <ul> con 3 elementos. El segundo elemento debe contener una lista ordenada <ol> anidada con 2 sub-elementos.",
@@ -270,7 +270,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-06",
       type: "code-completion",
-      difficulty: 2,
+      difficulty: 2 ,
       xpReward: 20,
       order: 6,
       prompt: "Completa la lista ordenada para que empiece en el numero 5 y use letras mayusculas:",
@@ -288,7 +288,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
     {
       id: "html-06-ej-07",
       type: "live-editor",
-      difficulty: 3,
+      difficulty: 3 ,
       xpReward: 30,
       order: 7,
       prompt:

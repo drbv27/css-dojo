@@ -222,7 +222,7 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-01",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 1,
       prompt: "Que propiedad se usa para obtener el valor de un input de texto?",
@@ -239,7 +239,7 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-02",
       type: "quiz",
-      difficulty: 1,
+      difficulty: 1 ,
       xpReward: 10,
       order: 2,
       prompt: "Que metodo previene que un formulario se envie y recargue la pagina?",
@@ -256,8 +256,8 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-03",
       type: "code-completion",
-      difficulty: 1,
-      xpReward: 15,
+      difficulty: 1 ,
+      xpReward: 10,
       order: 3,
       prompt: "Completa para obtener si un checkbox esta marcado:",
       codeTemplate: {
@@ -273,8 +273,8 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-04",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 4,
       prompt: "Cual es la diferencia entre los eventos 'input' y 'change'?",
       options: [
@@ -290,8 +290,8 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-05",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 5,
       prompt: "Que hace form.reset()?",
       options: [
@@ -307,8 +307,8 @@ document.getElementById("reset").addEventListener("click", function() {
     {
       id: "js16-ej-06",
       type: "quiz",
-      difficulty: 2,
-      xpReward: 10,
+      difficulty: 2 ,
+      xpReward: 20,
       order: 6,
       prompt: "Por que se debe validar en el servidor ademas del frontend?",
       options: [
