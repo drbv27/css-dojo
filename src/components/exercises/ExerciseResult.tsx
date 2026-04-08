@@ -85,25 +85,16 @@ export default function ExerciseResult({
         </motion.div>
       )}
 
-      {/* Actions */}
-      <div className="flex items-center gap-3 mt-2">
-        {!correct && onRetry && (
-          <button
-            onClick={onRetry}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-editor-bg border border-editor-border text-editor-text hover:bg-editor-hover transition-colors text-sm font-medium"
-          >
-            <RotateCcw className="w-4 h-4" />
-            Intentar de nuevo
-          </button>
-        )}
+      {/* Retry button (only on incorrect) */}
+      {!correct && onRetry && (
         <button
-          onClick={onNext}
-          className="flex items-center gap-2 px-6 py-2.5 rounded-xl bg-neon-blue text-white hover:bg-neon-blue/90 transition-colors text-sm font-semibold shadow-lg shadow-neon-blue/20"
+          onClick={onRetry}
+          className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-editor-bg border border-editor-border text-editor-text hover:bg-editor-hover transition-colors text-sm font-medium mt-2"
         >
-          Siguiente ejercicio
-          <ArrowRight className="w-4 h-4" />
+          <RotateCcw className="w-4 h-4" />
+          Intentar de nuevo
         </button>
-      </div>
+      )}
     </motion.div>
   );
 }
