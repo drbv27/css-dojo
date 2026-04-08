@@ -28,7 +28,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     boardConfig: {
       items: [{ id: "i1", color: "#94E2D5", label: "1" }],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "justify-content controla la alineacion horizontal. Prueba con 'center'.",
   },
   {
@@ -42,7 +42,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     boardConfig: {
       items: [{ id: "i1", color: "#89B4FA", label: "1" }],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "flex-end mueve los elementos al final del eje principal.",
   },
   {
@@ -60,7 +60,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#CBA6F7", label: "3" },
       ],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "space-between pone el maximo espacio posible entre cada elemento.",
   },
   {
@@ -78,7 +78,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#94E2D5", label: "3" },
       ],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "space-around pone espacio igual a cada lado de cada elemento.",
   },
 
@@ -95,7 +95,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       items: [{ id: "i1", color: "#CBA6F7", label: "1" }],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "align-items controla la alineacion en el eje cruzado (vertical por defecto).",
   },
   {
@@ -113,7 +113,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "flex-end en align-items mueve los elementos al final del eje cruzado.",
   },
   {
@@ -131,7 +131,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "stretch hace que los elementos ocupen todo el espacio disponible en el eje cruzado.",
   },
   {
@@ -149,7 +149,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "Combina justify-content y align-items, ambos con center.",
   },
 
@@ -169,7 +169,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#F38BA8", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "flex-direction: column cambia el eje principal a vertical.",
   },
   {
@@ -187,7 +187,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#F9E2AF", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "column-reverse invierte el orden vertical: el primero va al fondo.",
   },
   {
@@ -205,7 +205,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#89B4FA", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "row-reverse pone los elementos de derecha a izquierda.",
   },
   {
@@ -224,7 +224,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "En columna, el eje cruzado es horizontal. Usa align-items para centrarlo.",
   },
 
@@ -247,7 +247,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i6", color: "#94E2D5", label: "6" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "flex-wrap: wrap permite que los elementos salten a nuevas lineas.",
   },
   {
@@ -266,7 +266,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i4", color: "#CBA6F7", label: "4" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "wrap-reverse invierte la direccion del wrapping.",
   },
   {
@@ -284,7 +284,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#F9E2AF", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "La propiedad gap agrega espacio entre elementos flex.",
   },
   {
@@ -304,7 +304,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i5", color: "#CBA6F7", label: "5" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "Combina flex-wrap: wrap con justify-content: space-evenly.",
   },
 
@@ -324,7 +324,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#A6E3A1", label: "3" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "order con un valor negativo mueve el elemento antes que los demas (order default es 0).",
   },
   {
@@ -343,7 +343,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "250px" },
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "align-self sobreescribe align-items para un solo elemento.",
   },
   {
@@ -361,7 +361,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#F38BA8", label: "3" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "flex-grow: 1 hace que el elemento crezca para llenar el espacio sobrante.",
   },
   {
@@ -379,7 +379,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i3", color: "#94E2D5", label: "3" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "flex-grow: 2 en #item-1 lo hace crecer al doble que flex-grow: 1.",
   },
 
@@ -401,7 +401,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "200px" },
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "Necesitas 4 propiedades: flex-direction, flex-wrap, align-items y gap.",
   },
   {
@@ -420,7 +420,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
       containerStyle: { minHeight: "280px" },
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "align-self: flex-start, center y flex-end para cada elemento.",
   },
   {
@@ -435,7 +435,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       items: [{ id: "i1", color: "#CBA6F7", label: "!" }],
       containerStyle: { minHeight: "300px" },
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "La forma clasica: justify-content: center + align-items: center.",
   },
   {
@@ -454,7 +454,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
         { id: "i4", color: "#F9E2AF", label: "C" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "margin-right: auto en el primer elemento empuja todo lo demas a la derecha.",
   },
 ];

@@ -108,12 +108,20 @@ export default function TeacherDashboardPage() {
             <h1 className="text-2xl font-bold text-editor-text mb-1">Panel del Profesor</h1>
             <p className="text-editor-muted text-sm">Supervisa el progreso de tus estudiantes</p>
           </div>
-          <Link
-            href="/teacher/modulos"
-            className="px-4 py-2 text-sm font-medium bg-neon-purple/10 border border-neon-purple/20 rounded-lg text-neon-purple hover:bg-neon-purple/20 transition-colors"
-          >
-            Gestionar Modulos
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link
+              href="/teacher/juegos"
+              className="px-4 py-2 text-sm font-medium bg-neon-teal/10 border border-neon-teal/20 rounded-lg text-neon-teal hover:bg-neon-teal/20 transition-colors"
+            >
+              Gestionar Juegos
+            </Link>
+            <Link
+              href="/teacher/modulos"
+              className="px-4 py-2 text-sm font-medium bg-neon-purple/10 border border-neon-purple/20 rounded-lg text-neon-purple hover:bg-neon-purple/20 transition-colors"
+            >
+              Gestionar Modulos
+            </Link>
+          </div>
         </div>
       </div>
 

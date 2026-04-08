@@ -2,7 +2,6 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import CSSEditor from "@/components/editor/CSSEditor";
 import { useAuth } from "@/hooks/useAuth";
 
 interface GameLevel {
@@ -99,7 +98,7 @@ export default function GameEngine({
     setCompletedLevels(newCompleted);
     localStorage.setItem(`${gameSlug}-completed`, JSON.stringify([...newCompleted]));
 
-    // Save progress to API
+    // Save progress to API (1 XP per level)
     fetch("/api/progress", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -107,11 +106,29 @@ export default function GameEngine({
         moduleId: gameSlug,
         exerciseId: `${gameSlug}-level-${level.id}`,
         exerciseType: "live-editor",
-        difficulty: level.id <= 8 ? 1 : level.id <= 16 ? 2 : 3,
+        difficulty: 1,
         score: 100,
         userAnswer: css,
       }),
-    }).then(() => refreshUser()).catch(() => {});
+    }).then(() => {
+      // Check if ALL levels are now completed → bonus XP
+      if (newCompleted.size === levels.length) {
+        fetch("/api/progress", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            moduleId: gameSlug,
+            exerciseId: `${gameSlug}-bonus`,
+            exerciseType: "live-editor",
+            difficulty: 1,
+            score: 100,
+            userAnswer: "all-levels-completed",
+          }),
+        }).then(() => refreshUser()).catch(() => {});
+      } else {
+        refreshUser();
+      }
+    }).catch(() => {});
   }, [solved, level, completedLevels, gameSlug, css, refreshUser]);
 
   const goToLevel = (idx: number) => {
@@ -243,7 +260,7 @@ export default function GameEngine({
             </p>
           </div>
 
-          {/* CSS Editor */}
+          {/* CSS Editor with context */}
           <div className="flex-1 min-h-0 flex flex-col">
             <div className="px-4 py-2 border-b border-editor-border bg-editor-sidebar shrink-0 flex items-center justify-between">
               <span className="text-xs text-editor-muted font-mono">style.css</span>
@@ -281,13 +298,58 @@ export default function GameEngine({
               )}
             </AnimatePresence>
 
-            <div className="flex-1 min-h-0">
-              <CSSEditor
-                value={css}
-                onChange={setCss}
-                height="100%"
-                readOnly={solved}
-              />
+            {/* Froggy-style editor: context CSS + editable area */}
+            <div className="flex-1 min-h-0 flex flex-col font-mono text-sm bg-editor-bg overflow-auto">
+              {/* Pre-context (read-only) */}
+              <div className="px-5 pt-4 select-none">
+                <div className="flex">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">1</span>
+                  <span><span className="text-neon-yellow">#container</span> <span className="text-editor-muted">{"{"}</span></span>
+                </div>
+                <div className="flex">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">2</span>
+                  <span className="ml-4"><span className="text-neon-blue">display</span><span className="text-editor-muted">:</span> <span className="text-neon-green">flex</span><span className="text-editor-muted">;</span></span>
+                </div>
+              </div>
+
+              {/* Editable area */}
+              <div className="px-5 py-1 flex-1 min-h-[60px]">
+                <div className="flex items-start">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-[2.1rem] select-none">3</span>
+                  <div className="flex-1 ml-4">
+                    <input
+                      type="text"
+                      value={css}
+                      onChange={(e) => setCss(e.target.value)}
+                      disabled={solved}
+                      placeholder={`${level.property}: ...;`}
+                      className="w-full bg-editor-surface/50 border border-editor-border rounded px-3 py-2 text-neon-green font-mono text-sm outline-none focus:border-neon-blue/50 transition-colors placeholder-editor-muted/40 disabled:opacity-60"
+                      autoFocus
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && solved && currentLevel < levels.length - 1) {
+                          nextLevel();
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Post-context (read-only) */}
+              <div className="px-5 pb-4 select-none">
+                <div className="flex">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">4</span>
+                  <span className="text-editor-muted">{"}"}</span>
+                </div>
+              </div>
+
+              {/* Solution display when solved */}
+              {solved && (
+                <div className="px-5 pb-4 border-t border-editor-border pt-3">
+                  <span className="text-[10px] text-editor-muted uppercase tracking-wider">Solucion:</span>
+                  <p className="text-xs font-mono mt-1" style={{ color: accentHex }}>{level.solutionCSS}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>

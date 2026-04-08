@@ -32,7 +32,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#CBA6F7", label: "1" }],
       highlightCells: ["1-1", "2-1"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "grid-column: span 2 hace que el elemento ocupe 2 columnas.",
   },
   {
@@ -49,7 +49,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#89B4FA", label: "1" }],
       highlightCells: ["2-1", "3-1"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "grid-column: 2 / 4 va desde la linea 2 hasta la linea 4.",
   },
   {
@@ -66,7 +66,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#A6E3A1", label: "1" }],
       highlightCells: ["3-1"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "grid-column-start: 3 y grid-column-end: 4 lo colocan en la tercera columna.",
   },
   {
@@ -83,7 +83,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#F9E2AF", label: "1" }],
       highlightCells: ["2-1", "3-1", "4-1"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "-1 representa la ultima linea de la grilla.",
   },
 
@@ -102,7 +102,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#F38BA8", label: "1" }],
       highlightCells: ["1-1", "1-2"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "grid-row: span 2 hace que el elemento ocupe 2 filas.",
   },
   {
@@ -119,7 +119,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#94E2D5", label: "1" }],
       highlightCells: ["1-1", "1-2"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "grid-row: 1 / 3 va desde la linea de fila 1 hasta la 3.",
   },
   {
@@ -136,7 +136,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#89B4FA", label: "1" }],
       highlightCells: ["2-1", "2-2"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "Combina grid-column: 2 con grid-row: span 2.",
   },
   {
@@ -153,7 +153,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#CBA6F7", label: "1" }],
       highlightCells: ["1-1", "2-1", "1-2", "2-2"],
     },
-    xpReward: 10,
+    xpReward: 1,
     hint: "Usa span 2 tanto en grid-column como en grid-row.",
   },
 
@@ -175,7 +175,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#F38BA8", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "repeat(3, 1fr) crea 3 columnas de fraccion igual.",
   },
   {
@@ -195,7 +195,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#94E2D5", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "2fr es el doble de ancho que 1fr.",
   },
   {
@@ -215,7 +215,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#F38BA8", label: "Footer" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "Mezcla unidades fijas (px) con flexibles (fr).",
   },
   {
@@ -236,7 +236,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i4", color: "#F38BA8", label: "4" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "Usa repeat() tanto para columnas como para filas.",
   },
 
@@ -261,7 +261,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i6", color: "#94E2D5", label: "6" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "gap: 16px agrega espacio entre filas y columnas.",
   },
   {
@@ -281,7 +281,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#A6E3A1", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "justify-items alinea los elementos horizontalmente dentro de sus celdas.",
   },
   {
@@ -301,7 +301,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#94E2D5", label: "3" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "align-items alinea verticalmente los elementos en sus celdas.",
   },
   {
@@ -322,7 +322,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i4", color: "#CBA6F7", label: "4" },
       ],
     },
-    xpReward: 15,
+    xpReward: 1,
     hint: "place-items es shorthand para align-items + justify-items.",
   },
 
@@ -341,7 +341,7 @@ export const GRID_LEVELS: GridLevel[] = [
       items: [{ id: "i1", color: "#94E2D5", label: "1" }],
       highlightCells: ["2-1", "2-2"],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "grid-area: fila-inicio / columna-inicio / fila-fin / columna-fin.",
   },
   {
@@ -361,7 +361,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i3", color: "#CBA6F7", label: "Content" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: 'grid-template-areas define areas con nombres entre comillas por cada fila.',
   },
   {
@@ -382,7 +382,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i4", color: "#F38BA8", label: "Footer" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "Cada fila de areas va entre comillas. Repite nombres para expandir areas.",
   },
   {
@@ -403,7 +403,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i4", color: "#F38BA8", label: "Footer" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "El nav se repite en dos filas para que ocupe ambas.",
   },
 
@@ -427,7 +427,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i5", color: "#CBA6F7", label: "5" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "repeat(auto-fill, minmax(120px, 1fr)) crea columnas responsivas.",
   },
   {
@@ -449,7 +449,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i5", color: "#F38BA8", label: "5" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "Define el grid con repeat(3, 1fr), filas de 120px y gap: 12px.",
   },
   {
@@ -470,7 +470,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i4", color: "#A6E3A1", label: "4" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "place-self: end alinea un solo item al final en ambos ejes.",
   },
   {
@@ -492,7 +492,7 @@ export const GRID_LEVELS: GridLevel[] = [
         { id: "i5", color: "#F38BA8", label: "Footer" },
       ],
     },
-    xpReward: 20,
+    xpReward: 1,
     hint: "El sidebar ocupa 2 filas. Header y footer ocupan las 3 columnas.",
   },
 ];
