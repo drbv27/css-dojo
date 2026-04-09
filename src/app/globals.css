@@ -61,3 +61,14 @@ code, pre, .font-mono {
   background-color: rgba(137, 180, 250, 0.3);
   color: var(--color-editor-text);
 }
+
+/* Game animations */
+@keyframes apprenticeBounce {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.15) translateY(-8px); }
+  30% { transform: scale(0.95) translateY(0); }
+  45% { transform: scale(1.08) translateY(-4px); }
+  60% { transform: scale(0.98) translateY(0); }
+  75% { transform: scale(1.03) translateY(-2px); }
+  100% { transform: scale(1) translateY(0); }
+}
