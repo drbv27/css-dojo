@@ -41,21 +41,29 @@ export default function GameEngine({
   const [solved, setSolved] = useState(false);
   const [showHint, setShowHint] = useState(false);
   const [completedLevels, setCompletedLevels] = useState<Set<number>>(new Set());
-  const [showLevelSelect, setShowLevelSelect] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
   const successSavedRef = useRef(false);
+  const [initialized, setInitialized] = useState(false);
 
   const level = levels[currentLevel];
 
-  // Load completed levels from localStorage
+  // Load completed levels from localStorage and resume at next uncompleted
   useEffect(() => {
     const saved = localStorage.getItem(`${gameSlug}-completed`);
     if (saved) {
       try {
-        setCompletedLevels(new Set(JSON.parse(saved)));
+        const completed = new Set<number>(JSON.parse(saved));
+        setCompletedLevels(completed);
+        // Find first uncompleted level
+        const nextIdx = levels.findIndex((l) => !completed.has(l.id));
+        if (nextIdx >= 0 && nextIdx !== 0) {
+          setCurrentLevel(nextIdx);
+          setCss(levels[nextIdx]?.initialCSS ?? "");
+        }
       } catch { /* ignore */ }
     }
-  }, [gameSlug]);
+    setInitialized(true);
+  }, [gameSlug, levels]);
 
   // Validate CSS against level solution
   const validateCSS = useCallback((cssText: string, lvl: GameLevel): boolean => {
@@ -158,10 +166,12 @@ export default function GameEngine({
 
   const progress = Math.round((completedLevels.size / levels.length) * 100);
 
+  if (!initialized) return null;
+
   return (
     <div className="h-[calc(100vh-5rem)] flex flex-col">
       {/* Top bar */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-editor-surface border-b border-editor-border shrink-0">
+      <div className="flex items-center justify-between px-4 py-2 bg-editor-surface border-b border-editor-border shrink-0">
         <div className="flex items-center gap-3">
           <a
             href={backHref}
@@ -177,68 +187,54 @@ export default function GameEngine({
           </span>
         </div>
 
-        <div className="flex items-center gap-3">
-          {/* Progress bar */}
-          <div className="hidden sm:flex items-center gap-2">
-            <div className="w-32 h-1.5 bg-editor-bg rounded-full overflow-hidden">
-              <div
-                className="h-full rounded-full transition-all duration-500"
-                style={{ width: `${progress}%`, backgroundColor: accentHex }}
-              />
-            </div>
-            <span className="text-xs text-editor-muted font-mono">{progress}%</span>
+        <div className="hidden sm:flex items-center gap-2">
+          <div className="w-32 h-1.5 bg-editor-bg rounded-full overflow-hidden">
+            <div
+              className="h-full rounded-full transition-all duration-500"
+              style={{ width: `${progress}%`, backgroundColor: accentHex }}
+            />
           </div>
-
-          {/* Level selector button */}
-          <button
-            onClick={() => setShowLevelSelect((v) => !v)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors bg-${accentColor}/10 text-${accentColor} border-${accentColor}/20 hover:bg-${accentColor}/20`}
-          >
-            Niveles
-          </button>
+          <span className="text-xs text-editor-muted font-mono">{progress}%</span>
         </div>
       </div>
 
-      {/* Level selector dropdown */}
-      <AnimatePresence>
-        {showLevelSelect && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden bg-editor-surface border-b border-editor-border"
-          >
-            <div className="p-4 flex flex-wrap gap-2 max-h-32 overflow-y-auto">
-              {levels.map((lvl, idx) => {
-                const isCompleted = completedLevels.has(lvl.id);
-                const isCurrent = idx === currentLevel;
-                return (
-                  <button
-                    key={lvl.id}
-                    onClick={() => goToLevel(idx)}
-                    className={`w-9 h-9 rounded-lg text-xs font-bold transition-all ${
-                      isCurrent
-                        ? `bg-${accentColor} text-editor-bg`
-                        : isCompleted
-                        ? `bg-${accentColor}/20 text-${accentColor} border border-${accentColor}/30`
-                        : "bg-editor-bg text-editor-muted border border-editor-border hover:border-editor-muted/50"
-                    }`}
-                  >
-                    {isCompleted && !isCurrent ? (
-                      <svg className="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                    ) : (
-                      lvl.id
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Level stepper - always visible */}
+      <div className="px-4 py-2.5 bg-editor-surface border-b border-editor-border shrink-0 overflow-x-auto">
+        <div className="flex gap-1.5 min-w-max">
+          {levels.map((lvl, idx) => {
+            const isCompleted = completedLevels.has(lvl.id);
+            const isCurrent = idx === currentLevel;
+            return (
+              <button
+                key={lvl.id}
+                onClick={() => goToLevel(idx)}
+                className={`w-8 h-8 rounded-full text-xs font-bold transition-all shrink-0 ${
+                  isCurrent
+                    ? "text-editor-bg"
+                    : isCompleted
+                    ? "border-2 text-editor-bg"
+                    : "bg-editor-bg text-editor-muted border border-editor-border hover:border-editor-muted/50"
+                }`}
+                style={
+                  isCurrent
+                    ? { backgroundColor: accentHex }
+                    : isCompleted
+                    ? { backgroundColor: `${accentHex}30`, borderColor: `${accentHex}60`, color: accentHex }
+                    : undefined
+                }
+              >
+                {isCompleted && !isCurrent ? (
+                  <svg className="w-3.5 h-3.5 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                ) : (
+                  lvl.id
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
 
       {/* Main content: Editor + Board */}
       <div className="flex-1 flex flex-col lg:flex-row min-h-0">
@@ -323,6 +319,10 @@ export default function GameEngine({
                       disabled={solved}
                       placeholder={`${level.property}: ...;`}
                       className="w-full bg-editor-surface/50 border border-editor-border rounded px-3 py-1.5 text-neon-green font-mono text-sm outline-none focus:border-neon-blue/50 transition-colors placeholder-editor-muted/40 disabled:opacity-60"
+                      spellCheck={false}
+                      autoComplete="off"
+                      autoCorrect="off"
+                      autoCapitalize="off"
                       autoFocus
                       onKeyDown={(e) => {
                         if (e.key === "Enter" && solved && currentLevel < levels.length - 1) {
