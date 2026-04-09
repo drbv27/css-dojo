@@ -299,31 +299,30 @@ export default function GameEngine({
             </AnimatePresence>
 
             {/* Froggy-style editor: context CSS + editable area */}
-            <div className="flex-1 min-h-0 flex flex-col font-mono text-sm bg-editor-bg overflow-auto">
-              {/* Pre-context (read-only) */}
-              <div className="px-5 pt-4 select-none">
-                <div className="flex">
-                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">1</span>
+            <div className="flex-1 min-h-0 flex flex-col bg-editor-bg overflow-auto">
+              {/* Code block - compact, no flex-1 stretching */}
+              <div className="px-5 py-4 font-mono text-sm">
+                {/* Line 1: #container { */}
+                <div className="flex leading-7">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs select-none">1</span>
                   <span><span className="text-neon-yellow">#container</span> <span className="text-editor-muted">{"{"}</span></span>
                 </div>
-                <div className="flex">
-                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">2</span>
-                  <span className="ml-4"><span className="text-neon-blue">display</span><span className="text-editor-muted">:</span> <span className="text-neon-green">flex</span><span className="text-editor-muted">;</span></span>
+                {/* Line 2: display: flex; */}
+                <div className="flex leading-7">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs select-none">2</span>
+                  <span className="ml-6"><span className="text-neon-blue">display</span><span className="text-editor-muted">:</span> <span className="text-neon-green">flex</span><span className="text-editor-muted">;</span></span>
                 </div>
-              </div>
-
-              {/* Editable area */}
-              <div className="px-5 py-1 flex-1 min-h-[60px]">
-                <div className="flex items-start">
-                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-[2.1rem] select-none">3</span>
-                  <div className="flex-1 ml-4">
+                {/* Line 3: editable input */}
+                <div className="flex items-center leading-7 my-1">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs select-none">3</span>
+                  <div className="flex-1 ml-6">
                     <input
                       type="text"
                       value={css}
                       onChange={(e) => setCss(e.target.value)}
                       disabled={solved}
                       placeholder={`${level.property}: ...;`}
-                      className="w-full bg-editor-surface/50 border border-editor-border rounded px-3 py-2 text-neon-green font-mono text-sm outline-none focus:border-neon-blue/50 transition-colors placeholder-editor-muted/40 disabled:opacity-60"
+                      className="w-full bg-editor-surface/50 border border-editor-border rounded px-3 py-1.5 text-neon-green font-mono text-sm outline-none focus:border-neon-blue/50 transition-colors placeholder-editor-muted/40 disabled:opacity-60"
                       autoFocus
                       onKeyDown={(e) => {
                         if (e.key === "Enter" && solved && currentLevel < levels.length - 1) {
@@ -333,19 +332,16 @@ export default function GameEngine({
                     />
                   </div>
                 </div>
-              </div>
-
-              {/* Post-context (read-only) */}
-              <div className="px-5 pb-4 select-none">
-                <div className="flex">
-                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs leading-relaxed select-none">4</span>
+                {/* Line 4: } */}
+                <div className="flex leading-7">
+                  <span className="w-8 text-right mr-4 text-editor-muted/50 text-xs select-none">4</span>
                   <span className="text-editor-muted">{"}"}</span>
                 </div>
               </div>
 
               {/* Solution display when solved */}
               {solved && (
-                <div className="px-5 pb-4 border-t border-editor-border pt-3">
+                <div className="px-5 pb-4 border-t border-editor-border pt-3 mt-auto">
                   <span className="text-[10px] text-editor-muted uppercase tracking-wider">Solucion:</span>
                   <p className="text-xs font-mono mt-1" style={{ color: accentHex }}>{level.solutionCSS}</p>
                 </div>
