@@ -145,7 +145,6 @@ export default function GameEngine({
     setSolved(false);
     setShowHint(false);
     setShowSuccess(false);
-    setShowLevelSelect(false);
     successSavedRef.current = false;
   };
 
