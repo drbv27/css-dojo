@@ -26,7 +26,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     solutionCSS: "justify-content: center;",
     validateFn: "justify-content:center",
     boardConfig: {
-      items: [{ id: "i1", color: "#94E2D5", label: "1" }],
+      items: [{ id: "i1", color: "#5EEAD4", label: "1" }],
     },
     xpReward: 1,
     hint: "justify-content controla la alineacion horizontal. Prueba con 'center'.",
@@ -40,7 +40,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     solutionCSS: "justify-content: flex-end;",
     validateFn: "justify-content:flex-end",
     boardConfig: {
-      items: [{ id: "i1", color: "#89B4FA", label: "1" }],
+      items: [{ id: "i1", color: "#60A5FA", label: "1" }],
     },
     xpReward: 1,
     hint: "flex-end mueve los elementos al final del eje principal.",
@@ -55,9 +55,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "justify-content:space-between",
     boardConfig: {
       items: [
-        { id: "i1", color: "#A6E3A1", label: "1" },
-        { id: "i2", color: "#89B4FA", label: "2" },
-        { id: "i3", color: "#CBA6F7", label: "3" },
+        { id: "i1", color: "#86EFAC", label: "1" },
+        { id: "i2", color: "#60A5FA", label: "2" },
+        { id: "i3", color: "#C084FC", label: "3" },
       ],
     },
     xpReward: 1,
@@ -73,9 +73,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "justify-content:space-around",
     boardConfig: {
       items: [
-        { id: "i1", color: "#F9E2AF", label: "1" },
-        { id: "i2", color: "#F38BA8", label: "2" },
-        { id: "i3", color: "#94E2D5", label: "3" },
+        { id: "i1", color: "#FCD34D", label: "1" },
+        { id: "i2", color: "#FB7185", label: "2" },
+        { id: "i3", color: "#5EEAD4", label: "3" },
       ],
     },
     xpReward: 1,
@@ -92,7 +92,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     solutionCSS: "align-items: center;",
     validateFn: "align-items:center",
     boardConfig: {
-      items: [{ id: "i1", color: "#CBA6F7", label: "1" }],
+      items: [{ id: "i1", color: "#C084FC", label: "1" }],
       containerStyle: { minHeight: "250px" },
     },
     xpReward: 1,
@@ -108,8 +108,8 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "align-items:flex-end",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
       ],
       containerStyle: { minHeight: "250px" },
     },
@@ -126,8 +126,8 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "align-items:stretch",
     boardConfig: {
       items: [
-        { id: "i1", color: "#F9E2AF", label: "1" },
-        { id: "i2", color: "#F38BA8", label: "2" },
+        { id: "i1", color: "#FCD34D", label: "1" },
+        { id: "i2", color: "#FB7185", label: "2" },
       ],
       containerStyle: { minHeight: "250px" },
     },
@@ -144,8 +144,8 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "justify-content:center,align-items:center",
     boardConfig: {
       items: [
-        { id: "i1", color: "#94E2D5", label: "1" },
-        { id: "i2", color: "#CBA6F7", label: "2" },
+        { id: "i1", color: "#5EEAD4", label: "1" },
+        { id: "i2", color: "#C084FC", label: "2" },
       ],
       containerStyle: { minHeight: "250px" },
     },
@@ -164,9 +164,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-direction:column",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
-        { id: "i3", color: "#F38BA8", label: "3" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
+        { id: "i3", color: "#FB7185", label: "3" },
       ],
     },
     xpReward: 1,
@@ -182,9 +182,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-direction:column-reverse",
     boardConfig: {
       items: [
-        { id: "i1", color: "#A6E3A1", label: "1" },
-        { id: "i2", color: "#CBA6F7", label: "2" },
-        { id: "i3", color: "#F9E2AF", label: "3" },
+        { id: "i1", color: "#86EFAC", label: "1" },
+        { id: "i2", color: "#C084FC", label: "2" },
+        { id: "i3", color: "#FCD34D", label: "3" },
       ],
     },
     xpReward: 1,
@@ -200,9 +200,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-direction:row-reverse",
     boardConfig: {
       items: [
-        { id: "i1", color: "#F38BA8", label: "1" },
-        { id: "i2", color: "#94E2D5", label: "2" },
-        { id: "i3", color: "#89B4FA", label: "3" },
+        { id: "i1", color: "#FB7185", label: "1" },
+        { id: "i2", color: "#5EEAD4", label: "2" },
+        { id: "i3", color: "#60A5FA", label: "3" },
       ],
     },
     xpReward: 1,
@@ -218,9 +218,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-direction:column,align-items:center",
     boardConfig: {
       items: [
-        { id: "i1", color: "#CBA6F7", label: "1" },
-        { id: "i2", color: "#F9E2AF", label: "2" },
-        { id: "i3", color: "#A6E3A1", label: "3" },
+        { id: "i1", color: "#C084FC", label: "1" },
+        { id: "i2", color: "#FCD34D", label: "2" },
+        { id: "i3", color: "#86EFAC", label: "3" },
       ],
       containerStyle: { minHeight: "250px" },
     },
@@ -239,12 +239,12 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-wrap:wrap",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
-        { id: "i3", color: "#CBA6F7", label: "3" },
-        { id: "i4", color: "#F9E2AF", label: "4" },
-        { id: "i5", color: "#F38BA8", label: "5" },
-        { id: "i6", color: "#94E2D5", label: "6" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
+        { id: "i3", color: "#C084FC", label: "3" },
+        { id: "i4", color: "#FCD34D", label: "4" },
+        { id: "i5", color: "#FB7185", label: "5" },
+        { id: "i6", color: "#5EEAD4", label: "6" },
       ],
     },
     xpReward: 1,
@@ -260,10 +260,10 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-wrap:wrap-reverse",
     boardConfig: {
       items: [
-        { id: "i1", color: "#F38BA8", label: "1" },
-        { id: "i2", color: "#89B4FA", label: "2" },
-        { id: "i3", color: "#A6E3A1", label: "3" },
-        { id: "i4", color: "#CBA6F7", label: "4" },
+        { id: "i1", color: "#FB7185", label: "1" },
+        { id: "i2", color: "#60A5FA", label: "2" },
+        { id: "i3", color: "#86EFAC", label: "3" },
+        { id: "i4", color: "#C084FC", label: "4" },
       ],
     },
     xpReward: 1,
@@ -279,9 +279,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "gap:20px",
     boardConfig: {
       items: [
-        { id: "i1", color: "#94E2D5", label: "1" },
-        { id: "i2", color: "#CBA6F7", label: "2" },
-        { id: "i3", color: "#F9E2AF", label: "3" },
+        { id: "i1", color: "#5EEAD4", label: "1" },
+        { id: "i2", color: "#C084FC", label: "2" },
+        { id: "i3", color: "#FCD34D", label: "3" },
       ],
     },
     xpReward: 1,
@@ -297,11 +297,11 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-wrap:wrap,justify-content:space-evenly",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
-        { id: "i3", color: "#F38BA8", label: "3" },
-        { id: "i4", color: "#F9E2AF", label: "4" },
-        { id: "i5", color: "#CBA6F7", label: "5" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
+        { id: "i3", color: "#FB7185", label: "3" },
+        { id: "i4", color: "#FCD34D", label: "4" },
+        { id: "i5", color: "#C084FC", label: "5" },
       ],
     },
     xpReward: 1,
@@ -319,9 +319,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "order:-1",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#F38BA8", label: "2" },
-        { id: "i3", color: "#A6E3A1", label: "3" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#FB7185", label: "2" },
+        { id: "i3", color: "#86EFAC", label: "3" },
       ],
     },
     xpReward: 1,
@@ -337,9 +337,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "align-self:flex-end",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#CBA6F7", label: "2" },
-        { id: "i3", color: "#A6E3A1", label: "3" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#C084FC", label: "2" },
+        { id: "i3", color: "#86EFAC", label: "3" },
       ],
       containerStyle: { minHeight: "250px" },
     },
@@ -356,9 +356,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-grow:1",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
-        { id: "i3", color: "#F38BA8", label: "3" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
+        { id: "i3", color: "#FB7185", label: "3" },
       ],
     },
     xpReward: 1,
@@ -374,9 +374,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-grow:2",
     boardConfig: {
       items: [
-        { id: "i1", color: "#F9E2AF", label: "1" },
-        { id: "i2", color: "#CBA6F7", label: "2" },
-        { id: "i3", color: "#94E2D5", label: "3" },
+        { id: "i1", color: "#FCD34D", label: "1" },
+        { id: "i2", color: "#C084FC", label: "2" },
+        { id: "i3", color: "#5EEAD4", label: "3" },
       ],
     },
     xpReward: 1,
@@ -394,10 +394,10 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "flex-direction:column,flex-wrap:wrap,align-items:center,gap:10px",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "1" },
-        { id: "i2", color: "#A6E3A1", label: "2" },
-        { id: "i3", color: "#CBA6F7", label: "3" },
-        { id: "i4", color: "#F38BA8", label: "4" },
+        { id: "i1", color: "#60A5FA", label: "1" },
+        { id: "i2", color: "#86EFAC", label: "2" },
+        { id: "i3", color: "#C084FC", label: "3" },
+        { id: "i4", color: "#FB7185", label: "4" },
       ],
       containerStyle: { minHeight: "200px" },
     },
@@ -414,9 +414,9 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "align-self:flex-start",
     boardConfig: {
       items: [
-        { id: "i1", color: "#94E2D5", label: "1" },
-        { id: "i2", color: "#F9E2AF", label: "2" },
-        { id: "i3", color: "#F38BA8", label: "3" },
+        { id: "i1", color: "#5EEAD4", label: "1" },
+        { id: "i2", color: "#FCD34D", label: "2" },
+        { id: "i3", color: "#FB7185", label: "3" },
       ],
       containerStyle: { minHeight: "280px" },
     },
@@ -432,7 +432,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     solutionCSS: "justify-content: center;\nalign-items: center;",
     validateFn: "justify-content:center,align-items:center",
     boardConfig: {
-      items: [{ id: "i1", color: "#CBA6F7", label: "!" }],
+      items: [{ id: "i1", color: "#C084FC", label: "!" }],
       containerStyle: { minHeight: "300px" },
     },
     xpReward: 1,
@@ -448,10 +448,10 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
     validateFn: "margin-right:auto",
     boardConfig: {
       items: [
-        { id: "i1", color: "#89B4FA", label: "Logo" },
-        { id: "i2", color: "#A6E3A1", label: "A" },
-        { id: "i3", color: "#CBA6F7", label: "B" },
-        { id: "i4", color: "#F9E2AF", label: "C" },
+        { id: "i1", color: "#60A5FA", label: "Logo" },
+        { id: "i2", color: "#86EFAC", label: "A" },
+        { id: "i3", color: "#C084FC", label: "B" },
+        { id: "i4", color: "#FCD34D", label: "C" },
       ],
     },
     xpReward: 1,

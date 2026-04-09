@@ -353,7 +353,7 @@ export default function GameEngine({
         <div className="flex-1 flex flex-col min-h-0 bg-editor-bg">
           <div className="px-4 py-2 border-b border-editor-border bg-editor-sidebar shrink-0 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full" style={{ backgroundColor: accentHex }} />
-            <span className="text-xs text-editor-muted font-mono">Resultado</span>
+            <span className="text-xs text-editor-muted font-mono">Arena</span>
           </div>
           <div className="flex-1 min-h-0 relative">
             {renderBoard(css, level)}
@@ -365,28 +365,49 @@ export default function GameEngine({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="absolute inset-0 flex items-center justify-center bg-editor-bg/80 backdrop-blur-sm z-10"
+                  className="absolute inset-0 flex items-center justify-center z-10"
+                  style={{ background: "radial-gradient(circle, rgba(18,18,31,0.95) 0%, rgba(18,18,31,0.85) 100%)" }}
                 >
                   <motion.div
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 0.1, type: "spring", damping: 15 }}
+                    initial={{ scale: 0.5, opacity: 0, y: 20 }}
+                    animate={{ scale: 1, opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1, type: "spring", damping: 12, stiffness: 200 }}
                     className="text-center"
                   >
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4"
-                      style={{ backgroundColor: `${accentHex}20`, border: `2px solid ${accentHex}40` }}
+                    {/* Animated circle with glow */}
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.2, type: "spring", damping: 10 }}
+                      className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-4"
+                      style={{
+                        background: `radial-gradient(circle, ${accentHex}30, transparent)`,
+                        boxShadow: `0 0 40px ${accentHex}20, 0 0 80px ${accentHex}10`,
+                      }}
                     >
-                      <svg className="w-8 h-8" fill="none" stroke={accentHex} viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-bold text-editor-text mb-1">Correcto!</h3>
-                    <p className="text-sm text-editor-muted mb-1">+{level.xpReward} XP</p>
+                      <div className="text-3xl">🥋</div>
+                    </motion.div>
+                    <motion.h3
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3 }}
+                      className="text-xl font-bold mb-1"
+                      style={{ color: accentHex }}
+                    >
+                      Kata completado!
+                    </motion.h3>
+                    <motion.p
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.4 }}
+                      className="text-sm text-editor-muted mb-1"
+                    >
+                      +{level.xpReward} XP
+                    </motion.p>
                     <p className="text-xs text-editor-muted mb-5">
                       {currentLevel < levels.length - 1
-                        ? `Nivel ${level.id} completado`
-                        : "Has completado todos los niveles!"}
+                        ? `Nivel ${level.id} de ${levels.length}`
+                        : "Has completado todos los katas!"}
                     </p>
                     <div className="flex items-center gap-3 justify-center">
                       <button

@@ -13,9 +13,7 @@ interface FlexboxBoardProps {
 
 function parseCSS(cssText: string): Record<string, string> {
   const styles: Record<string, string> = {};
-  // Remove comments
   const cleaned = cssText.replace(/\/\*[\s\S]*?\*\//g, "");
-  // Extract property:value pairs
   const matches = cleaned.matchAll(/([a-z-]+)\s*:\s*([^;]+)/gi);
   for (const match of matches) {
     styles[match[1].trim()] = match[2].trim();
@@ -23,20 +21,81 @@ function parseCSS(cssText: string): Record<string, string> {
   return styles;
 }
 
+// Apprentice face based on state
+function ApprenticeFace({ color, label, solved }: { color: string; label: string; solved?: boolean }) {
+  return (
+    <div
+      className="relative flex items-center justify-center shrink-0"
+      style={{
+        width: "52px",
+        height: "52px",
+      }}
+    >
+      {/* Glow effect */}
+      <div
+        className="absolute inset-0 rounded-full blur-md opacity-40"
+        style={{ backgroundColor: color }}
+      />
+
+      {/* Body */}
+      <div
+        className="relative w-full h-full rounded-full flex flex-col items-center justify-center border-2 transition-all duration-300"
+        style={{
+          background: `radial-gradient(circle at 35% 35%, ${color}DD, ${color}88)`,
+          borderColor: `${color}CC`,
+          boxShadow: `0 0 20px ${color}30, inset 0 -4px 8px ${color}40`,
+        }}
+      >
+        {/* Belt */}
+        <div
+          className="absolute w-full h-[3px] top-[55%] opacity-70"
+          style={{ backgroundColor: `${color}FF`, boxShadow: `0 0 6px ${color}80` }}
+        />
+
+        {/* Face */}
+        <div className="flex items-center gap-[6px] -mt-1">
+          {solved ? (
+            // Happy face (^ ^)
+            <>
+              <span className="text-[9px] font-bold text-white/90 leading-none">^</span>
+              <span className="text-[9px] font-bold text-white/90 leading-none">^</span>
+            </>
+          ) : (
+            // Normal face (° °)
+            <>
+              <div className="w-[5px] h-[5px] rounded-full bg-white/90" />
+              <div className="w-[5px] h-[5px] rounded-full bg-white/90" />
+            </>
+          )}
+        </div>
+
+        {/* Mouth */}
+        <div className={`mt-[2px] ${solved ? "w-2 h-1 rounded-b-full bg-white/60" : "w-1.5 h-1.5 rounded-full bg-white/30"}`} />
+
+        {/* Label */}
+        <div
+          className="absolute -bottom-5 text-[10px] font-bold tracking-wider"
+          style={{ color: color, textShadow: `0 0 8px ${color}60` }}
+        >
+          {label}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
   const userStyles = useMemo(() => parseCSS(css), [css]);
 
-  // Merge user CSS with any base container styles
   const containerStyle: React.CSSProperties = {
     display: "flex",
     width: "100%",
     height: "100%",
     minHeight: "200px",
-    transition: "all 0.3s ease",
+    transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
     ...boardConfig.containerStyle,
   };
 
-  // Apply user-written CSS properties to the container
   const flexProperties = [
     "justify-content", "align-items", "align-content",
     "flex-direction", "flex-wrap", "flex-flow", "gap",
@@ -50,13 +109,11 @@ export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
     }
   }
 
-  // Build individual item styles from CSS (for order, align-self, flex-grow, etc.)
   const getItemStyle = (itemId: string, index: number): React.CSSProperties => {
     const style: React.CSSProperties = {
-      transition: "all 0.3s ease",
+      transition: "all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
     };
 
-    // Check for item-specific rules like #item-1 { order: 2 }
     const itemSelector = `#item-${index + 1}`;
     const regex = new RegExp(
       itemSelector.replace("#", "\\#") + "\\s*\\{([^}]+)\\}",
@@ -74,7 +131,6 @@ export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
       }
     }
 
-    // Also check global item properties
     const globalItemProps = ["order", "align-self", "flex-grow", "flex-shrink", "flex-basis", "flex"];
     for (const prop of globalItemProps) {
       if (userStyles[prop] && !match) {
@@ -86,31 +142,62 @@ export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
     return style;
   };
 
+  const hasInput = css.trim().length > 0;
+
   return (
     <div className="w-full h-full p-6 flex items-center justify-center">
-      {/* Game area with subtle grid pattern */}
+      {/* Arena */}
       <div
-        className="w-full max-w-lg rounded-xl border border-editor-border overflow-hidden relative"
+        className="w-full max-w-lg rounded-2xl overflow-hidden relative"
         style={{
-          backgroundColor: "#1a1a2e",
-          backgroundImage:
-            "linear-gradient(rgba(137,180,250,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(137,180,250,0.03) 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-          minHeight: "280px",
+          backgroundColor: "#12121f",
+          minHeight: "300px",
+          border: `2px solid ${hasInput ? "rgba(148, 226, 213, 0.15)" : "rgba(69, 71, 90, 0.5)"}`,
+          transition: "border-color 0.5s ease",
+          boxShadow: hasInput ? "0 0 40px rgba(148, 226, 213, 0.05), inset 0 0 60px rgba(148, 226, 213, 0.02)" : "none",
         }}
       >
+        {/* Tatami grid pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.04]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(148,226,213,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(148,226,213,0.8) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
+
+        {/* Subtle radial glow in center */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background: "radial-gradient(circle at center, rgba(148,226,213,0.03) 0%, transparent 70%)",
+          }}
+        />
+
+        {/* Corner decorations */}
+        <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-neon-teal/20 rounded-tl" />
+        <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-neon-teal/20 rounded-tr" />
+        <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-neon-teal/20 rounded-bl" />
+        <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-neon-teal/20 rounded-br" />
+
+        {/* Arena label */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 text-[9px] uppercase tracking-[0.3em] text-neon-teal/20 font-bold">
+          arena
+        </div>
+
         {/* Flex container */}
-        <div style={containerStyle} className="p-4">
+        <div style={containerStyle} className="p-8 relative z-10">
           {boardConfig.items.map((item, i) => (
             <div
               key={item.id}
-              style={{
-                backgroundColor: item.color,
-                ...getItemStyle(item.id, i),
-              }}
-              className="w-12 h-12 rounded-lg flex items-center justify-center text-sm font-bold text-editor-bg shadow-lg shrink-0"
+              style={getItemStyle(item.id, i)}
             >
-              {item.label}
+              <ApprenticeFace
+                color={item.color}
+                label={item.label}
+                solved={false}
+              />
             </div>
           ))}
         </div>
