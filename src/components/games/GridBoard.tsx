@@ -10,6 +10,7 @@ interface GridBoardProps {
     items: { id: string; color: string; label: string; targetArea?: string }[];
     highlightCells?: string[];
   };
+  solved?: boolean;
 }
 
 function parseCSS(cssText: string): Record<string, string> {

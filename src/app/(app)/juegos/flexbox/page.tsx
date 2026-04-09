@@ -58,10 +58,11 @@ export default function FlexboxGamePage() {
       accentColor="neon-teal"
       accentHex="#94E2D5"
       backHref="/juegos"
-      renderBoard={(css, level) => (
+      renderBoard={(css, level, solved) => (
         <FlexboxBoard
           css={css}
           boardConfig={(level as any).boardConfig}
+          solved={solved}
         />
       )}
     />

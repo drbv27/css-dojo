@@ -9,6 +9,7 @@ interface FlexboxBoardProps {
     targets?: { id: string; gridArea: string }[];
     containerStyle?: Record<string, string>;
   };
+  solved?: boolean;
 }
 
 function parseCSS(cssText: string): Record<string, string> {
@@ -84,7 +85,7 @@ function ApprenticeFace({ color, label, solved }: { color: string; label: string
   );
 }
 
-export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
+export default function FlexboxBoard({ css, boardConfig, solved = false }: FlexboxBoardProps) {
   const userStyles = useMemo(() => parseCSS(css), [css]);
 
   const containerStyle: React.CSSProperties = {
@@ -152,9 +153,13 @@ export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
         style={{
           backgroundColor: "#12121f",
           minHeight: "300px",
-          border: `2px solid ${hasInput ? "rgba(148, 226, 213, 0.15)" : "rgba(69, 71, 90, 0.5)"}`,
-          transition: "border-color 0.5s ease",
-          boxShadow: hasInput ? "0 0 40px rgba(148, 226, 213, 0.05), inset 0 0 60px rgba(148, 226, 213, 0.02)" : "none",
+          border: `2px solid ${solved ? "rgba(166, 227, 161, 0.4)" : hasInput ? "rgba(148, 226, 213, 0.15)" : "rgba(69, 71, 90, 0.5)"}`,
+          transition: "all 0.8s ease",
+          boxShadow: solved
+            ? "0 0 60px rgba(166, 227, 161, 0.15), inset 0 0 80px rgba(166, 227, 161, 0.05)"
+            : hasInput
+            ? "0 0 40px rgba(148, 226, 213, 0.05), inset 0 0 60px rgba(148, 226, 213, 0.02)"
+            : "none",
         }}
       >
         {/* Tatami grid pattern */}
@@ -196,7 +201,7 @@ export default function FlexboxBoard({ css, boardConfig }: FlexboxBoardProps) {
               <ApprenticeFace
                 color={item.color}
                 label={item.label}
-                solved={false}
+                solved={solved}
               />
             </div>
           ))}

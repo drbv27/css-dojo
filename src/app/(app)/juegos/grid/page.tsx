@@ -58,10 +58,11 @@ export default function GridGamePage() {
       accentColor="neon-purple"
       accentHex="#CBA6F7"
       backHref="/juegos"
-      renderBoard={(css, level) => (
+      renderBoard={(css, level, solved) => (
         <GridBoard
           css={css}
           boardConfig={(level as any).boardConfig}
+          solved={solved}
         />
       )}
     />

@@ -22,7 +22,7 @@ interface GameEngineProps {
   gameSlug: string;
   accentColor: string;        // e.g. "neon-teal"
   accentHex: string;          // e.g. "#94E2D5"
-  renderBoard: (css: string, level: GameLevel) => React.ReactNode;
+  renderBoard: (css: string, level: GameLevel, solved: boolean) => React.ReactNode;
   backHref: string;
 }
 
@@ -91,8 +91,9 @@ export default function GameEngine({
     const isValid = validateCSS(css, level);
     if (isValid) {
       setSolved(true);
-      setShowSuccess(true);
       successSavedRef.current = false;
+      // Delay overlay so the player sees the apprentices animate to position
+      setTimeout(() => setShowSuccess(true), 1800);
     }
   }, [css, level, solved, validateCSS]);
 
@@ -356,7 +357,7 @@ export default function GameEngine({
             <span className="text-xs text-editor-muted font-mono">Arena</span>
           </div>
           <div className="flex-1 min-h-0 relative">
-            {renderBoard(css, level)}
+            {renderBoard(css, level, solved)}
 
             {/* Success overlay */}
             <AnimatePresence>
