@@ -13,6 +13,8 @@ export interface IUser extends Document {
   longestStreak: number;
   lastActiveDate?: Date;
   badges: string[];
+  resetOtp?: string;
+  resetOtpExpiresAt?: Date;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -35,6 +37,8 @@ const UserSchema = new Schema<IUser>(
     longestStreak: { type: Number, default: 0 },
     lastActiveDate: { type: Date },
     badges: { type: [String], default: [] },
+    resetOtp: { type: String, select: false },
+    resetOtpExpiresAt: { type: Date, select: false },
   },
   {
     timestamps: true,

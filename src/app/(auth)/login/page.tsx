@@ -90,7 +90,13 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-4 text-center">
+            <Link href="/recuperar" className="text-sm text-editor-muted hover:text-neon-orange transition-colors">
+              Olvidaste tu contrasena?
+            </Link>
+          </div>
+
+          <div className="mt-4 text-center">
             <p className="text-editor-muted text-sm">
               No tienes cuenta?{" "}
               <Link href="/registro" className="text-neon-blue hover:text-neon-blue/80 font-medium transition-colors">
