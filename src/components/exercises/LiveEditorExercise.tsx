@@ -23,8 +23,10 @@ export default function LiveEditorExercise({
   const initialCSS = template?.cssPrefix ?? "";
   const htmlTemplate = template?.html ?? "<div>Preview</div>";
 
-  // Detect if this is an HTML-only exercise (no CSS prefix/suffix, html is a placeholder comment)
-  const isHTMLExercise = !template?.cssPrefix && !template?.cssSuffix;
+  // CSS exercises have targetCSS defined — they need both HTML (read-only) and CSS (editable) tabs
+  // HTML exercises have no targetCSS — they need a single HTML editor
+  const isCSSExercise = !!exercise.targetCSS;
+  const isHTMLExercise = !isCSSExercise && !template?.cssPrefix && !template?.cssSuffix;
 
   const [css, setCss] = useState(initialCSS);
   const [htmlCode, setHtmlCode] = useState(isHTMLExercise ? htmlTemplate : "");
@@ -75,6 +77,19 @@ export default function LiveEditorExercise({
               readOnlyCSS={submitted}
               readOnlyJS={submitted}
               height="300px"
+            />
+          ) : isCSSExercise ? (
+            <TabCodeEditor
+              html={htmlTemplate}
+              css={css}
+              onCSSChange={setCss}
+              showHTML={true}
+              showCSS={true}
+              showJS={false}
+              readOnlyHTML={true}
+              readOnlyCSS={submitted}
+              height="300px"
+              activeTab="css"
             />
           ) : (
             <>
