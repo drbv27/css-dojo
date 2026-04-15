@@ -29,7 +29,7 @@ export default function LiveEditorExercise({
   const isHTMLExercise = !isCSSExercise && !template?.cssPrefix && !template?.cssSuffix;
 
   const [css, setCss] = useState(initialCSS);
-  const [htmlCode, setHtmlCode] = useState(isHTMLExercise ? htmlTemplate : "");
+  const [htmlCode, setHtmlCode] = useState(isHTMLExercise || isCSSExercise ? htmlTemplate : "");
   const [js, setJs] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
@@ -44,8 +44,8 @@ export default function LiveEditorExercise({
     }
   };
 
-  // For HTML exercises: the preview uses user's HTML directly
-  const previewHTML = isHTMLExercise ? htmlCode : htmlTemplate;
+  // For HTML/CSS exercises: the preview uses user's HTML directly
+  const previewHTML = isHTMLExercise || isCSSExercise ? htmlCode : htmlTemplate;
   const previewCSS = isHTMLExercise ? "" : css;
 
   return (
@@ -80,13 +80,14 @@ export default function LiveEditorExercise({
             />
           ) : isCSSExercise ? (
             <TabCodeEditor
-              html={htmlTemplate}
+              html={htmlCode}
               css={css}
+              onHTMLChange={setHtmlCode}
               onCSSChange={setCss}
               showHTML={true}
               showCSS={true}
               showJS={false}
-              readOnlyHTML={true}
+              readOnlyHTML={submitted}
               readOnlyCSS={submitted}
               height="300px"
               activeTab="css"
