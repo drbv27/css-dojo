@@ -119,12 +119,12 @@ export default function ExerciseRenderer({
 
       case "live-editor":
         return (
-          <LiveEditorExercise exercise={exercise} onSubmit={handleSubmit} />
+          <LiveEditorExercise exercise={exercise} onSubmit={handleSubmit} submitted={result !== null} />
         );
 
       case "visual-match":
         return (
-          <VisualMatchExercise exercise={exercise} onSubmit={handleSubmit} />
+          <VisualMatchExercise exercise={exercise} onSubmit={handleSubmit} submitted={result !== null} />
         );
 
       case "drag-drop":

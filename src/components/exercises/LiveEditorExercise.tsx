@@ -11,12 +11,14 @@ import HintButton from "./HintButton";
 interface LiveEditorExerciseProps {
   exercise: Exercise;
   onSubmit: (css: string) => void;
+  submitted?: boolean;
   showJS?: boolean;
 }
 
 export default function LiveEditorExercise({
   exercise,
   onSubmit,
+  submitted = false,
   showJS = false,
 }: LiveEditorExerciseProps) {
   const template = exercise.codeTemplate;
@@ -31,12 +33,10 @@ export default function LiveEditorExercise({
   const [css, setCss] = useState(initialCSS);
   const [htmlCode, setHtmlCode] = useState(isHTMLExercise || isCSSExercise ? htmlTemplate : "");
   const [js, setJs] = useState("");
-  const [submitted, setSubmitted] = useState(false);
 
   const needsJS = showJS || (template?.html?.includes("<script") ?? false);
 
   const handleSubmit = () => {
-    setSubmitted(true);
     if (isHTMLExercise) {
       onSubmit(htmlCode);
     } else {

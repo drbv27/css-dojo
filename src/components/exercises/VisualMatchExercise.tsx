@@ -11,11 +11,13 @@ import HintButton from "./HintButton";
 interface VisualMatchExerciseProps {
   exercise: Exercise;
   onSubmit: (css: string) => void;
+  submitted?: boolean;
 }
 
 export default function VisualMatchExercise({
   exercise,
   onSubmit,
+  submitted = false,
 }: VisualMatchExerciseProps) {
   const template = exercise.codeTemplate;
   const html = template?.html ?? "<div>Preview</div>";
@@ -23,10 +25,8 @@ export default function VisualMatchExercise({
   const initialCSS = template?.cssPrefix ?? "";
 
   const [css, setCss] = useState(initialCSS);
-  const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = () => {
-    setSubmitted(true);
     onSubmit(css);
   };
 
