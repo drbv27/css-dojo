@@ -903,6 +903,373 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       },
       order: 6,
     },
+    {
+      id: "js07-leccion-07",
+      title: "Recursividad",
+      content: `## Funciones recursivas
+
+Una **funcion recursiva** es una funcion que **se llama a si misma**. Es una herramienta poderosa para resolver problemas que se pueden dividir en sub-problemas mas pequenos del mismo tipo.
+
+### Anatomia de una funcion recursiva
+
+Toda funcion recursiva necesita **dos partes**:
+
+1. **Caso base:** la condicion para DETENER la recursion (sino sera infinita).
+2. **Caso recursivo:** la funcion se llama a si misma con un problema mas pequeno.
+
+\`\`\`javascript
+function recursiva(parametro) {
+  // 1. Caso base
+  if (condicionDeParada) {
+    return valorFinal;
+  }
+
+  // 2. Caso recursivo
+  return recursiva(parametroMasChico);
+}
+\`\`\`
+
+### Ejemplo clasico: factorial
+
+El factorial de N (escrito \`N!\`) es la multiplicacion de todos los numeros del 1 al N.
+
+\`\`\`
+5! = 5 * 4 * 3 * 2 * 1 = 120
+\`\`\`
+
+Pero tambien podemos escribirlo asi:
+
+\`\`\`
+5! = 5 * 4!
+4! = 4 * 3!
+3! = 3 * 2!
+2! = 2 * 1!
+1! = 1   <- caso base
+\`\`\`
+
+Codigo:
+
+\`\`\`javascript
+function factorial(n) {
+  // Caso base
+  if (n <= 1) return 1;
+
+  // Caso recursivo
+  return n * factorial(n - 1);
+}
+
+factorial(5);  // 120
+\`\`\`
+
+### Trazado paso a paso
+
+\`\`\`
+factorial(5)
+  → 5 * factorial(4)
+        → 4 * factorial(3)
+              → 3 * factorial(2)
+                    → 2 * factorial(1)
+                          → 1                  ← caso base
+                    → 2 * 1 = 2
+              → 3 * 2 = 6
+        → 4 * 6 = 24
+  → 5 * 24 = 120
+\`\`\`
+
+### Otro ejemplo: suma de un array
+
+\`\`\`javascript
+function sumarArray(numeros) {
+  if (numeros.length === 0) return 0;       // caso base
+  return numeros[0] + sumarArray(numeros.slice(1));
+}
+
+sumarArray([1, 2, 3, 4]);  // 10
+\`\`\`
+
+### Cuidado: stack overflow
+
+Si **olvidas el caso base**, la funcion se llama a si misma infinitamente y el navegador colapsa con \`Maximum call stack size exceeded\`.
+
+\`\`\`javascript
+// MAL: sin caso base
+function infinita(n) {
+  return infinita(n - 1);  // nunca para
+}
+\`\`\`
+
+### Recursion vs ciclos
+
+La recursion **siempre se puede reescribir como un ciclo**. La eleccion depende del problema:
+
+| Situacion | Mejor opcion |
+|-----------|--------------|
+| Iteracion simple sobre numeros o arrays | Ciclo (\`for\`, \`while\`) |
+| Estructuras anidadas (arboles, JSON profundo) | Recursion |
+| Problemas matematicos definidos recursivamente (factorial, fibonacci) | Recursion |
+| Cuando importa el rendimiento | Ciclo (es mas rapido) |
+
+> **Tip:** Antes de usar recursion, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es mas eficiente**. Usa recursion cuando aporte claridad.
+
+### Numero de Fibonacci (otro clasico)
+
+\`\`\`javascript
+function fibonacci(n) {
+  if (n <= 1) return n;  // caso base
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+fibonacci(8);  // 21 (secuencia: 0,1,1,2,3,5,8,13,21)
+\`\`\``,
+      codeExample: {
+        html: '<div id="resultado"></div>',
+        css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #94e2d5; border-radius: 8px; white-space: pre-line; }',
+        js: `// Factorial recursivo
+function factorial(n) {
+  if (n <= 1) return 1;
+  return n * factorial(n - 1);
+}
+
+// Fibonacci recursivo
+function fibonacci(n) {
+  if (n <= 1) return n;
+  return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Suma recursiva de array
+function sumarArray(arr) {
+  if (arr.length === 0) return 0;
+  return arr[0] + sumarArray(arr.slice(1));
+}
+
+// Cuenta regresiva
+function cuentaRegresiva(n) {
+  if (n < 0) return "Despegue!";
+  return n + " -> " + cuentaRegresiva(n - 1);
+}
+
+const salida = [];
+salida.push("factorial(5) = " + factorial(5));
+salida.push("factorial(7) = " + factorial(7));
+salida.push("fibonacci(10) = " + fibonacci(10));
+salida.push("sumarArray([1,2,3,4,5]) = " + sumarArray([1, 2, 3, 4, 5]));
+salida.push("cuentaRegresiva(5):");
+salida.push("  " + cuentaRegresiva(5));
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
+        editable: true,
+      },
+      order: 7,
+    },
+    {
+      id: "js07-leccion-08",
+      title: "Funciones como metodos de objetos",
+      content: `## Que es un metodo?
+
+Un **metodo** es simplemente una **funcion que es propiedad de un objeto**. No hay nada especial: es una funcion guardada en un objeto.
+
+\`\`\`javascript
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  saludar: function() {              // <- metodo
+    return "Hola, soy " + this.nombre;
+  }
+};
+
+persona.saludar();  // "Hola, soy Ana"
+\`\`\`
+
+> **Mensaje clave:** una **propiedad** guarda un valor (string, numero, array...). Un **metodo** guarda una funcion. Internamente son lo mismo.
+
+### Llamar un metodo
+
+Se usa la **notacion de punto** del objeto:
+
+\`\`\`javascript
+objeto.nombreDelMetodo(argumentos);
+\`\`\`
+
+### Sintaxis corta (ES6)
+
+JavaScript moderno permite escribir metodos sin la palabra \`function\`:
+
+\`\`\`javascript
+// Forma larga (tradicional)
+const calculadora = {
+  sumar: function(a, b) {
+    return a + b;
+  }
+};
+
+// Forma corta (ES6) - PREFERIDA
+const calculadora = {
+  sumar(a, b) {
+    return a + b;
+  }
+};
+\`\`\`
+
+> Las dos hacen exactamente lo mismo. Usa la corta en codigo moderno.
+
+## La palabra clave \`this\`
+
+Dentro de un metodo, \`this\` se refiere al **objeto que llamo al metodo**.
+
+\`\`\`javascript
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  presentarse() {
+    return "Soy " + this.nombre + " y tengo " + this.edad + " anos";
+  }
+};
+
+persona.presentarse();  // "Soy Ana y tengo 25 anos"
+\`\`\`
+
+> Sin \`this\`, el metodo no podria acceder a las otras propiedades del objeto.
+
+### \`this\` apunta al objeto a la IZQUIERDA del punto
+
+\`\`\`javascript
+const ana = { nombre: "Ana", saludar() { return "Hola " + this.nombre; } };
+const luis = { nombre: "Luis", saludar: ana.saludar };
+
+ana.saludar();   // "Hola Ana"   (this = ana)
+luis.saludar();  // "Hola Luis"  (this = luis)
+\`\`\`
+
+> El **mismo metodo** devuelve cosas distintas dependiendo de quien lo llame.
+
+## Trampa: arrow functions como metodos
+
+Las arrow functions **NO tienen su propio \`this\`**. Heredan el del contexto exterior. Por eso **fallan como metodos**:
+
+\`\`\`javascript
+const persona = {
+  nombre: "Ana",
+
+  saludarBien: function() {       // ✓ funciona
+    return "Hola " + this.nombre;
+  },
+
+  saludarMal: () => {             // ✗ falla
+    return "Hola " + this.nombre;  // this no es persona
+  }
+};
+
+persona.saludarBien();  // "Hola Ana"
+persona.saludarMal();   // "Hola undefined"
+\`\`\`
+
+> **Regla de oro:** Para definir metodos, usa **funcion tradicional** o **sintaxis corta ES6**. NO uses arrow functions.
+
+## Metodos que modifican el propio objeto
+
+\`\`\`javascript
+const contador = {
+  cuenta: 0,
+  incrementar() {
+    this.cuenta++;       // modifica la propiedad del objeto
+    return this.cuenta;
+  },
+  resetear() {
+    this.cuenta = 0;
+  }
+};
+
+contador.incrementar();  // 1
+contador.incrementar();  // 2
+contador.incrementar();  // 3
+contador.resetear();
+contador.cuenta;         // 0
+\`\`\`
+
+## Encadenamiento de metodos
+
+Si un metodo devuelve \`this\`, puedes encadenar llamadas:
+
+\`\`\`javascript
+const lista = {
+  items: [],
+  agregar(x) {
+    this.items.push(x);
+    return this;            // <- devuelve el objeto
+  },
+  mostrar() {
+    console.log(this.items);
+    return this;
+  }
+};
+
+lista.agregar("a").agregar("b").agregar("c").mostrar();
+// ["a", "b", "c"]
+\`\`\`
+
+> Patron muy comun en jQuery, lodash, Express, etc.
+
+### Mira esto: ya conoces metodos
+
+\`\`\`javascript
+"hola".toUpperCase();        // metodo de string
+[1, 2, 3].push(4);           // metodo de array
+Math.random();                // metodo de Math
+console.log("hi");            // metodo de console
+\`\`\`
+
+> Todos los \`.algo()\` que has usado son metodos. Strings, arrays, Math, console... todos son objetos con metodos.
+
+> **Nota:** Veremos mas a fondo objetos y metodos en el modulo **Objetos**. Aqui solo establecimos la base: un metodo es una funcion dentro de un objeto.`,
+      codeExample: {
+        html: '<div id="resultado"></div>',
+        css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f38ba8; border-radius: 8px; white-space: pre-line; }',
+        js: `// Objeto con metodos (sintaxis corta ES6)
+const persona = {
+  nombre: "Ana",
+  edad: 25,
+  saludar() {
+    return "Hola, soy " + this.nombre;
+  },
+  presentarse() {
+    return "Soy " + this.nombre + " y tengo " + this.edad + " anos";
+  },
+  cumplirAnos() {
+    this.edad++;
+    return this;
+  }
+};
+
+const salida = [];
+salida.push(persona.saludar());
+salida.push(persona.presentarse());
+
+persona.cumplirAnos();
+salida.push("Despues de cumplir: " + persona.presentarse());
+
+// Demostracion: this depende de QUIEN llama
+const luis = { nombre: "Luis", saludar: persona.saludar };
+salida.push("---");
+salida.push("Mismo metodo, distinto this:");
+salida.push("  " + persona.saludar());
+salida.push("  " + luis.saludar());
+
+// Encadenamiento de metodos
+const lista = {
+  items: [],
+  agregar(x) { this.items.push(x); return this; },
+  mostrar() { return this.items.join(", "); }
+};
+
+const resultado = lista.agregar("a").agregar("b").agregar("c").mostrar();
+salida.push("---");
+salida.push("Encadenamiento: " + resultado);
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
+        editable: true,
+      },
+      order: 8,
+    },
   ],
   exercises: [
     {
@@ -1127,6 +1494,78 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       hint: "La declaracion usa function como primera palabra, la expresion la asigna a una variable, y la arrow usa =>.",
       explanation:
         "Las tres formas de crear funciones: declaracion (function nombre), expresion (asignada a variable), y arrow function (usa =>).",
+    },
+    {
+      id: "js07-ej-13",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 20,
+      order: 13,
+      prompt: "Que parte es OBLIGATORIA en una funcion recursiva para evitar un ciclo infinito?",
+      options: [
+        { id: "a", text: "Un parametro tipo string", isCorrect: false },
+        { id: "b", text: "Un caso base que detenga la recursion", isCorrect: true },
+        { id: "c", text: "Un return undefined", isCorrect: false },
+        { id: "d", text: "Una variable global", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Sin esta parte la funcion se llama a si misma para siempre.",
+      explanation:
+        "El caso base es la condicion que detiene la recursion. Sin caso base la funcion se llama indefinidamente y produce un 'Maximum call stack size exceeded'.",
+    },
+    {
+      id: "js07-ej-14",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 30,
+      order: 14,
+      prompt: "Completa el caso base del factorial recursivo:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function factorial(n) { if (n ",
+        cssSuffix: " 1) return 1; return n * factorial(n - 1); }",
+        blanks: ["<="],
+      },
+      validation: { type: "exact", answer: "<=" },
+      hint: "El caso base se activa cuando n es 1 o menor (incluido 0).",
+      explanation:
+        "if (n <= 1) return 1 es el caso base: detiene la recursion cuando n llega a 1 (o menos), devolviendo 1.",
+    },
+    {
+      id: "js07-ej-15",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 20,
+      order: 15,
+      prompt: "Que es un metodo en JavaScript?",
+      options: [
+        { id: "a", text: "Un tipo especial de variable", isCorrect: false },
+        { id: "b", text: "Una funcion que es propiedad de un objeto", isCorrect: true },
+        { id: "c", text: "Una funcion que se ejecuta automaticamente", isCorrect: false },
+        { id: "d", text: "Una funcion que no devuelve nada", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Piensa en 'array.push()' o 'string.toUpperCase()'.",
+      explanation:
+        "Un metodo es una funcion guardada como propiedad de un objeto. Por eso podemos llamarlos con notacion de punto: objeto.metodo().",
+    },
+    {
+      id: "js07-ej-16",
+      type: "quiz",
+      difficulty: 3,
+      xpReward: 30,
+      order: 16,
+      prompt: "Por que NO es buena idea usar arrow functions como metodos de un objeto?",
+      options: [
+        { id: "a", text: "Porque son mas lentas que las funciones normales", isCorrect: false },
+        { id: "b", text: "Porque las arrow functions no tienen su propio 'this' y no pueden acceder a las propiedades del objeto", isCorrect: true },
+        { id: "c", text: "Porque siempre devuelven undefined", isCorrect: false },
+        { id: "d", text: "Porque no pueden tener parametros", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Tiene que ver con la palabra clave 'this'.",
+      explanation:
+        "Las arrow functions heredan 'this' del contexto exterior, por lo que dentro de un metodo arrow, 'this' NO apunta al objeto. Por eso se usan funciones tradicionales o sintaxis corta ES6 para metodos.",
     },
   ],
 };
