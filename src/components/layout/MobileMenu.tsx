@@ -20,6 +20,7 @@ import {
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
 import { getRank } from "@/lib/xp";
+import DojoSwitcher from "@/components/layout/DojoSwitcher";
 import type { NavItem } from "@/types";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -126,6 +127,11 @@ export function MobileMenu() {
             <X className="h-5 w-5" />
           </button>
         </div>
+
+        {/* Track Selector (mismo que desktop) */}
+        <DojoSwitcher />
+
+        <div className="mx-3 border-t border-editor-border" />
 
         {/* Navigation */}
         <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-1">
