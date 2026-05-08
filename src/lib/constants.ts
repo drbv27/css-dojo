@@ -11,7 +11,7 @@ export const RANKS: Rank[] = [
   { name: "Cinturon Verde", minXP: 800, icon: "belt-green", color: "#34D399" },
   { name: "Cinturon Azul", minXP: 1500, icon: "belt-blue", color: "#60A5FA" },
   { name: "Cinturon Morado", minXP: 2500, icon: "belt-purple", color: "#A78BFA" },
-  { name: "Cinturon Marron", minXP: 4000, icon: "belt-brown", color: "#D97706" },
+  { name: "Cinturon Marron", minXP: 4000, icon: "belt-brown", color: "#92400E" },
   { name: "Cinturon Rojo", minXP: 6000, icon: "belt-red", color: "#EF4444" },
   { name: "Cinturon Negro", minXP: 8500, icon: "belt-black", color: "#E2E8F0" },
   { name: "Gran Maestro", minXP: 11000, icon: "belt-master", color: "#FFD700" },
