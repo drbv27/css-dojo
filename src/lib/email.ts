@@ -1,6 +1,14 @@
 import { Resend } from "resend";
 
+// Remitente configurable por env. Debe usar un dominio VERIFICADO en Resend.
+// Fallback al subdominio verificado de Dev Dojo.
+const FROM = process.env.EMAIL_FROM || "Dev Dojo <no-reply@send.devdojo.pro>";
+
 function getResend() {
+  if (!process.env.RESEND_API_KEY) {
+    // Sin esto, Resend falla en silencio. Mejor cortar con un error claro.
+    throw new Error("RESEND_API_KEY no esta configurada en el entorno");
+  }
   return new Resend(process.env.RESEND_API_KEY);
 }
 
@@ -10,8 +18,8 @@ export function generateOtp(): string {
 
 export async function sendOtpEmail(to: string, otp: string, name: string) {
   const resend = getResend();
-  await resend.emails.send({
-    from: "Dev Dojo <onboarding@resend.dev>",
+  const { error } = await resend.emails.send({
+    from: FROM,
     to,
     subject: "Codigo de recuperacion — Dev Dojo",
     html: `
@@ -39,4 +47,10 @@ export async function sendOtpEmail(to: string, otp: string, name: string) {
       </div>
     `,
   });
+
+  // El SDK de Resend NO lanza excepcion cuando la API falla: devuelve { error }.
+  // Si no lo revisamos, el correo "falla en silencio" y la UI dice "enviado".
+  if (error) {
+    throw new Error(`Resend fallo al enviar: ${error.message}`);
+  }
 }
