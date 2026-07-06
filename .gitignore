@@ -31,3 +31,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# assets fuente Mixamo (FBX crudos, no usados en runtime)
+mixamo/
