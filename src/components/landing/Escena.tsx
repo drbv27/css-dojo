@@ -35,7 +35,7 @@ function Contenido() {
   return (
     <>
       <ambientLight intensity={0.18} />
-      <spotLight position={[0, 6, 4]} angle={0.5} penumbra={0.8} intensity={120} color={color} castShadow />
+      <spotLight position={[0, 6, 4]} angle={0.5} penumbra={0.8} intensity={120} color={color} />
       <pointLight position={[-4, 2, -2]} intensity={40} color="#89B4FA" />
       <pointLight position={[4, 2, -2]} intensity={40} color="#CBA6F7" />
       <pointLight position={[0, 1.5, 4]} intensity={15} color={color} />
@@ -50,8 +50,7 @@ function Contenido() {
 export default function Escena() {
   return (
     <Canvas
-      shadows
-      dpr={[1, 2]}
+      dpr={[1, 1.5]}
       gl={{ antialias: false, powerPreference: "high-performance" }}
       camera={{ position: [0, 1.4, 6], fov: 35 }}
       style={{ position: "fixed", inset: 0, zIndex: 0 }}

@@ -5,6 +5,7 @@ import Escena from "./Escena";
 import Secciones from "./Secciones";
 import ScrollManager from "./ScrollManager";
 import LandingEstatica from "./LandingEstatica";
+import NavLanding from "./NavLanding";
 import Loader from "./Loader";
 
 // Decide si corremos la escena WebGL o el fallback estático.
@@ -32,10 +33,18 @@ export default function Landing3D({ hasSession }: { hasSession: boolean }) {
   }, []);
 
   if (modo === "cargando") return <div className="fixed inset-0 bg-editor-bg" />;
-  if (modo === "estatica") return <LandingEstatica hasSession={hasSession} />;
+  if (modo === "estatica")
+    return (
+      <>
+        <NavLanding hasSession={hasSession} />
+        <LandingEstatica hasSession={hasSession} />
+      </>
+    );
 
   return (
     <>
+      {/* Barra fija: login siempre visible */}
+      <NavLanding hasSession={hasSession} />
       <Loader />
       {/* Canvas 3D como fondo fijo */}
       <Escena />

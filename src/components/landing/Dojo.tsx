@@ -36,16 +36,16 @@ export default function Dojo({ color }: { color: string }) {
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
         <planeGeometry args={[60, 60]} />
         <MeshReflectorMaterial
-          blur={[300, 80]}
-          resolution={1024}
+          blur={[150, 40]}
+          resolution={512}
           mixBlur={1}
-          mixStrength={50}
-          roughness={0.9}
-          depthScale={1.1}
+          mixStrength={35}
+          roughness={0.95}
+          depthScale={1}
           minDepthThreshold={0.4}
           maxDepthThreshold={1.2}
           color="#0a0a12"
-          metalness={0.7}
+          metalness={0.6}
         />
       </mesh>
 
@@ -67,7 +67,7 @@ export default function Dojo({ color }: { color: string }) {
       <Torii color={color} />
 
       {/* Partículas tipo brasas/glifos flotando */}
-      <Sparkles count={60} scale={[10, 6, 10]} size={3} speed={0.3} color={color} opacity={0.6} />
+      <Sparkles count={40} scale={[10, 6, 10]} size={3} speed={0.3} color={color} opacity={0.6} />
     </group>
   );
 }
