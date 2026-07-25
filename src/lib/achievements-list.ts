@@ -166,4 +166,13 @@ export const SEED_ACHIEVEMENTS: Achievement[] = [
     icon: "⏱️",
     condition: { type: "speed_exercises", value: 5 },
   },
+
+  // Especiales (otorgados manualmente, no por progreso automatico)
+  {
+    slug: "open-code-pionero",
+    title: "Pionero Open Code",
+    description: "Te apuntaste a la primera cohorte de Open Code",
+    icon: "🚀",
+    condition: { type: "manual", value: 1 },
+  },
 ];

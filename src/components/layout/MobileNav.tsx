@@ -14,6 +14,7 @@ import {
   User,
   GraduationCap,
   Gamepad2,
+  Megaphone,
   Braces,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
@@ -29,6 +30,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Trophy,
   User,
   GraduationCap,
+  Megaphone,
 };
 
 function MobileNavLink({
