@@ -35,4 +35,5 @@ export const NAV_ITEMS: NavItem[] = [
 export const TEACHER_NAV_ITEMS: NavItem[] = [
   { label: "Panel Profesor", href: "/teacher", icon: "GraduationCap" },
   { label: "Gestionar Modulos", href: "/teacher/modulos", icon: "Settings" },
+  { label: "Open Code (sondeo)", href: "/teacher/open-code", icon: "Megaphone" },
 ];

@@ -7,6 +7,8 @@ import { ALL_MODULES } from "@/data/modules";
 import { useDojo } from "@/hooks/useDojo";
 import Link from "next/link";
 import LoadingSpinner from "@/components/ui/LoadingSpinner";
+import OpenCodeBanner from "@/components/dashboard/OpenCodeBanner";
+import FreeCourseBanner from "@/components/dashboard/FreeCourseBanner";
 import { useEffect, useState } from "react";
 import { FaHtml5, FaReact } from "react-icons/fa";
 import { SiCss, SiJavascript, SiNextdotjs } from "react-icons/si";
@@ -129,6 +131,12 @@ export default function DashboardPage() {
             Ruta de {dojoLabel[activeDojo] ?? activeDojo}
           </p>
         </div>
+      </div>
+
+      {/* Anuncios de pre-lanzamiento: cursos premium + curso gratuito */}
+      <div className="space-y-3">
+        <OpenCodeBanner />
+        <FreeCourseBanner />
       </div>
 
       {/* Next step card - THE MOST IMPORTANT ELEMENT */}
