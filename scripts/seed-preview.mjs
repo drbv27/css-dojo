@@ -82,6 +82,8 @@ async function main() {
     { slug: "css-grid", enabled: false },
     { slug: "media-queries", enabled: false },
   ]);
+  // Reproduce el estado de PROD: indice unico viejo sobre slug.
+  await db.collection("modulesettings").createIndex({ slug: 1 }, { unique: true });
 
   console.log("\n✓ Preview sembrado:");
   console.log("  Profesor: profe@preview.test  /  preview123");
