@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
 import { hashPassword, createToken, getTokenCookieOptions } from "@/lib/auth";
+import { readCohortConfig } from "@/lib/models/CohortConfig";
 
 export async function POST(request: Request) {
   try {
@@ -37,12 +38,17 @@ export async function POST(request: Request) {
       teacherEmail && email.toLowerCase() === teacherEmail.toLowerCase();
     const role = isTeacher ? "teacher" : "student";
 
+    // Los nuevos alumnos entran en la cohorte activa del momento
+    // (default 1 mientras no se haya migrado).
+    const cohortCfg = await readCohortConfig();
+
     const user = await User.create({
       name,
       email: email.toLowerCase(),
       password: hashedPassword,
       approved: isTeacher ? true : false,
       role,
+      cohort: cohortCfg.activeCohort,
     });
 
     const token = await createToken({

@@ -7,6 +7,7 @@ export interface IUser extends Document {
   image?: string;
   role: "student" | "teacher";
   approved: boolean;
+  cohort: number;
   xp: number;
   level: number;
   currentStreak: number;
@@ -31,6 +32,9 @@ const UserSchema = new Schema<IUser>(
       default: "student",
     },
     approved: { type: Boolean, default: false },
+    // Cohorte a la que pertenece el alumno (para activacion de temas por cohorte).
+    // Los alumnos existentes se migran a 1; los nuevos toman la cohorte activa.
+    cohort: { type: Number, default: 1, index: true },
     xp: { type: Number, default: 0 },
     level: { type: Number, default: 0 },
     currentStreak: { type: Number, default: 0 },

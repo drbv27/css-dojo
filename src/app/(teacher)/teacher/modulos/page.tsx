@@ -67,39 +67,62 @@ const nextjsCategories: { key: ModuleCategory; label: string; color: string; bad
   { key: "nextjs-advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
 ];
 
+interface CohortCfg {
+  activeCohort: number;
+  cohortCount: number;
+  migrated: boolean;
+  studentsByCohort: Record<string, number>;
+}
+
 export default function TeacherModulosPage() {
   const [settings, setSettings] = useState<ModuleSetting[]>([]);
   const [loading, setLoading] = useState(true);
   const [toggling, setToggling] = useState<string | null>(null);
   const [bulkToggling, setBulkToggling] = useState(false);
   const [activeDojoFilter, setActiveDojoFilter] = useState<DojoType>("html");
+  const [cohort, setCohort] = useState(1);
+  const [cfg, setCfg] = useState<CohortCfg | null>(null);
+  const [migrating, setMigrating] = useState(false);
+  const [working, setWorking] = useState(false);
 
+  const loadCfg = () =>
+    fetch("/api/teacher/cohort")
+      .then((res) => res.json())
+      .then((data: CohortCfg) => setCfg(data))
+      .catch(() => {});
+
+  // Config de cohortes al montar.
   useEffect(() => {
-    fetch("/api/teacher/modules")
+    loadCfg();
+  }, []);
+
+  // Ajustes de la cohorte seleccionada (recarga al cambiar de cohorte).
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/teacher/modules?cohort=${cohort}`)
       .then((res) => res.json())
       .then((data: ModuleSetting[]) => {
         setSettings(data);
         setLoading(false);
       })
       .catch(() => setLoading(false));
-  }, []);
+  }, [cohort]);
 
+  // Por cohorte: activo SOLO si hay ajuste enabled=true (por defecto bloqueado).
   const isEnabled = (slug: string): boolean => {
     const setting = settings.find((s) => s.slug === slug);
-    // If no setting exists, module is enabled by default
-    return setting ? setting.enabled : true;
+    return setting ? setting.enabled : false;
   };
 
   const handleToggle = async (slug: string) => {
-    const currentEnabled = isEnabled(slug);
-    const newEnabled = !currentEnabled;
+    const newEnabled = !isEnabled(slug);
     setToggling(slug);
 
     try {
       await fetch("/api/teacher/modules", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug, enabled: newEnabled }),
+        body: JSON.stringify({ cohort, slug, enabled: newEnabled }),
       });
 
       setSettings((prev) => {
@@ -129,7 +152,7 @@ export default function TeacherModulosPage() {
       await fetch("/api/teacher/modules/bulk", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ dojo, enabled: newEnabled }),
+        body: JSON.stringify({ cohort, dojo, enabled: newEnabled }),
       });
 
       const trackSlugs = ALL_MODULES.filter((m) => m.dojo === dojo).map((m) => m.slug);
@@ -148,6 +171,52 @@ export default function TeacherModulosPage() {
       // Silently fail
     } finally {
       setBulkToggling(false);
+    }
+  };
+
+  const runMigration = async () => {
+    if (!confirm("Migrar al modelo por cohortes: los alumnos actuales pasan a la cohorte 1 (conservan lo que ven hoy) y se crea la cohorte 2 vacia. Continuar?")) return;
+    setMigrating(true);
+    try {
+      await fetch("/api/teacher/cohort/migrate", { method: "POST" });
+      await loadCfg();
+      // recargar ajustes de la cohorte actual
+      const data = await fetch(`/api/teacher/modules?cohort=${cohort}`).then((r) => r.json());
+      setSettings(data);
+    } catch {
+      // Silently fail
+    } finally {
+      setMigrating(false);
+    }
+  };
+
+  const setActiveCohort = async (n: number) => {
+    setWorking(true);
+    try {
+      await fetch("/api/teacher/cohort", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ activeCohort: n }),
+      });
+      await loadCfg();
+    } finally {
+      setWorking(false);
+    }
+  };
+
+  const addCohort = async () => {
+    setWorking(true);
+    try {
+      const res = await fetch("/api/teacher/cohort", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+      const data = await res.json();
+      await loadCfg();
+      if (data.cohortCount) setCohort(data.cohortCount);
+    } finally {
+      setWorking(false);
     }
   };
 
@@ -180,7 +249,7 @@ export default function TeacherModulosPage() {
           Gestionar Modulos
         </h1>
         <p className="text-editor-muted">
-          Activa o desactiva modulos para tus estudiantes. Los modulos desactivados se muestran como &quot;Proximamente&quot;.
+          Activa o desactiva modulos por cohorte. Cada cohorte avanza a su ritmo; los modulos desactivados se muestran como &quot;Proximamente&quot;. El leaderboard es comun a todas.
         </p>
 
         {/* Dojo filter tabs */}
@@ -205,6 +274,85 @@ export default function TeacherModulosPage() {
           })}
         </div>
       </div>
+
+      {/* Banner de migracion (solo si aun no se migro) */}
+      {cfg && !cfg.migrated && (
+        <div className="rounded-xl border border-neon-orange/40 bg-neon-orange/[0.06] p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <p className="text-sm font-semibold text-neon-orange">Activa el modelo por cohortes</p>
+            <p className="text-xs text-editor-muted mt-0.5">
+              Migra a los alumnos actuales a la cohorte 1 (conservan lo que ven hoy) y crea la cohorte 2 vacía para abrirla gradualmente. Hazlo una sola vez.
+            </p>
+          </div>
+          <button
+            onClick={runMigration}
+            disabled={migrating}
+            className="shrink-0 rounded-lg bg-neon-orange px-4 py-2 text-sm font-semibold text-editor-bg hover:opacity-90 disabled:opacity-50"
+          >
+            {migrating ? "Migrando…" : "Ejecutar migración"}
+          </button>
+        </div>
+      )}
+
+      {/* Panel de cohortes */}
+      {cfg && cfg.migrated && (
+        <div className="rounded-xl border border-editor-border bg-editor-surface p-4 space-y-4">
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-sm font-semibold text-editor-text">Editando cohorte:</span>
+            {Array.from({ length: cfg.cohortCount }, (_, i) => i + 1).map((n) => {
+              const active = cohort === n;
+              const count = cfg.studentsByCohort?.[n] ?? 0;
+              return (
+                <button
+                  key={n}
+                  onClick={() => setCohort(n)}
+                  className={`inline-flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors border ${
+                    active
+                      ? "border-neon-blue bg-neon-blue/10 text-neon-blue"
+                      : "border-editor-border text-editor-muted hover:text-editor-text"
+                  }`}
+                >
+                  Cohorte {n}
+                  <span className="text-[11px] opacity-70">{count} alumno{count === 1 ? "" : "s"}</span>
+                </button>
+              );
+            })}
+            <button
+              onClick={addCohort}
+              disabled={working}
+              className="rounded-lg border border-dashed border-editor-border px-3 py-1.5 text-sm text-editor-muted hover:text-editor-text disabled:opacity-50"
+            >
+              + Nueva cohorte
+            </button>
+          </div>
+
+          <div className="flex flex-wrap items-center gap-2 border-t border-editor-border pt-3">
+            <span className="text-xs text-editor-muted">
+              Nuevos registros entran en la cohorte:
+            </span>
+            {Array.from({ length: cfg.cohortCount }, (_, i) => i + 1).map((n) => {
+              const isActive = cfg.activeCohort === n;
+              return (
+                <button
+                  key={n}
+                  onClick={() => setActiveCohort(n)}
+                  disabled={working || isActive}
+                  className={`rounded-md px-2.5 py-1 text-xs font-semibold transition-colors ${
+                    isActive
+                      ? "bg-neon-green/15 text-neon-green cursor-default"
+                      : "border border-editor-border text-editor-muted hover:text-editor-text"
+                  }`}
+                >
+                  {n}{isActive ? " ✓" : ""}
+                </button>
+              );
+            })}
+            <span className="text-[11px] text-editor-muted">
+              (cambia esto para que los que se inscriban desde mañana entren en la cohorte nueva)
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Master track toggle */}
       {(() => {
