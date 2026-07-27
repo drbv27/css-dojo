@@ -178,13 +178,23 @@ export default function TeacherModulosPage() {
     if (!confirm("Migrar al modelo por cohortes: los alumnos actuales pasan a la cohorte 1 (conservan lo que ven hoy) y se crea la cohorte 2 vacia. Continuar?")) return;
     setMigrating(true);
     try {
-      await fetch("/api/teacher/cohort/migrate", { method: "POST" });
+      const res = await fetch("/api/teacher/cohort/migrate", { method: "POST" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        alert(`No se pudo migrar: ${data?.error ?? res.status}`);
+        return;
+      }
       await loadCfg();
       // recargar ajustes de la cohorte actual
-      const data = await fetch(`/api/teacher/modules?cohort=${cohort}`).then((r) => r.json());
-      setSettings(data);
+      const s = await fetch(`/api/teacher/modules?cohort=${cohort}`).then((r) => r.json());
+      setSettings(s);
+      alert(
+        data.skipped
+          ? "Ya estaba migrado."
+          : `Migración lista: cohorte 1 con ${data.cohort1Visible} temas visibles, cohorte 2 creada vacía.`
+      );
     } catch {
-      // Silently fail
+      alert("Error de red al migrar. Revisa la conexión e inténtalo de nuevo.");
     } finally {
       setMigrating(false);
     }

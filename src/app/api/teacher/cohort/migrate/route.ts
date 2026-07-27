@@ -59,7 +59,16 @@ export async function POST() {
     return NextResponse.json({ ok: true, skipped: "ya migrado", ...plan });
   }
 
-  // 1) Snapshot de la cohorte 1 = visibilidad efectiva actual (docs explicitos).
+  // 1) Borrar el indice unico VIEJO sobre slug ANTES de escribir. Si no, insertar
+  //    docs de cohorte-1 con slugs que ya existen en docs legacy choca con slug_1
+  //    (duplicate key) y la migracion falla.
+  try {
+    await ModuleSettings.collection.dropIndex("slug_1");
+  } catch {
+    // el indice viejo ya no existe: ok
+  }
+
+  // 2) Snapshot de la cohorte 1 = visibilidad efectiva actual (docs explicitos).
   const ops = ALL_MODULES.map((m) => ({
     updateOne: {
       filter: { cohort: 1, slug: m.slug },
@@ -69,22 +78,19 @@ export async function POST() {
   }));
   await ModuleSettings.bulkWrite(ops);
 
-  // 2) Eliminar SOLO los docs legacy de MODULOS DE CURSO (sin cohort).
+  // 3) Eliminar SOLO los docs legacy de MODULOS DE CURSO (sin cohort).
   //    OJO: los juegos (slug "game-*") viven en esta misma coleccion y son
   //    globales -> NO se tocan.
   const courseSlugs = ALL_MODULES.map((m) => m.slug);
   await ModuleSettings.deleteMany({ cohort: { $exists: false }, slug: { $in: courseSlugs } });
-  try {
-    await ModuleSettings.collection.dropIndex("slug_1");
-  } catch {
-    // el indice viejo ya no existe: ok
-  }
+
+  // 4) Asegurar el indice compuesto.
   await ModuleSettings.syncIndexes();
 
-  // 3) Alumnos existentes -> cohorte 1.
+  // 5) Alumnos existentes -> cohorte 1.
   await User.updateMany({ cohort: { $exists: false } }, { $set: { cohort: 1 } });
 
-  // 4) Config: cohorte activa 1 (los nuevos siguen en 1 hasta que actives la 2),
+  // 6) Config: cohorte activa 1 (los nuevos siguen en 1 hasta que actives la 2),
   //    y cohortCount 2 para poder pre-configurar la cohorte 2 desde ya.
   await CohortConfig.create({ key: "config", activeCohort: 1, cohortCount: 2 });
 
