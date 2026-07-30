@@ -16,6 +16,8 @@ import { htmlAccesibilidadModule } from "./html-12-accesibilidad";
 import { htmlMetaSeoModule } from "./html-13-meta-seo";
 import { htmlMediaAvanzadoModule } from "./html-14-media-avanzado";
 import { htmlBuenasPracticasModule } from "./html-15-buenas-practicas";
+import { htmlProyectoCVModule } from "./html-16-proyecto-cv";
+import { htmlInteractivosModule } from "./html-17-elementos-interactivos";
 
 // CSS modules
 import { queEsCSSModule } from "./01-que-es-css";
@@ -118,6 +120,7 @@ export const ALL_MODULES: ModuleData[] = [
   htmlImagenesModule, htmlListasModule, htmlTablasModule, htmlFormulariosModule,
   htmlFormulariosAvanzadosModule, htmlSemanticaModule, htmlAtributosModule,
   htmlAccesibilidadModule, htmlMetaSeoModule, htmlMediaAvanzadoModule, htmlBuenasPracticasModule,
+  htmlProyectoCVModule, htmlInteractivosModule,
   // CSS
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, tipografiasModule,
   dimensionesModule, selectoresDescendientesModule, pseudoClasesModule, pseudoElementosModule,

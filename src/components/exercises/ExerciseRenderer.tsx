@@ -67,6 +67,24 @@ export default function ExerciseRenderer({
           return { correct: score === 100, score };
         }
 
+        case "includes-ordered": {
+          // Como "includes" pero exige que los fragmentos aparezcan EN ORDEN,
+          // lo que fuerza estructura/anidacion correcta (menos falsos positivos).
+          const expected = Array.isArray(v.answer) ? v.answer : [v.answer];
+          const actual = String(userAnswer).toLowerCase();
+          let pos = 0;
+          let matched = 0;
+          for (const e of expected) {
+            const frag = String(e).toLowerCase();
+            const idx = actual.indexOf(frag, pos);
+            if (idx === -1) break; // falta o esta fuera de orden -> se detiene
+            matched++;
+            pos = idx + frag.length;
+          }
+          const score = Math.round((matched / expected.length) * 100);
+          return { correct: score === 100, score };
+        }
+
         case "visual": {
           // Visual validation is typically server-side; approximate locally
           return { correct: true, score: 80 };

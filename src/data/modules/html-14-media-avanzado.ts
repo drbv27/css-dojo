@@ -423,5 +423,26 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       explanation:
         "AVIF ofrece la mejor compresion, siendo hasta un 50% mas liviano que JPEG con calidad similar. WebP es el segundo mas eficiente, seguido de JPEG.",
     },
+    {
+      id: "html14-ej-08",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 8,
+      prompt:
+        "Crea una imagen responsive y perezosa: un <picture> que contenga un <source> con srcset, y dentro un <img> con src, alt y el atributo loading en lazy.",
+      codeTemplate: {
+        html: `<!-- Escribe aqui tu <picture> responsive -->`,
+        cssPrefix: "",
+        cssSuffix: "",
+      },
+      validation: {
+        type: "includes-ordered",
+        answer: ["<picture", "<source", "srcset=", "<img", "alt=", 'loading="lazy"', "</picture>"],
+      },
+      hint: 'picture envuelve un source con srcset y un img de respaldo; agrega loading="lazy" al img para carga diferida.',
+      explanation:
+        "picture + source srcset sirve distintas imagenes segun el dispositivo, y loading lazy difiere la carga hasta que la imagen se acerca a la pantalla (mejor rendimiento).",
+    },
   ],
 };

@@ -523,5 +523,26 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       explanation:
         "Segun la especificacion HTML, solo debe existir un elemento <main> por pagina. Representa el contenido principal y unico del documento.",
     },
+    {
+      id: "html10-ej-09",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 9,
+      prompt:
+        "Reescribe esta 'sopa de divs' usando HTML semantico. Respeta el orden: un header (con la nav dentro), luego un main (con un article dentro), y al final un footer.",
+      codeTemplate: {
+        html: `<div class="top">Mi Blog</div>\n<div class="menu">Inicio | Contacto</div>\n<div class="contenido">\n  <div class="post">Un articulo</div>\n</div>\n<div class="pie">2026</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+      },
+      validation: {
+        type: "includes-ordered",
+        answer: ["<header", "<nav", "<main", "<article", "</article>", "</main>", "<footer"],
+      },
+      hint: "Orden: header (con nav) -> main (con article) -> footer.",
+      explanation:
+        "Los landmarks (header, nav, main, article, footer) reemplazan a los divs genericos y dan significado a cada zona para navegadores y lectores de pantalla.",
+    },
   ],
 };

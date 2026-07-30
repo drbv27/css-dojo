@@ -40,7 +40,7 @@ export type ModuleCategory =
   | "nextjs-intermediate"
   | "nextjs-advanced";
 
-export type ValidationType = "exact" | "regex" | "includes" | "visual";
+export type ValidationType = "exact" | "regex" | "includes" | "includes-ordered" | "visual";
 
 // ==================== Core Data Structures ====================
 
