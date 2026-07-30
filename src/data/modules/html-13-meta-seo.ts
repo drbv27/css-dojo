@@ -398,5 +398,26 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       explanation:
         'JSON-LD (JavaScript Object Notation for Linked Data) es el formato recomendado por Google para datos estructurados. Se coloca dentro de <script type="application/ld+json">.',
     },
+    {
+      id: "html13-ej-08",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 8,
+      prompt:
+        "Completa el <head> para SEO y redes: agrega el title, una meta description, y las etiquetas Open Graph og:title, og:description y og:image (en ese orden).",
+      codeTemplate: {
+        html: `<head>\n  <meta charset="UTF-8" />\n  <!-- agrega title, description y Open Graph -->\n</head>`,
+        cssPrefix: "",
+        cssSuffix: "",
+      },
+      validation: {
+        type: "includes-ordered",
+        answer: ["<title>", "</title>", 'name="description"', 'property="og:title"', 'property="og:description"', 'property="og:image"'],
+      },
+      hint: 'El title primero; la description es <meta name="description" content="...">; el Open Graph usa <meta property="og:...">.',
+      explanation:
+        "El title y la meta description controlan como se ve tu pagina en Google; las etiquetas Open Graph (og:) controlan la tarjeta que aparece al compartir el enlace en redes sociales.",
+    },
   ],
 };

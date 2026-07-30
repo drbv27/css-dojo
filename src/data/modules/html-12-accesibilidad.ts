@@ -374,5 +374,26 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       explanation:
         "WCAG AA requiere un contraste minimo de 4.5:1 para texto normal y 3:1 para texto grande. El nivel AAA requiere 7:1 para texto normal.",
     },
+    {
+      id: "html12-ej-08",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 8,
+      prompt:
+        "Haz accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al boton de icono, y conecta el label con el input usando for e id.",
+      codeTemplate: {
+        html: `<img src="logo.png">\n<button>🔍</button>\n<label>Correo</label>\n<input type="email" id="correo">`,
+        cssPrefix: "",
+        cssSuffix: "",
+      },
+      validation: {
+        type: "includes-ordered",
+        answer: ["<img", "alt=", "<button", "aria-label=", "<label", 'for="correo"', "<input", 'id="correo"'],
+      },
+      hint: 'La imagen necesita alt="..."; el boton un aria-label="..."; el label un for="correo" que coincida con el id del input.',
+      explanation:
+        "Sin alt la imagen es invisible para lectores de pantalla; el boton de solo-icono necesita aria-label; y el label debe asociarse al input con for/id para que al tocarlo enfoque el campo.",
+    },
   ],
 };
