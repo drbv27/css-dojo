@@ -85,15 +85,21 @@ export default function TeacherModulosPage() {
   const [migrating, setMigrating] = useState(false);
   const [working, setWorking] = useState(false);
 
-  const loadCfg = () =>
+  const loadCfg = (): Promise<CohortCfg | null> =>
     fetch("/api/teacher/cohort")
       .then((res) => res.json())
-      .then((data: CohortCfg) => setCfg(data))
-      .catch(() => {});
+      .then((data: CohortCfg) => {
+        setCfg(data);
+        return data;
+      })
+      .catch(() => null);
 
-  // Config de cohortes al montar.
+  // Al montar: cargar config y arrancar editando la COHORTE ACTIVA (no la 1),
+  // para no editar por error la cohorte equivocada.
   useEffect(() => {
-    loadCfg();
+    loadCfg().then((data) => {
+      if (data?.migrated && data.activeCohort) setCohort(data.activeCohort);
+    });
   }, []);
 
   // Ajustes de la cohorte seleccionada (recarga al cambiar de cohorte).
@@ -307,8 +313,17 @@ export default function TeacherModulosPage() {
       {/* Panel de cohortes */}
       {cfg && cfg.migrated && (
         <div className="rounded-xl border border-editor-border bg-editor-surface p-4 space-y-4">
+          {/* Indicador grande: que cohorte se esta editando */}
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 rounded-lg border border-neon-blue/40 bg-neon-blue/10 px-4 py-3">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-editor-muted">Estás editando</span>
+            <span className="text-lg font-bold text-neon-blue">Cohorte {cohort}</span>
+            <span className="text-xs text-editor-muted">
+              · {cfg.studentsByCohort?.[cohort] ?? 0} alumno{(cfg.studentsByCohort?.[cohort] ?? 0) === 1 ? "" : "s"} · lo que actives o desactives abajo <strong>solo lo verá esta cohorte</strong>
+            </span>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
-            <span className="text-sm font-semibold text-editor-text">Editando cohorte:</span>
+            <span className="text-sm font-semibold text-editor-text">Cambiar cohorte:</span>
             {Array.from({ length: cfg.cohortCount }, (_, i) => i + 1).map((n) => {
               const active = cohort === n;
               const count = cfg.studentsByCohort?.[n] ?? 0;
