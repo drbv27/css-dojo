@@ -97,8 +97,6 @@ function highlightCSS(code: string): string {
   // Sort tokens by start position descending so we can replace from end to start
   tokens.sort((a, b) => b.start - a.start);
 
-  let result = escapeHtml(code);
-
   // We need to rebuild using non-overlapping tokens applied to the original string
   // Reset approach: build from scratch
   tokens.sort((a, b) => a.start - b.start);
