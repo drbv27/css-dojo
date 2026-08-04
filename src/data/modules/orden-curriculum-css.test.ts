@@ -1,0 +1,206 @@
+import { describe, it, expect } from "vitest";
+import { ALL_MODULES } from "@/data/modules";
+
+/**
+ * Guards the TEACHING ORDER of the CSS track.
+ *
+ * The track had two ordering defects that this test now pins down:
+ *
+ * - `dimensiones` explained `box-sizing` in terms of "sin incluir padding ni
+ *   border", six modules before `box-model` taught padding and border. The
+ *   explanation was correct and unreadable at the same time.
+ * - `unidades-css` uses padding and margin 45 times as its examples, so it
+ *   cannot come before the module that introduces them.
+ *
+ * Both are resolved by putting `box-model` at 4 and `unidades-css` at 5.
+ *
+ * IMPORTANT: nothing in the app sorts by the `order` field. The sequence a
+ * student walks is the ARRAY ORDER in index.ts; `order` is only rendered as a
+ * label (`#04`). So both have to agree, and the first test below is what keeps
+ * them honest -- changing one without the other silently desynchronises the
+ * numbering from the real path.
+ */
+const cssModules = ALL_MODULES.filter((m) => m.dojo === "css");
+
+describe("orden del track CSS", () => {
+  it("el campo order coincide con la posicion en el array", () => {
+    // Si esto falla, alguien movio un modulo en index.ts sin actualizar su
+    // `order`, o al reves. La UI mostraria un numero que no corresponde.
+    const desincronizados = cssModules
+      .map((m, i) => ({ slug: m.slug, order: m.order, posicion: i + 1 }))
+      .filter((x) => x.order !== x.posicion);
+    expect(desincronizados).toEqual([]);
+  });
+
+  it("no hay numeros de orden repetidos ni huecos", () => {
+    const ordenes = cssModules.map((m) => m.order).sort((a, b) => a - b);
+    expect(ordenes).toEqual(Array.from({ length: cssModules.length }, (_, i) => i + 1));
+  });
+
+  /**
+   * Fails loudly on a slug typo instead of returning 0 and making a
+   * `toBeLessThan` assertion pass or fail for the wrong reason. Worth having:
+   * the slugs are not guessable from the filenames -- `23-bootstrap.ts` is
+   * `bootstrap-5` and `24-tailwind.ts` is `tailwind-css`.
+   */
+  const posicionDe = (slug: string) => {
+    const i = cssModules.findIndex((m) => m.slug === slug);
+    if (i === -1) throw new Error(`No existe un modulo CSS con slug "${slug}"`);
+    return i + 1;
+  };
+
+  it("los slugs que estos tests referencian existen", () => {
+    const referenciados = [
+      "que-es-css", "selectores", "propiedades-basicas", "box-model", "unidades-css",
+      "tipografias", "dimensiones", "selectores-descendientes", "pseudo-clases",
+      "pseudo-elementos", "especificidad", "posicionamiento", "float-display",
+      "propiedades-logicas", "flexbox", "css-grid", "media-queries",
+      "transiciones-animaciones", "variables-css", "shadows-gradients-filters",
+      "sass-fundamentos", "sass-avanzado", "bootstrap-5", "tailwind-css",
+      "proyecto-cv-css",
+    ];
+    const faltan = referenciados.filter((s) => !cssModules.some((m) => m.slug === s));
+    expect(faltan).toEqual([]);
+    expect(referenciados.length).toBe(cssModules.length);
+  });
+
+  /**
+   * The test that was missing, and the reason a reorder can look done and not be.
+   *
+   * The modules page renders group by group -- intro, intermediate, advanced,
+   * preprocessors, frameworks, project -- and only orders by array position
+   * INSIDE each group. So moving a module up the array without moving its
+   * `category` changes nothing on screen: box-model sat at position 4 while still
+   * marked `intermediate`, so the student kept seeing typography and dimensions
+   * before it. Every ordering assertion in this file passed while the UI showed
+   * the old sequence.
+   */
+  const ORDEN_CATEGORIAS = [
+    "intro",
+    "intermediate",
+    "advanced",
+    "preprocessors",
+    "frameworks",
+    "project",
+  ] as const;
+
+  it("la categoria no contradice el orden: el track se lee igual en pantalla que en el array", () => {
+    const rango = (c: string) => ORDEN_CATEGORIAS.indexOf(c as (typeof ORDEN_CATEGORIAS)[number]);
+
+    const desconocidas = cssModules.filter((m) => rango(m.category) === -1);
+    expect(desconocidas.map((m) => `${m.slug} (${m.category})`)).toEqual([]);
+
+    // La secuencia que ve el alumno: agrupada por categoria, y dentro de cada
+    // grupo por posicion en el array.
+    const enPantalla = ORDEN_CATEGORIAS.flatMap((c) =>
+      cssModules.filter((m) => m.category === c)
+    );
+
+    const inconsistencias = enPantalla
+      .map((m, i) => ({ slug: m.slug, order: m.order, enPantalla: i + 1 }))
+      .filter((x) => x.order !== x.enPantalla);
+
+    expect(inconsistencias).toEqual([]);
+  });
+
+  it("el proyecto final se renderiza al final, despues de los frameworks", () => {
+    // Como `advanced` quedaba entre shadows y sass. Un cierre integrador tiene
+    // que venir despues de todo lo que integra.
+    const proyecto = cssModules.find((m) => m.slug === "proyecto-cv-css")!;
+    expect(proyecto.category).toBe("project");
+    expect(ORDEN_CATEGORIAS.indexOf(proyecto.category as "project")).toBe(
+      ORDEN_CATEGORIAS.length - 1
+    );
+  });
+
+  it("box-model viene antes de dimensiones", () => {
+    // dimensiones explica box-sizing usando padding y border, que box-model ensena.
+    expect(posicionDe("box-model")).toBeLessThan(posicionDe("dimensiones"));
+  });
+
+  it("box-model viene antes de unidades-css", () => {
+    // unidades-css usa padding/margin/border como ejemplos de cada unidad.
+    expect(posicionDe("box-model")).toBeLessThan(posicionDe("unidades-css"));
+  });
+
+  it("unidades-css viene antes de tipografias y dimensiones", () => {
+    // tipografias usa rem/em; dimensiones usa %, vw y max-width.
+    expect(posicionDe("unidades-css")).toBeLessThan(posicionDe("tipografias"));
+    expect(posicionDe("unidades-css")).toBeLessThan(posicionDe("dimensiones"));
+  });
+
+  it("los selectores avanzados vienen despues de los basicos, y especificidad al final de esa serie", () => {
+    expect(posicionDe("selectores")).toBeLessThan(posicionDe("selectores-descendientes"));
+    expect(posicionDe("selectores-descendientes")).toBeLessThan(posicionDe("especificidad"));
+    expect(posicionDe("pseudo-clases")).toBeLessThan(posicionDe("especificidad"));
+  });
+
+  it("el layout moderno viene despues del box model y las unidades", () => {
+    for (const layout of ["flexbox", "css-grid", "posicionamiento"]) {
+      expect(posicionDe("box-model")).toBeLessThan(posicionDe(layout));
+      expect(posicionDe("unidades-css")).toBeLessThan(posicionDe(layout));
+    }
+  });
+
+  it("media-queries viene despues de flexbox y grid", () => {
+    // Un layout responsive se explica sobre un layout que el alumno ya sabe hacer.
+    expect(posicionDe("flexbox")).toBeLessThan(posicionDe("media-queries"));
+    expect(posicionDe("css-grid")).toBeLessThan(posicionDe("media-queries"));
+  });
+
+  it("los frameworks y el proyecto cierran el track", () => {
+    const ultimo = cssModules.length;
+    expect(posicionDe("proyecto-cv-css")).toBe(ultimo);
+    for (const base of ["flexbox", "css-grid", "media-queries", "variables-css"]) {
+      expect(posicionDe(base)).toBeLessThan(posicionDe("bootstrap-5"));
+      expect(posicionDe(base)).toBeLessThan(posicionDe("tailwind-css"));
+      expect(posicionDe(base)).toBeLessThan(posicionDe("proyecto-cv-css"));
+    }
+  });
+
+  it("los preprocesadores vienen despues de todo el CSS nativo", () => {
+    for (const nativo of ["variables-css", "shadows-gradients-filters"]) {
+      expect(posicionDe(nativo)).toBeLessThan(posicionDe("sass-fundamentos"));
+    }
+    expect(posicionDe("sass-fundamentos")).toBeLessThan(posicionDe("sass-avanzado"));
+  });
+
+  it("DOCUMENTA la deuda: cuantas referencias hacia adelante quedan", () => {
+    // Este test no falla: mide. El curriculum nunca se escribio con un orden de
+    // dependencias estricto, y arreglarlo del todo es editar CONTENIDO, no
+    // reordenar. El reorden resolvio las dos inversiones estructurales; esto
+    // deja el resto medido para que deje de ser invisible.
+    //
+    // El caso dominante es `display: flex`, usado en 6 modulos antes del 15.
+    const ENSENA: Array<[RegExp, string, string]> = [
+      [/\bbox-sizing\b/g, "box-sizing", "box-model"],
+      [/\bpadding\s*:/g, "padding:", "box-model"],
+      [/\bmargin\s*:/g, "margin:", "box-model"],
+      [/\bline-height\s*:/g, "line-height:", "tipografias"],
+      [/\bfont-family\s*:/g, "font-family:", "tipografias"],
+      [/\bmax-width\s*:/g, "max-width:", "dimensiones"],
+      [/display:\s*flex/g, "display:flex", "flexbox"],
+      [/\bjustify-content\s*:/g, "justify-content:", "flexbox"],
+      [/display:\s*grid/g, "display:grid", "css-grid"],
+      [/@media/g, "@media", "media-queries"],
+      [/\btransition\s*:/g, "transition:", "transiciones-animaciones"],
+    ];
+
+    const casos: string[] = [];
+    for (const m of cssModules) {
+      const texto =
+        m.lessons.map((l) => l.content + JSON.stringify(l.codeExample ?? {})).join("\n") +
+        JSON.stringify(m.exercises);
+      for (const [patron, nombre, dondeSeEnsena] of ENSENA) {
+        const destino = posicionDe(dondeSeEnsena);
+        if (m.order >= destino) continue;
+        const n = texto.match(patron)?.length ?? 0;
+        if (n > 0) casos.push(`mod ${m.order} ${m.slug} usa ${nombre} x${n} (se ensena en ${destino})`);
+      }
+    }
+
+    // Umbral, no cero: baja este numero cuando arregles contenido, y nunca lo
+    // subas. Si sube, alguien introdujo una referencia hacia adelante nueva.
+    expect(casos.length).toBeLessThanOrEqual(24);
+  });
+});

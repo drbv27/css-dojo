@@ -5,7 +5,7 @@ export const dimensionesModule: ModuleData = {
   title: "Dimensiones y espaciado",
   description:
     "Controla el tamano de los elementos y el espacio que los rodea con width, height, padding y margin.",
-  order: 5,
+  order: 7,
   dojo: "css" as const,
   category: "intro",
   icon: "Ruler",
@@ -51,17 +51,33 @@ El valor \`auto\` deja que el navegador **calcule la dimension** automaticamente
 - Los elementos **de bloque** (div, p, h1...) tienen \`width: auto\` (ocupan todo el ancho disponible) y \`height: auto\` (se ajustan al contenido)
 - Los elementos **en linea** (span, a, strong...) **ignoran** width y height
 
-### Importante: box-sizing
+### Por que width no siempre mide lo que crees
 
-Por defecto, \`width\` y \`height\` solo definen el tamano del **contenido**, sin incluir padding ni border. Esto cambia con:
+En el modulo anterior viste el box model: contenido, padding, border y margin. Aca es donde eso importa de verdad.
+
+Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el border se suman por fuera. Asi que esto:
 
 \`\`\`css
-* {
-  box-sizing: border-box; /* width/height incluyen padding y border */
+.caja {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid black;
 }
 \`\`\`
 
-> **Buena practica:** Usa \`box-sizing: border-box\` en todos tus proyectos. Hace que el calculo de dimensiones sea mucho mas intuitivo.`,
+...no ocupa 300px. Ocupa **350px**: 300 de contenido + 20 de padding a cada lado + 5 de borde a cada lado. Y el dia que le cambies el padding, el ancho total cambia con el.
+
+### La solucion: box-sizing
+
+\`\`\`css
+* {
+  box-sizing: border-box;
+}
+\`\`\`
+
+Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y el borde se descuentan del contenido en vez de sumarse por fuera. La caja del ejemplo mide 300px, y si le agregas padding el contenido se encoge pero la caja no se mueve.
+
+> **Buena practica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que mas dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
       codeExample: {
         html: `<div class="caja-fija">Caja fija: 300px x 150px</div>\n<div class="caja-porcentaje">Caja flexible: 80% del padre</div>\n<div class="caja-auto">Caja auto: se ajusta al contenido</div>`,
         css: `.caja-fija {\n  width: 300px;\n  height: 150px;\n  background-color: lightblue;\n  margin-bottom: 10px;\n}\n.caja-porcentaje {\n  width: 80%;\n  height: 100px;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n}\n.caja-auto {\n  width: auto;\n  height: auto;\n  background-color: lightgreen;\n  padding: 10px;\n}`,

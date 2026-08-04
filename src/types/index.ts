@@ -20,6 +20,9 @@ export type ModuleCategory =
   | "advanced"
   | "preprocessors"
   | "frameworks"
+  // Cierre de un track. Se renderiza DESPUES de frameworks, porque un proyecto
+  // integrador usa todo lo anterior.
+  | "project"
   | "js-fundamentals"
   | "js-intermediate"
   | "js-advanced"
