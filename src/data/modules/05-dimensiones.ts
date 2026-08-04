@@ -308,17 +308,9 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
       targetCSS:
         ".caja {\n  width: 300px;\n  height: 200px;\n  padding: 20px;\n  margin: 10px;\n  background-color: lightblue;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "width",
-          "300px",
-          "height",
-          "200px",
-          "padding",
-          "20px",
-          "margin",
-          "10px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas 5 propiedades: width, height, padding, margin y background-color.",
       explanation:
@@ -430,19 +422,9 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
       targetCSS:
         ".tarjeta {\n  width: 500px;\n  padding: 30px;\n  margin: 20px auto;\n  border: 1px solid #ccc;\n  border-radius: 8px;\n  background-color: white;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "width",
-          "500px",
-          "padding",
-          "30px",
-          "margin",
-          "auto",
-          "border",
-          "solid",
-          "border-radius",
-          "8px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas: width, padding, margin con auto para centrar, border, border-radius y background-color.",
       explanation:
@@ -465,8 +447,9 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
       targetCSS:
         ".centrado {\n  width: 400px;\n  margin: 0 auto;\n  background-color: lightyellow;\n  padding: 20px;\n}",
       validation: {
-        type: "includes",
-        answer: ["width", "400px", "margin", "auto"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Para centrar un elemento necesitas dos cosas: un ancho definido (width) y margin: 0 auto.",
       explanation:

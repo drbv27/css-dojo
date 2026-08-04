@@ -300,8 +300,9 @@ Selecciona **todos** los elementos. Util para resets:
       },
       targetCSS: "p {\n  color: blue;\n}",
       validation: {
-        type: "includes",
-        answer: ["p", "color", "blue"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas un selector de tipo 'p' y la propiedad 'color' con valor 'blue'.",
       explanation:
@@ -342,8 +343,9 @@ Selecciona **todos** los elementos. Util para resets:
       targetCSS:
         ".activo {\n  color: green;\n}\n\n#titulo {\n  font-size: 20px;\n}",
       validation: {
-        type: "includes",
-        answer: [".activo", "color", "green", "#titulo", "font-size", "20px"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una con selector de clase (.activo) y otra con selector de ID (#titulo).",
       explanation:
@@ -365,8 +367,9 @@ Selecciona **todos** los elementos. Util para resets:
       },
       targetCSS: "h1 {\n  color: red;\n}\n\np {\n  color: blue;\n}",
       validation: {
-        type: "includes",
-        answer: ["h1", "color", "red", "p", "blue"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos selectores de tipo: uno para h1 y otro para p, cada uno con su propiedad color.",
       explanation:

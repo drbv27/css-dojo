@@ -364,14 +364,9 @@ img {
       targetCSS:
         ".caja {\n  padding: 20px;\n  background-color: #e74c3c;\n  color: white;\n}\n\n@media (min-width: 600px) {\n  .caja {\n    background-color: #27ae60;\n  }\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "@media",
-          "min-width",
-          "600px",
-          "background-color",
-          "#27ae60",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Primero escribe los estilos base de .caja, luego una @media con min-width: 600px que cambie el background-color.",
       explanation:
@@ -413,16 +408,9 @@ img {
       targetCSS:
         ".grid-responsivo {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 16px;\n}\n.item {\n  background: #8e44ad;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 8px;\n}\n@media (min-width: 500px) {\n  .grid-responsivo {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n@media (min-width: 800px) {\n  .grid-responsivo {\n    grid-template-columns: repeat(3, 1fr);\n  }\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display: grid",
-          "1fr",
-          "@media",
-          "min-width",
-          "500px",
-          "800px",
-          "repeat",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Empieza con estilos base de 1 columna, luego agrega media queries para 500px (2 columnas) y 800px (3 columnas).",
       explanation:

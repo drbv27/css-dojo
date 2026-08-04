@@ -394,14 +394,9 @@ Los filtros son excelentes para interacciones:
       targetCSS:
         ".glass-container {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  padding: 40px;\n  border-radius: 12px;\n}\n\n.glass-card {\n  background: rgba(255, 255, 255, 0.15);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  padding: 24px;\n  border-radius: 12px;\n  color: white;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "backdrop-filter",
-          "blur",
-          "rgba",
-          "border-radius",
-          "linear-gradient",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "El contenedor necesita un fondo con degradado. El card usa backdrop-filter: blur(10px) y un background semi-transparente con rgba.",
       explanation:
@@ -443,16 +438,9 @@ Los filtros son excelentes para interacciones:
       targetCSS:
         ".tarjeta-visual {\n  background: white;\n  border-radius: 16px;\n  padding: 24px;\n  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n\n.tarjeta-visual:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "box-shadow",
-          "border-radius",
-          "16px",
-          "transition",
-          "transform",
-          "translateY",
-          ":hover",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Define los estilos base con box-shadow sutil y transition, luego en :hover aumenta la sombra y agrega translateY negativo para que 'suba'.",
       explanation:
@@ -475,16 +463,9 @@ Los filtros son excelentes para interacciones:
       targetCSS:
         ".imagen-filtro {\n  width: 200px;\n  height: 150px;\n  background: linear-gradient(135deg, #e74c3c, #3498db, #2ecc71);\n  border-radius: 12px;\n  transition: filter 0.3s ease;\n}\n\n.imagen-filtro:hover {\n  filter: brightness(1.1) saturate(1.3);\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "filter",
-          "brightness",
-          "saturate",
-          "transition",
-          ":hover",
-          "linear-gradient",
-          "border-radius",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Define el elemento con tamano fijo, fondo de degradado y transition para filter. En :hover aplica los dos filtros separados por espacio.",
       explanation:

@@ -638,6 +638,9 @@ Los prefijos se pueden combinar:
         blanks: [],
       },
       targetCSS: "",
+      // NOT css-rules on purpose: this exercise is graded on the
+      // framework CLASSES the student writes in HTML, and its targetCSS is
+      // empty, so parsing CSS would make it unpassable.
       validation: {
         type: "includes",
         answer: [

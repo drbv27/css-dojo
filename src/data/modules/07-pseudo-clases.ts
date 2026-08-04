@@ -371,8 +371,9 @@ p:not(:empty) {
       targetCSS:
         "a:hover {\n  color: tomato;\n}\n\nli:first-child {\n  font-weight: bold;\n}",
       validation: {
-        type: "includes",
-        answer: ["a", ":hover", "color", "tomato", "li", ":first-child", "font-weight", "bold"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una con a:hover para el color del enlace y otra con li:first-child para la negrita del primer item.",
       explanation:
@@ -418,18 +419,9 @@ p:not(:empty) {
       targetCSS:
         ".lista li {\n  padding: 10px;\n}\n\n.lista li:nth-child(even) {\n  background: #f5f5f5;\n}\n\n.lista li:first-child {\n  color: steelblue;\n  font-weight: bold;\n}\n\n.lista li:not(:last-child) {\n  border-bottom: 1px solid #ddd;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "padding",
-          "10px",
-          ":nth-child(even)",
-          "#f5f5f5",
-          ":first-child",
-          "steelblue",
-          "bold",
-          ":not(:last-child)",
-          "border-bottom",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas 4 reglas: padding general, :nth-child(even) para fondo alterno, :first-child para el primero, y :not(:last-child) para los bordes.",
       explanation:

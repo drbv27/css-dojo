@@ -377,8 +377,9 @@ En lugar de usar \`!important\`, puedes:
       },
       targetCSS: "#contenedor .texto {\n  color: steelblue;\n}",
       validation: {
-        type: "includes",
-        answer: ["#contenedor", "color", "steelblue"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Para superar la especificidad de .texto (0,1,0), necesitas un selector con al menos un ID. Usa #contenedor combinado con .texto.",
       explanation:
@@ -433,8 +434,9 @@ En lugar de usar \`!important\`, puedes:
       },
       targetCSS: "#seccion .articulo .texto {\n  color: crimson;\n  font-size: 20px;\n}",
       validation: {
-        type: "includes",
-        answer: ["#seccion", "color", "crimson", "font-size", "20px"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La regla mas fuerte actual tiene especificidad (0,2,0). Para ganarle, usa el ID #seccion combinado con las clases existentes.",
       explanation:

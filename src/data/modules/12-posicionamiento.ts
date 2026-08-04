@@ -382,16 +382,9 @@ Define una escala organizada para tu proyecto:
       targetCSS:
         ".btn-flotante {\n  position: fixed;\n  bottom: 20px;\n  right: 20px;\n  padding: 15px 20px;\n  background-color: tomato;\n  color: white;\n  border: none;\n  border-radius: 50%;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "position",
-          "fixed",
-          "bottom",
-          "20px",
-          "right",
-          "border-radius",
-          "50%",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas position: fixed para que el boton no se mueva con el scroll. Usa bottom y right para posicionarlo en la esquina inferior derecha.",
       explanation:
@@ -452,17 +445,9 @@ Define una escala organizada para tu proyecto:
       targetCSS:
         ".tarjeta {\n  position: relative;\n  width: 300px;\n  height: 180px;\n  background-color: #f0f0f0;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n  padding: 20px;\n}\n.badge {\n  position: absolute;\n  top: -10px;\n  right: -10px;\n  background-color: #e74c3c;\n  color: white;\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  text-align: center;\n  line-height: 28px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "position",
-          "relative",
-          "absolute",
-          "top",
-          "-10px",
-          "right",
-          "border-radius",
-          "50%",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La tarjeta necesita position: relative para ser el contexto de posicionamiento. El badge usa absolute para salirse de la caja y posicionarse en la esquina.",
       explanation:

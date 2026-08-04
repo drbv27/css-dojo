@@ -435,21 +435,9 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       targetCSS:
         ".contenedor {\n  width: 90%;\n  max-width: 800px;\n  margin: 0 auto;\n  padding: 1.5rem;\n}\n\nh1 {\n  font-size: 2rem;\n}\n\np {\n  font-size: 1rem;\n  line-height: 1.6;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "width",
-          "90%",
-          "max-width",
-          "800px",
-          "margin",
-          "auto",
-          "padding",
-          "1.5rem",
-          "font-size",
-          "2rem",
-          "1rem",
-          "line-height",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas tres reglas: .contenedor con ancho relativo y maximo fijo, h1 con fuente grande en rem, y p con fuente base en rem.",
       explanation:
@@ -491,20 +479,9 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       targetCSS:
         ".hero {\n  width: 100%;\n  height: 50vh;\n  background: steelblue;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.hero h1 {\n  font-size: clamp(1.5rem, 4vw, 3rem);\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "100%",
-          "50vh",
-          "steelblue",
-          "white",
-          "display",
-          "flex",
-          "align-items",
-          "center",
-          "justify-content",
-          "clamp",
-          "4vw",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La seccion usa vh para la altura, % para el ancho y flexbox para centrar. El titulo usa clamp() con rem (limites) y vw (valor ideal) para tipografia fluida.",
       explanation:

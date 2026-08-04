@@ -416,8 +416,9 @@ div.card {
       targetCSS:
         "#principal a {\n  color: tomato;\n}\n\n.menu > li {\n  font-weight: bold;\n}",
       validation: {
-        type: "includes",
-        answer: ["#principal", "a", "color", "tomato", ".menu", ">", "li", "font-weight", "bold"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una con selector descendiente (#principal a) y otra con selector hijo directo (.menu > li).",
       explanation:
@@ -475,21 +476,9 @@ div.card {
       targetCSS:
         "nav > a {\n  color: white;\n  background: steelblue;\n  padding: 8px 16px;\n}\n\nnav + p {\n  color: gray;\n  font-style: italic;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "nav",
-          ">",
-          "a",
-          "color",
-          "white",
-          "background",
-          "steelblue",
-          "padding",
-          "+",
-          "p",
-          "gray",
-          "italic",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa nav > a para hijos directos del nav y nav + p para el parrafo inmediatamente despues del nav.",
       explanation:

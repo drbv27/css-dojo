@@ -380,15 +380,9 @@ Valores de \`grid-auto-flow\`:
       targetCSS:
         ".layout {\n  display: grid;\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 150px 150px;\n  gap: 15px;\n}\n.celda {\n  background: #3498db;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display: grid",
-          "grid-template-columns",
-          "200px",
-          "1fr",
-          "gap",
-          "15px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas display: grid, grid-template-columns con 3 valores, grid-template-rows con 2 valores, y gap.",
       explanation:
@@ -449,15 +443,9 @@ Valores de \`grid-auto-flow\`:
       targetCSS:
         ".galeria {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n  grid-auto-rows: 120px;\n  gap: 12px;\n}\n.item {\n  background: #8e44ad;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 8px;\n  font-weight: bold;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display: grid",
-          "auto-fit",
-          "minmax",
-          "150px",
-          "1fr",
-          "gap",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa repeat(auto-fit, minmax(150px, 1fr)) para las columnas y grid-auto-rows para las filas automaticas.",
       explanation:

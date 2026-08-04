@@ -417,16 +417,9 @@ Controla la orientacion de los caracteres en texto vertical:
       targetCSS:
         ".tarjeta {\n  max-inline-size: 400px;\n  margin-inline: auto;\n  padding-inline: 25px;\n  padding-block: 20px;\n  border-inline-start: 4px solid steelblue;\n  background-color: #f0f4f8;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "max-inline-size",
-          "400px",
-          "margin-inline",
-          "auto",
-          "padding-inline",
-          "padding-block",
-          "border-inline-start",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa inline-size en lugar de width, margin-inline en lugar de margin-left/right, padding-inline/padding-block en lugar de padding individual.",
       explanation:

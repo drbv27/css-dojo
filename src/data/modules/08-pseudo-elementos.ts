@@ -426,8 +426,9 @@ Crear triangulos, circulos y otras formas:
       targetCSS:
         ".titulo::after {\n  content: \"\";\n  display: block;\n  width: 80px;\n  height: 3px;\n  background-color: tomato;\n  margin-top: 8px;\n}",
       validation: {
-        type: "includes",
-        answer: ["::after", "content", "display", "block", "width", "80px", "height", "3px", "background-color", "tomato"],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa .titulo::after con content: \"\" (vacio, solo queremos la linea visual). Luego display: block para que ocupe su propia linea, y las dimensiones indicadas.",
       explanation:
@@ -473,19 +474,9 @@ Crear triangulos, circulos y otras formas:
       targetCSS:
         ".editorial {\n  font-size: 16px;\n  line-height: 1.7;\n  color: #555;\n}\n\n.editorial::first-letter {\n  font-size: 2.5em;\n  color: steelblue;\n  font-weight: bold;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "::first-letter",
-          "font-size",
-          "2.5em",
-          "steelblue",
-          "font-weight",
-          "bold",
-          "16px",
-          "line-height",
-          "1.7",
-          "#555",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una para el parrafo (.editorial) con sus estilos base, y otra para .editorial::first-letter con la capitular decorativa.",
       explanation:
