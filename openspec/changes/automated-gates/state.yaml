@@ -1,0 +1,703 @@
+change: automated-gates
+created: 2026-08-03
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 400
+
+relates_to:
+  - change: loader-moderno-dojo
+    relation: blocks
+    reason: >
+      The user chose to establish gates BEFORE implementing the loader, so the
+      loader change can run under strict TDD against its already-written
+      Given/When/Then spec (8 requirements, 15 scenarios). loader-moderno-dojo
+      is planned through tasks and is on hold at apply.
+    collision: >
+      src/components/landing/Landing3D.tsx:32 already fails
+      react-hooks/set-state-in-effect (error). That file is one of the three
+      loader-moderno-dojo modifies, and its design adds more state to the same
+      component. Ownership of this fix must be assigned before either applies.
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/automated-gates/exploration.md
+    engram_topic_key: sdd/automated-gates/explore
+    agent_status_was: partial
+    orchestrator_completed: >
+      The sdd-explore agent had no Bash or Write tool, so it executed nothing and
+      wrote nothing. The orchestrator wrote exploration.md, then verified the
+      agent's claims by execution and CORRECTED TWO of them.
+    orchestrator_verified:
+      - >
+        CORRECTION: eslint-config-next IS installed. The agent reported it
+        "declared but NOT installed". node_modules/eslint-config-next exists,
+        with flat-config subpath exports ./core-web-vitals, ./typescript,
+        ./parser confirmed in its package.json. There is NO npm install
+        prerequisite.
+      - >
+        CORRECTION: `npm run build` WORKS — executed, exit 0, full route
+        manifest, no MONGODB_URI required. The agent could only infer this.
+      - >
+        `npx tsc --noEmit` WORKS and currently passes CLEAN (exit 0). tsconfig
+        already has strict and noEmit. A typecheck gate is one package.json line
+        away and passes today.
+      - >
+        Lint backlog MEASURED by writing the flat config temporarily, running
+        `npx eslint . -f json`, then deleting it (repo left unchanged):
+        46 errors, 21 warnings, 41 of 243 files, only 3 auto-fixable.
+        35 of the 46 errors are @typescript-eslint/no-explicit-any.
+        8 are react-hooks/set-state-in-effect, the one non-stylistic group.
+      - >
+        src/components/landing/ is lint-clean EXCEPT Landing3D.tsx:32
+        (set-state-in-effect, error) and Personaje.tsx:49/57
+        (preserve-manual-memoization error, exhaustive-deps warn).
+        Loader.tsx itself is clean.
+      - >
+        Scenario classification independently refined by the agent and accepted:
+        13 of 15 landing-loader scenarios are jsdom-testable (10 plain, 2 needing
+        a getContext stub plus an Escena module mock, 1 with a framer-motion
+        timing caveat), 1 is E2E-only (the real .glb 404 through a real Canvas),
+        and 1 is not a runtime test at all (out-of-scope-files-untouched is a
+        git diff check).
+  propose:
+    status: done
+    artifact: openspec/changes/automated-gates/proposal.md
+    engram_topic_key: sdd/automated-gates/proposal
+    recommendation: >
+      TWO stacked PRs to main. Slice 1 "gate on, errors cleared": eslint flat
+      config, typecheck script, no-explicit-any downgraded to warn, all 8
+      set-state-in-effect fixes, plus the trivial errors (95-145 lines).
+      Slice 2 "test tiers": Vitest infra, xp.ts suite, Playwright infra, one
+      green smoke E2E (170-240 lines). Rationale: the aggregate 266-381 lines
+      leaves as little as 19 lines of headroom, and more importantly it mixes
+      uncovered behavioural refactors of live components with purely additive
+      tooling. chained-pr's gate is review focus, not raw size.
+    orchestrator_verified:
+      - >
+        ARITHMETIC GAP CONFIRMED. 46 errors = 35 no-explicit-any + 8
+        set-state-in-effect + 1 prefer-const + 2 preserve-manual-memoization.
+        The four user decisions covered 44. The 2 preserve-manual-memoization
+        errors were unassigned, so "lint exits 0" was not achievable as decided.
+        Locations: src/app/(app)/modulos/[slug]/ejercicio/[exerciseId]/page.tsx:49
+        and src/components/landing/Personaje.tsx:49. The prefer-const is at
+        src/components/editor/CodeBlock.tsx:100.
+      - >
+        NO CI AND NO HOOK MANAGER CONFIRMED. No .github/, .husky/,
+        .gitlab-ci.yml, .circleci/, or .pre-commit-config.yaml. The only YAML
+        files in the repo are the openspec artifacts created in this session.
+        Consequence: any gate scripts this change adds are runnable but never
+        enforced automatically.
+      - >
+        Playwright cannot ship a green test for landing-loader scenario 4.2 in
+        this change — the error state it asserts does not exist until
+        loader-moderno-dojo is implemented, and user decision 2 puts loader
+        tests RED-first in that change's own apply. Accepted reconciliation:
+        runner plus one green landing smoke test here; 4.2's spec authored
+        during the loader's apply. Decision 4 is honoured, nothing dropped.
+    user_decisions:
+      lint_backlog_scope: gate-plus-hooks-errors
+      lint_backlog_detail: >
+        Turn the gate on, FIX all 8 react-hooks/set-state-in-effect errors
+        (cascading-render risk, the one non-stylistic group), and downgrade
+        @typescript-eslint/no-explicit-any to warning with a follow-up issue for
+        the 35 occurrences. Do not type 35 anys in this change.
+      loader_test_sequencing: option-a-red-first-in-loader-change
+      loader_test_detail: >
+        This change ships infra plus tests for existing pure logic (src/lib/xp.ts).
+        The 13 jsdom-testable landing-loader tests are written RED-first during
+        loader-moderno-dojo's own apply, against its already-written spec. Keeps
+        main green and keeps strict TDD honest.
+      landing3d_collision_owner: automated-gates
+      landing3d_collision_detail: >
+        This change fixes Landing3D.tsx:32 alongside the other 7 of its family,
+        before loader-moderno-dojo touches the file. The loader change then
+        starts from a lint-clean base and does not mix hooks-debt repair with a
+        loader redesign.
+      e2e_tier: playwright-now
+      e2e_detail: >
+        User chose to add Playwright in THIS change, against the orchestrator's
+        recommendation to defer. The orchestrator's stated concern — it formally
+        covers 1 of 15 scenarios at the cost of browser binaries, CI time, and a
+        second runner to maintain — was communicated and the user reaffirmed.
+        Proceed with the full request.
+    orchestrator_decisions:
+      - >
+        ExerciseRenderer validation extraction is OUT of this change. It is a
+        refactor of a live component and is not needed to prove the harness —
+        src/lib/xp.ts does that with pure functions and zero coupling.
+    size_warning: >
+      With Playwright included, rough estimate is 250-350 changed lines against
+      the 400-line budget — close to the ceiling. Under delivery_strategy
+      ask-on-risk the proposal MUST assess explicitly whether this warrants two
+      slices, and the tasks phase must produce a Review Workload Forecast that
+      the orchestrator checks before apply.
+  spec:
+    status: done
+    artifacts:
+      - openspec/changes/automated-gates/specs/automated-verification-gates/spec.md
+      - openspec/changes/automated-gates/specs/xp-progression/spec.md
+    engram_topic_key: sdd/automated-gates/spec
+    summary: >
+      automated-verification-gates: 7 requirements, 15 scenarios.
+      xp-progression: 4 requirements, 13 scenarios. Total 11 / 28.
+  design:
+    status: done
+    artifact: openspec/changes/automated-gates/design.md
+    engram_topic_key: sdd/automated-gates/design
+    summary: >
+      Slice 1: AST-only ESLint flat config (core-web-vitals + typescript + one
+      no-explicit-any -> warn override); all 11 errors cleared by deriving state
+      during render, moving writes to the causing event, or reading the browser
+      via useSyncExternalStore. Slice 2: Vitest+jsdom with the xp.ts suite,
+      chromium-only Playwright with one hydration-proving landing smoke test,
+      and one sequential GitHub Actions job.
+    revised_estimates:
+      slice_1_lines: 175-195
+      slice_1_supersedes: "proposal forecast of 95-145"
+      slice_1_driver: GameEngine.tsx
+      slice_2_lines: 190-220
+      budget_risk: low
+      note: Neither slice breaches 400 on its own; the un-split aggregate would have.
+    orchestrator_verified:
+      - >
+        CONFIRMED BUG in src/lib/xp.ts:49. `const normalized = score > 1 ?
+        score / 100 : score` — a raw score of 1 is NOT > 1, so it normalizes to
+        1.0 and is clamped to full XP. The comment on line 48 says "score comes
+        as 0-100 from exercises", meaning score=1 represents 1% and should award
+        almost nothing. It awards 100%. The function tries to accept both 0-100
+        and 0-1 ranges and the ambiguity bites exactly at 1. Found by sdd-spec,
+        independently confirmed by the orchestrator.
+      - >
+        DESIGN'S RESIDUAL GAMEENGINE RISK CLOSED — does not materialize. The
+        design flagged that if any level's initialCSS already satisfied its own
+        validateFn, deriving `solved` during render would show it solved but
+        never record completion. Checked all 50 levels across
+        src/data/games/flexbox-levels.ts and grid-levels.ts: 31 have an empty
+        initialCSS and the 18 non-empty ones (flexbox ids 17,18,19,20,22,24;
+        grid ids 11,13,14,15,16,18,19,20,22,23,24) each still require at least
+        one unsatisfied token. NONE starts pre-solved. Caveat: this used a
+        whitespace-normalized substring containment check, not a replication of
+        GameEngine's real validator — strong evidence, not formal proof.
+      - >
+        The design verified `react-hooks/set-state-in-effect` scans ONLY the
+        effect function's own basic blocks
+        (eslint-plugin-react-hooks/cjs/...production.js:50667-50789), which is
+        why GameEngine.tsx:96's setTimeout(() => setShowSuccess(true)) was never
+        flagged. This is the load-bearing fact behind all 8 hooks fixes and was
+        read from installed source, not assumed.
+    accepted_behaviour_deltas:
+      - >
+        Landing3D: the WebGL/media probe becomes cached per page load, so
+        crossing the 767px breakpoint and client-navigating back to / keeps the
+        earlier decision until a reload. Today it re-probes per mount. Accepted
+        as a minor, acceptable delta.
+      - >
+        Leaderboard: a failed refetch now shows the empty state instead of the
+        previous filter's rows. Accepted.
+    user_decisions_round_2:
+      nueva_contrasena_behaviour_change: accepted
+      nueva_contrasena_detail: >
+        User granted the explicit exception to the behaviour-preservation
+        requirement. The offline retry loop against the OTP endpoint is a bug
+        with abuse-surface smell, not behaviour worth preserving. Event-driven
+        verification replaces it; users must edit a digit to retry. MUST be
+        documented in the PR body, not only in the diff, and the full reset flow
+        MUST be exercised end to end before slice 1 merges.
+      calculate_xp: delete
+      calculate_xp_detail: >
+        REVISED after new evidence. The user first chose "fix it in slice 2",
+        then the orchestrator verified that `calculateXP` has ZERO callers
+        anywhere in src/ — the real XP award path is
+        src/app/api/progress/route.ts using `exercise?.xpReward ?? 10` and never
+        touches it. The score=1 bug is latent and never fires. Presented with
+        that, the user chose DELETE. One line of diff, removes the bug without
+        argument, and avoids testing dead code.
+      mobilenav_getrank: include-fix
+      mobilenav_detail: >
+        Investigated at the user's request, then approved. MobileNav.tsx:69 is
+        `const rank = getRank(0)` with a hardcoded zero, and that rank IS
+        consumed at line 179. `user` is already in scope at line 66 and used at
+        line 68. MobileMenu.tsx:72 does it correctly as
+        `getRank(user?.xp ?? 0)`, consumed at 193-196. So every mobile user sees
+        the 0-XP rank in the nav drawer while the menu shows the correct one —
+        a real user-visible bug. Fix is one line with an exact sibling
+        precedent, in a file slice 1 already modifies for the
+        set-state-in-effect fix at line 73.
+    spec_drift_to_resolve: >
+      specs/xp-progression/spec.md currently contains a calculateXP requirement
+      with scenarios describing the score=1 behaviour. Deleting calculateXP makes
+      that requirement wrong. The tasks phase MUST include an explicit task to
+      update that spec — replace the calculateXP requirement with a removal
+      requirement — so verify does not fail on artifact inconsistency. Test
+      coverage concentrates on getRank, getNextRank, and getXPProgress, which are
+      imported across 9 files (dashboard, perfil, leaderboard, Sidebar,
+      SidebarXP, MobileNav, MobileMenu, teacher pages).
+    downstream_coupling: >
+      CORRECTED. loader-moderno-dojo's design.md cites Landing3D.tsx
+      "lines 27-35" and `onOmitirEscena={() => setModo("estatica")}`. An earlier
+      version of this note said the escape "becomes setOmitirEscena(true) — one
+      token". THAT IS WRONG and was written before the speculative state was
+      removed. There is NO escape-hatch state in the shipped Landing3D.tsx —
+      `modo` is a plain ternary over `capaz3D`, and `omitirEscena` has zero
+      occurrences in src/. loader-moderno-dojo must ADD its own state and fold
+      it into that derivation. Line citations also shifted. That change's apply
+      MUST rebase on merged slice 1 and re-read the file.
+
+followup_decisions:
+  orphan_memoization_errors: fix
+  orphan_memoization_detail: >
+    User chose to FIX both react-hooks/preserve-manual-memoization errors
+    (~10 lines) rather than downgrade them, so `npm run lint` reaches 0 errors
+    and the gate actually blocks. Locations:
+    src/app/(app)/modulos/[slug]/ejercicio/[exerciseId]/page.tsx:49 and
+    src/components/landing/Personaje.tsx:49. The latter is in the landing
+    directory, consistent with this change already owning Landing3D.tsx:32.
+    Net effect: all 46 errors resolved — 35 downgraded to warn, 11 fixed
+    (8 set-state-in-effect + 1 prefer-const + 2 preserve-manual-memoization).
+  enforcement: github-actions-in-slice-2
+  enforcement_detail: >
+    User chose a minimal GitHub Actions workflow in slice 2 running typecheck,
+    lint, build, and test on push and PR (~30 lines of YAML). Remote confirmed
+    as GitHub (git@github.com-personal:drbv27/css-dojo.git). Rejected: a
+    pre-commit hook (skippable with --no-verify, adds a dependency, does not
+    protect other people's PRs) and doing both.
+  slice_size_note: >
+    GitHub Actions pushes slice 2 to roughly 200-270 lines. Aggregate across
+    both slices is now roughly 300-415, which is exactly why the two-slice split
+    is correct — each slice stays comfortably inside the 400-line budget on its
+    own.
+  security_flag: >
+    One of the 8 set-state-in-effect fixes is at
+    src/app/(auth)/nueva-contrasena/page.tsx:29 — the password-reset page. It is
+    presentation state, not credential handling, but it sits on a
+    security-relevant flow with no test coverage. The reset flow MUST be
+    exercised end to end manually before slice 1 merges.
+  tasks:
+    status: done
+    artifact: openspec/changes/automated-gates/tasks.md
+    engram_topic_key: sdd/automated-gates/tasks
+    summary: >
+      3 phases, 51 checkbox tasks. Slice 1 splits into three commits:
+      chore(lint) trivial cleanup, fix(hooks) for 5 low-risk components plus the
+      2 memoization fixes, and refactor(games) isolating GameEngine.tsx alone.
+      Slice 2 covers test infra, the xp.ts suite, the calculateXP deletion, the
+      mandatory spec-drift correction, Playwright, and GitHub Actions.
+      Phase 3 is the loader-moderno-dojo handoff.
+    review_workload_forecast:
+      slice_1:
+        estimated_changed_lines: 175-197
+        chained_prs_recommended: true
+        budget_risk: low
+        decision_needed_before_apply: false
+        driver: GameEngine.tsx
+      slice_2:
+        estimated_changed_lines: 190-220
+        chained_prs_recommended: true
+        budget_risk: low
+        decision_needed_before_apply: false
+        note: already excludes the dropped calculateXP tests, includes ~30 lines of CI YAML
+    guard_outcome: >
+      Review Workload Guard: both slices report budget risk Low and
+      "Decision needed before apply: No". Chained PRs ARE recommended, but the
+      two-slice split is the already-agreed plan rather than a surprise, so
+      under ask-on-risk there is no size decision left to make. The one item the
+      workflow still requires is explicit collection of chain_strategy.
+    orchestrator_verified:
+      - >
+        Task count is 51 checkboxes, not the 71 the sdd-tasks agent reported.
+        Corrected here.
+      - >
+        GameEngine.tsx is correctly isolated at 1.4 as its own sequential,
+        separately revertable commit with a 9-step manual QA script, and
+        explicitly not parallelized with 1.3.
+      - >
+        The mandatory spec-drift task exists at 2.4, is marked MANDATORY,
+        depends on 2.3 (the calculateXP deletion), and requires landing in the
+        same PR. This is the item that would otherwise fail sdd-verify.
+      - >
+        Both per-slice forecasts carry all four fields the orchestrator routes
+        on. An "Explicit Non-Tasks" section and a traceability summary are
+        present.
+    open_risks_from_tasks:
+      - >
+        Playwright browser install (task 2.5.4) needs network and was never
+        attempted. The task correctly instructs stopping and recording failure
+        rather than silently dropping the E2E gate.
+      - >
+        Task 3.1 (loader handoff) has no automated verification. Its "MUST
+        rebase on merged slice 1" instruction depends on the orchestrator
+        surfacing it when loader-moderno-dojo's apply resumes. Recorded in
+        downstream_coupling above so it is not lost.
+  apply:
+    status: partial
+    slice: 1
+    branch: feat/automated-gates-slice-1
+    branched_from: main@fa9e07d
+    engram_topic_key: sdd/automated-gates/apply-progress
+    commits:
+      - sha: 862ae42
+        subject: "chore(lint): repair the ESLint gate with a flat config"
+      - sha: 55f267f
+        subject: "fix(hooks): stop writing setState synchronously inside effects"
+        note: amended by the orchestrator to drop speculative dead state
+      - sha: 3bd4cec
+        subject: "refactor(games): derive GameEngine state instead of writing it from effects"
+        note: recreated by the orchestrator with a corrected message
+    changed_lines: 299
+    changed_lines_note: >
+      +189/-110. Down from 309 after the dead-state removal. Over the 175-197
+      forecast (nueva-contrasena at 61 lines and leaderboard at 25 were larger
+      rewrites than estimated) but well under the 400-line review budget.
+    gates_verified_by_orchestrator:
+      typecheck: "exit 0"
+      lint: "exit 0 — 50 problems, 0 errors, 50 warnings"
+      build: "exit 0"
+      note: >
+        Re-run independently by the orchestrator after the history rewrite, not
+        taken from the apply agent's report.
+    integrity_checks:
+      hooks_genuinely_fixed: >
+        VERIFIED NOT SILENCED. 0 findings for react-hooks/set-state-in-effect and
+        0 for react-hooks/preserve-manual-memoization, with NEITHER rule relaxed
+        in eslint.config.mjs (it downgrades only @typescript-eslint/no-explicit-any)
+        and NO eslint-disable comment added anywhere in the slice diff. All 10
+        errors were really fixed.
+      bonus: "react-hooks/exhaustive-deps dropped from 4 warnings to 1."
+      no_ai_attribution: "verified over the whole range"
+      no_planning_artifacts_committed: >
+        openspec/, .atl/, .claude/, .gitattributes all still untracked.
+      crlf: >
+        Landing3D.tsx and other landing files carry CRLF in the working tree, but
+        this is PRE-EXISTING (files the change never touched have it too) and
+        .gitattributes `* text=auto eol=lf` normalizes on commit — stored blobs
+        are LF. Not introduced by this change, not leaking into history.
+    orchestrator_corrections:
+      - >
+        REMOVED speculative dead state from Landing3D.tsx. The apply agent added
+        `const [omitirEscena, setOmitirEscena] = useState(false)` with
+        setOmitirEscena never called, reserved for loader-moderno-dojo. That left
+        an unreachable branch and was the only NEW lint warning in the very
+        change meant to establish a clean gate. Removed, along with the now-unused
+        useState import. The useSyncExternalStore refactor — the actual fix — was
+        kept intact. loader-moderno-dojo adds those lines when it consumes them.
+      - >
+        CORRECTED a FALSE CLAIM in the GameEngine commit message. It stated the
+        refactor came "with a single compensating rule downgrade
+        (react-hooks/set-state-in-effect -> 'warn')". No such downgrade exists in
+        eslint.config.mjs. Left uncorrected, a future reader would go looking for
+        it and might conclude the errors were silenced rather than fixed. The
+        message now states explicitly that no rule compensates and cites the
+        verification.
+    runtime_ledger:
+      state: blocked
+      reason: maintainer_decision
+      settled_outcome: interrupted
+      why: >
+        The declared evidence goal included full manual QA. The automated portion
+        passed but manual QA needs a human with a browser, so settling as `passed`
+        would have been a false claim. Actual 299-309 changed lines also exceeded
+        the declared max_changed_lines of 197.
+      user_decision: >
+        User chose to run the manual QA FIRST and resettle with real evidence,
+        rather than reset the ledger to move on. Per the workflow, blocked means
+        stop: slice 2 does NOT start until this resolves.
+    qa:
+      status: passed
+      method: >
+        Browser-automated with the Playwright MCP server by the orchestrator.
+        An earlier claim that no browser was available was WRONG and the user
+        correctly pushed back — Playwright was available the whole time.
+      environment: >
+        ISOLATED. A throwaway `mongo:7` container (css-dojo-qa-mongo) on port
+        27019 with database `cssdojo-qa`, and the dev server launched with a
+        `MONGODB_URI` process-env override so `.env.local` was never modified.
+        Verified the override won by confirming the created user landed in the
+        container (1 user) and not in production. Container, dev server, and
+        browser processes all torn down afterwards.
+      password_reset_retry_loop:
+        result: PASSED with a positive control
+        new_code: >
+          Stubbed window.fetch to reject /api/auth/verify-otp, typed 6 digits
+          via real keystrokes: exactly 1 request in 10 seconds, "Error de
+          conexion" shown, digits retained. Editing one digit produced exactly
+          1 more request (1 -> 2). One attempt per user action, as designed.
+        positive_control: >
+          Restored main's version of the file and repeated the IDENTICAL
+          procedure. The page WEDGED: Playwright could not complete the 6th
+          fill because the input stopped being editable, and a follow-up
+          browser_evaluate hung for 120s and had to be killed. That is the
+          unbounded loop observed live. Root cause confirmed by reading the
+          original effect: `verifying` was in its dependency array, so
+          `.finally(() => setVerifying(false))` re-triggered the effect while
+          the code stayed full, refetching without bound.
+        methodology_note: >
+          A FIRST positive-control attempt used synthetic dispatched events
+          instead of real keystrokes and wrongly showed 1 request. That flaw
+          was caught and the control was redone with the identical input method
+          as the treatment. The reported result is from the corrected run.
+        production_safety: >
+          Zero writes. The stub intercepted fetch so no request reached the
+          server; confirmed 0 verify-otp hits in the dev server log.
+      gameengine:
+        result: PASSED
+        strict_mode_note: >
+          Run in dev mode, where React Strict Mode double-invokes effects and
+          updater functions — the harshest environment for the double-POST risk
+          this refactor was designed to survive.
+        single_post: >
+          Solving flexbox level 1 fired EXACTLY 1 POST /api/progress with the
+          correct body (moduleId flexbox-dojo, exerciseId flexbox-dojo-level-1,
+          exerciseType live-editor, difficulty 1, score 100). Progress bar moved
+          to 4%, localStorage flexbox-dojo-completed = [1], DB got 1 record,
+          user xp 0 -> 10.
+        no_stale_closure: >
+          Solved levels 2 and 3 in ONE page session without reloading. Each
+          fired exactly 1 POST with its OWN correct exerciseId
+          (flexbox-dojo-level-2, then flexbox-dojo-level-3). No stale closure,
+          no duplicates. 13%, localStorage [1,2,3].
+        resume_after_reload: >
+          Reload resumed at "Nivel 2 de 24" with 4% and localStorage [1],
+          consistent with the stepper.
+        non_empty_initialcss: >
+          RESIDUAL RISK EMPIRICALLY CLOSED. Seeded grid levels 1-10 as complete
+          and reloaded to reach grid level 11, whose initialCSS is
+          "grid-template-columns: 1fr;". The editor came pre-filled with that
+          value and the level did NOT render as already solved. Solving it fired
+          exactly 1 POST (grid-dojo-level-11), 46%, localStorage updated. The
+          static analysis done earlier was correct.
+        idempotence: >
+          Navigated back to already-completed flexbox level 1 and re-entered the
+          solution: ZERO additional POSTs. The completedLevels guard holds and
+          progress stayed at 13%.
+        final_db_state: >
+          Exactly 4 progress records for 4 solved levels, user xp 40. No
+          duplicates.
+      landing3d:
+        result: PASSED
+        detail: >
+          /landing-preview rendered the 3D canvas (1225x1260) with no stuck
+          loading screen, so the useSyncExternalStore refactor resolves to "3d"
+          correctly. ZERO hydration-mismatch warnings and zero React errors in
+          the console across the whole session — the one error observed was an
+          expected 401 on /api/auth/me from before logging in.
+      mobilenav_getrank:
+        result: PASSED
+        detail: >
+          The sidebar showed "Cinturon Blanco" for the 0-XP test user, and XP
+          updated after solving levels — the getRank(user?.xp ?? 0) fix works.
+      not_covered:
+        - Reduced-motion path (prefers-reduced-motion emulation not available in this tool set).
+        - Visual fidelity of the ring/board rendering — automation confirms DOM and network, not pixels.
+        - Exercise pages, playground, teacher panel, CodeBlock highlighting, leaderboard offline empty-state.
+    not_done:
+      - No push, no PR opened (deliberately out of scope).
+      - PR body must restate the nueva-contrasena retry-loop behaviour change.
+      - >
+        RUNTIME LEDGER STILL BLOCKED. Attempt 1 recorded outcome `interrupted`
+        with 390 changed lines by the ledger's count. Both a fresh `acquire` and
+        a re-`settle` return state `blocked`, reason `maintainer_decision`.
+        Per the workflow, `reset` requires an explicit maintainer scope decision
+        and is NEVER automatic, so the orchestrator did not run it. Slice 2 does
+        not start through the native flow until the user decides.
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+next_recommended: archive
+
+verify:
+  status: done
+  artifact: openspec/changes/automated-gates/verify-report.md
+  engram_topic_key: sdd/automated-gates/verify-report
+  agent_verdict: partial — 4 CRITICAL findings
+  all_four_resolved: true
+  history_rewritten: >
+    Slice 1 was rewritten to correct one commit message (content byte-identical,
+    verified by an empty `git diff 3bd4cec f78633b`), then slice 2 was rebased
+    onto it cleanly (4/4). Nothing was ever pushed, so the rewrite is local-only.
+  final_commits:
+    slice_1:
+      - 862ae42 chore(lint)
+      - ced7b14 fix(hooks)
+      - f78633b refactor(games)
+    slice_2:
+      - f943cc9 test(vitest)
+      - 2743c23 test(xp)
+      - 368811d test(e2e)
+      - 2031785 ci
+  findings_resolution:
+    - finding: >
+        CRITICAL 1 — R6 scenario "Leaderboard filter still refreshes rankings"
+        had zero coverage of any kind.
+      resolution: >
+        CLOSED by browser automation against the isolated database. Clicking the
+        CSS filter fired exactly 1 GET /api/leaderboard?dojo=css. Three rapid
+        successive clicks (JS -> React -> HTML) fired only ONE request, for the
+        LAST filter, and the view settled on "Sin actividad en HTML" — no race,
+        no stale rows, no hanging skeleton. Additionally verified the accepted
+        behaviour delta: with fetch stubbed to reject, switching to CSS showed
+        the empty state ("Sin actividad en CSS") rather than the previous
+        filter's rows, with no hanging skeleton.
+    - finding: >
+        CRITICAL 2 — R6 scenario "Mobile drawers still auto-close on navigation"
+        had zero coverage.
+      resolution: >
+        CLOSED by browser automation at a 390x844 viewport. Opening the drawer
+        set document.body.style.overflow = "hidden" (scroll lock engaged).
+        Navigating via a drawer nav link to /leaderboard cleared it to "" and
+        moved the panel off-canvas (close button measured at x = -57, outside the
+        viewport). Note: a DOM-presence check is the WRONG test here — the panel
+        stays mounted and slides out — position plus the overflow flag are the
+        correct signals.
+    - finding: >
+        CRITICAL 3 — task 3.1 and design.md instructed loader-moderno-dojo to
+        wire `setOmitirEscena(true)`, which does not exist in the shipped code.
+      resolution: >
+        CLOSED. This inconsistency was created by the orchestrator's own removal
+        of the speculative state. Corrected in design.md (with an explicit
+        correction note), tasks.md task 3.1, tasks.md task 1.5.3 (which claimed a
+        now-nonexistent lint warning), and state.yaml's downstream_coupling.
+        All four now state plainly that NO escape-hatch state exists and that
+        loader-moderno-dojo must add its own.
+    - finding: >
+        CRITICAL 4 — commit 55f267f's message claimed it "Adds an `omitirEscena`
+        state", but the content had been amended to remove it.
+      resolution: >
+        CLOSED. Exactly the defect class the orchestrator had criticised in the
+        GameEngine commit, committed by the orchestrator itself. Fixed by
+        rewriting slice 1's history: the message now reads "No escape-hatch state
+        is added here: `modo` is a plain ternary over `capaz3D`." Content
+        unchanged — trees verified identical.
+  gates_after_rewrite:
+    typecheck: "exit 0"
+    lint: "exit 0 — 50 problems, 0 errors, 50 warnings"
+    unit_tests: "exit 0 — 18/18"
+    note: Re-run by the orchestrator after the history rewrite and rebase.
+  remaining_open:
+    - >
+      RESOLVED — both branches pushed and both PRs opened.
+      PR #1: feat/automated-gates-slice-1 -> main
+      (https://github.com/drbv27/css-dojo/pull/1).
+      PR #2: feat/automated-gates-slice-2 -> feat/automated-gates-slice-1, stacked
+      (https://github.com/drbv27/css-dojo/pull/2). PR #2 must be retargeted to
+      main once #1 merges.
+    - >
+      RESOLVED — Task 2.7.5. The CI workflow EXECUTED on a real runner and
+      PASSED: run 30919993306, job `verify`, conclusion success in 1m38s. Every
+      step succeeded individually: checkout@v7, setup-node@v7, npm ci, typecheck,
+      lint, build, test:run, `npx playwright install --with-deps chromium`, and
+      test:e2e. The 50 lint warnings surface as GitHub annotations, as expected.
+    - >
+      RESOLVED — `npx playwright install --with-deps chromium` DID work on
+      ubuntu-latest. This was the step flagged as most likely to fail because it
+      needs root and the local environment had no interactive sudo. Confirmed
+      success on the real runner.
+    - >
+      NOTE on Actions triggering: PR #1 reports NO checks, which is correct but
+      NOT for the reason the orchestrator first gave. The wrong explanation was
+      "the workflow must exist in the base branch". For same-repo `pull_request`
+      events GitHub uses the workflow from the HEAD branch, which is exactly why
+      #2 (whose head contains ci.yml) ran it and #1 (whose head does not) did
+      not. Once #1 merges, main will carry the workflow and subsequent PRs to
+      main will all run it.
+    - >
+      gh auth was the blocker for PR creation, not SSH. Two SSH hosts exist and
+      both work (github.com-personal -> drbv27, github.com-trabajo ->
+      diegobonilla-dev), which is why `git push` succeeded. But `gh pr create`
+      uses the REST/GraphQL API with an OAuth token, and only diegobonilla-dev
+      was logged in with READ permission. The user added drbv27 to gh (now ADMIN)
+      and both PRs were created.
+    - >
+      Still uncovered: reduced-motion emulation, pixel-level visual fidelity,
+      exercise pages, playground, teacher panel, CodeBlock highlighting.
+    - >
+      35 @typescript-eslint/no-explicit-any remain as warnings by explicit user
+      decision, with a follow-up recorded.
+
+apply_slice_2:
+  status: done
+  branch: feat/automated-gates-slice-2
+  stacked_on: feat/automated-gates-slice-1@3bd4cec
+  ledger: >
+    Reset authorized explicitly by the user after slice 1 QA passed, then a new
+    attempt acquired successfully (state `proceed`). Attempt 1's `interrupted`
+    record is preserved in the ledger history as an audit trail.
+  commits:
+    - sha: e794de7
+      subject: "test(vitest): add unit test infrastructure"
+    - sha: f1897c5
+      subject: "test(xp): add unit suite for xp.ts and remove dead calculateXP"
+    - sha: 9d8b04a
+      subject: "test(e2e): add Playwright config and landing smoke test"
+    - sha: 193baad
+      subject: "ci: add GitHub Actions workflow for typecheck, lint, build, and tests"
+  changed_lines:
+    authored: 163
+    detail: "+153/-10 excluding the generated package-lock.json"
+    forecast: 190-220
+    verdict: under budget
+  gates_verified_by_orchestrator:
+    typecheck: "exit 0"
+    lint: "exit 0 — 50 problems, 0 errors, 50 warnings (baseline unchanged)"
+    build: "exit 0"
+    unit_tests: "exit 0 — 18/18 passed in src/lib/xp.test.ts"
+    e2e: "exit 0 — 1/1 passed"
+    note: All five re-run independently, not taken from the apply agent's report.
+  integrity_checks:
+    calculatexp_deleted: "confirmed — zero occurrences of calculateXP anywhere in src/"
+    spec_drift_corrected: >
+      confirmed — specs/xp-progression/spec.md now carries a REMOVED Requirements
+      section for calculateXP with a stated reason, landed in the same commit as
+      the deletion (f1897c5).
+    no_ai_attribution: "verified over the slice 2 range"
+    no_planning_artifacts_committed: "verified — openspec/, .atl/, .claude/ still untracked"
+    gitignore: "correctly adds /test-results/, /playwright-report/, /blob-report/, /playwright/.cache/"
+  production_safety: >
+    The e2e smoke test targets /landing-preview, which renders Landing3D with
+    hasSession hardcoded false, reads no cookie, and has no write path. The apply
+    agent additionally confirmed mongodb-client.ts (which connects at import
+    time) has zero importers in src/. No writes reached the production Atlas
+    cluster.
+  orchestrator_findings:
+    - >
+      CI action versions are OUTDATED but functional: the workflow pins
+      actions/checkout@v5 and actions/setup-node@v5, while current releases are
+      v7.0.1 and v7.0.0. Two majors behind. Not a blocker — v5 still resolves —
+      but worth bumping.
+    - >
+      NODE VERSION MISMATCH: the workflow pins node-version 22 while local
+      development runs v24.18.0, and package.json has no `engines` field. A gate
+      validating against a different Node major than the developer uses is not a
+      faithful gate. One-line fix.
+    - >
+      `npx playwright install --with-deps chromium` FAILED locally (no
+      interactive sudo); the fallback `npx playwright install chromium` succeeded
+      and the test passed, rendering real "3d" mode. CI uses ubuntu-latest with
+      root so --with-deps is expected to work there, but that is UNVERIFIED
+      against the real runner.
+  not_done:
+    - No push, no PR opened (deliberately out of scope).
+    - >
+      Task 2.7.5 — open a PR and observe the Actions run end to end. The CI
+      workflow has NEVER actually executed. All gates pass locally.
+    - PR body must restate the nueva-contrasena retry-loop behaviour change (slice 1).
+
+notes:
+  - >
+    Verified gate inventory as of 2026-08-03: `npm run build` WORKS,
+    `npx tsc --noEmit` WORKS and passes clean, `npm run lint` is BROKEN
+    (next lint removed in Next.js 16.2.1) with no eslint config file present.
+  - >
+    Official sources for this change: Next.js 16 docs on the next-lint removal
+    and flat config, and the official Next.js Vitest guide. Vitest does not
+    support async Server Components — irrelevant here, Loader.tsx is a
+    synchronous Client Component.
+  - >
+    Working tree was clean at HEAD fa9e07d before this change. Untracked:
+    .atl/, .claude/, .gitattributes, openspec/.
