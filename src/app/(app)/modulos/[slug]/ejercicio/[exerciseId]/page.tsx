@@ -45,6 +45,13 @@ export default function ExercisePage({
   const nextExercise = exerciseIdx < exercises.length - 1 ? exercises[exerciseIdx + 1] : null;
   const prevExercise = exerciseIdx > 0 ? exercises[exerciseIdx - 1] : null;
 
+  // Hoisted as primitives so the callback's dependency array stays exhaustive
+  // (and the compiler can preserve the memo): closing over `exercise?.type`
+  // directly while declaring only [slug, exerciseId, refreshUser] read a stale
+  // value across an exercise-to-exercise navigation without a reload.
+  const tipo = exercise?.type;
+  const dificultad = exercise?.difficulty;
+
   const handleComplete = useCallback(
     async (result: { correct: boolean; score: number; xpEarned: number; userAnswer: any }) => {
       setCompleted(true);
@@ -55,8 +62,8 @@ export default function ExercisePage({
           body: JSON.stringify({
             moduleId: slug,
             exerciseId,
-            exerciseType: exercise?.type,
-            difficulty: exercise?.difficulty,
+            exerciseType: tipo,
+            difficulty: dificultad,
             score: result.score,
             userAnswer: result.userAnswer,
           }),
@@ -77,7 +84,7 @@ export default function ExercisePage({
         // Silently fail - progress will be saved next time
       }
     },
-    [slug, exerciseId, refreshUser]
+    [slug, exerciseId, refreshUser, tipo, dificultad]
   );
 
   if (checkingEnabled) {

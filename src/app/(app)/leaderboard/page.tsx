@@ -93,13 +93,19 @@ function RanksDialog({ open, onClose }: { open: boolean; onClose: () => void }) 
 
 export default function LeaderboardPage() {
   const { user } = useAuth();
-  const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [datos, setDatos] = useState<{ filtro: DojoType | "general"; entries: LeaderboardEntry[] } | null>(null);
   const [activeFilter, setActiveFilter] = useState<DojoType | "general">("general");
   const [ranksOpen, setRanksOpen] = useState(false);
 
+  // `loading` is not independent state: it means "the data I hold is not for
+  // the filter I am showing". Deriving it from `datos` avoids a stale-flag
+  // race where a slow response for a previous filter could overwrite rows
+  // the user has since switched away from.
+  const loading = datos?.filtro !== activeFilter;
+  const entries = datos?.filtro === activeFilter ? datos.entries : [];
+
   useEffect(() => {
-    setLoading(true);
+    let cancelado = false;
     const url = activeFilter === "general"
       ? "/api/leaderboard"
       : `/api/leaderboard?dojo=${activeFilter}`;
@@ -107,10 +113,17 @@ export default function LeaderboardPage() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        setEntries(data.leaderboard ?? data ?? []);
-        setLoading(false);
+        if (cancelado) return;
+        setDatos({ filtro: activeFilter, entries: data.leaderboard ?? data ?? [] });
       })
-      .catch(() => setLoading(false));
+      .catch(() => {
+        if (cancelado) return;
+        setDatos({ filtro: activeFilter, entries: [] });
+      });
+
+    return () => {
+      cancelado = true;
+    };
   }, [activeFilter]);
 
   const getAvatar = (name: string) =>

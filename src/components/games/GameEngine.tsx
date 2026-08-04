@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect, useMemo, useSyncExternalStore } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -26,6 +26,35 @@ interface GameEngineProps {
   backHref: string;
 }
 
+// useSyncExternalStore plumbing for the "has the client mounted yet" gate:
+// there is nothing to subscribe to, so subscribe is a no-op. The server
+// snapshot is always false (matches the hydration render, same as before);
+// the client snapshot is always true, so the passive-effect re-render
+// useSyncExternalStore triggers after mount replaces the old
+// `setInitialized(true)` mount-effect flip, one render pass shorter.
+const SIN_SUSCRIPCION = () => () => {};
+const SI_CLIENTE = () => true;
+const NO_SERVIDOR = () => false;
+
+function leerCompletados(gameSlug: string): Set<number> {
+  if (typeof window === "undefined") return new Set();
+  try {
+    const saved = localStorage.getItem(`${gameSlug}-completed`);
+    if (!saved) return new Set();
+    return new Set<number>(JSON.parse(saved));
+  } catch {
+    return new Set();
+  }
+}
+
+// Mirrors the original `idx > 0 ? idx : 0` guard: findIndex returning -1
+// (every level already completed) or 0 (the first level isn't completed)
+// both mean "start at level 0".
+function nivelDeArranque(levels: GameLevel[], completados: Set<number>): number {
+  const idx = levels.findIndex((l) => !completados.has(l.id));
+  return idx > 0 ? idx : 0;
+}
+
 export default function GameEngine({
   levels,
   gameName,
@@ -36,34 +65,14 @@ export default function GameEngine({
   backHref,
 }: GameEngineProps) {
   const { refreshUser } = useAuth();
-  const [currentLevel, setCurrentLevel] = useState(0);
-  const [css, setCss] = useState(levels[0]?.initialCSS ?? "");
-  const [solved, setSolved] = useState(false);
+  const hidratado = useSyncExternalStore(SIN_SUSCRIPCION, SI_CLIENTE, NO_SERVIDOR);
+  const [completedLevels, setCompletedLevels] = useState<Set<number>>(() => leerCompletados(gameSlug));
+  const [currentLevel, setCurrentLevel] = useState(() => nivelDeArranque(levels, leerCompletados(gameSlug)));
+  const [css, setCss] = useState(() => levels[nivelDeArranque(levels, leerCompletados(gameSlug))]?.initialCSS ?? "");
   const [showHint, setShowHint] = useState(false);
-  const [completedLevels, setCompletedLevels] = useState<Set<number>>(new Set());
   const [showSuccess, setShowSuccess] = useState(false);
-  const successSavedRef = useRef(false);
-  const [initialized, setInitialized] = useState(false);
 
   const level = levels[currentLevel];
-
-  // Load completed levels from localStorage and resume at next uncompleted
-  useEffect(() => {
-    const saved = localStorage.getItem(`${gameSlug}-completed`);
-    if (saved) {
-      try {
-        const completed = new Set<number>(JSON.parse(saved));
-        setCompletedLevels(completed);
-        // Find first uncompleted level
-        const nextIdx = levels.findIndex((l) => !completed.has(l.id));
-        if (nextIdx >= 0 && nextIdx !== 0) {
-          setCurrentLevel(nextIdx);
-          setCss(levels[nextIdx]?.initialCSS ?? "");
-        }
-      } catch { /* ignore */ }
-    }
-    setInitialized(true);
-  }, [gameSlug, levels]);
 
   // Validate CSS against level solution
   const validateCSS = useCallback((cssText: string, lvl: GameLevel): boolean => {
@@ -85,25 +94,33 @@ export default function GameEngine({
     });
   }, []);
 
-  // Auto-validate on CSS change
-  useEffect(() => {
-    if (!level || solved) return;
-    const isValid = validateCSS(css, level);
-    if (isValid) {
-      setSolved(true);
-      successSavedRef.current = false;
-      // Delay overlay so the player sees the apprentices animate to position
-      setTimeout(() => setShowSuccess(true), 1800);
-    }
-  }, [css, level, solved, validateCSS]);
+  // Derived instead of written from an effect: resetting `css` (goToLevel /
+  // resetLevel) now recomputes `solved` as false for free.
+  const solved = useMemo(() => !!level && validateCSS(css, level), [css, level, validateCSS]);
 
-  // Save progress when solved
+  // Arms the success overlay after the 1800ms delay the player needs to see
+  // the board animate to position. Only *arms/clears* a timer here -- the
+  // actual setState lives inside the setTimeout callback, which the rule
+  // permits -- and this now clears the timer on unmount or on any level
+  // change that flips `solved` back to false, fixing a leaked pending timer
+  // that could fire the success overlay for a level the player had already
+  // left.
   useEffect(() => {
-    if (!solved || !level || successSavedRef.current) return;
-    successSavedRef.current = true;
+    if (!solved) return;
+    const timer = setTimeout(() => setShowSuccess(true), 1800);
+    return () => clearTimeout(timer);
+  }, [solved]);
 
+  // Persists a level completion: writes completedLevels, localStorage, and
+  // fires the same two /api/progress POSTs the old persistence effect fired.
+  // Guarded by `completedLevels.has` instead of a ref, so it is safe to call
+  // more than once for the same level -- and, unlike a functional setState
+  // updater, this reads the committed `completedLevels` from the render
+  // closure instead of running side effects inside React's update pass.
+  const registrarNivelCompletado = (lvl: GameLevel, cssText: string) => {
+    if (completedLevels.has(lvl.id)) return;
     const newCompleted = new Set(completedLevels);
-    newCompleted.add(level.id);
+    newCompleted.add(lvl.id);
     setCompletedLevels(newCompleted);
     localStorage.setItem(`${gameSlug}-completed`, JSON.stringify([...newCompleted]));
 
@@ -113,11 +130,11 @@ export default function GameEngine({
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         moduleId: gameSlug,
-        exerciseId: `${gameSlug}-level-${level.id}`,
+        exerciseId: `${gameSlug}-level-${lvl.id}`,
         exerciseType: "live-editor",
         difficulty: 1,
         score: 100,
-        userAnswer: css,
+        userAnswer: cssText,
       }),
     }).then(() => {
       // Check if ALL levels are now completed → bonus XP
@@ -138,15 +155,23 @@ export default function GameEngine({
         refreshUser();
       }
     }).catch(() => {});
-  }, [solved, level, completedLevels, gameSlug, css, refreshUser]);
+  };
+
+  // Replaces the inline `onChange` + persistence effect: the completion side
+  // effect now moves to the event that causes it instead of a change-then-
+  // effect roundtrip.
+  const manejarCss = (texto: string) => {
+    setCss(texto);
+    if (level && !solved && validateCSS(texto, level)) {
+      registrarNivelCompletado(level, texto);
+    }
+  };
 
   const goToLevel = (idx: number) => {
     setCurrentLevel(idx);
     setCss(levels[idx]?.initialCSS ?? "");
-    setSolved(false);
     setShowHint(false);
     setShowSuccess(false);
-    successSavedRef.current = false;
   };
 
   const nextLevel = () => {
@@ -157,16 +182,14 @@ export default function GameEngine({
 
   const resetLevel = () => {
     setCss(level?.initialCSS ?? "");
-    setSolved(false);
     setShowSuccess(false);
-    successSavedRef.current = false;
   };
 
   if (!level) return null;
 
   const progress = Math.round((completedLevels.size / levels.length) * 100);
 
-  if (!initialized) return null;
+  if (!hidratado) return null;
 
   return (
     <div className="h-[calc(100vh-5rem)] flex flex-col">
@@ -315,7 +338,7 @@ export default function GameEngine({
                     <input
                       type="text"
                       value={css}
-                      onChange={(e) => setCss(e.target.value)}
+                      onChange={(e) => manejarCss(e.target.value)}
                       disabled={solved}
                       placeholder={`${level.property}: ...;`}
                       className="w-full bg-editor-surface/50 border border-editor-border rounded px-3 py-1.5 text-neon-green font-mono text-sm outline-none focus:border-neon-blue/50 transition-colors placeholder-editor-muted/40 disabled:opacity-60"

@@ -64,17 +64,16 @@ function MobileNavLink({
 }
 
 export function MobileMenu() {
-  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  return <MobileMenuDrawer key={pathname} pathname={pathname} />;
+}
+
+function MobileMenuDrawer({ pathname }: { pathname: string }) {
+  const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
 
   const isTeacher = user?.role === "teacher";
   const rank = getRank(user?.xp ?? 0);
-
-  // Close drawer on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
 
   // Prevent body scroll when open
   useEffect(() => {

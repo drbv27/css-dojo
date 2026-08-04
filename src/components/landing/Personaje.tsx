@@ -12,6 +12,11 @@ import { SECCIONES } from "./useLanding";
 export const MESH_DISPONIBLE = true;
 const MESH_URL = "/models/ninja/ninja.glb";
 
+// Color inicial del material: la sección 0 es el estado en el primer render.
+// Sembrar desde esta constante (en vez de cerrar sobre el `color` reactivo)
+// hace que las deps `[]` del useMemo de abajo sean genuinamente correctas.
+const COLOR_INICIAL = SECCIONES[0]?.color ?? "#94E2D5";
+
 // Clips de animación (ya convertidos de Mixamo, sin mesh, mismo esqueleto).
 const CLIPS = [
   "idle",
@@ -49,12 +54,12 @@ function PersonajeReal({ activeSection }: { activeSection: number }) {
     () =>
       new THREE.MeshStandardMaterial({
         color: "#0d0d18",
-        emissive: new THREE.Color(color),
+        emissive: new THREE.Color(COLOR_INICIAL),
         emissiveIntensity: 0.9,
         metalness: 0.4,
         roughness: 0.35,
       }),
-    [] // se crea una vez; el color se actualiza abajo
+    [] // se crea una vez; el color se actualiza abajo (efecto de :72-74)
   );
 
   // Aplicar el material a todos los meshes del modelo + sombras.

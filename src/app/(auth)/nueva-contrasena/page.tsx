@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect, Suspense } from "react";
+import { useState, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, KeyRound, CheckCircle2, Loader2, Eye, EyeOff } from "lucide-react";
@@ -22,31 +22,35 @@ function ResetPasswordContent() {
   const [saving, setSaving] = useState(false);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
-  // Auto-submit OTP when all 6 digits filled
-  useEffect(() => {
-    const code = otp.join("");
-    if (code.length === 6 && !verifying && !resetToken) {
-      setVerifying(true);
-      setError("");
-      fetch("/api/auth/verify-otp", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, otp: code }),
+  // Verify the OTP against the API. Called from the event that completes the
+  // code (a keystroke or a paste), never from an effect. A network failure
+  // now surfaces exactly once per user action instead of auto-retrying: with
+  // the old effect, `.catch` left `otp` populated while `.finally` flipped
+  // `verifying` back to false, so the effect's guard passed again and it
+  // refetched — an unbounded retry loop against the OTP endpoint while
+  // offline. The user must now edit a digit to retry.
+  const verificarOtp = (code: string) => {
+    if (verifying || resetToken) return;
+    setVerifying(true);
+    setError("");
+    fetch("/api/auth/verify-otp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, otp: code }),
+    })
+      .then((r) => r.json().then((d) => ({ ok: r.ok, data: d })))
+      .then(({ ok, data }) => {
+        if (ok && data.resetToken) {
+          setResetToken(data.resetToken);
+        } else {
+          setError(data.message || "Codigo incorrecto");
+          setOtp(Array(6).fill(""));
+          inputRefs.current[0]?.focus();
+        }
       })
-        .then((r) => r.json().then((d) => ({ ok: r.ok, data: d })))
-        .then(({ ok, data }) => {
-          if (ok && data.resetToken) {
-            setResetToken(data.resetToken);
-          } else {
-            setError(data.message || "Codigo incorrecto");
-            setOtp(Array(6).fill(""));
-            inputRefs.current[0]?.focus();
-          }
-        })
-        .catch(() => setError("Error de conexion"))
-        .finally(() => setVerifying(false));
-    }
-  }, [otp, verifying, resetToken, email]);
+      .catch(() => setError("Error de conexion"))
+      .finally(() => setVerifying(false));
+  };
 
   const handleOtpChange = (index: number, value: string) => {
     if (!/^\d*$/.test(value)) return;
@@ -55,6 +59,10 @@ function ResetPasswordContent() {
     setOtp(newOtp);
     if (value && index < 5) {
       inputRefs.current[index + 1]?.focus();
+    }
+    const code = newOtp.join("");
+    if (code.length === 6) {
+      verificarOtp(code);
     }
   };
 
@@ -73,6 +81,9 @@ function ResetPasswordContent() {
       setOtp(newOtp);
       const focusIndex = Math.min(pasted.length, 5);
       inputRefs.current[focusIndex]?.focus();
+      if (pasted.length === 6) {
+        verificarOtp(pasted);
+      }
     }
   };
 

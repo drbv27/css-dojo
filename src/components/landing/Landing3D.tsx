@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import Escena from "./Escena";
 import Secciones from "./Secciones";
 import ScrollManager from "./ScrollManager";
@@ -24,13 +24,24 @@ function debeUsar3D(): boolean {
   return webgl && !reducido && !chico;
 }
 
-export default function Landing3D({ hasSession }: { hasSession: boolean }) {
-  // 'cargando' evita el flash hasta decidir en el cliente.
-  const [modo, setModo] = useState<"cargando" | "3d" | "estatica">("cargando");
+// useSyncExternalStore plumbing for reading a client-only capability without
+// writing state from a mount effect. There is nothing to subscribe to (the
+// probe never changes after the first read), so `subscribe` is a no-op.
+// `soporte` is cached at MODULE scope, so the probe runs once per page load
+// rather than once per mount (accepted behaviour delta: crossing the 767px
+// breakpoint and client-navigating back to `/` keeps the earlier decision
+// until a full reload).
+const SIN_SUSCRIPCION = () => () => {};
+let soporte: boolean | null = null;
+const leerSoporte = () => (soporte ??= debeUsar3D());
+const soporteServidor = () => null;
 
-  useEffect(() => {
-    setModo(debeUsar3D() ? "3d" : "estatica");
-  }, []);
+export default function Landing3D({ hasSession }: { hasSession: boolean }) {
+  // null = not decided yet (matches the hydration render); this is the
+  // client-only capability read, derived instead of written from an effect.
+  const capaz3D = useSyncExternalStore(SIN_SUSCRIPCION, leerSoporte, soporteServidor);
+  const modo: "cargando" | "3d" | "estatica" =
+    capaz3D === false ? "estatica" : capaz3D === null ? "cargando" : "3d";
 
   if (modo === "cargando") return <div className="fixed inset-0 bg-editor-bg" />;
   if (modo === "estatica")
