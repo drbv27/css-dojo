@@ -1,6 +1,6 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { Component, useState, useSyncExternalStore, type ErrorInfo, type ReactNode } from "react";
 import Escena from "./Escena";
 import Secciones from "./Secciones";
 import ScrollManager from "./ScrollManager";
@@ -36,12 +36,40 @@ let soporte: boolean | null = null;
 const leerSoporte = () => (soporte ??= debeUsar3D());
 const soporteServidor = () => null;
 
+// Atrapa los throws que <Escena /> deja escapar: react-three-fiber re-lanza
+// cualquier error de su subárbol hacia el árbol de React exterior
+// (`if (error) throw error;` en react-three-fiber.esm.js), así que un .glb
+// que falla en 404 tira abajo a Landing3D entero si nadie lo atrapa antes.
+class LimiteEscena extends Component<
+  { onError: () => void; children: ReactNode },
+  { fallo: boolean }
+> {
+  state = { fallo: false };
+
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    console.error("La escena 3D falló al cargar:", error, info);
+    this.setState({ fallo: true });
+    this.props.onError();
+  }
+
+  render() {
+    if (this.state.fallo) return null;
+    return this.props.children;
+  }
+}
+
 export default function Landing3D({ hasSession }: { hasSession: boolean }) {
   // null = not decided yet (matches the hydration render); this is the
   // client-only capability read, derived instead of written from an effect.
   const capaz3D = useSyncExternalStore(SIN_SUSCRIPCION, leerSoporte, soporteServidor);
+  const [escenaFallo, setEscenaFallo] = useState(false);
+  // Set by Loader's "Continuar sin la escena" action (20s stall or a caught
+  // load error) — folded into `modo` alongside the WebGL-capability read, no
+  // second source of truth for the render decision.
+  const [escapeManual, setEscapeManual] = useState(false);
+
   const modo: "cargando" | "3d" | "estatica" =
-    capaz3D === false ? "estatica" : capaz3D === null ? "cargando" : "3d";
+    escapeManual || capaz3D === false ? "estatica" : capaz3D === null ? "cargando" : "3d";
 
   if (modo === "cargando") return <div className="fixed inset-0 bg-editor-bg" />;
   if (modo === "estatica")
@@ -56,9 +84,11 @@ export default function Landing3D({ hasSession }: { hasSession: boolean }) {
     <>
       {/* Barra fija: login siempre visible */}
       <NavLanding hasSession={hasSession} />
-      <Loader />
+      <Loader escenaFallo={escenaFallo} onOmitirEscena={() => setEscapeManual(true)} />
       {/* Canvas 3D como fondo fijo */}
-      <Escena />
+      <LimiteEscena onError={() => setEscenaFallo(true)}>
+        <Escena />
+      </LimiteEscena>
       {/* Contenido scrolleable por encima (transparente, deja ver la escena) */}
       <main className="relative z-10">
         <Secciones hasSession={hasSession} />
