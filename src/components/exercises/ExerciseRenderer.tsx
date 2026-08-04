@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import type { Exercise } from "@/types";
 import { compararReglas } from "@/lib/cssRules";
+import { compararEstructura } from "@/lib/htmlStructure";
 import QuizExercise from "./QuizExercise";
 import CodeCompletionExercise from "./CodeCompletionExercise";
 import LiveEditorExercise from "./LiveEditorExercise";
@@ -99,6 +100,17 @@ export default function ExerciseRenderer({
             ? (Array.isArray(v.answer) ? v.answer : [v.answer]).join("\n")
             : (exercise.targetCSS ?? "");
           const { correct, score } = compararReglas(esperado, String(userAnswer));
+          return { correct, score };
+        }
+
+        case "html-structure": {
+          // Parses the submission into a DOM and checks each expectation with a
+          // selector, so a <td> written outside its <table> no longer counts.
+          const expectativas = Array.isArray(v.answer) ? v.answer : [v.answer];
+          const { correct, score } = compararEstructura(
+            expectativas.map(String),
+            String(userAnswer)
+          );
           return { correct, score };
         }
 

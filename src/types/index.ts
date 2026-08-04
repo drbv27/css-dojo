@@ -50,6 +50,11 @@ export type ValidationType =
   // typing the expected words as prose, and it verifies that a declaration sits
   // under the RIGHT selector. Prefer it for any CSS exercise.
   | "css-rules"
+  // Parses the submitted HTML into a real DOM and checks each expectation with a
+  // CSS selector, so NESTING and attributes are verified rather than the mere
+  // presence of tag fragments somewhere in the text. Prefer it for any HTML
+  // exercise. See src/lib/htmlStructure.ts for the expectation syntax.
+  | "html-structure"
   | "visual";
 
 // ==================== Core Data Structures ====================
