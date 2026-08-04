@@ -2,22 +2,18 @@ import { create } from "zustand";
 
 // Store global de la landing (estado de UI, no del render 3D).
 interface LandingState {
-  loaded: boolean;          // true cuando el modelo/escena terminó de cargar
   activeSection: number;    // sección activa según el scroll (0..N)
   progress: number;         // progreso de scroll 0..1 (alimenta la cámara)
   autoplay: boolean;        // true mientras el auto-scroll está activo
-  setLoaded: (v: boolean) => void;
   setActiveSection: (i: number) => void;
   setProgress: (p: number) => void;
   setAutoplay: (v: boolean) => void;
 }
 
 export const useLanding = create<LandingState>((set) => ({
-  loaded: false,
   activeSection: 0,
   progress: 0,
   autoplay: true,
-  setLoaded: (v) => set({ loaded: v }),
   setActiveSection: (i) => set({ activeSection: i }),
   setProgress: (p) => set({ progress: p }),
   setAutoplay: (v) => set({ autoplay: v }),
