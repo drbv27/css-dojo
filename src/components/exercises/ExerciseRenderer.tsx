@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import type { Exercise } from "@/types";
+import { compararReglas } from "@/lib/cssRules";
 import QuizExercise from "./QuizExercise";
 import CodeCompletionExercise from "./CodeCompletionExercise";
 import LiveEditorExercise from "./LiveEditorExercise";
@@ -85,16 +86,37 @@ export default function ExerciseRenderer({
           return { correct: score === 100, score };
         }
 
+        case "css-rules": {
+          // Parses the answer as CSS instead of searching it as text. Two things
+          // "includes" cannot do: it rejects prose (no rules parse out of
+          // "display flex justify-content center"), and it checks that each
+          // declaration sits under the selector it belongs to, so swapping two
+          // rules' bodies no longer passes.
+          // Grades against the exercise's own targetCSS by default, so the
+          // correct answer lives in one place and cannot drift out of sync with
+          // what the preview shows. `answer` is only an override.
+          const esperado = v.answer
+            ? (Array.isArray(v.answer) ? v.answer : [v.answer]).join("\n")
+            : (exercise.targetCSS ?? "");
+          const { correct, score } = compararReglas(esperado, String(userAnswer));
+          return { correct, score };
+        }
+
         case "visual": {
-          // Visual validation is typically server-side; approximate locally
-          return { correct: true, score: 80 };
+          // Fails closed on purpose. This branch used to `return { correct: true,
+          // score: 80 }` with a comment saying real validation happened
+          // server-side -- it does not, so every exercise reaching here was
+          // awarded credit for anything at all. A validator that cannot validate
+          // must not grant credit. No exercise currently uses this type; if one
+          // needs visual comparison, implement it rather than re-opening this.
+          return { correct: false, score: 0 };
         }
 
         default:
           return { correct: false, score: 0 };
       }
     },
-    [exercise.validation]
+    [exercise.validation, exercise.targetCSS]
   );
 
   const handleSubmit = useCallback(

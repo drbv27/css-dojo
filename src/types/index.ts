@@ -40,7 +40,17 @@ export type ModuleCategory =
   | "nextjs-intermediate"
   | "nextjs-advanced";
 
-export type ValidationType = "exact" | "regex" | "includes" | "includes-ordered" | "visual";
+export type ValidationType =
+  | "exact"
+  | "regex"
+  | "includes"
+  | "includes-ordered"
+  // Parses the submitted CSS into selector -> declarations and checks that each
+  // expected rule is present. Unlike "includes", it cannot be satisfied by
+  // typing the expected words as prose, and it verifies that a declaration sits
+  // under the RIGHT selector. Prefer it for any CSS exercise.
+  | "css-rules"
+  | "visual";
 
 // ==================== Core Data Structures ====================
 
@@ -77,7 +87,12 @@ export interface CodeExample {
 
 export interface Validation {
   type: ValidationType;
-  answer: any;
+  /**
+   * Optional for "css-rules", which grades against the exercise's own
+   * `targetCSS` so the correct answer lives in exactly one place and cannot
+   * drift. Required for every other type.
+   */
+  answer?: any;
 }
 
 // ==================== Lesson & Exercise ====================
