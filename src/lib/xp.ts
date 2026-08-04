@@ -1,5 +1,5 @@
 import type { Rank, XPProgress } from "@/types";
-import { RANKS, XP_REWARDS } from "@/lib/constants";
+import { RANKS } from "@/lib/constants";
 
 export function getRank(xp: number): Rank {
   let currentRank = RANKS[0];
@@ -41,11 +41,4 @@ export function getXPProgress(xp: number): XPProgress {
     needed,
     percentage,
   };
-}
-
-export function calculateXP(difficulty: number, score: number): number {
-  const baseXP = XP_REWARDS[difficulty] ?? 10;
-  // score comes as 0-100 from exercises
-  const normalized = score > 1 ? score / 100 : score;
-  return Math.round(baseXP * Math.max(0, Math.min(1, normalized)));
 }
