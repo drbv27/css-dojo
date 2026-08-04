@@ -20,10 +20,11 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          # Matches the Node major used for local development (v24.x). A gate
-          # that validates against a different major than developers run is not
-          # a faithful gate.
-          node-version: 24
+          # Matches PRODUCTION, not the dev machine. Coolify builds this app with
+          # NIXPACKS_NODE_VERSION=22, so CI validates on 22 — a gate that passes
+          # on a different major than the one that actually builds and serves the
+          # app does not protect the deploy.
+          node-version: 22
           cache: npm
 
       - run: npm ci

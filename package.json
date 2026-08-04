@@ -2,6 +2,9 @@
   "name": "css-dojo",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
