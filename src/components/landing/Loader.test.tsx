@@ -209,6 +209,36 @@ describe("Loader — enso gate", () => {
   });
 
   // Requirement: Failure Escape at 20 Seconds or on Load Error
+  // Regression: found by real-browser QA against a genuinely 404ing .glb, which
+  // the jsdom scenarios missed because they never asserted what the visible
+  // caption does in the error phase. drei's progress can reach 100 even when an
+  // asset failed, so the caption printed "Preparando el dojo… 100 %" directly
+  // above "No pudimos cargar la escena 3D." The sr-only announcement was always
+  // correct, so only sighted users saw the contradiction.
+  it("hides the progress caption in the error state so it cannot contradict the failure", () => {
+    vi.useFakeTimers();
+    useProgress.setState({ active: true, progress: 100, errors: ["/models/ninja/ninja.glb"] });
+    render(<Loader onOmitirEscena={() => {}} />);
+
+    act(() => {
+      vi.advanceTimersByTime(0);
+    });
+
+    expect(screen.getByTestId("error-visible")).toBeTruthy();
+    expect(screen.queryByTestId("caption-progreso")).toBeNull();
+    expect(screen.queryByText(/Preparando el dojo… 100 %/)).toBeNull();
+  });
+
+  // Requirement: Determinate Progress Ring — the caption must still be there
+  // while loading and through the completion beat; only the error phase hides it.
+  it("keeps the progress caption visible while loading", () => {
+    useProgress.setState({ active: true, progress: 42 });
+    render(<Loader onOmitirEscena={() => {}} />);
+
+    expect(screen.getByTestId("caption-progreso").textContent).toMatch(/42/);
+  });
+
+  // Requirement: Failure Escape at 20 Seconds or on Load Error
   it("calls onOmitirEscena when the escape action is activated, with no retry action", () => {
     vi.useFakeTimers();
     const onOmitir = vi.fn();

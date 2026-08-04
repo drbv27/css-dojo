@@ -201,9 +201,21 @@ export default function Loader({ escenaFallo = false, onOmitirEscena }: LoaderPr
             </svg>
           </div>
 
-          <p aria-hidden="true" className="font-mono text-sm text-editor-muted">
-            Preparando el dojo… {pct} %
-          </p>
+          {/* Hidden in the error phase: drei's progress can reach 100 even when
+              an asset failed, so leaving this visible printed "Preparando el
+              dojo… 100 %" directly above "No pudimos cargar la escena 3D." The
+              sr-only announcement was already correct, so only sighted users saw
+              the contradiction. Kept for "completo" so the closed ring holds a
+              beat showing 100 % before it dissolves. */}
+          {fase !== "error" && (
+            <p
+              aria-hidden="true"
+              data-testid="caption-progreso"
+              className="font-mono text-sm text-editor-muted"
+            >
+              Preparando el dojo… {pct} %
+            </p>
+          )}
 
           {lento && fase === "cargando" && (
             <p
