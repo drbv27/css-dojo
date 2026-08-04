@@ -1,0 +1,74 @@
+schema: spec-driven
+
+context: |
+  Tech stack: Next.js 16 (App Router), React 19, TypeScript 6 (strict), MongoDB/Mongoose,
+  Tailwind CSS v4. Package manager: npm.
+  Architecture: Route groups (app)/(auth)/(teacher)/api; custom JWT auth in src/lib/auth.ts
+  (dev-dojo-token cookie), NOT NextAuth despite next-auth being a listed dependency.
+  Content: static TypeScript modules in src/data/modules/ (css/html/js/react tracks).
+  Testing (as of 2026-08-04, after the automated-gates change merged to main):
+  FIVE working gates — `npm run typecheck` (tsc --noEmit), `npm run lint`
+  (eslint . against a flat eslint.config.mjs; exits 0 with 0 errors and 50
+  warnings), `npm run build`, `npm run test:run` (Vitest + jsdom, 18 tests over
+  src/lib/xp.ts), and `npm run test:e2e` (Playwright chromium, one landing smoke
+  test). All five run in CI on every push to main and every PR via
+  .github/workflows/ci.yml, verified green on a real runner.
+  Deploy: Coolify + Nixpacks on a VPS, MANUAL redeploy from the UI after push.
+  Production builds and serves on NODE 22 (NIXPACKS_NODE_VERSION); CI is pinned
+  to 22 to match, and package.json declares engines.node ">=22".
+  DANGER: .env.local points at a PRODUCTION MongoDB Atlas cluster with real user
+  data. Never run a write path against it locally. For QA needing a database,
+  use a throwaway container: `docker run -d --name css-dojo-qa-mongo -p
+  27019:27017 mongo:7` then `MONGODB_URI="mongodb://127.0.0.1:27019/cssdojo-qa"
+  npm run dev`. Port 27018 is taken by an unrelated project.
+
+strict_tdd: false
+# NOTE: a unit test runner now EXISTS (Vitest). strict_tdd stays false as the
+# project-wide default, but individual changes may opt into RED-first: the
+# loader-moderno-dojo change was explicitly decided to write its jsdom-testable
+# scenarios test-first during its own apply.
+
+testing:
+  # REPAIRED 2026-08-03 (automated-gates slice 1): flat eslint.config.mjs added
+  # (eslint-config-next/core-web-vitals + /typescript), `npm run lint` now runs
+  # `eslint .` directly and exits 0. `npm run typecheck` added as a standalone
+  # `tsc --noEmit` script.
+  # ADDED 2026-08-04 (automated-gates slice 2): Vitest + jsdom for unit tests
+  # (`src/lib/xp.test.ts`, 18 cases), Playwright (chromium only) for one E2E
+  # smoke test against /landing-preview.
+  test_runner: "Vitest (unit, jsdom) + Playwright (e2e, chromium only)"
+  unit: "Vitest + jsdom + @testing-library/react/dom — `npm run test:run`"
+  integration: false
+  e2e: "Playwright, chromium only — `npm run test:e2e` (one landing smoke test)"
+  coverage: false
+  linter: "WORKING — `npm run lint` runs `eslint .` against `eslint.config.mjs` (flat config); exits 0 with 0 errors"
+  type_checker: "WORKING — `npm run typecheck` runs standalone `tsc --noEmit` (strict)"
+  formatter: "none configured"
+
+rules:
+  proposal:
+    - Include rollback plan for risky changes (auth, MongoDB schema, XP/gamification logic)
+    - Call out changes touching src/lib/auth.ts or ApprovalGate explicitly as security-sensitive
+  specs:
+    - Use Given/When/Then for scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+    - Reference the affected dojo track(s) (css/html/js/react) when relevant
+  design:
+    - Document how ModuleSettings/DB-driven visibility interacts with static module data
+    - Document architecture decisions with rationale
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    guidelines:
+      - Follow existing code patterns (route groups, ModuleData shape, ExerciseRenderer validation)
+      - Use `npm run lint`, `npm run typecheck`, `npm run test:run`, and `npm run test:e2e` as gates
+    tdd: false           # strict_tdd is false repo-wide; test tiers exist as of automated-gates slice 2
+    test_command: "npm run test:run"
+  verify:
+    test_command: "npm run test:run && npm run test:e2e"
+    build_command: "npm run build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+    - Warn if a change modifies auth, MongoDB models, or gamification/XP logic

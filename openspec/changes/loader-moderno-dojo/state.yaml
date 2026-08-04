@@ -1,0 +1,136 @@
+change: loader-moderno-dojo
+created: 2026-08-03
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 400
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/loader-moderno-dojo/exploration.md
+    engram_topic_key: sdd/loader-moderno-dojo/explore
+  propose:
+    status: done
+    artifact: openspec/changes/loader-moderno-dojo/proposal.md
+    engram_topic_key: sdd/loader-moderno-dojo/proposal
+    open_assumptions:
+      - Degradation thresholds 8s hint / 20s escape — decided by the propose phase, not the user.
+      - Failure escape is "continue to the static landing" rather than a retry button.
+      - Dead loaded/setLoaded field is deleted rather than wired.
+      - Escape copy "Continuar sin la escena" (Spanish, matching product UI language).
+    product_decisions:
+      intent: visual-plus-accessibility
+      scope: landing-only
+      visual_direction: proposal-decides
+      selected_approach: >
+        Option 2 — progress-driven redesign plus hardening (aria-live region,
+        error/timeout path, real exit transition). Options 1, 3, and 4 rejected.
+      out_of_scope:
+        - src/components/ui/LoadingSpinner.tsx
+        - src/components/auth/ApprovalGate.tsx
+  spec:
+    status: done
+    artifact: openspec/changes/loader-moderno-dojo/specs/landing-loader/spec.md
+    engram_topic_key: sdd/loader-moderno-dojo/spec
+    summary: 8 ADDED requirements, 15 Given/When/Then scenarios, capability `landing-loader`.
+    correction: >
+      Earlier revisions of this file and the sdd-spec agent's own report said 17
+      scenarios. The spec file contains 15 — counted directly, twice, by the
+      orchestrator and independently by the automated-gates explore and propose
+      agents. 15 is correct.
+  design:
+    status: done
+    artifact: openspec/changes/loader-moderno-dojo/design.md
+    engram_topic_key: sdd/loader-moderno-dojo/design
+    orchestrator_verified:
+      - >
+        drei 10.7.7 `useProgress` DOES expose `errors: string[]` —
+        node_modules/@react-three/drei/core/Progress.d.ts:3. The earlier
+        unverified-signature risk is CLOSED. Array is append-only, never reset
+        (core/Progress.js:21-23).
+      - >
+        @react-three/fiber Canvas re-throws subtree errors into the outer React
+        tree — react-three-fiber.esm.js:60 `if (error) throw error;`, commented
+        "Throw exception outwards if anything within canvas throws", fed by the
+        internal ErrorBoundary at lines 103-112. An error boundary in Landing3D
+        is MANDATORY, not optional; without it the loader error state never
+        paints and a proposal success criterion is unreachable.
+    scope_revision:
+      estimated_changed_lines: 225
+      supersedes: "proposal.md estimate of ~120-170"
+      budget_risk: low
+      reason: >
+        ~18-line inline error boundary in Landing3D.tsx, required by the
+        verified Canvas re-throw behavior. Diff stays at 3 files.
+    accepted_refinements:
+      - >
+        Settled a11y decision 4 refined and ACCEPTED by the orchestrator: the
+        fine percentage lives in an aria-hidden visible caption, while the
+        coarse milestone text lives in a separate sr-only role="status" region.
+        Rationale: if the visible caption were itself the live region, every
+        percent change would be announced — the exact spam the coarse-milestone
+        rule exists to prevent. This serves the decision's intent rather than
+        contradicting it.
+  tasks:
+    status: done
+    artifact: openspec/changes/loader-moderno-dojo/tasks.md
+    engram_topic_key: sdd/loader-moderno-dojo/tasks
+    summary: 5 phases, 28 tasks — 2 foundation, 3 error-boundary, 12 Loader rewrite, 2 automated gates, 9 manual QA.
+    review_workload_forecast:
+      estimated_changed_lines: 225
+      budget_risk: low
+      chained_prs_recommended: false
+      chain_strategy: not-needed
+      decision_needed_before_apply: false
+      suggested_split: single-pr
+    guard_outcome: >
+      Review Workload Guard did NOT trigger. 225 lines against a 400-line
+      budget, chained PRs not recommended, no decision needed before apply.
+      Under delivery_strategy ask-on-risk there is nothing to ask.
+    orchestrator_verified:
+      - >
+        Task 3.11 references NavLanding.tsx:35 for the button class — confirmed
+        real: that line is the `/login` Link className
+        (px-4 py-2 rounded-lg border border-editor-border ... hover:text-neon-blue).
+      - >
+        `sr-only` used by task 3.9 is a Tailwind v4 built-in utility, not a
+        project token — correctly not declared in globals.css.
+  apply:
+    status: ready
+    forward_to_apply:
+      delivery_strategy: ask-on-risk
+      chain_strategy: not-needed
+      pr_boundary: single-pr
+      size_exception: not-required
+      strict_tdd: false
+      test_command: ""
+      note: >
+        No test suite exists AND `npm run lint` is verified BROKEN — it runs
+        `next lint`, a subcommand removed in Next.js 16 (installed 16.2.1), and
+        no eslint config file exists in the project. `npm run build` is the ONLY
+        automated gate (itself unverified). tasks.md task 4.1 is marked BLOCKED
+        accordingly — do not report a lint pass. Behavioural verification is
+        the 9-step manual QA procedure in tasks.md Phase 5. Task 5.5 MUST
+        additionally be re-run under `npm run build && npm start` — the dev-mode
+        error overlay masks error-boundary behavior.
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+next_recommended: apply
+
+notes:
+  - No test suite exists in this project; strict_tdd is false. Verification for
+    this change relies on `npm run lint`, `npm run build`, and manual checks.
+  - Working tree verified CLEAN before propose. The session-start snapshot
+    claimed src/components/landing/ was modified; direct git verification
+    (status, diff, diff --cached, stash) showed no tracked modifications and
+    HEAD unchanged at fa9e07d. No scope-bleed risk, no pre-work commit needed.
+  - The `interface-design` skill was not injected because the landing loader is
+    confirmed landing-only. It must be injected if scope expands to unify the
+    authenticated-app spinners.
