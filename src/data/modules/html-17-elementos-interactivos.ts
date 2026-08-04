@@ -158,8 +158,14 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
         "Crea una barra de <progress> para una subida de archivo que va en el 40% (de un total de 100).",
       codeTemplate: { html: `<!-- Tu <progress> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<progress", 'value="40"', 'max="100"', "</progress>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "progress[value=\"40\"]",
+          "progress[max=\"100\"]",
+        ],
       },
       hint: "value es cuanto va (40) y max es el total (100).",
       explanation:
@@ -175,8 +181,15 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
         "Crea un <meter> que muestre una puntuacion de 8 en un rango de 0 a 10.",
       codeTemplate: { html: `<!-- Tu <meter> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<meter", 'value="8"', 'min="0"', 'max="10"', "</meter>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "meter[value=\"8\"]",
+          "meter[min=\"0\"]",
+          "meter[max=\"10\"]",
+        ],
       },
       hint: "meter necesita value (8), min (0) y max (10).",
       explanation:

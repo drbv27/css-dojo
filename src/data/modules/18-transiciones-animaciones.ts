@@ -420,14 +420,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       targetCSS:
         "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.aparecer {\n  animation: fadeIn 1s ease-out forwards;\n  background: #3498db;\n  color: white;\n  padding: 24px;\n  border-radius: 12px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "@keyframes",
-          "fadeIn",
-          "opacity",
-          "animation",
-          "forwards",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Define @keyframes fadeIn con from { opacity: 0 } y to { opacity: 1 }, luego aplica la animacion en .aparecer.",
       explanation:
@@ -469,15 +464,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       targetCSS:
         ".btn-animado {\n  background-color: #3498db;\n  color: white;\n  padding: 14px 32px;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;\n}\n.btn-animado:hover {\n  background-color: #2c3e50;\n  transform: scale(1.05);\n  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "transition",
-          "0.3s",
-          "transform",
-          "scale",
-          "box-shadow",
-          ":hover",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Define los estilos base del boton con transition para las 3 propiedades, y en :hover cambia el fondo, agrega scale y box-shadow.",
       explanation:

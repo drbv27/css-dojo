@@ -346,17 +346,9 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
       targetCSS:
         "p {\n  font-family: Arial, sans-serif;\n  font-size: 18px;\n  font-weight: 600;\n  font-style: italic;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "font-family",
-          "Arial",
-          "font-size",
-          "18px",
-          "font-weight",
-          "600",
-          "font-style",
-          "italic",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas cuatro propiedades: font-family, font-size, font-weight y font-style.",
       explanation:
@@ -417,19 +409,9 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
       targetCSS:
         'h1 {\n  font-family: Georgia, serif;\n  font-size: 36px;\n  font-weight: bold;\n}\n\np {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n}',
       validation: {
-        type: "includes",
-        answer: [
-          "h1",
-          "font-family",
-          "Georgia",
-          "font-size",
-          "36px",
-          "font-weight",
-          "bold",
-          "p",
-          "Arial",
-          "16px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una para h1 (Georgia, 36px, bold) y otra para p (Arial, 16px, normal).",
       explanation:

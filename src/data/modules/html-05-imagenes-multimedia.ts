@@ -259,8 +259,14 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<figure>", "<img", "src=", "alt=", "<figcaption>", "</figcaption>", "</figure>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "figure > img[src][alt]",
+          "figure > figcaption",
+        ],
       },
       hint: "Estructura: figure > img + figcaption.",
       explanation:

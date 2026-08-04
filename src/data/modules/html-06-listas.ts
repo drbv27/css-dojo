@@ -260,8 +260,14 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<ul>", "<li>", "<ol>", "</ol>", "</li>", "</ul>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "ul > li >> 3",
+          "ul > li > ol > li >> 2",
+        ],
       },
       hint: "Coloca un <ol> dentro de un <li> del <ul> principal.",
       explanation:
@@ -299,8 +305,14 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<dl>", "<dt>", "</dt>", "<dd>", "</dd>", "</dl>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "dl > dt >> 2",
+          "dl > dd >> 2",
+        ],
       },
       hint: "Usa dl como contenedor, dt para cada termino y dd para cada definicion.",
       explanation:

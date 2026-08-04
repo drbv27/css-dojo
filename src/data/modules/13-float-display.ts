@@ -426,15 +426,9 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       targetCSS:
         ".articulo {\n  overflow: hidden;\n  padding: 15px;\n  background-color: #f9f9f9;\n}\n.foto {\n  float: left;\n  width: 120px;\n  height: 120px;\n  margin: 0 15px 10px 0;\n  background-color: #4682b4;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "float",
-          "left",
-          "width",
-          "120px",
-          "overflow",
-          "hidden",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La imagen necesita float: left y el contenedor necesita overflow: hidden para evitar el colapso del contenedor.",
       explanation:
@@ -476,18 +470,9 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       targetCSS:
         ".btn {\n  display: inline-block;\n  padding: 10px 25px;\n  background-color: #007bff;\n  color: white;\n  border: none;\n  border-radius: 4px;\n  margin: 5px;\n  font-size: 14px;\n  cursor: pointer;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display",
-          "inline-block",
-          "padding",
-          "background-color",
-          "border",
-          "none",
-          "border-radius",
-          "cursor",
-          "pointer",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa display: inline-block para que los botones se mantengan en la misma linea pero acepten padding y dimensiones.",
       explanation:

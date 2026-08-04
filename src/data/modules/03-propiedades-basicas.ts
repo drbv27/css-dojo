@@ -249,15 +249,9 @@ Redondea las esquinas de un elemento:
       targetCSS:
         "body {\n  background-color: lightblue;\n}\n\np {\n  color: darkblue;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "body",
-          "background-color",
-          "lightblue",
-          "p",
-          "color",
-          "darkblue",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas dos reglas: una para 'body' con background-color y otra para 'p' con color.",
       explanation:
@@ -333,20 +327,9 @@ Redondea las esquinas de un elemento:
       targetCSS:
         ".tarjeta {\n  background-color: steelblue;\n  color: white;\n  border: 2px solid gray;\n  border-radius: 10px;\n  padding: 20px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "background-color",
-          "steelblue",
-          "color",
-          "white",
-          "border",
-          "solid",
-          "gray",
-          "border-radius",
-          "10px",
-          "padding",
-          "20px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas 5 propiedades: background-color, color, border, border-radius y padding.",
       explanation:
@@ -369,18 +352,9 @@ Redondea las esquinas de un elemento:
       targetCSS:
         ".boton {\n  background-color: green;\n  color: white;\n  border-radius: 8px;\n  padding: 10px 20px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "background-color",
-          "green",
-          "color",
-          "white",
-          "border-radius",
-          "8px",
-          "padding",
-          "10px",
-          "20px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Usa padding con dos valores: el primero para arriba/abajo y el segundo para izquierda/derecha.",
       explanation:

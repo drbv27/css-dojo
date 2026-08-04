@@ -279,8 +279,17 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<h1>", "</h1>", "<h2>", "</h2>", "<p>", "<strong>", "</strong>", "<hr>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "h1",
+          "h2",
+          "p > strong",
+          "hr",
+          "p >> 2",
+        ],
       },
       hint: "Usa h1, h2, p con strong dentro, hr, y otro p.",
       explanation:
@@ -336,8 +345,14 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<pre>", "<code>", "&lt;", "&gt;", "</code>", "</pre>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "pre > code",
+          "pre > code :: <h1>",
+        ],
       },
       hint: "Usa <pre><code> y reemplaza < por &lt; y > por &gt;.",
       explanation:

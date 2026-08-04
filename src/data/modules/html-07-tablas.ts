@@ -271,8 +271,16 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<table>", "<caption>", "<thead>", "<th>", "</th>", "<tbody>", "<td>", "</td>", "</tbody>", "</table>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "table > caption",
+          "table > thead th >> 3",
+          "table > tbody > tr >> 2",
+          "table > tbody td",
+        ],
       },
       hint: "Usa table > caption + thead (con tr y th) + tbody (con tr y td).",
       explanation:

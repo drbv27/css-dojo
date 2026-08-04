@@ -430,16 +430,9 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       targetCSS:
         ".centrado {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 200px;\n  background-color: #f0f0f0;\n}\n.caja {\n  padding: 20px;\n  background-color: steelblue;\n  color: white;\n  border-radius: 8px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display",
-          "flex",
-          "justify-content",
-          "center",
-          "align-items",
-          "height",
-          "200px",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas display: flex en el contenedor, junto con justify-content: center y align-items: center para centrar en ambos ejes.",
       explanation:
@@ -500,19 +493,9 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       targetCSS:
         ".nav {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 10px 20px;\n  background-color: #2c3e50;\n}\n.logo {\n  color: white;\n  font-size: 20px;\n  font-weight: bold;\n}\n.links {\n  display: flex;\n  gap: 15px;\n}\n.link {\n  color: #ecf0f1;\n  text-decoration: none;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "display",
-          "flex",
-          "justify-content",
-          "space-between",
-          "align-items",
-          "center",
-          "gap",
-          "15px",
-          "text-decoration",
-          "none",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La nav usa Flexbox con space-between para separar el logo y los links. El contenedor de links tambien usa Flexbox con gap para espaciar los enlaces.",
       explanation:

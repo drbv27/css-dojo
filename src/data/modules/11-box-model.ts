@@ -388,17 +388,9 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       targetCSS:
         ".tarjeta {\n  box-sizing: border-box;\n  width: 350px;\n  padding: 25px;\n  border: 3px solid #333;\n  background-color: #f9f9f9;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "box-sizing",
-          "border-box",
-          "width",
-          "350px",
-          "padding",
-          "25px",
-          "border",
-          "solid",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Necesitas box-sizing: border-box para que el ancho total sea 350px, incluyendo el padding y el border.",
       explanation:
@@ -421,18 +413,9 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       targetCSS:
         ".contenedor {\n  width: 100%;\n  overflow: hidden;\n}\n.mitad {\n  box-sizing: border-box;\n  width: 50%;\n  padding: 15px;\n  border: 2px solid #666;\n  float: left;\n}\n.izq {\n  background-color: #d4edda;\n}\n.der {\n  background-color: #cce5ff;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          "box-sizing",
-          "border-box",
-          "width",
-          "50%",
-          "padding",
-          "15px",
-          "border",
-          "float",
-          "left",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "La clave es usar box-sizing: border-box para que el padding y border esten incluidos en el 50%. Sin esto, las cajas no caben en una fila.",
       explanation:

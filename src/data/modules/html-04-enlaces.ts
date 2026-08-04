@@ -258,8 +258,16 @@ Una URL relativa se basa en la **ubicacion del archivo actual**. Se usa para enl
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<a", "href", "#inicio", "#servicios", "#contacto", "mailto:"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "a[href=\"#inicio\"]",
+          "a[href=\"#servicios\"]",
+          "a[href=\"#contacto\"]",
+          "a[href^=\"mailto:\"]",
+        ],
       },
       hint: "Usa etiquetas <a> con href que empiecen con # para enlaces internos y mailto: para correo.",
       explanation:

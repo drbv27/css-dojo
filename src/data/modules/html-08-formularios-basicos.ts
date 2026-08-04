@@ -386,8 +386,18 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<form", "action", "method", "<label", "<input", "type=\"text\"", "type=\"email\"", "type=\"password\"", "<button", "submit"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "form[action][method]",
+          "label >> 3",
+          "input[type=\"text\"]",
+          "input[type=\"email\"]",
+          "input[type=\"password\"]",
+          "button[type=\"submit\"], input[type=\"submit\"]",
+        ],
       },
       hint: "Estructura: form > (label + input) x 3 + button[type=submit].",
       explanation:
@@ -425,8 +435,20 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<form", "<label", "for=", "<input", "<textarea", "<select", "<option", "<button", "submit", "reset"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "form",
+          "label[for] >> 4",
+          "input[type=\"text\"]",
+          "input[type=\"email\"]",
+          "textarea",
+          "select > option >> 3",
+          "button[type=\"submit\"], input[type=\"submit\"]",
+          "button[type=\"reset\"], input[type=\"reset\"]",
+        ],
       },
       hint: "Asegurate de que cada label tenga for= y cada campo tenga id= con el mismo valor.",
       explanation:

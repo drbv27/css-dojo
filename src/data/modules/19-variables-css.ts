@@ -374,16 +374,9 @@ Detecta automaticamente la preferencia del sistema operativo:
       targetCSS:
         ":root {\n  --color-primario: #e74c3c;\n  --color-fondo: #f8f9fa;\n  --espaciado: 16px;\n}\n\n.caja {\n  background: var(--color-fondo);\n  border: 2px solid var(--color-primario);\n  padding: var(--espaciado);\n  border-radius: 8px;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          ":root",
-          "--color-primario",
-          "--color-fondo",
-          "--espaciado",
-          "var(--color-primario)",
-          "var(--color-fondo)",
-          "var(--espaciado)",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Primero declara las 3 variables en :root con --, luego usalas en .caja con var().",
       explanation:
@@ -425,17 +418,9 @@ Detecta automaticamente la preferencia del sistema operativo:
       targetCSS:
         ":root {\n  --fondo: #ffffff;\n  --texto: #1a1a1a;\n  --acento: #3498db;\n}\n\n.tema-oscuro {\n  --fondo: #1e1e2f;\n  --texto: #e0e0e0;\n  --acento: #5dade2;\n}\n\n.pagina {\n  background: var(--fondo);\n  color: var(--texto);\n  padding: 24px;\n  border-radius: 12px;\n}\n\n.boton {\n  background: var(--acento);\n  color: white;\n  border: none;\n  padding: 10px 24px;\n  border-radius: 6px;\n  cursor: pointer;\n}",
       validation: {
-        type: "includes",
-        answer: [
-          ":root",
-          "--fondo",
-          "--texto",
-          "--acento",
-          "var(--fondo)",
-          "var(--texto)",
-          "var(--acento)",
-          ".tema-oscuro",
-        ],
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
       },
       hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .pagina y .boton.",
       explanation:
