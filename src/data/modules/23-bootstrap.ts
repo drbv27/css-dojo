@@ -564,13 +564,15 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       // framework CLASSES the student writes in HTML, and its targetCSS is
       // empty, so parsing CSS would make it unpassable.
       validation: {
-        type: "includes",
+        // These exercises are about the framework CLASSES written in HTML, so
+        // they are graded structurally by class selector -- not by `includes`,
+        // whose token 'row' matched inside 'arrow' and 'browser'.
+        type: "html-structure",
         answer: [
-          "container",
-          "row",
-          "col-md-4",
-          "bg-primary",
-          "rounded",
+          ".container .row.g-3",
+          ".row.g-3 > .col-md-4 >> 3",
+          ".col-md-4 > .p-3.bg-primary.rounded.text-center >> 3",
+          ".col-md-4 .bg-opacity-25 >> 3",
         ],
       },
       hint: "La estructura es: container > row.g-3 > col-md-4 (x3). Cada columna contiene un div con las clases de estilo.",
@@ -615,15 +617,16 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       // framework CLASSES the student writes in HTML, and its targetCSS is
       // empty, so parsing CSS would make it unpassable.
       validation: {
-        type: "includes",
+        // These exercises are about the framework CLASSES written in HTML, so
+        // they are graded structurally by class selector -- not by `includes`,
+        // whose token 'row' matched inside 'arrow' and 'browser'.
+        type: "html-structure",
         answer: [
-          "card",
-          "card-body",
-          "card-title",
-          "card-text",
-          "badge",
-          "btn btn-primary",
-          "shadow",
+          ".card.shadow > .card-body",
+          ".card-body .card-title :: Mi Tarjeta",
+          ".card-body .card-text :: Bootstrap 5",
+          ".card-body .badge.bg-success :: Activo",
+          ".card-body .btn.btn-primary :: Ver mas",
         ],
       },
       hint: "La estructura es: div.card.shadow > div.card-body > h5.card-title + p.card-text + span.badge + button.btn.",

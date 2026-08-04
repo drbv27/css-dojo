@@ -642,14 +642,16 @@ Los prefijos se pueden combinar:
       // framework CLASSES the student writes in HTML, and its targetCSS is
       // empty, so parsing CSS would make it unpassable.
       validation: {
-        type: "includes",
+        // These exercises are about the framework CLASSES written in HTML, so
+        // they are graded structurally by class selector -- not by `includes`,
+        // whose token 'row' matched inside 'arrow' and 'browser'.
+        type: "html-structure",
         answer: [
-          "max-w-sm",
-          "rounded-xl",
-          "shadow-lg",
-          "font-bold",
-          "bg-blue-500",
-          "hover:bg-blue-600",
+          ".max-w-sm.mx-auto.bg-white.rounded-xl.shadow-lg.overflow-hidden",
+          ".max-w-sm > .p-6",
+          ".p-6 > h2.text-xl.font-bold :: Mi Tarjeta",
+          ".p-6 > p.text-gray-600.text-sm",
+          ".p-6 button.bg-blue-500.rounded-lg :: Ver mas",
         ],
       },
       hint: "Construye la tarjeta paso a paso: contenedor con max-w-sm, padding con p-6, titulo con text-xl font-bold, y boton con bg-blue-500.",
