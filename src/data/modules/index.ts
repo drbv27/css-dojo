@@ -44,6 +44,7 @@ import { sassFundamentosModule } from "./21-sass-fundamentos";
 import { sassAvanzadoModule } from "./22-sass-avanzado";
 import { bootstrapModule } from "./23-bootstrap";
 import { tailwindModule } from "./24-tailwind";
+import { proyectoCvCssModule } from "./25-proyecto-cv-css";
 
 // JS modules
 import { jsQueEsModule } from "./js-01-que-es-javascript";
@@ -129,6 +130,7 @@ export const ALL_MODULES: ModuleData[] = [
   mediaQueriesModule, transicionesAnimacionesModule, variablesCSSModule,
   shadowsGradientsFiltersModule, sassFundamentosModule, sassAvanzadoModule,
   bootstrapModule, tailwindModule,
+  proyectoCvCssModule,
   // JS
   jsQueEsModule, jsVariablesTiposModule, jsOperadoresModule, jsStringsModule,
   jsCondicionalesModule, jsCiclosModule, jsFuncionesModule, jsArraysModule,
