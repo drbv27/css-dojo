@@ -134,8 +134,16 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 1 - El esqueleto. Escribe la estructura base del documento: DOCTYPE, <html> con lang=\"es\", <head> con <title> 'CV de Ana Martinez', y un <body> vacio.",
       codeTemplate: { html: `<!-- Escribe aqui el esqueleto -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<!DOCTYPE html>", "<html", 'lang="es"', "<head>", "<title>", "</title>", "</head>", "<body>", "</body>", "</html>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "!doctype",
+          "html[lang=\"es\"]",
+          "head > title",
+          "body",
+        ],
       },
       hint: "Empieza con <!DOCTYPE html> y recuerda el atributo lang en la etiqueta <html>.",
       explanation:
@@ -151,8 +159,16 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 2 - El encabezado. Dentro de un <header>, pon un <h1> con el nombre, un <p> con el titulo profesional, y el contacto: un enlace de correo con mailto: y uno de telefono con tel:.",
       codeTemplate: { html: `<header>\n  \n</header>`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<header>", "<h1>", "</h1>", "<p>", "mailto:", "tel:", "</header>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "header > h1",
+          "header > p",
+          "header a[href^=\"mailto:\"]",
+          "header a[href^=\"tel:\"]",
+        ],
       },
       hint: "El correo va como <a href=\"mailto:tucorreo\">, el telefono como <a href=\"tel:+57...\">.",
       explanation:
@@ -190,8 +206,15 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 3 - Perfil. Dentro de un <main>, crea una <section> con un <h2> 'Perfil' y un <p> de presentacion.",
       codeTemplate: { html: `<main>\n  \n</main>`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<main>", "<section>", "<h2>", "Perfil", "</h2>", "<p>", "</section>", "</main>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "main > section > h2",
+          "main > section > h2 :: Perfil",
+          "main > section > p",
+        ],
       },
       hint: "El contenido principal va en <main>; cada bloque tematico en su <section> con un <h2>.",
       explanation:
@@ -207,8 +230,15 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 4 - Experiencia. Crea una <section> con <h2> 'Experiencia', un <h3> con el cargo y una lista <ul> con 2 logros.",
       codeTemplate: { html: `<section>\n  \n</section>`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<section>", "<h2>", "Experiencia", "<h3>", "</h3>", "<ul>", "<li>", "</li>", "</ul>", "</section>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "section > h2 :: Experiencia",
+          "section h3",
+          "section ul > li >> 2",
+        ],
       },
       hint: "El cargo es un subtitulo (<h3>) dentro de la seccion; los logros van en <li> dentro de un <ul>.",
       explanation:
@@ -224,8 +254,15 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 5 - Habilidades en tabla. Crea una <table> con <thead> (columnas 'Habilidad' y 'Nivel' en <th>) y un <tbody> con al menos 2 filas (<tr> con <td>).",
       codeTemplate: { html: `<section>\n  <h2>Habilidades</h2>\n  \n</section>`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<table>", "<thead>", "<th>", "</th>", "<tbody>", "<tr>", "<td>", "</td>", "</tbody>", "</table>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "table > thead th >> 2",
+          "table > tbody > tr >> 2",
+          "table > tbody > tr > td",
+        ],
       },
       hint: "thead con los titulos de columna en <th>; tbody con filas <tr> y celdas <td>.",
       explanation:
@@ -241,8 +278,14 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Paso 6 - Tu foto. Usa un <figure> con una <img> (con su atributo alt descriptivo) y un <figcaption>.",
       codeTemplate: { html: `<figure>\n  \n</figure>`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<figure>", "<img", "src=", "alt=", "<figcaption>", "</figcaption>", "</figure>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "figure > img[alt]",
+          "figure > figcaption",
+        ],
       },
       hint: "La <img> siempre con alt descriptivo (ej: alt=\"Foto de Ana Martinez\"); la leyenda en <figcaption>.",
       explanation:
@@ -276,8 +319,20 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
         "Cierre integrador. Arma un CV MINIMO pero completo y valido: DOCTYPE + <html lang=\"es\"> + <head> con <title>; y en el <body> un <header> con <h1>, un <main> con al menos una <section> (con <h2>) y una <table>, una <img> con alt, y un <footer>.",
       codeTemplate: { html: `<!-- Tu CV completo aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
-        type: "includes",
-        answer: ["<!DOCTYPE html>", 'lang="es"', "<head>", "<title>", "<body>", "<header>", "<h1>", "<main>", "<section>", "<h2>", "<table>", "<img", "alt=", "<footer>", "</html>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "!doctype",
+          "html[lang=\"es\"]",
+          "head > title",
+          "body > header > h1",
+          "body > main section > h2",
+          "body > main table",
+          "img[alt]",
+          "body > footer",
+        ],
       },
       hint: "Junta los pasos anteriores en un solo documento: esqueleto + header + main (con section y table) + img con alt + footer.",
       explanation:

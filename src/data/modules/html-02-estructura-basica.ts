@@ -283,8 +283,18 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<!DOCTYPE html>", "lang=\"es\"", "charset", "UTF-8", "viewport", "<title>", "</title>", "<body>", "<p>", "</p>", "</body>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "!doctype",
+          "html[lang=\"es\"]",
+          "meta[charset]",
+          "meta[name=\"viewport\"]",
+          "head > title",
+          "body > p",
+        ],
       },
       hint: "Recuerda la estructura: DOCTYPE, html, head (con meta y title), body (con p).",
       explanation:

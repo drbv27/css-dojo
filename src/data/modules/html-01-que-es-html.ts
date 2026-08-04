@@ -224,8 +224,16 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
         cssSuffix: "",
       },
       validation: {
-        type: "includes",
-        answer: ["<!DOCTYPE html>", "<html", "<head>", "<title>", "</title>", "</head>", "<body>", "<h1>", "</h1>", "</body>", "</html>"],
+        // Parses the submitted HTML into a DOM and checks each expectation with
+        // a CSS selector, so nesting and attributes are verified rather than the
+        // presence of tag fragments anywhere in the text. See src/lib/htmlStructure.ts.
+        type: "html-structure",
+        answer: [
+          "!doctype",
+          "html[lang], html",
+          "head > title",
+          "body > h1",
+        ],
       },
       hint: "Recuerda empezar con <!DOCTYPE html> y luego la etiqueta <html> con head y body dentro.",
       explanation:
