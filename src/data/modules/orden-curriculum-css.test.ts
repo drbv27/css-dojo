@@ -165,7 +165,62 @@ describe("orden del track CSS", () => {
     expect(posicionDe("sass-fundamentos")).toBeLessThan(posicionDe("sass-avanzado"));
   });
 
-  it("DOCUMENTA la deuda: cuantas referencias hacia adelante quedan", () => {
+  /**
+   * The distinction this file originally missed.
+   *
+   * A first pass counted every mention of a not-yet-taught property and reported
+   * 24 "forward references". Most were not defects:
+   *
+   * - A lesson example cannot be written with no properties at all. Seeing
+   *   `padding: 20px` inside a demo one module before the box model explains it
+   *   is normal, the same way `color: red` precedes any colour theory.
+   * - `float-display` previews `display: flex` and `display: grid` on purpose and
+   *   says so in the text: "Aprenderemos Flexbox y Grid en profundidad en modulos
+   *   posteriores." That is good teaching, not debt.
+   * - Units and dimensions are genuinely CIRCULAR. You cannot teach `width`
+   *   without a unit, nor demonstrate `vw` without a property to put it on. No
+   *   ordering resolves it; the resolution is pedagogical -- introduce `px` and
+   *   `%` informally, then deepen them in the units module.
+   *
+   * What IS a defect is an EXERCISE that requires a concept taught much later,
+   * because the student cannot solve it from what they know. `10-ej-08` asked for
+   * `display: flex`, `align-items` and `justify-content` -- taught ten modules
+   * later -- with the three properties dictated in the prompt, so the only way
+   * through was transcription. It was rewritten to centre with the units the
+   * module actually teaches.
+   */
+  it("ningun EJERCICIO exige un concepto que se ensena mucho despues", () => {
+    // Solo propiedades que definen una tecnica, no valores basicos. Y un umbral
+    // de 3 modulos: un salto corto es tolerable, diez no.
+    const TECNICAS: Array<[RegExp, string]> = [
+      [/display:\s*flex|\bflex-direction\b|\bjustify-content\b|\balign-items\b/i, "flexbox"],
+      [/display:\s*grid|\bgrid-template\b|\bgrid-column\b/i, "css-grid"],
+      [/@media/i, "media-queries"],
+      [/\btransition\s*:|@keyframes/i, "transiciones-animaciones"],
+      [/\bvar\(--/i, "variables-css"],
+      [/\bbox-shadow\s*:|linear-gradient\(/i, "shadows-gradients-filters"],
+    ];
+    const SALTO_TOLERADO = 3;
+
+    const defectos: string[] = [];
+    for (const m of cssModules) {
+      for (const e of m.exercises) {
+        // Lo que el alumno tiene que producir o leer para resolverlo.
+        const requerido = `${e.prompt} ${e.targetCSS ?? ""} ${e.hint ?? ""}`;
+        for (const [patron, tecnica] of TECNICAS) {
+          const destino = posicionDe(tecnica);
+          if (m.order >= destino) continue;
+          if (destino - m.order <= SALTO_TOLERADO) continue;
+          if (patron.test(requerido)) {
+            defectos.push(`${m.slug}/${e.id} exige ${tecnica} (se ensena en ${destino}, faltan ${destino - m.order} modulos)`);
+          }
+        }
+      }
+    }
+    expect(defectos).toEqual([]);
+  });
+
+  it("MIDE la deuda restante en lecciones, que es tolerable pero no invisible", () => {
     // Este test no falla: mide. El curriculum nunca se escribio con un orden de
     // dependencias estricto, y arreglarlo del todo es editar CONTENIDO, no
     // reordenar. El reorden resolvio las dos inversiones estructurales; esto

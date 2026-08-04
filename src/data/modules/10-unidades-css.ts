@@ -468,8 +468,14 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
+      // Este ejercicio pedia display:flex, align-items y justify-content para
+      // centrar -- flexbox se ensena diez modulos despues, en el 15. El enunciado
+      // dictaba las tres propiedades, asi que el alumno las copiaba sin entender:
+      // eso no es aprender, es transcribir. El centrado se hace ahora con las
+      // unidades que este modulo si ensena, de modo que el espaciado pasa a ser
+      // otra leccion de unidades en vez de un desvio hacia flexbox.
       prompt:
-        "Reproduce el diseno: una seccion hero que ocupe 50vh de alto y 100% de ancho, con background steelblue y color white. El titulo debe usar clamp(1.5rem, 4vw, 3rem) para el font-size. Centra el contenido con display flex, align-items center y justify-content center.",
+        "Reproduce el diseno: una seccion hero (clase 'hero') con un minimo de 50vh de alto, background steelblue y color white. Dale un padding de 10vh arriba y abajo y 5% a los costados, para que el espaciado crezca con la ventana. El titulo debe usar font-size: clamp(1.5rem, 4vw, 3rem) y margin: 0. Ojo: NO le pongas width, y en la explicacion vas a ver por que.",
       codeTemplate: {
         html: `<section class="hero">\n  <h1>Bienvenido al Sitio</h1>\n</section>`,
         cssPrefix: "",
@@ -477,15 +483,15 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         blanks: [],
       },
       targetCSS:
-        ".hero {\n  width: 100%;\n  height: 50vh;\n  background: steelblue;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n\n.hero h1 {\n  font-size: clamp(1.5rem, 4vw, 3rem);\n}",
+        ".hero {\n  min-height: 50vh;\n  background: steelblue;\n  color: white;\n  padding: 10vh 5%;\n}\n\n.hero h1 {\n  font-size: clamp(1.5rem, 4vw, 3rem);\n  margin: 0;\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "La seccion usa vh para la altura, % para el ancho y flexbox para centrar. El titulo usa clamp() con rem (limites) y vw (valor ideal) para tipografia fluida.",
+      hint: "Tres unidades en un solo ejercicio: vh para el alto y el padding vertical, % para el padding horizontal, y clamp() con rem y vw en el titulo. El padding acepta dos valores: primero vertical, despues horizontal.",
       explanation:
-        "Este ejercicio combina multiples tipos de unidades: % para ancho flexible, vh para altura relativa a la ventana, flex para centrado, y clamp() con rem y vw para tipografia que se adapta a la pantalla con limites minimo y maximo.",
+        "Cada unidad esta elegida a proposito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, asi que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografia fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen mas que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, asi que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos codigo, menos sorpresas. Si necesitas width y padding juntos, ahi es donde entra el box-sizing: border-box del modulo anterior.",
     },
   ],
 };
