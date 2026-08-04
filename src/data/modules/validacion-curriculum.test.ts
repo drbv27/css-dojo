@@ -14,13 +14,25 @@ import { ALL_MODULES } from "@/data/modules";
  */
 
 /**
- * Reference solutions for the three framework exercises. They are graded by
- * class selector rather than by parsing CSS, because the student writes HTML
- * with Bootstrap/Tailwind classes and their targetCSS is empty. These exist so
- * an over-strict selector cannot silently make one unpassable -- which is what
- * happened to all three during an earlier pass of the css-rules migration.
+ * Reference solutions for the CSS-track exercises graded as HTML structure.
+ * These are exercises where the MARKUP is what is being learned: the framework
+ * class exercises (Bootstrap/Tailwind, whose targetCSS is empty) and the step of
+ * the capstone project where the student adds classes to their own CV.
+ *
+ * Every one of them needs a reference, because these selectors are hand-authored
+ * and an over-strict one silently makes the exercise unpassable -- which is what
+ * happened to all three framework exercises during an earlier migration pass.
  */
-const REFERENCIAS_FRAMEWORK: Record<string, string> = {
+const REFERENCIAS_HTML_EN_CSS: Record<string, string> = {
+  // Proyecto integrador: el paso donde el alumno agrega clases al CV que escribio.
+  "25-ej-01": `<header class="encabezado">
+  <h1 class="nombre">Ana Martinez</h1>
+  <p class="titulo-profesional">Desarrolladora Frontend</p>
+  <nav class="contacto">
+    <a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a>
+    <a href="tel:+541100000000">+54 11 0000 0000</a>
+  </nav>
+</header>`,
   "23-ej-05": `<div class="container">
   <div class="row g-3">
     <div class="col-md-4"><div class="p-3 bg-primary bg-opacity-25 rounded text-center">Columna 1</div></div>
@@ -107,15 +119,21 @@ describe("curriculum CSS: integridad de la validacion", () => {
     expect(rezagados.map((r) => `${r.mod}/${r.id}`)).toEqual([]);
   });
 
-  it("los ejercicios de framework se validan por estructura de clases", () => {
-    const frameworks = ejerciciosCss.filter((e) => e.ex.validation.type === "html-structure");
-    expect(frameworks.map((f) => f.id).sort()).toEqual(["23-ej-05", "23-ej-07", "24-ej-06"]);
+  it("todo ejercicio html-structure del track CSS tiene una referencia en este archivo", () => {
+    // Un ejercicio del track CSS se valida por estructura HTML cuando lo que se
+    // aprende es el MARKUP: las clases de Bootstrap/Tailwind, o agregar clases al
+    // CV en el proyecto integrador. La referencia es obligatoria porque estos
+    // selectores son escritos a mano.
+    const sinReferencia = ejerciciosCss
+      .filter((e) => e.ex.validation.type === "html-structure")
+      .filter((e) => !REFERENCIAS_HTML_EN_CSS[e.id]);
+    expect(sinReferencia.map((e) => `${e.mod}/${e.id}`)).toEqual([]);
   });
 
-  it("LA REFERENCIA DE CADA EJERCICIO DE FRAMEWORK PUNTUA 100%", () => {
-    // Sin esto un selector de clase demasiado estricto dejaria el ejercicio
-    // imposible -- exactamente el bug que estos tres sufrieron una vez.
-    const fallan = Object.entries(REFERENCIAS_FRAMEWORK)
+  it("LA REFERENCIA DE CADA EJERCICIO html-structure PUNTUA 100%", () => {
+    // Sin esto un selector demasiado estricto dejaria el ejercicio imposible --
+    // exactamente el bug que los tres de framework sufrieron una vez.
+    const fallan = Object.entries(REFERENCIAS_HTML_EN_CSS)
       .map(([id, ref]) => {
         const ej = ejerciciosCss.find((e) => e.id === id);
         if (!ej) return `${id} (no existe)`;
