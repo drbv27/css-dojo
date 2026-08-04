@@ -16,13 +16,23 @@ function resetProgress() {
   });
 }
 
-// Minimal matchMedia double shared by the reduced-motion scenarios. Returns
-// an object with a manual `emit` so tests can simulate a mid-load OS flip
-// via the same `change` listener Loader subscribes to (Design Decision 7).
+// Minimal matchMedia double shared by the reduced-motion scenarios. Returns an
+// object with a manual `emit` so tests can simulate a mid-load OS flip via the
+// same `change` listener Loader subscribes to (Design Decision 7).
+//
+// `matches` is a LIVE getter over a mutable value, not a frozen boolean. A real
+// MediaQueryList updates `matches` before dispatching `change`, and Loader reads
+// the current value through useSyncExternalStore's getSnapshot rather than
+// trusting the event payload — so a frozen `matches` would make this double lie
+// about the mid-flip case.
 function mockMatchMedia(initialMatches: boolean) {
   const listeners = new Set<(e: MediaQueryListEvent) => void>();
+  let matches = initialMatches;
+
   window.matchMedia = vi.fn().mockImplementation((query: string) => ({
-    matches: initialMatches,
+    get matches() {
+      return matches;
+    },
     media: query,
     addEventListener: (_event: string, cb: (e: MediaQueryListEvent) => void) => {
       listeners.add(cb);
@@ -34,6 +44,7 @@ function mockMatchMedia(initialMatches: boolean) {
 
   return {
     emit(nextMatches: boolean) {
+      matches = nextMatches;
       for (const cb of listeners) cb({ matches: nextMatches } as MediaQueryListEvent);
     },
   };

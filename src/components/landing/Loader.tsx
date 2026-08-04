@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useProgress } from "@react-three/drei";
 
@@ -22,6 +22,34 @@ const ARRANQUE_MS = 2_500;
 const RADIO = 42;
 const CIRCUNFERENCIA = 2 * Math.PI * RADIO;
 
+// prefers-reduced-motion is read through useSyncExternalStore rather than
+// written into state from an effect. This is the same pattern Landing3D.tsx
+// already uses for its WebGL/viewport probe, with one difference: that probe
+// never changes after the first read, so its `subscribe` is a no-op. This one
+// genuinely can change at runtime, so the listener is what keeps it live —
+// satisfying the spec's "re-evaluate reactively, not sampled once at mount".
+//
+// The earlier implementation used `useState(false)` plus
+// `setTimeout(() => setReducido(mq.matches), 0)` inside an effect, purely to
+// keep `react-hooks/set-state-in-effect` quiet. That deferred the correction by
+// a macrotask, so a reduced-motion visitor could see one animated frame before
+// it was suppressed. Reading the value instead of writing it removes both the
+// lint dodge and that window.
+const consultaReducido = (): MediaQueryList | null =>
+  typeof window === "undefined" ? null : window.matchMedia("(prefers-reduced-motion: reduce)");
+
+const suscribirReducido = (alCambiar: () => void) => {
+  const mq = consultaReducido();
+  if (!mq) return () => {};
+  mq.addEventListener("change", alCambiar);
+  return () => mq.removeEventListener("change", alCambiar);
+};
+
+const leerReducido = () => consultaReducido()?.matches ?? false;
+
+// Server render cannot know the preference; false keeps hydration consistent.
+const leerReducidoEnServidor = () => false;
+
 function textoAnuncio(fase: FaseLoader, hito: number | null, lento: boolean): string {
   if (fase === "error") return "No pudimos cargar la escena 3D.";
   if (fase === "completo") return "Dojo listo.";
@@ -39,26 +67,15 @@ export default function Loader({ escenaFallo = false, onOmitirEscena }: LoaderPr
   const [fase, setFase] = useState<FaseLoader>("cargando");
   const [lento, setLento] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [reducido, setReducido] = useState(false);
+  const reducido = useSyncExternalStore(
+    suscribirReducido,
+    leerReducido,
+    leerReducidoEnServidor,
+  );
 
   const terminado = useRef(false);
   const huboActividad = useRef(false);
   const escapeBtnRef = useRef<HTMLButtonElement>(null);
-
-  // Reduced motion: re-evaluated reactively via a `change` listener, not
-  // sampled once at mount (Design Decision 7). The initial sync is deferred
-  // one tick (via setTimeout) so `setReducido` never runs as a direct,
-  // synchronous statement in the effect body (react-hooks/set-state-in-effect).
-  useEffect(() => {
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const t = setTimeout(() => setReducido(mq.matches), 0);
-    const onChange = (e: MediaQueryListEvent) => setReducido(e.matches);
-    mq.addEventListener("change", onChange);
-    return () => {
-      clearTimeout(t);
-      mq.removeEventListener("change", onChange);
-    };
-  }, []);
 
   // Cold-start guard: drei's store starts with `active: false`, so "nothing
   // to load" is indistinguishable from "already done" on the first render.
