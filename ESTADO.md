@@ -1,6 +1,6 @@
 # Estado del proyecto
 
-Punto de retomada. Última actualización: 2026-08-05, `main` @ `c696cc4`, todo deployado.
+Punto de retomada. Última actualización: 2026-08-05, `main` @ `fa1ecca`, todo deployado.
 
 > Este archivo existe para que una sesión nueva no tenga que redescubrir nada. Si
 > hacés cambios grandes, actualizalo o borralo — un documento desactualizado es
@@ -21,7 +21,7 @@ espejados en Engram por `topic_key`.
 
 ---
 
-## Qué se hizo (14 PRs, todos mergeados y deployados)
+## Qué se hizo (18 PRs, todos mergeados y deployados)
 
 | Cambio | Qué resolvió |
 |---|---|
@@ -34,6 +34,8 @@ espejados en Engram por `topic_key`.
 | PR #10 | **El proyecto integrador de CSS no se podía activar ni desactivar.** El panel docente filtraba por su propia lista de categorías, que no incluía `project`. La causa no era la línea faltante: la lista estaba **duplicada** entre la vista del alumno y la del docente. Ahora hay fuente única en `src/data/moduleCategories.ts`. |
 | PR #11 | El proyecto final de HTML se renderizaba **penúltimo**, aunque el propio módulo dice "ejercicio integrador de cierre". Categoría nueva `html-projects`. |
 | CSS moderno (PR #12, #13, #14) | Las 8 técnicas ausentes, distribuidas en el módulo que le corresponde a cada una. Ver abajo. |
+| PR #15 | Actualización de este archivo hasta el #14. |
+| Ortografía (PR #16, #17, #18) | **503 preguntas sin abrir y ~3.460 palabras sin tilde ni ñ, en 101 módulos de los seis tracks.** Ver abajo. |
 
 Tres bugs que veían los usuarios y ya no: el loop infinito contra el endpoint de
 OTP en el reset de contraseña, el rango de 0 XP que veían todos en el nav móvil,
@@ -63,6 +65,46 @@ En Especificidad, "Buenas prácticas" pasó a ser la última lección (orden 6):
 lección de buenas prácticas tiene que venir después de las herramientas que
 recomienda. Su lista de conflictos ahora arranca por `@layer` y `:where()`, y
 marca la duplicación de clases (`.btn.btn`) como el truco que es.
+
+### Ortografía: cómo se hizo, y qué NO se toca
+
+Tres slices por mecanismo, no por track. `¿` (503), palabras inequívocas
+(3.031) y palabras dependientes de contexto (430).
+
+**El método, que sirve para cualquier edición masiva de contenido.** El riesgo
+no era una tilde mal puesta: era tocar un `targetCSS` o un token de validación y
+romper ejercicios en silencio. Antes de editar se snapshotea a un archivo todo
+lo intocable — ejemplos de código, bloques y código en línea, `targetCSS`,
+`codeTemplate`, `validation`, ids, `dragItems`, `dropZones`, xp, dificultad,
+orden — y después se compara. Las tres PRs cerraron byte a byte idénticas.
+
+Ese snapshot cazó **cuatro filtraciones reales** que ya estaban aplicadas:
+`description:` y `title:` son claves de prosa pero también aparecen **dentro de
+ejemplos de código**, y un `re.sub` sin máscara se mete en los comentarios CSS
+de los ejemplos.
+
+**Trampa del fuente:** dentro de un template literal los backticks del markdown
+vienen **escapados** (`` \` ``). Buscar tres backticks crudos no encuentra
+ningún bloque de código, y entonces el `?` de un ternario de JavaScript parece
+una pregunta. El track de JS además escribe los enunciados con **comilla
+simple**, porque el texto lleva comillas dobles adentro.
+
+**Reglas del idioma que hay que respetar:**
+
+- Los plurales de agudas en `-n`/`-s` **pierden** la tilde: `función` →
+  `funciones`, `común` → `comunes`, `botón` → `botones`. Las esdrújulas la
+  conservan: `código` → `códigos`. El corpus ya tenía 102 `funciones` correctas.
+- **`solo` no lleva tilde nunca** desde la reforma de 2010, ni como adverbio.
+  Sus 298 apariciones ya estaban bien.
+- `esta` ante sustantivo es demostrativo y va **sin** tilde. El pronombre
+  tampoco (`esta es la que gana`).
+- Las **mayúsculas llevan tilde**: `MÁS USADAS`, `FUNCIÓN`.
+
+**Lo que quedó sin tocar a propósito:** los strings en castellano **dentro de
+ejemplos de código** (`<p>Este parrafo TAMBIEN es seleccionado</p>`, el chat que
+dice `'Hola! Como estas?'`). Se le muestran al alumno y la tilde sería correcta,
+pero viven en `codeExample`, y un invariante que dice "el código no se toca" no
+vale nada con excepciones. Es un pase aparte si se quiere hacer.
 
 ---
 
@@ -119,7 +161,7 @@ pushear. No hay config de deploy en el repo. Live en https://www.devdojo.pro
 npm run typecheck    # tsc --noEmit
 npm run lint         # eslint . -- debe dar 0 errores (50 warnings es el baseline)
 npm run build
-npm run test:run     # 117 tests
+npm run test:run     # 125 tests
 npm run test:e2e     # Playwright, chromium
 ```
 
@@ -150,6 +192,16 @@ Estos son los que impiden que la deuda vuelva:
   de sus proyectos, y eso es una decisión de curriculum.
 - `src/data/modules/orden-lecciones.test.ts` — los `order` de lecciones y
   ejercicios son únicos y van de 1 a n, en los seis tracks.
+- `src/data/modules/signos-interrogacion.test.ts` — hay un `¿` por cada `?` que
+  cierra oración, y ningún `¿` queda pegado a una palabra o a código. Cuenta
+  sobre prosa con el código enmascarado, porque en JS y React el `?` es un
+  operador (ternario, `?.`, `??`) y contarlo como pregunta pide abrir algo que no
+  lo es.
+- `src/data/modules/acentuacion.test.ts` — palabras inequívocas acentuadas,
+  separadas en agudas (solo singular) y con flexión; prohíbe los plurales
+  `-ciónes`; y exige las tres reglas de contexto que el patrón sintáctico
+  desambigua. La máscara de código es imprescindible: sin ella `titulo` solo
+  daría 169 falsos positivos, todos clases CSS legítimas.
 - En `validacion-curriculum.test.ts`, el guarda de **`targetCSS` mal formado**.
   Hace falta porque "la respuesta correcta puntúa 100%" compara el target **contra
   sí mismo** y es tautológico: no puede detectar un target inválido. Un punto y
@@ -161,28 +213,19 @@ Estos son los que impiden que la deuda vuelva:
 
 ## Pendiente, en orden de valor
 
-1. **Ortografía.** Es el siguiente. 1 vocal acentuada y cero `¿` en 24 módulos, con
-   89 preguntas sin abrir — mientras la UI de la app tiene 85 acentos. Afecta
-   también al track HTML. Mecánico pero toca cientos de strings; verificar que no
-   rompa tokens de validación ni textos esperados por tests.
-
-   **Ojo:** las lecciones nuevas de los PRs #12, #13 y #14 ya están escritas **con
-   acentos correctos**, por decisión explícita del usuario. Así que Tipografías,
-   Dimensiones, Pseudo-clases, Especificidad, Grid y Media Queries están **mezclados**
-   hasta que se haga este barrido. No es descuido.
-2. **La plantilla uniforme.** Los módulos originales tienen exactamente 3-4
+1. **La plantilla uniforme.** Los módulos originales tienen exactamente 3-4
    lecciones y 8 ejercicios. Flexbox y "qué es CSS" con el mismo peso. Los módulos
    de Sass (21-22) no tienen `live-editor` ni `visual-match` — justo donde hace
    falta ver el CSS compilado. Los seis módulos tocados por CSS moderno ya rompieron
    la uniformidad, así que el precedente existe.
-3. **Deuda técnica.** 35 `@typescript-eslint/no-explicit-any` como warnings.
+2. **Deuda técnica.** 35 `@typescript-eslint/no-explicit-any` como warnings.
    `globals.css:15-18` declara `--color-css-purple` y `--color-ts-blue` dos veces
    cada uno. La corrección de ejercicios es del lado del cliente, así que un alumno
    determinado puede inspeccionarla — cerrarlo implica validación en el servidor.
-4. **Referencias hacia adelante en lecciones**: quedan 24, medidas y con umbral en
+3. **Referencias hacia adelante en lecciones**: quedan 24, medidas y con umbral en
    el test. Dominadas por `display: flex` en ejemplos previos al módulo 15. Es
    tolerable: un ejemplo de CSS no puede escribirse sin propiedades.
-5. **Agregar ejercicios baja el porcentaje de progreso** de quien ya tenía el
+4. **Agregar ejercicios baja el porcentaje de progreso** de quien ya tenía el
    módulo completo. Pasó con los seis módulos de CSS moderno. No se perdió nada,
    pero si molesta hay que decidirlo a nivel producto, no de código.
 
