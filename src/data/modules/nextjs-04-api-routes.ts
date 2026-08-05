@@ -239,5 +239,43 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       hint: "GET = obtener, POST = crear, DELETE = eliminar.",
       explanation: "GET lee datos, POST crea nuevos recursos, DELETE elimina recursos existentes.",
     },
+    {
+      id: "njs04-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "En un Route Handler, el método HTTP se define con el NOMBRE de la función exportada. Completá el nombre para responder a una lectura:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "// app/api/usuarios/route.ts\nexport async function ",
+        cssSuffix: "() {\n  return NextResponse.json(await traerUsuarios());\n}",
+        blanks: ["GET"],
+      },
+      validation: { type: "exact", answer: "GET" },
+      hint: "El verbo HTTP de lectura, en mayúsculas.",
+      explanation:
+        "El nombre exportado ES el método: GET, POST, PUT, PATCH, DELETE. Un método que no exportás devuelve 405 automáticamente, sin escribir un solo if. Es la diferencia con el Pages Router, donde un único handler recibía todo y había que ramificar a mano según req.method.",
+    },
+    {
+      id: "njs04-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Este handler tiene que responder un error con código 400. Completá el segundo argumento que fija el estado HTTP:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: 'return NextResponse.json({ error: "Falta el email" }, { ',
+        cssSuffix: ": 400 });",
+        blanks: ["status"],
+      },
+      validation: { type: "exact", answer: "status" },
+      hint: "La clave del objeto de opciones que define el código de respuesta.",
+      explanation:
+        "Sin el segundo argumento la respuesta sale con 200, así que el cliente recibe un objeto que dice error junto a un código que dice éxito. Cualquier capa que decida por el status -- un fetch con res.ok, un reintento, un monitor -- va a tratar ese error como si todo hubiera andado bien.",
+    },
   ],
 };

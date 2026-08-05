@@ -208,5 +208,43 @@ export const metadata: Metadata = {
       hint: "page = página, layout = estructura, loading = carga.",
       explanation: "page.tsx es el contenido, layout.tsx es la estructura envolvente, loading.tsx se muestra mientras carga.",
     },
+    {
+      id: "njs01-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "En el App Router, una carpeta sola no crea una ruta: hace falta un archivo con un nombre reservado. Completá el nombre para que /blog sea navegable:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "app/blog/",
+        cssSuffix: "\n// -> ahora /blog responde",
+        blanks: ["page.tsx"],
+      },
+      validation: { type: "exact", answer: "page.tsx" },
+      hint: "El archivo que convierte una carpeta en una ruta pública. Lleva extensión.",
+      explanation:
+        "Sin page.tsx la carpeta existe pero la URL da 404, y eso es a propósito: te deja poner componentes, helpers y tests dentro de app/ sin que se vuelvan rutas por accidente. Es la diferencia con el Pages Router, donde cualquier archivo en pages/ era una ruta.",
+    },
+    {
+      id: "njs01-ej-06",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 6,
+      prompt:
+        "Un layout envuelve a las páginas que están debajo. Completá la prop que recibe el contenido de esas páginas:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "export default function Layout({ ",
+        cssSuffix: " }) {\n  return <section><Menu />{children}</section>;\n}",
+        blanks: ["children"],
+      },
+      validation: { type: "exact", answer: "children" },
+      hint: "El nombre estándar de React para el contenido anidado. Es el que ya se usa abajo en el JSX.",
+      explanation:
+        "El layout recibe la página en children y no se vuelve a montar al navegar entre rutas hermanas: el menú conserva su estado y solo cambia el contenido. Es lo que permite que un sidebar con scroll no salte cada vez que hacés clic en un enlace.",
+    },
   ],
 };

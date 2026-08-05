@@ -38,17 +38,17 @@ describe("tipos de ejercicio por modulo", () => {
     expect(sinEscribir.length).toBeLessThanOrEqual(63);
   });
 
-  it("mide los modulos que son solo de reconocimiento", () => {
+  it("ningun modulo se aprueba sin producir nada", () => {
     // Ni live-editor, ni visual-match, ni code-completion: solo quiz y
-    // arrastrar. Se aprueban eligiendo opciones, sin producir nada.
+    // arrastrar. Eran 13 y ya no queda ninguno, asi que esto pasa de medir a
+    // prohibir. Si vuelve a aparecer uno, es un modulo nuevo que se aprueba
+    // eligiendo opciones.
     const soloReconocer = ALL_MODULES.filter((m) => {
       const tipos = tiposDe(m);
       return !PRODUCIR.some((t) => tipos.has(t));
     }).map((m) => `${m.dojo}/${m.slug}`);
 
-    // 13 -> 10 con js-patrones, ts-03-generics y ts-04-typescript-react.
-    // 10 -> 5 con los cinco de react-eco. Los 5 que quedan son los de nextjs.
-    expect(soloReconocer.length).toBeLessThanOrEqual(5);
+    expect(soloReconocer).toEqual([]);
   });
 
   it("los modulos de preprocesadores muestran el CSS compilado", () => {
