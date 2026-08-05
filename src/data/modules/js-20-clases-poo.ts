@@ -4,7 +4,7 @@ export const jsClasesPooModule: ModuleData = {
   slug: "js-clases-poo",
   title: "Clases y POO",
   description:
-    "Aprende programacion orientada a objetos en JavaScript: clases, herencia, encapsulamiento y polimorfismo.",
+    "Aprende programación orientada a objetos en JavaScript: clases, herencia, encapsulamiento y polimorfismo.",
   order: 120,
   category: "js-advanced",
   icon: "Boxes",
@@ -15,7 +15,7 @@ export const jsClasesPooModule: ModuleData = {
       title: "Clases en JavaScript",
       content: `## Clases
 
-Las clases son "plantillas" para crear objetos con propiedades y metodos compartidos.
+Las clases son "plantillas" para crear objetos con propiedades y métodos compartidos.
 
 ### Sintaxis
 \`\`\`javascript
@@ -43,11 +43,11 @@ ana.cumplirAnos(); // ana.edad = 26
 \`\`\`
 
 ### El constructor
-- Se ejecuta automaticamente al crear una instancia con \`new\`
+- Se ejecuta automáticamente al crear una instancia con \`new\`
 - Inicializa las propiedades del objeto
 - \`this\` se refiere a la instancia actual
 
-### Metodos
+### Métodos
 - Se definen sin la palabra \`function\`
 - Se comparten entre todas las instancias
 - Acceden a las propiedades con \`this\`
@@ -114,7 +114,7 @@ class Perro extends Animal {
 
 ### super
 - \`super()\` llama al constructor de la clase padre
-- \`super.metodo()\` llama a un metodo del padre
+- \`super.metodo()\` llama a un método del padre
 - **Obligatorio** llamar \`super()\` antes de usar \`this\` en el constructor hijo
 
 ### instanceof
@@ -124,7 +124,7 @@ rex instanceof Perro;   // true
 rex instanceof Animal;  // true
 \`\`\`
 
-> **Principio:** Prefiere la composicion sobre la herencia cuando sea posible. No crees jerarquias de mas de 2-3 niveles.`,
+> **Principio:** Prefiere la composición sobre la herencia cuando sea posible. No crees jerarquías de mas de 2-3 niveles.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -173,7 +173,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js20-leccion-03",
-      title: "Getters, setters y metodos estaticos",
+      title: "Getters, setters y métodos estáticos",
       content: `## Getters y Setters
 
 Permiten definir propiedades "computadas":
@@ -196,7 +196,7 @@ r.area;              // 15 (se accede como propiedad, no metodo)
 r.dimensiones = "10x4"; // setter
 \`\`\`
 
-## Metodos estaticos
+## Métodos estáticos
 
 Pertenecen a la **clase**, no a las instancias:
 
@@ -269,7 +269,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que palabra clave se usa para crear una instancia de una clase?",
+      prompt: "¿Qué palabra clave se usa para crear una instancia de una clase?",
       options: [
         { id: "a", text: "create", isCorrect: false },
         { id: "b", text: "new", isCorrect: true },
@@ -286,7 +286,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo se ejecuta automaticamente al crear una instancia con new?",
+      prompt: "¿Qué método se ejecuta automáticamente al crear una instancia con new?",
       options: [
         { id: "a", text: "init()", isCorrect: false },
         { id: "b", text: "create()", isCorrect: false },
@@ -295,7 +295,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Su nombre indica que 'construye' el objeto.",
-      explanation: "El metodo constructor() se ejecuta automaticamente cada vez que se crea una nueva instancia con new.",
+      explanation: "El método constructor() se ejecuta automáticamente cada vez que se crea una nueva instancia con new.",
     },
     {
       id: "js20-ej-03",
@@ -303,12 +303,12 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que hace super() en el constructor de una clase hija?",
+      prompt: "¿Qué hace super() en el constructor de una clase hija?",
       options: [
         { id: "a", text: "Crea una nueva instancia del padre", isCorrect: false },
         { id: "b", text: "Llama al constructor de la clase padre", isCorrect: true },
         { id: "c", text: "Elimina la clase padre", isCorrect: false },
-        { id: "d", text: "Define un metodo estatico", isCorrect: false },
+        { id: "d", text: "Define un método estático", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "super hace referencia a la clase padre.",
@@ -320,7 +320,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que palabra clave se usa para heredar de otra clase?",
+      prompt: "¿Qué palabra clave se usa para heredar de otra clase?",
       options: [
         { id: "a", text: "inherits", isCorrect: false },
         { id: "b", text: "extends", isCorrect: true },
@@ -329,7 +329,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "extends = extiende.",
-      explanation: "class Hijo extends Padre establece la herencia. La clase hija hereda propiedades y metodos del padre.",
+      explanation: "class Hijo extends Padre establece la herencia. La clase hija hereda propiedades y métodos del padre.",
     },
     {
       id: "js20-ej-05",
@@ -337,16 +337,16 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que son los metodos estaticos?",
+      prompt: "¿Qué son los métodos estáticos?",
       options: [
-        { id: "a", text: "Metodos que no se pueden modificar", isCorrect: false },
-        { id: "b", text: "Metodos que pertenecen a la clase, no a las instancias", isCorrect: true },
-        { id: "c", text: "Metodos que se ejecutan automaticamente", isCorrect: false },
-        { id: "d", text: "Metodos privados", isCorrect: false },
+        { id: "a", text: "Métodos que no se pueden modificar", isCorrect: false },
+        { id: "b", text: "Métodos que pertenecen a la clase, no a las instancias", isCorrect: true },
+        { id: "c", text: "Métodos que se ejecutan automáticamente", isCorrect: false },
+        { id: "d", text: "Métodos privados", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Se llaman directamente en la clase: Clase.metodo().",
-      explanation: "Los metodos estaticos pertenecen a la clase misma y se invocan sin crear una instancia: Clase.metodo().",
+      hint: "Se llaman directamente en la clase: Clase.método().",
+      explanation: "Los métodos estáticos pertenecen a la clase misma y se invocan sin crear una instancia: Clase.método().",
     },
     {
       id: "js20-ej-06",

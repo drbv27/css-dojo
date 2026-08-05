@@ -104,7 +104,7 @@ rumbo = "diagonal"; // Error!
 
 ### Intersection Types ( & )
 
-Combina multiples tipos en uno:
+Combina múltiples tipos en uno:
 
 \`\`\`typescript
 type ConNombre = { nombre: string };
@@ -147,9 +147,9 @@ function procesar(valor: string | number | boolean) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que define una interface en TypeScript?",
+      prompt: "¿Qué define una interface en TypeScript?",
       options: [
-        { id: "a", text: "Una funcion reutilizable", isCorrect: false },
+        { id: "a", text: "Una función reutilizable", isCorrect: false },
         { id: "b", text: "La forma/estructura de un objeto", isCorrect: true },
         { id: "c", text: "Una clase abstracta", isCorrect: false },
         { id: "d", text: "Un modulo importable", isCorrect: false },
@@ -164,7 +164,7 @@ function procesar(valor: string | number | boolean) {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: '¿Que tipo describe un valor que puede ser "exito", "error" o "pendiente"?',
+      prompt: '¿Qué tipo describe un valor que puede ser "exito", "error" o "pendiente"?',
       options: [
         { id: "a", text: "enum", isCorrect: false },
         { id: "b", text: "Union de literal types", isCorrect: true },
@@ -198,11 +198,11 @@ function procesar(valor: string | number | boolean) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que hace el operador & en TypeScript?",
+      prompt: "¿Qué hace el operador & en TypeScript?",
       options: [
         { id: "a", text: "Crea un union type", isCorrect: false },
         { id: "b", text: "Compara dos tipos", isCorrect: false },
-        { id: "c", text: "Combina multiples tipos en uno (intersection)", isCorrect: true },
+        { id: "c", text: "Combina múltiples tipos en uno (intersection)", isCorrect: true },
         { id: "d", text: "Excluye propiedades de un tipo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
@@ -231,7 +231,7 @@ function procesar(valor: string | number | boolean) {
         answer: { "drag-1": "zone-obj", "drag-2": "zone-union", "drag-3": "zone-inter" },
       },
       hint: "interface = objetos, | = o, & = y.",
-      explanation: "interface define objetos, | permite multiples opciones, & combina todos los tipos.",
+      explanation: "interface define objetos, | permite múltiples opciones, & combina todos los tipos.",
     },
   ],
 };

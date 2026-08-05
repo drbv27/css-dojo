@@ -4,7 +4,7 @@ export const reactRouterModule: ModuleData = {
   slug: "react-router",
   title: "React Router",
   description:
-    "Implementa navegacion en tu aplicacion React con React Router: rutas, enlaces, parametros, rutas anidadas y proteccion de rutas.",
+    "Implementa navegación en tu aplicación React con React Router: rutas, enlaces, parámetros, rutas anidadas y protección de rutas.",
   order: 213,
   category: "react-intermediate",
   icon: "navigation",
@@ -12,17 +12,17 @@ export const reactRouterModule: ModuleData = {
   lessons: [
     {
       id: "react13-leccion-01",
-      title: "Rutas basicas con React Router",
-      content: `## React Router: Navegacion en SPAs
+      title: "Rutas básicas con React Router",
+      content: `## React Router: Navegación en SPAs
 
-React Router es la libreria estandar para manejar navegacion en aplicaciones React.
+React Router es la libreria estándar para manejar navegación en aplicaciones React.
 
-### Instalacion
+### Instalación
 \`\`\`bash
 npm install react-router-dom
 \`\`\`
 
-### Configuracion basica
+### Configuración básica
 \`\`\`jsx
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -44,7 +44,7 @@ function App() {
 - **BrowserRouter** — envuelve la app, habilita el enrutamiento
 - **Routes** — contenedor de rutas (solo renderiza la primera que coincida)
 - **Route** — define una ruta: path + componente a renderizar
-- **path="*"** — ruta comodin para paginas 404
+- **path="*"** — ruta comodin para páginas 404
 
 ### Link y NavLink
 \`\`\`jsx
@@ -60,7 +60,7 @@ import { Link, NavLink } from 'react-router-dom';
 </NavLink>
 \`\`\`
 
-> **Importante:** Nunca uses \`<a href>\` para navegacion interna. Usa \`<Link>\` para evitar recargar la pagina.`,
+> **Importante:** Nunca uses \`<a href>\` para navegación interna. Usa \`<Link>\` para evitar recargar la página.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -122,7 +122,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRouter />)
       title: "useNavigate y useParams",
       content: `## Hooks de React Router
 
-### useNavigate — navegacion programatica
+### useNavigate — navegación programatica
 \`\`\`jsx
 import { useNavigate } from 'react-router-dom';
 
@@ -137,7 +137,7 @@ function LoginForm() {
 }
 \`\`\`
 
-### useParams — leer parametros de la URL
+### useParams — leer parámetros de la URL
 \`\`\`jsx
 // Ruta: /usuario/:id
 <Route path="/usuario/:id" element={<Perfil />} />
@@ -159,7 +159,7 @@ function Productos() {
 }
 \`\`\`
 
-### useLocation — informacion de la ubicacion actual
+### useLocation — información de la ubicación actual
 \`\`\`jsx
 const location = useLocation();
 console.log(location.pathname); // "/usuario/42"
@@ -248,7 +248,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorParams />)
     },
     {
       id: "react13-leccion-03",
-      title: "Rutas anidadas y proteccion",
+      title: "Rutas anidadas y protección",
       content: `## Rutas Anidadas y Protegidas
 
 ### Rutas anidadas
@@ -301,7 +301,7 @@ function RutaProtegida({ children }) {
 // replace evita que el usuario vuelva atras a la ruta protegida
 \`\`\`
 
-> **Patron:** Crea un componente RutaProtegida reutilizable que verifique la autenticacion.`,
+> **Patrón:** Crea un componente RutaProtegida reutilizable que verifique la autenticación.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -383,7 +383,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que componente de React Router envuelve toda la aplicacion para habilitar el enrutamiento?",
+      prompt: "¿Qué componente de React Router envuelve toda la aplicación para habilitar el enrutamiento?",
       options: [
         { id: "a", text: "Routes", isCorrect: false },
         { id: "b", text: "BrowserRouter", isCorrect: true },
@@ -391,8 +391,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         { id: "d", text: "Router", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es el componente de mas alto nivel que habilita la navegacion basada en el navegador.",
-      explanation: "BrowserRouter envuelve la aplicacion y proporciona el contexto necesario para que funcione la navegacion con la History API del navegador.",
+      hint: "Es el componente de mas alto nivel que habilita la navegación basada en el navegador.",
+      explanation: "BrowserRouter envuelve la aplicación y proporciona el contexto necesario para que funcione la navegación con la History API del navegador.",
     },
     {
       id: "react13-ej-02",
@@ -400,7 +400,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que componente se usa en vez de <a href> para la navegacion interna?",
+      prompt: "¿Qué componente se usa en vez de <a href> para la navegación interna?",
       options: [
         { id: "a", text: "<Navigate>", isCorrect: false },
         { id: "b", text: "<Anchor>", isCorrect: false },
@@ -409,7 +409,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Su nombre significa 'enlace' en ingles.",
-      explanation: "Link de React Router navega sin recargar la pagina (SPA). Usa <a href> solo para enlaces externos.",
+      explanation: "Link de React Router navega sin recargar la página (SPA). Usa <a href> solo para enlaces externos.",
     },
     {
       id: "react13-ej-03",
@@ -417,7 +417,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para definir una ruta con parametro dinamico para el ID de usuario:",
+      prompt: "Completa para definir una ruta con parámetro dinámico para el ID de usuario:",
       codeTemplate: {
         html: "",
         cssPrefix: "<Route path=\"/usuario/",
@@ -425,8 +425,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         blanks: [":id"],
       },
       validation: { type: "exact", answer: ":id" },
-      hint: "Los parametros dinamicos en la ruta empiezan con ':'.",
-      explanation: "En React Router, :id define un parametro dinamico en la URL que luego se puede leer con useParams().",
+      hint: "Los parámetros dinámicos en la ruta empiezan con ':'.",
+      explanation: "En React Router, :id define un parámetro dinámico en la URL que luego se puede leer con useParams().",
     },
     {
       id: "react13-ej-04",
@@ -434,7 +434,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que hook se usa para navegar programaticamente (ej: despues de un login)?",
+      prompt: "¿Qué hook se usa para navegar programaticamente (ej: después de un login)?",
       options: [
         { id: "a", text: "useRouter", isCorrect: false },
         { id: "b", text: "useNavigate", isCorrect: true },
@@ -442,8 +442,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         { id: "d", text: "useRedirect", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Su nombre describe la accion de ir a otra pagina.",
-      explanation: "useNavigate() devuelve una funcion que permite navegar a otra ruta. Reemplazo a useHistory de React Router v5.",
+      hint: "Su nombre describe la acción de ir a otra página.",
+      explanation: "useNavigate() devuelve una función que permite navegar a otra ruta. Reemplazo a useHistory de React Router v5.",
     },
     {
       id: "react13-ej-05",
@@ -451,7 +451,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa para leer el parametro 'id' de la URL /producto/:id:",
+      prompt: "Completa para leer el parámetro 'id' de la URL /producto/:id:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Producto() {\n  const { id } = ",
@@ -459,8 +459,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         blanks: ["useParams"],
       },
       validation: { type: "exact", answer: "useParams" },
-      hint: "Es el hook para leer parametros de la ruta.",
-      explanation: "useParams() devuelve un objeto con todos los parametros dinamicos definidos en la ruta, como :id.",
+      hint: "Es el hook para leer parámetros de la ruta.",
+      explanation: "useParams() devuelve un objeto con todos los parámetros dinámicos definidos en la ruta, como :id.",
     },
     {
       id: "react13-ej-06",
@@ -468,7 +468,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Asocia cada componente/hook con su funcion en React Router:",
+      prompt: "Asocia cada componente/hook con su función en React Router:",
       dragItems: [
         { id: "d1", content: "BrowserRouter", correctZone: "envolver" },
         { id: "d2", content: "Route", correctZone: "definir" },
@@ -480,14 +480,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       dropZones: [
         { id: "envolver", label: "Envolver la app" },
         { id: "definir", label: "Definir una ruta" },
-        { id: "navegar", label: "Enlace de navegacion" },
+        { id: "navegar", label: "Enlace de navegación" },
         { id: "renderizar", label: "Renderizar ruta hija" },
-        { id: "leer", label: "Leer parametros URL" },
-        { id: "redirigir", label: "Redireccion declarativa" },
+        { id: "leer", label: "Leer parámetros URL" },
+        { id: "redirigir", label: "Redirección declarativa" },
       ],
       validation: { type: "exact", answer: { d1: "envolver", d2: "definir", d3: "navegar", d4: "renderizar", d5: "leer", d6: "redirigir" } },
-      hint: "Cada componente tiene una funcion especifica en el sistema de rutas.",
-      explanation: "BrowserRouter envuelve la app, Route define rutas, Link navega, Outlet renderiza hijos, useParams lee parametros y Navigate redirige.",
+      hint: "Cada componente tiene una función específica en el sistema de rutas.",
+      explanation: "BrowserRouter envuelve la app, Route define rutas, Link navega, Outlet renderiza hijos, useParams lee parámetros y Navigate redirige.",
     },
     {
       id: "react13-ej-07",
@@ -495,16 +495,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que hace path='*' en una ruta de React Router?",
+      prompt: "¿Qué hace path='*' en una ruta de React Router?",
       options: [
-        { id: "a", text: "Redirige a la pagina principal", isCorrect: false },
+        { id: "a", text: "Redirige a la página principal", isCorrect: false },
         { id: "b", text: "Captura todas las rutas que no coincidan con ninguna otra (404)", isCorrect: true },
         { id: "c", text: "Renderiza todas las rutas al mismo tiempo", isCorrect: false },
-        { id: "d", text: "Protege la ruta con autenticacion", isCorrect: false },
+        { id: "d", text: "Protege la ruta con autenticación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es un comodin que captura todo lo demas.",
-      explanation: "path='*' es una ruta comodin que coincide con cualquier URL que no haya sido capturada por rutas anteriores. Se usa para paginas 404.",
+      explanation: "path='*' es una ruta comodin que coincide con cualquier URL que no haya sido capturada por rutas anteriores. Se usa para páginas 404.",
     },
     {
       id: "react13-ej-08",

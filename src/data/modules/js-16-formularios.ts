@@ -4,7 +4,7 @@ export const jsFormulariosModule: ModuleData = {
   slug: "js-formularios",
   title: "Formularios",
   description:
-    "Aprende a manejar formularios con JavaScript: obtener valores, validacion y envio de datos.",
+    "Aprende a manejar formularios con JavaScript: obtener valores, validación y envio de datos.",
   order: 116,
   category: "js-intermediate",
   icon: "FormInput",
@@ -66,10 +66,10 @@ actualizar();`,
     },
     {
       id: "js16-leccion-02",
-      title: "Validacion de formularios",
-      content: `## Validacion con JavaScript
+      title: "Validación de formularios",
+      content: `## Validación con JavaScript
 
-### Validacion basica
+### Validación básica
 \`\`\`javascript
 function validar(valor) {
   if (!valor.trim()) return "El campo es obligatorio";
@@ -95,17 +95,17 @@ function mostrarError(campo, mensaje) {
 }
 \`\`\`
 
-### Validacion HTML5
-HTML5 tiene validacion nativa:
+### Validación HTML5
+HTML5 tiene validación nativa:
 \`\`\`html
 <input required minlength="3" maxlength="50">
 <input type="email" required>
 <input type="number" min="0" max="100">
 \`\`\`
 
-Pero JavaScript te da **control total** sobre mensajes y logica.
+Pero JavaScript te da **control total** sobre mensajes y lógica.
 
-> **Recuerda:** Siempre valida tambien en el servidor. La validacion del frontend puede ser evadida.`,
+> **Recuerda:** Siempre valida también en el servidor. La validación del frontend puede ser evadida.`,
       codeExample: {
         html: '<form id="formulario">\n  <input id="email" placeholder="Email" />\n  <span class="error"></span>\n  <input id="pass" type="password" placeholder="Contrasena (min 6)" />\n  <span class="error"></span>\n  <button type="submit">Enviar</button>\n</form>\n<div id="resultado"></div>',
         css: 'form { display: flex; flex-direction: column; gap: 4px; } input { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } input.invalido { border-color: #f38ba8; } .error { color: #f38ba8; font-size: 12px; min-height: 16px; } button { padding: 8px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -184,7 +184,7 @@ boton.disabled = true;  // deshabilita
 boton.disabled = false; // habilita
 \`\`\`
 
-> **FormData** es especialmente util con formularios grandes y cuando necesitas enviar datos al servidor.`,
+> **FormData** es especialmente útil con formularios grandes y cuando necesitas enviar datos al servidor.`,
       codeExample: {
         html: '<form id="registro">\n  <input name="nombre" placeholder="Nombre" required />\n  <input name="email" type="email" placeholder="Email" required />\n  <select name="plan">\n    <option value="free">Gratuito</option>\n    <option value="pro">Pro</option>\n    <option value="enterprise">Enterprise</option>\n  </select>\n  <button type="submit">Registrar</button>\n  <button type="button" id="reset">Limpiar</button>\n</form>\n<div id="resultado"></div>',
         css: 'form { display: flex; flex-direction: column; gap: 4px; } input, select { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } button { padding: 8px; border: none; border-radius: 4px; cursor: pointer; } button[type="submit"] { background: #a6e3a1; color: #1e1e2e; } #reset { background: #45475a; color: #cdd6f4; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -225,7 +225,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que propiedad se usa para obtener el valor de un input de texto?",
+      prompt: "¿Qué propiedad se usa para obtener el valor de un input de texto?",
       options: [
         { id: "a", text: "input.text", isCorrect: false },
         { id: "b", text: "input.value", isCorrect: true },
@@ -242,7 +242,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo previene que un formulario se envie y recargue la pagina?",
+      prompt: "¿Qué método previene que un formulario se envie y recargue la página?",
       options: [
         { id: "a", text: "e.stopPropagation()", isCorrect: false },
         { id: "b", text: "e.preventDefault()", isCorrect: true },
@@ -251,7 +251,7 @@ document.getElementById("reset").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Previene el comportamiento por defecto del evento.",
-      explanation: "e.preventDefault() evita que el formulario se envie y la pagina se recargue.",
+      explanation: "e.preventDefault() evita que el formulario se envie y la página se recargue.",
     },
     {
       id: "js16-ej-03",
@@ -276,7 +276,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la diferencia entre los eventos 'input' y 'change'?",
+      prompt: "¿Cuál es la diferencia entre los eventos 'input' y 'change'?",
       options: [
         { id: "a", text: "No hay diferencia", isCorrect: false },
         { id: "b", text: "input se dispara con cada tecla, change al perder foco", isCorrect: true },
@@ -293,7 +293,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que hace form.reset()?",
+      prompt: "¿Qué hace form.reset()?",
       options: [
         { id: "a", text: "Elimina el formulario del DOM", isCorrect: false },
         { id: "b", text: "Envia el formulario", isCorrect: false },
@@ -310,16 +310,16 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Por que se debe validar en el servidor ademas del frontend?",
+      prompt: "¿Por que se debe validar en el servidor además del frontend?",
       options: [
         { id: "a", text: "Porque JavaScript es lento", isCorrect: false },
-        { id: "b", text: "Porque la validacion del frontend puede ser evadida por el usuario", isCorrect: true },
-        { id: "c", text: "Porque el navegador no soporta validacion", isCorrect: false },
+        { id: "b", text: "Porque la validación del frontend puede ser evadida por el usuario", isCorrect: true },
+        { id: "c", text: "Porque el navegador no soporta validación", isCorrect: false },
         { id: "d", text: "No es necesario validar en el servidor", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Un usuario puede desactivar JavaScript o modificar las peticiones.",
-      explanation: "La validacion del frontend puede ser evadida desactivando JavaScript o manipulando las peticiones HTTP. La validacion del servidor es imprescindible.",
+      explanation: "La validación del frontend puede ser evadida desactivando JavaScript o manipulando las peticiones HTTP. La validación del servidor es imprescindible.",
     },
   ],
 };

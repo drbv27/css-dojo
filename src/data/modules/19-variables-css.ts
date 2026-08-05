@@ -4,7 +4,7 @@ export const variablesCSSModule: ModuleData = {
   slug: "variables-css",
   title: "Variables CSS (Custom Properties)",
   description:
-    "Organiza y reutiliza valores en tu CSS con custom properties: declaracion, uso, scope, valores de respaldo y temas dinamicos.",
+    "Organiza y reutiliza valores en tu CSS con custom properties: declaración, uso, scope, valores de respaldo y temas dinámicos.",
   order: 19,
   dojo: "css" as const,
   category: "advanced",
@@ -33,7 +33,7 @@ Las variables se declaran con el prefijo \`--\`:
 
 ### Usar una variable
 
-Se accede a las variables con la funcion \`var()\`:
+Se accede a las variables con la función \`var()\`:
 
 \`\`\`css
 .boton {
@@ -50,7 +50,7 @@ Se accede a las variables con la funcion \`var()\`:
 
 ### El selector :root
 
-\`:root\` apunta al elemento raiz del documento (\`<html>\`). Las variables declaradas ahi estan disponibles en **todo el documento**:
+\`:root\` apunta al elemento raíz del documento (\`<html>\`). Las variables declaradas ahi estan disponibles en **todo el documento**:
 
 \`\`\`css
 :root {
@@ -66,8 +66,8 @@ Se accede a las variables con la funcion \`var()\`:
 
 - Siempre empiezan con \`--\` (dos guiones)
 - Son **case-sensitive**: \`--Color\` y \`--color\` son diferentes
-- Pueden contener letras, numeros, guiones y guiones bajos
-- Convencion comun: \`--categoria-nombre\` (ejemplo: \`--color-texto\`, \`--tamanio-titulo\`)
+- Pueden contener letras, números, guiones y guiones bajos
+- Convención común: \`--categoria-nombre\` (ejemplo: \`--color-texto\`, \`--tamanio-titulo\`)
 
 > **Ventaja clave:** Si necesitas cambiar un color usado en 50 lugares, solo lo cambias en la variable. Sin variables, tendrias que buscar y reemplazar en 50 reglas.`,
       codeExample: {
@@ -82,7 +82,7 @@ Se accede a las variables con la funcion \`var()\`:
       title: "Scope, herencia y valores de respaldo",
       content: `## Scope, herencia y valores de respaldo
 
-### Scope (ambito) de las variables
+### Scope (ámbito) de las variables
 
 Las variables CSS siguen las reglas de **cascada y herencia**. Una variable declarada en un elemento esta disponible para ese elemento y todos sus descendientes:
 
@@ -122,7 +122,7 @@ Puedes declarar variables en cualquier selector para limitar su alcance:
 
 ### Valores de respaldo (fallback)
 
-La funcion \`var()\` acepta un segundo parametro como **valor de respaldo** por si la variable no esta definida:
+La función \`var()\` acepta un segundo parámetro como **valor de respaldo** por si la variable no esta definida:
 
 \`\`\`css
 .elemento {
@@ -145,7 +145,7 @@ Puedes encadenar fallbacks con variables anidadas:
 
 ### Variables y calc()
 
-Las variables se pueden usar dentro de \`calc()\` para calculos dinamicos:
+Las variables se pueden usar dentro de \`calc()\` para calculos dinámicos:
 
 \`\`\`css
 :root {
@@ -159,7 +159,7 @@ Las variables se pueden usar dentro de \`calc()\` para calculos dinamicos:
 }
 \`\`\`
 
-> **Buena practica:** Siempre proporciona un valor de respaldo para variables que podrian no estar definidas, especialmente en componentes reutilizables.`,
+> **Buena práctica:** Siempre proporciona un valor de respaldo para variables que podrian no estar definidas, especialmente en componentes reutilizables.`,
       codeExample: {
         html: `<div class="componente tema-a">\n  <p>Tema A: variables locales</p>\n</div>\n<div class="componente tema-b">\n  <p>Tema B: variables diferentes</p>\n</div>\n<div class="componente">\n  <p>Sin tema: usa fallback</p>\n</div>`,
         css: `:root {\n  --base: 8px;\n}\n\n.tema-a {\n  --comp-fondo: #e8f4fd;\n  --comp-borde: #3498db;\n  --comp-texto: #1a5276;\n}\n\n.tema-b {\n  --comp-fondo: #eafaf1;\n  --comp-borde: #27ae60;\n  --comp-texto: #1e8449;\n}\n\n.componente {\n  background: var(--comp-fondo, #f5f5f5);\n  border-left: 4px solid var(--comp-borde, #999);\n  color: var(--comp-texto, #333);\n  padding: calc(var(--base) * 2);\n  margin-bottom: calc(var(--base) * 1.5);\n  border-radius: 6px;\n}\n\n.componente p {\n  margin: 0;\n  font-weight: bold;\n}`,
@@ -172,7 +172,7 @@ Las variables se pueden usar dentro de \`calc()\` para calculos dinamicos:
       title: "Temas con variables CSS",
       content: `## Temas con variables CSS
 
-Una de las aplicaciones mas poderosas de las variables CSS es la creacion de **temas** (como modo claro y oscuro).
+Una de las aplicaciones mas poderosas de las variables CSS es la creación de **temas** (como modo claro y oscuro).
 
 ### Estructura de temas
 
@@ -228,7 +228,7 @@ document.documentElement.removeAttribute('data-tema');
 
 ### Tema oscuro con prefers-color-scheme
 
-Detecta automaticamente la preferencia del sistema operativo:
+Detecta automáticamente la preferencia del sistema operativo:
 
 \`\`\`css
 :root {
@@ -257,7 +257,7 @@ Detecta automaticamente la preferencia del sistema operativo:
 }
 \`\`\`
 
-> **Patron profesional:** Los frameworks modernos como las design systems de empresas grandes usan variables CSS como base. Definir un sistema de variables solido es el primer paso para un CSS escalable.`,
+> **Patrón profesional:** Los frameworks modernos como las design systems de empresas grandes usan variables CSS como base. Definir un sistema de variables solido es el primer paso para un CSS escalable.`,
       codeExample: {
         html: `<div class="demo-tema" id="app">\n  <div class="barra">\n    <h3>Mi App</h3>\n    <span class="etiqueta">Claro / Oscuro via CSS</span>\n  </div>\n  <div class="contenido-tema">\n    <p>Este componente usa variables CSS para definir sus colores. Cambia los valores de las variables para ver el efecto.</p>\n    <button class="btn-tema">Boton de accion</button>\n  </div>\n</div>`,
         css: `.demo-tema {\n  --dt-fondo: #ffffff;\n  --dt-texto: #1a1a1a;\n  --dt-superficie: #f0f2f5;\n  --dt-primario: #3498db;\n  --dt-borde: #ddd;\n\n  background: var(--dt-fondo);\n  color: var(--dt-texto);\n  border-radius: 12px;\n  overflow: hidden;\n  border: 1px solid var(--dt-borde);\n}\n\n.barra {\n  background: var(--dt-primario);\n  color: white;\n  padding: 12px 20px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.barra h3 { margin: 0; }\n.etiqueta {\n  font-size: 0.8rem;\n  opacity: 0.8;\n}\n\n.contenido-tema {\n  padding: 24px;\n  background: var(--dt-superficie);\n}\n\n.btn-tema {\n  background: var(--dt-primario);\n  color: white;\n  border: none;\n  padding: 10px 24px;\n  border-radius: 6px;\n  cursor: pointer;\n  margin-top: 12px;\n  font-size: 1rem;\n}`,
@@ -274,7 +274,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Como se declara una variable CSS llamada 'color-primario' con el valor #3498db?",
+        "¿Cómo se declara una variable CSS llamada 'color-primario' con el valor #3498db?",
       options: [
         { id: "a", text: "$color-primario: #3498db;", isCorrect: false },
         { id: "b", text: "--color-primario: #3498db;", isCorrect: true },
@@ -293,7 +293,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la funcion CSS para usar la variable --color-primario como color de fondo:",
+        "Completa la función CSS para usar la variable --color-primario como color de fondo:",
       codeTemplate: {
         html: `<div class="caja">Contenido</div>`,
         cssPrefix: ":root { --color-primario: #3498db; }\n.caja {\n  background-color: ",
@@ -301,9 +301,9 @@ Detecta automaticamente la preferencia del sistema operativo:
         blanks: ["var"],
       },
       validation: { type: "exact", answer: "var" },
-      hint: "Es una funcion de tres letras que 'obtiene' el valor de una variable CSS.",
+      hint: "Es una función de tres letras que 'obtiene' el valor de una variable CSS.",
       explanation:
-        "La funcion 'var()' se usa para acceder al valor de una custom property. La sintaxis es var(--nombre-variable). Sin var(), el navegador no sabria que debe buscar el valor de la variable.",
+        "La función 'var()' se usa para acceder al valor de una custom property. La sintaxis es var(--nombre-variable). Sin var(), el navegador no sabria que debe buscar el valor de la variable.",
     },
     {
       id: "19-ej-03",
@@ -312,7 +312,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 3,
       prompt:
-        "¿Que hace la declaracion 'color: var(--color-texto, #333)'?",
+        "¿Qué hace la declaración 'color: var(--color-texto, #333)'?",
       options: [
         { id: "a", text: "Aplica ambos colores al mismo tiempo", isCorrect: false },
         { id: "b", text: "Usa --color-texto, o #333 si la variable no esta definida", isCorrect: true },
@@ -320,9 +320,9 @@ Detecta automaticamente la preferencia del sistema operativo:
         { id: "d", text: "Es un error de sintaxis", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El segundo parametro de var() es un valor de respaldo o fallback.",
+      hint: "El segundo parámetro de var() es un valor de respaldo o fallback.",
       explanation:
-        "El segundo argumento de var() es un valor de respaldo (fallback). Si --color-texto no esta definida en ningun ancestro, se usa #333. Es una buena practica incluir fallbacks en componentes reutilizables.",
+        "El segundo argumento de var() es un valor de respaldo (fallback). Si --color-texto no esta definida en ningun ancestro, se usa #333. Es una buena práctica incluir fallbacks en componentes reutilizables.",
     },
     {
       id: "19-ej-04",
@@ -331,7 +331,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada concepto de variables CSS a su descripcion correcta:",
+        "Arrastra cada concepto de variables CSS a su descripción correcta:",
       dragItems: [
         { id: "drag-1", content: ":root", correctZone: "zone-global" },
         { id: "drag-2", content: "var(--x, blue)", correctZone: "zone-fallback" },
@@ -355,7 +355,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       },
       hint: ":root es donde se definen las variables globales. var() con dos argumentos incluye un fallback. -- declara. calc() calcula.",
       explanation:
-        ":root se usa para declarar variables disponibles globalmente. var(--x, blue) usa la variable con fallback 'blue'. --mi-color: red declara la variable. calc(var(--base) * 2) permite operaciones matematicas con variables.",
+        ":root se usa para declarar variables disponibles globalmente. var(--x, blue) usa la variable con fallback 'blue'. --mi-color: red declara la variable. calc(var(--base) * 2) permite operaciones matemáticas con variables.",
     },
     {
       id: "19-ej-05",
@@ -408,7 +408,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .pagina (background, color) y .boton (background con --acento, color white).",
+        "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .página (background, color) y .botón (background con --acento, color white).",
       codeTemplate: {
         html: `<div class="pagina">\n  <h2>Sistema de temas</h2>\n  <p>Cambiando variables se cambia todo el aspecto.</p>\n  <button class="boton">Accion</button>\n</div>`,
         cssPrefix: "",
@@ -422,9 +422,9 @@ Detecta automaticamente la preferencia del sistema operativo:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .pagina y .boton.",
+      hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .página y .botón.",
       explanation:
-        "El sistema de temas funciona declarando variables en :root (tema claro) y sobreescribiendolas en .tema-oscuro. Los estilos usan var() y se adaptan automaticamente al tema activo.",
+        "El sistema de temas funciona declarando variables en :root (tema claro) y sobreescribiendolas en .tema-oscuro. Los estilos usan var() y se adaptan automáticamente al tema activo.",
     },
     {
       id: "19-ej-08",
@@ -433,7 +433,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Si declaras --color: blue en :root y --color: red en .seccion, que color tendra un <p> dentro de .seccion?",
+        "¿Si declaras --color: blue en :root y --color: red en .sección, que color tendra un <p> dentro de .sección?",
       options: [
         { id: "a", text: "blue (la variable global tiene prioridad)", isCorrect: false },
         { id: "b", text: "red (la variable mas cercana tiene prioridad)", isCorrect: true },
@@ -443,7 +443,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       validation: { type: "exact", answer: "b" },
       hint: "Las variables CSS siguen las reglas de herencia y cascada, como cualquier propiedad CSS.",
       explanation:
-        "Las variables CSS se heredan de padres a hijos. Una variable declarada en .seccion sobreescribe la de :root para todos los descendientes de .seccion. El <p> hereda el valor 'red' de su ancestro mas cercano que define --color.",
+        "Las variables CSS se heredan de padres a hijos. Una variable declarada en .sección sobreescribe la de :root para todos los descendientes de .sección. El <p> hereda el valor 'red' de su ancestro mas cercano que define --color.",
     },
   ],
 };

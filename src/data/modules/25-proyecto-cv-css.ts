@@ -16,7 +16,7 @@ export const proyectoCvCssModule: ModuleData = {
   slug: "proyecto-cv-css",
   title: "Proyecto: Estiliza tu CV con CSS",
   description:
-    "Toma el CV que escribiste en HTML y convertilo en una pagina presentable: clases, tipografia, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
+    "Toma el CV que escribiste en HTML y convertilo en una página presentable: clases, tipografía, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
   order: 25,
   dojo: "css" as const,
   category: "project",
@@ -25,28 +25,28 @@ export const proyectoCvCssModule: ModuleData = {
     {
       id: "25-leccion-01",
       title: "El proyecto: tu CV, ahora con estilo",
-      content: `## De la estructura a la presentacion
+      content: `## De la estructura a la presentación
 
-En el track de HTML escribiste un CV. Funciona, es semantico y accesible... y se ve como un documento de 1994. Texto negro, fondo blanco, enlaces azules subrayados.
+En el track de HTML escribiste un CV. Funciona, es semántico y accesible... y se ve como un documento de 1994. Texto negro, fondo blanco, enlaces azules subrayados.
 
 Eso no es un defecto de tu HTML. **Es exactamente lo que HTML debe hacer:** decir que significa cada cosa, no como se ve. Ahora le toca a CSS.
 
 ### Que vamos a construir
 
-Vas a partir del mismo CV y llegar a una pagina que podrias mandar a una entrevista. En orden:
+Vas a partir del mismo CV y llegar a una página que podrias mandar a una entrevista. En orden:
 
 1. **Clases** — el paso que cambia todo, y el primero
-2. **Reset y tipografia** — que se lea bien antes de que se vea lindo
+2. **Reset y tipografía** — que se lea bien antes de que se vea lindo
 3. **Box model** — el ancho de lectura y el aire alrededor
 4. **Header con Flexbox** — nombre a un lado, contacto al otro
 5. **Secciones con Grid** — habilidades y experiencia en columnas
 6. **La tabla** — que deje de parecer una planilla
 7. **La foto** — recortada y redonda, sin deformarse
-8. **Responsive** — que sirva en el telefono
+8. **Responsive** — que sirva en el teléfono
 
 ### Una advertencia sobre el orden
 
-Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV con tipografia mala y sombras hermosas se ve peor que uno con tipografia buena y cero sombras.** La jerarquia visual se construye con tamano, peso y espacio; el resto es decoracion.
+Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV con tipografía mala y sombras hermosas se ve peor que uno con tipografía buena y cero sombras.** La jerarquía visual se construye con tamaño, peso y espacio; el resto es decoración.
 
 > Si no tenes tu CV a mano, cada paso trae el HTML que necesita. Pero si guardaste el tuyo, usalo: el proyecto vale mucho mas cuando estas estilando tus propios datos.`,
       codeExample: {
@@ -62,7 +62,7 @@ Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV
       title: "Por que tu CV necesita clases",
       content: `## El problema de estilar solo con etiquetas
 
-Tu CV usa \`<p>\` en varios lugares distintos: el titulo profesional debajo del nombre, el parrafo del perfil, y la descripcion de cada trabajo.
+Tu CV usa \`<p>\` en varios lugares distintos: el título profesional debajo del nombre, el párrafo del perfil, y la descripción de cada trabajo.
 
 Si escribis esto:
 
@@ -73,20 +73,20 @@ p {
 }
 \`\`\`
 
-...los tres se ven igual. Pero **no cumplen la misma funcion**. El titulo profesional es casi un subtitulo del nombre; el perfil es texto de lectura; la descripcion de un trabajo es texto de apoyo.
+...los tres se ven igual. Pero **no cumplen la misma función**. El título profesional es casi un subtitulo del nombre; el perfil es texto de lectura; la descripción de un trabajo es texto de apoyo.
 
 ### La salida no es pelear con la especificidad
 
-Se puede intentar distinguirlos por posicion:
+Se puede intentar distinguirlos por posición:
 
 \`\`\`css
 header p { font-size: 20px; }        /* el titulo profesional */
 main section:first-child p { }       /* el perfil... creo? */
 \`\`\`
 
-Funciona hasta que movas una seccion. **Estas atando tus estilos al orden del HTML**, y el orden cambia.
+Funciona hasta que movas una sección. **Estas atando tus estilos al orden del HTML**, y el orden cambia.
 
-### La clase nombra la intencion
+### La clase nombra la intención
 
 \`\`\`html
 <p class="titulo-profesional">Desarrolladora Frontend</p>
@@ -102,7 +102,7 @@ Ahora el estilo dice **que es** cada cosa, no **donde esta**. Podes reordenar to
 
 ### Como nombrar
 
-No hay una regla universal, pero si una guia que ahorra dolor: **nombra por funcion, no por apariencia.**
+No hay una regla universal, pero si una guia que ahorra dolor: **nombra por función, no por apariencia.**
 
 | Mal | Bien | Por que |
 |---|---|---|
@@ -110,7 +110,7 @@ No hay una regla universal, pero si una guia que ahorra dolor: **nombra por func
 | \`.grande\` | \`.titulo-seccion\` | ¿"Grande" respecto de que? |
 | \`.div2\` | \`.tarjeta-experiencia\` | No dice nada |
 
-> **Y no borres la semantica.** Las clases se agregan a las etiquetas semanticas, no las reemplazan. \`<section class="perfil">\` sigue siendo una \`section\` para un lector de pantalla.`,
+> **Y no borres la semántica.** Las clases se agregan a las etiquetas semánticas, no las reemplazan. \`<section class="perfil">\` sigue siendo una \`section\` para un lector de pantalla.`,
       codeExample: {
         html: `<p>Desarrolladora Frontend</p>\n<p>Perfil profesional con foco en accesibilidad.</p>`,
         css: `/* Sin clases no hay forma de distinguirlos sin atarse al orden */\np { font-size: 16px; }\n\n/* Con clases, cada uno dice que es */\n.titulo-profesional { font-size: 20px; }\n.perfil { line-height: 1.7; }`,
@@ -128,7 +128,7 @@ Hay un orden que ahorra horas, y casi nadie lo sigue la primera vez.
 
 ### 1. Reset primero
 
-Los navegadores traen margenes por defecto que no pediste. Antes de posicionar nada:
+Los navegadores traen márgenes por defecto que no pediste. Antes de posicionar nada:
 
 \`\`\`css
 * {
@@ -142,13 +142,13 @@ body {
 
 \`box-sizing: border-box\` hace que \`width\` incluya padding y borde. Sin eso, cada vez que agregues padding el elemento crece y tu layout se corre. **Este es el ajuste mas rentable de todo CSS.**
 
-### 2. Tipografia antes que layout
+### 2. Tipografía antes que layout
 
-Antes de decidir donde va cada caja, decidi como se lee. Si cambias el \`font-size\` base despues de maquetar, todos los espacios que ajustaste quedan mal.
+Antes de decidir donde va cada caja, decidi como se lee. Si cambias el \`font-size\` base después de maquetar, todos los espacios que ajustaste quedan mal.
 
 ### 3. Layout de afuera hacia adentro
 
-Primero el contenedor general, despues las secciones, al final los detalles. Al reves, cada cambio del contenedor rompe lo de adentro.
+Primero el contenedor general, después las secciones, al final los detalles. Al reves, cada cambio del contenedor rompe lo de adentro.
 
 ### 4. Responsive al final, pero pensado desde el principio
 
@@ -167,7 +167,7 @@ body
   footer.pie
 \`\`\`
 
-> **Un consejo sobre el ancho de lectura:** un parrafo de 60 a 75 caracteres por linea es lo mas comodo de leer. En pantalla ancha eso es cerca de \`65ch\` o \`700px\`. Un CV a todo el ancho de un monitor de 27 pulgadas es incomodo, aunque "aproveche el espacio".`,
+> **Un consejo sobre el ancho de lectura:** un párrafo de 60 a 75 caracteres por línea es lo mas comodo de leer. En pantalla ancha eso es cerca de \`65ch\` o \`700px\`. Un CV a todo el ancho de un monitor de 27 pulgadas es incomodo, aunque "aproveche el espacio".`,
       codeExample: {
         html: `<main class="contenido">\n  <section class="perfil">...</section>\n</main>`,
         css: `* { box-sizing: border-box; }\nbody { margin: 0; }\n\n.contenido {\n  max-width: 700px;\n  width: 100%;\n  margin: 0 auto;\n}`,
@@ -185,7 +185,7 @@ body
       xpReward: 20,
       order: 1,
       prompt:
-        "Paso 1 - Las clases. Tomamos el encabezado de tu CV y le agregamos clases que nombren la funcion de cada parte. Agrega: clase 'encabezado' al <header>, clase 'nombre' al <h1>, clase 'titulo-profesional' al <p>, y clase 'contacto' al <nav> que envuelve los enlaces. No cambies las etiquetas, solo agrega los atributos class.",
+        "Paso 1 - Las clases. Tomamos el encabezado de tu CV y le agregamos clases que nombren la función de cada parte. Agrega: clase 'encabezado' al <header>, clase 'nombre' al <h1>, clase 'título-profesional' al <p>, y clase 'contacto' al <nav> que envuelve los enlaces. No cambies las etiquetas, solo agrega los atributos class.",
       codeTemplate: {
         html: `<header>\n  <h1>Ana Martinez</h1>\n  <p>Desarrolladora Frontend</p>\n  <nav>\n    <a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a>\n    <a href="tel:+541100000000">+54 11 0000 0000</a>\n  </nav>\n</header>`,
         cssPrefix: "",
@@ -203,9 +203,9 @@ body
           "nav.contacto a[href^=\"tel:\"]",
         ],
       },
-      hint: "Una clase se agrega con el atributo class: <h1 class=\"nombre\">. Las etiquetas semanticas se conservan tal cual.",
+      hint: "Una clase se agrega con el atributo class: <h1 class=\"nombre\">. Las etiquetas semánticas se conservan tal cual.",
       explanation:
-        "Las clases nombran la FUNCION de cada parte, no su apariencia. 'titulo-profesional' seguira teniendo sentido si manana lo pintas de otro color; '.texto-gris' no. Y fijate que el <header>, el <h1> y el <nav> siguen ahi: las clases se suman a la semantica, no la reemplazan.",
+        "Las clases nombran la FUNCIÓN de cada parte, no su apariencia. 'título-profesional' seguira teniendo sentido si mañana lo pintas de otro color; '.texto-gris' no. Y fijate que el <header>, el <h1> y el <nav> siguen ahi: las clases se suman a la semántica, no la reemplazan.",
     },
     {
       id: "25-ej-02",
@@ -214,7 +214,7 @@ body
       xpReward: 20,
       order: 2,
       prompt:
-        "Paso 2 - Reset y tipografia. Escribe el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .titulo-profesional, font-size: 20px, color: #666 y margin-top: 0.",
+        "Paso 2 - Reset y tipografía. Escribe el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .título-profesional, font-size: 20px, color: #666 y margin-top: 0.",
       codeTemplate: {
         html: `<header class="encabezado">\n  <h1 class="nombre">Ana Martinez</h1>\n  <p class="titulo-profesional">Desarrolladora Frontend</p>\n</header>`,
         cssPrefix: "",
@@ -226,9 +226,9 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "box-sizing: border-box en * hace que width incluya padding y borde. El margin-bottom: 4px del nombre y el margin-top: 0 del titulo los acercan como un bloque.",
+      hint: "box-sizing: border-box en * hace que width incluya padding y borde. El margin-bottom: 4px del nombre y el margin-top: 0 del título los acercan como un bloque.",
       explanation:
-        "Este paso hace mas por la legibilidad que cualquier sombra. line-height: 1.6 da aire entre lineas; el contraste de tamano entre 32px y 20px crea jerarquia sin necesidad de color. Y border-box en * evita que cada padding que agregues despues te corra el layout.",
+        "Este paso hace mas por la legibilidad que cualquier sombra. line-height: 1.6 da aire entre líneas; el contraste de tamaño entre 32px y 20px crea jerarquía sin necesidad de color. Y border-box en * evita que cada padding que agregues después te corra el layout.",
     },
     {
       id: "25-ej-03",
@@ -249,9 +249,9 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "margin: 0 auto centra un elemento que tiene un ancho maximo. width: 100% lo deja encogerse en pantallas chicas.",
+      hint: "margin: 0 auto centra un elemento que tiene un ancho máximo. width: 100% lo deja encogerse en pantallas chicas.",
       explanation:
-        "max-width con width: 100% es el patron responsive mas simple que existe: en pantalla ancha se detiene en 700px, en el telefono ocupa todo. Un ancho fijo en px haria falta arreglarlo despues con media queries. El padding lateral evita que el texto toque el borde en mobile.",
+        "max-width con width: 100% es el patrón responsive mas simple que existe: en pantalla ancha se detiene en 700px, en el teléfono ocupa todo. Un ancho fijo en px haria falta arreglarlo después con media queries. El padding lateral evita que el texto toque el borde en mobile.",
     },
     {
       id: "25-ej-04",
@@ -272,9 +272,9 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "space-between empuja el primer hijo a la izquierda y el ultimo a la derecha. flex-wrap: wrap es lo que evita que se desborde en pantallas angostas.",
+      hint: "space-between empuja el primer hijo a la izquierda y el último a la derecha. flex-wrap: wrap es lo que evita que se desborde en pantallas angostas.",
       explanation:
-        "flex-wrap: wrap hace la mitad del trabajo responsive antes de escribir una sola media query: cuando no hay ancho, el contacto baja abajo del nombre solo. Y fijate que el gap reemplaza los margenes entre hijos, que es mas facil de mantener que margin-right en todos menos el ultimo.",
+        "flex-wrap: wrap hace la mitad del trabajo responsive antes de escribir una sola media query: cuando no hay ancho, el contacto baja abajo del nombre solo. Y fijate que el gap reemplaza los márgenes entre hijos, que es mas fácil de mantener que margin-right en todos menos el último.",
     },
     {
       id: "25-ej-05",
@@ -283,7 +283,7 @@ body
       xpReward: 15,
       order: 5,
       prompt:
-        "En el paso anterior le quitaste el subrayado a los enlaces del contacto con text-decoration: none. ¿Que problema de accesibilidad introduce eso, y cual es la forma correcta de resolverlo?",
+        "En el paso anterior le quitaste el subrayado a los enlaces del contacto con text-decoration: none. ¿Qué problema de accesibilidad introduce eso, y cual es la forma correcta de resolverlo?",
       options: [
         {
           id: "a",
@@ -292,7 +292,7 @@ body
         },
         {
           id: "b",
-          text: "Quien no distingue el azul del texto negro pierde la unica senal de que es un enlace. Hay que dar una segunda pista que no dependa del color, y mantener un foco visible para el teclado.",
+          text: "Quien no distingue el azul del texto negro pierde la única señal de que es un enlace. Hay que dar una segunda pista que no dependa del color, y mantener un foco visible para el teclado.",
           isCorrect: true,
         },
         {
@@ -312,7 +312,7 @@ body
       },
       hint: "Pensa en alguien con daltonismo, y en alguien que navega con Tab en vez de mouse.",
       explanation:
-        "El color NUNCA debe ser la unica forma de transmitir informacion: es una de las reglas mas citadas de WCAG. Si quitas el subrayado, agrega otra senal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
+        "El color NUNCA debe ser la única forma de transmitir información: es una de las reglas mas citadas de WCAG. Si quitas el subrayado, agrega otra señal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
     },
     {
       id: "25-ej-06",
@@ -333,9 +333,9 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "repeat(auto-fit, minmax(260px, 1fr)) crea tantas columnas como quepan, cada una de 260px minimo. No necesita media queries.",
+      hint: "repeat(auto-fit, minmax(260px, 1fr)) crea tantas columnas como quepan, cada una de 260px mínimo. No necesita media queries.",
       explanation:
-        "auto-fit con minmax es la tecnica responsive mas potente de Grid: el navegador decide cuantas columnas caben y reacomoda solo. Dos tarjetas en escritorio, una apilada en el telefono, sin escribir ni una media query. Esto es lo que Grid hace mejor que Flexbox.",
+        "auto-fit con minmax es la técnica responsive mas potente de Grid: el navegador decide cuantas columnas caben y reacomoda solo. Dos tarjetas en escritorio, una apilada en el teléfono, sin escribir ni una media query. Esto es lo que Grid hace mejor que Flexbox.",
     },
     {
       id: "25-ej-07",
@@ -356,7 +356,7 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "border-collapse: collapse junta los bordes de las celdas en una sola linea. Sin eso queda el doble borde clasico de los 90.",
+      hint: "border-collapse: collapse junta los bordes de las celdas en una sola línea. Sin eso queda el doble borde clasico de los 90.",
       explanation:
         "border-collapse: collapse es lo primero que hay que escribir en cualquier tabla: sin el, cada celda dibuja su propio borde y queda ese efecto de planilla vieja. Y text-align: left en th corrige el centrado que el navegador aplica por defecto, que casi nunca es lo que uno quiere en una tabla de datos.",
     },
@@ -381,7 +381,7 @@ body
       },
       hint: "object-fit: cover recorta la imagen para llenar el espacio sin deformarla. Fijate que la imagen del ejemplo es rectangular y el contenedor es cuadrado.",
       explanation:
-        "object-fit: cover es la diferencia entre una foto recortada y una foto estirada. Sin el, poner width y height distintos a la proporcion original achata las caras. Con el, el navegador recorta lo que sobra y mantiene la proporcion. Y border-radius: 50% sobre un cuadrado da un circulo perfecto; sobre un rectangulo, un ovalo.",
+        "object-fit: cover es la diferencia entre una foto recortada y una foto estirada. Sin el, poner width y height distintos a la proporción original achata las caras. Con el, el navegador recorta lo que sobra y mantiene la proporción. Y border-radius: 50% sobre un cuadrado da un circulo perfecto; sobre un rectangulo, un ovalo.",
     },
     {
       id: "25-ej-09",
@@ -404,7 +404,7 @@ body
       },
       hint: "La media query envuelve las reglas: @media (max-width: 600px) { ... }. Redimensiona la vista previa para verla actuar.",
       explanation:
-        "Fijate cuanto NO hiciste falta escribir. El flex-wrap del paso 4 y el auto-fit del paso 6 ya resolvian buena parte del responsive solos. Una media query bien puesta ajusta lo que el layout fluido no puede adivinar -- como bajar el tamano del nombre -- en vez de rehacer todo el layout. Si tu media query tiene 40 reglas, el problema esta en el layout base.",
+        "Fijate cuanto NO hiciste falta escribir. El flex-wrap del paso 4 y el auto-fit del paso 6 ya resolvian buena parte del responsive solos. Una media query bien puesta ajusta lo que el layout fluido no puede adivinar -- como bajar el tamaño del nombre -- en vez de rehacer todo el layout. Si tu media query tiene 40 reglas, el problema esta en el layout base.",
     },
     {
       id: "25-ej-10",
@@ -425,9 +425,9 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "Segui el orden del modulo: reset, tipografia, contenedor, header, secciones, tabla, foto, y la media query al final.",
+      hint: "Segui el orden del modulo: reset, tipografía, contenedor, header, secciones, tabla, foto, y la media query al final.",
       explanation:
-        "Terminaste el track de CSS con algo que podes mostrar. Y fijate el orden en que lo escribiste: reset, tipografia, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancas por las sombras, vas a reescribir tres veces.",
+        "Terminaste el track de CSS con algo que podes mostrar. Y fijate el orden en que lo escribiste: reset, tipografía, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancas por las sombras, vas a reescribir tres veces.",
     },
   ],
 };

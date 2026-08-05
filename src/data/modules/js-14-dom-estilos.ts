@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const jsDomEstilosModule: ModuleData = {
   slug: "js-dom-estilos",
-  title: "DOM: Estilos Dinamicos",
+  title: "DOM: Estilos Dinámicos",
   description:
     "Aprende a modificar estilos CSS desde JavaScript: style, classList, CSS variables y animaciones.",
   order: 114,
@@ -17,7 +17,7 @@ export const jsDomEstilosModule: ModuleData = {
 
 ### La propiedad style
 
-Permite cambiar estilos en linea de un elemento:
+Permite cambiar estilos en línea de un elemento:
 
 \`\`\`javascript
 elemento.style.color = "red";
@@ -35,7 +35,7 @@ Las propiedades CSS con guiones se convierten a **camelCase**:
 
 ### Leer estilos computados
 
-\`style\` solo lee estilos en linea. Para leer estilos aplicados por CSS:
+\`style\` solo lee estilos en línea. Para leer estilos aplicados por CSS:
 
 \`\`\`javascript
 const estilos = window.getComputedStyle(elemento);
@@ -105,7 +105,7 @@ root.style.setProperty("--tamano", "20px");
 - Ideal para temas (dark/light mode)
 - Mas mantenible que cambiar estilos individuales
 
-> Las CSS variables son el puente perfecto entre CSS y JavaScript para temas dinamicos.`,
+> Las CSS variables son el puente perfecto entre CSS y JavaScript para temas dinámicos.`,
       codeExample: {
         html: '<div id="demo">\n  <h3>CSS Variables + JS</h3>\n  <p>El color y tamano cambian con variables CSS.</p>\n</div>\n<button id="tema1">Tema Azul</button>\n<button id="tema2">Tema Rosa</button>\n<div id="resultado"></div>',
         css: '#demo { --color-tema: #89b4fa; --bg-tema: #1e1e2e; padding: 16px; background: var(--bg-tema); color: var(--color-tema); border-radius: 8px; border: 2px solid var(--color-tema); transition: all 0.3s; } button { margin: 4px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; } #tema1 { background: #89b4fa; color: #1e1e2e; } #tema2 { background: #f5c2e7; color: #1e1e2e; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -136,7 +136,7 @@ mostrarInfo();`,
     },
     {
       id: "js14-leccion-03",
-      title: "Clases CSS dinamicas",
+      title: "Clases CSS dinámicas",
       content: `## Patrones comunes con classList
 
 ### Toggle de clases (mostrar/ocultar)
@@ -176,7 +176,7 @@ if (valor > 0) {
 }
 \`\`\`
 
-> **Patron:** Define estilos en CSS con clases y usa JS solo para agregar/quitar esas clases. Separacion de responsabilidades.`,
+> **Patrón:** Define estilos en CSS con clases y usa JS solo para agregar/quitar esas clases. Separación de responsabilidades.`,
       codeExample: {
         html: '<div class="tabs">\n  <button class="tab activo" data-tab="1">Tab 1</button>\n  <button class="tab" data-tab="2">Tab 2</button>\n  <button class="tab" data-tab="3">Tab 3</button>\n</div>\n<div id="contenido">Contenido del Tab 1</div>\n<div id="resultado"></div>',
         css: '.tabs { display: flex; gap: 4px; } .tab { padding: 8px 16px; border: none; background: #313244; color: #a6adc8; border-radius: 4px 4px 0 0; cursor: pointer; } .tab.activo { background: #89b4fa; color: #1e1e2e; } #contenido { padding: 16px; background: #313244; color: #cdd6f4; border-radius: 0 8px 8px 8px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -209,7 +209,7 @@ tabs.forEach(function(tab) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Como se escribe la propiedad CSS 'background-color' en JavaScript?",
+      prompt: "¿Cómo se escribe la propiedad CSS 'background-color' en JavaScript?",
       options: [
         { id: "a", text: "background-color", isCorrect: false },
         { id: "b", text: "backgroundColor", isCorrect: true },
@@ -226,7 +226,7 @@ tabs.forEach(function(tab) {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo se usa para leer los estilos computados de un elemento?",
+      prompt: "¿Qué método se usa para leer los estilos computados de un elemento?",
       options: [
         { id: "a", text: "elemento.style", isCorrect: false },
         { id: "b", text: "elemento.getStyles()", isCorrect: false },
@@ -234,7 +234,7 @@ tabs.forEach(function(tab) {
         { id: "d", text: "elemento.computedStyle", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es un metodo de window, no del elemento.",
+      hint: "Es un método de window, no del elemento.",
       explanation: "getComputedStyle() devuelve todos los estilos aplicados al elemento, incluyendo los de las hojas de estilo.",
     },
     {
@@ -260,7 +260,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Como modificas una CSS variable desde JavaScript?",
+      prompt: "¿Cómo modificas una CSS variable desde JavaScript?",
       options: [
         { id: "a", text: 'element.style.setVariable("--color", "red")', isCorrect: false },
         { id: "b", text: 'element.style.setProperty("--color", "red")', isCorrect: true },
@@ -268,7 +268,7 @@ tabs.forEach(function(tab) {
         { id: "d", text: 'element.style["--color"] = "red"', isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El metodo usa 'set' y 'Property'.",
+      hint: "El método usa 'set' y 'Property'.",
       explanation: "setProperty() permite establecer cualquier propiedad CSS, incluyendo custom properties (variables CSS).",
     },
     {
@@ -277,7 +277,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que es mejor practica: modificar estilos directamente o usar classList?",
+      prompt: "¿Qué es mejor práctica: modificar estilos directamente o usar classList?",
       options: [
         { id: "a", text: "Modificar estilos directamente con style", isCorrect: false },
         { id: "b", text: "Usar classList para agregar/quitar clases CSS", isCorrect: true },
@@ -285,8 +285,8 @@ tabs.forEach(function(tab) {
         { id: "d", text: "No hay diferencia", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Separacion de responsabilidades: CSS para estilos, JS para logica.",
-      explanation: "Usar classList mantiene la separacion de responsabilidades. Los estilos se definen en CSS y JS solo controla que clases se aplican.",
+      hint: "Separación de responsabilidades: CSS para estilos, JS para lógica.",
+      explanation: "Usar classList mantiene la separación de responsabilidades. Los estilos se definen en CSS y JS solo controla que clases se aplican.",
     },
     {
       id: "js14-ej-06",
@@ -294,7 +294,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
+      prompt: "¿Qué devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
       options: [
         { id: "a", text: "El color definido en CSS", isCorrect: false },
         { id: "b", text: 'Un string vacio ""', isCorrect: true },
@@ -302,8 +302,8 @@ tabs.forEach(function(tab) {
         { id: "d", text: "null", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "element.style solo lee estilos en linea.",
-      explanation: 'element.style solo lee estilos en linea (inline). Para leer estilos de CSS externo, usa getComputedStyle().',
+      hint: "element.style solo lee estilos en línea.",
+      explanation: 'element.style solo lee estilos en línea (inline). Para leer estilos de CSS externo, usa getComputedStyle().',
     },
   ],
 };

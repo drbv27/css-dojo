@@ -3,7 +3,7 @@ import type { ModuleData } from "@/types";
 export const nextjsServerActionsModule: ModuleData = {
   slug: "nextjs-05-server-actions",
   title: "Server Actions",
-  description: "Mutaciones del servidor sin API routes: 'use server', formularios con actions y revalidacion.",
+  description: "Mutaciones del servidor sin API routes: 'use server', formularios con actions y revalidación.",
   order: 305,
   category: "nextjs-advanced",
   icon: "code",
@@ -51,13 +51,13 @@ export default function NuevoPost() {
 }
 \`\`\`
 
-### ¿Como funciona?
+### ¿Cómo funciona?
 
 1. El usuario envia el formulario
 2. Next.js serializa el FormData
-3. Se envia al servidor (como un POST request automatico)
-4. La funcion \`crearPost\` se ejecuta en el servidor
-5. \`revalidatePath\` actualiza los datos en la pagina
+3. Se envia al servidor (como un POST request automático)
+4. La función \`crearPost\` se ejecuta en el servidor
+5. \`revalidatePath\` actualiza los datos en la página
 
 > No necesitas crear un API route + fetch + useState. La Server Action hace todo.`,
       codeExample: {
@@ -69,8 +69,8 @@ export default function NuevoPost() {
     },
     {
       id: "njs05-leccion-02",
-      title: "Validacion y estados",
-      content: `## Validacion en Server Actions
+      title: "Validación y estados",
+      content: `## Validación en Server Actions
 
 \`\`\`tsx
 "use server";
@@ -150,7 +150,7 @@ revalidatePath("/posts");
 revalidateTag("posts");
 \`\`\`
 
-> Server Actions + Zod + useFormStatus es el patron moderno para formularios en Next.js.`,
+> Server Actions + Zod + useFormStatus es el patrón moderno para formularios en Next.js.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -166,7 +166,7 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 1,
-      prompt: '¿Que directiva marca una funcion como Server Action?',
+      prompt: '¿Qué directiva marca una función como Server Action?',
       options: [
         { id: "a", text: '"use client"', isCorrect: false },
         { id: "b", text: '"use server"', isCorrect: true },
@@ -183,7 +183,7 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Como se conecta una Server Action a un formulario?",
+      prompt: "¿Cómo se conecta una Server Action a un formulario?",
       options: [
         { id: "a", text: "Con onSubmit={action}", isCorrect: false },
         { id: "b", text: "Con action={serverAction}", isCorrect: true },
@@ -200,10 +200,10 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que hace revalidatePath('/posts') despues de una Server Action?",
+      prompt: "¿Qué hace revalidatePath('/posts') después de una Server Action?",
       options: [
         { id: "a", text: "Redirige a /posts", isCorrect: false },
-        { id: "b", text: "Borra la pagina /posts", isCorrect: false },
+        { id: "b", text: "Borra la página /posts", isCorrect: false },
         { id: "c", text: "Marca los datos de /posts como stale y los re-renderiza", isCorrect: true },
         { id: "d", text: "Crea la ruta /posts", isCorrect: false },
       ],

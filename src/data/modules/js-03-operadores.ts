@@ -4,7 +4,7 @@ export const jsOperadoresModule: ModuleData = {
   slug: "js-operadores",
   title: "Operadores",
   description:
-    "Domina los operadores aritmeticos, de comparacion, logicos y de asignacion en JavaScript.",
+    "Domina los operadores aritmeticos, de comparación, lógicos y de asignación en JavaScript.",
   order: 103,
   category: "js-fundamentals",
   icon: "Calculator",
@@ -17,12 +17,12 @@ export const jsOperadoresModule: ModuleData = {
 
 Los operadores aritmeticos permiten realizar **calculos matematicos**:
 
-| Operador | Descripcion | Ejemplo |
+| Operador | Descripción | Ejemplo |
 |----------|-------------|---------|
 | \`+\` | Suma | \`5 + 3\` → \`8\` |
 | \`-\` | Resta | \`5 - 3\` → \`2\` |
-| \`*\` | Multiplicacion | \`5 * 3\` → \`15\` |
-| \`/\` | Division | \`10 / 3\` → \`3.33\` |
+| \`*\` | Multiplicación | \`5 * 3\` → \`15\` |
+| \`/\` | División | \`10 / 3\` → \`3.33\` |
 | \`%\` | Modulo (resto) | \`10 % 3\` → \`1\` |
 | \`**\` | Potencia | \`2 ** 3\` → \`8\` |
 
@@ -36,7 +36,7 @@ x--;  // x vuelve a ser 5
 
 ### Orden de operaciones
 
-JavaScript sigue las reglas matematicas: primero \`**\`, luego \`*\`, \`/\`, \`%\`, y por ultimo \`+\` y \`-\`. Usa parentesis para cambiar el orden.`,
+JavaScript sigue las reglas matemáticas: primero \`**\`, luego \`*\`, \`/\`, \`%\`, y por último \`+\` y \`-\`. Usa paréntesis para cambiar el orden.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -54,14 +54,14 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js03-leccion-02",
-      title: "Operadores de comparacion",
-      content: `## Operadores de comparacion
+      title: "Operadores de comparación",
+      content: `## Operadores de comparación
 
 Comparan dos valores y devuelven un **booleano** (\`true\` o \`false\`):
 
-| Operador | Descripcion | Ejemplo |
+| Operador | Descripción | Ejemplo |
 |----------|-------------|---------|
-| \`==\` | Igualdad (con coercion) | \`"5" == 5\` → \`true\` |
+| \`==\` | Igualdad (con coerción) | \`"5" == 5\` → \`true\` |
 | \`===\` | Igualdad estricta | \`"5" === 5\` → \`false\` |
 | \`!=\` | Desigualdad | \`5 != 3\` → \`true\` |
 | \`!==\` | Desigualdad estricta | \`"5" !== 5\` → \`true\` |
@@ -72,7 +72,7 @@ Comparan dos valores y devuelven un **booleano** (\`true\` o \`false\`):
 
 ### == vs ===
 
-Siempre usa \`===\` (igualdad estricta). El \`==\` hace conversion de tipos y puede dar resultados inesperados:
+Siempre usa \`===\` (igualdad estricta). El \`==\` hace conversión de tipos y puede dar resultados inesperados:
 
 \`\`\`javascript
 0 == ""    // true  (ambos se convierten)
@@ -98,12 +98,12 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js03-leccion-03",
-      title: "Operadores logicos",
-      content: `## Operadores logicos
+      title: "Operadores lógicos",
+      content: `## Operadores lógicos
 
 Combinan expresiones booleanas:
 
-| Operador | Nombre | Descripcion |
+| Operador | Nombre | Descripción |
 |----------|--------|-------------|
 | \`&&\` | AND | Verdadero si **ambos** son verdaderos |
 | \`\\|\\|\` | OR | Verdadero si **al menos uno** es verdadero |
@@ -120,17 +120,17 @@ false || false  // false
 !false          // true
 \`\`\`
 
-### Evaluacion de cortocircuito
+### Evaluación de cortocircuito
 
-- \`&&\` devuelve el primer valor falsy, o el ultimo si todos son truthy
-- \`||\` devuelve el primer valor truthy, o el ultimo si todos son falsy
+- \`&&\` devuelve el primer valor falsy, o el último si todos son truthy
+- \`||\` devuelve el primer valor truthy, o el último si todos son falsy
 
 \`\`\`javascript
 "hola" && "mundo"  // "mundo"
 "" || "default"    // "default"
 \`\`\`
 
-Esto es muy util para **valores por defecto** y **ejecucion condicional**.`,
+Esto es muy útil para **valores por defecto** y **ejecución condicional**.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -156,7 +156,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es el resultado de 10 % 3?",
+      prompt: "¿Cuál es el resultado de 10 % 3?",
       options: [
         { id: "a", text: "3.33", isCorrect: false },
         { id: "b", text: "3", isCorrect: false },
@@ -164,7 +164,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "0", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "El operador % devuelve el resto de la division.",
+      hint: "El operador % devuelve el resto de la división.",
       explanation: "10 % 3 = 1 porque 10 dividido entre 3 es 3 con resto 1.",
     },
     {
@@ -173,7 +173,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: '¿Cual es el resultado de "5" === 5?',
+      prompt: '¿Cuál es el resultado de "5" === 5?',
       options: [
         { id: "a", text: "true", isCorrect: false },
         { id: "b", text: "false", isCorrect: true },
@@ -191,7 +191,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Cual es el resultado de true && false || true?",
+      prompt: "¿Cuál es el resultado de true && false || true?",
       options: [
         { id: "a", text: "true", isCorrect: true },
         { id: "b", text: "false", isCorrect: false },
@@ -217,7 +217,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["==="],
       },
       validation: { type: "exact", answer: "===" },
-      hint: "Usa tres signos de igual para comparacion estricta.",
+      hint: "Usa tres signos de igual para comparación estricta.",
       explanation:
         "=== es el operador de igualdad estricta. Compara tanto el valor como el tipo de dato.",
     },
@@ -227,7 +227,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: '¿Que devuelve "" || "valor por defecto"?',
+      prompt: '¿Qué devuelve "" || "valor por defecto"?',
       options: [
         { id: "a", text: '""', isCorrect: false },
         { id: "b", text: '"valor por defecto"', isCorrect: true },
@@ -237,7 +237,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "b" },
       hint: "El string vacio es falsy, entonces || busca el primer valor truthy.",
       explanation:
-        'Como "" es falsy, el operador || devuelve el segundo operando: "valor por defecto". Este patron se usa mucho para asignar valores por defecto.',
+        'Como "" es falsy, el operador || devuelve el segundo operando: "valor por defecto". Este patrón se usa mucho para asignar valores por defecto.',
     },
     {
       id: "js03-ej-06",
@@ -245,7 +245,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es el resultado de 2 ** 3?",
+      prompt: "¿Cuál es el resultado de 2 ** 3?",
       options: [
         { id: "a", text: "6", isCorrect: false },
         { id: "b", text: "8", isCorrect: true },

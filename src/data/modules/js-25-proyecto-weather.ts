@@ -4,7 +4,7 @@ export const jsProyectoWeatherModule: ModuleData = {
   slug: "js-proyecto-weather",
   title: "Proyecto: App del Clima",
   description:
-    "Construye una aplicacion del clima que consume una API real: fetch, async/await y renderizado dinamico.",
+    "Construye una aplicación del clima que consume una API real: fetch, async/await y renderizado dinámico.",
   order: 125,
   category: "js-projects",
   icon: "CloudSun",
@@ -15,7 +15,7 @@ export const jsProyectoWeatherModule: ModuleData = {
       title: "Consumir una API del clima",
       content: `## Proyecto: Weather App
 
-Vamos a construir una app que muestre el clima de cualquier ciudad usando una API publica.
+Vamos a construir una app que muestre el clima de cualquier ciudad usando una API pública.
 
 ### APIs publicas de clima
 
@@ -29,19 +29,19 @@ https://wttr.in/Madrid?format=j1
 
 La API devuelve un objeto con:
 - Temperatura actual
-- Descripcion del clima
+- Descripción del clima
 - Humedad
 - Velocidad del viento
 - Pronostico por dias
 
 ### Pasos del proyecto
-1. Crear la interfaz (input + boton + area de resultados)
-2. Hacer la peticion con fetch
+1. Crear la interfaz (input + botón + area de resultados)
+2. Hacer la petición con fetch
 3. Procesar la respuesta JSON
 4. Renderizar los datos en el DOM
 5. Manejar errores (ciudad no encontrada, sin conexion)
 
-### Patron MVC simplificado
+### Patrón MVC simplificado
 - **Model:** los datos del clima
 - **View:** el HTML que se renderiza
 - **Controller:** las funciones que conectan datos con vista
@@ -105,7 +105,7 @@ buscarClima("Madrid");`,
       title: "Pronostico y mejoras visuales",
       content: `## Pronostico extendido
 
-La API de wttr.in tambien proporciona pronostico para los proximos dias:
+La API de wttr.in también proporciona pronostico para los proximos dias:
 
 \`\`\`javascript
 const forecast = data.weather; // array de dias
@@ -118,12 +118,12 @@ forecast.forEach(function(dia) {
 
 ### Mejoras visuales
 
-1. **Iconos del clima:** Usar emojis o iconos segun la condicion
+1. **Iconos del clima:** Usar emojis o iconos según la condición
 2. **Colores de temperatura:** Azul para frio, amarillo para templado, rojo para calor
-3. **Gradientes de fondo:** Cambiar segun la hora o el clima
+3. **Gradientes de fondo:** Cambiar según la hora o el clima
 4. **Animaciones:** Transiciones suaves al cargar datos
 
-### Funcion para icono del clima
+### Función para icono del clima
 \`\`\`javascript
 function getIcono(codigo) {
   const iconos = {
@@ -197,12 +197,12 @@ verPronostico("Buenos Aires");`,
     },
     {
       id: "js25-leccion-03",
-      title: "Geolocalizacion y cache",
+      title: "Geolocalización y cache",
       content: `## Funcionalidades avanzadas
 
-### Geolocalizacion del navegador
+### Geolocalización del navegador
 
-Detecta la ubicacion del usuario automaticamente:
+Detecta la ubicación del usuario automáticamente:
 
 \`\`\`javascript
 if (navigator.geolocation) {
@@ -245,9 +245,9 @@ async function buscarConCache(ciudad) {
 - **Eventos** para busqueda y teclado
 - **Manejo de errores** para peticiones fallidas
 - **localStorage** para ciudades favoritas
-- **Geolocalizacion API** del navegador
+- **Geolocalización API** del navegador
 
-> Este proyecto demuestra como construir una aplicacion real que consume datos externos y los presenta al usuario.`,
+> Este proyecto demuestra como construir una aplicación real que consume datos externos y los presenta al usuario.`,
       codeExample: {
         html: '<div id="wapp3">\n  <h3>Clima - Ciudades Favoritas</h3>\n  <div class="search">\n    <input id="city3" placeholder="Ciudad..." />\n    <button id="add-fav">Agregar favorita</button>\n  </div>\n  <div id="favs"></div>\n  <div id="weather3"></div>\n</div>',
         css: '#wapp3 { max-width: 450px; } .search { display: flex; gap: 4px; margin-bottom: 8px; } #city3 { flex: 1; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } #add-fav { padding: 8px 12px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; white-space: nowrap; font-size: 13px; } #favs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; } .fav-btn { padding: 4px 10px; background: #313244; color: #89b4fa; border: 1px solid #45475a; border-radius: 20px; cursor: pointer; font-size: 12px; } .fav-btn:hover { background: #45475a; } .fav-btn .remove { color: #f38ba8; margin-left: 4px; } #weather3 { padding: 16px; background: #313244; border-radius: 8px; color: #cdd6f4; min-height: 40px; text-align: center; }',
@@ -329,7 +329,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que funcion se usa para codificar caracteres especiales en una URL?",
+      prompt: "¿Qué función se usa para codificar caracteres especiales en una URL?",
       options: [
         { id: "a", text: "encodeURL()", isCorrect: false },
         { id: "b", text: "encodeURIComponent()", isCorrect: true },
@@ -346,7 +346,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que API del navegador permite obtener la ubicacion geografica del usuario?",
+      prompt: "¿Qué API del navegador permite obtener la ubicación geografica del usuario?",
       options: [
         { id: "a", text: "navigator.location", isCorrect: false },
         { id: "b", text: "navigator.geolocation", isCorrect: true },
@@ -354,8 +354,8 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
         { id: "d", text: "document.location", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "geo + location = geolocalizacion.",
-      explanation: "navigator.geolocation proporciona acceso a la ubicacion geografica del dispositivo del usuario.",
+      hint: "geo + location = geolocalización.",
+      explanation: "navigator.geolocation proporciona acceso a la ubicación geografica del dispositivo del usuario.",
     },
     {
       id: "js25-ej-03",
@@ -363,9 +363,9 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Por que es buena practica implementar cache para peticiones a APIs?",
+      prompt: "¿Por que es buena práctica implementar cache para peticiones a APIs?",
       options: [
-        { id: "a", text: "Para hacer el codigo mas complejo", isCorrect: false },
+        { id: "a", text: "Para hacer el código mas complejo", isCorrect: false },
         { id: "b", text: "Para evitar peticiones repetidas y mejorar rendimiento", isCorrect: true },
         { id: "c", text: "Porque las APIs lo requieren", isCorrect: false },
         { id: "d", text: "Para que funcione sin internet", isCorrect: false },
@@ -380,7 +380,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa para hacer una peticion GET con fetch y esperar la respuesta:",
+      prompt: "Completa para hacer una petición GET con fetch y esperar la respuesta:",
       codeTemplate: {
         html: "",
         cssPrefix: "const response = ",
@@ -388,8 +388,8 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
         blanks: ["await"],
       },
       validation: { type: "exact", answer: "await" },
-      hint: "La palabra clave que pausa la ejecucion hasta que la Promise se resuelva.",
-      explanation: "await pausa la ejecucion de la funcion async hasta que fetch() complete la peticion.",
+      hint: "La palabra clave que pausa la ejecución hasta que la Promise se resuelva.",
+      explanation: "await pausa la ejecución de la función async hasta que fetch() complete la petición.",
     },
     {
       id: "js25-ej-05",
@@ -397,7 +397,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que patron de arquitectura separa datos, vista y logica de control?",
+      prompt: "¿Qué patrón de arquitectura separa datos, vista y lógica de control?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Observer", isCorrect: false },
@@ -406,7 +406,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Model (datos), View (vista), Controller (control).",
-      explanation: "MVC separa la aplicacion en Model (datos), View (interfaz) y Controller (logica que los conecta).",
+      explanation: "MVC separa la aplicación en Model (datos), View (interfaz) y Controller (lógica que los conecta).",
     },
     {
       id: "js25-ej-06",
@@ -414,7 +414,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que deberias mostrar al usuario mientras una peticion fetch esta en progreso?",
+      prompt: "¿Qué deberias mostrar al usuario mientras una petición fetch esta en progreso?",
       options: [
         { id: "a", text: "Nada, dejarlo en blanco", isCorrect: false },
         { id: "b", text: "Un indicador de carga (spinner o skeleton)", isCorrect: true },
@@ -423,7 +423,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       ],
       validation: { type: "exact", answer: "b" },
       hint: "El usuario necesita saber que algo esta pasando.",
-      explanation: "Mostrar un indicador de carga informa al usuario que la aplicacion esta trabajando. Nunca dejes la UI sin feedback.",
+      explanation: "Mostrar un indicador de carga informa al usuario que la aplicación esta trabajando. Nunca dejes la UI sin feedback.",
     },
   ],
 };

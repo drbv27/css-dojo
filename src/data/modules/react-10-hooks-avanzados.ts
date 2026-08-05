@@ -118,7 +118,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Cronometro />);
     {
       id: "react10-leccion-02",
       title: "useMemo y useCallback",
-      content: `## useMemo y useCallback: Optimizacion
+      content: `## useMemo y useCallback: Optimización
 
 ### useMemo — memorizar valores calculados
 \`\`\`jsx
@@ -126,7 +126,7 @@ const resultado = useMemo(() => {
   return calculoPesado(datos);
 }, [datos]);
 \`\`\`
-Solo recalcula cuando \`datos\` cambia. Util para calculos costosos.
+Solo recalcula cuando \`datos\` cambia. Útil para calculos costosos.
 
 ### useCallback — memorizar funciones
 \`\`\`jsx
@@ -134,9 +134,9 @@ const handleClick = useCallback(() => {
   setCount(c => c + 1);
 }, []);
 \`\`\`
-Devuelve la misma referencia de funcion entre renders. Util cuando pasas callbacks a componentes hijos optimizados con React.memo.
+Devuelve la misma referencia de función entre renders. Útil cuando pasas callbacks a componentes hijos optimizados con React.memo.
 
-### ¿Cuando usarlos?
+### ¿Cuándo usarlos?
 
 **useMemo:**
 - Calculos costosos (filtrar/ordenar listas grandes)
@@ -146,7 +146,7 @@ Devuelve la misma referencia de funcion entre renders. Util cuando pasas callbac
 - Funciones que se pasan como props a componentes memorizados
 - Funciones usadas como dependencias en otros hooks
 
-### ¿Cuando NO usarlos?
+### ¿Cuándo NO usarlos?
 - Para calculos simples (el costo de memorizar supera el beneficio)
 - Si no hay problemas de rendimiento reales
 
@@ -211,14 +211,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ListaFiltrable />);
     {
       id: "react10-leccion-03",
       title: "Custom Hooks",
-      content: `## Custom Hooks: Reutilizando Logica
+      content: `## Custom Hooks: Reutilizando Lógica
 
-Un **custom hook** es una funcion que empieza con \`use\` y puede usar otros hooks dentro.
+Un **custom hook** es una función que empieza con \`use\` y puede usar otros hooks dentro.
 
 ### ¿Por que custom hooks?
-- **Reutilizar logica** entre componentes
-- **Separar** logica compleja del componente
-- **Testear** logica de forma aislada
+- **Reutilizar lógica** entre componentes
+- **Separar** lógica compleja del componente
+- **Testear** lógica de forma aislada
 
 ### Ejemplo: useLocalStorage
 \`\`\`jsx
@@ -244,7 +244,7 @@ const [nombre, setNombre] = useLocalStorage('nombre', '');
 2. Solo llamar hooks en **componentes de React** o **custom hooks**
 3. Los custom hooks deben empezar con \`use\`
 
-### useId — IDs unicos
+### useId — IDs únicos
 \`\`\`jsx
 function CampoEmail() {
   const id = useId();
@@ -257,7 +257,7 @@ function CampoEmail() {
 }
 \`\`\`
 
-> **Tip:** Extraer logica a custom hooks hace tus componentes mas limpios y la logica mas testeable.`,
+> **Tip:** Extraer lógica a custom hooks hace tus componentes mas limpios y la lógica mas testeable.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -333,7 +333,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que propiedad de useRef se usa para acceder al valor almacenado?",
+      prompt: "¿Qué propiedad de useRef se usa para acceder al valor almacenado?",
       options: [
         { id: "a", text: ".value", isCorrect: false },
         { id: "b", text: ".current", isCorrect: true },
@@ -350,7 +350,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que pasa cuando cambias el valor de useRef.current?",
+      prompt: "¿Qué pasa cuando cambias el valor de useRef.current?",
       options: [
         { id: "a", text: "El componente se re-renderiza", isCorrect: false },
         { id: "b", text: "Se lanza un error", isCorrect: false },
@@ -359,7 +359,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "c" },
       hint: "A diferencia de useState...",
-      explanation: "Cambiar .current de useRef muta el valor directamente sin causar re-render. Por eso es util para valores que no afectan la UI.",
+      explanation: "Cambiar .current de useRef muta el valor directamente sin causar re-render. Por eso es útil para valores que no afectan la UI.",
     },
     {
       id: "react10-ej-03",
@@ -384,16 +384,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la diferencia principal entre useMemo y useCallback?",
+      prompt: "¿Cuál es la diferencia principal entre useMemo y useCallback?",
       options: [
         { id: "a", text: "useMemo es para valores, useCallback es para funciones", isCorrect: true },
         { id: "b", text: "No hay diferencia, son aliases", isCorrect: false },
-        { id: "c", text: "useMemo es mas rapido que useCallback", isCorrect: false },
+        { id: "c", text: "useMemo es mas rápido que useCallback", isCorrect: false },
         { id: "d", text: "useCallback es para efectos, useMemo para estado", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Uno memoriza el resultado, otro memoriza la funcion misma.",
-      explanation: "useMemo memoriza el valor retornado por una funcion. useCallback memoriza la funcion misma (su referencia).",
+      hint: "Uno memoriza el resultado, otro memoriza la función misma.",
+      explanation: "useMemo memoriza el valor retornado por una función. useCallback memoriza la función misma (su referencia).",
     },
     {
       id: "react10-ej-05",
@@ -401,7 +401,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada hook segun su proposito principal:",
+      prompt: "Clasifica cada hook según su propósito principal:",
       dragItems: [
         { id: "d1", content: "useRef", correctZone: "sinRerender" },
         { id: "d2", content: "useState", correctZone: "conRerender" },
@@ -413,7 +413,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       dropZones: [
         { id: "conRerender", label: "Puede causar re-render" },
         { id: "sinRerender", label: "No causa re-render" },
-        { id: "optimizacion", label: "Optimizacion de rendimiento" },
+        { id: "optimizacion", label: "Optimización de rendimiento" },
       ],
       validation: { type: "exact", answer: { d1: "sinRerender", d2: "conRerender", d3: "optimizacion", d4: "optimizacion", d5: "conRerender", d6: "sinRerender" } },
       hint: "useState y useEffect pueden disparar re-renders. useMemo y useCallback evitan trabajo innecesario.",
@@ -425,11 +425,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es la regla mas importante de los hooks?",
+      prompt: "¿Cuál es la regla mas importante de los hooks?",
       options: [
-        { id: "a", text: "Siempre usar useEffect despues de useState", isCorrect: false },
+        { id: "a", text: "Siempre usar useEffect después de useState", isCorrect: false },
         { id: "b", text: "Solo llamar hooks en el nivel superior, nunca dentro de condicionales", isCorrect: true },
-        { id: "c", text: "Usar maximo 5 hooks por componente", isCorrect: false },
+        { id: "c", text: "Usar máximo 5 hooks por componente", isCorrect: false },
         { id: "d", text: "Siempre pasar dependencias a todos los hooks", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -461,14 +461,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 8,
       prompt: "¿Para que sirve el hook useId de React?",
       options: [
-        { id: "a", text: "Generar IDs unicos para elementos, compatibles con SSR", isCorrect: true },
-        { id: "b", text: "Obtener el ID del componente en el arbol de React", isCorrect: false },
+        { id: "a", text: "Generar IDs únicos para elementos, compatibles con SSR", isCorrect: true },
+        { id: "b", text: "Obtener el ID del componente en el árbol de React", isCorrect: false },
         { id: "c", text: "Crear un identificador para el estado global", isCorrect: false },
         { id: "d", text: "Asignar IDs a los hooks internamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Es util para conectar labels con inputs en formularios.",
-      explanation: "useId genera IDs unicos y estables que funcionan tanto en cliente como servidor (SSR). Son ideales para atributos htmlFor/id en formularios.",
+      hint: "Es útil para conectar labels con inputs en formularios.",
+      explanation: "useId genera IDs únicos y estables que funcionan tanto en cliente como servidor (SSR). Son ideales para atributos htmlFor/id en formularios.",
     },
   ],
 };

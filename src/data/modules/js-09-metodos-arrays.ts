@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const jsMetodosArraysModule: ModuleData = {
   slug: "js-metodos-arrays",
-  title: "Metodos Avanzados de Arrays",
+  title: "Métodos Avanzados de Arrays",
   description:
-    "Domina map, filter, reduce, sort y otros metodos funcionales para transformar y procesar arrays.",
+    "Domina map, filter, reduce, sort y otros métodos funcionales para transformar y procesar arrays.",
   order: 109,
   category: "js-intermediate",
   icon: "ListFilter",
@@ -15,7 +15,7 @@ export const jsMetodosArraysModule: ModuleData = {
       title: "map y filter",
       content: `## map() — Transformar elementos
 
-\`map()\` crea un **nuevo array** aplicando una funcion a cada elemento:
+\`map()\` crea un **nuevo array** aplicando una función a cada elemento:
 
 \`\`\`javascript
 const nums = [1, 2, 3, 4];
@@ -26,11 +26,11 @@ const dobles = nums.map(n => n * 2);
 ### Caracteristicas de map
 - **No modifica** el array original
 - Devuelve un array de la **misma longitud**
-- Cada elemento se transforma con la funcion dada
+- Cada elemento se transforma con la función dada
 
 ## filter() — Filtrar elementos
 
-\`filter()\` crea un nuevo array con los elementos que **cumplen una condicion**:
+\`filter()\` crea un nuevo array con los elementos que **cumplen una condición**:
 
 \`\`\`javascript
 const nums = [1, 2, 3, 4, 5, 6];
@@ -40,7 +40,7 @@ const pares = nums.filter(n => n % 2 === 0);
 
 ### Caracteristicas de filter
 - Devuelve un array con **igual o menos** elementos
-- La funcion debe devolver **true** o **false**
+- La función debe devolver **true** o **false**
 - No modifica el array original
 
 > **Tip:** Puedes encadenar map y filter: \`array.filter(...).map(...)\``,
@@ -82,8 +82,8 @@ const suma = nums.reduce((acumulador, actual) => {
 // 10
 \`\`\`
 
-### Parametros
-1. **Callback** con (acumulador, elementoActual, indice, array)
+### Parámetros
+1. **Callback** con (acumulador, elementoActual, índice, array)
 2. **Valor inicial** del acumulador
 
 ### Ejemplo paso a paso
@@ -97,7 +97,7 @@ Paso 4: acc=6, val=4 → 10
 
 ### Usos comunes
 - Sumar valores
-- Encontrar maximo/minimo
+- Encontrar máximo/mínimo
 - Agrupar elementos
 - Aplanar arrays
 - Contar ocurrencias
@@ -147,7 +147,7 @@ nums.sort((a, b) => a - b); // ascendente
 nums.sort((a, b) => b - a); // descendente
 \`\`\`
 
-> **Cuidado:** Sin funcion, sort convierte a string y ordena alfabeticamente. \`[10, 2, 1].sort()\` da \`[1, 10, 2]\`.
+> **Cuidado:** Sin función, sort convierte a string y ordena alfabeticamente. \`[10, 2, 1].sort()\` da \`[1, 10, 2]\`.
 
 ## find() y findIndex()
 
@@ -159,7 +159,7 @@ const usuario = usuarios.find(u => u.edad > 26);
 
 ## every() y some()
 
-- \`every()\` — devuelve true si **todos** cumplen la condicion
+- \`every()\` — devuelve true si **todos** cumplen la condición
 - \`some()\` — devuelve true si **al menos uno** cumple
 
 \`\`\`javascript
@@ -204,7 +204,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que metodo de array crea un nuevo array transformando cada elemento?",
+      prompt: "¿Qué método de array crea un nuevo array transformando cada elemento?",
       options: [
         { id: "a", text: "filter()", isCorrect: false },
         { id: "b", text: "map()", isCorrect: true },
@@ -213,7 +213,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Su nombre significa 'mapear' o 'transformar'.",
-      explanation: "map() crea un nuevo array aplicando una funcion a cada elemento del array original.",
+      explanation: "map() crea un nuevo array aplicando una función a cada elemento del array original.",
     },
     {
       id: "js09-ej-02",
@@ -221,7 +221,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que devuelve [1,2,3].filter(n => n > 1)?",
+      prompt: "¿Qué devuelve [1,2,3].filter(n => n > 1)?",
       options: [
         { id: "a", text: "[2, 3]", isCorrect: true },
         { id: "b", text: "[1]", isCorrect: false },
@@ -229,7 +229,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "2", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "filter mantiene los elementos donde la funcion devuelve true.",
+      hint: "filter mantiene los elementos donde la función devuelve true.",
       explanation: "filter(n => n > 1) mantiene solo los elementos mayores a 1: [2, 3].",
     },
     {
@@ -238,7 +238,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que devuelve [1,2,3,4].reduce((acc, n) => acc + n, 0)?",
+      prompt: "¿Qué devuelve [1,2,3,4].reduce((acc, n) => acc + n, 0)?",
       options: [
         { id: "a", text: "[1, 2, 3, 4]", isCorrect: false },
         { id: "b", text: "10", isCorrect: true },
@@ -260,11 +260,11 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "a", text: "Es un bug de JavaScript", isCorrect: false },
         { id: "b", text: "sort() sin argumento ordena como strings", isCorrect: true },
         { id: "c", text: "sort() ordena aleatoriamente", isCorrect: false },
-        { id: "d", text: "Ordena por longitud del numero", isCorrect: false },
+        { id: "d", text: "Ordena por longitud del número", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Sin funcion de comparacion, sort convierte los elementos a texto.",
-      explanation: 'Sin funcion de comparacion, sort() convierte a string: "1" < "10" < "2" (comparacion alfabetica).',
+      hint: "Sin función de comparación, sort convierte los elementos a texto.",
+      explanation: 'Sin función de comparación, sort() convierte a string: "1" < "10" < "2" (comparación alfabetica).',
     },
     {
       id: "js09-ej-05",
@@ -272,7 +272,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el metodo para verificar si TODOS los elementos cumplen la condicion:",
+      prompt: "Completa el método para verificar si TODOS los elementos cumplen la condición:",
       codeTemplate: {
         html: "",
         cssPrefix: "const todosPares = [2, 4, 6].",
@@ -281,7 +281,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       },
       validation: { type: "exact", answer: "every" },
       hint: "En ingles significa 'cada uno' o 'todos'.",
-      explanation: "every() devuelve true solo si TODOS los elementos cumplen la condicion.",
+      explanation: "every() devuelve true solo si TODOS los elementos cumplen la condición.",
     },
     {
       id: "js09-ej-06",
@@ -289,16 +289,16 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es la diferencia principal entre map() y forEach()?",
+      prompt: "¿Cuál es la diferencia principal entre map() y forEach()?",
       options: [
-        { id: "a", text: "forEach es mas rapido", isCorrect: false },
+        { id: "a", text: "forEach es mas rápido", isCorrect: false },
         { id: "b", text: "map devuelve un nuevo array, forEach no devuelve nada", isCorrect: true },
         { id: "c", text: "map modifica el array original", isCorrect: false },
         { id: "d", text: "No hay diferencia", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Uno devuelve un nuevo array y el otro no.",
-      explanation: "map() devuelve un nuevo array con los resultados. forEach() ejecuta la funcion pero devuelve undefined.",
+      explanation: "map() devuelve un nuevo array con los resultados. forEach() ejecuta la función pero devuelve undefined.",
     },
     {
       id: "js09-ej-07",
@@ -306,7 +306,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que devuelve [1,2,3].map(n => n * 2).filter(n => n > 3)?",
+      prompt: "¿Qué devuelve [1,2,3].map(n => n * 2).filter(n => n > 3)?",
       options: [
         { id: "a", text: "[4, 6]", isCorrect: true },
         { id: "b", text: "[2, 4, 6]", isCorrect: false },

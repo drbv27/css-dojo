@@ -4,7 +4,7 @@ export const jsObjetosModule: ModuleData = {
   slug: "js-objetos",
   title: "Objetos",
   description:
-    "Aprende a crear y manipular objetos: propiedades, metodos, desestructuracion y Object methods.",
+    "Aprende a crear y manipular objetos: propiedades, métodos, desestructuración y Object methods.",
   order: 110,
   category: "js-intermediate",
   icon: "Box",
@@ -15,7 +15,7 @@ export const jsObjetosModule: ModuleData = {
       title: "Crear y acceder a objetos",
       content: `## Objetos en JavaScript
 
-Un **objeto** es una coleccion de pares **clave-valor**:
+Un **objeto** es una colección de pares **clave-valor**:
 
 \`\`\`javascript
 const persona = {
@@ -33,7 +33,7 @@ persona.nombre      // notacion de punto
 persona["nombre"]   // notacion de corchetes
 \`\`\`
 
-Usa corchetes cuando la clave es dinamica o tiene caracteres especiales.
+Usa corchetes cuando la clave es dinámica o tiene caracteres especiales.
 
 ### Modificar y agregar
 \`\`\`javascript
@@ -80,10 +80,10 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js10-leccion-02",
-      title: "Metodos y desestructuracion",
-      content: `## Metodos del objeto
+      title: "Métodos y desestructuración",
+      content: `## Métodos del objeto
 
-Un metodo es una funcion dentro de un objeto:
+Un método es una función dentro de un objeto:
 
 \`\`\`javascript
 const calculadora = {
@@ -92,7 +92,7 @@ const calculadora = {
 };
 \`\`\`
 
-## Desestructuracion de objetos
+## Desestructuración de objetos
 
 Extrae propiedades en variables:
 
@@ -153,7 +153,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     {
       id: "js10-leccion-03",
       title: "Object methods",
-      content: `## Metodos estaticos de Object
+      content: `## Métodos estáticos de Object
 
 ### Object.keys() — array de claves
 \`\`\`javascript
@@ -183,7 +183,7 @@ const config = Object.freeze({ debug: false });
 config.debug = true; // No tiene efecto
 \`\`\`
 
-> Estos metodos son muy utiles para transformar objetos en arrays y viceversa.`,
+> Estos métodos son muy útiles para transformar objetos en arrays y viceversa.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -219,7 +219,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es la forma correcta de acceder a la propiedad 'nombre' de un objeto 'persona'?",
+      prompt: "¿Cuál es la forma correcta de acceder a la propiedad 'nombre' de un objeto 'persona'?",
       options: [
         { id: "a", text: "persona->nombre", isCorrect: false },
         { id: "b", text: "persona.nombre", isCorrect: true },
@@ -228,7 +228,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se usa un punto entre el objeto y la propiedad.",
-      explanation: "persona.nombre es la notacion de punto, la forma mas comun de acceder a propiedades.",
+      explanation: "persona.nombre es la notación de punto, la forma mas común de acceder a propiedades.",
     },
     {
       id: "js10-ej-02",
@@ -253,7 +253,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para acceder a la propiedad 'edad' usando notacion de corchetes:",
+      prompt: "Completa para acceder a la propiedad 'edad' usando notación de corchetes:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const edad = persona[',
@@ -262,7 +262,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       },
       validation: { type: "exact", answer: '"edad"' },
       hint: "La clave debe ir como string entre comillas.",
-      explanation: 'persona["edad"] accede a la propiedad edad usando notacion de corchetes.',
+      explanation: 'persona["edad"] accede a la propiedad edad usando notación de corchetes.',
     },
     {
       id: "js10-ej-04",
@@ -270,7 +270,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que operador verifica si una propiedad existe en un objeto?",
+      prompt: "¿Qué operador verifica si una propiedad existe en un objeto?",
       options: [
         { id: "a", text: "exists", isCorrect: false },
         { id: "b", text: "has", isCorrect: false },
@@ -287,7 +287,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que hace Object.freeze()?",
+      prompt: "¿Qué hace Object.freeze()?",
       options: [
         { id: "a", text: "Elimina todas las propiedades", isCorrect: false },
         { id: "b", text: "Hace el objeto inmutable", isCorrect: true },
@@ -304,7 +304,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada metodo de Object segun lo que devuelve:",
+      prompt: "Clasifica cada método de Object según lo que devuelve:",
       dragItems: [
         { id: "drag-1", content: "Object.keys()", correctZone: "zone-claves" },
         { id: "drag-2", content: "Object.values()", correctZone: "zone-valores" },

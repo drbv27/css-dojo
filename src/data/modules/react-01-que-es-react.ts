@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const reactQueEsModule: ModuleData = {
   slug: "react-que-es-react",
-  title: "¿Que es React?",
+  title: "¿Qué es React?",
   description:
     "Descubre que es React, como funciona el Virtual DOM, y por que es la libreria mas popular para construir interfaces de usuario.",
   order: 201,
@@ -12,8 +12,8 @@ export const reactQueEsModule: ModuleData = {
   lessons: [
     {
       id: "react01-leccion-01",
-      title: "¿Que es React?",
-      content: `## ¿Que es React?
+      title: "¿Qué es React?",
+      content: `## ¿Qué es React?
 
 **React** es una **libreria de JavaScript** creada por Facebook (ahora Meta) en 2013 para construir **interfaces de usuario** (UI) de forma declarativa y eficiente.
 
@@ -21,13 +21,13 @@ export const reactQueEsModule: ModuleData = {
 
 - **Declarativo:** describes *que* quieres ver, no *como* lograrlo paso a paso
 - **Basado en componentes:** divides tu UI en piezas reutilizables
-- **Aprende una vez, escribe en cualquier lugar:** React Native para moviles, React para web
+- **Aprende una vez, escribe en cualquier lugar:** React Native para móviles, React para web
 
 ### React NO es un framework
 
 A diferencia de Angular o Vue, React es solo una **libreria** enfocada en la capa de vista. Para routing, manejo de estado global, etc., necesitas librerias adicionales o frameworks como **Next.js**.
 
-### ¿Quien usa React?
+### ¿Quién usa React?
 
 Facebook, Instagram, Netflix, Airbnb, Uber, WhatsApp Web, Discord y miles de empresas mas.
 
@@ -59,23 +59,23 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       content: `## SPA vs MPA
 
 ### MPA (Multi-Page Application)
-En una aplicacion tradicional, cada vez que el usuario navega, el servidor envia una **pagina HTML completa**. Esto causa recargas completas del navegador.
+En una aplicación tradicional, cada vez que el usuario navega, el servidor envia una **página HTML completa**. Esto causa recargas completas del navegador.
 
 ### SPA (Single-Page Application)
-React permite crear **SPAs**, donde se carga una sola pagina HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho mas fluida.
+React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho mas fluida.
 
 ## El Virtual DOM
 
-El **DOM** (Document Object Model) es la representacion del HTML en memoria que el navegador usa para pintar la pagina. Manipularlo directamente es **lento**.
+El **DOM** (Document Object Model) es la representación del HTML en memoria que el navegador usa para pintar la página. Manipularlo directamente es **lento**.
 
 React resuelve esto con el **Virtual DOM**:
 
 1. React mantiene una **copia ligera** del DOM en memoria (Virtual DOM)
 2. Cuando el estado cambia, React crea un **nuevo Virtual DOM**
 3. Compara el nuevo con el anterior (**diffing**)
-4. Solo actualiza las **partes que realmente cambiaron** en el DOM real (**reconciliacion**)
+4. Solo actualiza las **partes que realmente cambiaron** en el DOM real (**reconciliación**)
 
-> **Resultado:** actualizaciones rapidas y eficientes sin que tu tengas que preocuparte por manipular el DOM manualmente.`,
+> **Resultado:** actualizaciones rápidas y eficientes sin que tu tengas que preocuparte por manipular el DOM manualmente.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -114,16 +114,16 @@ React tiene un ecosistema enorme. Estas son las herramientas mas importantes:
 
 ### Herramientas esenciales
 
-| Herramienta | Funcion |
+| Herramienta | Función |
 |---|---|
-| **React DevTools** | Extension del navegador para inspeccionar componentes |
+| **React DevTools** | Extensión del navegador para inspeccionar componentes |
 | **npm/yarn/pnpm** | Gestores de paquetes |
-| **ESLint** | Analisis estatico de codigo |
-| **Prettier** | Formateo de codigo |
+| **ESLint** | Analisis estático de código |
+| **Prettier** | Formateo de código |
 
-### Introduccion a JSX
+### Introducción a JSX
 
-**JSX** (JavaScript XML) es una extension de sintaxis que permite escribir HTML dentro de JavaScript:
+**JSX** (JavaScript XML) es una extensión de sintaxis que permite escribir HTML dentro de JavaScript:
 
 \`\`\`jsx
 const elemento = <h1>Hola Mundo</h1>;
@@ -167,9 +167,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que es React?",
+      prompt: "¿Qué es React?",
       options: [
-        { id: "a", text: "Un lenguaje de programacion", isCorrect: false },
+        { id: "a", text: "Un lenguaje de programación", isCorrect: false },
         { id: "b", text: "Una libreria de JavaScript para construir interfaces de usuario", isCorrect: true },
         { id: "c", text: "Un framework CSS", isCorrect: false },
         { id: "d", text: "Un sistema operativo", isCorrect: false },
@@ -185,15 +185,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que problema resuelve el Virtual DOM?",
+      prompt: "¿Qué problema resuelve el Virtual DOM?",
       options: [
-        { id: "a", text: "Hace que el CSS se cargue mas rapido", isCorrect: false },
+        { id: "a", text: "Hace que el CSS se cargue mas rápido", isCorrect: false },
         { id: "b", text: "Evita manipular el DOM real directamente, mejorando el rendimiento", isCorrect: true },
         { id: "c", text: "Permite escribir HTML sin etiquetas", isCorrect: false },
         { id: "d", text: "Reemplaza completamente al DOM del navegador", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Tiene que ver con el rendimiento al actualizar la pagina.",
+      hint: "Tiene que ver con el rendimiento al actualizar la página.",
       explanation:
         "El Virtual DOM mantiene una copia ligera del DOM en memoria. React compara los cambios (diffing) y solo actualiza las partes necesarias del DOM real, lo que es mucho mas eficiente.",
     },
@@ -203,17 +203,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Que es una SPA (Single-Page Application)?",
+      prompt: "¿Qué es una SPA (Single-Page Application)?",
       options: [
-        { id: "a", text: "Una aplicacion que solo tiene una pagina de contenido", isCorrect: false },
-        { id: "b", text: "Una aplicacion que carga un solo HTML y actualiza el contenido dinamicamente sin recargar", isCorrect: true },
-        { id: "c", text: "Una aplicacion que no usa JavaScript", isCorrect: false },
-        { id: "d", text: "Una aplicacion que solo funciona en moviles", isCorrect: false },
+        { id: "a", text: "Una aplicación que solo tiene una página de contenido", isCorrect: false },
+        { id: "b", text: "Una aplicación que carga un solo HTML y actualiza el contenido dinamicamente sin recargar", isCorrect: true },
+        { id: "c", text: "Una aplicación que no usa JavaScript", isCorrect: false },
+        { id: "d", text: "Una aplicación que solo funciona en móviles", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando navegas por la aplicacion.",
+      hint: "Piensa en que pasa cuando navegas por la aplicación.",
       explanation:
-        "Una SPA carga una unica pagina HTML y JavaScript se encarga de actualizar el contenido de forma dinamica sin necesidad de recargar el navegador.",
+        "Una SPA carga una única página HTML y JavaScript se encarga de actualizar el contenido de forma dinámica sin necesidad de recargar el navegador.",
     },
     {
       id: "react01-ej-04",
@@ -221,7 +221,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Clasifica cada concepto segun corresponda a React o al desarrollo web tradicional:",
+      prompt: "Clasifica cada concepto según corresponda a React o al desarrollo web tradicional:",
       dragItems: [
         { id: "drag-1", content: "Virtual DOM", correctZone: "zone-react" },
         { id: "drag-2", content: "document.getElementById()", correctZone: "zone-tradicional" },
@@ -241,9 +241,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
           "drag-4": "zone-tradicional",
         },
       },
-      hint: "React introduce conceptos nuevos para evitar la manipulacion directa del DOM.",
+      hint: "React introduce conceptos nuevos para evitar la manipulación directa del DOM.",
       explanation:
-        "React usa el Virtual DOM y componentes reutilizables. En el desarrollo tradicional, manipulas el DOM directamente con metodos como getElementById y las paginas se recargan completamente al navegar.",
+        "React usa el Virtual DOM y componentes reutilizables. En el desarrollo tradicional, manipulas el DOM directamente con métodos como getElementById y las páginas se recargan completamente al navegar.",
     },
     {
       id: "react01-ej-05",
@@ -251,7 +251,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el codigo para renderizar un componente React en el elemento con id 'root':",
+      prompt: "Completa el código para renderizar un componente React en el elemento con id 'root':",
       codeTemplate: {
         html: "",
         cssPrefix: "ReactDOM.createRoot(document.getElementById(\"root\")).",
@@ -259,9 +259,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["render"],
       },
       validation: { type: "exact", answer: "render" },
-      hint: "Es el metodo que le dice a React que 'pinte' el componente.",
+      hint: "Es el método que le dice a React que 'pinte' el componente.",
       explanation:
-        "ReactDOM.createRoot() crea la raiz de React y el metodo render() se usa para renderizar el componente principal dentro del elemento del DOM.",
+        "ReactDOM.createRoot() crea la raíz de React y el método render() se usa para renderizar el componente principal dentro del elemento del DOM.",
     },
     {
       id: "react01-ej-06",
@@ -269,7 +269,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es la herramienta recomendada actualmente para crear un nuevo proyecto React?",
+      prompt: "¿Cuál es la herramienta recomendada actualmente para crear un nuevo proyecto React?",
       options: [
         { id: "a", text: "Create React App", isCorrect: false },
         { id: "b", text: "Webpack manual", isCorrect: false },
@@ -277,9 +277,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "Gulp", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es una herramienta moderna y muy rapida para el desarrollo.",
+      hint: "Es una herramienta moderna y muy rápida para el desarrollo.",
       explanation:
-        "Vite es la herramienta recomendada actualmente para crear proyectos React. Es mucho mas rapida que Create React App gracias a su uso de ES modules nativos durante el desarrollo.",
+        "Vite es la herramienta recomendada actualmente para crear proyectos React. Es mucho mas rápida que Create React App gracias a su uso de ES modules nativos durante el desarrollo.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const jsProyectoTodoModule: ModuleData = {
   slug: "js-proyecto-todo",
   title: "Proyecto: Lista de Tareas",
   description:
-    "Construye una aplicacion de lista de tareas (Todo App) paso a paso: CRUD, localStorage y filtros.",
+    "Construye una aplicación de lista de tareas (Todo App) paso a paso: CRUD, localStorage y filtros.",
   order: 123,
   category: "js-projects",
   icon: "CheckSquare",
@@ -28,7 +28,7 @@ Vamos a construir una lista de tareas completa paso a paso.
 
 Necesitamos:
 - Un input para escribir la tarea
-- Un boton para agregarla
+- Un botón para agregarla
 - Una lista para mostrar las tareas
 - Un array para almacenar los datos
 
@@ -125,7 +125,7 @@ renderizar();`,
       title: "localStorage y filtros",
       content: `## Persistencia con localStorage
 
-Para que las tareas no se pierdan al recargar la pagina:
+Para que las tareas no se pierdan al recargar la página:
 
 ### Guardar
 \`\`\`javascript
@@ -146,8 +146,8 @@ function cargar() {
 }
 \`\`\`
 
-### Llamar guardar() en cada operacion
-Despues de agregar, eliminar o completar una tarea, llama a \`guardar()\`.
+### Llamar guardar() en cada operación
+Después de agregar, eliminar o completar una tarea, llama a \`guardar()\`.
 
 ## Filtros
 
@@ -164,7 +164,7 @@ function filtrar(estado) {
 }
 \`\`\`
 
-> **Patron:** Datos en memoria + sincronizacion con localStorage en cada cambio.`,
+> **Patrón:** Datos en memoria + sincronización con localStorage en cada cambio.`,
       codeExample: {
         html: '<div id="app2">\n  <h3>Todo App con Persistencia</h3>\n  <div class="input-group">\n    <input id="input2" placeholder="Nueva tarea..." />\n    <button id="add2">+</button>\n  </div>\n  <div class="filtros">\n    <button class="filtro activo" data-filtro="todas">Todas</button>\n    <button class="filtro" data-filtro="activas">Activas</button>\n    <button class="filtro" data-filtro="completadas">Hechas</button>\n  </div>\n  <ul id="lista2"></ul>\n  <p id="info2"></p>\n</div>',
         css: '#app2 { max-width: 400px; } .input-group { display: flex; gap: 4px; } #input2 { flex: 1; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } #add2 { padding: 8px 14px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; } .filtros { display: flex; gap: 4px; margin: 8px 0; } .filtro { padding: 4px 10px; border: 1px solid #45475a; background: transparent; color: #a6adc8; border-radius: 4px; cursor: pointer; font-size: 12px; } .filtro.activo { background: #89b4fa; color: #1e1e2e; border-color: #89b4fa; } #lista2 { list-style: none; padding: 0; } #lista2 li { display: flex; align-items: center; gap: 8px; padding: 6px 8px; margin: 2px 0; background: #313244; border-radius: 4px; color: #cdd6f4; font-size: 14px; } #lista2 li.done { text-decoration: line-through; opacity: 0.5; } .del { margin-left: auto; background: none; color: #f38ba8; border: none; cursor: pointer; } #info2 { font-size: 12px; color: #a6adc8; }',
@@ -240,7 +240,7 @@ render();`,
     },
     {
       id: "js23-leccion-03",
-      title: "Mejoras y refactorizacion",
+      title: "Mejoras y refactorización",
       content: `## Mejoras a la Todo App
 
 ### 1. Editar tareas
@@ -263,16 +263,16 @@ span.addEventListener("dblclick", function() {
 Mostrar cuantas tareas quedan por completar.
 
 ### 3. Limpiar completadas
-Un boton para eliminar todas las tareas completadas de una vez.
+Un botón para eliminar todas las tareas completadas de una vez.
 
 ### 4. Drag and drop
 Reordenar tareas arrastrándolas.
 
 ### Principios aplicados
-- **Separacion de responsabilidades:** datos vs. vista
-- **Single source of truth:** un unico array como fuente de verdad
+- **Separación de responsabilidades:** datos vs. vista
+- **Single source of truth:** un único array como fuente de verdad
 - **Persistencia:** localStorage para datos no sensibles
-- **Delegacion de eventos:** eficiente para listas dinamicas
+- **Delegación de eventos:** eficiente para listas dinámicas
 
 > Este proyecto cubre la mayoria de conceptos de JavaScript que hemos aprendido: DOM, eventos, arrays, localStorage y funciones.`,
       codeExample: {
@@ -330,16 +330,16 @@ renderApp();`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "En una Todo App, ¿cual es el principio de 'single source of truth'?",
+      prompt: "En una Todo App, ¿cuál es el principio de 'single source of truth'?",
       options: [
-        { id: "a", text: "Tener multiples copias de los datos", isCorrect: false },
-        { id: "b", text: "Un unico array como fuente de verdad para los datos", isCorrect: true },
+        { id: "a", text: "Tener múltiples copias de los datos", isCorrect: false },
+        { id: "b", text: "Un único array como fuente de verdad para los datos", isCorrect: true },
         { id: "c", text: "Guardar datos solo en el HTML", isCorrect: false },
         { id: "d", text: "No usar variables globales", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Una sola fuente de verdad evita inconsistencias.",
-      explanation: "Single source of truth significa tener un unico lugar (el array) donde viven los datos. El HTML se renderiza a partir de el.",
+      explanation: "Single source of truth significa tener un único lugar (el array) donde viven los datos. El HTML se renderiza a partir de el.",
     },
     {
       id: "js23-ej-02",
@@ -347,7 +347,7 @@ renderApp();`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo de array se usa para eliminar una tarea por su id?",
+      prompt: "¿Qué método de array se usa para eliminar una tarea por su id?",
       options: [
         { id: "a", text: "splice()", isCorrect: false },
         { id: "b", text: "filter()", isCorrect: true },
@@ -372,7 +372,7 @@ renderApp();`,
         { id: "d", text: "Para validar los datos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "localStorage tiene una limitacion de tipo de datos.",
+      hint: "localStorage tiene una limitación de tipo de datos.",
       explanation: "localStorage solo acepta strings. JSON.stringify() convierte arrays y objetos a texto para poder guardarlos.",
     },
     {
@@ -381,7 +381,7 @@ renderApp();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que evento usarias para detectar la tecla Enter en el input?",
+      prompt: "¿Qué evento usarias para detectar la tecla Enter en el input?",
       options: [
         { id: "a", text: "click", isCorrect: false },
         { id: "b", text: "keydown con e.key === 'Enter'", isCorrect: true },
@@ -390,7 +390,7 @@ renderApp();`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Necesitas detectar que tecla se presiono.",
-      explanation: 'El evento keydown con la verificacion e.key === "Enter" detecta cuando el usuario presiona la tecla Enter.',
+      explanation: 'El evento keydown con la verificación e.key === "Enter" detecta cuando el usuario presiona la tecla Enter.',
     },
     {
       id: "js23-ej-05",
@@ -398,10 +398,10 @@ renderApp();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Cual es la ventaja de re-renderizar toda la lista en cada cambio?",
+      prompt: "¿Cuál es la ventaja de re-renderizar toda la lista en cada cambio?",
       options: [
-        { id: "a", text: "Es mas rapido", isCorrect: false },
-        { id: "b", text: "Simplifica el codigo y evita bugs de sincronizacion", isCorrect: true },
+        { id: "a", text: "Es mas rápido", isCorrect: false },
+        { id: "b", text: "Simplifica el código y evita bugs de sincronización", isCorrect: true },
         { id: "c", text: "Usa menos memoria", isCorrect: false },
         { id: "d", text: "No hay ventaja", isCorrect: false },
       ],

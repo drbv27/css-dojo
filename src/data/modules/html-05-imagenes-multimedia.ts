@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const htmlImagenesModule: ModuleData = {
   slug: "html-05-imagenes-multimedia",
-  title: "Imagenes y multimedia",
+  title: "Imágenes y multimedia",
   description:
-    "Aprende a insertar imagenes, video y audio en HTML. Domina los atributos esenciales, figure/figcaption y el elemento picture para imagenes responsivas.",
+    "Aprende a insertar imágenes, video y audio en HTML. Domina los atributos esenciales, figure/figcaption y el elemento picture para imágenes responsivas.",
   order: 5,
   dojo: "html",
   category: "html-fundamentals",
@@ -15,12 +15,12 @@ export const htmlImagenesModule: ModuleData = {
       title: "La etiqueta img",
       content: `## La etiqueta img
 
-La etiqueta \`<img>\` inserta una **imagen** en la pagina. Es una etiqueta **auto-cerrada** (no tiene etiqueta de cierre).
+La etiqueta \`<img>\` inserta una **imagen** en la página. Es una etiqueta **auto-cerrada** (no tiene etiqueta de cierre).
 
 ### Atributos esenciales
 
 #### \`src\` (source)
-Especifica la **ruta o URL** de la imagen:
+Específica la **ruta o URL** de la imagen:
 
 \`\`\`html
 <img src="foto.jpg">
@@ -40,13 +40,13 @@ El atributo \`alt\` sirve para:
 - **Respaldo**: si la imagen no carga, se muestra el texto alternativo
 
 #### \`width\` y \`height\`
-Definen las **dimensiones** de la imagen en pixeles. Ayudan al navegador a reservar espacio antes de que la imagen cargue:
+Definen las **dimensiones** de la imagen en píxeles. Ayudan al navegador a reservar espacio antes de que la imagen cargue:
 
 \`\`\`html
 <img src="foto.jpg" alt="Descripcion" width="400" height="300">
 \`\`\`
 
-> **Buena practica:** Siempre incluye el atributo \`alt\`. Si la imagen es decorativa, usa \`alt=""\` (alt vacio), pero nunca lo omitas.`,
+> **Buena práctica:** Siempre incluye el atributo \`alt\`. Si la imagen es decorativa, usa \`alt=""\` (alt vacio), pero nunca lo omitas.`,
       codeExample: {
         html: `<h2>Ejemplo de imagen</h2>\n<img src="https://picsum.photos/400/200" alt="Imagen de ejemplo aleatoria" width="400" height="200">\n<p>Esta imagen tiene src, alt, width y height definidos.</p>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nimg {\n  border-radius: 8px;\n  display: block;\n  margin: 12px 0;\n}\n\np {\n  font-family: sans-serif;\n  color: #718096;\n  font-size: 14px;\n}`,
@@ -61,7 +61,7 @@ Definen las **dimensiones** de la imagen en pixeles. Ayudan al navegador a reser
 
 ### \`<figure>\` y \`<figcaption>\`
 
-La etiqueta \`<figure>\` agrupa una imagen (u otro contenido) con su **descripcion o leyenda**. \`<figcaption>\` proporciona el texto descriptivo.
+La etiqueta \`<figure>\` agrupa una imagen (u otro contenido) con su **descripción o leyenda**. \`<figcaption>\` proporciona el texto descriptivo.
 
 \`\`\`html
 <figure>
@@ -70,9 +70,9 @@ La etiqueta \`<figure>\` agrupa una imagen (u otro contenido) con su **descripci
 </figure>
 \`\`\`
 
-### \`<picture>\` — Imagenes responsivas
+### \`<picture>\` — Imágenes responsivas
 
-La etiqueta \`<picture>\` permite definir **multiples fuentes** de imagen para diferentes situaciones:
+La etiqueta \`<picture>\` permite definir **múltiples fuentes** de imagen para diferentes situaciones:
 
 \`\`\`html
 <picture>
@@ -82,11 +82,11 @@ La etiqueta \`<picture>\` permite definir **multiples fuentes** de imagen para d
 </picture>
 \`\`\`
 
-El navegador elige la primera \`<source>\` cuya condicion se cumpla. El \`<img>\` al final es el **respaldo** obligatorio.
+El navegador elige la primera \`<source>\` cuya condición se cumpla. El \`<img>\` al final es el **respaldo** obligatorio.
 
 ### Usos de \`<picture>\`
 
-- **Diferentes tamanos** segun el ancho de pantalla
+- **Diferentes tamaños** según el ancho de pantalla
 - **Diferentes formatos** (WebP con respaldo a JPG):
 
 \`\`\`html
@@ -122,8 +122,8 @@ HTML5 permite insertar **video y audio** de forma nativa, sin necesidad de plugi
 
 #### Atributos de video:
 
-- **\`controls\`** — Muestra los controles de reproduccion (play, pausa, volumen)
-- **\`autoplay\`** — Inicia la reproduccion automaticamente
+- **\`controls\`** — Muestra los controles de reproducción (play, pausa, volumen)
+- **\`autoplay\`** — Inicia la reproducción automáticamente
 - **\`muted\`** — Inicia sin sonido (necesario para que autoplay funcione en la mayoria de navegadores)
 - **\`loop\`** — Repite el video al terminar
 - **\`poster\`** — Imagen de portada antes de reproducir
@@ -148,11 +148,11 @@ Funciona de manera similar a video:
 </audio>
 \`\`\`
 
-### Multiples fuentes
+### Múltiples fuentes
 
-Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multiples formatos**. El navegador usara el primero que soporte.
+Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múltiples formatos**. El navegador usara el primero que soporte.
 
-> **Importante:** La mayoria de navegadores modernos bloquean el autoplay con sonido. Si necesitas autoplay, anade tambien el atributo \`muted\`.`,
+> **Importante:** La mayoria de navegadores modernos bloquean el autoplay con sonido. Si necesitas autoplay, añade también el atributo \`muted\`.`,
       codeExample: {
         html: `<h2>Reproductor de video</h2>\n<video controls width="400" poster="https://picsum.photos/400/225">\n  <source src="video.mp4" type="video/mp4">\n  Tu navegador no soporta video HTML5.\n</video>\n\n<h2>Reproductor de audio</h2>\n<audio controls>\n  <source src="audio.mp3" type="audio/mpeg">\n  Tu navegador no soporta audio HTML5.\n</audio>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n  margin-top: 16px;\n}\n\nvideo {\n  border-radius: 8px;\n  display: block;\n}\n\naudio {\n  width: 100%;\n  margin-top: 8px;\n}`,
@@ -168,7 +168,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que atributo de la etiqueta <img> es obligatorio por accesibilidad?",
+      prompt: "¿Qué atributo de la etiqueta <img> es obligatorio por accesibilidad?",
       options: [
         { id: "a", text: "src", isCorrect: false },
         { id: "b", text: "title", isCorrect: false },
@@ -176,7 +176,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
         { id: "d", text: "width", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Proporciona una descripcion textual de la imagen.",
+      hint: "Proporciona una descripción textual de la imagen.",
       explanation:
         "El atributo alt proporciona texto alternativo que describe la imagen. Es esencial para lectores de pantalla y cuando la imagen no carga.",
     },
@@ -204,7 +204,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Que etiqueta se usa para agregar una leyenda o descripcion a una imagen?",
+      prompt: "¿Qué etiqueta se usa para agregar una leyenda o descripción a una imagen?",
       options: [
         { id: "a", text: "<caption>", isCorrect: false },
         { id: "b", text: "<figcaption>", isCorrect: true },
@@ -222,7 +222,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Arrastra cada atributo de video a su funcion correcta:",
+      prompt: "Arrastra cada atributo de video a su función correcta:",
       dragItems: [
         { id: "d1", content: "controls", correctZone: "z1" },
         { id: "d2", content: "autoplay", correctZone: "z2" },
@@ -231,8 +231,8 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
         { id: "d5", content: "loop", correctZone: "z5" },
       ],
       dropZones: [
-        { id: "z1", label: "Muestra botones de reproduccion" },
-        { id: "z2", label: "Inicia reproduccion automatica" },
+        { id: "z1", label: "Muestra botones de reproducción" },
+        { id: "z2", label: "Inicia reproducción automática" },
         { id: "z3", label: "Sin sonido al iniciar" },
         { id: "z4", label: "Imagen de portada" },
         { id: "z5", label: "Repite al terminar" },
@@ -243,7 +243,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       },
       hint: "Piensa en que hace cada atributo por su nombre en ingles.",
       explanation:
-        "controls muestra los controles, autoplay inicia automaticamente, muted silencia, poster define la imagen previa, y loop repite el video.",
+        "controls muestra los controles, autoplay inicia automáticamente, muted silencia, poster define la imagen previa, y loop repite el video.",
     },
     {
       id: "html-05-ej-05",
@@ -270,7 +270,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       },
       hint: "Estructura: figure > img + figcaption.",
       explanation:
-        "Un <figure> envuelve la imagen y el <figcaption> proporciona la descripcion visible de la misma.",
+        "Un <figure> envuelve la imagen y el <figcaption> proporciona la descripción visible de la misma.",
     },
     {
       id: "html-05-ej-06",
@@ -288,7 +288,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       validation: { type: "exact", answer: ["controls", "muted"] },
       hint: "Un atributo muestra los botones y otro silencia el audio.",
       explanation:
-        "El atributo controls muestra los controles de reproduccion y muted inicia el video sin sonido.",
+        "El atributo controls muestra los controles de reproducción y muted inicia el video sin sonido.",
     },
     {
       id: "html-05-ej-07",
@@ -300,13 +300,13 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       options: [
         { id: "a", text: "Para aplicar filtros a una imagen", isCorrect: false },
         { id: "b", text: "Para crear una galeria de fotos", isCorrect: false },
-        { id: "c", text: "Para ofrecer multiples fuentes de imagen segun el dispositivo o formato soportado", isCorrect: true },
+        { id: "c", text: "Para ofrecer múltiples fuentes de imagen según el dispositivo o formato soportado", isCorrect: true },
         { id: "d", text: "Para agregar un borde decorativo a una imagen", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Permite definir diferentes imagenes para diferentes condiciones.",
+      hint: "Permite definir diferentes imágenes para diferentes condiciones.",
       explanation:
-        "La etiqueta <picture> con elementos <source> permite servir diferentes imagenes segun el tamano de pantalla o formato soportado por el navegador.",
+        "La etiqueta <picture> con elementos <source> permite servir diferentes imágenes según el tamaño de pantalla o formato soportado por el navegador.",
     },
   ],
 };

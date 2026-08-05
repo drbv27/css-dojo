@@ -12,10 +12,10 @@ export const htmlTablasModule: ModuleData = {
   lessons: [
     {
       id: "html-07-leccion-01",
-      title: "Estructura basica de una tabla",
-      content: `## Estructura basica de una tabla
+      title: "Estructura básica de una tabla",
+      content: `## Estructura básica de una tabla
 
-Las tablas en HTML se usan para mostrar **datos tabulares** (informacion organizada en filas y columnas).
+Las tablas en HTML se usan para mostrar **datos tabulares** (información organizada en filas y columnas).
 
 ### Etiquetas fundamentales
 
@@ -24,7 +24,7 @@ Las tablas en HTML se usan para mostrar **datos tabulares** (informacion organiz
 - \`<th>\` — Table Header (celda de encabezado)
 - \`<td>\` — Table Data (celda de datos)
 
-### Ejemplo basico
+### Ejemplo básico
 
 \`\`\`html
 <table>
@@ -48,7 +48,7 @@ Las tablas en HTML se usan para mostrar **datos tabulares** (informacion organiz
 - \`<th>\` se muestra en **negrita y centrado** por defecto. Representa un encabezado.
 - \`<td>\` se muestra en texto normal. Representa datos.
 
-> **Importante:** Las tablas son para **datos tabulares**, no para disenar layouts. Usar tablas para disenar la maquetacion de una pagina es una practica obsoleta. Usa CSS Grid o Flexbox para layouts.`,
+> **Importante:** Las tablas son para **datos tabulares**, no para diseñar layouts. Usar tablas para diseñar la maquetación de una página es una práctica obsoleta. Usa CSS Grid o Flexbox para layouts.`,
       codeExample: {
         html: `<table>\n  <tr>\n    <th>Producto</th>\n    <th>Precio</th>\n    <th>Stock</th>\n  </tr>\n  <tr>\n    <td>Laptop</td>\n    <td>$999</td>\n    <td>15</td>\n  </tr>\n  <tr>\n    <td>Mouse</td>\n    <td>$25</td>\n    <td>150</td>\n  </tr>\n  <tr>\n    <td>Teclado</td>\n    <td>$75</td>\n    <td>80</td>\n  </tr>\n</table>`,
         css: `table {\n  border-collapse: collapse;\n  width: 100%;\n  font-family: sans-serif;\n}\n\nth, td {\n  border: 1px solid #e2e8f0;\n  padding: 10px 14px;\n  text-align: left;\n}\n\nth {\n  background-color: #2b6cb0;\n  color: white;\n}\n\ntr:nth-child(even) {\n  background-color: #f7fafc;\n}`,
@@ -61,7 +61,7 @@ Las tablas en HTML se usan para mostrar **datos tabulares** (informacion organiz
       title: "thead, tbody, tfoot y caption",
       content: `## Secciones de tabla: thead, tbody, tfoot
 
-Para tablas bien estructuradas, divide el contenido en **secciones semanticas**:
+Para tablas bien estructuradas, divide el contenido en **secciones semánticas**:
 
 ### \`<thead>\` — Encabezado de la tabla
 Contiene las filas de encabezado:
@@ -99,8 +99,8 @@ Contiene filas de resumen o totales:
 </tfoot>
 \`\`\`
 
-### \`<caption>\` — Titulo de la tabla
-Proporciona un **titulo descriptivo** para la tabla. Va justo despues de \`<table>\`:
+### \`<caption>\` — Título de la tabla
+Proporciona un **título descriptivo** para la tabla. Va justo después de \`<table>\`:
 
 \`\`\`html
 <table>
@@ -109,7 +109,7 @@ Proporciona un **titulo descriptivo** para la tabla. Va justo despues de \`<tabl
 </table>
 \`\`\`
 
-> **Accesibilidad:** Usa siempre \`<caption>\` para describir el proposito de la tabla. Los lectores de pantalla lo anuncian antes de leer los datos.`,
+> **Accesibilidad:** Usa siempre \`<caption>\` para describir el propósito de la tabla. Los lectores de pantalla lo anuncian antes de leer los datos.`,
       codeExample: {
         html: `<table>\n  <caption>Reporte de ventas - Marzo 2026</caption>\n  <thead>\n    <tr>\n      <th>Producto</th>\n      <th>Unidades</th>\n      <th>Ingreso</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Curso HTML</td>\n      <td>120</td>\n      <td>$2,400</td>\n    </tr>\n    <tr>\n      <td>Curso CSS</td>\n      <td>95</td>\n      <td>$1,900</td>\n    </tr>\n    <tr>\n      <td>Curso JS</td>\n      <td>80</td>\n      <td>$2,000</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td>Total</td>\n      <td>295</td>\n      <td>$6,300</td>\n    </tr>\n  </tfoot>\n</table>`,
         css: `table {\n  border-collapse: collapse;\n  width: 100%;\n  font-family: sans-serif;\n}\n\ncaption {\n  font-weight: bold;\n  font-size: 16px;\n  margin-bottom: 8px;\n  color: #2d3748;\n}\n\nth, td {\n  border: 1px solid #e2e8f0;\n  padding: 10px 14px;\n  text-align: left;\n}\n\nthead th {\n  background-color: #2b6cb0;\n  color: white;\n}\n\ntfoot td {\n  background-color: #edf2f7;\n  font-weight: bold;\n}\n\ntbody tr:nth-child(even) {\n  background-color: #f7fafc;\n}`,
@@ -123,7 +123,7 @@ Proporciona un **titulo descriptivo** para la tabla. Va justo despues de \`<tabl
       content: `## colspan, rowspan y scope
 
 ### \`colspan\` — Unir columnas
-Hace que una celda ocupe **multiples columnas**:
+Hace que una celda ocupe **múltiples columnas**:
 
 \`\`\`html
 <tr>
@@ -132,7 +132,7 @@ Hace que una celda ocupe **multiples columnas**:
 \`\`\`
 
 ### \`rowspan\` — Unir filas
-Hace que una celda ocupe **multiples filas**:
+Hace que una celda ocupe **múltiples filas**:
 
 \`\`\`html
 <td rowspan="3">Esta celda ocupa 3 filas</td>
@@ -166,7 +166,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
 </tbody>
 \`\`\`
 
-> **Buena practica:** Siempre usa \`scope\` en tus encabezados \`<th>\`. Mejora enormemente la accesibilidad para usuarios de lectores de pantalla.`,
+> **Buena práctica:** Siempre usa \`scope\` en tus encabezados \`<th>\`. Mejora enormemente la accesibilidad para usuarios de lectores de pantalla.`,
       codeExample: {
         html: `<table>\n  <caption>Horario de clases</caption>\n  <thead>\n    <tr>\n      <th scope="col">Hora</th>\n      <th scope="col">Lunes</th>\n      <th scope="col">Martes</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope="row">9:00</th>\n      <td colspan="2">Matematicas (ambos dias)</td>\n    </tr>\n    <tr>\n      <th scope="row">10:00</th>\n      <td>Historia</td>\n      <td rowspan="2">Laboratorio de ciencias</td>\n    </tr>\n    <tr>\n      <th scope="row">11:00</th>\n      <td>Ingles</td>\n    </tr>\n  </tbody>\n</table>`,
         css: `table {\n  border-collapse: collapse;\n  width: 100%;\n  font-family: sans-serif;\n}\n\ncaption {\n  font-weight: bold;\n  font-size: 16px;\n  margin-bottom: 8px;\n  color: #2d3748;\n}\n\nth, td {\n  border: 1px solid #cbd5e0;\n  padding: 10px 14px;\n  text-align: center;\n}\n\nthead th {\n  background-color: #2b6cb0;\n  color: white;\n}\n\ntbody th {\n  background-color: #ebf8ff;\n  color: #2b6cb0;\n}\n\ntd[colspan] {\n  background-color: #fefcbf;\n}\n\ntd[rowspan] {\n  background-color: #f0fff4;\n}`,
@@ -182,7 +182,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que etiqueta define una celda de encabezado en una tabla HTML?",
+      prompt: "¿Qué etiqueta define una celda de encabezado en una tabla HTML?",
       options: [
         { id: "a", text: "<td>", isCorrect: false },
         { id: "b", text: "<th>", isCorrect: true },
@@ -218,7 +218,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que atributo permite que una celda ocupe multiples columnas?",
+      prompt: "¿Qué atributo permite que una celda ocupe múltiples columnas?",
       options: [
         { id: "a", text: "rowspan", isCorrect: false },
         { id: "b", text: "multicolumn", isCorrect: false },
@@ -236,7 +236,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Arrastra cada seccion de tabla a su funcion:",
+      prompt: "Arrastra cada sección de tabla a su función:",
       dragItems: [
         { id: "d1", content: "<thead>", correctZone: "z1" },
         { id: "d2", content: "<tbody>", correctZone: "z2" },
@@ -247,7 +247,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
         { id: "z1", label: "Filas de encabezado" },
         { id: "z2", label: "Filas de datos principales" },
         { id: "z3", label: "Filas de resumen o totales" },
-        { id: "z4", label: "Titulo descriptivo de la tabla" },
+        { id: "z4", label: "Título descriptivo de la tabla" },
       ],
       validation: {
         type: "exact",
@@ -255,7 +255,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       },
       hint: "thead = head (encabezado), tbody = body (cuerpo), tfoot = foot (pie).",
       explanation:
-        "thead agrupa encabezados, tbody agrupa los datos principales, tfoot los totales/resumen, y caption proporciona un titulo.",
+        "thead agrupa encabezados, tbody agrupa los datos principales, tfoot los totales/resumen, y caption proporciona un título.",
     },
     {
       id: "html-07-ej-05",
@@ -284,7 +284,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       },
       hint: "Usa table > caption + thead (con tr y th) + tbody (con tr y td).",
       explanation:
-        "Una tabla bien estructurada incluye caption para el titulo, thead para encabezados y tbody para los datos.",
+        "Una tabla bien estructurada incluye caption para el título, thead para encabezados y tbody para los datos.",
     },
     {
       id: "html-07-ej-06",
@@ -314,7 +314,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       options: [
         { id: "a", text: "Para definir el ancho de la columna", isCorrect: false },
         { id: "b", text: "Para indicar si el encabezado aplica a una columna o fila (accesibilidad)", isCorrect: true },
-        { id: "c", text: "Para aplicar estilos CSS especificos", isCorrect: false },
+        { id: "c", text: "Para aplicar estilos CSS específicos", isCorrect: false },
         { id: "d", text: "Para fusionar celdas adyacentes", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

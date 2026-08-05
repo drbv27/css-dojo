@@ -4,7 +4,7 @@ export const jsEventosModule: ModuleData = {
   slug: "js-eventos",
   title: "Eventos",
   description:
-    "Aprende a manejar eventos del navegador: clicks, teclado, formularios y delegacion de eventos.",
+    "Aprende a manejar eventos del navegador: clicks, teclado, formularios y delegación de eventos.",
   order: 113,
   category: "js-intermediate",
   icon: "Zap",
@@ -15,7 +15,7 @@ export const jsEventosModule: ModuleData = {
       title: "addEventListener",
       content: `## Eventos en JavaScript
 
-Un **evento** es una accion que ocurre en el navegador: un click, una tecla presionada, el mouse moviéndose, etc.
+Un **evento** es una acción que ocurre en el navegador: un click, una tecla presionada, el mouse moviéndose, etc.
 
 ### addEventListener()
 
@@ -39,11 +39,11 @@ elemento.addEventListener("click", function(evento) {
 | \`keyup\` | Se suelta una tecla |
 | \`submit\` | Se envia un formulario |
 | \`input\` | Cambia el valor de un input |
-| \`load\` | La pagina termina de cargar |
+| \`load\` | La página termina de cargar |
 
 ### El objeto evento (event)
 
-Cada handler recibe un objeto con informacion del evento:
+Cada handler recibe un objeto con información del evento:
 \`\`\`javascript
 boton.addEventListener("click", function(e) {
   e.target    // elemento que disparo el evento
@@ -84,7 +84,7 @@ document.addEventListener("keydown", function(e) {
 
 ### Teclas especiales
 - \`e.key\` — valor de la tecla ("a", "Enter", " ")
-- \`e.code\` — codigo fisico de la tecla
+- \`e.code\` — código fisico de la tecla
 - \`e.ctrlKey\`, \`e.shiftKey\`, \`e.altKey\` — teclas modificadoras
 
 ## Eventos de mouse
@@ -98,7 +98,7 @@ elemento.addEventListener("mousemove", function(e) {
 
 ## removeEventListener()
 
-Para quitar un listener, necesitas pasar la misma funcion:
+Para quitar un listener, necesitas pasar la misma función:
 
 \`\`\`javascript
 function handler() { /* ... */ }
@@ -127,8 +127,8 @@ zona.addEventListener("click", function(e) {
     },
     {
       id: "js13-leccion-03",
-      title: "Delegacion de eventos",
-      content: `## Delegacion de eventos
+      title: "Delegación de eventos",
+      content: `## Delegación de eventos
 
 En lugar de agregar un listener a cada elemento hijo, agregas UNO al padre:
 
@@ -142,7 +142,7 @@ lista.addEventListener("click", function(e) {
 
 ### Ventajas
 1. **Rendimiento:** un solo listener vs. muchos
-2. **Elementos dinamicos:** funciona con elementos agregados despues
+2. **Elementos dinámicos:** funciona con elementos agregados después
 3. **Menos memoria:** menos listeners = menos uso de memoria
 
 ### Event bubbling
@@ -157,14 +157,14 @@ click en <li>
         → sube a document
 \`\`\`
 
-### Detener la propagacion
+### Detener la propagación
 
 \`\`\`javascript
 e.stopPropagation();   // detiene el bubbling
 e.preventDefault();     // previene la accion por defecto
 \`\`\`
 
-> La delegacion aprovecha el bubbling para capturar eventos en el padre.`,
+> La delegación aprovecha el bubbling para capturar eventos en el padre.`,
       codeExample: {
         html: '<ul id="lista">\n  <li>Item 1</li>\n  <li>Item 2</li>\n  <li>Item 3</li>\n</ul>\n<button id="agregar">Agregar item</button>\n<div id="resultado"></div>',
         css: '#lista { list-style: none; padding: 0; } #lista li { padding: 8px; margin: 2px 0; background: #313244; color: #cdd6f4; border-radius: 4px; cursor: pointer; } #lista li:hover { background: #45475a; } #agregar { margin: 8px 0; padding: 6px 12px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -200,16 +200,16 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es la forma moderna de escuchar un evento en JavaScript?",
+      prompt: "¿Cuál es la forma moderna de escuchar un evento en JavaScript?",
       options: [
-        { id: "a", text: 'onclick = "funcion()"', isCorrect: false },
-        { id: "b", text: 'addEventListener("click", funcion)', isCorrect: true },
-        { id: "c", text: "onEvent(funcion)", isCorrect: false },
-        { id: "d", text: "listen(evento, funcion)", isCorrect: false },
+        { id: "a", text: 'onclick = "función()"', isCorrect: false },
+        { id: "b", text: 'addEventListener("click", función)', isCorrect: true },
+        { id: "c", text: "onEvent(función)", isCorrect: false },
+        { id: "d", text: "listen(evento, función)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El metodo tiene 'add', 'Event' y 'Listener' en su nombre.",
-      explanation: "addEventListener es la forma moderna y recomendada. Los atributos onclick en HTML son un anti-patron.",
+      hint: "El método tiene 'add', 'Event' y 'Listener' en su nombre.",
+      explanation: "addEventListener es la forma moderna y recomendada. Los atributos onclick en HTML son un anti-patrón.",
     },
     {
       id: "js13-ej-02",
@@ -217,7 +217,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que propiedad del objeto evento indica que elemento disparo el evento?",
+      prompt: "¿Qué propiedad del objeto evento indica que elemento disparo el evento?",
       options: [
         { id: "a", text: "e.element", isCorrect: false },
         { id: "b", text: "e.source", isCorrect: false },
@@ -226,7 +226,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Target significa 'objetivo' en ingles.",
-      explanation: "e.target es el elemento que origino el evento (por ejemplo, el boton que fue clickeado).",
+      explanation: "e.target es el elemento que origino el evento (por ejemplo, el botón que fue clickeado).",
     },
     {
       id: "js13-ej-03",
@@ -234,7 +234,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para escuchar el evento click en un boton:",
+      prompt: "Completa para escuchar el evento click en un botón:",
       codeTemplate: {
         html: "",
         cssPrefix: 'boton.addEventListener("',
@@ -251,7 +251,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que metodo previene el comportamiento por defecto de un evento?",
+      prompt: "¿Qué método previene el comportamiento por defecto de un evento?",
       options: [
         { id: "a", text: "e.stop()", isCorrect: false },
         { id: "b", text: "e.cancel()", isCorrect: false },
@@ -260,7 +260,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "c" },
       hint: "prevent = prevenir, Default = por defecto.",
-      explanation: "preventDefault() evita la accion por defecto del navegador, como enviar un formulario o seguir un enlace.",
+      explanation: "preventDefault() evita la acción por defecto del navegador, como enviar un formulario o seguir un enlace.",
     },
     {
       id: "js13-ej-05",
@@ -268,16 +268,16 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que es la delegacion de eventos?",
+      prompt: "¿Qué es la delegación de eventos?",
       options: [
-        { id: "a", text: "Agregar multiples listeners al mismo elemento", isCorrect: false },
+        { id: "a", text: "Agregar múltiples listeners al mismo elemento", isCorrect: false },
         { id: "b", text: "Escuchar eventos en el padre para manejar clicks en los hijos", isCorrect: true },
         { id: "c", text: "Prevenir que los eventos se propaguen", isCorrect: false },
         { id: "d", text: "Crear eventos personalizados", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se aprovecha el bubbling para capturar eventos en un ancestro.",
-      explanation: "La delegacion usa un listener en el padre que maneja eventos de los hijos, aprovechando el event bubbling.",
+      explanation: "La delegación usa un listener en el padre que maneja eventos de los hijos, aprovechando el event bubbling.",
     },
     {
       id: "js13-ej-06",
@@ -285,7 +285,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que propiedad del evento keydown devuelve el valor de la tecla presionada?",
+      prompt: "¿Qué propiedad del evento keydown devuelve el valor de la tecla presionada?",
       options: [
         { id: "a", text: "e.char", isCorrect: false },
         { id: "b", text: "e.keyCode", isCorrect: false },

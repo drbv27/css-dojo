@@ -4,7 +4,7 @@ export const htmlTextoModule: ModuleData = {
   slug: "html-03-texto-y-encabezados",
   title: "Texto y encabezados",
   description:
-    "Domina las etiquetas de texto en HTML: encabezados h1-h6, parrafos, saltos de linea, lineas horizontales, formato de texto y citas.",
+    "Domina las etiquetas de texto en HTML: encabezados h1-h6, párrafos, saltos de línea, líneas horizontales, formato de texto y citas.",
   order: 3,
   dojo: "html",
   category: "html-fundamentals",
@@ -15,11 +15,11 @@ export const htmlTextoModule: ModuleData = {
       title: "Encabezados h1 a h6",
       content: `## Encabezados h1 a h6
 
-Los encabezados definen la **jerarquia** del contenido en una pagina web. HTML ofrece seis niveles de encabezados, desde \`<h1>\` (el mas importante) hasta \`<h6>\` (el menos importante).
+Los encabezados definen la **jerarquía** del contenido en una página web. HTML ofrece seis niveles de encabezados, desde \`<h1>\` (el mas importante) hasta \`<h6>\` (el menos importante).
 
-### Jerarquia de encabezados
+### Jerarquía de encabezados
 
-- \`<h1>\` — Titulo principal de la pagina (solo debe haber **uno** por pagina)
+- \`<h1>\` — Título principal de la página (solo debe haber **uno** por página)
 - \`<h2>\` — Secciones principales
 - \`<h3>\` — Subsecciones
 - \`<h4>\` — Sub-subsecciones
@@ -28,11 +28,11 @@ Los encabezados definen la **jerarquia** del contenido en una pagina web. HTML o
 
 ### Reglas importantes
 
-1. **No saltes niveles**: despues de un \`<h2>\` usa \`<h3>\`, no \`<h4>\`
-2. **Un solo h1 por pagina**: es importante para SEO y accesibilidad
-3. **No uses encabezados solo por tamano**: si quieres texto grande, usa CSS
+1. **No saltes niveles**: después de un \`<h2>\` usa \`<h3>\`, no \`<h4>\`
+2. **Un solo h1 por página**: es importante para SEO y accesibilidad
+3. **No uses encabezados solo por tamaño**: si quieres texto grande, usa CSS
 
-> **Para accesibilidad:** Los lectores de pantalla generan un indice de la pagina basandose en los encabezados. Una jerarquia correcta facilita la navegacion.`,
+> **Para accesibilidad:** Los lectores de pantalla generan un índice de la página basandose en los encabezados. Una jerarquía correcta facilita la navegación.`,
       codeExample: {
         html: `<h1>Titulo principal (h1)</h1>\n<h2>Seccion importante (h2)</h2>\n<h3>Subseccion (h3)</h3>\n<h4>Detalle (h4)</h4>\n<h5>Sub-detalle (h5)</h5>\n<h6>Nivel minimo (h6)</h6>`,
         css: `h1, h2, h3, h4, h5, h6 {\n  font-family: sans-serif;\n  color: #2d3748;\n  margin: 8px 0;\n}\n\nh1 { color: #2b6cb0; }\nh2 { color: #2c7a7b; }\nh3 { color: #276749; }`,
@@ -42,31 +42,31 @@ Los encabezados definen la **jerarquia** del contenido en una pagina web. HTML o
     },
     {
       id: "html-03-leccion-02",
-      title: "Parrafos, saltos de linea y lineas horizontales",
-      content: `## Parrafos, saltos de linea y lineas horizontales
+      title: "Párrafos, saltos de línea y líneas horizontales",
+      content: `## Párrafos, saltos de línea y líneas horizontales
 
-### Parrafos: \`<p>\`
+### Párrafos: \`<p>\`
 
-La etiqueta \`<p>\` define un **parrafo de texto**. El navegador automaticamente agrega un espacio (margen) antes y despues de cada parrafo.
+La etiqueta \`<p>\` define un **párrafo de texto**. El navegador automáticamente agrega un espacio (margen) antes y después de cada párrafo.
 
 \`\`\`html
 <p>Este es un parrafo.</p>
 <p>Este es otro parrafo.</p>
 \`\`\`
 
-> **Nota:** HTML ignora los espacios y saltos de linea multiples en el codigo fuente. Varios espacios seguidos se muestran como uno solo.
+> **Nota:** HTML ignora los espacios y saltos de línea múltiples en el código fuente. Varios espacios seguidos se muestran como uno solo.
 
-### Salto de linea: \`<br>\`
+### Salto de línea: \`<br>\`
 
-La etiqueta \`<br>\` inserta un **salto de linea** dentro de un parrafo. Es una etiqueta **auto-cerrada** (no tiene etiqueta de cierre).
+La etiqueta \`<br>\` inserta un **salto de línea** dentro de un párrafo. Es una etiqueta **auto-cerrada** (no tiene etiqueta de cierre).
 
 \`\`\`html
 <p>Primera linea<br>Segunda linea</p>
 \`\`\`
 
-### Linea horizontal: \`<hr>\`
+### Línea horizontal: \`<hr>\`
 
-La etiqueta \`<hr>\` inserta una **linea divisoria horizontal**. Se usa para separar secciones de contenido. Tambien es auto-cerrada.
+La etiqueta \`<hr>\` inserta una **línea divisoria horizontal**. Se usa para separar secciones de contenido. También es auto-cerrada.
 
 \`\`\`html
 <p>Seccion uno</p>
@@ -74,7 +74,7 @@ La etiqueta \`<hr>\` inserta una **linea divisoria horizontal**. Se usa para sep
 <p>Seccion dos</p>
 \`\`\`
 
-> **Buena practica:** Evita usar \`<br>\` para crear espacios entre parrafos. Usa multiples etiquetas \`<p>\` en su lugar.`,
+> **Buena práctica:** Evita usar \`<br>\` para crear espacios entre párrafos. Usa múltiples etiquetas \`<p>\` en su lugar.`,
       codeExample: {
         html: `<p>HTML es el lenguaje de la web.</p>\n<p>Con el puedes estructurar contenido<br>y crear paginas increibles.</p>\n<hr>\n<p>Esta seccion esta separada por una linea horizontal.</p>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.6;\n}\n\nhr {\n  border: none;\n  border-top: 2px solid #e2e8f0;\n  margin: 16px 0;\n}`,
@@ -87,7 +87,7 @@ La etiqueta \`<hr>\` inserta una **linea divisoria horizontal**. Se usa para sep
       title: "Formato de texto: strong, em, mark y small",
       content: `## Formato de texto
 
-HTML ofrece etiquetas para dar **significado semantico** al texto, no solo apariencia visual.
+HTML ofrece etiquetas para dar **significado semántico** al texto, no solo apariencia visual.
 
 ### \`<strong>\` — Importancia fuerte
 Indica que el texto es de **gran importancia**. Los navegadores lo muestran en **negrita**.
@@ -110,18 +110,18 @@ Da **enfasis** al texto. Los navegadores lo muestran en *cursiva*.
 <p>El resultado fue <mark>aprobado</mark>.</p>
 \`\`\`
 
-### \`<small>\` — Texto pequeno
+### \`<small>\` — Texto pequeño
 Representa texto de **menor importancia**, como notas al pie o texto legal.
 
 \`\`\`html
 <p><small>Terminos y condiciones aplican.</small></p>
 \`\`\`
 
-### Diferencia entre semantica y presentacion
+### Diferencia entre semántica y presentación
 
 - \`<strong>\` significa importancia (no solo negrita)
 - \`<em>\` significa enfasis (no solo cursiva)
-- Usa CSS si solo quieres cambiar la apariencia sin anadir significado
+- Usa CSS si solo quieres cambiar la apariencia sin añadir significado
 
 > **Importante:** Evita usar \`<b>\` y \`<i>\` cuando quieres dar significado al texto. Usa \`<strong>\` y \`<em>\` respectivamente.`,
       codeExample: {
@@ -133,8 +133,8 @@ Representa texto de **menor importancia**, como notas al pie o texto legal.
     },
     {
       id: "html-03-leccion-04",
-      title: "Citas, codigo preformateado y bloques de codigo",
-      content: `## Citas, codigo preformateado y bloques de codigo
+      title: "Citas, código preformateado y bloques de código",
+      content: `## Citas, código preformateado y bloques de código
 
 ### \`<blockquote>\` — Citas en bloque
 Se usa para citas largas de otras fuentes. El atributo \`cite\` puede incluir la URL de la fuente.
@@ -146,7 +146,7 @@ Se usa para citas largas de otras fuentes. El atributo \`cite\` puede incluir la
 \`\`\`
 
 ### \`<pre>\` — Texto preformateado
-Muestra el texto **exactamente como esta escrito** en el codigo fuente, incluyendo espacios y saltos de linea.
+Muestra el texto **exactamente como esta escrito** en el código fuente, incluyendo espacios y saltos de línea.
 
 \`\`\`html
 <pre>
@@ -156,8 +156,8 @@ Muestra el texto **exactamente como esta escrito** en el codigo fuente, incluyen
 </pre>
 \`\`\`
 
-### \`<code>\` — Codigo en linea
-Representa un fragmento de **codigo informatico** dentro del texto.
+### \`<code>\` — Código en línea
+Representa un fragmento de **código informatico** dentro del texto.
 
 \`\`\`html
 <p>Usa la etiqueta <code>&lt;p&gt;</code> para parrafos.</p>
@@ -165,7 +165,7 @@ Representa un fragmento de **codigo informatico** dentro del texto.
 
 ### Combinando \`<pre>\` y \`<code>\`
 
-Para mostrar bloques de codigo con formato, combina ambas etiquetas:
+Para mostrar bloques de código con formato, combina ambas etiquetas:
 
 \`\`\`html
 <pre><code>&lt;h1&gt;Hola mundo&lt;/h1&gt;
@@ -188,7 +188,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuantos niveles de encabezados tiene HTML?",
+      prompt: "¿Cuántos niveles de encabezados tiene HTML?",
       options: [
         { id: "a", text: "4 niveles (h1 a h4)", isCorrect: false },
         { id: "b", text: "6 niveles (h1 a h6)", isCorrect: true },
@@ -206,17 +206,17 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la diferencia principal entre <strong> y <b>?",
+      prompt: "¿Cuál es la diferencia principal entre <strong> y <b>?",
       options: [
         { id: "a", text: "No hay diferencia, son identicos", isCorrect: false },
-        { id: "b", text: "<strong> tiene significado semantico de importancia, <b> solo es visual", isCorrect: true },
+        { id: "b", text: "<strong> tiene significado semántico de importancia, <b> solo es visual", isCorrect: true },
         { id: "c", text: "<b> es mas moderno que <strong>", isCorrect: false },
         { id: "d", text: "<strong> solo funciona en HTML5", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Una etiqueta tiene significado semantico y la otra es puramente visual.",
+      hint: "Una etiqueta tiene significado semántico y la otra es puramente visual.",
       explanation:
-        "<strong> indica que el texto es de gran importancia (semantico). <b> solo aplica negrita visual sin significado adicional.",
+        "<strong> indica que el texto es de gran importancia (semántico). <b> solo aplica negrita visual sin significado adicional.",
     },
     {
       id: "html-03-ej-03",
@@ -232,7 +232,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
         blanks: ["h2", "h2"],
       },
       validation: { type: "exact", answer: ["h2", "h2"] },
-      hint: "Los encabezados de segundo nivel usan el numero 2.",
+      hint: "Los encabezados de segundo nivel usan el número 2.",
       explanation:
         "La etiqueta <h2> crea un encabezado de segundo nivel, ideal para secciones principales debajo del h1.",
     },
@@ -242,7 +242,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Arrastra cada etiqueta a su funcion correcta:",
+      prompt: "Arrastra cada etiqueta a su función correcta:",
       dragItems: [
         { id: "d1", content: "<strong>", correctZone: "z1" },
         { id: "d2", content: "<em>", correctZone: "z2" },
@@ -261,9 +261,9 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4", d5: "z5" },
       },
-      hint: "Recuerda el significado semantico de cada etiqueta.",
+      hint: "Recuerda el significado semántico de cada etiqueta.",
       explanation:
-        "Cada etiqueta de formato tiene un significado semantico especifico: strong para importancia, em para enfasis, mark para resaltado, small para menor relevancia y blockquote para citas.",
+        "Cada etiqueta de formato tiene un significado semántico específico: strong para importancia, em para enfasis, mark para resaltado, small para menor relevancia y blockquote para citas.",
     },
     {
       id: "html-03-ej-05",
@@ -272,7 +272,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una pagina con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Articulo', un parrafo con texto que incluya una palabra en negrita usando <strong>, y una linea horizontal <hr> seguida de otro parrafo.",
+        "Crea una página con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Articulo', un párrafo con texto que incluya una palabra en negrita usando <strong>, y una línea horizontal <hr> seguida de otro párrafo.",
       codeTemplate: {
         html: `<!-- Crea la estructura pedida -->`,
         cssPrefix: "",
@@ -293,7 +293,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       },
       hint: "Usa h1, h2, p con strong dentro, hr, y otro p.",
       explanation:
-        "La combinacion de encabezados, parrafos con formato y lineas horizontales crea una estructura clara y legible.",
+        "La combinación de encabezados, párrafos con formato y líneas horizontales crea una estructura clara y legible.",
     },
     {
       id: "html-03-ej-06",
@@ -301,7 +301,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el codigo para mostrar una cita en bloque:",
+      prompt: "Completa el código para mostrar una cita en bloque:",
       codeTemplate: {
         html: `<_____>\n  <p>El conocimiento es poder.</p>\n</_____>`,
         cssPrefix: "",
@@ -319,7 +319,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "¿Que etiqueta se usa para insertar un salto de linea dentro de un parrafo?",
+      prompt: "¿Qué etiqueta se usa para insertar un salto de línea dentro de un párrafo?",
       options: [
         { id: "a", text: "<break>", isCorrect: false },
         { id: "b", text: "<lb>", isCorrect: false },
@@ -329,7 +329,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       validation: { type: "exact", answer: "c" },
       hint: "Es una abreviatura de 'line break'.",
       explanation:
-        "La etiqueta <br> (break) inserta un salto de linea. Es una etiqueta auto-cerrada que no necesita etiqueta de cierre.",
+        "La etiqueta <br> (break) inserta un salto de línea. Es una etiqueta auto-cerrada que no necesita etiqueta de cierre.",
     },
     {
       id: "html-03-ej-08",
@@ -338,7 +338,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un bloque de texto preformateado usando <pre> y <code> que muestre el siguiente codigo HTML como texto: <h1>Hola</h1>. Recuerda usar &lt; y &gt; para las entidades HTML.",
+        "Crea un bloque de texto preformateado usando <pre> y <code> que muestre el siguiente código HTML como texto: <h1>Hola</h1>. Recuerda usar &lt; y &gt; para las entidades HTML.",
       codeTemplate: {
         html: `<!-- Muestra codigo HTML como texto preformateado -->`,
         cssPrefix: "",

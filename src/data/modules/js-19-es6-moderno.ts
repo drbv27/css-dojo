@@ -4,7 +4,7 @@ export const jsEs6ModernoModule: ModuleData = {
   slug: "js-es6-moderno",
   title: "ES6+ JavaScript Moderno",
   description:
-    "Domina las caracteristicas modernas de JavaScript: desestructuracion, spread, optional chaining, modulos y mas.",
+    "Domina las caracteristicas modernas de JavaScript: desestructuración, spread, optional chaining, modulos y mas.",
   order: 119,
   category: "js-advanced",
   icon: "Sparkles",
@@ -12,10 +12,10 @@ export const jsEs6ModernoModule: ModuleData = {
   lessons: [
     {
       id: "js19-leccion-01",
-      title: "Desestructuracion y spread avanzados",
-      content: `## Desestructuracion avanzada
+      title: "Desestructuración y spread avanzados",
+      content: `## Desestructuración avanzada
 
-### Desestructuracion anidada
+### Desestructuración anidada
 \`\`\`javascript
 const usuario = {
   nombre: "Ana",
@@ -25,7 +25,7 @@ const { direccion: { ciudad } } = usuario;
 // ciudad = "Madrid"
 \`\`\`
 
-### Rest en desestructuracion
+### Rest en desestructuración
 \`\`\`javascript
 const { nombre, ...resto } = usuario;
 // resto = { direccion: { ciudad: "Madrid", pais: "Espana" } }
@@ -46,7 +46,7 @@ const config = { ...defaultConfig, ...userConfig };
 const copia = [...original];
 \`\`\`
 
-### Parametros desestructurados
+### Parámetros desestructurados
 \`\`\`javascript
 function crearUsuario({ nombre, edad, rol = "usuario" }) {
   return { nombre, edad, rol };
@@ -120,7 +120,7 @@ const nombre = usuario.nombre ?? "Anonimo";
 "" ?? "default"   // ""
 \`\`\`
 
-## Asignacion logica
+## Asignación lógica
 
 \`\`\`javascript
 x ??= valor;  // x = x ?? valor
@@ -166,8 +166,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
 
 Un **Map** es como un objeto pero con ventajas:
 - Las claves pueden ser de **cualquier tipo**
-- Mantiene el **orden de insercion**
-- Tiene metodo \`.size\`
+- Mantiene el **orden de inserción**
+- Tiene método \`.size\`
 
 \`\`\`javascript
 const mapa = new Map();
@@ -180,7 +180,7 @@ mapa.size;          // 2
 
 ## Set
 
-Un **Set** es una coleccion de valores **unicos**:
+Un **Set** es una colección de valores **únicos**:
 
 \`\`\`javascript
 const conjunto = new Set([1, 2, 2, 3, 3, 3]);
@@ -258,7 +258,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que hace el operador spread (...)?",
+      prompt: "¿Qué hace el operador spread (...)?",
       options: [
         { id: "a", text: "Compara dos valores", isCorrect: false },
         { id: "b", text: "Expande un iterable en elementos individuales", isCorrect: true },
@@ -292,7 +292,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que estructura de datos garantiza que no haya elementos duplicados?",
+      prompt: "¿Qué estructura de datos garantiza que no haya elementos duplicados?",
       options: [
         { id: "a", text: "Array", isCorrect: false },
         { id: "b", text: "Object", isCorrect: false },
@@ -301,7 +301,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Set = conjunto (sin repeticiones).",
-      explanation: "Un Set solo almacena valores unicos. Si intentas agregar un duplicado, lo ignora.",
+      explanation: "Un Set solo almacena valores únicos. Si intentas agregar un duplicado, lo ignora.",
     },
     {
       id: "js19-ej-04",
@@ -309,16 +309,16 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que ventaja tiene Map sobre un objeto regular?",
+      prompt: "¿Qué ventaja tiene Map sobre un objeto regular?",
       options: [
-        { id: "a", text: "Es mas rapido", isCorrect: false },
+        { id: "a", text: "Es mas rápido", isCorrect: false },
         { id: "b", text: "Las claves pueden ser de cualquier tipo", isCorrect: true },
         { id: "c", text: "Usa menos memoria", isCorrect: false },
         { id: "d", text: "Es inmutable", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "En un objeto regular las claves solo pueden ser strings o symbols.",
-      explanation: "En un Map las claves pueden ser de cualquier tipo (objetos, funciones, numeros), no solo strings.",
+      explanation: "En un Map las claves pueden ser de cualquier tipo (objetos, funciones, números), no solo strings.",
     },
     {
       id: "js19-ej-05",
@@ -326,7 +326,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que hace el optional chaining (?.) cuando encuentra un valor null en la cadena?",
+      prompt: "¿Qué hace el optional chaining (?.) cuando encuentra un valor null en la cadena?",
       options: [
         { id: "a", text: "Lanza un error", isCorrect: false },
         { id: "b", text: "Devuelve null", isCorrect: false },

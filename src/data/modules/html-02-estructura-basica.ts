@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const htmlEstructuraModule: ModuleData = {
   slug: "html-02-estructura-basica",
-  title: "Estructura basica de HTML",
+  title: "Estructura básica de HTML",
   description:
-    "Aprende en detalle la estructura de un documento HTML: DOCTYPE, etiquetas meta, title, comentarios y buenas practicas de indentacion.",
+    "Aprende en detalle la estructura de un documento HTML: DOCTYPE, etiquetas meta, title, comentarios y buenas prácticas de indentación.",
   order: 2,
   dojo: "html",
   category: "html-fundamentals",
@@ -15,11 +15,11 @@ export const htmlEstructuraModule: ModuleData = {
       title: "DOCTYPE y la etiqueta html",
       content: `## DOCTYPE y la etiqueta html
 
-### La declaracion DOCTYPE
+### La declaración DOCTYPE
 
-\`<!DOCTYPE html>\` no es una etiqueta HTML propiamente dicha, sino una **instruccion para el navegador**. Le indica que version de HTML estamos utilizando.
+\`<!DOCTYPE html>\` no es una etiqueta HTML propiamente dicha, sino una **instrucción para el navegador**. Le indica que versión de HTML estamos utilizando.
 
-En HTML5, la declaracion es muy simple:
+En HTML5, la declaración es muy simple:
 
 \`\`\`html
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ En versiones anteriores era mucho mas complicada. Por ejemplo, en HTML 4.01:
 
 ### La etiqueta \`<html>\`
 
-Es el **elemento raiz** del documento. Todo el contenido HTML debe estar dentro de esta etiqueta.
+Es el **elemento raíz** del documento. Todo el contenido HTML debe estar dentro de esta etiqueta.
 
 Se recomienda siempre incluir el atributo **\`lang\`** para indicar el idioma del contenido:
 
@@ -44,10 +44,10 @@ Se recomienda siempre incluir el atributo **\`lang\`** para indicar el idioma de
 
 Esto ayuda a:
 - Los **lectores de pantalla** a pronunciar correctamente el contenido
-- Los **motores de busqueda** a clasificar la pagina por idioma
-- Los **traductores automaticos** a identificar el idioma original
+- Los **motores de busqueda** a clasificar la página por idioma
+- Los **traductores automáticos** a identificar el idioma original
 
-> **Buena practica:** Siempre especifica el atributo \`lang\` en la etiqueta \`<html>\`. Para espanol usa \`"es"\`, para ingles \`"en"\`.`,
+> **Buena práctica:** Siempre específica el atributo \`lang\` en la etiqueta \`<html>\`. Para espanol usa \`"es"\`, para ingles \`"en"\`.`,
       codeExample: {
         html: `<!DOCTYPE html>\n<html lang="es">\n  <head>\n    <title>Documento en espanol</title>\n  </head>\n  <body>\n    <p>Este documento esta en espanol.</p>\n  </body>\n</html>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n}`,
@@ -60,33 +60,33 @@ Esto ayuda a:
       title: "La etiqueta head y metadatos",
       content: `## La etiqueta head y metadatos
 
-La etiqueta \`<head>\` contiene **informacion sobre el documento** que no se muestra directamente en la pagina. Aqui van los metadatos.
+La etiqueta \`<head>\` contiene **información sobre el documento** que no se muestra directamente en la página. Aquí van los metadatos.
 
 ### Elementos esenciales del head
 
 #### 1. meta charset
-Define la **codificacion de caracteres**. Siempre usa UTF-8 para soportar acentos, enes y caracteres especiales:
+Define la **codificación de caracteres**. Siempre usa UTF-8 para soportar acentos, enes y caracteres especiales:
 
 \`\`\`html
 <meta charset="UTF-8">
 \`\`\`
 
 #### 2. title
-El **titulo de la pagina**. Aparece en la pestana del navegador y en los resultados de busqueda:
+El **título de la página**. Aparece en la pestana del navegador y en los resultados de busqueda:
 
 \`\`\`html
 <title>Mi sitio web - Inicio</title>
 \`\`\`
 
 #### 3. meta viewport
-Esencial para que la pagina se vea bien en **dispositivos moviles**:
+Esencial para que la página se vea bien en **dispositivos móviles**:
 
 \`\`\`html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 \`\`\`
 
 #### 4. meta description
-Una descripcion breve de la pagina para **motores de busqueda**:
+Una descripción breve de la página para **motores de busqueda**:
 
 \`\`\`html
 <meta name="description" content="Aprende HTML desde cero">
@@ -103,7 +103,7 @@ Una descripcion breve de la pagina para **motores de busqueda**:
 </head>
 \`\`\`
 
-> **Importante:** Sin \`<meta charset="UTF-8">\`, los caracteres especiales como n, acentos y signos de interrogacion invertidos pueden no mostrarse correctamente.`,
+> **Importante:** Sin \`<meta charset="UTF-8">\`, los caracteres especiales como n, acentos y signos de interrogación invertidos pueden no mostrarse correctamente.`,
       codeExample: {
         html: `<!DOCTYPE html>\n<html lang="es">\n  <head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Mi sitio web</title>\n  </head>\n  <body>\n    <h1>Pagina con metadatos correctos</h1>\n    <p>Los acentos y la n funcionan perfectamente.</p>\n  </body>\n</html>`,
         css: `h1 {\n  color: #2d3748;\n  font-family: sans-serif;\n}\n\np {\n  color: #718096;\n  font-family: sans-serif;\n}`,
@@ -113,18 +113,18 @@ Una descripcion breve de la pagina para **motores de busqueda**:
     },
     {
       id: "html-02-leccion-03",
-      title: "Comentarios e indentacion",
-      content: `## Comentarios e indentacion
+      title: "Comentarios e indentación",
+      content: `## Comentarios e indentación
 
 ### Comentarios en HTML
 
-Los comentarios son notas que dejas en el codigo para ti o para otros desarrolladores. **El navegador los ignora completamente.**
+Los comentarios son notas que dejas en el código para ti o para otros desarrolladores. **El navegador los ignora completamente.**
 
 \`\`\`html
 <!-- Esto es un comentario -->
 \`\`\`
 
-Los comentarios pueden abarcar multiples lineas:
+Los comentarios pueden abarcar múltiples líneas:
 
 \`\`\`html
 <!--
@@ -135,20 +135,20 @@ Los comentarios pueden abarcar multiples lineas:
 
 ### Usos comunes de los comentarios
 
-- **Explicar** secciones complejas del codigo
+- **Explicar** secciones complejas del código
 - **Desactivar** temporalmente partes del HTML
-- **Organizar** el codigo con separadores visuales
+- **Organizar** el código con separadores visuales
 
-### Indentacion: buenas practicas
+### Indentación: buenas prácticas
 
-La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea **mucho mas legible**.
+La indentación no afecta como se muestra la página, pero hace que el código sea **mucho mas legible**.
 
 #### Reglas recomendadas:
 
-1. Usa **2 o 4 espacios** de indentacion (se consistente)
+1. Usa **2 o 4 espacios** de indentación (se consistente)
 2. Indenta los **elementos hijos** un nivel mas que su padre
 3. Las etiquetas de **apertura y cierre** deben estar al mismo nivel
-4. Los elementos que van **en una sola linea** no necesitan indentacion extra
+4. Los elementos que van **en una sola línea** no necesitan indentación extra
 
 \`\`\`html
 <!-- Buena indentacion -->
@@ -162,7 +162,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
 </body>
 \`\`\`
 
-> **Consejo:** La mayoria de los editores de codigo como VS Code pueden formatear automaticamente tu HTML. Usa el atajo Shift + Alt + F.`,
+> **Consejo:** La mayoria de los editores de código como VS Code pueden formatear automáticamente tu HTML. Usa el atajo Shift + Alt + F.`,
       codeExample: {
         html: `<!-- Seccion de bienvenida -->\n<header>\n  <h1>Bienvenido</h1>\n  <!-- TODO: agregar logo aqui -->\n</header>\n\n<!-- Contenido principal -->\n<main>\n  <p>Este codigo esta bien indentado y comentado.</p>\n  <p>Los comentarios ayudan a entender la estructura.</p>\n</main>`,
         css: `header {\n  background-color: #edf2f7;\n  padding: 16px;\n  border-radius: 8px;\n  margin-bottom: 12px;\n}\n\nh1 {\n  color: #2d3748;\n  font-family: sans-serif;\n  margin: 0;\n}\n\np {\n  color: #4a5568;\n  font-family: sans-serif;\n}`,
@@ -178,17 +178,17 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es la funcion principal de la etiqueta <head> en un documento HTML?",
+      prompt: "¿Cuál es la función principal de la etiqueta <head> en un documento HTML?",
       options: [
-        { id: "a", text: "Mostrar el encabezado de la pagina", isCorrect: false },
-        { id: "b", text: "Contener los metadatos y configuracion del documento", isCorrect: true },
+        { id: "a", text: "Mostrar el encabezado de la página", isCorrect: false },
+        { id: "b", text: "Contener los metadatos y configuración del documento", isCorrect: true },
         { id: "c", text: "Definir la cabecera visual del sitio web", isCorrect: false },
-        { id: "d", text: "Agregar el titulo principal de la pagina", isCorrect: false },
+        { id: "d", text: "Agregar el título principal de la página", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "No confundas <head> con <header>. El head no muestra contenido visible.",
       explanation:
-        "La etiqueta <head> contiene metadatos como charset, title, viewport y otros elementos de configuracion que no son visibles directamente.",
+        "La etiqueta <head> contiene metadatos como charset, title, viewport y otros elementos de configuración que no son visibles directamente.",
     },
     {
       id: "html-02-ej-02",
@@ -196,7 +196,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la etiqueta meta para definir la codificacion de caracteres como UTF-8:",
+      prompt: "Completa la etiqueta meta para definir la codificación de caracteres como UTF-8:",
       codeTemplate: {
         html: `<head>\n  <meta _____="UTF-8">\n  <title>Mi pagina</title>\n</head>`,
         cssPrefix: "",
@@ -217,14 +217,14 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       prompt: "¿Para que sirve el atributo lang en la etiqueta <html>?",
       options: [
         { id: "a", text: "Cambiar el idioma de la interfaz del navegador", isCorrect: false },
-        { id: "b", text: "Traducir automaticamente el contenido", isCorrect: false },
+        { id: "b", text: "Traducir automáticamente el contenido", isCorrect: false },
         { id: "c", text: "Indicar el idioma del contenido del documento", isCorrect: true },
         { id: "d", text: "Activar el corrector ortografico", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Ayuda a lectores de pantalla y motores de busqueda.",
       explanation:
-        "El atributo lang indica el idioma del contenido, lo que ayuda a lectores de pantalla, motores de busqueda y traductores automaticos.",
+        "El atributo lang indica el idioma del contenido, lo que ayuda a lectores de pantalla, motores de busqueda y traductores automáticos.",
     },
     {
       id: "html-02-ej-04",
@@ -232,7 +232,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa la meta etiqueta viewport para dispositivos moviles:",
+      prompt: "Completa la meta etiqueta viewport para dispositivos móviles:",
       codeTemplate: {
         html: `<meta name="_____" content="width=device-width, initial-scale=1.0">`,
         cssPrefix: "",
@@ -240,9 +240,9 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
         blanks: ["viewport"],
       },
       validation: { type: "exact", answer: ["viewport"] },
-      hint: "Se relaciona con la ventana de visualizacion del dispositivo.",
+      hint: "Se relaciona con la ventana de visualización del dispositivo.",
       explanation:
-        "La meta viewport con width=device-width e initial-scale=1.0 asegura que la pagina se ajuste al ancho del dispositivo.",
+        "La meta viewport con width=device-width e initial-scale=1.0 asegura que la página se ajuste al ancho del dispositivo.",
     },
     {
       id: "html-02-ej-05",
@@ -250,7 +250,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Arrastra cada elemento a la seccion del documento HTML donde debe ir:",
+      prompt: "Arrastra cada elemento a la sección del documento HTML donde debe ir:",
       dragItems: [
         { id: "d1", content: "<meta charset=\"UTF-8\">", correctZone: "z1" },
         { id: "d2", content: "<h1>Hola mundo</h1>", correctZone: "z2" },
@@ -276,7 +276,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea un documento HTML5 completo con: DOCTYPE, html con lang='es', head con meta charset UTF-8, meta viewport, titulo 'Dev Dojo', y un body con un parrafo que diga 'Aprendiendo HTML'.",
+        "Crea un documento HTML5 completo con: DOCTYPE, html con lang='es', head con meta charset UTF-8, meta viewport, título 'Dev Dojo', y un body con un párrafo que diga 'Aprendiendo HTML'.",
       codeTemplate: {
         html: `<!-- Escribe el documento HTML completo -->`,
         cssPrefix: "",
@@ -306,7 +306,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "¿Cual es la sintaxis correcta para escribir un comentario en HTML?",
+      prompt: "¿Cuál es la sintaxis correcta para escribir un comentario en HTML?",
       options: [
         { id: "a", text: "// Esto es un comentario", isCorrect: false },
         { id: "b", text: "/* Esto es un comentario */", isCorrect: false },

@@ -12,37 +12,37 @@ export const reactTestingModule: ModuleData = {
   lessons: [
     {
       id: "react17-leccion-01",
-      title: "Filosofia de testing y herramientas",
+      title: "Filosofía de testing y herramientas",
       content: `## Testing en React
 
 ### ¿Por que testear?
-- Detectar bugs antes de que lleguen a produccion
+- Detectar bugs antes de que lleguen a producción
 - Documentar el comportamiento esperado
 - Refactorizar con confianza
 - Prevenir regresiones
 
 ### Tipos de tests
 1. **Unitarios** — testean funciones o componentes aislados
-2. **De integracion** — testean multiples componentes juntos
+2. **De integración** — testean múltiples componentes juntos
 3. **End-to-end (E2E)** — testean flujos completos del usuario
 
 ### Herramientas
-| Herramienta | Proposito |
+| Herramienta | Propósito |
 |-------------|-----------|
-| **Vitest** | Test runner rapido (compatible con Vite) |
+| **Vitest** | Test runner rápido (compatible con Vite) |
 | **Jest** | Test runner clasico |
 | **React Testing Library** | Renderizar y consultar componentes |
 | **Playwright/Cypress** | Tests E2E |
 
-### React Testing Library: Filosofia
+### React Testing Library: Filosofía
 > "Cuanto mas se parecen tus tests a como el usuario usa tu software, mas confianza te dan."
 
-**No testees detalles de implementacion.** Testea el comportamiento:
+**No testees detalles de implementación.** Testea el comportamiento:
 - Lo que el usuario **ve** (texto, botones)
 - Lo que el usuario **hace** (clicks, escribir)
 - Lo que **resulta** (cambios en pantalla)
 
-### Configuracion basica
+### Configuración básica
 \`\`\`bash
 npm install -D vitest @testing-library/react @testing-library/jest-dom
 \`\`\`
@@ -61,7 +61,7 @@ test('incrementa el contador al hacer click', async () => {
 });
 \`\`\`
 
-> **Tip:** Nombra tus tests describiendo el comportamiento, no la implementacion.`,
+> **Tip:** Nombra tus tests describiendo el comportamiento, no la implementación.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -167,7 +167,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<TestRunner />);
 2. **getByLabelText** — para inputs de formulario
 3. **getByPlaceholderText** — para inputs
 4. **getByText** — para texto visible
-5. **getByTestId** — ultimo recurso
+5. **getByTestId** — último recurso
 
 \`\`\`jsx
 // Preferido: por rol accesible
@@ -302,7 +302,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react17-leccion-03",
       title: "Testing async y mocking",
-      content: `## Testing Asincrono y Mocking
+      content: `## Testing Asíncrono y Mocking
 
 ### Componentes async con findBy
 \`\`\`jsx
@@ -450,16 +450,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es la filosofia principal de React Testing Library?",
+      prompt: "¿Cuál es la filosofía principal de React Testing Library?",
       options: [
-        { id: "a", text: "Testear cada funcion interna del componente", isCorrect: false },
+        { id: "a", text: "Testear cada función interna del componente", isCorrect: false },
         { id: "b", text: "Testear como el usuario interactua con el componente", isCorrect: true },
         { id: "c", text: "Testear solo el estado interno", isCorrect: false },
         { id: "d", text: "Testear la estructura del DOM generado", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Los tests deben parecerse a como el usuario usa el software.",
-      explanation: "React Testing Library promueve testear el comportamiento visible, no los detalles de implementacion. Tests que simulan lo que el usuario ve y hace.",
+      explanation: "React Testing Library promueve testear el comportamiento visible, no los detalles de implementación. Tests que simulan lo que el usuario ve y hace.",
     },
     {
       id: "react17-ej-02",
@@ -467,7 +467,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la query preferida en React Testing Library?",
+      prompt: "¿Cuál es la query preferida en React Testing Library?",
       options: [
         { id: "a", text: "getByTestId", isCorrect: false },
         { id: "b", text: "getByClassName", isCorrect: false },
@@ -476,7 +476,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Busca elementos por su rol accesible, como lo haria un usuario con lector de pantalla.",
-      explanation: "getByRole es la query preferida porque usa roles accesibles (button, textbox, heading), lo que tambien verifica la accesibilidad del componente.",
+      explanation: "getByRole es la query preferida porque usa roles accesibles (button, textbox, heading), lo que también verifica la accesibilidad del componente.",
     },
     {
       id: "react17-ej-03",
@@ -484,7 +484,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para encontrar un boton con el texto 'Enviar':",
+      prompt: "Completa para encontrar un botón con el texto 'Enviar':",
       codeTemplate: {
         html: "",
         cssPrefix: "const boton = screen.",
@@ -493,7 +493,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "getByRole" },
       hint: "La query que busca por rol accesible.",
-      explanation: "getByRole('button', { name: /enviar/i }) encuentra un boton cuyo nombre accesible coincide con 'enviar' (case insensitive).",
+      explanation: "getByRole('button', { name: /enviar/i }) encuentra un botón cuyo nombre accesible coincide con 'enviar' (case insensitive).",
     },
     {
       id: "react17-ej-04",
@@ -524,9 +524,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
+      prompt: "¿Qué es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
       options: [
-        { id: "a", text: "fireEvent porque es mas rapido", isCorrect: false },
+        { id: "a", text: "fireEvent porque es mas rápido", isCorrect: false },
         { id: "b", text: "userEvent porque simula mejor el comportamiento real del usuario", isCorrect: true },
         { id: "c", text: "Son exactamente iguales", isCorrect: false },
         { id: "d", text: "Ninguno, se debe usar click() nativo", isCorrect: false },
@@ -541,7 +541,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa para esperar a que aparezca un elemento asincrono:",
+      prompt: "Completa para esperar a que aparezca un elemento asíncrono:",
       codeTemplate: {
         html: "",
         cssPrefix: "const usuario = await screen.",
@@ -558,10 +558,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que debes mockear al testear un componente que hace fetch?",
+      prompt: "¿Qué debes mockear al testear un componente que hace fetch?",
       options: [
         { id: "a", text: "Los hooks de React", isCorrect: false },
-        { id: "b", text: "La funcion fetch o el modulo de API", isCorrect: true },
+        { id: "b", text: "La función fetch o el modulo de API", isCorrect: true },
         { id: "c", text: "El componente completo", isCorrect: false },
         { id: "d", text: "React DOM", isCorrect: false },
       ],
@@ -575,10 +575,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Que tipo de testing da mas confianza pero es mas lento y fragil?",
+      prompt: "¿Qué tipo de testing da mas confianza pero es mas lento y fragil?",
       options: [
         { id: "a", text: "Tests unitarios", isCorrect: false },
-        { id: "b", text: "Tests de integracion", isCorrect: false },
+        { id: "b", text: "Tests de integración", isCorrect: false },
         { id: "c", text: "Tests end-to-end (E2E)", isCorrect: true },
         { id: "d", text: "Tests de snapshot", isCorrect: false },
       ],

@@ -3,7 +3,7 @@ import type { ModuleData } from "@/types";
 export const tsGenericsModule: ModuleData = {
   slug: "ts-03-generics",
   title: "Generics y Utility Types",
-  description: "Funciones genericas, interfaces genericas y utility types como Partial, Omit y Pick.",
+  description: "Funciones genéricas, interfaces genéricas y utility types como Partial, Omit y Pick.",
   order: 128,
   category: "js-typescript",
   icon: "code",
@@ -31,7 +31,7 @@ primerElemento([1, 2, 3]);       // T es number
 primerElemento(["a", "b", "c"]); // T es string
 \`\`\`
 
-### Interfaces genericas
+### Interfaces genéricas
 
 \`\`\`typescript
 interface Respuesta<T> {
@@ -144,16 +144,16 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 1,
-      prompt: "¿Que permite hacer un generic en TypeScript?",
+      prompt: "¿Qué permite hacer un generic en TypeScript?",
       options: [
         { id: "a", text: "Crear variables globales", isCorrect: false },
         { id: "b", text: "Crear funciones/tipos reutilizables que trabajan con cualquier tipo", isCorrect: true },
-        { id: "c", text: "Importar modulos automaticamente", isCorrect: false },
-        { id: "d", text: "Compilar mas rapido", isCorrect: false },
+        { id: "c", text: "Importar modulos automáticamente", isCorrect: false },
+        { id: "d", text: "Compilar mas rápido", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Generic = generico, funciona con cualquier tipo.",
-      explanation: "Los generics permiten crear codigo flexible que mantiene la seguridad de tipos.",
+      hint: "Generic = genérico, funciona con cualquier tipo.",
+      explanation: "Los generics permiten crear código flexible que mantiene la seguridad de tipos.",
     },
     {
       id: "ts03-ej-02",
@@ -161,7 +161,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Que hace Partial<Usuario>?",
+      prompt: "¿Qué hace Partial<Usuario>?",
       options: [
         { id: "a", text: "Elimina todas las propiedades", isCorrect: false },
         { id: "b", text: "Hace todas las propiedades opcionales", isCorrect: true },
@@ -170,7 +170,7 @@ type ConfigCompleta = Required<Config>;
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Partial = parcial, no necesitas enviar todo.",
-      explanation: "¿Partial<T> convierte todas las propiedades de T en opcionales (?), util para actualizaciones parciales.",
+      explanation: "¿Partial<T> convierte todas las propiedades de T en opcionales (?), útil para actualizaciones parciales.",
     },
     {
       id: "ts03-ej-03",
@@ -202,7 +202,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que hace 'extends' en un generic como <T extends { id: number }>?",
+      prompt: "¿Qué hace 'extends' en un generic como <T extends { id: number }>?",
       options: [
         { id: "a", text: "Hereda de una clase", isCorrect: false },
         { id: "b", text: "Restringe T a tipos que tengan la propiedad id: number", isCorrect: true },
@@ -210,8 +210,8 @@ type ConfigCompleta = Required<Config>;
         { id: "d", text: "Convierte T en un array", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "extends en generics funciona como una restriccion.",
-      explanation: "En generics, extends restringe que tipos puede aceptar T — debe cumplir la condicion.",
+      hint: "extends en generics funciona como una restricción.",
+      explanation: "En generics, extends restringe que tipos puede aceptar T — debe cumplir la condición.",
     },
     {
       id: "ts03-ej-05",

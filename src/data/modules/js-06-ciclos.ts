@@ -4,7 +4,7 @@ export const jsCiclosModule: ModuleData = {
   slug: "js-ciclos",
   title: "Ciclos (Loops)",
   description:
-    "Aprende a repetir bloques de codigo con for, while, do...while y los metodos de iteracion modernos.",
+    "Aprende a repetir bloques de código con for, while, do...while y los métodos de iteración modernos.",
   order: 106,
   category: "js-fundamentals",
   icon: "Repeat",
@@ -15,7 +15,7 @@ export const jsCiclosModule: ModuleData = {
       title: "Ciclo for",
       content: `## Ciclo for
 
-El ciclo \`for\` repite un bloque de codigo un numero determinado de veces:
+El ciclo \`for\` repite un bloque de código un número determinado de veces:
 
 \`\`\`javascript
 for (inicializacion; condicion; incremento) {
@@ -24,9 +24,9 @@ for (inicializacion; condicion; incremento) {
 \`\`\`
 
 ### Las tres partes
-1. **Inicializacion:** se ejecuta una vez antes del ciclo (\`let i = 0\`)
-2. **Condicion:** se evalua antes de cada iteracion (\`i < 5\`)
-3. **Incremento:** se ejecuta al final de cada iteracion (\`i++\`)
+1. **Inicialización:** se ejecuta una vez antes del ciclo (\`let i = 0\`)
+2. **Condición:** se evalua antes de cada iteración (\`i < 5\`)
+3. **Incremento:** se ejecuta al final de cada iteración (\`i++\`)
 
 ### Ejemplo clasico
 \`\`\`javascript
@@ -42,7 +42,7 @@ for (let i = 10; i > 0; i--) {
 }
 \`\`\`
 
-> **Cuidado:** Si la condicion nunca se hace falsa, tendras un **ciclo infinito** que colgara tu navegador.`,
+> **Cuidado:** Si la condición nunca se hace falsa, tendras un **ciclo infinito** que colgara tu navegador.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -65,7 +65,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "while y do...while",
       content: `## Ciclo while
 
-Repite mientras la condicion sea verdadera. Util cuando **no sabes cuantas veces** se repetira:
+Repite mientras la condición sea verdadera. Útil cuando **no sabes cuantas veces** se repetira:
 
 \`\`\`javascript
 while (condicion) {
@@ -96,7 +96,7 @@ do {
 - \`while\`: verifica **antes** de ejecutar
 - \`do...while\`: ejecuta **antes** de verificar
 
-> **Tip:** Usa \`for\` cuando sepas cuantas iteraciones necesitas. Usa \`while\` cuando dependas de una condicion.`,
+> **Tip:** Usa \`for\` cuando sepas cuantas iteraciones necesitas. Usa \`while\` cuando dependas de una condición.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -141,7 +141,7 @@ for (let i = 0; i < 10; i++) {
 \`\`\`
 
 ### continue
-Salta a la siguiente iteracion:
+Salta a la siguiente iteración:
 
 \`\`\`javascript
 for (let i = 0; i < 10; i++) {
@@ -214,7 +214,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuantas veces se ejecuta el cuerpo de: for (let i = 0; i < 3; i++)?",
+      prompt: "¿Cuántas veces se ejecuta el cuerpo de: for (let i = 0; i < 3; i++)?",
       options: [
         { id: "a", text: "2 veces", isCorrect: false },
         { id: "b", text: "3 veces", isCorrect: true },
@@ -223,7 +223,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "i toma los valores 0, 1, 2.",
-      explanation: "El ciclo se ejecuta para i = 0, 1, 2. Cuando i llega a 3, la condicion i < 3 es false y se detiene.",
+      explanation: "El ciclo se ejecuta para i = 0, 1, 2. Cuando i llega a 3, la condición i < 3 es false y se detiene.",
     },
     {
       id: "js06-ej-02",
@@ -231,17 +231,17 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la diferencia principal entre while y do...while?",
+      prompt: "¿Cuál es la diferencia principal entre while y do...while?",
       options: [
-        { id: "a", text: "while es mas rapido", isCorrect: false },
+        { id: "a", text: "while es mas rápido", isCorrect: false },
         { id: "b", text: "do...while siempre ejecuta al menos una vez", isCorrect: true },
         { id: "c", text: "while no puede usar break", isCorrect: false },
         { id: "d", text: "No hay diferencia", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "do...while verifica la condicion DESPUES de ejecutar.",
+      hint: "do...while verifica la condición Después de ejecutar.",
       explanation:
-        "do...while ejecuta el bloque primero y luego verifica la condicion, garantizando al menos una ejecucion.",
+        "do...while ejecuta el bloque primero y luego verifica la condición, garantizando al menos una ejecución.",
     },
     {
       id: "js06-ej-03",
@@ -257,7 +257,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["<"],
       },
       validation: { type: "exact", answer: "<" },
-      hint: "Necesitas un operador de comparacion que sea verdadero para 0,1,2,3,4.",
+      hint: "Necesitas un operador de comparación que sea verdadero para 0,1,2,3,4.",
       explanation: "i < 5 es verdadero para i = 0, 1, 2, 3, 4, dando exactamente 5 iteraciones.",
     },
     {
@@ -266,7 +266,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que palabra clave salta a la siguiente iteracion sin ejecutar el resto del cuerpo del ciclo?",
+      prompt: "¿Qué palabra clave salta a la siguiente iteración sin ejecutar el resto del cuerpo del ciclo?",
       options: [
         { id: "a", text: "break", isCorrect: false },
         { id: "b", text: "continue", isCorrect: true },
@@ -274,9 +274,9 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "next", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Su nombre indica 'continuar' con la siguiente iteracion.",
+      hint: "Su nombre indica 'continuar' con la siguiente iteración.",
       explanation:
-        "continue salta el resto del cuerpo del ciclo y pasa directamente a la siguiente iteracion.",
+        "continue salta el resto del cuerpo del ciclo y pasa directamente a la siguiente iteración.",
     },
     {
       id: "js06-ej-05",
@@ -284,7 +284,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que ciclo es mas apropiado para recorrer los elementos de un array?",
+      prompt: "¿Qué ciclo es mas apropiado para recorrer los elementos de un array?",
       options: [
         { id: "a", text: "for...in", isCorrect: false },
         { id: "b", text: "for...of", isCorrect: true },
@@ -294,7 +294,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "b" },
       hint: "for...of itera sobre los valores de un iterable.",
       explanation:
-        "for...of es ideal para arrays porque itera directamente sobre los valores. for...in itera sobre las propiedades/indices y esta pensado para objetos.",
+        "for...of es ideal para arrays porque itera directamente sobre los valores. for...in itera sobre las propiedades/índices y esta pensado para objetos.",
     },
     {
       id: "js06-ej-06",
@@ -302,17 +302,17 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "¿Que problema causa un ciclo for sin condicion de parada correcta, como for (let i = 0; i >= 0; i++)?",
+      prompt: "¿Qué problema causa un ciclo for sin condición de parada correcta, como for (let i = 0; i >= 0; i++)?",
       options: [
         { id: "a", text: "Error de sintaxis", isCorrect: false },
-        { id: "b", text: "No ejecuta ninguna iteracion", isCorrect: false },
+        { id: "b", text: "No ejecuta ninguna iteración", isCorrect: false },
         { id: "c", text: "Ciclo infinito", isCorrect: true },
         { id: "d", text: "Ejecuta solo una vez", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Si i siempre crece y la condicion es >= 0...",
+      hint: "Si i siempre crece y la condición es >= 0...",
       explanation:
-        "Como i empieza en 0 y siempre incrementa, la condicion i >= 0 siempre sera true, creando un ciclo infinito.",
+        "Como i empieza en 0 y siempre incrementa, la condición i >= 0 siempre sera true, creando un ciclo infinito.",
     },
   ],
 };

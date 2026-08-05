@@ -146,7 +146,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Como se tipan las props de un componente React en TypeScript?",
+      prompt: "¿Cómo se tipan las props de un componente React en TypeScript?",
       options: [
         { id: "a", text: "Con PropTypes", isCorrect: false },
         { id: "b", text: "Con una interface o type", isCorrect: true },
@@ -163,7 +163,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Como tipas un useState que puede ser un objeto Usuario o null?",
+      prompt: "¿Cómo tipas un useState que puede ser un objeto Usuario o null?",
       options: [
         { id: "a", text: "useState(null)", isCorrect: false },
         { id: "b", text: "useState<Usuario>(null)", isCorrect: false },
@@ -180,7 +180,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Cual es el tipo correcto para el evento onChange de un input?",
+      prompt: "¿Cuál es el tipo correcto para el evento onChange de un input?",
       options: [
         { id: "a", text: "React.MouseEvent<HTMLInputElement>", isCorrect: false },
         { id: "b", text: "React.ChangeEvent<HTMLInputElement>", isCorrect: true },
@@ -213,7 +213,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
         answer: { "drag-1": "zone-change", "drag-2": "zone-form", "drag-3": "zone-click" },
       },
       hint: "Cada evento tiene un tipo que coincide con su nombre y elemento HTML.",
-      explanation: "React provee tipos especificos para cada combinacion de evento y elemento HTML.",
+      explanation: "React provee tipos específicos para cada combinación de evento y elemento HTML.",
     },
     {
       id: "ts04-ej-05",
@@ -221,7 +221,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que tipo se usa para la prop children en React con TypeScript?",
+      prompt: "¿Qué tipo se usa para la prop children en React con TypeScript?",
       options: [
         { id: "a", text: "React.Children", isCorrect: false },
         { id: "b", text: "JSX.Element", isCorrect: false },
@@ -229,8 +229,8 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
         { id: "d", text: "string", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es el tipo mas flexible para children — acepta elementos, strings, numeros, etc.",
-      explanation: "React.ReactNode acepta cualquier contenido valido en JSX: elementos, texto, numeros, null, etc.",
+      hint: "Es el tipo mas flexible para children — acepta elementos, strings, números, etc.",
+      explanation: "React.ReactNode acepta cualquier contenido valido en JSX: elementos, texto, números, null, etc.",
     },
   ],
 };

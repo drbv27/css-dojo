@@ -4,7 +4,7 @@ export const reactProyectoEcommerceModule: ModuleData = {
   slug: "react-proyecto-ecommerce",
   title: "Proyecto: E-Commerce",
   description:
-    "Construye una pagina de productos e-commerce con React: lista de productos desde API, carrito de compras con Context, gestion de cantidad y layout responsive.",
+    "Construye una página de productos e-commerce con React: lista de productos desde API, carrito de compras con Context, gestion de cantidad y layout responsive.",
   order: 220,
   category: "react-projects",
   icon: "shopping-cart",
@@ -15,11 +15,11 @@ export const reactProyectoEcommerceModule: ModuleData = {
       title: "Lista de productos y fetch de datos",
       content: `## Proyecto: E-Commerce con React
 
-Vamos a construir una pagina de productos con carrito de compras.
+Vamos a construir una página de productos con carrito de compras.
 
 ### Funcionalidades
 1. Lista de productos cargada desde una API
-2. Filtro por categoria y busqueda
+2. Filtro por categoría y busqueda
 3. Carrito de compras con Context
 4. Agregar/remover items y manejar cantidades
 5. Calculo de total
@@ -56,7 +56,7 @@ function useProductos() {
 }
 \`\`\`
 
-> **Tip:** Separa la logica de datos (hooks) de la presentacion (componentes) desde el inicio.`,
+> **Tip:** Separa la lógica de datos (hooks) de la presentación (componentes) desde el inicio.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -217,13 +217,13 @@ function CartProvider({ children }) {
 }
 \`\`\`
 
-### Logica del carrito
+### Lógica del carrito
 - **Agregar:** Si ya existe, incrementar cantidad; si no, agregar con cantidad 1
 - **Eliminar:** Filtrar el item del array
-- **Actualizar cantidad:** Si llega a 0, eliminar automaticamente
+- **Actualizar cantidad:** Si llega a 0, eliminar automáticamente
 - **Total:** Sumar precio * cantidad de cada item
 
-> **Patron:** El Context del carrito provee tanto los datos como las acciones para modificarlos.`,
+> **Patrón:** El Context del carrito provee tanto los datos como las acciones para modificarlos.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -351,9 +351,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react20-leccion-03",
       title: "Gestion de cantidades y totales",
-      content: `## Logica Avanzada del Carrito
+      content: `## Lógica Avanzada del Carrito
 
-### Agregar con logica inteligente
+### Agregar con lógica inteligente
 \`\`\`jsx
 const addItem = (producto) => {
   setItems(prev => {
@@ -417,7 +417,7 @@ function CartBadge() {
 }
 \`\`\`
 
-> **Patron:** Calcula totales y descuentos como valores derivados, no como estado.`,
+> **Patrón:** Calcula totales y descuentos como valores derivados, no como estado.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -530,8 +530,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<CarritoAvanzado />)
     },
     {
       id: "react20-leccion-04",
-      title: "Layout responsive y mejores practicas",
-      content: `## Layout Responsive y Produccion
+      title: "Layout responsive y mejores prácticas",
+      content: `## Layout Responsive y Producción
 
 ### Grid responsive para productos
 \`\`\`css
@@ -542,9 +542,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<CarritoAvanzado />)
 }
 \`\`\`
 
-### Mejores practicas para e-commerce en React
+### Mejores prácticas para e-commerce en React
 
-**1. Separacion de datos y UI:**
+**1. Separación de datos y UI:**
 \`\`\`jsx
 // hook: useProducts.js
 function useProducts(categoria) {
@@ -569,7 +569,7 @@ const addToCart = (product) => {
 };
 \`\`\`
 
-**3. Manejo de imagenes:**
+**3. Manejo de imágenes:**
 \`\`\`jsx
 <img
   src={product.image}
@@ -582,14 +582,14 @@ const addToCart = (product) => {
 **4. Accesibilidad:**
 - Botones con texto descriptivo ("Agregar Camiseta al carrito")
 - Anunciar cambios del carrito a lectores de pantalla
-- Navegacion con teclado en la grilla de productos
+- Navegación con teclado en la grilla de productos
 
 **5. Performance:**
 - React.memo en ProductCard (se renderizan muchas)
 - useMemo para filtros y totales
-- Lazy load para paginas de detalle
+- Lazy load para páginas de detalle
 
-> **Recuerda:** Un buen e-commerce es rapido, accesible y funciona en cualquier dispositivo.`,
+> **Recuerda:** Un buen e-commerce es rápido, accesible y funciona en cualquier dispositivo.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -723,13 +723,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 1,
       prompt: "¿Por que Context es ideal para el carrito de compras?",
       options: [
-        { id: "a", text: "Porque es mas rapido que useState", isCorrect: false },
+        { id: "a", text: "Porque es mas rápido que useState", isCorrect: false },
         { id: "b", text: "Porque muchos componentes (header, lista, checkout) necesitan acceder al carrito", isCorrect: true },
         { id: "c", text: "Porque localStorage no funciona con React", isCorrect: false },
         { id: "d", text: "Porque Context es obligatorio en e-commerce", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Multiples componentes en diferentes niveles necesitan los mismos datos.",
+      hint: "Múltiples componentes en diferentes niveles necesitan los mismos datos.",
       explanation: "El carrito se usa en el header (badge), en la lista de productos (agregar), en el carrito (ver/editar) y en checkout (pagar). Context evita prop drilling.",
     },
     {
@@ -746,7 +746,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["reduce"],
       },
       validation: { type: "exact", answer: "reduce" },
-      hint: "Es el metodo de array que acumula un valor.",
+      hint: "Es el método de array que acumula un valor.",
       explanation: "reduce() recorre el array acumulando la suma de precio * cantidad de cada item, empezando desde 0.",
     },
     {
@@ -755,11 +755,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que debe pasar al agregar un producto que ya esta en el carrito?",
+      prompt: "¿Qué debe pasar al agregar un producto que ya esta en el carrito?",
       options: [
         { id: "a", text: "Agregar un duplicado al array", isCorrect: false },
         { id: "b", text: "Incrementar la cantidad del item existente", isCorrect: true },
-        { id: "c", text: "Ignorar la accion", isCorrect: false },
+        { id: "c", text: "Ignorar la acción", isCorrect: false },
         { id: "d", text: "Reemplazar el item anterior", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -781,7 +781,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       dropZones: [
         { id: "estado", label: "Manejar estado global del carrito" },
-        { id: "mostrar", label: "Mostrar producto y boton agregar" },
+        { id: "mostrar", label: "Mostrar producto y botón agregar" },
         { id: "badge", label: "Mostrar contador de items" },
         { id: "cantidad", label: "Modificar cantidad de un item" },
       ],
@@ -797,9 +797,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 5,
       prompt: "¿Por que los totales del carrito deben ser valores derivados y no estado?",
       options: [
-        { id: "a", text: "Porque React no permite setState para numeros", isCorrect: false },
+        { id: "a", text: "Porque React no permite setState para números", isCorrect: false },
         { id: "b", text: "Porque se calculan a partir de items, y tener dos fuentes de verdad causa bugs", isCorrect: true },
-        { id: "c", text: "Porque useMemo es mas rapido que useState", isCorrect: false },
+        { id: "c", text: "Porque useMemo es mas rápido que useState", isCorrect: false },
         { id: "d", text: "Porque los totales no cambian", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -821,7 +821,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "auto-fill" },
       hint: "Es el valor de CSS Grid que crea tantas columnas como quepan.",
-      explanation: "auto-fill crea automaticamente tantas columnas como quepan en el espacio disponible, con un minimo de 200px. Esto hace el grid responsive sin media queries.",
+      explanation: "auto-fill crea automáticamente tantas columnas como quepan en el espacio disponible, con un mínimo de 200px. Esto hace el grid responsive sin media queries.",
     },
   ],
 };

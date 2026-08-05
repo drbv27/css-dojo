@@ -12,7 +12,7 @@ export const jsArraysModule: ModuleData = {
   lessons: [
     {
       id: "js08-leccion-01",
-      title: "Creacion y acceso",
+      title: "Creación y acceso",
       content: `## Arrays en JavaScript
 
 Un **array** es una lista ordenada de elementos. Puede contener cualquier tipo de dato.
@@ -26,16 +26,16 @@ const vacio = [];
 \`\`\`
 
 ### Acceder a elementos
-Los indices comienzan en **0**:
+Los índices comienzan en **0**:
 \`\`\`javascript
 frutas[0]  // "manzana"
 frutas[1]  // "pera"
 frutas[2]  // "uva"
 \`\`\`
 
-### Propiedades utiles
+### Propiedades útiles
 - \`length\` — cantidad de elementos
-- Ultimo elemento: \`array[array.length - 1]\`
+- Último elemento: \`array[array.length - 1]\`
 
 ### Modificar elementos
 \`\`\`javascript
@@ -63,12 +63,12 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js08-leccion-02",
-      title: "Metodos basicos",
-      content: `## Metodos basicos de arrays
+      title: "Métodos básicos",
+      content: `## Métodos básicos de arrays
 
 ### Agregar y quitar elementos
 
-| Metodo | Accion | Retorna |
+| Método | Acción | Retorna |
 |--------|--------|---------|
 | \`push(elem)\` | Agrega al **final** | Nueva longitud |
 | \`pop()\` | Quita del **final** | Elemento quitado |
@@ -77,14 +77,14 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
 
 ### Busqueda
 
-| Metodo | Descripcion |
+| Método | Descripción |
 |--------|-------------|
-| \`indexOf(elem)\` | Indice del elemento (-1 si no existe) |
+| \`indexOf(elem)\` | Índice del elemento (-1 si no existe) |
 | \`includes(elem)\` | true/false si existe |
-| \`find(fn)\` | Primer elemento que cumple condicion |
-| \`findIndex(fn)\` | Indice del primer elemento que cumple |
+| \`find(fn)\` | Primer elemento que cumple condición |
+| \`findIndex(fn)\` | Índice del primer elemento que cumple |
 
-### Otros metodos utiles
+### Otros métodos útiles
 - \`splice(indice, cantidad)\` — elimina o inserta elementos
 - \`slice(inicio, fin)\` — extrae una copia parcial
 - \`concat(otro)\` — une dos arrays
@@ -143,7 +143,7 @@ nums.forEach(function(num, indice) {
 });
 \`\`\`
 
-### Desestructuracion de arrays
+### Desestructuración de arrays
 
 Puedes extraer valores en variables individuales:
 
@@ -194,7 +194,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: '¿Que devuelve ["a", "b", "c"][1]?',
+      prompt: '¿Qué devuelve ["a", "b", "c"][1]?',
       options: [
         { id: "a", text: '"a"', isCorrect: false },
         { id: "b", text: '"b"', isCorrect: true },
@@ -202,8 +202,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "1", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los indices empiezan en 0.",
-      explanation: 'El indice 1 corresponde al segundo elemento: "b".',
+      hint: "Los índices empiezan en 0.",
+      explanation: 'El índice 1 corresponde al segundo elemento: "b".',
     },
     {
       id: "js08-ej-02",
@@ -211,7 +211,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo agrega un elemento al final de un array?",
+      prompt: "¿Qué método agrega un elemento al final de un array?",
       options: [
         { id: "a", text: "add()", isCorrect: false },
         { id: "b", text: "append()", isCorrect: false },
@@ -228,7 +228,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el metodo para obtener la cantidad de elementos del array:",
+      prompt: "Completa el método para obtener la cantidad de elementos del array:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const arr = [1, 2, 3];\nconst cantidad = arr.',
@@ -236,7 +236,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["length"],
       },
       validation: { type: "exact", answer: "length" },
-      hint: "Es una propiedad, no un metodo (sin parentesis).",
+      hint: "Es una propiedad, no un método (sin paréntesis).",
       explanation: "length es la propiedad que devuelve la cantidad de elementos de un array.",
     },
     {
@@ -245,7 +245,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que metodo remueve y devuelve el ultimo elemento de un array?",
+      prompt: "¿Qué método remueve y devuelve el último elemento de un array?",
       options: [
         { id: "a", text: "shift()", isCorrect: false },
         { id: "b", text: "pop()", isCorrect: true },
@@ -254,7 +254,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es lo opuesto de push().",
-      explanation: "pop() remueve el ultimo elemento del array y lo devuelve. Es el inverso de push().",
+      explanation: "pop() remueve el último elemento del array y lo devuelve. Es el inverso de push().",
     },
     {
       id: "js08-ej-05",
@@ -262,7 +262,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que devuelve [1, 2, 3].includes(4)?",
+      prompt: "¿Qué devuelve [1, 2, 3].includes(4)?",
       options: [
         { id: "a", text: "true", isCorrect: false },
         { id: "b", text: "false", isCorrect: true },
@@ -271,7 +271,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "includes devuelve un booleano.",
-      explanation: "includes() devuelve false porque el numero 4 no existe en el array [1, 2, 3].",
+      explanation: "includes() devuelve false porque el número 4 no existe en el array [1, 2, 3].",
     },
     {
       id: "js08-ej-06",
@@ -279,7 +279,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada metodo de array segun donde opera:",
+      prompt: "Clasifica cada método de array según donde opera:",
       dragItems: [
         { id: "drag-1", content: "push()", correctZone: "zone-final" },
         { id: "drag-2", content: "shift()", correctZone: "zone-inicio" },

@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const reactPatronesModule: ModuleData = {
   slug: "react-patrones",
-  title: "Patrones de Diseno en React",
+  title: "Patrones de Diseño en React",
   description:
-    "Domina los patrones mas usados: composicion, render props, HOCs, compound components y container/presentational.",
+    "Domina los patrones mas usados: composición, render props, HOCs, compound components y container/presentational.",
   order: 215,
   category: "react-advanced",
   icon: "puzzle",
@@ -12,12 +12,12 @@ export const reactPatronesModule: ModuleData = {
   lessons: [
     {
       id: "react15-leccion-01",
-      title: "Composicion y Children",
-      content: `## Patron de Composicion
+      title: "Composición y Children",
+      content: `## Patrón de Composición
 
-La **composicion** es el patron fundamental de React. En vez de herencia, React usa composicion para reutilizar codigo.
+La **composición** es el patrón fundamental de React. En vez de herencia, React usa composición para reutilizar código.
 
-### Children: el patron mas basico
+### Children: el patrón mas básico
 \`\`\`jsx
 function Card({ children, titulo }) {
   return (
@@ -55,12 +55,12 @@ function Layout({ header, sidebar, children }) {
 </Layout>
 \`\`\`
 
-### Composicion vs Herencia
+### Composición vs Herencia
 - React **no usa herencia** entre componentes
-- La composicion es mas flexible y predecible
+- La composición es mas flexible y predecible
 - Puedes pasar componentes como props (slots)
 
-> **Principio:** Favorece la composicion sobre la herencia. Es mas flexible y mas facil de razonar.`,
+> **Principio:** Favorece la composición sobre la herencia. Es mas flexible y mas fácil de razonar.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -129,7 +129,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       title: "Render Props y HOCs",
       content: `## Render Props
 
-Un **render prop** es una prop que es una funcion que retorna JSX. Permite compartir logica entre componentes.
+Un **render prop** es una prop que es una función que retorna JSX. Permite compartir lógica entre componentes.
 
 \`\`\`jsx
 function MouseTracker({ render }) {
@@ -150,7 +150,7 @@ function MouseTracker({ render }) {
 
 ## Higher-Order Components (HOC)
 
-Un HOC es una funcion que recibe un componente y retorna un componente mejorado:
+Un HOC es una función que recibe un componente y retorna un componente mejorado:
 
 \`\`\`jsx
 function withLoader(Component) {
@@ -165,11 +165,11 @@ const ListaConLoader = withLoader(Lista);
 \`\`\`
 
 ### Render Props vs HOCs vs Custom Hooks
-| Patron | Cuando usar |
+| Patrón | Cuando usar |
 |--------|-------------|
-| Custom Hooks | **Preferido** para compartir logica |
+| Custom Hooks | **Preferido** para compartir lógica |
 | Render Props | Cuando necesitas control sobre el render |
-| HOCs | Legacy, menos comun en codigo moderno |
+| HOCs | Legacy, menos común en código moderno |
 
 > **Nota:** Los custom hooks han reemplazado en gran medida a render props y HOCs en React moderno.`,
       codeExample: {
@@ -256,7 +256,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       title: "Compound Components y patrones avanzados",
       content: `## Compound Components
 
-Los **compound components** trabajan juntos compartiendo estado implicito. Piensa en \`<select>\` y \`<option>\`.
+Los **compound components** trabajan juntos compartiendo estado implícito. Piensa en \`<select>\` y \`<option>\`.
 
 \`\`\`jsx
 // API deseada:
@@ -270,7 +270,7 @@ Los **compound components** trabajan juntos compartiendo estado implicito. Piens
 </Tabs>
 \`\`\`
 
-### Implementacion con Context
+### Implementación con Context
 El componente padre provee el estado via Context, los hijos lo consumen:
 
 \`\`\`jsx
@@ -390,16 +390,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que patron fundamental usa React en vez de herencia?",
+      prompt: "¿Qué patrón fundamental usa React en vez de herencia?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
-        { id: "b", text: "Composicion", isCorrect: true },
-        { id: "c", text: "Herencia multiple", isCorrect: false },
+        { id: "b", text: "Composición", isCorrect: true },
+        { id: "c", text: "Herencia múltiple", isCorrect: false },
         { id: "d", text: "Observer", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es el principio de combinar componentes simples para crear complejos.",
-      explanation: "React favorece la composicion: combinar componentes simples pasando children y props, en vez de crear jerarquias de herencia.",
+      explanation: "React favorece la composición: combinar componentes simples pasando children y props, en vez de crear jerarquías de herencia.",
     },
     {
       id: "react15-ej-02",
@@ -407,7 +407,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que es la prop especial 'children' en React?",
+      prompt: "¿Qué es la prop especial 'children' en React?",
       options: [
         { id: "a", text: "Un array con los componentes padres", isCorrect: false },
         { id: "b", text: "El contenido que se pone entre las etiquetas del componente", isCorrect: true },
@@ -415,7 +415,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Los props de los componentes hijos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es lo que va entre <Componente>...aqui...</Componente>.",
+      hint: "Es lo que va entre <Componente>...aquí...</Componente>.",
       explanation: "children es una prop especial que contiene todo lo que se coloca entre las etiquetas de apertura y cierre de un componente.",
     },
     {
@@ -424,16 +424,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que es un Higher-Order Component (HOC)?",
+      prompt: "¿Qué es un Higher-Order Component (HOC)?",
       options: [
-        { id: "a", text: "Un componente que esta en la parte superior del arbol", isCorrect: false },
-        { id: "b", text: "Una funcion que recibe un componente y retorna uno nuevo mejorado", isCorrect: true },
+        { id: "a", text: "Un componente que esta en la parte superior del árbol", isCorrect: false },
+        { id: "b", text: "Una función que recibe un componente y retorna uno nuevo mejorado", isCorrect: true },
         { id: "c", text: "Un componente con mas de 10 props", isCorrect: false },
         { id: "d", text: "Un componente de clase", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "HOC = funcion(componente) => componente mejorado.",
-      explanation: "Un HOC es una funcion que toma un componente como argumento y retorna un nuevo componente con funcionalidad adicional.",
+      hint: "HOC = función(componente) => componente mejorado.",
+      explanation: "Un HOC es una función que toma un componente como argumento y retorna un nuevo componente con funcionalidad adicional.",
     },
     {
       id: "react15-ej-04",
@@ -441,7 +441,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada patron con su descripcion:",
+      prompt: "Asocia cada patrón con su descripción:",
       dragItems: [
         { id: "d1", content: "Composicion (children)", correctZone: "contenido" },
         { id: "d2", content: "Render Props", correctZone: "funcion" },
@@ -450,12 +450,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       dropZones: [
         { id: "contenido", label: "Inyectar contenido flexible" },
-        { id: "funcion", label: "Prop que es funcion retornando JSX" },
-        { id: "envuelve", label: "Funcion que envuelve un componente" },
-        { id: "implicito", label: "Componentes que comparten estado implicito" },
+        { id: "funcion", label: "Prop que es función retornando JSX" },
+        { id: "envuelve", label: "Función que envuelve un componente" },
+        { id: "implicito", label: "Componentes que comparten estado implícito" },
       ],
       validation: { type: "exact", answer: { d1: "contenido", d2: "funcion", d3: "envuelve", d4: "implicito" } },
-      hint: "Cada patron tiene un mecanismo diferente para compartir o inyectar funcionalidad.",
+      hint: "Cada patrón tiene un mecanismo diferente para compartir o inyectar funcionalidad.",
       explanation: "Children inyecta contenido, render props usa funciones, HOCs envuelven componentes, y compound components comparten estado via Context implicitamente.",
     },
     {
@@ -472,8 +472,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Redux", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Una funcion que empieza con 'use'.",
-      explanation: "Los custom hooks permiten compartir logica de forma mas limpia que render props y HOCs, sin modificar el arbol de componentes.",
+      hint: "Una función que empieza con 'use'.",
+      explanation: "Los custom hooks permiten compartir lógica de forma mas limpia que render props y HOCs, sin modificar el árbol de componentes.",
     },
     {
       id: "react15-ej-06",
@@ -498,7 +498,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿En el patron Compound Components, como comparten estado los componentes hijos?",
+      prompt: "¿En el patrón Compound Components, como comparten estado los componentes hijos?",
       options: [
         { id: "a", text: "A traves de props explicitas", isCorrect: false },
         { id: "b", text: "Via Context internamente", isCorrect: true },
@@ -515,16 +515,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Cual es la diferencia entre el patron Container y Presentational?",
+      prompt: "¿Cuál es la diferencia entre el patrón Container y Presentational?",
       options: [
-        { id: "a", text: "Container maneja logica y datos; Presentational solo renderiza UI", isCorrect: true },
-        { id: "b", text: "Container es mas grande; Presentational es mas pequeno", isCorrect: false },
+        { id: "a", text: "Container maneja lógica y datos; Presentational solo renderiza UI", isCorrect: true },
+        { id: "b", text: "Container es mas grande; Presentational es mas pequeño", isCorrect: false },
         { id: "c", text: "Container usa hooks; Presentational usa clases", isCorrect: false },
         { id: "d", text: "No hay diferencia real", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Uno se encarga de los datos, otro de la presentacion visual.",
-      explanation: "Container components manejan la logica, estado y datos. Presentational components solo reciben props y renderizan la UI, sin logica de negocio.",
+      hint: "Uno se encarga de los datos, otro de la presentación visual.",
+      explanation: "Container components manejan la lógica, estado y datos. Presentational components solo reciben props y renderizan la UI, sin lógica de negocio.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const posicionamientoModule: ModuleData = {
   slug: "posicionamiento",
   title: "Posicionamiento CSS",
   description:
-    "Aprende a controlar la posicion de los elementos con position: static, relative, absolute, fixed y sticky, junto con z-index.",
+    "Aprende a controlar la posición de los elementos con position: static, relative, absolute, fixed y sticky, junto con z-index.",
   order: 12,
   dojo: "css" as const,
   category: "intermediate",
@@ -15,7 +15,7 @@ export const posicionamientoModule: ModuleData = {
       title: "Position static y relative",
       content: `## Position static y relative
 
-La propiedad \`position\` determina **como se posiciona un elemento** en la pagina. Por defecto todos los elementos tienen \`position: static\`.
+La propiedad \`position\` determina **como se posiciona un elemento** en la página. Por defecto todos los elementos tienen \`position: static\`.
 
 ### position: static (por defecto)
 
@@ -29,7 +29,7 @@ El elemento sigue el **flujo normal** del documento. Las propiedades \`top\`, \`
 
 ### position: relative
 
-El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a su **posicion original** usando \`top\`, \`right\`, \`bottom\` y \`left\`:
+El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a su **posición original** usando \`top\`, \`right\`, \`bottom\` y \`left\`:
 
 \`\`\`css
 .desplazado {
@@ -45,7 +45,7 @@ El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a
 - El desplazamiento es **visual**, no afecta a otros elementos
 - Crea un **contexto de posicionamiento** para hijos con \`position: absolute\`
 
-### Direccion de los desplazamientos
+### Dirección de los desplazamientos
 
 | Propiedad | Valor positivo | Valor negativo |
 |-----------|---------------|----------------|
@@ -81,7 +81,7 @@ Un elemento con \`position: absolute\` se **saca del flujo normal** del document
 
 El elemento se posiciona respecto al **ancestro posicionado mas cercano** (cualquier ancestro con \`position\` distinto de \`static\`). Si no hay ninguno, se posiciona respecto al \`<html>\`.
 
-### El patron padre relative + hijo absolute
+### El patrón padre relative + hijo absolute
 
 Este es uno de los patrones mas usados en CSS:
 
@@ -145,7 +145,7 @@ El elemento se posiciona respecto al **viewport** (la ventana del navegador). No
 \`\`\`
 
 **Usos comunes:**
-- Barras de navegacion fijas
+- Barras de navegación fijas
 - Botones flotantes (como "volver arriba")
 - Modales y overlays
 
@@ -170,7 +170,7 @@ Es un **hibrido** entre relative y fixed. El elemento se comporta como \`relativ
 
 **Caracteristicas de sticky:**
 - Permanece en el flujo normal (como relative)
-- Se "pega" al alcanzar la posicion definida en \`top\`, \`bottom\`, \`left\` o \`right\`
+- Se "pega" al alcanzar la posición definida en \`top\`, \`bottom\`, \`left\` o \`right\`
 - Solo funciona dentro de su **contenedor padre** (no se pega mas alla del padre)
 - Requiere al menos una propiedad de offset (\`top\`, \`bottom\`, etc.)
 
@@ -213,7 +213,7 @@ La propiedad \`z-index\` controla el **orden de apilamiento** de los elementos p
 1. **Solo funciona en elementos posicionados** (relative, absolute, fixed, sticky)
 2. Los valores mas altos se muestran **encima** de los mas bajos
 3. Acepta valores **negativos** (\`z-index: -1\`)
-4. Sin z-index, los elementos se apilan en **orden del DOM** (los ultimos quedan encima)
+4. Sin z-index, los elementos se apilan en **orden del DOM** (los últimos quedan encima)
 
 ### Contexto de apilamiento (stacking context)
 
@@ -236,14 +236,14 @@ Un contexto de apilamiento es un **grupo aislado**. Los z-index dentro de un con
 
 El \`.hijo\` con z-index: 999 nunca se mostrara encima de \`.grupo-B\` porque su contexto padre (\`.grupo-A\`) tiene z-index: 1.
 
-### ¿Que crea un nuevo contexto de apilamiento?
+### ¿Qué crea un nuevo contexto de apilamiento?
 
 - \`position\` + \`z-index\` (distinto de auto)
 - \`opacity\` menor a 1
 - \`transform\`, \`filter\`, \`perspective\`
 - \`isolation: isolate\`
 
-### Buena practica: escala de z-index
+### Buena práctica: escala de z-index
 
 Define una escala organizada para tu proyecto:
 
@@ -256,7 +256,7 @@ Define una escala organizada para tu proyecto:
 }
 \`\`\`
 
-> **Error comun:** Usar z-index: 9999 no siempre funciona. Si el elemento esta dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahi.`,
+> **Error común:** Usar z-index: 9999 no siempre funciona. Si el elemento esta dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahi.`,
       codeExample: {
         html: `<div class="capa capa-1">z-index: 1</div>\n<div class="capa capa-2">z-index: 2</div>\n<div class="capa capa-3">z-index: 3</div>`,
         css: `.capa {\n  position: absolute;\n  width: 150px;\n  height: 150px;\n  padding: 10px;\n  font-weight: bold;\n  color: white;\n  border: 2px solid rgba(0,0,0,0.3);\n  border-radius: 8px;\n}\n.capa-1 {\n  z-index: 1;\n  top: 10px;\n  left: 10px;\n  background-color: tomato;\n}\n.capa-2 {\n  z-index: 2;\n  top: 40px;\n  left: 40px;\n  background-color: steelblue;\n}\n.capa-3 {\n  z-index: 3;\n  top: 70px;\n  left: 70px;\n  background-color: seagreen;\n}`,
@@ -273,7 +273,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cual es el valor por defecto de la propiedad position?",
+        "¿Cuál es el valor por defecto de la propiedad position?",
       options: [
         { id: "a", text: "relative", isCorrect: false },
         { id: "b", text: "absolute", isCorrect: false },
@@ -292,7 +292,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 2,
       prompt:
-        "Arrastra cada valor de position a su descripcion correcta:",
+        "Arrastra cada valor de position a su descripción correcta:",
       dragItems: [
         {
           id: "drag-1",
@@ -318,7 +318,7 @@ Define una escala organizada para tu proyecto:
       dropZones: [
         {
           id: "zone-relative",
-          label: "Se desplaza respecto a su posicion original, sin salir del flujo",
+          label: "Se desplaza respecto a su posición original, sin salir del flujo",
         },
         {
           id: "zone-absolute",
@@ -344,7 +344,7 @@ Define una escala organizada para tu proyecto:
       },
       hint: "Fixed se queda quieto al hacer scroll. Absolute sale del flujo completamente. Sticky se pega en cierto punto. Relative se desplaza pero conserva su espacio.",
       explanation:
-        "Relative desplaza visualmente sin salir del flujo. Absolute sale del flujo y se posiciona respecto al ancestro posicionado. Fixed se posiciona respecto al viewport. Sticky combina relative y fixed segun el scroll.",
+        "Relative desplaza visualmente sin salir del flujo. Absolute sale del flujo y se posiciona respecto al ancestro posicionado. Fixed se posiciona respecto al viewport. Sticky combina relative y fixed según el scroll.",
     },
     {
       id: "12-ej-03",
@@ -363,7 +363,7 @@ Define una escala organizada para tu proyecto:
       validation: { type: "exact", answer: "relative" },
       hint: "El padre necesita un valor de position que lo convierta en un 'ancestro posicionado' sin sacarlo del flujo.",
       explanation:
-        "Al usar position: relative en el contenedor, se crea un contexto de posicionamiento. Los hijos con position: absolute se posicionan respecto a este contenedor en lugar del viewport. Este patron padre-relative/hijo-absolute es uno de los mas usados en CSS.",
+        "Al usar position: relative en el contenedor, se crea un contexto de posicionamiento. Los hijos con position: absolute se posicionan respecto a este contenedor en lugar del viewport. Este patrón padre-relative/hijo-absolute es uno de los mas usados en CSS.",
     },
     {
       id: "12-ej-04",
@@ -372,7 +372,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un boton flotante fijo en la esquina inferior derecha. Usa position: fixed, bottom: 20px, right: 20px. Dale padding: 15px 20px, background-color: tomato, color: white, border: none y border-radius: 50%.",
+        "Crea un botón flotante fijo en la esquina inferior derecha. Usa position: fixed, bottom: 20px, right: 20px. Dale padding: 15px 20px, background-color: tomato, color: white, border: none y border-radius: 50%.",
       codeTemplate: {
         html: `<button class="btn-flotante">+</button>\n<p>Contenido de la pagina. El boton debe permanecer fijo en la esquina inferior derecha.</p>`,
         cssPrefix: "",
@@ -386,9 +386,9 @@ Define una escala organizada para tu proyecto:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas position: fixed para que el boton no se mueva con el scroll. Usa bottom y right para posicionarlo en la esquina inferior derecha.",
+      hint: "Necesitas position: fixed para que el botón no se mueva con el scroll. Usa bottom y right para posicionarlo en la esquina inferior derecha.",
       explanation:
-        "Position fixed posiciona el elemento respecto al viewport. Con bottom: 20px y right: 20px, el boton queda a 20px del borde inferior y derecho de la ventana, sin moverse al hacer scroll.",
+        "Position fixed posiciona el elemento respecto al viewport. Con bottom: 20px y right: 20px, el botón queda a 20px del borde inferior y derecho de la ventana, sin moverse al hacer scroll.",
     },
     {
       id: "12-ej-05",
@@ -424,9 +424,9 @@ Define una escala organizada para tu proyecto:
         blanks: ["sticky"],
       },
       validation: { type: "exact", answer: "sticky" },
-      hint: "Es el valor que combina el comportamiento de relative y fixed. Se pega al alcanzar cierta posicion de scroll.",
+      hint: "Es el valor que combina el comportamiento de relative y fixed. Se pega al alcanzar cierta posición de scroll.",
       explanation:
-        "Position sticky hace que el encabezado se comporte como relative en su posicion normal, pero cuando el usuario hace scroll y el elemento llega a top: 0, se 'pega' ahi como si fuera fixed.",
+        "Position sticky hace que el encabezado se comporte como relative en su posición normal, pero cuando el usuario hace scroll y el elemento llega a top: 0, se 'pega' ahi como si fuera fixed.",
     },
     {
       id: "12-ej-07",
@@ -451,7 +451,7 @@ Define una escala organizada para tu proyecto:
       },
       hint: "La tarjeta necesita position: relative para ser el contexto de posicionamiento. El badge usa absolute para salirse de la caja y posicionarse en la esquina.",
       explanation:
-        "El patron clasico padre-relative/hijo-absolute permite posicionar el badge en la esquina de la tarjeta. Con top: -10px y right: -10px, el badge se sale parcialmente de la tarjeta creando un efecto de notificacion.",
+        "El patrón clasico padre-relative/hijo-absolute permite posicionar el badge en la esquina de la tarjeta. Con top: -10px y right: -10px, el badge se sale parcialmente de la tarjeta creando un efecto de notificación.",
     },
     {
       id: "12-ej-08",
@@ -460,7 +460,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 30,
       order: 8,
       prompt:
-        "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, ¿cual se muestra encima?",
+        "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, ¿cuál se muestra encima?",
       options: [
         { id: "a", text: "El elemento con z-index: 999", isCorrect: false },
         { id: "b", text: "El elemento con z-index: 2", isCorrect: true },
@@ -470,7 +470,7 @@ Define una escala organizada para tu proyecto:
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en contextos de apilamiento. El hijo esta limitado por el z-index de su padre.",
       explanation:
-        "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este ultimo siempre se mostrara encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
+        "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este último siempre se mostrara encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
     },
   ],
 };

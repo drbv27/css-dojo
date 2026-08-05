@@ -15,7 +15,7 @@ export const shadowsGradientsFiltersModule: ModuleData = {
       title: "Sombras: box-shadow y text-shadow",
       content: `## Sombras: box-shadow y text-shadow
 
-Las sombras agregan profundidad y dimension a los elementos, creando interfaces mas atractivas y con jerarquia visual.
+Las sombras agregan profundidad y dimensión a los elementos, creando interfaces mas atractivas y con jerarquía visual.
 
 ### box-shadow
 
@@ -28,12 +28,12 @@ Agrega sombra a la **caja** del elemento:
 }
 \`\`\`
 
-| Parametro | Descripcion | Ejemplo |
+| Parámetro | Descripción | Ejemplo |
 |-----------|------------|---------|
 | \`offset-x\` | Desplazamiento horizontal | \`4px\` (derecha), \`-4px\` (izquierda) |
 | \`offset-y\` | Desplazamiento vertical | \`4px\` (abajo), \`-4px\` (arriba) |
 | \`blur\` | Radio de desenfoque | \`10px\` (mas suave), \`0\` (solida) |
-| \`spread\` | Expansion de la sombra | \`2px\` (mas grande), \`-2px\` (mas pequena) |
+| \`spread\` | Expansión de la sombra | \`2px\` (mas grande), \`-2px\` (mas pequeña) |
 | \`color\` | Color de la sombra | \`rgba(0,0,0,0.2)\` |
 
 ### Sombra interior (inset)
@@ -44,7 +44,7 @@ Agrega sombra a la **caja** del elemento:
 }
 \`\`\`
 
-### Sombras multiples
+### Sombras múltiples
 
 Separa varias sombras con comas:
 
@@ -69,7 +69,7 @@ h1 {
 
 A diferencia de box-shadow, text-shadow **no tiene** spread ni inset.
 
-### Sombras comunes en diseno
+### Sombras comunes en diseño
 
 \`\`\`css
 /* Sombra sutil (tarjetas) */
@@ -102,7 +102,7 @@ Los degradados crean transiciones suaves entre dos o mas colores, usados como va
 
 ### linear-gradient
 
-Crea un degradado en linea recta:
+Crea un degradado en línea recta:
 
 \`\`\`css
 .elemento {
@@ -121,7 +121,7 @@ background: linear-gradient(to right, #3498db, #8e44ad);
 background: linear-gradient(to bottom right, red, blue);
 \`\`\`
 
-| Direccion | Descripcion |
+| Dirección | Descripción |
 |-----------|------------|
 | \`to right\` | De izquierda a derecha |
 | \`to bottom\` | De arriba a abajo (por defecto) |
@@ -153,7 +153,7 @@ Crea un degradado circular o eliptico:
 }
 \`\`\`
 
-### Degradados multiples
+### Degradados múltiples
 
 Puedes superponer degradados:
 
@@ -205,19 +205,19 @@ Aplica efectos visuales a un elemento, similares a los filtros de aplicaciones d
 
 ### Funciones de filtro disponibles
 
-| Funcion | Descripcion | Rango | Ejemplo |
+| Función | Descripción | Rango | Ejemplo |
 |---------|------------|-------|---------|
 | \`blur()\` | Desenfoque gaussiano | \`0px\` a \`Npx\` | \`blur(5px)\` |
 | \`brightness()\` | Brillo | \`0\` (negro) a \`2+\` (brillante) | \`brightness(1.2)\` |
 | \`contrast()\` | Contraste | \`0\` (gris) a \`2+\` (alto contraste) | \`contrast(1.5)\` |
 | \`grayscale()\` | Escala de grises | \`0\` (color) a \`1\` (gris) | \`grayscale(1)\` |
 | \`sepia()\` | Tono sepia | \`0\` a \`1\` | \`sepia(0.8)\` |
-| \`saturate()\` | Saturacion | \`0\` (desaturado) a \`2+\` | \`saturate(2)\` |
-| \`hue-rotate()\` | Rotacion de tono | \`0deg\` a \`360deg\` | \`hue-rotate(90deg)\` |
+| \`saturate()\` | Saturación | \`0\` (desaturado) a \`2+\` | \`saturate(2)\` |
+| \`hue-rotate()\` | Rotación de tono | \`0deg\` a \`360deg\` | \`hue-rotate(90deg)\` |
 | \`invert()\` | Invertir colores | \`0\` a \`1\` | \`invert(1)\` |
 | \`drop-shadow()\` | Sombra que sigue la forma | Similar a box-shadow | \`drop-shadow(4px 4px 6px rgba(0,0,0,0.3))\` |
 
-### Filtros multiples
+### Filtros múltiples
 
 Combina varios filtros separados por espacio:
 
@@ -294,7 +294,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cual es el orden correcto de los valores en box-shadow?",
+        "¿Cuál es el orden correcto de los valores en box-shadow?",
       options: [
         { id: "a", text: "color offset-x offset-y blur", isCorrect: false },
         { id: "b", text: "offset-x offset-y blur spread color", isCorrect: true },
@@ -302,9 +302,9 @@ Los filtros son excelentes para interacciones:
         { id: "d", text: "spread blur color offset-x offset-y", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Primero van los desplazamientos (x, y), luego el desenfoque, luego la expansion y finalmente el color.",
+      hint: "Primero van los desplazamientos (x, y), luego el desenfoque, luego la expansión y finalmente el color.",
       explanation:
-        "El orden de box-shadow es: offset-x (desplazamiento horizontal), offset-y (desplazamiento vertical), blur (desenfoque), spread (expansion, opcional) y color. Ejemplo: box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2).",
+        "El orden de box-shadow es: offset-x (desplazamiento horizontal), offset-y (desplazamiento vertical), blur (desenfoque), spread (expansión, opcional) y color. Ejemplo: box-shadow: 4px 4px 10px 0px rgba(0,0,0,0.2).",
     },
     {
       id: "20-ej-02",
@@ -332,7 +332,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 3,
       prompt:
-        "Arrastra cada funcion de filtro CSS a su efecto visual:",
+        "Arrastra cada función de filtro CSS a su efecto visual:",
       dragItems: [
         { id: "drag-1", content: "blur(5px)", correctZone: "zone-desenfoque" },
         { id: "drag-2", content: "grayscale(1)", correctZone: "zone-gris" },
@@ -373,9 +373,9 @@ Los filtros son excelentes para interacciones:
         blanks: ["to right"],
       },
       validation: { type: "regex", answer: "to\\s+right" },
-      hint: "Necesitas indicar la direccion con las palabras clave 'to' y la direccion en ingles.",
+      hint: "Necesitas indicar la dirección con las palabras clave 'to' y la dirección en ingles.",
       explanation:
-        "La direccion 'to right' indica que el degradado va de izquierda a derecha. Otras opciones son 'to bottom' (por defecto), 'to top', 'to left' o angulos como '90deg' (equivale a 'to right').",
+        "La dirección 'to right' indica que el degradado va de izquierda a derecha. Otras opciones son 'to bottom' (por defecto), 'to top', 'to left' o angulos como '90deg' (equivale a 'to right').",
     },
     {
       id: "20-ej-05",
@@ -409,11 +409,11 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 6,
       prompt:
-        "¿Cual es la diferencia entre 'filter' y 'backdrop-filter'?",
+        "¿Cuál es la diferencia entre 'filter' y 'backdrop-filter'?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detras del elemento", isCorrect: true },
-        { id: "c", text: "filter es para imagenes; backdrop-filter es para texto", isCorrect: false },
+        { id: "c", text: "filter es para imágenes; backdrop-filter es para texto", isCorrect: false },
         { id: "d", text: "backdrop-filter no existe en CSS", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -428,7 +428,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra mas fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega transicion de 0.3s.",
+        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra mas fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega transición de 0.3s.",
       codeTemplate: {
         html: `<div class="tarjeta-visual">\n  <h3>Tarjeta con efectos</h3>\n  <p>Hover para ver la animacion de sombra</p>\n</div>`,
         cssPrefix: "",
@@ -444,7 +444,7 @@ Los filtros son excelentes para interacciones:
       },
       hint: "Define los estilos base con box-shadow sutil y transition, luego en :hover aumenta la sombra y agrega translateY negativo para que 'suba'.",
       explanation:
-        "La tarjeta combina box-shadow para profundidad, transition para suavidad, y en :hover usa translateY(-4px) para elevarla y una sombra mas grande. Este patron es muy usado en interfaces modernas para indicar interactividad.",
+        "La tarjeta combina box-shadow para profundidad, transition para suavidad, y en :hover usa translateY(-4px) para elevarla y una sombra mas grande. Este patrón es muy usado en interfaces modernas para indicar interactividad.",
     },
     {
       id: "20-ej-08",
@@ -453,7 +453,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un elemento con clase 'imagen-filtro' que tenga un fondo de degradado (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamano: 200px por 150px con border-radius de 12px.",
+        "Crea un elemento con clase 'imagen-filtro' que tenga un fondo de degradado (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamaño: 200px por 150px con border-radius de 12px.",
       codeTemplate: {
         html: `<div class="imagen-filtro"></div>`,
         cssPrefix: "",
@@ -467,9 +467,9 @@ Los filtros son excelentes para interacciones:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define el elemento con tamano fijo, fondo de degradado y transition para filter. En :hover aplica los dos filtros separados por espacio.",
+      hint: "Define el elemento con tamaño fijo, fondo de degradado y transition para filter. En :hover aplica los dos filtros separados por espacio.",
       explanation:
-        "El elemento usa un degradado como fondo y transition: filter 0.3s para animar suavemente los filtros. Al hover, brightness(1.1) aumenta el brillo 10% y saturate(1.3) intensifica los colores 30%. Los filtros multiples se separan con espacio.",
+        "El elemento usa un degradado como fondo y transition: filter 0.3s para animar suavemente los filtros. Al hover, brightness(1.1) aumenta el brillo 10% y saturate(1.3) intensifica los colores 30%. Los filtros múltiples se separan con espacio.",
     },
   ],
 };

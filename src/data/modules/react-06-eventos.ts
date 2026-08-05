@@ -12,7 +12,7 @@ export const reactEventosModule: ModuleData = {
   lessons: [
     {
       id: "react06-leccion-01",
-      title: "Manejo de eventos basico",
+      title: "Manejo de eventos básico",
       content: `## Eventos en React
 
 Los eventos en React funcionan de forma similar a los eventos del DOM, pero con diferencias de sintaxis:
@@ -25,9 +25,9 @@ Los eventos en React funcionan de forma similar a los eventos del DOM, pero con 
 | \`onchange\` | \`onChange\` |
 | \`onsubmit\` | \`onSubmit\` |
 | Strings | Funciones |
-| minusculas | camelCase |
+| minúsculas | camelCase |
 
-### Ejemplo basico
+### Ejemplo básico
 
 \`\`\`jsx
 function Boton() {
@@ -51,13 +51,13 @@ function Boton() {
 
 ### Funciones inline
 
-Tambien puedes usar funciones de flecha directamente:
+También puedes usar funciones de flecha directamente:
 
 \`\`\`jsx
 <button onClick={() => alert("Hola!")}>Clic</button>
 \`\`\`
 
-> **Convencion:** Los nombres de los handlers suelen empezar con "handle": \`handleClick\`, \`handleSubmit\`, \`handleChange\`.`,
+> **Convención:** Los nombres de los handlers suelen empezar con "handle": \`handleClick\`, \`handleSubmit\`, \`handleChange\`.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -122,7 +122,7 @@ function Input() {
 }
 \`\`\`
 
-El parametro \`e\` (o \`event\`) se pasa automaticamente al handler.
+El parámetro \`e\` (o \`event\`) se pasa automáticamente al handler.
 
 ### preventDefault()
 
@@ -158,7 +158,7 @@ function Formulario() {
 - **onFocus / onBlur** — ganar/perder el foco
 - **onMouseEnter / onMouseLeave** — mouse entra/sale
 
-> **Tip:** Siempre usa \`e.preventDefault()\` en formularios para evitar la recarga de pagina.`,
+> **Tip:** Siempre usa \`e.preventDefault()\` en formularios para evitar la recarga de página.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -229,9 +229,9 @@ function Formulario() {
 ### ¿Por que controlados?
 
 - **Una sola fuente de verdad:** el estado de React
-- **Validacion en tiempo real** mientras el usuario escribe
+- **Validación en tiempo real** mientras el usuario escribe
 - **Formatear** los datos antes de mostrarlos
-- **Deshabilitar** el boton de envio hasta que sea valido
+- **Deshabilitar** el botón de envio hasta que sea valido
 
 ### Formulario completo
 
@@ -267,7 +267,7 @@ function Registro() {
 }
 \`\`\`
 
-> **Patron clave:** Usa \`[name]\` como propiedad computada para manejar multiples inputs con un solo handler.`,
+> **Patrón clave:** Usa \`[name]\` como propiedad computada para manejar múltiples inputs con un solo handler.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -333,7 +333,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Como se escribe un evento de clic en JSX?",
+      prompt: "¿Cómo se escribe un evento de clic en JSX?",
       options: [
         { id: "a", text: "onclick={handleClick}", isCorrect: false },
         { id: "b", text: "onClick={handleClick}", isCorrect: true },
@@ -343,7 +343,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       validation: { type: "exact", answer: "b" },
       hint: "En JSX los eventos usan camelCase y reciben funciones, no strings.",
       explanation:
-        "En JSX, los eventos se escriben en camelCase (onClick, no onclick) y reciben una referencia a funcion como valor (entre llaves), no un string.",
+        "En JSX, los eventos se escriben en camelCase (onClick, no onclick) y reciben una referencia a función como valor (entre llaves), no un string.",
     },
     {
       id: "react06-ej-02",
@@ -351,7 +351,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es el error en este codigo? <button onClick={handleClick()}>Clic</button>",
+      prompt: "¿Cuál es el error en este código? <button onClick={handleClick()}>Clic</button>",
       options: [
         { id: "a", text: "Falta el atributo type en el button", isCorrect: false },
         { id: "b", text: "handleClick() se ejecuta inmediatamente en vez de al hacer clic", isCorrect: true },
@@ -359,9 +359,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
         { id: "d", text: "No hay ningun error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Observa los parentesis despues de handleClick.",
+      hint: "Observa los paréntesis después de handleClick.",
       explanation:
-        "Al escribir handleClick() con parentesis, la funcion se ejecuta inmediatamente durante el renderizado. Se debe pasar como referencia sin parentesis: handleClick.",
+        "Al escribir handleClick() con paréntesis, la función se ejecuta inmediatamente durante el renderizado. Se debe pasar como referencia sin paréntesis: handleClick.",
     },
     {
       id: "react06-ej-03",
@@ -377,9 +377,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
         blanks: ["preventDefault"],
       },
       validation: { type: "exact", answer: "preventDefault" },
-      hint: "Es un metodo del objeto evento que evita la accion por defecto.",
+      hint: "Es un método del objeto evento que evita la acción por defecto.",
       explanation:
-        "e.preventDefault() evita el comportamiento por defecto del navegador. En formularios, previene la recarga de la pagina al enviar.",
+        "e.preventDefault() evita el comportamiento por defecto del navegador. En formularios, previene la recarga de la página al enviar.",
     },
     {
       id: "react06-ej-04",
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que es un componente controlado en React?",
+      prompt: "¿Qué es un componente controlado en React?",
       options: [
         { id: "a", text: "Un componente que no acepta props", isCorrect: false },
         { id: "b", text: "Un input cuyo valor es manejado por el estado de React", isCorrect: true },
@@ -397,7 +397,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       validation: { type: "exact", answer: "b" },
       hint: "El estado de React es la 'fuente de verdad' para el valor del input.",
       explanation:
-        "Un componente controlado es un input cuyo valor esta vinculado al estado de React (value={estado}) y se actualiza mediante un handler (onChange). React es la fuente unica de verdad.",
+        "Un componente controlado es un input cuyo valor esta vinculado al estado de React (value={estado}) y se actualiza mediante un handler (onChange). React es la fuente única de verdad.",
     },
     {
       id: "react06-ej-05",
@@ -431,7 +431,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
         { id: "drag-4", content: "onKeyDown", correctZone: "zone-teclado" },
       ],
       dropZones: [
-        { id: "zone-boton", label: "Clic en boton" },
+        { id: "zone-boton", label: "Clic en botón" },
         { id: "zone-input", label: "Cambio en input" },
         { id: "zone-form", label: "Envio de formulario" },
         { id: "zone-teclado", label: "Tecla presionada" },
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Como pasas un argumento adicional a un event handler en JSX?",
+      prompt: "¿Cómo pasas un argumento adicional a un event handler en JSX?",
       options: [
         { id: "a", text: "onClick={handleDelete, item.id}", isCorrect: false },
         { id: "b", text: "onClick={() => handleDelete(item.id)}", isCorrect: true },
@@ -463,9 +463,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
         { id: "d", text: "onClick={handleDelete} args={item.id}", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Envuelve la llamada en una funcion de flecha para evitar la ejecucion inmediata.",
+      hint: "Envuelve la llamada en una función de flecha para evitar la ejecución inmediata.",
       explanation:
-        "Para pasar argumentos a un handler, envuelvelo en una funcion de flecha: onClick={() => handleDelete(item.id)}. Esto crea una funcion nueva que se ejecutara solo al hacer clic.",
+        "Para pasar argumentos a un handler, envuelvelo en una función de flecha: onClick={() => handleDelete(item.id)}. Esto crea una función nueva que se ejecutara solo al hacer clic.",
     },
   ],
 };

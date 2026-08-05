@@ -25,7 +25,7 @@ ancestro descendiente {
 }
 \`\`\`
 
-### Ejemplos practicos
+### Ejemplos prácticos
 
 \`\`\`css
 /* Todos los parrafos dentro de un header */
@@ -59,7 +59,7 @@ El selector descendiente busca en **todos los niveles** de anidamiento:
 </div>
 \`\`\`
 
-El selector \`.contenedor p\` seleccionara ese parrafo aunque haya varios niveles de por medio.
+El selector \`.contenedor p\` seleccionara ese párrafo aunque haya varios niveles de por medio.
 
 ### Combinando con clases e IDs
 
@@ -73,7 +73,7 @@ h3.destacado a {
 }
 \`\`\`
 
-> **Atencion:** Evita encadenar demasiados selectores descendientes (mas de 3 niveles). Esto hace el CSS dificil de mantener y aumenta la especificidad innecesariamente.`,
+> **Atención:** Evita encadenar demasiados selectores descendientes (mas de 3 niveles). Esto hace el CSS difícil de mantener y aumenta la especificidad innecesariamente.`,
       codeExample: {
         html: `<header>\n  <nav>\n    <a href="#">Inicio</a>\n    <a href="#">Servicios</a>\n    <a href="#">Contacto</a>\n  </nav>\n  <p>Bienvenido al sitio</p>\n</header>\n<p>Este parrafo esta FUERA del header.</p>`,
         css: `header nav a {\n  color: white;\n  background-color: steelblue;\n  padding: 8px 16px;\n  text-decoration: none;\n  margin-right: 4px;\n  border-radius: 4px;\n}\n\nheader p {\n  color: gray;\n  font-style: italic;\n}`,
@@ -136,7 +136,7 @@ padre > hijo {
 - Para evitar que los estilos **se filtren** a elementos mas profundos
 - Para crear selectores mas **predecibles** y controlados
 
-> **Consejo:** El selector hijo directo es mas especifico y predecible que el descendiente. Usalo cuando solo quieras afectar al primer nivel de hijos.`,
+> **Consejo:** El selector hijo directo es mas específico y predecible que el descendiente. Usalo cuando solo quieras afectar al primer nivel de hijos.`,
       codeExample: {
         html: `<ul class="menu">\n  <li>Inicio</li>\n  <li>Productos\n    <ul>\n      <li>Categoria A</li>\n      <li>Categoria B</li>\n    </ul>\n  </li>\n  <li>Contacto</li>\n</ul>`,
         css: `/* Solo hijos directos del menu */\n.menu > li {\n  font-weight: bold;\n  padding: 8px;\n  background-color: #e8f4fd;\n  border-bottom: 2px solid steelblue;\n}\n\n/* Los sub-items no se ven afectados */\n.menu ul li {\n  font-weight: normal;\n  padding-left: 20px;\n  background-color: #f8f8f8;\n  border-bottom: 1px solid #ddd;\n}`,
@@ -153,7 +153,7 @@ Los selectores de hermanos seleccionan elementos que **comparten el mismo padre*
 
 ### Hermano adyacente (+)
 
-Selecciona el elemento que esta **inmediatamente despues** del primero:
+Selecciona el elemento que esta **inmediatamente después** del primero:
 
 \`\`\`css
 h2 + p {
@@ -171,7 +171,7 @@ h2 + p {
 
 ### Hermano general (~)
 
-Selecciona **todos los hermanos** que vienen despues del primero:
+Selecciona **todos los hermanos** que vienen después del primero:
 
 \`\`\`css
 h2 ~ p {
@@ -187,14 +187,14 @@ h2 ~ p {
 <p>Este TAMBIEN es seleccionado</p>
 \`\`\`
 
-### Comparacion
+### Comparación
 
 | Selector | Significado |
 |----------|-----------|
-| \`A + B\` | El elemento B **inmediatamente despues** de A |
-| \`A ~ B\` | **Todos** los elementos B que vienen despues de A |
+| \`A + B\` | El elemento B **inmediatamente después** de A |
+| \`A ~ B\` | **Todos** los elementos B que vienen después de A |
 
-### Ejemplos practicos
+### Ejemplos prácticos
 
 \`\`\`css
 /* Separacion visual despues de imagenes */
@@ -222,7 +222,7 @@ img + p {
       title: "Combinando selectores avanzados",
       content: `## Combinando selectores avanzados
 
-En la practica, los selectores se combinan para crear reglas muy precisas. Veamos patrones comunes del mundo real.
+En la práctica, los selectores se combinan para crear reglas muy precisas. Veamos patrones comunes del mundo real.
 
 ### Selector compuesto con descendientes
 
@@ -273,14 +273,14 @@ div.card {
 
 ### Patrones del mundo real
 
-| Patron | Uso |
+| Patrón | Uso |
 |--------|-----|
 | \`nav > ul > li > a\` | Enlaces del menu principal |
-| \`.form-group > label + input\` | Input justo despues de su label |
+| \`.form-group > label + input\` | Input justo después de su label |
 | \`table tbody tr\` | Filas del cuerpo de una tabla |
-| \`.card > .card-body p\` | Parrafos en el cuerpo de una tarjeta |
+| \`.card > .card-body p\` | Párrafos en el cuerpo de una tarjeta |
 
-> **Regla de oro:** Un buen selector es lo suficientemente especifico para seleccionar lo que necesitas, pero no mas. Selectores demasiado largos son fragiles y dificiles de mantener.`,
+> **Regla de oro:** Un buen selector es lo suficientemente específico para seleccionar lo que necesitas, pero no mas. Selectores demasiado largos son fragiles y difíciles de mantener.`,
       codeExample: {
         html: `<div id="principal">\n  <section>\n    <h3 class="destacado">Titulo destacado</h3>\n    <p>Primer parrafo con un <a href="#">enlace</a>.</p>\n    <p>Segundo parrafo.</p>\n  </section>\n  <section>\n    <h3>Titulo normal</h3>\n    <p>Otro parrafo.</p>\n  </section>\n</div>`,
         css: `/* Selector con ID, descendiente y tipo+clase */\n#principal section h3.destacado {\n  color: tomato;\n  border-bottom: 2px solid tomato;\n  padding-bottom: 4px;\n}\n\n/* Hermano adyacente del h3 */\nh3 + p {\n  font-weight: bold;\n  color: #333;\n}\n\n/* Enlace dentro de la seccion principal */\n#principal section p a {\n  color: steelblue;\n  font-weight: bold;\n}`,
@@ -297,7 +297,7 @@ div.card {
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que selector CSS aplica estilos a TODOS los parrafos que estan dentro de un <header>, sin importar la profundidad?",
+        "¿Qué selector CSS aplica estilos a TODOS los párrafos que estan dentro de un <header>, sin importar la profundidad?",
       options: [
         { id: "a", text: "header > p", isCorrect: false },
         { id: "b", text: "header p", isCorrect: true },
@@ -326,7 +326,7 @@ div.card {
       validation: { type: "exact", answer: "nav a" },
       hint: "Necesitas un selector descendiente: primero el contenedor, luego un espacio, luego el elemento hijo.",
       explanation:
-        "El selector 'nav a' selecciona todos los enlaces (<a>) que estan dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relacion de descendencia.",
+        "El selector 'nav a' selecciona todos los enlaces (<a>) que estan dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relación de descendencia.",
     },
     {
       id: "06-ej-03",
@@ -387,7 +387,7 @@ div.card {
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa el selector para aplicar estilos solo al primer parrafo que aparece inmediatamente despues de un <h2>:",
+        "Completa el selector para aplicar estilos solo al primer párrafo que aparece inmediatamente después de un <h2>:",
       codeTemplate: {
         html: `<h2>Titulo</h2>\n<p>Primer parrafo</p>\n<p>Segundo parrafo</p>`,
         cssPrefix: "",
@@ -395,9 +395,9 @@ div.card {
         blanks: ["h2 + p"],
       },
       validation: { type: "exact", answer: "h2 + p" },
-      hint: "Necesitas el combinador de hermano adyacente. Es un simbolo matematico que usamos para sumar.",
+      hint: "Necesitas el combinador de hermano adyacente. Es un simbolo matemático que usamos para sumar.",
       explanation:
-        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente despues de un <h2>, no los demas parrafos.",
+        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente después de un <h2>, no los demas párrafos.",
     },
     {
       id: "06-ej-06",
@@ -431,11 +431,11 @@ div.card {
       xpReward: 30,
       order: 7,
       prompt:
-        "¿Cual es la diferencia entre h2 + p y h2 ~ p?",
+        "¿Cuál es la diferencia entre h2 + p y h2 ~ p?",
       options: [
         {
           id: "a",
-          text: "h2 + p selecciona solo el primer p despues de h2; h2 ~ p selecciona todos los p hermanos despues de h2",
+          text: "h2 + p selecciona solo el primer p después de h2; h2 ~ p selecciona todos los p hermanos después de h2",
           isCorrect: true,
         },
         {
@@ -450,14 +450,14 @@ div.card {
         },
         {
           id: "d",
-          text: "h2 + p selecciona el p antes de h2; h2 ~ p selecciona el p despues",
+          text: "h2 + p selecciona el p antes de h2; h2 ~ p selecciona el p después",
           isCorrect: false,
         },
       ],
       validation: { type: "exact", answer: "a" },
       hint: "El + es mas restrictivo (adyacente = inmediatamente al lado), mientras que ~ es mas amplio (general = todos los hermanos siguientes).",
       explanation:
-        "El combinador + (adyacente) selecciona SOLO el elemento que esta inmediatamente despues. El combinador ~ (general) selecciona TODOS los hermanos del mismo tipo que vienen despues, sin importar si hay otros elementos entre medio.",
+        "El combinador + (adyacente) selecciona SOLO el elemento que esta inmediatamente después. El combinador ~ (general) selecciona TODOS los hermanos del mismo tipo que vienen después, sin importar si hay otros elementos entre medio.",
     },
     {
       id: "06-ej-08",
@@ -466,7 +466,7 @@ div.card {
       xpReward: 30,
       order: 8,
       prompt:
-        "Reproduce el diseno: los enlaces directos del nav deben tener color white, background steelblue y padding 8px 16px. El parrafo inmediatamente despues del nav debe tener color gray y font-style italic.",
+        "Reproduce el diseño: los enlaces directos del nav deben tener color white, background steelblue y padding 8px 16px. El párrafo inmediatamente después del nav debe tener color gray y font-style italic.",
       codeTemplate: {
         html: `<nav>\n  <a href="#">Inicio</a>\n  <a href="#">Blog</a>\n  <a href="#">Contacto</a>\n</nav>\n<p>Texto introductorio del sitio.</p>\n<p>Mas informacion general.</p>`,
         cssPrefix: "",
@@ -480,9 +480,9 @@ div.card {
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa nav > a para hijos directos del nav y nav + p para el parrafo inmediatamente despues del nav.",
+      hint: "Usa nav > a para hijos directos del nav y nav + p para el párrafo inmediatamente después del nav.",
       explanation:
-        "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el parrafo que esta inmediatamente despues del nav (hermano adyacente).",
+        "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el párrafo que esta inmediatamente después del nav (hermano adyacente).",
     },
   ],
 };

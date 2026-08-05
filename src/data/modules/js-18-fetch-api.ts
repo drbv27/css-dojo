@@ -17,7 +17,7 @@ export const jsFetchApiModule: ModuleData = {
 
 **fetch()** es la forma moderna de hacer peticiones HTTP desde el navegador.
 
-### Sintaxis basica
+### Sintaxis básica
 \`\`\`javascript
 fetch("https://api.ejemplo.com/datos")
   .then(function(response) { return response.json(); })
@@ -99,15 +99,15 @@ fetch("https://api.ejemplo.com/datos", {
 \`\`\`
 
 ### Opciones de fetch
-| Opcion | Descripcion |
+| Opción | Descripción |
 |--------|-------------|
 | \`method\` | GET, POST, PUT, DELETE, PATCH |
-| \`headers\` | Headers de la peticion |
+| \`headers\` | Headers de la petición |
 | \`body\` | Datos a enviar (string o FormData) |
 | \`mode\` | cors, no-cors, same-origin |
 | \`credentials\` | include, same-origin, omit |
 
-### Otros metodos HTTP
+### Otros métodos HTTP
 \`\`\`javascript
 // PUT - actualizar
 fetch(url, { method: "PUT", body: JSON.stringify(datos) })
@@ -119,7 +119,7 @@ fetch(url, { method: "DELETE" })
 fetch(url, { method: "PATCH", body: JSON.stringify(cambios) })
 \`\`\`
 
-> **Content-Type** debe ser "application/json" cuando envias JSON. Si usas FormData, no lo pongas (el navegador lo configura automaticamente).`,
+> **Content-Type** debe ser "application/json" cuando envias JSON. Si usas FormData, no lo pongas (el navegador lo configura automáticamente).`,
       codeExample: {
         html: '<input id="titulo" placeholder="Titulo del post" />\n<textarea id="cuerpo" placeholder="Contenido..." rows="2"></textarea>\n<button id="enviar">Enviar POST</button>\n<div id="resultado"></div>',
         css: 'input, textarea { display: block; width: 100%; margin: 4px 0; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; box-sizing: border-box; } #enviar { padding: 8px 16px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; margin-top: 4px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; font-size: 13px; }',
@@ -157,7 +157,7 @@ document.getElementById("enviar").addEventListener("click", function() {
       title: "Manejo avanzado de errores",
       content: `## Manejo robusto de errores
 
-### Patron recomendado
+### Patrón recomendado
 
 \`\`\`javascript
 async function fetchConManejo(url) {
@@ -240,7 +240,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que metodo se usa para hacer peticiones HTTP en JavaScript moderno?",
+      prompt: "¿Qué método se usa para hacer peticiones HTTP en JavaScript moderno?",
       options: [
         { id: "a", text: "XMLHttpRequest", isCorrect: false },
         { id: "b", text: "fetch()", isCorrect: true },
@@ -257,7 +257,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo convierte la respuesta de fetch a un objeto JavaScript?",
+      prompt: "¿Qué método convierte la respuesta de fetch a un objeto JavaScript?",
       options: [
         { id: "a", text: "response.parse()", isCorrect: false },
         { id: "b", text: "response.json()", isCorrect: true },
@@ -265,7 +265,7 @@ document.getElementById("error").addEventListener("click", function() {
         { id: "d", text: "JSON.parse(response)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es un metodo del objeto Response.",
+      hint: "Es un método del objeto Response.",
       explanation: "response.json() parsea el cuerpo de la respuesta como JSON y devuelve una Promise con el objeto resultante.",
     },
     {
@@ -300,7 +300,7 @@ document.getElementById("error").addEventListener("click", function() {
       },
       validation: { type: "exact", answer: "json" },
       hint: "El tipo de contenido para JSON.",
-      explanation: '"application/json" indica al servidor que el cuerpo de la peticion contiene datos en formato JSON.',
+      explanation: '"application/json" indica al servidor que el cuerpo de la petición contiene datos en formato JSON.',
     },
     {
       id: "js18-ej-05",
@@ -308,7 +308,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que propiedad de response indica si la peticion fue exitosa (status 200-299)?",
+      prompt: "¿Qué propiedad de response indica si la petición fue exitosa (status 200-299)?",
       options: [
         { id: "a", text: "response.success", isCorrect: false },
         { id: "b", text: "response.ok", isCorrect: true },
@@ -325,7 +325,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que metodo HTTP se usa para enviar nuevos datos al servidor?",
+      prompt: "¿Qué método HTTP se usa para enviar nuevos datos al servidor?",
       options: [
         { id: "a", text: "GET", isCorrect: false },
         { id: "b", text: "POST", isCorrect: true },

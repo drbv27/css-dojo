@@ -4,7 +4,7 @@ export const bootstrapModule: ModuleData = {
   slug: "bootstrap-5",
   title: "Bootstrap 5",
   description:
-    "Aprende el framework CSS mas popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseno responsivo con Bootstrap 5.",
+    "Aprende el framework CSS mas popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseño responsivo con Bootstrap 5.",
   order: 23,
   dojo: "css" as const,
   category: "frameworks",
@@ -12,21 +12,21 @@ export const bootstrapModule: ModuleData = {
   lessons: [
     {
       id: "23-leccion-01",
-      title: "Introduccion a Bootstrap",
-      content: `## Introduccion a Bootstrap
+      title: "Introducción a Bootstrap",
+      content: `## Introducción a Bootstrap
 
-### ¿Que es Bootstrap?
+### ¿Qué es Bootstrap?
 
 **Bootstrap** es el framework CSS mas popular del mundo. Creado por Twitter en 2011, proporciona:
 
 - **Sistema de grid** de 12 columnas responsive
 - **Componentes** predefinidos (botones, cards, modales, etc.)
-- **Clases utilitarias** para espaciado, colores, tipografia
-- **Diseno mobile-first** incorporado
+- **Clases utilitarias** para espaciado, colores, tipografía
+- **Diseño mobile-first** incorporado
 
 ### Como incluir Bootstrap
 
-La forma mas rapida es usar el CDN:
+La forma mas rápida es usar el CDN:
 
 \`\`\`html
 <!-- En el <head> de tu HTML -->
@@ -42,9 +42,9 @@ O instalarlo con npm:
 npm install bootstrap
 \`\`\`
 
-### Filosofia Mobile-First
+### Filosofía Mobile-First
 
-Bootstrap esta disenado **primero para moviles**. Los estilos base son para pantallas pequenas y se van agregando para pantallas mas grandes:
+Bootstrap esta diseñado **primero para móviles**. Los estilos base son para pantallas pequeñas y se van agregando para pantallas mas grandes:
 
 \`\`\`html
 <!-- Esta columna es:
@@ -59,7 +59,7 @@ Bootstrap esta disenado **primero para moviles**. Los estilos base son para pant
 
 ### Breakpoints de Bootstrap 5
 
-| Breakpoint | Clase | Ancho minimo |
+| Breakpoint | Clase | Ancho mínimo |
 |-----------|-------|-------------|
 | Extra small | (sin sufijo) | < 576px |
 | Small | \`sm\` | >= 576px |
@@ -93,7 +93,7 @@ Bootstrap esta disenado **primero para moviles**. Los estilos base son para pant
 </html>
 \`\`\`
 
-> **Nota:** El meta tag \`viewport\` es **obligatorio** para que Bootstrap funcione correctamente en dispositivos moviles.`,
+> **Nota:** El meta tag \`viewport\` es **obligatorio** para que Bootstrap funcione correctamente en dispositivos móviles.`,
       codeExample: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<div class="container py-4">\n  <h2 class="text-center mb-4">Bootstrap 5 Demo</h2>\n  <div class="row g-3">\n    <div class="col-md-4">\n      <div class="p-3 bg-primary text-white rounded">Columna 1</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-success text-white rounded">Columna 2</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-danger text-white rounded">Columna 3</div>\n    </div>\n  </div>\n</div>`,
         css: ``,
@@ -108,7 +108,7 @@ Bootstrap esta disenado **primero para moviles**. Los estilos base son para pant
 
 El sistema de grid es la base de Bootstrap. Usa un sistema de **12 columnas** flexible y responsive.
 
-### Estructura basica: container > row > col
+### Estructura básica: container > row > col
 
 \`\`\`html
 <div class="container">      <!-- Contenedor centrado -->
@@ -138,7 +138,7 @@ El sistema de grid es la base de Bootstrap. Usa un sistema de **12 columnas** fl
 </div>
 \`\`\`
 
-### Columnas automaticas
+### Columnas automáticas
 
 \`\`\`html
 <!-- Columnas de igual ancho (automatico) -->
@@ -204,7 +204,7 @@ Define cuantas columnas por fila sin especificar en cada col:
 </div>
 \`\`\`
 
-> **Regla de oro:** Las columnas siempre deben sumar 12 (o menos) dentro de una fila. Si suman mas de 12, las columnas extra bajan a la siguiente linea.`,
+> **Regla de oro:** Las columnas siempre deben sumar 12 (o menos) dentro de una fila. Si suman mas de 12, las columnas extra bajan a la siguiente línea.`,
       codeExample: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<div class="container py-3">\n  <div class="row g-3 mb-3">\n    <div class="col-md-8">\n      <div class="p-3 bg-primary bg-opacity-75 text-white rounded">col-md-8</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-primary bg-opacity-50 text-white rounded">col-md-4</div>\n    </div>\n  </div>\n  <div class="row g-3 mb-3">\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-75 text-white rounded">col-md-4</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-50 text-white rounded">col-md-4</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-25 rounded">col-md-4</div>\n    </div>\n  </div>\n  <div class="row g-3">\n    <div class="col-md-6 offset-md-3">\n      <div class="p-3 bg-warning bg-opacity-75 rounded text-center">col-md-6 offset-md-3 (centrada)</div>\n    </div>\n  </div>\n</div>`,
         css: ``,
@@ -214,8 +214,8 @@ Define cuantas columnas por fila sin especificar en cada col:
     },
     {
       id: "23-leccion-03",
-      title: "Componentes Basicos",
-      content: `## Componentes Basicos de Bootstrap
+      title: "Componentes Básicos",
+      content: `## Componentes Básicos de Bootstrap
 
 Bootstrap incluye decenas de componentes listos para usar. Veamos los mas importantes.
 
@@ -290,7 +290,7 @@ Bootstrap incluye decenas de componentes listos para usar. Veamos los mas import
 </button>
 \`\`\`
 
-### Navbar (barra de navegacion)
+### Navbar (barra de navegación)
 
 \`\`\`html
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -462,7 +462,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cuantas columnas tiene el sistema de grid de Bootstrap?",
+        "¿Cuántas columnas tiene el sistema de grid de Bootstrap?",
       options: [
         { id: "a", text: "6 columnas", isCorrect: false },
         { id: "b", text: "10 columnas", isCorrect: false },
@@ -470,7 +470,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
         { id: "d", text: "16 columnas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es un numero divisible por 2, 3, 4 y 6, lo que permite muchas combinaciones de layout.",
+      hint: "Es un número divisible por 2, 3, 4 y 6, lo que permite muchas combinaciones de layout.",
       explanation:
         "El grid de Bootstrap usa 12 columnas. Esto permite dividir en 2 (6+6), 3 (4+4+4), 4 (3+3+3+3), 6 (2+2+2+2+2+2) y muchas otras combinaciones.",
     },
@@ -481,7 +481,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 2,
       prompt:
-        "¿Cual es la estructura correcta del grid de Bootstrap?",
+        "¿Cuál es la estructura correcta del grid de Bootstrap?",
       options: [
         { id: "a", text: "row > container > col", isCorrect: false },
         { id: "b", text: "container > row > col", isCorrect: true },
@@ -491,7 +491,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       validation: { type: "exact", answer: "b" },
       hint: "Primero el contenedor, luego la fila, luego las columnas.",
       explanation:
-        "La estructura correcta es container > row > col. El container centra el contenido y establece el ancho maximo. El row crea una fila flexbox. Las col definen cuantas columnas ocupa cada elemento.",
+        "La estructura correcta es container > row > col. El container centra el contenido y establece el ancho máximo. El row crea una fila flexbox. Las col definen cuantas columnas ocupa cada elemento.",
     },
     {
       id: "23-ej-03",
@@ -500,7 +500,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la clase de Bootstrap para crear un boton de color primario (azul):",
+        "Completa la clase de Bootstrap para crear un botón de color primario (azul):",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<button class="btn ___">Aceptar</button>`,
         cssPrefix: "",
@@ -519,7 +519,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada clase utilitaria de Bootstrap a su funcion:",
+        "Arrastra cada clase utilitaria de Bootstrap a su función:",
       dragItems: [
         { id: "drag-1", content: "mt-3", correctZone: "zone-margin" },
         { id: "drag-2", content: "d-flex", correctZone: "zone-display" },
@@ -541,7 +541,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
           "drag-4": "zone-bg",
         },
       },
-      hint: "mt = margin-top, d = display, text = alineacion de texto, bg = background.",
+      hint: "mt = margin-top, d = display, text = alineación de texto, bg = background.",
       explanation:
         "mt-3 aplica margin-top de 1rem. d-flex establece display: flex. text-center centra el texto. bg-primary aplica el color de fondo primario (azul) de Bootstrap.",
     },
@@ -586,7 +586,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la clase de Bootstrap para crear una columna que ocupe 12 columnas en movil y 6 en pantallas medianas:",
+        "Completa la clase de Bootstrap para crear una columna que ocupe 12 columnas en móvil y 6 en pantallas medianas:",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<div class="container"><div class="row"><div class="col-12 ___">Contenido responsive</div></div></div>`,
         cssPrefix: "",
@@ -594,9 +594,9 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
         blanks: ["col-md-6"],
       },
       validation: { type: "exact", answer: "col-md-6" },
-      hint: "Necesitas especificar el breakpoint 'md' y el numero de columnas '6'.",
+      hint: "Necesitas especificar el breakpoint 'md' y el número de columnas '6'.",
       explanation:
-        "col-md-6 hace que la columna ocupe 6 de 12 columnas (50%) en pantallas medianas (>= 768px). Combinado con col-12, es 100% en movil y 50% en desktop.",
+        "col-md-6 hace que la columna ocupe 6 de 12 columnas (50%) en pantallas medianas (>= 768px). Combinado con col-12, es 100% en móvil y 50% en desktop.",
     },
     {
       id: "23-ej-07",
@@ -605,7 +605,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un boton 'btn btn-primary' con texto 'Ver mas'. Agrega la clase 'shadow' a la card para sombra.",
+        "Crea una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un botón 'btn btn-primary' con texto 'Ver mas'. Agrega la clase 'shadow' a la card para sombra.",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">`,
         cssPrefix: "",
@@ -640,7 +640,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Como ocultas un elemento en movil pero lo muestras en pantallas medianas (md) y superiores con Bootstrap?",
+        "¿Cómo ocultas un elemento en móvil pero lo muestras en pantallas medianas (md) y superiores con Bootstrap?",
       options: [
         { id: "a", text: "class='hidden-mobile visible-md'", isCorrect: false },
         { id: "b", text: "class='d-none d-md-block'", isCorrect: true },
@@ -650,7 +650,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       validation: { type: "exact", answer: "b" },
       hint: "Usa las clases de display (d-) con el enfoque mobile-first: primero oculta (d-none), luego muestra en md.",
       explanation:
-        "d-none oculta el elemento en todas las pantallas. d-md-block lo muestra como block a partir del breakpoint md (768px). Este patron mobile-first es fundamental en Bootstrap 5.",
+        "d-none oculta el elemento en todas las pantallas. d-md-block lo muestra como block a partir del breakpoint md (768px). Este patrón mobile-first es fundamental en Bootstrap 5.",
     },
   ],
 };

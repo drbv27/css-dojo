@@ -16,7 +16,7 @@ export const nextjsServerComponentsModule: ModuleData = {
 
 En App Router, **todos los componentes son Server Components** por defecto.
 
-### ¿Que pueden hacer los Server Components?
+### ¿Qué pueden hacer los Server Components?
 
 \`\`\`tsx
 // Esto se ejecuta en el SERVIDOR, no en el navegador
@@ -39,7 +39,7 @@ export default async function Usuarios() {
 }
 \`\`\`
 
-### ¿Que NO pueden hacer?
+### ¿Qué NO pueden hacer?
 
 - No pueden usar \`useState\`, \`useEffect\`, ni ningun hook de React
 - No pueden usar event handlers (\`onClick\`, \`onChange\`)
@@ -70,10 +70,10 @@ export default function Counter() {
     },
     {
       id: "njs03-leccion-02",
-      title: "Patrones de composicion",
+      title: "Patrones de composición",
       content: `## Combinar Server y Client Components
 
-El patron mas importante: **Server Component como padre, Client Component como hijo**.
+El patrón mas importante: **Server Component como padre, Client Component como hijo**.
 
 \`\`\`tsx
 // app/dashboard/page.tsx — Server Component
@@ -111,7 +111,7 @@ const data = await fetchExpensiveData(); // se ejecuta en el servidor
 return <ClientChart data={data} />; // data se serializa y se envia al cliente
 \`\`\`
 
-### ¿Cuando usar cada uno?
+### ¿Cuándo usar cada uno?
 
 | Necesitas... | Server Component | Client Component |
 |-------------|-----------------|-----------------|
@@ -154,7 +154,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: '¿Que directiva convierte un componente en Client Component?',
+      prompt: '¿Qué directiva convierte un componente en Client Component?',
       options: [
         { id: "a", text: '"use server"', isCorrect: false },
         { id: "b", text: '"use client"', isCorrect: true },
@@ -195,7 +195,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es el patron recomendado para combinar Server y Client Components?",
+      prompt: "¿Cuál es el patrón recomendado para combinar Server y Client Components?",
       options: [
         { id: "a", text: "Todo Client Component con useEffect para fetch", isCorrect: false },
         { id: "b", text: "Server Component como padre que pasa datos a Client Components hijos", isCorrect: true },
@@ -204,7 +204,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       ],
       validation: { type: "exact", answer: "b" },
       hint: "El padre obtiene los datos, el hijo maneja la interactividad.",
-      explanation: "El patron ideal: Server Component obtiene datos y los pasa como props a Client Components interactivos.",
+      explanation: "El patrón ideal: Server Component obtiene datos y los pasa como props a Client Components interactivos.",
     },
   ],
 };

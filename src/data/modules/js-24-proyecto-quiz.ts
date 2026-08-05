@@ -4,7 +4,7 @@ export const jsProyectoQuizModule: ModuleData = {
   slug: "js-proyecto-quiz",
   title: "Proyecto: Quiz Interactivo",
   description:
-    "Construye un quiz interactivo con preguntas, puntuacion, temporizador y pantalla de resultados.",
+    "Construye un quiz interactivo con preguntas, puntuación, temporizador y pantalla de resultados.",
   order: 124,
   category: "js-projects",
   icon: "HelpCircle",
@@ -21,7 +21,7 @@ Vamos a construir un quiz interactivo con las siguientes funcionalidades:
 1. Mostrar preguntas una por una
 2. Seleccionar respuesta
 3. Mostrar si es correcta o incorrecta
-4. Llevar puntuacion
+4. Llevar puntuación
 5. Mostrar resultados al final
 
 ### Modelo de datos
@@ -48,13 +48,13 @@ let estado = {
 
 ### Flujo
 1. Mostrar pregunta y opciones
-2. Usuario selecciona una opcion
+2. Usuario selecciona una opción
 3. Verificar si es correcta
 4. Mostrar feedback visual
 5. Pasar a la siguiente pregunta
 6. Al terminar, mostrar resultados
 
-> **Patron:** Maquina de estados. El quiz tiene estados claros: preguntando, respondida, finalizado.`,
+> **Patrón:** Maquina de estados. El quiz tiene estados claros: preguntando, respondida, finalizado.`,
       codeExample: {
         html: '<div id="quiz">\n  <div id="progreso"></div>\n  <h3 id="pregunta"></h3>\n  <div id="opciones"></div>\n  <button id="siguiente" style="display:none;">Siguiente</button>\n  <div id="resultado-quiz" style="display:none;"></div>\n</div>',
         css: '#quiz { max-width: 450px; } #progreso { font-size: 12px; color: #a6adc8; margin-bottom: 8px; } #pregunta { color: #cdd6f4; margin-bottom: 12px; } #opciones { display: flex; flex-direction: column; gap: 6px; } .opcion { padding: 10px 14px; background: #313244; color: #cdd6f4; border: 2px solid #45475a; border-radius: 6px; cursor: pointer; text-align: left; font-size: 14px; } .opcion:hover { border-color: #89b4fa; } .opcion.correcta { border-color: #a6e3a1; background: #1a3a1a; color: #a6e3a1; } .opcion.incorrecta { border-color: #f38ba8; background: #3a1a1a; color: #f38ba8; } .opcion.disabled { pointer-events: none; } #siguiente { margin-top: 12px; padding: 8px 16px; background: #89b4fa; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado-quiz { text-align: center; padding: 20px; background: #313244; border-radius: 8px; color: #cdd6f4; }',
@@ -124,7 +124,7 @@ mostrarPregunta();`,
       title: "Temporizador y feedback",
       content: `## Agregar temporizador
 
-Un temporizador anade urgencia y hace el quiz mas divertido:
+Un temporizador añade urgencia y hace el quiz mas divertido:
 
 \`\`\`javascript
 let tiempoRestante = 30;
@@ -152,7 +152,7 @@ function detenerTimer() {
 Elementos que mejoran la experiencia:
 - **Barra de progreso** que muestra el avance
 - **Colores** verde/rojo para correcto/incorrecto
-- **Animacion** al cambiar de pregunta
+- **Animación** al cambiar de pregunta
 - **Sonido** (opcional) al acertar
 
 ### Mezclar preguntas
@@ -247,10 +247,10 @@ iniciar();`,
     },
     {
       id: "js24-leccion-03",
-      title: "Categorias y almacenamiento",
+      title: "Categorías y almacenamiento",
       content: `## Mejoras avanzadas
 
-### Categorias de preguntas
+### Categorías de preguntas
 
 Organiza las preguntas por temas y deja que el usuario elija:
 
@@ -284,9 +284,9 @@ function guardarPuntuacion(nombre, puntos, total) {
 - **Temporizadores** con setInterval
 - **localStorage** para persistencia
 - **Condicionales** para verificar respuestas
-- **Funciones** para organizar la logica
+- **Funciones** para organizar la lógica
 
-> Este proyecto integra casi todos los conceptos del curso en una aplicacion divertida e interactiva.`,
+> Este proyecto integra casi todos los conceptos del curso en una aplicación divertida e interactiva.`,
       codeExample: {
         html: '<div id="quiz3">\n  <h3>Resultados de Quiz</h3>\n  <table id="tabla-scores"></table>\n  <button id="nuevo-score">Simular nuevo puntaje</button>\n  <button id="limpiar-scores">Limpiar</button>\n</div>',
         css: '#quiz3 { max-width: 400px; } table { width: 100%; border-collapse: collapse; margin: 8px 0; } th, td { padding: 6px 8px; text-align: left; border-bottom: 1px solid #313244; color: #cdd6f4; font-size: 13px; } th { color: #89b4fa; font-size: 12px; } tr:hover td { background: #313244; } button { margin: 4px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 12px; } #nuevo-score { background: #a6e3a1; color: #1e1e2e; } #limpiar-scores { background: #f38ba8; color: #1e1e2e; }',
@@ -346,7 +346,7 @@ renderScores();`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que funcion de JavaScript se usa para ejecutar codigo repetidamente cada cierto intervalo?",
+      prompt: "¿Qué función de JavaScript se usa para ejecutar código repetidamente cada cierto intervalo?",
       options: [
         { id: "a", text: "setTimeout()", isCorrect: false },
         { id: "b", text: "setInterval()", isCorrect: true },
@@ -355,7 +355,7 @@ renderScores();`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Interval = intervalo (repetido).",
-      explanation: "setInterval() ejecuta una funcion repetidamente cada X milisegundos hasta que se llame clearInterval().",
+      explanation: "setInterval() ejecuta una función repetidamente cada X milisegundos hasta que se llame clearInterval().",
     },
     {
       id: "js24-ej-02",
@@ -363,7 +363,7 @@ renderScores();`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Como detienes un temporizador creado con setInterval?",
+      prompt: "¿Cómo detienes un temporizador creado con setInterval?",
       options: [
         { id: "a", text: "stopInterval()", isCorrect: false },
         { id: "b", text: "clearInterval(id)", isCorrect: true },
@@ -380,7 +380,7 @@ renderScores();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que algoritmo se usa para mezclar un array de forma aleatoria?",
+      prompt: "¿Qué algoritmo se usa para mezclar un array de forma aleatoria?",
       options: [
         { id: "a", text: "Bubble sort", isCorrect: false },
         { id: "b", text: "Fisher-Yates shuffle", isCorrect: true },
@@ -388,8 +388,8 @@ renderScores();`,
         { id: "d", text: "Binary search", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es el algoritmo estandar para mezclar arrays.",
-      explanation: "Fisher-Yates (o Knuth shuffle) es el algoritmo estandar para mezclar arrays de forma uniforme y eficiente.",
+      hint: "Es el algoritmo estándar para mezclar arrays.",
+      explanation: "Fisher-Yates (o Knuth shuffle) es el algoritmo estándar para mezclar arrays de forma uniforme y eficiente.",
     },
     {
       id: "js24-ej-04",
@@ -397,7 +397,7 @@ renderScores();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "En el patron de 'maquina de estados', ¿por que es util definir estados claros para el quiz?",
+      prompt: "En el patrón de 'maquina de estados', ¿por que es útil definir estados claros para el quiz?",
       options: [
         { id: "a", text: "Para hacerlo mas lento", isCorrect: false },
         { id: "b", text: "Para controlar que acciones son validas en cada momento", isCorrect: true },
@@ -431,7 +431,7 @@ renderScores();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que metodo de array ordena los puntajes de mayor a menor?",
+      prompt: "¿Qué método de array ordena los puntajes de mayor a menor?",
       options: [
         { id: "a", text: "sort((a,b) => a - b)", isCorrect: false },
         { id: "b", text: "sort((a,b) => b - a)", isCorrect: true },

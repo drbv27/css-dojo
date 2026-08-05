@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const jsDomManipulacionModule: ModuleData = {
   slug: "js-dom-manipulacion",
-  title: "DOM: Manipulacion",
+  title: "DOM: Manipulación",
   description:
     "Aprende a crear, modificar y eliminar elementos del DOM: textContent, innerHTML, atributos y mas.",
   order: 112,
@@ -36,7 +36,7 @@ elemento.innerText = "Texto visible";
 ### Diferencias
 | Propiedad | HTML | Rendimiento |
 |-----------|------|-------------|
-| textContent | No interpreta | Rapido |
+| textContent | No interpreta | Rápido |
 | innerHTML | Si interpreta | Mas lento |
 | innerText | No interpreta | Mas lento (recalcula estilos) |
 
@@ -98,7 +98,7 @@ viejo.replaceWith(nuevo);
 const clon = elemento.cloneNode(true); // true = copia profunda
 \`\`\`
 
-> **Performance:** Si necesitas agregar muchos elementos, usa \`DocumentFragment\` para evitar multiples re-renders.`,
+> **Performance:** Si necesitas agregar muchos elementos, usa \`DocumentFragment\` para evitar múltiples re-renders.`,
       codeExample: {
         html: '<ul id="lista"></ul>\n<div id="resultado"></div>',
         css: '#lista { list-style: none; padding: 0; } #lista li { padding: 4px 8px; margin: 2px 0; background: #313244; color: #cdd6f4; border-radius: 4px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -194,7 +194,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que propiedad se usa para cambiar el texto de un elemento de forma segura?",
+      prompt: "¿Qué propiedad se usa para cambiar el texto de un elemento de forma segura?",
       options: [
         { id: "a", text: "innerHTML", isCorrect: false },
         { id: "b", text: "textContent", isCorrect: true },
@@ -211,7 +211,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo crea un nuevo elemento HTML?",
+      prompt: "¿Qué método crea un nuevo elemento HTML?",
       options: [
         { id: "a", text: 'document.createElement("div")', isCorrect: true },
         { id: "b", text: 'document.newElement("div")', isCorrect: false },
@@ -219,7 +219,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: 'new Element("div")', isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "El metodo tiene 'create' y 'Element' en su nombre.",
+      hint: "El método tiene 'create' y 'Element' en su nombre.",
       explanation: "document.createElement() crea un nuevo elemento HTML del tipo especificado.",
     },
     {
@@ -245,7 +245,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que metodo de classList agrega una clase si no existe y la quita si ya existe?",
+      prompt: "¿Qué método de classList agrega una clase si no existe y la quita si ya existe?",
       options: [
         { id: "a", text: "classList.add()", isCorrect: false },
         { id: "b", text: "classList.switch()", isCorrect: false },
@@ -262,7 +262,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Como accedes a un atributo data-user-id desde JavaScript?",
+      prompt: "¿Cómo accedes a un atributo data-user-id desde JavaScript?",
       options: [
         { id: "a", text: 'elemento.data["user-id"]', isCorrect: false },
         { id: "b", text: "elemento.dataset.userId", isCorrect: true },
@@ -279,7 +279,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es el metodo mas simple para eliminar un elemento del DOM?",
+      prompt: "¿Cuál es el método mas simple para eliminar un elemento del DOM?",
       options: [
         { id: "a", text: "elemento.delete()", isCorrect: false },
         { id: "b", text: "elemento.destroy()", isCorrect: false },

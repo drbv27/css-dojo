@@ -12,12 +12,12 @@ export const jsLocalStorageModule: ModuleData = {
   lessons: [
     {
       id: "js15-leccion-01",
-      title: "Introduccion a localStorage",
+      title: "Introducción a localStorage",
       content: `## LocalStorage
 
 **localStorage** permite almacenar datos en el navegador que **persisten** incluso al cerrar la ventana.
 
-### Metodos principales
+### Métodos principales
 
 \`\`\`javascript
 // Guardar
@@ -37,8 +37,8 @@ localStorage.clear();
 - Almacena solo **strings**
 - Capacidad de ~5MB por dominio
 - Los datos **no expiran** (a diferencia de las cookies)
-- Es **sincrono** (bloquea el hilo principal)
-- Especifico por **origen** (dominio + protocolo + puerto)
+- Es **síncrono** (bloquea el hilo principal)
+- Específico por **origen** (dominio + protocolo + puerto)
 
 ### sessionStorage
 
@@ -48,7 +48,7 @@ Similar a localStorage pero los datos se borran al cerrar la pestana:
 sessionStorage.setItem("temp", "valor");
 \`\`\`
 
-> **Seguridad:** Nunca guardes informacion sensible (contrasenas, tokens) en localStorage.`,
+> **Seguridad:** Nunca guardes información sensible (contrasenas, tokens) en localStorage.`,
       codeExample: {
         html: '<input id="input" placeholder="Escribe tu nombre" />\n<button id="guardar">Guardar</button>\n<button id="borrar">Borrar</button>\n<div id="resultado"></div>',
         css: '#input { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } button { margin: 4px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; } #guardar { background: #a6e3a1; color: #1e1e2e; } #borrar { background: #f38ba8; color: #1e1e2e; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -98,7 +98,7 @@ const datos = JSON.parse(localStorage.getItem("usuario"));
 // { nombre: "Ana", edad: 25 }
 \`\`\`
 
-### Patron seguro de lectura
+### Patrón seguro de lectura
 \`\`\`javascript
 function leerDatos(clave, valorPorDefecto) {
   try {
@@ -156,8 +156,8 @@ document.getElementById("limpiar").addEventListener("click", function() {
     },
     {
       id: "js15-leccion-03",
-      title: "Patrones practicos",
-      content: `## Patrones practicos con localStorage
+      title: "Patrones prácticos",
+      content: `## Patrones prácticos con localStorage
 
 ### Tema oscuro/claro persistente
 \`\`\`javascript
@@ -183,7 +183,7 @@ function agregarAlCarrito(producto) {
 }
 \`\`\`
 
-### Formulario con borrador automatico
+### Formulario con borrador automático
 \`\`\`javascript
 input.addEventListener("input", function() {
   localStorage.setItem("borrador", input.value);
@@ -225,7 +225,7 @@ nota.addEventListener("input", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que metodo se usa para guardar un dato en localStorage?",
+      prompt: "¿Qué método se usa para guardar un dato en localStorage?",
       options: [
         { id: "a", text: "localStorage.save()", isCorrect: false },
         { id: "b", text: "localStorage.setItem()", isCorrect: true },
@@ -242,11 +242,11 @@ nota.addEventListener("input", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que tipo de datos acepta localStorage?",
+      prompt: "¿Qué tipo de datos acepta localStorage?",
       options: [
         { id: "a", text: "Cualquier tipo", isCorrect: false },
         { id: "b", text: "Solo strings", isCorrect: true },
-        { id: "c", text: "Strings y numeros", isCorrect: false },
+        { id: "c", text: "Strings y números", isCorrect: false },
         { id: "d", text: "Objetos JSON", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -276,7 +276,7 @@ nota.addEventListener("input", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que diferencia hay entre localStorage y sessionStorage?",
+      prompt: "¿Qué diferencia hay entre localStorage y sessionStorage?",
       options: [
         { id: "a", text: "localStorage es mas grande", isCorrect: false },
         { id: "b", text: "sessionStorage persiste al cerrar la pestana, localStorage no", isCorrect: false },
@@ -284,7 +284,7 @@ nota.addEventListener("input", function() {
         { id: "d", text: "No hay diferencia", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Session = sesion (temporal), local = permanente.",
+      hint: "Sessión = sesión (temporal), local = permanente.",
       explanation: "localStorage persiste indefinidamente. sessionStorage se borra al cerrar la pestana del navegador.",
     },
     {
@@ -293,7 +293,7 @@ nota.addEventListener("input", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que metodo convierte un string JSON de vuelta a un objeto?",
+      prompt: "¿Qué método convierte un string JSON de vuelta a un objeto?",
       options: [
         { id: "a", text: "JSON.parse()", isCorrect: true },
         { id: "b", text: "JSON.toObject()", isCorrect: false },
@@ -314,7 +314,7 @@ nota.addEventListener("input", function() {
       options: [
         { id: "a", text: "Porque localStorage puede estar lleno", isCorrect: false },
         { id: "b", text: "Porque JSON.parse puede fallar con datos corruptos", isCorrect: true },
-        { id: "c", text: "Porque localStorage es asincrono", isCorrect: false },
+        { id: "c", text: "Porque localStorage es asíncrono", isCorrect: false },
         { id: "d", text: "No es necesario usar try/catch", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

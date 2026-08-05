@@ -16,7 +16,7 @@ export const reactEcoZustandModule: ModuleData = {
 
 Zustand es una alternativa ligera a Redux y Context para manejar estado global.
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npm install zustand
@@ -81,7 +81,7 @@ const increment = useCounter((state) => state.increment);
       title: "Persistencia y patrones",
       content: `## Persist Middleware
 
-Guarda el estado en localStorage automaticamente:
+Guarda el estado en localStorage automáticamente:
 
 \`\`\`typescript
 import { create } from "zustand";
@@ -131,13 +131,13 @@ const useUsers = create<UsersStore>((set) => ({
 
 | Caracteristica | Context | Zustand |
 |---------------|---------|---------|
-| Boilerplate | Mucho (Provider, reducer) | Minimo |
-| Re-renders | Todo el arbol bajo Provider | Solo componentes suscritos |
+| Boilerplate | Mucho (Provider, reducer) | Mínimo |
+| Re-renders | Todo el árbol bajo Provider | Solo componentes suscritos |
 | Async | Manual | Directo en acciones |
 | DevTools | No built-in | Si (middleware) |
 | Persistencia | Manual | persist() middleware |
 
-> Zustand brilla por su simplicidad: menos codigo, menos re-renders, menos configuracion.`,
+> Zustand brilla por su simplicidad: menos código, menos re-renders, menos configuración.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -153,7 +153,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que funcion se usa para crear un store en Zustand?",
+      prompt: "¿Qué función se usa para crear un store en Zustand?",
       options: [
         { id: "a", text: "createStore()", isCorrect: false },
         { id: "b", text: "create()", isCorrect: true },
@@ -162,7 +162,7 @@ const useUsers = create<UsersStore>((set) => ({
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se importa de 'zustand'.",
-      explanation: "La funcion create() de Zustand crea un hook personalizado que es tu store.",
+      explanation: "La función create() de Zustand crea un hook personalizado que es tu store.",
     },
     {
       id: "reco02-ej-02",
@@ -170,12 +170,12 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Cual es la ventaja principal de usar selectores en Zustand?",
+      prompt: "¿Cuál es la ventaja principal de usar selectores en Zustand?",
       options: [
-        { id: "a", text: "Hace el codigo mas corto", isCorrect: false },
+        { id: "a", text: "Hace el código mas corto", isCorrect: false },
         { id: "b", text: "Solo re-renderiza el componente cuando cambia el dato seleccionado", isCorrect: true },
         { id: "c", text: "Permite usar TypeScript", isCorrect: false },
-        { id: "d", text: "Agrega validacion automatica", isCorrect: false },
+        { id: "d", text: "Agrega validación automática", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Tiene que ver con el rendimiento y re-renders.",
@@ -187,7 +187,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que middleware de Zustand guarda el estado en localStorage?",
+      prompt: "¿Qué middleware de Zustand guarda el estado en localStorage?",
       options: [
         { id: "a", text: "devtools", isCorrect: false },
         { id: "b", text: "immer", isCorrect: false },
@@ -196,7 +196,7 @@ const useUsers = create<UsersStore>((set) => ({
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Persistir = guardar para que sobreviva al recargar.",
-      explanation: "El middleware persist() guarda y restaura el estado automaticamente desde localStorage.",
+      explanation: "El middleware persist() guarda y restaura el estado automáticamente desde localStorage.",
     },
     {
       id: "reco02-ej-04",
@@ -204,7 +204,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada caracteristica con la solucion correcta:",
+      prompt: "Asocia cada caracteristica con la solución correcta:",
       dragItems: [
         { id: "drag-1", content: "Necesita Provider", correctZone: "zone-context" },
         { id: "drag-2", content: "Selectores para evitar re-renders", correctZone: "zone-zustand" },

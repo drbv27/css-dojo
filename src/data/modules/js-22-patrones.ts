@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const jsPatronesModule: ModuleData = {
   slug: "js-patrones",
-  title: "Patrones de Diseno",
+  title: "Patrones de Diseño",
   description:
-    "Conoce los patrones de diseno mas comunes en JavaScript: Module, Observer, Factory y Singleton.",
+    "Conoce los patrones de diseño mas comunes en JavaScript: Module, Observer, Factory y Singleton.",
   order: 122,
   category: "js-advanced",
   icon: "Puzzle",
@@ -12,12 +12,12 @@ export const jsPatronesModule: ModuleData = {
   lessons: [
     {
       id: "js22-leccion-01",
-      title: "Patron Module y IIFE",
-      content: `## Patron Module
+      title: "Patrón Module y IIFE",
+      content: `## Patrón Module
 
-Encapsula codigo en un modulo con interfaz publica y datos privados.
+Encapsula código en un modulo con interfaz pública y datos privados.
 
-### IIFE (Immediately Invoked Function Expression)
+### IIFE (Immediately Invoked Function Expressión)
 
 \`\`\`javascript
 const miModulo = (function() {
@@ -58,7 +58,7 @@ const App = {
 };
 \`\`\`
 
-> El patron Module es la base de toda arquitectura JavaScript moderna.`,
+> El patrón Module es la base de toda arquitectura JavaScript moderna.`,
       codeExample: {
         html: '<button id="inc">Incrementar</button>\n<button id="dec">Decrementar</button>\n<button id="reset">Reset</button>\n<div id="resultado"></div>',
         css: 'button { margin: 2px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; background: #89b4fa; color: #1e1e2e; } #reset { background: #f38ba8; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -97,8 +97,8 @@ mostrar();`,
     },
     {
       id: "js22-leccion-02",
-      title: "Patron Observer",
-      content: `## Patron Observer (Observador)
+      title: "Patrón Observer",
+      content: `## Patrón Observer (Observador)
 
 Un objeto (Subject) mantiene una lista de dependientes (Observers) y les notifica cuando cambia su estado.
 
@@ -133,13 +133,13 @@ emitter.on("mensaje", function(data) {
 emitter.emit("mensaje", "Hola!"); // "Recibido: Hola!"
 \`\`\`
 
-### ¿Donde se usa?
+### ¿Dónde se usa?
 - Eventos del DOM (addEventListener es un Observer)
 - Frameworks reactivos (React, Vue)
 - Node.js EventEmitter
 - Arquitecturas pub/sub
 
-> Este patron desacopla componentes: el emisor no necesita conocer a los observadores.`,
+> Este patrón desacopla componentes: el emisor no necesita conocer a los observadores.`,
       codeExample: {
         html: '<input id="mensaje" placeholder="Escribe un mensaje" />\n<button id="enviar">Emitir evento</button>\n<div id="log"></div>\n<div id="resultado"></div>',
         css: 'input { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } button { margin-left: 4px; padding: 8px 12px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #log { padding: 8px; margin-top: 8px; background: #313244; border-radius: 4px; color: #f9e2af; font-size: 13px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -188,7 +188,7 @@ document.getElementById("enviar").addEventListener("click", function() {
     {
       id: "js22-leccion-03",
       title: "Factory y Singleton",
-      content: `## Patron Factory (Fabrica)
+      content: `## Patrón Factory (Fabrica)
 
 Crea objetos sin especificar la clase exacta:
 
@@ -206,7 +206,7 @@ function crearUsuario(tipo, nombre) {
 }
 \`\`\`
 
-## Patron Singleton
+## Patrón Singleton
 
 Garantiza que solo exista **una instancia** de un objeto:
 
@@ -225,16 +225,16 @@ const Database = (function() {
 })();
 \`\`\`
 
-### ¿Cuando usar cada patron?
+### ¿Cuándo usar cada patrón?
 
-| Patron | Usar cuando... |
+| Patrón | Usar cuando... |
 |--------|---------------|
-| Module | Necesitas encapsulacion |
+| Module | Necesitas encapsulación |
 | Observer | Comunicar componentes desacoplados |
 | Factory | Crear objetos de diferentes tipos |
 | Singleton | Solo debe existir una instancia |
 
-> Los patrones son soluciones probadas. Aprenderlos te ayuda a escribir codigo mas mantenible.`,
+> Los patrones son soluciones probadas. Aprenderlos te ayuda a escribir código mas mantenible.`,
       codeExample: {
         html: '<button id="crear-admin">Crear Admin</button>\n<button id="crear-editor">Crear Editor</button>\n<button id="crear-viewer">Crear Viewer</button>\n<div id="resultado"></div>',
         css: 'button { margin: 2px; padding: 6px 12px; border: none; border-radius: 4px; cursor: pointer; } button:nth-child(1) { background: #f38ba8; color: #1e1e2e; } button:nth-child(2) { background: #89b4fa; color: #1e1e2e; } button:nth-child(3) { background: #a6e3a1; color: #1e1e2e; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -290,16 +290,16 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que es un IIFE?",
+      prompt: "¿Qué es un IIFE?",
       options: [
         { id: "a", text: "Un tipo de variable", isCorrect: false },
-        { id: "b", text: "Una funcion que se ejecuta inmediatamente al definirse", isCorrect: true },
-        { id: "c", text: "Un metodo de array", isCorrect: false },
-        { id: "d", text: "Un operador logico", isCorrect: false },
+        { id: "b", text: "Una función que se ejecuta inmediatamente al definirse", isCorrect: true },
+        { id: "c", text: "Un método de array", isCorrect: false },
+        { id: "d", text: "Un operador lógico", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "IIFE = Immediately Invoked Function Expression.",
-      explanation: "Un IIFE es una funcion que se define y se ejecuta inmediatamente. Se usa para crear un scope privado.",
+      hint: "IIFE = Immediately Invoked Function Expressión.",
+      explanation: "Un IIFE es una función que se define y se ejecuta inmediatamente. Se usa para crear un scope privado.",
     },
     {
       id: "js22-ej-02",
@@ -307,7 +307,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Que patron se usa cuando necesitas notificar a multiples componentes sobre un cambio?",
+      prompt: "¿Qué patrón se usa cuando necesitas notificar a múltiples componentes sobre un cambio?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Factory", isCorrect: false },
@@ -316,7 +316,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Los 'observadores' escuchan cambios del 'sujeto'.",
-      explanation: "El patron Observer permite que multiples componentes se suscriban a cambios de estado y reciban notificaciones.",
+      explanation: "El patrón Observer permite que múltiples componentes se suscriban a cambios de estado y reciban notificaciones.",
     },
     {
       id: "js22-ej-03",
@@ -324,7 +324,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que garantiza el patron Singleton?",
+      prompt: "¿Qué garantiza el patrón Singleton?",
       options: [
         { id: "a", text: "Que un objeto sea inmutable", isCorrect: false },
         { id: "b", text: "Que solo exista una instancia de un objeto", isCorrect: true },
@@ -332,8 +332,8 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
         { id: "d", text: "Que un objeto sea privado", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Singleton = unico, solo uno.",
-      explanation: "El patron Singleton garantiza que solo exista una unica instancia de un objeto en toda la aplicacion.",
+      hint: "Singleton = único, solo uno.",
+      explanation: "El patrón Singleton garantiza que solo exista una única instancia de un objeto en toda la aplicación.",
     },
     {
       id: "js22-ej-04",
@@ -341,7 +341,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que patron usarias para crear objetos de diferentes tipos con una funcion comun?",
+      prompt: "¿Qué patrón usarias para crear objetos de diferentes tipos con una función común?",
       options: [
         { id: "a", text: "Observer", isCorrect: false },
         { id: "b", text: "Singleton", isCorrect: false },
@@ -350,7 +350,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Una fabrica produce diferentes productos.",
-      explanation: "El patron Factory encapsula la logica de creacion de objetos, decidiendo que tipo crear segun los parametros.",
+      explanation: "El patrón Factory encapsula la lógica de creación de objetos, decidiendo que tipo crear según los parámetros.",
     },
     {
       id: "js22-ej-05",
@@ -358,7 +358,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿addEventListener del DOM es un ejemplo de que patron?",
+      prompt: "¿addEventListener del DOM es un ejemplo de que patrón?",
       options: [
         { id: "a", text: "Factory", isCorrect: false },
         { id: "b", text: "Observer", isCorrect: true },
@@ -367,7 +367,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Los event listeners 'observan' eventos.",
-      explanation: "addEventListener es una implementacion del patron Observer: suscribes funciones (observers) a eventos del DOM (subject).",
+      explanation: "addEventListener es una implementación del patrón Observer: suscribes funciones (observers) a eventos del DOM (subject).",
     },
     {
       id: "js22-ej-06",
@@ -375,7 +375,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Asocia cada patron con su caso de uso principal:",
+      prompt: "Asocia cada patrón con su caso de uso principal:",
       dragItems: [
         { id: "drag-1", content: "Module", correctZone: "zone-encapsular" },
         { id: "drag-2", content: "Observer", correctZone: "zone-notificar" },

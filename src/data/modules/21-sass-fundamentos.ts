@@ -4,7 +4,7 @@ export const sassFundamentosModule: ModuleData = {
   slug: "sass-fundamentos",
   title: "Sass Fundamentos",
   description:
-    "Aprende las bases del preprocesador CSS mas popular: variables, nesting, mixins, funciones, partials y la organizacion de archivos con Sass/SCSS.",
+    "Aprende las bases del preprocesador CSS mas popular: variables, nesting, mixins, funciones, partials y la organización de archivos con Sass/SCSS.",
   order: 21,
   dojo: "css" as const,
   category: "preprocessors",
@@ -12,10 +12,10 @@ export const sassFundamentosModule: ModuleData = {
   lessons: [
     {
       id: "21-leccion-01",
-      title: "¿Que es Sass?",
-      content: `## ¿Que es Sass?
+      title: "¿Qué es Sass?",
+      content: `## ¿Qué es Sass?
 
-**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y mas. El codigo Sass se **compila** a CSS estandar que los navegadores pueden interpretar.
+**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y mas. El código Sass se **compila** a CSS estándar que los navegadores pueden interpretar.
 
 ### ¿Por que usar Sass?
 
@@ -23,7 +23,7 @@ CSS es poderoso, pero a medida que los proyectos crecen, mantener hojas de estil
 
 - **Variables** para reutilizar valores (colores, fuentes, tamanios)
 - **Nesting** para anidar selectores siguiendo la estructura HTML
-- **Mixins** para reutilizar bloques de codigo
+- **Mixins** para reutilizar bloques de código
 - **Funciones** para calcular valores dinamicamente
 - **Partials** para dividir el CSS en archivos modulares
 - **Herencia** para compartir estilos entre selectores
@@ -54,9 +54,9 @@ Existen dos sintaxis:
     font-size: 1.5rem
 \`\`\`
 
-> **Recomendacion:** SCSS es la sintaxis mas usada porque cualquier CSS valido ya es SCSS valido, facilitando la migracion.
+> **Recomendación:** SCSS es la sintaxis mas usada porque cualquier CSS valido ya es SCSS valido, facilitando la migración.
 
-### Compilacion
+### Compilación
 
 El navegador **no entiende Sass**. Necesitas compilarlo a CSS:
 
@@ -74,7 +74,7 @@ sass --watch estilos.scss:estilos.css
 sass --watch scss/:css/
 \`\`\`
 
-Tambien puedes usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automaticamente en tu proyecto.
+También puedes usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automáticamente en tu proyecto.
 
 ### CSS generado
 
@@ -280,7 +280,7 @@ Los mixins son bloques reutilizables de CSS. Los defines una vez y los incluyes 
 }
 \`\`\`
 
-### Mixins con parametros
+### Mixins con parámetros
 
 Los mixins pueden recibir argumentos para ser mas flexibles:
 
@@ -363,7 +363,7 @@ Las funciones calculan y **retornan un valor**. A diferencia de los mixins (que 
 
 ### Funciones incorporadas de Sass
 
-Sass incluye muchas funciones utiles:
+Sass incluye muchas funciones útiles:
 
 \`\`\`scss
 $color: #3498db;
@@ -385,7 +385,7 @@ ceil(4.1);        // 5
 floor(4.9);       // 4
 \`\`\`
 
-> **Regla general:** Usa **mixins** cuando necesitas generar multiples declaraciones CSS. Usa **funciones** cuando necesitas calcular y retornar un solo valor.`,
+> **Regla general:** Usa **mixins** cuando necesitas generar múltiples declaraciones CSS. Usa **funciones** cuando necesitas calcular y retornar un solo valor.`,
       codeExample: {
         html: `<div class="mixin-demo">\n  <button class="btn-p">Primario</button>\n  <button class="btn-s">Secundario</button>\n  <button class="btn-d">Peligro</button>\n</div>`,
         css: `.mixin-demo {\n  display: flex;\n  gap: 12px;\n  padding: 20px;\n}\n\n.mixin-demo button {\n  padding: 10px 24px;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: opacity 0.3s, transform 0.2s;\n}\n.mixin-demo button:hover {\n  opacity: 0.85;\n  transform: translateY(-2px);\n}\n.btn-p { background: #3498db; }\n.btn-s { background: #2ecc71; }\n.btn-d { background: #e74c3c; }`,
@@ -445,7 +445,7 @@ body {
 
 ### @forward
 
-\`@forward\` permite que un archivo reexporte los miembros de otro. Ideal para crear archivos "indice":
+\`@forward\` permite que un archivo reexporte los miembros de otro. Ideal para crear archivos "índice":
 
 \`\`\`scss
 // abstracts/_index.scss
@@ -457,7 +457,7 @@ body {
 @use 'abstracts' as *;
 \`\`\`
 
-### Patron de organizacion tipico
+### Patrón de organización tipico
 
 \`\`\`
 scss/
@@ -514,7 +514,7 @@ Diferencias clave:
 | @import | @use |
 |---------|------|
 | Todo es global | Usa namespaces |
-| Puede duplicar codigo | Carga cada archivo una sola vez |
+| Puede duplicar código | Carga cada archivo una sola vez |
 | Deprecado | Recomendado |
 
 > **Consejo:** Siempre usa \`@use\` y \`@forward\` en proyectos nuevos. \`@import\` sera eliminado en futuras versiones de Sass.`,
@@ -534,17 +534,17 @@ Diferencias clave:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que es Sass?",
+        "¿Qué es Sass?",
       options: [
-        { id: "a", text: "Un lenguaje de programacion independiente de CSS", isCorrect: false },
-        { id: "b", text: "Un preprocesador que extiende CSS y se compila a CSS estandar", isCorrect: true },
+        { id: "a", text: "Un lenguaje de programación independiente de CSS", isCorrect: false },
+        { id: "b", text: "Un preprocesador que extiende CSS y se compila a CSS estándar", isCorrect: true },
         { id: "c", text: "Una libreria JavaScript para animar CSS", isCorrect: false },
         { id: "d", text: "Un framework CSS como Bootstrap", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Sass agrega funcionalidades a CSS pero necesita un paso de compilacion.",
+      hint: "Sass agrega funcionalidades a CSS pero necesita un paso de compilación.",
       explanation:
-        "Sass es un preprocesador CSS que extiende el lenguaje con variables, nesting, mixins y mas. El codigo Sass se compila a CSS estandar que los navegadores pueden interpretar.",
+        "Sass es un preprocesador CSS que extiende el lenguaje con variables, nesting, mixins y mas. El código Sass se compila a CSS estándar que los navegadores pueden interpretar.",
     },
     {
       id: "21-ej-02",
@@ -553,17 +553,17 @@ Diferencias clave:
       xpReward: 10,
       order: 2,
       prompt:
-        "¿Cual es la diferencia principal entre la sintaxis SCSS y Sass indentado?",
+        "¿Cuál es la diferencia principal entre la sintaxis SCSS y Sass indentado?",
       options: [
-        { id: "a", text: "SCSS usa llaves y punto y coma; Sass indentado usa indentacion sin llaves", isCorrect: true },
+        { id: "a", text: "SCSS usa llaves y punto y coma; Sass indentado usa indentación sin llaves", isCorrect: true },
         { id: "b", text: "Sass indentado es mas nuevo que SCSS", isCorrect: false },
         { id: "c", text: "SCSS no soporta variables, solo Sass indentado", isCorrect: false },
         { id: "d", text: "No hay diferencia, son exactamente iguales", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en como se delimitan los bloques de codigo en cada sintaxis.",
+      hint: "Piensa en como se delimitan los bloques de código en cada sintaxis.",
       explanation:
-        "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentacion para definir la estructura. SCSS es la sintaxis mas popular.",
+        "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentación para definir la estructura. SCSS es la sintaxis mas popular.",
     },
     {
       id: "21-ej-03",
@@ -572,7 +572,7 @@ Diferencias clave:
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la declaracion de la variable Sass para definir un color primario. Recuerda que las variables Sass usan un simbolo especial:",
+        "Completa la declaración de la variable Sass para definir un color primario. Recuerda que las variables Sass usan un simbolo especial:",
       codeTemplate: {
         html: `<!-- SCSS -->\n<!-- Declaracion de variable Sass -->`,
         cssPrefix: "",
@@ -591,7 +591,7 @@ Diferencias clave:
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa el selector padre de Sass para generar '.boton:hover':",
+        "Completa el selector padre de Sass para generar '.botón:hover':",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: ".boton {\n  background: #3498db;\n  color: white;\n\n  ",
@@ -601,7 +601,7 @@ Diferencias clave:
       validation: { type: "exact", answer: "&" },
       hint: "Es un simbolo que referencia al selector padre actual en Sass.",
       explanation:
-        "El simbolo & en Sass referencia al selector padre. Dentro de .boton, &:hover se compila a .boton:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
+        "El simbolo & en Sass referencia al selector padre. Dentro de .botón, &:hover se compila a .botón:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
     },
     {
       id: "21-ej-05",
@@ -610,15 +610,15 @@ Diferencias clave:
       xpReward: 20,
       order: 5,
       prompt:
-        "¿Cual es la diferencia entre un @mixin y una @function en Sass?",
+        "¿Cuál es la diferencia entre un @mixin y una @function en Sass?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "Los mixins generan bloques de CSS; las funciones retornan un solo valor", isCorrect: true },
-        { id: "c", text: "Las funciones son mas rapidas que los mixins", isCorrect: false },
+        { id: "c", text: "Las funciones son mas rápidas que los mixins", isCorrect: false },
         { id: "d", text: "Los mixins solo funcionan con colores", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que produce cada uno: un mixin genera declaraciones CSS, una funcion calcula algo.",
+      hint: "Piensa en que produce cada uno: un mixin genera declaraciones CSS, una función calcula algo.",
       explanation:
         "Los @mixin generan bloques completos de declaraciones CSS y se usan con @include. Las @function calculan y retornan un solo valor con @return, y se usan como valor de una propiedad.",
     },
@@ -648,7 +648,7 @@ Diferencias clave:
       xpReward: 20,
       order: 7,
       prompt:
-        "Arrastra cada caracteristica de Sass a su descripcion correcta:",
+        "Arrastra cada caracteristica de Sass a su descripción correcta:",
       dragItems: [
         { id: "drag-1", content: "$variable", correctZone: "zone-var" },
         { id: "drag-2", content: "@mixin / @include", correctZone: "zone-mixin" },
@@ -681,7 +681,7 @@ Diferencias clave:
       xpReward: 30,
       order: 8,
       prompt:
-        "En Sass moderno, ¿cual es la forma recomendada de importar archivos parciales?",
+        "En Sass moderno, ¿cuál es la forma recomendada de importar archivos parciales?",
       options: [
         { id: "a", text: "@import 'variables';", isCorrect: false },
         { id: "b", text: "@use 'variables';", isCorrect: true },
@@ -691,7 +691,7 @@ Diferencias clave:
       validation: { type: "exact", answer: "b" },
       hint: "La directiva moderna usa namespaces y carga cada archivo una sola vez.",
       explanation:
-        "@use es la forma moderna y recomendada de importar partials en Sass. A diferencia de @import (deprecado), @use crea namespaces, evita duplicacion de codigo y carga cada archivo una sola vez.",
+        "@use es la forma moderna y recomendada de importar partials en Sass. A diferencia de @import (deprecado), @use crea namespaces, evita duplicación de código y carga cada archivo una sola vez.",
     },
   ],
 };

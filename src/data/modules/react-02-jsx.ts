@@ -12,10 +12,10 @@ export const reactJsxModule: ModuleData = {
   lessons: [
     {
       id: "react02-leccion-01",
-      title: "¿Que es JSX?",
-      content: `## ¿Que es JSX?
+      title: "¿Qué es JSX?",
+      content: `## ¿Qué es JSX?
 
-**JSX** (JavaScript XML) es una extension de sintaxis para JavaScript que te permite escribir algo muy similar a HTML dentro de tu codigo JavaScript.
+**JSX** (JavaScript XML) es una extensión de sintaxis para JavaScript que te permite escribir algo muy similar a HTML dentro de tu código JavaScript.
 
 ### JSX no es HTML
 
@@ -26,7 +26,7 @@ Aunque se parece mucho, JSX tiene diferencias importantes:
 const titulo = <h1 className="principal">Hola Mundo</h1>;
 \`\`\`
 
-### ¿Como funciona?
+### ¿Cómo funciona?
 
 Babel transforma JSX en llamadas a \`React.createElement()\`:
 
@@ -38,13 +38,13 @@ const titulo = <h1>Hola</h1>;
 const titulo = React.createElement("h1", null, "Hola");
 \`\`\`
 
-### Reglas basicas de JSX
+### Reglas básicas de JSX
 
-1. **Siempre debes retornar UN solo elemento raiz** (o usar Fragments)
+1. **Siempre debes retornar UN solo elemento raíz** (o usar Fragments)
 2. **Todas las etiquetas deben cerrarse**: \`<img />\`, \`<br />\`, \`<input />\`
 3. **La mayoria de atributos usan camelCase**: \`className\`, \`onClick\`, \`htmlFor\`
 
-> **Recuerda:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu codigo mas legible y facil de escribir.`,
+> **Recuerda:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu código mas legible y fácil de escribir.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -73,7 +73,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Expresiones en JSX",
       content: `## Expresiones en JSX con { }
 
-Dentro de JSX puedes insertar **cualquier expresion de JavaScript** usando llaves \`{ }\`:
+Dentro de JSX puedes insertar **cualquier expresión de JavaScript** usando llaves \`{ }\`:
 
 ### Variables y valores
 
@@ -224,7 +224,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Fragments y listas en JSX",
       content: `## Fragments
 
-En JSX debes retornar **un solo elemento raiz**. Si no quieres agregar un \`<div>\` extra, usa **Fragments**:
+En JSX debes retornar **un solo elemento raíz**. Si no quieres agregar un \`<div>\` extra, usa **Fragments**:
 
 \`\`\`jsx
 // Con Fragment largo:
@@ -260,9 +260,9 @@ return (
 
 ### La prop key
 
-Cada elemento de una lista en React **necesita una prop \`key\` unica**. Esto ayuda a React a identificar que elementos cambiaron.
+Cada elemento de una lista en React **necesita una prop \`key\` única**. Esto ayuda a React a identificar que elementos cambiaron.
 
-> **Importante:** Usar el \`index\` como key funciona para listas estaticas, pero para listas dinamicas es mejor usar un ID unico.`,
+> **Importante:** Usar el \`index\` como key funciona para listas estáticas, pero para listas dinámicas es mejor usar un ID único.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -305,17 +305,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que es JSX?",
+      prompt: "¿Qué es JSX?",
       options: [
-        { id: "a", text: "Un nuevo lenguaje de programacion", isCorrect: false },
-        { id: "b", text: "Una extension de sintaxis que permite escribir HTML dentro de JavaScript", isCorrect: true },
+        { id: "a", text: "Un nuevo lenguaje de programación", isCorrect: false },
+        { id: "b", text: "Una extensión de sintaxis que permite escribir HTML dentro de JavaScript", isCorrect: true },
         { id: "c", text: "Un preprocesador CSS", isCorrect: false },
         { id: "d", text: "Un formato de datos como JSON", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Combina dos tecnologias que ya conoces.",
       explanation:
-        "JSX es una extension de sintaxis para JavaScript que permite escribir marcado similar a HTML dentro del codigo JavaScript. Babel lo transforma en llamadas a React.createElement().",
+        "JSX es una extensión de sintaxis para JavaScript que permite escribir marcado similar a HTML dentro del código JavaScript. Babel lo transforma en llamadas a React.createElement().",
     },
     {
       id: "react02-ej-02",
@@ -323,7 +323,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "En JSX, ¿cual es el atributo correcto para asignar una clase CSS? Completa: <div ___=\"caja\">",
+      prompt: "En JSX, ¿cuál es el atributo correcto para asignar una clase CSS? Completa: <div ___=\"caja\">",
       codeTemplate: {
         html: "",
         cssPrefix: "<div ",
@@ -341,12 +341,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Como se inserta una expresion JavaScript dentro de JSX?",
+      prompt: "¿Cómo se inserta una expresión JavaScript dentro de JSX?",
       options: [
         { id: "a", text: "Con doble llaves: {{ expresion }}", isCorrect: false },
         { id: "b", text: "Con llaves simples: { expresion }", isCorrect: true },
-        { id: "c", text: "Con parentesis: ( expresion )", isCorrect: false },
-        { id: "d", text: "Con comillas: \"expresion\"", isCorrect: false },
+        { id: "c", text: "Con paréntesis: ( expresión )", isCorrect: false },
+        { id: "d", text: "Con comillas: \"expresión\"", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es un solo par de un tipo de simbolo.",
@@ -359,7 +359,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual de estas opciones es JSX valido?",
+      prompt: "¿Cuál de estas opciones es JSX valido?",
       options: [
         { id: "a", text: "<div class=\"caja\"><input type=\"text\"></div>", isCorrect: false },
         { id: "b", text: "<div className=\"caja\"><input type=\"text\" /></div>", isCorrect: true },
@@ -369,7 +369,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "b" },
       hint: "Recuerda las dos reglas: className y cerrar todas las etiquetas.",
       explanation:
-        "JSX requiere usar className en vez de class, y todas las etiquetas deben cerrarse explicitamente (como <input />). La opcion b cumple ambas reglas.",
+        "JSX requiere usar className en vez de class, y todas las etiquetas deben cerrarse explicitamente (como <input />). La opción b cumple ambas reglas.",
     },
     {
       id: "react02-ej-05",
@@ -377,7 +377,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada atributo segun si pertenece a HTML o JSX:",
+      prompt: "Clasifica cada atributo según si pertenece a HTML o JSX:",
       dragItems: [
         { id: "drag-1", content: "class", correctZone: "zone-html" },
         { id: "drag-2", content: "className", correctZone: "zone-jsx" },
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el codigo para usar un Fragment corto que envuelva dos elementos:",
+      prompt: "Completa el código para usar un Fragment corto que envuelva dos elementos:",
       codeTemplate: {
         html: "",
         cssPrefix: "return (\n  ",
@@ -419,9 +419,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["<>"],
       },
       validation: { type: "exact", answer: "<>" },
-      hint: "Es la version corta de React.Fragment.",
+      hint: "Es la versión corta de React.Fragment.",
       explanation:
-        "El Fragment corto <> </> permite retornar multiples elementos sin agregar un nodo extra al DOM. Es equivalente a <React.Fragment> pero mas conciso.",
+        "El Fragment corto <> </> permite retornar múltiples elementos sin agregar un nodo extra al DOM. Es equivalente a <React.Fragment> pero mas conciso.",
     },
     {
       id: "react02-ej-07",
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "¿Como se aplica un estilo inline en JSX?",
+      prompt: "¿Cómo se aplica un estilo inline en JSX?",
       options: [
         { id: "a", text: "style=\"color: red\"", isCorrect: false },
         { id: "b", text: "style={{ color: \"red\" }}", isCorrect: true },
@@ -437,9 +437,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "css={{ color: \"red\" }}", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Se necesitan dos pares de llaves: uno para la expresion JSX y otro para el objeto.",
+      hint: "Se necesitan dos pares de llaves: uno para la expresión JSX y otro para el objeto.",
       explanation:
-        "En JSX, style acepta un objeto JavaScript (no un string). Las llaves externas son la expresion JSX y las internas son el objeto: style={{ propiedad: \"valor\" }}.",
+        "En JSX, style acepta un objeto JavaScript (no un string). Las llaves externas son la expresión JSX y las internas son el objeto: style={{ propiedad: \"valor\" }}.",
     },
     {
       id: "react02-ej-08",
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa el codigo para renderizar una lista de nombres usando map(). Cada <li> necesita una prop unica:",
+      prompt: "Completa el código para renderizar una lista de nombres usando map(). Cada <li> necesita una prop única:",
       codeTemplate: {
         html: "",
         cssPrefix: "nombres.map((nombre, index) => (\n  <li ",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["key"],
       },
       validation: { type: "exact", answer: "key" },
-      hint: "React necesita identificar cada elemento de la lista de forma unica.",
+      hint: "React necesita identificar cada elemento de la lista de forma única.",
       explanation:
         "La prop key es obligatoria en listas de React. Permite a React identificar que elementos cambiaron, se agregaron o se eliminaron para optimizar el renderizado.",
     },

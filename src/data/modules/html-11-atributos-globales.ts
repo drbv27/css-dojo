@@ -19,7 +19,7 @@ Los **atributos globales** son atributos que se pueden usar en **cualquier eleme
 
 ### id
 
-Identificador **unico** para un elemento. No debe repetirse en la pagina.
+Identificador **único** para un elemento. No debe repetirse en la página.
 
 \`\`\`html
 <div id="mi-seccion">Contenido unico</div>
@@ -29,7 +29,7 @@ Identificador **unico** para un elemento. No debe repetirse en la pagina.
 
 ### class
 
-Permite asignar una o varias clases a un elemento. Se pueden repetir en multiples elementos.
+Permite asignar una o varias clases a un elemento. Se pueden repetir en múltiples elementos.
 
 \`\`\`html
 <p class="texto-grande resaltado">Hola</p>
@@ -39,13 +39,13 @@ Permite asignar una o varias clases a un elemento. Se pueden repetir en multiple
 
 ### style
 
-Aplica estilos CSS directamente en el elemento (estilos en linea).
+Aplica estilos CSS directamente en el elemento (estilos en línea).
 
 \`\`\`html
 <p style="color: red; font-size: 20px;">Texto rojo</p>
 \`\`\`
 
-> **Nota:** Se recomienda usar clases CSS en lugar de estilos en linea para mantener el codigo limpio y reutilizable.
+> **Nota:** Se recomienda usar clases CSS en lugar de estilos en línea para mantener el código limpio y reutilizable.
 
 ### title
 
@@ -101,7 +101,7 @@ abbr {
 
 ### Atributos data-*
 
-Los atributos \`data-*\` permiten almacenar **datos personalizados** en cualquier elemento. Son perfectos para pasar informacion al JavaScript.
+Los atributos \`data-*\` permiten almacenar **datos personalizados** en cualquier elemento. Son perfectos para pasar información al JavaScript.
 
 \`\`\`html
 <div data-user-id="42" data-role="admin">Usuario</div>
@@ -115,7 +115,7 @@ element.dataset.role    // "admin"
 
 ### hidden
 
-Oculta un elemento de la pagina. Es como \`display: none\` pero semantico.
+Oculta un elemento de la página. Es como \`display: none\` pero semántico.
 
 \`\`\`html
 <p hidden>Este texto no se muestra</p>
@@ -137,7 +137,7 @@ Hace que un elemento sea arrastrable con el raton:
 <div draggable="true">Arrastrame</div>
 \`\`\`
 
-> **Tip:** Los atributos data-* son muy utiles para evitar contaminar el HTML con clases o IDs que solo existen para JavaScript.`,
+> **Tip:** Los atributos data-* son muy útiles para evitar contaminar el HTML con clases o IDs que solo existen para JavaScript.`,
       codeExample: {
         html: `<div
   id="producto"
@@ -185,7 +185,7 @@ button {
 
 ### tabindex
 
-Controla el **orden de tabulacion** al navegar con la tecla Tab. Es clave para la accesibilidad.
+Controla el **orden de tabulación** al navegar con la tecla Tab. Es clave para la accesibilidad.
 
 | Valor | Comportamiento |
 |-------|---------------|
@@ -208,7 +208,7 @@ Define el **idioma** del contenido. Es esencial para lectores de pantalla y SEO.
 
 ### dir
 
-Establece la **direccion del texto**: \`ltr\` (izquierda a derecha) o \`rtl\` (derecha a izquierda).
+Establece la **dirección del texto**: \`ltr\` (izquierda a derecha) o \`rtl\` (derecha a izquierda).
 
 \`\`\`html
 <p dir="rtl">Este texto va de derecha a izquierda</p>
@@ -216,19 +216,19 @@ Establece la **direccion del texto**: \`ltr\` (izquierda a derecha) o \`rtl\` (d
 
 ### Resumen de atributos globales
 
-| Atributo | Funcion |
+| Atributo | Función |
 |----------|---------|
-| \`id\` | Identificador unico |
+| \`id\` | Identificador único |
 | \`class\` | Clases CSS |
-| \`style\` | Estilos en linea |
+| \`style\` | Estilos en línea |
 | \`title\` | Tooltip |
 | \`data-*\` | Datos personalizados |
 | \`hidden\` | Ocultar elemento |
 | \`contenteditable\` | Contenido editable |
 | \`draggable\` | Elemento arrastrable |
-| \`tabindex\` | Orden de tabulacion |
+| \`tabindex\` | Orden de tabulación |
 | \`lang\` | Idioma del contenido |
-| \`dir\` | Direccion del texto |`,
+| \`dir\` | Dirección del texto |`,
       codeExample: {
         html: `<h3>Prueba de tabindex</h3>
 <p>Presiona Tab para navegar entre estos elementos:</p>
@@ -280,7 +280,7 @@ button:focus {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que atributo global crea un identificador unico para un elemento HTML?",
+      prompt: "¿Qué atributo global crea un identificador único para un elemento HTML?",
       options: [
         { id: "a", text: "class", isCorrect: false },
         { id: "b", text: "name", isCorrect: false },
@@ -288,9 +288,9 @@ button:focus {
         { id: "d", text: "key", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es un atributo de dos letras que no debe repetirse en la pagina.",
+      hint: "Es un atributo de dos letras que no debe repetirse en la página.",
       explanation:
-        'El atributo id asigna un identificador unico a un elemento. No debe haber dos elementos con el mismo id en una pagina.',
+        'El atributo id asigna un identificador único a un elemento. No debe haber dos elementos con el mismo id en una página.',
     },
     {
       id: "html11-ej-02",
@@ -298,17 +298,17 @@ button:focus {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la diferencia principal entre id y class?",
+      prompt: "¿Cuál es la diferencia principal entre id y class?",
       options: [
         { id: "a", text: "id puede repetirse, class no", isCorrect: false },
-        { id: "b", text: "id es unico por pagina, class puede repetirse", isCorrect: true },
+        { id: "b", text: "id es único por página, class puede repetirse", isCorrect: true },
         { id: "c", text: "class solo funciona con CSS, id solo con JavaScript", isCorrect: false },
         { id: "d", text: "No hay diferencia significativa", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en cuantas veces puedes usar cada uno.",
       explanation:
-        "El atributo id debe ser unico en toda la pagina, mientras que class puede repetirse en multiples elementos para agruparlos.",
+        "El atributo id debe ser único en toda la página, mientras que class puede repetirse en múltiples elementos para agruparlos.",
     },
     {
       id: "html11-ej-03",
@@ -334,7 +334,7 @@ button:focus {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que atributo hace que el contenido de un elemento sea editable por el usuario?",
+      prompt: "¿Qué atributo hace que el contenido de un elemento sea editable por el usuario?",
       options: [
         { id: "a", text: "editable", isCorrect: false },
         { id: "b", text: "contenteditable", isCorrect: true },
@@ -352,7 +352,7 @@ button:focus {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada atributo global segun su proposito:",
+      prompt: "Clasifica cada atributo global según su propósito:",
       dragItems: [
         { id: "drag-1", content: "id", correctZone: "zone-identificacion" },
         { id: "drag-2", content: "class", correctZone: "zone-identificacion" },
@@ -361,7 +361,7 @@ button:focus {
         { id: "drag-5", content: "data-*", correctZone: "zone-datos" },
       ],
       dropZones: [
-        { id: "zone-identificacion", label: "Identificacion/Estilo" },
+        { id: "zone-identificacion", label: "Identificación/Estilo" },
         { id: "zone-accesibilidad", label: "Accesibilidad" },
         { id: "zone-datos", label: "Datos personalizados" },
       ],
@@ -385,7 +385,7 @@ button:focus {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: '¿Que valor de tabindex hace que un elemento sea enfocable solo por JavaScript pero NO con la tecla Tab?',
+      prompt: '¿Qué valor de tabindex hace que un elemento sea enfocable solo por JavaScript pero NO con la tecla Tab?',
       options: [
         { id: "a", text: 'tabindex="0"', isCorrect: false },
         { id: "b", text: 'tabindex="1"', isCorrect: false },
@@ -395,7 +395,7 @@ button:focus {
       validation: { type: "exact", answer: "c" },
       hint: "Es un valor negativo.",
       explanation:
-        'tabindex="-1" permite enfocar el elemento con JavaScript (element.focus()) pero lo excluye del orden de tabulacion con la tecla Tab.',
+        'tabindex="-1" permite enfocar el elemento con JavaScript (element.focus()) pero lo excluye del orden de tabulación con la tecla Tab.',
     },
     {
       id: "html11-ej-07",
@@ -403,7 +403,7 @@ button:focus {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa el atributo para ocultar un elemento de la pagina:",
+      prompt: "Completa el atributo para ocultar un elemento de la página:",
       codeTemplate: {
         html: "",
         cssPrefix: "<p ",
@@ -413,7 +413,7 @@ button:focus {
       validation: { type: "exact", answer: "hidden" },
       hint: "Es un atributo booleano que hace el elemento invisible.",
       explanation:
-        "El atributo hidden oculta un elemento de la pagina. Es el equivalente semantico de display: none en CSS.",
+        "El atributo hidden oculta un elemento de la página. Es el equivalente semántico de display: none en CSS.",
     },
   ],
 };
