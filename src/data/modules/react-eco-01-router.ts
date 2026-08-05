@@ -234,5 +234,43 @@ function Busqueda() {
       hint: "Navigate = navegar, Params = parámetros de ruta, SearchParams = query string.",
       explanation: "Cada hook tiene un propósito específico para manejar diferentes partes de la URL.",
     },
+    {
+      id: "reco01-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Esta ruta tiene que capturar cualquier id de usuario: /usuario/7, /usuario/42. Completá el segmento dinámico:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: '<Route path="/usuario/',
+        cssSuffix: '" element={<Usuario />} />',
+        blanks: [":id"],
+      },
+      validation: { type: "exact", answer: ":id" },
+      hint: "Los dos puntos marcan la parte variable. El nombre que le pongas es el que después vas a leer con useParams.",
+      explanation:
+        "Los dos puntos convierten ese tramo en un parámetro: /usuario/7 coincide y queda id igual a 7. Sin ellos, la ruta solo respondería a la URL literal /usuario/id. Y el nombre que elegís acá es la clave con la que useParams te lo devuelve, así que cambiarlo en la ruta rompe el componente.",
+    },
+    {
+      id: "reco01-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Una ruta anidada necesita un lugar donde renderizar a su hija dentro del layout padre. Completá el componente que marca ese hueco:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function Layout() {\n  return (\n    <div>\n      <Menu />\n      <",
+        cssSuffix: " />\n    </div>\n  );\n}",
+        blanks: ["Outlet"],
+      },
+      validation: { type: "exact", answer: "Outlet" },
+      hint: "Es el marcador de posición para la ruta hija. Sin él el layout se muestra, pero la hija no aparece en ningún lado.",
+      explanation:
+        "Outlet es el hueco donde React Router monta la ruta hija que coincidió. Es el error silencioso más común con rutas anidadas: la URL cambia, la ruta hija coincide, y en pantalla no pasa nada -- porque el layout no dijo dónde ponerla. El menú se renderiza una sola vez y solo el contenido del Outlet cambia al navegar.",
+    },
   ],
 };

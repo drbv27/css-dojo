@@ -220,5 +220,43 @@ function RegistroForm() {
       hint: "register conecta, handleSubmit valida y envia, zodResolver une Zod con RHF.",
       explanation: "register conecta inputs, handleSubmit maneja la validación/envio, zodResolver integra Zod.",
     },
+    {
+      id: "reco04-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Este input tiene que quedar conectado al formulario bajo el nombre 'email'. Completá lo que falta:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: '<input {...',
+        cssSuffix: '("email")} />',
+        blanks: ["register"],
+      },
+      validation: { type: "exact", answer: "register" },
+      hint: "La función que devuelve useForm para conectar cada campo. Se esparce con spread porque devuelve varias props a la vez.",
+      explanation:
+        "register devuelve un objeto con name, onChange, onBlur y ref, y el spread las aplica todas juntas. Por eso react-hook-form no necesita un useState por campo: el valor vive en un ref y el componente no se re-renderiza en cada tecla. Es de donde sale su ventaja de rendimiento en formularios largos.",
+    },
+    {
+      id: "reco04-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Ya tenés un esquema de Zod llamado esquema. Completá la opción de useForm que lo conecta como validador:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "const { register, handleSubmit } = useForm({\n  ",
+        cssSuffix: ": zodResolver(esquema),\n});",
+        blanks: ["resolver"],
+      },
+      validation: { type: "exact", answer: "resolver" },
+      hint: "La opción que delega la validación a una librería externa.",
+      explanation:
+        "resolver es el punto de extensión: react-hook-form no sabe nada de Zod, y zodResolver traduce el esquema al formato de errores que el formulario entiende. La ventaja de tener el esquema aparte es que el mismo objeto valida en el servidor, así que las reglas no se escriben dos veces y no pueden quedar desincronizadas.",
+    },
   ],
 };
