@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const htmlQueEsModule: ModuleData = {
   slug: "html-01-que-es-html",
-  title: "¿Que es HTML?",
+  title: "¿Qué es HTML?",
   description:
-    "Descubre que es HTML, su historia, como los navegadores renderizan paginas y la estructura basica de un documento HTML.",
+    "Descubre que es HTML, su historia, como los navegadores renderizan páginas y la estructura básica de un documento HTML.",
   order: 1,
   dojo: "html",
   category: "html-fundamentals",
@@ -12,30 +12,30 @@ export const htmlQueEsModule: ModuleData = {
   lessons: [
     {
       id: "html-01-leccion-01",
-      title: "¿Que es HTML?",
-      content: `## ¿Que es HTML?
+      title: "¿Qué es HTML?",
+      content: `## ¿Qué es HTML?
 
-**HTML** significa **HyperText Markup Language** (Lenguaje de Marcado de Hipertexto). Es el lenguaje estandar que se utiliza para **crear y estructurar** el contenido de las paginas web.
+**HTML** significa **HyperText Markup Language** (Lenguaje de Marcado de Hipertexto). Es el lenguaje estándar que se utiliza para **crear y estructurar** el contenido de las páginas web.
 
-HTML no es un lenguaje de programacion: es un **lenguaje de marcado**. Esto significa que usa **etiquetas** para indicar al navegador como mostrar el contenido.
+HTML no es un lenguaje de programación: es un **lenguaje de marcado**. Esto significa que usa **etiquetas** para indicar al navegador como mostrar el contenido.
 
 ### ¿Para que sirve HTML?
 
-- Definir la **estructura** de una pagina web
-- Organizar el **contenido** (texto, imagenes, videos, enlaces)
+- Definir la **estructura** de una página web
+- Organizar el **contenido** (texto, imágenes, videos, enlaces)
 - Crear **formularios** para recopilar datos
-- Establecer la **jerarquia** de la informacion
+- Establecer la **jerarquía** de la información
 
 ### Un poco de historia
 
 HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wide Web en el CERN. Desde entonces ha evolucionado:
 
-- **HTML 1.0** (1991) — Version original muy basica
-- **HTML 2.0** (1995) — Primer estandar oficial
-- **HTML 4.01** (1999) — Version madura y ampliamente usada
-- **HTML5** (2014) — Version actual con soporte multimedia nativo
+- **HTML 1.0** (1991) — Versión original muy básica
+- **HTML 2.0** (1995) — Primer estándar oficial
+- **HTML 4.01** (1999) — Versión madura y ampliamente usada
+- **HTML5** (2014) — Versión actual con soporte multimedia nativo
 
-> **Dato curioso:** La primera pagina web de la historia todavia esta en linea. Fue creada por Tim Berners-Lee en 1991.`,
+> **Dato curioso:** La primera página web de la historia todavia esta en línea. Fue creada por Tim Berners-Lee en 1991.`,
       codeExample: {
         html: `<h1>Mi primera pagina web</h1>\n<p>Esto es HTML en accion.</p>\n<p>Cada elemento esta definido por etiquetas.</p>`,
         css: `h1 {\n  color: #2d3748;\n  font-family: sans-serif;\n}\n\np {\n  color: #4a5568;\n  font-size: 16px;\n}`,
@@ -51,18 +51,18 @@ HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wi
 Cuando escribes una URL en tu navegador y presionas Enter, ocurre un proceso fascinante:
 
 ### 1. Solicitud al servidor
-El navegador envia una **solicitud HTTP** al servidor donde esta alojada la pagina.
+El navegador envia una **solicitud HTTP** al servidor donde esta alojada la página.
 
 ### 2. Respuesta del servidor
-El servidor responde enviando los archivos necesarios: **HTML**, CSS, JavaScript, imagenes, etc.
+El servidor responde enviando los archivos necesarios: **HTML**, CSS, JavaScript, imágenes, etc.
 
 ### 3. Parsing (Analisis)
-El navegador lee el HTML y construye el **DOM** (Document Object Model), que es una representacion en forma de arbol de todos los elementos de la pagina.
+El navegador lee el HTML y construye el **DOM** (Document Object Model), que es una representación en forma de árbol de todos los elementos de la página.
 
 ### 4. Renderizado
-El navegador combina el DOM con los estilos CSS para **pintar** la pagina en tu pantalla.
+El navegador combina el DOM con los estilos CSS para **pintar** la página en tu pantalla.
 
-### El DOM: Arbol de elementos
+### El DOM: Árbol de elementos
 
 \`\`\`
 documento
@@ -74,7 +74,7 @@ documento
             └── p
 \`\`\`
 
-Cada **etiqueta HTML** se convierte en un **nodo** del arbol DOM. El navegador usa esta estructura para saber que mostrar y donde.
+Cada **etiqueta HTML** se convierte en un **nodo** del árbol DOM. El navegador usa esta estructura para saber que mostrar y donde.
 
 > **Importante:** El navegador lee el HTML de arriba hacia abajo, en orden. Por eso el orden de los elementos importa.`,
       codeExample: {
@@ -86,24 +86,24 @@ Cada **etiqueta HTML** se convierte en un **nodo** del arbol DOM. El navegador u
     },
     {
       id: "html-01-leccion-03",
-      title: "Estructura basica de un documento HTML",
-      content: `## Estructura basica de un documento HTML
+      title: "Estructura básica de un documento HTML",
+      content: `## Estructura básica de un documento HTML
 
 Todo documento HTML tiene una estructura fundamental que siempre debes respetar:
 
 ### 1. DOCTYPE
-La declaracion \`<!DOCTYPE html>\` le dice al navegador que estamos usando **HTML5**. Siempre va en la primera linea.
+La declaración \`<!DOCTYPE html>\` le dice al navegador que estamos usando **HTML5**. Siempre va en la primera línea.
 
 ### 2. Etiqueta \`<html>\`
-Es el **elemento raiz** que contiene todo el documento. Se recomienda agregar el atributo \`lang\` para indicar el idioma.
+Es el **elemento raíz** que contiene todo el documento. Se recomienda agregar el atributo \`lang\` para indicar el idioma.
 
 ### 3. Etiqueta \`<head>\`
-Contiene **metadatos** del documento: titulo, codificacion de caracteres, enlaces a hojas de estilo, etc. **No se muestra en la pagina.**
+Contiene **metadatos** del documento: título, codificación de caracteres, enlaces a hojas de estilo, etc. **No se muestra en la página.**
 
 ### 4. Etiqueta \`<body>\`
-Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, formularios, etc.
+Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces, formularios, etc.
 
-### Plantilla minima
+### Plantilla mínima
 
 \`\`\`html
 <!DOCTYPE html>
@@ -118,7 +118,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
 </html>
 \`\`\`
 
-> **Regla de oro:** Siempre empieza tus documentos HTML con \`<!DOCTYPE html>\`. Sin esta declaracion, el navegador puede entrar en "modo quirks" y comportarse de forma impredecible.`,
+> **Regla de oro:** Siempre empieza tus documentos HTML con \`<!DOCTYPE html>\`. Sin esta declaración, el navegador puede entrar en "modo quirks" y comportarse de forma impredecible.`,
       codeExample: {
         html: `<!DOCTYPE html>\n<html lang="es">\n  <head>\n    <meta charset="UTF-8">\n    <title>Mi primera pagina</title>\n  </head>\n  <body>\n    <h1>Hola mundo!</h1>\n    <p>Esta es mi primera pagina HTML.</p>\n  </body>\n</html>`,
         css: `h1 {\n  color: #2d3748;\n  font-family: sans-serif;\n}\n\np {\n  color: #718096;\n}`,
@@ -134,7 +134,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que significa HTML?",
+      prompt: "¿Qué significa HTML?",
       options: [
         { id: "a", text: "HyperText Markup Language", isCorrect: true },
         { id: "b", text: "High Tech Modern Language", isCorrect: false },
@@ -152,7 +152,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Quien creo HTML y en que ano?",
+      prompt: "¿Quién creo HTML y en que año?",
       options: [
         { id: "a", text: "Steve Jobs en 1995", isCorrect: false },
         { id: "b", text: "Tim Berners-Lee en 1991", isCorrect: true },
@@ -170,7 +170,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la declaracion que le indica al navegador que usamos HTML5:",
+      prompt: "Completa la declaración que le indica al navegador que usamos HTML5:",
       codeTemplate: {
         html: `_____ html>\n<html lang="es">\n  <head>\n    <title>Mi pagina</title>\n  </head>\n  <body>\n    <p>Hola!</p>\n  </body>\n</html>`,
         cssPrefix: "",
@@ -178,9 +178,9 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
         blanks: ["<!DOCTYPE"],
       },
       validation: { type: "exact", answer: ["<!DOCTYPE"] },
-      hint: "Es una declaracion que empieza con <! y la palabra DOCTYPE.",
+      hint: "Es una declaración que empieza con <! y la palabra DOCTYPE.",
       explanation:
-        "La declaracion <!DOCTYPE html> le indica al navegador que el documento esta escrito en HTML5.",
+        "La declaración <!DOCTYPE html> le indica al navegador que el documento esta escrito en HTML5.",
     },
     {
       id: "html-01-ej-04",
@@ -189,7 +189,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada parte de la estructura HTML a la zona correcta segun su funcion:",
+        "Arrastra cada parte de la estructura HTML a la zona correcta según su función:",
       dragItems: [
         { id: "d1", content: "<!DOCTYPE html>", correctZone: "z1" },
         { id: "d2", content: "<head>", correctZone: "z2" },
@@ -197,10 +197,10 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
         { id: "d4", content: "<html>", correctZone: "z4" },
       ],
       dropZones: [
-        { id: "z1", label: "Declaracion del tipo de documento" },
+        { id: "z1", label: "Declaración del tipo de documento" },
         { id: "z2", label: "Metadatos no visibles" },
-        { id: "z3", label: "Contenido visible de la pagina" },
-        { id: "z4", label: "Elemento raiz del documento" },
+        { id: "z3", label: "Contenido visible de la página" },
+        { id: "z4", label: "Elemento raíz del documento" },
       ],
       validation: {
         type: "exact",
@@ -208,7 +208,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       },
       hint: "Recuerda: head contiene metadatos, body contiene lo visible.",
       explanation:
-        "DOCTYPE declara la version, html es la raiz, head contiene metadatos y body el contenido visible.",
+        "DOCTYPE declara la versión, html es la raíz, head contiene metadatos y body el contenido visible.",
     },
     {
       id: "html-01-ej-05",
@@ -217,7 +217,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       xpReward: 20,
       order: 5,
       prompt:
-        "Escribe la estructura basica de un documento HTML5 con un titulo 'Mi Web' en el head y un encabezado h1 que diga 'Bienvenido' en el body.",
+        "Escribe la estructura básica de un documento HTML5 con un título 'Mi Web' en el head y un encabezado h1 que diga 'Bienvenido' en el body.",
       codeTemplate: {
         html: `<!-- Escribe tu codigo HTML aqui -->`,
         cssPrefix: "",
@@ -237,7 +237,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       },
       hint: "Recuerda empezar con <!DOCTYPE html> y luego la etiqueta <html> con head y body dentro.",
       explanation:
-        "Un documento HTML5 basico necesita DOCTYPE, html, head con title, y body con el contenido visible.",
+        "Un documento HTML5 básico necesita DOCTYPE, html, head con title, y body con el contenido visible.",
     },
     {
       id: "html-01-ej-06",
@@ -245,15 +245,15 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que sucede si omites la declaracion <!DOCTYPE html> en tu documento?",
+      prompt: "¿Qué sucede si omites la declaración <!DOCTYPE html> en tu documento?",
       options: [
-        { id: "a", text: "La pagina no se muestra en absoluto", isCorrect: false },
+        { id: "a", text: "La página no se muestra en absoluto", isCorrect: false },
         { id: "b", text: "El navegador puede entrar en 'modo quirks' y comportarse de forma impredecible", isCorrect: true },
         { id: "c", text: "Los estilos CSS no se aplican", isCorrect: false },
         { id: "d", text: "No pasa nada, es completamente opcional", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El navegador intenta ser compatible con paginas antiguas si no sabe la version.",
+      hint: "El navegador intenta ser compatible con páginas antiguas si no sabe la versión.",
       explanation:
         "Sin DOCTYPE, el navegador entra en 'modo quirks', un modo de compatibilidad que puede causar comportamientos inesperados en el renderizado.",
     },

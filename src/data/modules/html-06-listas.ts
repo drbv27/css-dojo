@@ -4,7 +4,7 @@ export const htmlListasModule: ModuleData = {
   slug: "html-06-listas",
   title: "Listas en HTML",
   description:
-    "Domina las listas en HTML: listas no ordenadas, ordenadas con atributos especiales, listas anidadas y listas de descripcion.",
+    "Domina las listas en HTML: listas no ordenadas, ordenadas con atributos especiales, listas anidadas y listas de descripción.",
   order: 6,
   dojo: "html",
   category: "html-fundamentals",
@@ -15,9 +15,9 @@ export const htmlListasModule: ModuleData = {
       title: "Listas no ordenadas (ul)",
       content: `## Listas no ordenadas: \`<ul>\`
 
-Una lista no ordenada presenta elementos **sin un orden especifico**. Se crea con la etiqueta \`<ul>\` (unordered list) y cada elemento con \`<li>\` (list item).
+Una lista no ordenada presenta elementos **sin un orden específico**. Se crea con la etiqueta \`<ul>\` (unordered list) y cada elemento con \`<li>\` (list item).
 
-### Estructura basica
+### Estructura básica
 
 \`\`\`html
 <ul>
@@ -31,7 +31,7 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 
 ### Usos comunes
 
-- **Menus de navegacion**: la mayoria de menus web son listas no ordenadas estilizadas con CSS
+- **Menus de navegación**: la mayoria de menus web son listas no ordenadas estilizadas con CSS
 - **Listas de caracteristicas**: funcionalidades de un producto
 - **Ingredientes**: en una receta de cocina
 - **Cualquier grupo** de elementos donde el orden no importa
@@ -39,9 +39,9 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 ### Reglas importantes
 
 1. Dentro de \`<ul>\`, **solo** deben ir elementos \`<li>\` como hijos directos
-2. Dentro de cada \`<li>\` puedes poner cualquier contenido: texto, enlaces, imagenes, incluso otras listas
+2. Dentro de cada \`<li>\` puedes poner cualquier contenido: texto, enlaces, imágenes, incluso otras listas
 
-> **Dato:** La etiqueta \`<ul>\` es una de las mas usadas en la web. Casi todos los menus de navegacion estan construidos con listas no ordenadas.`,
+> **Dato:** La etiqueta \`<ul>\` es una de las mas usadas en la web. Casi todos los menus de navegación estan construidos con listas no ordenadas.`,
       codeExample: {
         html: `<h2>Lista de compras</h2>\n<ul>\n  <li>Pan integral</li>\n  <li>Leche descremada</li>\n  <li>Huevos</li>\n  <li>Frutas frescas</li>\n  <li>Verduras variadas</li>\n</ul>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nul {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n}\n\nli {\n  padding: 2px 0;\n}`,
@@ -56,7 +56,7 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 
 Una lista ordenada presenta elementos en un **orden secuencial**. Se crea con \`<ol>\` (ordered list) y cada elemento con \`<li>\`.
 
-### Estructura basica
+### Estructura básica
 
 \`\`\`html
 <ol>
@@ -66,19 +66,19 @@ Una lista ordenada presenta elementos en un **orden secuencial**. Se crea con \`
 </ol>
 \`\`\`
 
-Por defecto, los elementos se numeran con **numeros arabigos** (1, 2, 3...).
+Por defecto, los elementos se numeran con **números arabigos** (1, 2, 3...).
 
 ### Atributos especiales de \`<ol>\`
 
-#### \`type\` — Tipo de numeracion
-- \`type="1"\` — Numeros (por defecto): 1, 2, 3
-- \`type="A"\` — Letras mayusculas: A, B, C
-- \`type="a"\` — Letras minusculas: a, b, c
-- \`type="I"\` — Numeros romanos mayusculas: I, II, III
-- \`type="i"\` — Numeros romanos minusculas: i, ii, iii
+#### \`type\` — Tipo de numeración
+- \`type="1"\` — Números (por defecto): 1, 2, 3
+- \`type="A"\` — Letras mayúsculas: A, B, C
+- \`type="a"\` — Letras minúsculas: a, b, c
+- \`type="I"\` — Números romanos mayúsculas: I, II, III
+- \`type="i"\` — Números romanos minúsculas: i, ii, iii
 
-#### \`start\` — Numero inicial
-Define desde que numero empieza la lista:
+#### \`start\` — Número inicial
+Define desde que número empieza la lista:
 
 \`\`\`html
 <ol start="5">
@@ -108,8 +108,8 @@ Numera los elementos de mayor a menor:
     },
     {
       id: "html-06-leccion-03",
-      title: "Listas anidadas y listas de descripcion",
-      content: `## Listas anidadas y listas de descripcion
+      title: "Listas anidadas y listas de descripción",
+      content: `## Listas anidadas y listas de descripción
 
 ### Listas anidadas
 
@@ -132,15 +132,15 @@ Puedes colocar una lista **dentro de otra** para crear subniveles. La lista hija
 </ul>
 \`\`\`
 
-Puedes anidar \`<ul>\` dentro de \`<ol>\` y viceversa. No hay limite de niveles, pero se recomienda no pasar de **3 niveles** para mantener la legibilidad.
+Puedes anidar \`<ul>\` dentro de \`<ol>\` y viceversa. No hay límite de niveles, pero se recomienda no pasar de **3 niveles** para mantener la legibilidad.
 
-### Listas de descripcion: \`<dl>\`, \`<dt>\`, \`<dd>\`
+### Listas de descripción: \`<dl>\`, \`<dt>\`, \`<dd>\`
 
-Las listas de descripcion asocian **terminos con sus definiciones**:
+Las listas de descripción asocian **términos con sus definiciones**:
 
 - \`<dl>\` — Definition List (contenedor)
-- \`<dt>\` — Definition Term (termino)
-- \`<dd>\` — Definition Description (descripcion)
+- \`<dt>\` — Definition Term (término)
+- \`<dd>\` — Definition Description (descripción)
 
 \`\`\`html
 <dl>
@@ -151,13 +151,13 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
 </dl>
 \`\`\`
 
-### Usos de listas de descripcion
+### Usos de listas de descripción
 
-- **Glosarios** de terminos
-- **Metadatos**: autor, fecha, categoria
+- **Glosarios** de términos
+- **Metadatos**: autor, fecha, categoría
 - **Preguntas frecuentes** (FAQ)
 
-> **Consejo:** Las listas de descripcion son perfectas para glosarios y definiciones. Muchos desarrolladores las desconocen, pero son muy utiles y semanticas.`,
+> **Consejo:** Las listas de descripción son perfectas para glosarios y definiciones. Muchos desarrolladores las desconocen, pero son muy útiles y semánticas.`,
       codeExample: {
         html: `<h2>Menu del sitio (anidado)</h2>\n<ul>\n  <li>Inicio</li>\n  <li>Cursos\n    <ul>\n      <li>HTML Basico</li>\n      <li>CSS Avanzado</li>\n      <li>JavaScript\n        <ul>\n          <li>Fundamentos</li>\n          <li>DOM</li>\n        </ul>\n      </li>\n    </ul>\n  </li>\n  <li>Contacto</li>\n</ul>\n\n<h2>Glosario</h2>\n<dl>\n  <dt>HTML</dt>\n  <dd>HyperText Markup Language</dd>\n  <dt>CSS</dt>\n  <dd>Cascading Style Sheets</dd>\n  <dt>JS</dt>\n  <dd>JavaScript</dd>\n</dl>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n  margin-top: 16px;\n}\n\nul, dl {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n}\n\ndt {\n  font-weight: bold;\n  color: #2b6cb0;\n}\n\ndd {\n  margin-left: 20px;\n  margin-bottom: 8px;\n}`,
@@ -173,7 +173,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que etiqueta se usa para crear una lista no ordenada?",
+      prompt: "¿Qué etiqueta se usa para crear una lista no ordenada?",
       options: [
         { id: "a", text: "<list>", isCorrect: false },
         { id: "b", text: "<ol>", isCorrect: false },
@@ -201,7 +201,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       validation: { type: "exact", answer: ["ol", "ol"] },
       hint: "Es la abreviatura de 'ordered list'.",
       explanation:
-        "La etiqueta <ol> crea una lista ordenada donde los elementos se numeran automaticamente.",
+        "La etiqueta <ol> crea una lista ordenada donde los elementos se numeran automáticamente.",
     },
     {
       id: "html-06-ej-03",
@@ -209,7 +209,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Que atributo de <ol> hace que la numeracion vaya de mayor a menor?",
+      prompt: "¿Qué atributo de <ol> hace que la numeración vaya de mayor a menor?",
       options: [
         { id: "a", text: "reverse", isCorrect: false },
         { id: "b", text: "reversed", isCorrect: true },
@@ -219,7 +219,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       validation: { type: "exact", answer: "b" },
       hint: "Es un atributo booleano cuyo nombre sugiere 'invertido'.",
       explanation:
-        "El atributo reversed en <ol> hace que la numeracion vaya en orden descendente (de mayor a menor).",
+        "El atributo reversed en <ol> hace que la numeración vaya en orden descendente (de mayor a menor).",
     },
     {
       id: "html-06-ej-04",
@@ -227,16 +227,16 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Arrastra cada etiqueta de lista de descripcion a su funcion:",
+      prompt: "Arrastra cada etiqueta de lista de descripción a su función:",
       dragItems: [
         { id: "d1", content: "<dl>", correctZone: "z1" },
         { id: "d2", content: "<dt>", correctZone: "z2" },
         { id: "d3", content: "<dd>", correctZone: "z3" },
       ],
       dropZones: [
-        { id: "z1", label: "Contenedor de la lista de descripcion" },
-        { id: "z2", label: "Termino o palabra a definir" },
-        { id: "z3", label: "Descripcion o definicion del termino" },
+        { id: "z1", label: "Contenedor de la lista de descripción" },
+        { id: "z2", label: "Término o palabra a definir" },
+        { id: "z3", label: "Descripción o definición del término" },
       ],
       validation: {
         type: "exact",
@@ -244,7 +244,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       },
       hint: "dl = definition list, dt = definition term, dd = definition description.",
       explanation:
-        "<dl> es el contenedor, <dt> es el termino que se define y <dd> es la descripcion o definicion del termino.",
+        "<dl> es el contenedor, <dt> es el término que se define y <dd> es la descripción o definición del término.",
     },
     {
       id: "html-06-ej-05",
@@ -279,7 +279,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa la lista ordenada para que empiece en el numero 5 y use letras mayusculas:",
+      prompt: "Completa la lista ordenada para que empiece en el número 5 y use letras mayúsculas:",
       codeTemplate: {
         html: `<ol _____="5" _____="A">\n  <li>Elemento E</li>\n  <li>Elemento F</li>\n  <li>Elemento G</li>\n</ol>`,
         cssPrefix: "",
@@ -287,9 +287,9 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
         blanks: ["start", "type"],
       },
       validation: { type: "exact", answer: ["start", "type"] },
-      hint: "Un atributo define el inicio y otro el tipo de numeracion.",
+      hint: "Un atributo define el inicio y otro el tipo de numeración.",
       explanation:
-        "El atributo start define desde que numero empieza la lista y type define el estilo de numeracion (A para letras mayusculas).",
+        "El atributo start define desde que número empieza la lista y type define el estilo de numeración (A para letras mayúsculas).",
     },
     {
       id: "html-06-ej-07",
@@ -298,7 +298,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una lista de descripcion <dl> con al menos 2 terminos (<dt>) y sus definiciones (<dd>). Tema: conceptos basicos de desarrollo web.",
+        "Crea una lista de descripción <dl> con al menos 2 términos (<dt>) y sus definiciones (<dd>). Tema: conceptos básicos de desarrollo web.",
       codeTemplate: {
         html: `<!-- Crea la lista de descripcion -->`,
         cssPrefix: "",
@@ -314,9 +314,9 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
           "dl > dd >> 2",
         ],
       },
-      hint: "Usa dl como contenedor, dt para cada termino y dd para cada definicion.",
+      hint: "Usa dl como contenedor, dt para cada término y dd para cada definición.",
       explanation:
-        "Las listas de descripcion <dl> son ideales para glosarios: <dt> define el termino y <dd> su descripcion.",
+        "Las listas de descripción <dl> son ideales para glosarios: <dt> define el término y <dd> su descripción.",
     },
   ],
 };

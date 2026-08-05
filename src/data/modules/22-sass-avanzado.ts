@@ -4,7 +4,7 @@ export const sassAvanzadoModule: ModuleData = {
   slug: "sass-avanzado",
   title: "Sass Avanzado",
   description:
-    "Lleva tu Sass al siguiente nivel con herencia, condicionales, bucles, mapas, listas y patrones de arquitectura profesional como el patron 7-1 y BEM.",
+    "Lleva tu Sass al siguiente nivel con herencia, condicionales, bucles, mapas, listas y patrones de arquitectura profesional como el patrón 7-1 y BEM.",
   order: 22,
   dojo: "css" as const,
   category: "preprocessors",
@@ -15,9 +15,9 @@ export const sassAvanzadoModule: ModuleData = {
       title: "Herencia con @extend",
       content: `## Herencia con @extend
 
-### ¿Que es @extend?
+### ¿Qué es @extend?
 
-\`@extend\` permite que un selector **herede** todos los estilos de otro selector. Es util cuando varios elementos comparten una base comun:
+\`@extend\` permite que un selector **herede** todos los estilos de otro selector. Es útil cuando varios elementos comparten una base común:
 
 \`\`\`scss
 .mensaje {
@@ -102,10 +102,10 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 
 | Caracteristica | @extend | @mixin |
 |---------------|---------|--------|
-| Parametros | No acepta | Si acepta |
-| CSS generado | Agrupa selectores (menos codigo) | Duplica declaraciones |
+| Parámetros | No acepta | Si acepta |
+| CSS generado | Agrupa selectores (menos código) | Duplica declaraciones |
 | Dentro de media queries | No funciona bien | Funciona perfectamente |
-| Uso ideal | Estilos identicos sin variacion | Estilos con parametros variables |
+| Uso ideal | Estilos identicos sin variación | Estilos con parámetros variables |
 
 \`\`\`scss
 // MEJOR con @extend: estilos identicos
@@ -129,7 +129,7 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 }
 \`\`\`
 
-> **Regla practica:** Si necesitas parametros, usa @mixin. Si todos los selectores comparten exactamente los mismos estilos base, usa @extend con %.`,
+> **Regla práctica:** Si necesitas parámetros, usa @mixin. Si todos los selectores comparten exactamente los mismos estilos base, usa @extend con %.`,
       codeExample: {
         html: `<div class="extend-demo">\n  <div class="msg msg-exito">Operacion exitosa</div>\n  <div class="msg msg-error">Ha ocurrido un error</div>\n  <div class="msg msg-info">Informacion importante</div>\n</div>`,
         css: `.extend-demo {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding: 16px;\n}\n\n.msg {\n  padding: 12px 20px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  font-weight: 500;\n}\n\n.msg-exito {\n  background: #d4edda;\n  border-color: #c3e6cb;\n  color: #155724;\n}\n\n.msg-error {\n  background: #f8d7da;\n  border-color: #f5c6cb;\n  color: #721c24;\n}\n\n.msg-info {\n  background: #d1ecf1;\n  border-color: #bee5eb;\n  color: #0c5460;\n}`,
@@ -144,7 +144,7 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 
 ### Condicionales con @if / @else
 
-Sass permite logica condicional dentro de los estilos:
+Sass permite lógica condicional dentro de los estilos:
 
 \`\`\`scss
 @mixin tema($modo) {
@@ -229,7 +229,7 @@ $colores-sociales: (
 
 ### Bucle @while
 
-Repite mientras una condicion sea verdadera (menos usado):
+Repite mientras una condición sea verdadera (menos usado):
 
 \`\`\`scss
 $columnas: 12;
@@ -243,7 +243,7 @@ $i: 1;
 }
 \`\`\`
 
-### Generacion de clases utilitarias
+### Generación de clases utilitarias
 
 Los bucles son perfectos para generar clases utilitarias al estilo de Tailwind o Bootstrap:
 
@@ -261,7 +261,7 @@ $espaciados: (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16);
 }
 \`\`\`
 
-> **Nota:** \`#{}\` es la interpolacion de Sass. Permite insertar variables dentro de selectores, nombres de propiedades y valores de cadena.`,
+> **Nota:** \`#{}\` es la interpolación de Sass. Permite insertar variables dentro de selectores, nombres de propiedades y valores de cadena.`,
       codeExample: {
         html: `<div class="bucles-demo">\n  <div class="barra" style="--ancho: 8.33%">1/12</div>\n  <div class="barra" style="--ancho: 25%">3/12</div>\n  <div class="barra" style="--ancho: 50%">6/12</div>\n  <div class="barra" style="--ancho: 75%">9/12</div>\n  <div class="barra" style="--ancho: 100%">12/12</div>\n</div>`,
         css: `.bucles-demo {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  padding: 16px;\n}\n\n.barra {\n  width: var(--ancho);\n  background: linear-gradient(90deg, #3498db, #8e44ad);\n  color: white;\n  padding: 8px 12px;\n  border-radius: 6px;\n  font-size: 0.85rem;\n  font-weight: bold;\n  transition: width 0.3s;\n}`,
@@ -348,7 +348,7 @@ map-remove($tema, 'fondo');     // Elimina el par 'fondo'
 
 ### Mapas para sistema de colores
 
-Ejemplo practico: generar clases de colores automaticamente:
+Ejemplo práctico: generar clases de colores automáticamente:
 
 \`\`\`scss
 $colores: (
@@ -412,7 +412,7 @@ $temas: (
 }
 \`\`\`
 
-> **Consejo:** Los mapas son la base para crear sistemas de diseno escalables en Sass. Combinados con @each, permiten generar cientos de clases utilitarias con pocas lineas de codigo.`,
+> **Consejo:** Los mapas son la base para crear sistemas de diseño escalables en Sass. Combinados con @each, permiten generar cientos de clases utilitarias con pocas líneas de código.`,
       codeExample: {
         html: `<div class="mapas-demo">\n  <span class="chip chip-primario">Primario</span>\n  <span class="chip chip-exito">Exito</span>\n  <span class="chip chip-peligro">Peligro</span>\n  <span class="chip chip-advertencia">Advertencia</span>\n</div>`,
         css: `.mapas-demo {\n  display: flex;\n  gap: 10px;\n  padding: 20px;\n  flex-wrap: wrap;\n}\n\n.chip {\n  padding: 8px 16px;\n  border-radius: 20px;\n  color: white;\n  font-weight: bold;\n  font-size: 0.85rem;\n}\n\n.chip-primario { background: #3498db; }\n.chip-exito { background: #2ecc71; }\n.chip-peligro { background: #e74c3c; }\n.chip-advertencia { background: #f39c12; }`,
@@ -425,9 +425,9 @@ $temas: (
       title: "Arquitectura con Sass",
       content: `## Arquitectura con Sass
 
-### El patron 7-1
+### El patrón 7-1
 
-El patron 7-1 es la arquitectura mas popular para proyectos Sass grandes. Organiza los archivos en 7 carpetas y 1 archivo principal:
+El patrón 7-1 es la arquitectura mas popular para proyectos Sass grandes. Organiza los archivos en 7 carpetas y 1 archivo principal:
 
 \`\`\`
 sass/
@@ -538,9 +538,9 @@ La metodologia BEM (Block, Element, Modifier) combina perfectamente con el nesti
 }
 \`\`\`
 
-### Buenas practicas
+### Buenas prácticas
 
-1. **Maximo 3-4 niveles de nesting:**
+1. **Máximo 3-4 niveles de nesting:**
 \`\`\`scss
 // MAL - demasiado anidamiento
 .pagina {
@@ -602,7 +602,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
 }
 \`\`\`
 
-> **Consejo:** No necesitas seguir el patron 7-1 al pie de la letra. Adapta la estructura a tu proyecto. Para proyectos pequenos, 3-4 carpetas pueden ser suficientes.`,
+> **Consejo:** No necesitas seguir el patrón 7-1 al pie de la letra. Adapta la estructura a tu proyecto. Para proyectos pequeños, 3-4 carpetas pueden ser suficientes.`,
       codeExample: {
         html: `<div class="arq-demo">\n  <div class="card">\n    <div class="card__header">Tarjeta BEM</div>\n    <div class="card__body">\n      <p class="card__text">Estructura Block__Element--Modifier</p>\n    </div>\n    <div class="card__footer">\n      <button class="card__btn card__btn--primary">Aceptar</button>\n      <button class="card__btn card__btn--secondary">Cancelar</button>\n    </div>\n  </div>\n</div>`,
         css: `.arq-demo {\n  padding: 20px;\n}\n\n.card {\n  background: white;\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n  max-width: 320px;\n}\n\n.card__header {\n  background: #3498db;\n  color: white;\n  padding: 16px;\n  font-weight: bold;\n  font-size: 1.1rem;\n}\n\n.card__body {\n  padding: 16px;\n}\n\n.card__text {\n  color: #555;\n  line-height: 1.5;\n}\n\n.card__footer {\n  padding: 12px 16px;\n  display: flex;\n  gap: 8px;\n  border-top: 1px solid #eee;\n}\n\n.card__btn {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-weight: 500;\n}\n\n.card__btn--primary {\n  background: #3498db;\n  color: white;\n}\n\n.card__btn--secondary {\n  background: #ecf0f1;\n  color: #333;\n}`,
@@ -619,17 +619,17 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que hace la directiva @extend en Sass?",
+        "¿Qué hace la directiva @extend en Sass?",
       options: [
         { id: "a", text: "Crea una variable global", isCorrect: false },
         { id: "b", text: "Hace que un selector herede todos los estilos de otro selector", isCorrect: true },
         { id: "c", text: "Importa un archivo externo", isCorrect: false },
-        { id: "d", text: "Define una funcion personalizada", isCorrect: false },
+        { id: "d", text: "Define una función personalizada", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en herencia: un selector recibe los estilos de otro.",
       explanation:
-        "@extend permite que un selector herede todas las declaraciones de otro. Sass agrupa los selectores en el CSS generado, evitando duplicacion de codigo.",
+        "@extend permite que un selector herede todas las declaraciones de otro. Sass agrupa los selectores en el CSS generado, evitando duplicación de código.",
     },
     {
       id: "22-ej-02",
@@ -657,7 +657,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 3,
       prompt:
-        "¿Cual es la diferencia entre '@for $i from 1 through 5' y '@for $i from 1 to 5'?",
+        "¿Cuál es la diferencia entre '@for $i from 1 through 5' y '@for $i from 1 to 5'?",
       options: [
         { id: "a", text: "No hay diferencia", isCorrect: false },
         { id: "b", text: "'through' incluye el 5, 'to' no incluye el 5", isCorrect: true },
@@ -686,7 +686,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       validation: { type: "exact", answer: "@each" },
       hint: "Es la directiva que itera sobre cada elemento de una lista o mapa.",
       explanation:
-        "@each es el bucle de Sass para iterar sobre listas y mapas. Con @each $color in $colores, la variable $color toma cada valor de la lista en cada iteracion.",
+        "@each es el bucle de Sass para iterar sobre listas y mapas. Con @each $color in $colores, la variable $color toma cada valor de la lista en cada iteración.",
     },
     {
       id: "22-ej-05",
@@ -695,7 +695,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 5,
       prompt:
-        "Arrastra cada funcion de mapa Sass a lo que retorna:",
+        "Arrastra cada función de mapa Sass a lo que retorna:",
       dragItems: [
         { id: "drag-1", content: "map-get($mapa, 'clave')", correctZone: "zone-valor" },
         { id: "drag-2", content: "map-keys($mapa)", correctZone: "zone-claves" },
@@ -728,17 +728,17 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 6,
       prompt:
-        "¿En la metodologia BEM con Sass, como se escribe el selector para el elemento 'titulo' del bloque 'tarjeta'?",
+        "¿En la metodologia BEM con Sass, como se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
       options: [
-        { id: "a", text: ".tarjeta { .titulo { } }", isCorrect: false },
-        { id: "b", text: ".tarjeta { &__titulo { } }", isCorrect: true },
-        { id: "c", text: ".tarjeta { &--titulo { } }", isCorrect: false },
-        { id: "d", text: ".tarjeta { &.titulo { } }", isCorrect: false },
+        { id: "a", text: ".tarjeta { .título { } }", isCorrect: false },
+        { id: "b", text: ".tarjeta { &__título { } }", isCorrect: true },
+        { id: "c", text: ".tarjeta { &--título { } }", isCorrect: false },
+        { id: "d", text: ".tarjeta { &.título { } }", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "En BEM, los elementos se separan con doble guion bajo (__) y el & referencia al bloque padre.",
       explanation:
-        "En BEM, los elementos usan doble guion bajo: .tarjeta__titulo. Con Sass, dentro de .tarjeta usamos &__titulo donde & se reemplaza por '.tarjeta', generando .tarjeta__titulo.",
+        "En BEM, los elementos usan doble guion bajo: .tarjeta__título. Con Sass, dentro de .tarjeta usamos &__título donde & se reemplaza por '.tarjeta', generando .tarjeta__título.",
     },
     {
       id: "22-ej-07",
@@ -747,7 +747,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 30,
       order: 7,
       prompt:
-        "Completa la funcion de mapa para obtener el valor de la clave 'primario' del mapa $colores:",
+        "Completa la función de mapa para obtener el valor de la clave 'primario' del mapa $colores:",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "$colores: (\n  'primario': #3498db,\n  'secundario': #2ecc71,\n);\n\n.boton {\n  background: ",
@@ -755,7 +755,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
         blanks: ["map-get"],
       },
       validation: { type: "exact", answer: "map-get" },
-      hint: "Es la funcion que 'obtiene' (get) un valor de un mapa usando su clave.",
+      hint: "Es la función que 'obtiene' (get) un valor de un mapa usando su clave.",
       explanation:
         "map-get($mapa, 'clave') retorna el valor asociado a esa clave en el mapa. En este caso, map-get($colores, 'primario') retorna #3498db.",
     },
@@ -766,7 +766,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 30,
       order: 8,
       prompt:
-        "En el patron de arquitectura 7-1, ¿donde se colocan las variables globales y los mixins?",
+        "En el patrón de arquitectura 7-1, ¿dónde se colocan las variables globales y los mixins?",
       options: [
         { id: "a", text: "En la carpeta 'base/'", isCorrect: false },
         { id: "b", text: "En la carpeta 'componentes/'", isCorrect: false },
@@ -776,7 +776,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       validation: { type: "exact", answer: "c" },
       hint: "Las variables y mixins son herramientas 'abstractas' que no generan CSS por si mismas.",
       explanation:
-        "En el patron 7-1, la carpeta 'abstracts/' (o 'utils/') contiene variables, mixins, funciones y placeholders. Son herramientas abstractas que no generan CSS directamente sino que se usan desde otros archivos.",
+        "En el patrón 7-1, la carpeta 'abstracts/' (o 'utils/') contiene variables, mixins, funciones y placeholders. Son herramientas abstractas que no generan CSS directamente sino que se usan desde otros archivos.",
     },
   ],
 };

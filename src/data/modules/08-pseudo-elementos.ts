@@ -4,7 +4,7 @@ export const pseudoElementosModule: ModuleData = {
   slug: "pseudo-elementos",
   title: "Pseudo-elementos CSS",
   description:
-    "Aprende a usar pseudo-elementos como ::first-letter, ::first-line, ::before y ::after para estilizar partes especificas del contenido sin modificar el HTML.",
+    "Aprende a usar pseudo-elementos como ::first-letter, ::first-line, ::before y ::after para estilizar partes específicas del contenido sin modificar el HTML.",
   order: 10,
   dojo: "css" as const,
   category: "intermediate",
@@ -15,7 +15,7 @@ export const pseudoElementosModule: ModuleData = {
       title: "Que son los pseudo-elementos",
       content: `## Que son los pseudo-elementos
 
-Los **pseudo-elementos** permiten estilizar **partes especificas** de un elemento sin necesidad de agregar HTML adicional. Se escriben con **doble dos puntos (::)**.
+Los **pseudo-elementos** permiten estilizar **partes específicas** de un elemento sin necesidad de agregar HTML adicional. Se escriben con **doble dos puntos (::)**.
 
 ### Sintaxis
 
@@ -29,7 +29,7 @@ selector::pseudo-elemento {
 
 | Caracteristica | Pseudo-clase (:) | Pseudo-elemento (::) |
 |---------------|-------------------|----------------------|
-| Notacion | Un dos puntos \`:hover\` | Dos puntos \`::before\` |
+| Notación | Un dos puntos \`:hover\` | Dos puntos \`::before\` |
 | Que hace | Selecciona estados o posiciones | Crea/estiliza partes del elemento |
 | Ejemplo | \`:hover\`, \`:first-child\` | \`::before\`, \`::first-letter\` |
 
@@ -41,12 +41,12 @@ selector::pseudo-elemento {
 
 Los pseudo-elementos mas utilizados son:
 - \`::first-letter\` - La primera letra
-- \`::first-line\` - La primera linea
+- \`::first-line\` - La primera línea
 - \`::before\` - Contenido antes del elemento
-- \`::after\` - Contenido despues del elemento
+- \`::after\` - Contenido después del elemento
 - \`::selection\` - Texto seleccionado por el usuario
 
-> **Nota historica:** La notacion antigua usaba un solo dos puntos (\`:before\`). La notacion moderna con doble dos puntos (\`::before\`) se introdujo en CSS3 para diferenciar pseudo-elementos de pseudo-clases. Ambas funcionan, pero se recomienda usar \`::\`.`,
+> **Nota historica:** La notación antigua usaba un solo dos puntos (\`:before\`). La notación moderna con doble dos puntos (\`::before\`) se introdujo en CSS3 para diferenciar pseudo-elementos de pseudo-clases. Ambas funcionan, pero se recomienda usar \`::\`.`,
       codeExample: {
         html: `<p class="intro">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>`,
         css: `/* Primera letra grande y decorativa */\n.intro::first-letter {\n  font-size: 48px;\n  font-weight: bold;\n  color: steelblue;\n  float: left;\n  margin-right: 8px;\n  line-height: 1;\n}\n\n/* Primera linea en mayusculas */\n.intro::first-line {\n  text-transform: uppercase;\n  letter-spacing: 1px;\n}\n\n/* Texto seleccionado */\n.intro::selection {\n  background-color: steelblue;\n  color: white;\n}`,
@@ -57,7 +57,7 @@ Los pseudo-elementos mas utilizados son:
     {
       id: "08-leccion-02",
       title: "::first-letter y ::first-line",
-      content: `## Pseudo-elementos tipograficos
+      content: `## Pseudo-elementos tipográficos
 
 ### ::first-letter
 
@@ -76,16 +76,16 @@ article p:first-of-type::first-letter {
 
 ### Propiedades validas para ::first-letter
 
-Solo estas categorias de propiedades funcionan con \`::first-letter\`:
-- **Tipografia:** font, font-size, font-weight, font-style, font-family, line-height, letter-spacing
+Solo estas categorías de propiedades funcionan con \`::first-letter\`:
+- **Tipografía:** font, font-size, font-weight, font-style, font-family, line-height, letter-spacing
 - **Color y fondo:** color, background, background-color
 - **Bordes:** border, border-radius
-- **Margenes y padding:** margin, padding
-- **Decoracion:** text-decoration, text-transform
+- **Márgenes y padding:** margin, padding
+- **Decoración:** text-decoration, text-transform
 
 ### ::first-line
 
-Selecciona la **primera linea visible** de un elemento de bloque. La seleccion es **dinamica**: si el ancho cambia, la primera linea cambia:
+Selecciona la **primera línea visible** de un elemento de bloque. La selección es **dinámica**: si el ancho cambia, la primera línea cambia:
 
 \`\`\`css
 p::first-line {
@@ -98,9 +98,9 @@ p::first-line {
 ### Propiedades validas para ::first-line
 
 Las propiedades disponibles son mas limitadas que \`::first-letter\`:
-- **Tipografia:** font, line-height, letter-spacing, word-spacing
+- **Tipografía:** font, line-height, letter-spacing, word-spacing
 - **Color y fondo:** color, background
-- **Decoracion:** text-decoration, text-transform
+- **Decoración:** text-decoration, text-transform
 
 ### Combinando ambos
 
@@ -115,7 +115,7 @@ Las propiedades disponibles son mas limitadas que \`::first-letter\`:
 }
 \`\`\`
 
-> **Atencion:** Estos pseudo-elementos solo funcionan en **elementos de bloque** (como \`<p>\`, \`<div>\`, \`<article>\`). No funcionan en elementos en linea como \`<span>\`.`,
+> **Atención:** Estos pseudo-elementos solo funcionan en **elementos de bloque** (como \`<p>\`, \`<div>\`, \`<article>\`). No funcionan en elementos en línea como \`<span>\`.`,
       codeExample: {
         html: `<article class="articulo">\n  <p>Esta es la historia de un desarrollador que aprendio CSS. Todo comenzo con una simple etiqueta HTML y una curiosidad enorme por personalizar la apariencia de sus paginas web.</p>\n  <p>El segundo parrafo no tiene capitular, demostrando como podemos ser selectivos con los pseudo-elementos.</p>\n</article>`,
         css: `.articulo p:first-of-type::first-letter {\n  font-size: 3em;\n  font-weight: bold;\n  color: crimson;\n  float: left;\n  margin-right: 8px;\n  line-height: 0.85;\n}\n\n.articulo p::first-line {\n  font-weight: bold;\n  color: #333;\n}\n\n.articulo p {\n  font-size: 16px;\n  line-height: 1.7;\n  color: #555;\n  margin-bottom: 16px;\n}`,
@@ -128,7 +128,7 @@ Las propiedades disponibles son mas limitadas que \`::first-letter\`:
       title: "::before y ::after",
       content: `## ::before y ::after
 
-Los pseudo-elementos **::before** y **::after** insertan contenido **antes** o **despues** del contenido de un elemento, sin modificar el HTML.
+Los pseudo-elementos **::before** y **::after** insertan contenido **antes** o **después** del contenido de un elemento, sin modificar el HTML.
 
 ### Requisito obligatorio: content
 
@@ -153,7 +153,7 @@ Estos pseudo-elementos **siempre** necesitan la propiedad \`content\`. Sin ella,
 
 ### Content vacio para decoraciones
 
-El uso mas comun es \`content: ""\` combinado con posicionamiento para crear **decoraciones visuales**:
+El uso mas común es \`content: ""\` combinado con posicionamiento para crear **decoraciones visuales**:
 
 \`\`\`css
 .titulo::after {
@@ -188,11 +188,11 @@ El uso mas comun es \`content: ""\` combinado con posicionamiento para crear **d
 ### Importante sobre ::before y ::after
 
 - Son **hijos** del elemento (no hermanos)
-- Por defecto son elementos **en linea** (\`display: inline\`)
+- Por defecto son elementos **en línea** (\`display: inline\`)
 - **No aparecen** en el DOM real (no los puedes seleccionar como texto)
 - No funcionan en elementos **vacios** como \`<img>\`, \`<input>\`, \`<br>\`
 
-> **Buena practica:** Usa ::before y ::after para decoraciones visuales, no para contenido importante. El contenido insertado con \`content\` no es accesible para lectores de pantalla de la misma manera que el HTML real.`,
+> **Buena práctica:** Usa ::before y ::after para decoraciones visuales, no para contenido importante. El contenido insertado con \`content\` no es accesible para lectores de pantalla de la misma manera que el HTML real.`,
       codeExample: {
         html: `<h2 class="titulo">Nuestros Servicios</h2>\n<p class="nota">Este es un mensaje informativo.</p>\n<label class="requerido">Nombre completo</label>\n<br>\n<a href="#" class="enlace-ext">Documentacion oficial</a>`,
         css: `.titulo::after {\n  content: "";\n  display: block;\n  width: 60px;\n  height: 3px;\n  background-color: tomato;\n  margin-top: 8px;\n}\n\n.nota::before {\n  content: "ℹ ";\n  color: steelblue;\n  font-weight: bold;\n}\n\n.requerido::after {\n  content: " *";\n  color: red;\n  font-weight: bold;\n}\n\n.enlace-ext::after {\n  content: " ↗";\n  font-size: 0.8em;\n  color: gray;\n}`,
@@ -205,7 +205,7 @@ El uso mas comun es \`content: ""\` combinado con posicionamiento para crear **d
       title: "Usos avanzados de ::before y ::after",
       content: `## Usos avanzados de ::before y ::after
 
-Estos pseudo-elementos son extremadamente versatiles. Veamos patrones avanzados usados en la practica.
+Estos pseudo-elementos son extremadamente versatiles. Veamos patrones avanzados usados en la práctica.
 
 ### Comillas decorativas
 
@@ -243,7 +243,7 @@ Crear una capa semitransparente sobre una imagen:
 }
 \`\`\`
 
-### Etiquetas automaticas con attr()
+### Etiquetas automáticas con attr()
 
 \`\`\`html
 <a href="https://ejemplo.com" data-tooltip="Visitar sitio">Enlace</a>
@@ -263,7 +263,7 @@ a[data-tooltip]::after {
 
 ### Limpiar floats (clearfix)
 
-Un patron clasico para contener elementos flotantes:
+Un patrón clasico para contener elementos flotantes:
 
 \`\`\`css
 .clearfix::after {
@@ -307,7 +307,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cuantos dos puntos se usan para escribir un pseudo-elemento en la notacion moderna de CSS3?",
+        "¿Cuántos dos puntos se usan para escribir un pseudo-elemento en la notación moderna de CSS3?",
       options: [
         { id: "a", text: "Uno (:)", isCorrect: false },
         { id: "b", text: "Dos (::)", isCorrect: true },
@@ -315,7 +315,7 @@ Crear triangulos, circulos y otras formas:
         { id: "d", text: "Ninguno", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "CSS3 introdujo una notacion con doble simbolo para diferenciarlos de las pseudo-clases.",
+      hint: "CSS3 introdujo una notación con doble simbolo para diferenciarlos de las pseudo-clases.",
       explanation:
         "Los pseudo-elementos usan doble dos puntos (::) en CSS3, como ::before, ::after, ::first-letter. Esto los diferencia de las pseudo-clases que usan un solo dos puntos (:hover, :focus).",
     },
@@ -326,7 +326,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el pseudo-elemento para estilizar la primera letra de los parrafos:",
+        "Completa el pseudo-elemento para estilizar la primera letra de los párrafos:",
       codeTemplate: {
         html: `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>`,
         cssPrefix: "p::",
@@ -345,7 +345,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 3,
       prompt:
-        "¿Que propiedad es OBLIGATORIA para que ::before y ::after se muestren?",
+        "¿Qué propiedad es OBLIGATORIA para que ::before y ::after se muestren?",
       options: [
         { id: "a", text: "display", isCorrect: false },
         { id: "b", text: "position", isCorrect: false },
@@ -364,7 +364,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada pseudo-elemento a su descripcion correcta:",
+        "Arrastra cada pseudo-elemento a su descripción correcta:",
       dragItems: [
         { id: "drag-1", content: "::first-letter", correctZone: "zone-letra" },
         { id: "drag-2", content: "::first-line", correctZone: "zone-linea" },
@@ -373,9 +373,9 @@ Crear triangulos, circulos y otras formas:
       ],
       dropZones: [
         { id: "zone-letra", label: "Estiliza la primera letra" },
-        { id: "zone-linea", label: "Estiliza la primera linea" },
+        { id: "zone-linea", label: "Estiliza la primera línea" },
         { id: "zone-antes", label: "Inserta contenido antes" },
-        { id: "zone-despues", label: "Inserta contenido despues" },
+        { id: "zone-despues", label: "Inserta contenido después" },
       ],
       validation: {
         type: "exact",
@@ -386,9 +386,9 @@ Crear triangulos, circulos y otras formas:
           "drag-4": "zone-despues",
         },
       },
-      hint: "Los nombres de los pseudo-elementos son descriptivos: first-letter = primera letra, before = antes, after = despues.",
+      hint: "Los nombres de los pseudo-elementos son descriptivos: first-letter = primera letra, before = antes, after = después.",
       explanation:
-        "::first-letter estiliza la primera letra de un bloque, ::first-line la primera linea visible, ::before inserta contenido antes del contenido del elemento, y ::after inserta contenido despues.",
+        "::first-letter estiliza la primera letra de un bloque, ::first-line la primera línea visible, ::before inserta contenido antes del contenido del elemento, y ::after inserta contenido después.",
     },
     {
       id: "08-ej-05",
@@ -397,7 +397,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa la propiedad para que ::after muestre un asterisco rojo despues del label:",
+        "Completa la propiedad para que ::after muestre un asterisco rojo después del label:",
       codeTemplate: {
         html: `<label class="requerido">Email</label>`,
         cssPrefix: `.requerido::after {\n  `,
@@ -416,7 +416,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 6,
       prompt:
-        "Escribe CSS para crear una linea decorativa despues del h2 usando ::after. La linea debe ser un bloque (display: block) con width: 80px, height: 3px, background-color: tomato y margin-top: 8px. Recuerda la propiedad content.",
+        "Escribe CSS para crear una línea decorativa después del h2 usando ::after. La línea debe ser un bloque (display: block) con width: 80px, height: 3px, background-color: tomato y margin-top: 8px. Recuerda la propiedad content.",
       codeTemplate: {
         html: `<h2 class="titulo">Seccion Importante</h2>\n<p>Contenido de la seccion.</p>`,
         cssPrefix: "",
@@ -430,9 +430,9 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa .titulo::after con content: \"\" (vacio, solo queremos la linea visual). Luego display: block para que ocupe su propia linea, y las dimensiones indicadas.",
+      hint: "Usa .título::after con content: \"\" (vacio, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
       explanation:
-        "Se usa ::after con content: \"\" para crear un elemento visual sin texto. display: block hace que ocupe su propia linea. Luego se define el tamano (width/height) y el color de fondo para crear la linea decorativa.",
+        "Se usa ::after con content: \"\" para crear un elemento visual sin texto. display: block hace que ocupe su propia línea. Luego se define el tamaño (width/height) y el color de fondo para crear la línea decorativa.",
     },
     {
       id: "08-ej-07",
@@ -444,7 +444,7 @@ Crear triangulos, circulos y otras formas:
         "¿En que tipo de elementos NO funcionan ::before y ::after?",
       options: [
         { id: "a", text: "Elementos de bloque como <div>", isCorrect: false },
-        { id: "b", text: "Elementos en linea como <span>", isCorrect: false },
+        { id: "b", text: "Elementos en línea como <span>", isCorrect: false },
         {
           id: "c",
           text: "Elementos vacios como <img>, <input> y <br>",
@@ -464,7 +464,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 30,
       order: 8,
       prompt:
-        "Reproduce el diseno: un parrafo con la primera letra de tamano 2.5em, color steelblue y font-weight bold. Ademas, el texto del parrafo debe tener font-size: 16px, line-height: 1.7 y color: #555.",
+        "Reproduce el diseño: un párrafo con la primera letra de tamaño 2.5em, color steelblue y font-weight bold. Además, el texto del párrafo debe tener font-size: 16px, line-height: 1.7 y color: #555.",
       codeTemplate: {
         html: `<p class="editorial">Habia una vez un desarrollador web que descubrio el poder de los pseudo-elementos CSS. Desde entonces, sus paginas nunca volvieron a ser las mismas. Cada detalle tipografico contaba una historia visual.</p>`,
         cssPrefix: "",
@@ -478,9 +478,9 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una para el parrafo (.editorial) con sus estilos base, y otra para .editorial::first-letter con la capitular decorativa.",
+      hint: "Necesitas dos reglas: una para el párrafo (.editorial) con sus estilos base, y otra para .editorial::first-letter con la capitular decorativa.",
       explanation:
-        "Se combina el estilo base del parrafo con el pseudo-elemento ::first-letter para crear una capitular. La primera letra se muestra grande (2.5em), en color steelblue y negrita, mientras el resto del texto mantiene sus estilos normales.",
+        "Se combina el estilo base del párrafo con el pseudo-elemento ::first-letter para crear una capitular. La primera letra se muestra grande (2.5em), en color steelblue y negrita, mientras el resto del texto mantiene sus estilos normales.",
     },
   ],
 };

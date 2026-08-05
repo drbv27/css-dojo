@@ -12,8 +12,8 @@ export const jsVariablesTiposModule: ModuleData = {
   lessons: [
     {
       id: "js02-leccion-01",
-      title: "Declaracion de variables",
-      content: `## Declaracion de variables
+      title: "Declaración de variables",
+      content: `## Declaración de variables
 
 Una **variable** es un contenedor con nombre para almacenar datos. En JavaScript hay tres formas de declarar variables:
 
@@ -21,14 +21,14 @@ Una **variable** es un contenedor con nombre para almacenar datos. En JavaScript
 \`\`\`javascript
 var nombre = "Ana";
 \`\`\`
-Es la forma clasica. Tiene **alcance de funcion** y permite redeclaracion. **No se recomienda** en codigo moderno.
+Es la forma clasica. Tiene **alcance de función** y permite redeclaración. **No se recomienda** en código moderno.
 
 ### let (moderna)
 \`\`\`javascript
 let edad = 25;
 edad = 26; // Se puede reasignar
 \`\`\`
-Tiene **alcance de bloque** y no permite redeclaracion en el mismo ambito.
+Tiene **alcance de bloque** y no permite redeclaración en el mismo ámbito.
 
 ### const (constante)
 \`\`\`javascript
@@ -65,8 +65,8 @@ const saludo = "Hola";
 const nombre = 'Mundo';
 \`\`\`
 
-### Number (numero)
-Enteros y decimales, sin distincion:
+### Number (número)
+Enteros y decimales, sin distinción:
 \`\`\`javascript
 const entero = 42;
 const decimal = 3.14;
@@ -113,12 +113,12 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js02-leccion-03",
-      title: "Conversion de tipos",
-      content: `## Conversion de tipos
+      title: "Conversión de tipos",
+      content: `## Conversión de tipos
 
-JavaScript puede convertir valores de un tipo a otro de forma **implicita** (automatica) o **explicita** (manual).
+JavaScript puede convertir valores de un tipo a otro de forma **implícita** (automática) o **explícita** (manual).
 
-### Conversion explicita
+### Conversión explícita
 
 \`\`\`javascript
 String(42)       // "42"
@@ -129,9 +129,9 @@ Boolean("")      // false
 Boolean("hola")  // true
 \`\`\`
 
-### Conversion implicita (coercion)
+### Conversión implícita (coerción)
 
-JavaScript intenta convertir automaticamente cuando mezclas tipos:
+JavaScript intenta convertir automáticamente cuando mezclas tipos:
 
 \`\`\`javascript
 "5" + 3    // "53" (concatena como string)
@@ -146,7 +146,7 @@ Estos valores se convierten a \`false\`:
 
 Todo lo demas es **truthy** (se convierte a \`true\`).
 
-> **Cuidado:** La coercion implicita es fuente comun de bugs. Prefiere las conversiones explicitas.`,
+> **Cuidado:** La coerción implícita es fuente común de bugs. Prefiere las conversiones explicitas.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -170,7 +170,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cual es la forma recomendada de declarar una variable que no cambiara de valor?",
+      prompt: "¿Cuál es la forma recomendada de declarar una variable que no cambiara de valor?",
       options: [
         { id: "a", text: "var", isCorrect: false },
         { id: "b", text: "let", isCorrect: false },
@@ -180,7 +180,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "c" },
       hint: "Su nombre viene de 'constante'.",
       explanation:
-        "const se usa para valores que no se reasignan. Es la opcion por defecto en codigo moderno.",
+        "const se usa para valores que no se reasignan. Es la opción por defecto en código moderno.",
     },
     {
       id: "js02-ej-02",
@@ -188,7 +188,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: '¿Que devuelve typeof "Hola"?',
+      prompt: '¿Qué devuelve typeof "Hola"?',
       options: [
         { id: "a", text: '"text"', isCorrect: false },
         { id: "b", text: '"string"', isCorrect: true },
@@ -223,7 +223,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: '¿Cual es el resultado de "5" + 3 en JavaScript?',
+      prompt: '¿Cuál es el resultado de "5" + 3 en JavaScript?',
       options: [
         { id: "a", text: "8", isCorrect: false },
         { id: "b", text: '"53"', isCorrect: true },
@@ -241,7 +241,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada valor segun su tipo de dato en JavaScript:",
+      prompt: "Clasifica cada valor según su tipo de dato en JavaScript:",
       dragItems: [
         { id: "drag-1", content: '"Hola"', correctZone: "zone-string" },
         { id: "drag-2", content: "42", correctZone: "zone-number" },
@@ -260,9 +260,9 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
           "drag-3": "zone-boolean",
         },
       },
-      hint: "Texto entre comillas, numeros sin comillas, y valores de verdadero/falso.",
+      hint: "Texto entre comillas, números sin comillas, y valores de verdadero/falso.",
       explanation:
-        '"Hola" es un string (texto), 42 es un number (numero) y true es un boolean (booleano).',
+        '"Hola" es un string (texto), 42 es un number (número) y true es un boolean (booleano).',
     },
     {
       id: "js02-ej-06",
@@ -270,7 +270,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual de estos es un valor 'falsy' en JavaScript?",
+      prompt: "¿Cuál de estos es un valor 'falsy' en JavaScript?",
       options: [
         { id: "a", text: '"false"', isCorrect: false },
         { id: "b", text: "1", isCorrect: false },

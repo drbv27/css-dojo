@@ -3,7 +3,7 @@ import type { ModuleData } from "@/types";
 export const reactEcoHookFormModule: ModuleData = {
   slug: "react-eco-04-react-hook-form",
   title: "React Hook Form",
-  description: "Formularios eficientes con React Hook Form: useForm, register, validacion con Zod y manejo de errores.",
+  description: "Formularios eficientes con React Hook Form: useForm, register, validación con Zod y manejo de errores.",
   order: 204,
   category: "react-eco-forms",
   icon: "code",
@@ -14,15 +14,15 @@ export const reactEcoHookFormModule: ModuleData = {
       title: "Formularios con useForm",
       content: `## React Hook Form
 
-Maneja formularios con **minimos re-renders** y excelente performance.
+Maneja formularios con **mínimos re-renders** y excelente performance.
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npm install react-hook-form
 \`\`\`
 
-### Formulario basico
+### Formulario básico
 
 \`\`\`jsx
 import { useForm } from "react-hook-form";
@@ -78,12 +78,12 @@ function ContactForm() {
     },
     {
       id: "reco04-leccion-02",
-      title: "Validacion con Zod",
+      title: "Validación con Zod",
       content: `## Zod + React Hook Form
 
-Zod permite definir esquemas de validacion tipados:
+Zod permite definir esquemas de validación tipados:
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npm install zod @hookform/resolvers
@@ -130,12 +130,12 @@ function RegistroForm() {
 
 ### Ventajas de Zod + RHF
 
-- **Un solo schema** define validacion + tipos TypeScript
-- \`z.infer<typeof schema>\` genera el tipo automaticamente
+- **Un solo schema** define validación + tipos TypeScript
+- \`z.infer<typeof schema>\` genera el tipo automáticamente
 - Mensajes de error personalizados por campo
-- Validacion en cliente y servidor con el mismo schema
+- Validación en cliente y servidor con el mismo schema
 
-> Zod + React Hook Form es la combinacion mas popular para formularios en React moderno.`,
+> Zod + React Hook Form es la combinación mas popular para formularios en React moderno.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
@@ -151,7 +151,7 @@ function RegistroForm() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que funcion de React Hook Form conecta un input al formulario?",
+      prompt: "¿Qué función de React Hook Form conecta un input al formulario?",
       options: [
         { id: "a", text: "connect()", isCorrect: false },
         { id: "b", text: "register()", isCorrect: true },
@@ -168,7 +168,7 @@ function RegistroForm() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Que ventaja tiene React Hook Form sobre manejar formularios con useState?",
+      prompt: "¿Qué ventaja tiene React Hook Form sobre manejar formularios con useState?",
       options: [
         { id: "a", text: "Usa menos memoria", isCorrect: false },
         { id: "b", text: "No necesita JavaScript", isCorrect: false },
@@ -185,10 +185,10 @@ function RegistroForm() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que hace z.infer<typeof schema> con Zod?",
+      prompt: "¿Qué hace z.infer<typeof schema> con Zod?",
       options: [
         { id: "a", text: "Valida los datos", isCorrect: false },
-        { id: "b", text: "Genera automaticamente el tipo TypeScript del schema", isCorrect: true },
+        { id: "b", text: "Genera automáticamente el tipo TypeScript del schema", isCorrect: true },
         { id: "c", text: "Conecta al formulario", isCorrect: false },
         { id: "d", text: "Crea un componente", isCorrect: false },
       ],
@@ -202,7 +202,7 @@ function RegistroForm() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada concepto con su funcion:",
+      prompt: "Asocia cada concepto con su función:",
       dragItems: [
         { id: "drag-1", content: "register()", correctZone: "zone-connect" },
         { id: "drag-2", content: "handleSubmit()", correctZone: "zone-submit" },
@@ -210,7 +210,7 @@ function RegistroForm() {
       ],
       dropZones: [
         { id: "zone-connect", label: "Conectar input al formulario" },
-        { id: "zone-submit", label: "Manejar envio con validacion" },
+        { id: "zone-submit", label: "Manejar envio con validación" },
         { id: "zone-valid", label: "Conectar Zod con React Hook Form" },
       ],
       validation: {
@@ -218,7 +218,7 @@ function RegistroForm() {
         answer: { "drag-1": "zone-connect", "drag-2": "zone-submit", "drag-3": "zone-valid" },
       },
       hint: "register conecta, handleSubmit valida y envia, zodResolver une Zod con RHF.",
-      explanation: "register conecta inputs, handleSubmit maneja la validacion/envio, zodResolver integra Zod.",
+      explanation: "register conecta inputs, handleSubmit maneja la validación/envio, zodResolver integra Zod.",
     },
   ],
 };

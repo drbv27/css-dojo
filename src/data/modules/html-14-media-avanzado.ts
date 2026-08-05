@@ -4,7 +4,7 @@ export const htmlMediaAvanzadoModule: ModuleData = {
   slug: "html-media-avanzado",
   title: "Media Avanzado en HTML",
   description:
-    "Aprende a usar iframe, SVG inline, canvas, imagenes responsive con picture y srcset, lazy loading y formatos modernos como WebP y AVIF.",
+    "Aprende a usar iframe, SVG inline, canvas, imágenes responsive con picture y srcset, lazy loading y formatos modernos como WebP y AVIF.",
   order: 14,
   category: "html-advanced",
   icon: "play",
@@ -17,7 +17,7 @@ export const htmlMediaAvanzadoModule: ModuleData = {
 
 ### iframe
 
-El elemento \`<iframe>\` permite **incrustar otra pagina web** dentro de la tuya. Es la forma estandar de insertar contenido externo como videos de YouTube o mapas.
+El elemento \`<iframe>\` permite **incrustar otra página web** dentro de la tuya. Es la forma estándar de insertar contenido externo como videos de YouTube o mapas.
 
 \`\`\`html
 <iframe src="https://ejemplo.com" width="600" height="400"></iframe>
@@ -25,13 +25,13 @@ El elemento \`<iframe>\` permite **incrustar otra pagina web** dentro de la tuya
 
 ### Atributos importantes de iframe
 
-| Atributo | Funcion |
+| Atributo | Función |
 |----------|---------|
-| \`src\` | URL de la pagina a incrustar |
+| \`src\` | URL de la página a incrustar |
 | \`width\` / \`height\` | Dimensiones del iframe |
-| \`title\` | Descripcion accesible (obligatorio para a11y) |
+| \`title\` | Descripción accesible (obligatorio para a11y) |
 | \`sandbox\` | Restringe las acciones del contenido incrustado |
-| \`allow\` | Permisos especificos (camara, microfono, etc.) |
+| \`allow\` | Permisos específicos (cámara, microfono, etc.) |
 | \`loading="lazy"\` | Carga el iframe solo cuando es visible |
 
 ### Sandbox: seguridad en iframes
@@ -95,7 +95,7 @@ h3 { color: #2d3436; }`,
 
 ### SVG (Scalable Vector Graphics)
 
-SVG es un formato de **imagen vectorial** que se puede escribir directamente en HTML. Las imagenes SVG no pierden calidad al cambiar de tamano.
+SVG es un formato de **imagen vectorial** que se puede escribir directamente en HTML. Las imágenes SVG no pierden calidad al cambiar de tamaño.
 
 \`\`\`html
 <svg width="100" height="100" viewBox="0 0 100 100">
@@ -105,25 +105,25 @@ SVG es un formato de **imagen vectorial** que se puede escribir directamente en 
 
 ### Ventajas del SVG inline
 
-- **Escalable:** sin perdida de calidad a cualquier tamano
-- **Editable con CSS:** puedes cambiar colores, tamanos con CSS
+- **Escalable:** sin perdida de calidad a cualquier tamaño
+- **Editable con CSS:** puedes cambiar colores, tamaños con CSS
 - **Animable:** se puede animar con CSS o JavaScript
 - **Liviano:** para iconos y formas simples pesa menos que una imagen
 
 ### Elementos SVG comunes
 
-| Elemento | Descripcion |
+| Elemento | Descripción |
 |----------|-------------|
 | \`<circle>\` | Circulo |
 | \`<rect>\` | Rectangulo |
-| \`<line>\` | Linea |
+| \`<line>\` | Línea |
 | \`<text>\` | Texto |
 | \`<path>\` | Forma compleja con trazos |
 | \`<polygon>\` | Poligono |
 
 ### Canvas
 
-El elemento \`<canvas>\` proporciona un lienzo para dibujar graficos con **JavaScript**. A diferencia de SVG, canvas trabaja con pixeles (rasterizado).
+El elemento \`<canvas>\` proporciona un lienzo para dibujar gráficos con **JavaScript**. A diferencia de SVG, canvas trabaja con píxeles (rasterizado).
 
 \`\`\`html
 <canvas id="mi-canvas" width="300" height="200"></canvas>
@@ -136,7 +136,7 @@ ctx.fillStyle = "#6c5ce7";
 ctx.fillRect(10, 10, 100, 80);
 \`\`\`
 
-> **SVG vs Canvas:** Usa SVG para iconos, logos y graficos simples. Usa Canvas para graficos complejos, juegos y visualizaciones con muchos elementos.`,
+> **SVG vs Canvas:** Usa SVG para iconos, logos y gráficos simples. Usa Canvas para gráficos complejos, juegos y visualizaciones con muchos elementos.`,
       codeExample: {
         html: `<h3>SVG Inline - Figuras basicas</h3>
 <svg width="300" height="120" style="background:#f8f9fa;border-radius:8px;">
@@ -183,12 +183,12 @@ ctx.fillText("Canvas Figuras", 150, 115);`,
     },
     {
       id: "html14-leccion-03",
-      title: "Imagenes responsive y lazy loading",
-      content: `## Imagenes responsive y lazy loading
+      title: "Imágenes responsive y lazy loading",
+      content: `## Imágenes responsive y lazy loading
 
 ### El elemento picture
 
-\`<picture>\` permite servir **diferentes imagenes** segun el tamano de pantalla o el formato soportado por el navegador.
+\`<picture>\` permite servir **diferentes imágenes** según el tamaño de pantalla o el formato soportado por el navegador.
 
 \`\`\`html
 <picture>
@@ -200,7 +200,7 @@ ctx.fillText("Canvas Figuras", 150, 115);`,
 
 ### srcset para diferentes resoluciones
 
-El atributo \`srcset\` en \`<img>\` permite al navegador elegir la mejor imagen segun la densidad de pixeles:
+El atributo \`srcset\` en \`<img>\` permite al navegador elegir la mejor imagen según la densidad de píxeles:
 
 \`\`\`html
 <img
@@ -226,16 +226,16 @@ El atributo \`srcset\` en \`<img>\` permite al navegador elegir la mejor imagen 
 
 ### Lazy loading
 
-El atributo \`loading="lazy"\` retrasa la carga de imagenes e iframes hasta que estan **a punto de ser visibles**:
+El atributo \`loading="lazy"\` retrasa la carga de imágenes e iframes hasta que estan **a punto de ser visibles**:
 
 \`\`\`html
 <img src="foto.jpg" alt="Foto" loading="lazy">
 <iframe src="video.html" loading="lazy"></iframe>
 \`\`\`
 
-Esto mejora el **rendimiento** y ahorra datos, especialmente en paginas con muchas imagenes.
+Esto mejora el **rendimiento** y ahorra datos, especialmente en páginas con muchas imágenes.
 
-> **Tip:** No uses lazy loading en imagenes visibles inmediatamente (above the fold). Solo en las que estan mas abajo.`,
+> **Tip:** No uses lazy loading en imágenes visibles inmediatamente (above the fold). Solo en las que estan mas abajo.`,
       codeExample: {
         html: `<h3>Elemento picture con formatos modernos</h3>
 <div style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre;overflow-x:auto;">&lt;picture&gt;
@@ -291,7 +291,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que elemento HTML se usa para incrustar otra pagina web dentro de la tuya?",
+      prompt: "¿Qué elemento HTML se usa para incrustar otra página web dentro de la tuya?",
       options: [
         { id: "a", text: "<embed>", isCorrect: false },
         { id: "b", text: "<iframe>", isCorrect: true },
@@ -301,7 +301,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       validation: { type: "exact", answer: "b" },
       hint: "Su nombre viene de 'inline frame'.",
       explanation:
-        "<iframe> (inline frame) es el elemento estandar para incrustar otra pagina web. <frame> es obsoleto y <embed> se usa para plugins.",
+        "<iframe> (inline frame) es el elemento estándar para incrustar otra página web. <frame> es obsoleto y <embed> se usa para plugins.",
     },
     {
       id: "html14-ej-02",
@@ -309,7 +309,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que atributo retrasa la carga de imagenes hasta que estan a punto de ser visibles?",
+      prompt: "¿Qué atributo retrasa la carga de imágenes hasta que estan a punto de ser visibles?",
       options: [
         { id: "a", text: 'loading="defer"', isCorrect: false },
         { id: "b", text: 'loading="lazy"', isCorrect: true },
@@ -319,7 +319,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       validation: { type: "exact", answer: "b" },
       hint: "'Lazy' significa perezoso en ingles.",
       explanation:
-        'loading="lazy" es un atributo nativo que retrasa la carga de imagenes e iframes hasta que el usuario hace scroll cerca de ellos. Mejora el rendimiento de la pagina.',
+        'loading="lazy" es un atributo nativo que retrasa la carga de imágenes e iframes hasta que el usuario hace scroll cerca de ellos. Mejora el rendimiento de la página.',
     },
     {
       id: "html14-ej-03",
@@ -345,7 +345,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que hace el atributo sandbox en un iframe?",
+      prompt: "¿Qué hace el atributo sandbox en un iframe?",
       options: [
         { id: "a", text: "Cambia el fondo del iframe a color arena", isCorrect: false },
         { id: "b", text: "Permite ejecutar cualquier script dentro del iframe", isCorrect: false },
@@ -355,7 +355,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       validation: { type: "exact", answer: "c" },
       hint: "Es una medida de seguridad que limita lo que puede hacer el contenido incrustado.",
       explanation:
-        'El atributo sandbox restringe el contenido del iframe por seguridad. Por defecto bloquea scripts, formularios y popups. Se pueden habilitar permisos especificos como sandbox="allow-scripts".',
+        'El atributo sandbox restringe el contenido del iframe por seguridad. Por defecto bloquea scripts, formularios y popups. Se pueden habilitar permisos específicos como sandbox="allow-scripts".',
     },
     {
       id: "html14-ej-05",
@@ -363,7 +363,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada tecnologia segun su tipo:",
+      prompt: "Clasifica cada tecnologia según su tipo:",
       dragItems: [
         { id: "drag-1", content: "SVG", correctZone: "zone-vectorial" },
         { id: "drag-2", content: "Canvas", correctZone: "zone-raster" },
@@ -372,7 +372,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       ],
       dropZones: [
         { id: "zone-vectorial", label: "Vectorial (escalable)" },
-        { id: "zone-raster", label: "Rasterizado (pixeles)" },
+        { id: "zone-raster", label: "Rasterizado (píxeles)" },
       ],
       validation: {
         type: "exact",
@@ -383,9 +383,9 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
           "drag-4": "zone-vectorial",
         },
       },
-      hint: "Los graficos vectoriales se describen con matematicas; los rasterizados con pixeles.",
+      hint: "Los gráficos vectoriales se describen con matemáticas; los rasterizados con píxeles.",
       explanation:
-        "SVG es vectorial y se escala sin perdida de calidad. Canvas y WebP son formatos basados en pixeles (rasterizados).",
+        "SVG es vectorial y se escala sin perdida de calidad. Canvas y WebP son formatos basados en píxeles (rasterizados).",
     },
     {
       id: "html14-ej-06",
@@ -393,7 +393,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que elemento HTML permite servir diferentes imagenes segun el tamano de pantalla o formato?",
+      prompt: "¿Qué elemento HTML permite servir diferentes imágenes según el tamaño de pantalla o formato?",
       options: [
         { id: "a", text: "<responsive-img>", isCorrect: false },
         { id: "b", text: "<image>", isCorrect: false },
@@ -403,7 +403,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       validation: { type: "exact", answer: "c" },
       hint: "Contiene elementos <source> y un <img> como fallback.",
       explanation:
-        "El elemento <picture> permite definir multiples fuentes de imagen con <source> para diferentes tamanos de pantalla o formatos. El <img> actua como fallback.",
+        "El elemento <picture> permite definir múltiples fuentes de imagen con <source> para diferentes tamaños de pantalla o formatos. El <img> actua como fallback.",
     },
     {
       id: "html14-ej-07",
@@ -411,7 +411,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Cual de estos formatos de imagen es mas eficiente en compresion?",
+      prompt: "¿Cuál de estos formatos de imagen es mas eficiente en compresión?",
       options: [
         { id: "a", text: "PNG", isCorrect: false },
         { id: "b", text: "JPEG", isCorrect: false },
@@ -421,7 +421,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       validation: { type: "exact", answer: "d" },
       hint: "Es el formato mas nuevo de la lista.",
       explanation:
-        "AVIF ofrece la mejor compresion, siendo hasta un 50% mas liviano que JPEG con calidad similar. WebP es el segundo mas eficiente, seguido de JPEG.",
+        "AVIF ofrece la mejor compresión, siendo hasta un 50% mas liviano que JPEG con calidad similar. WebP es el segundo mas eficiente, seguido de JPEG.",
     },
     {
       id: "html14-ej-08",
@@ -442,7 +442,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       },
       hint: 'picture envuelve un source con srcset y un img de respaldo; agrega loading="lazy" al img para carga diferida.',
       explanation:
-        "picture + source srcset sirve distintas imagenes segun el dispositivo, y loading lazy difiere la carga hasta que la imagen se acerca a la pantalla (mejor rendimiento).",
+        "picture + source srcset sirve distintas imágenes según el dispositivo, y loading lazy difiere la carga hasta que la imagen se acerca a la pantalla (mejor rendimiento).",
     },
   ],
 };

@@ -11,7 +11,7 @@ export const nextjsApiRoutesModule: ModuleData = {
   lessons: [
     {
       id: "njs04-leccion-01",
-      title: "Route Handlers basicos",
+      title: "Route Handlers básicos",
       content: `## Route Handlers — tu API en Next.js
 
 En App Router, las APIs se definen con archivos \`route.ts\`:
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 }
 \`\`\`
 
-### Ruta dinamica — PUT y DELETE
+### Ruta dinámica — PUT y DELETE
 
 \`\`\`typescript
 // app/api/usuarios/[id]/route.ts
@@ -74,7 +74,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
 }
 \`\`\`
 
-> Cada funcion exportada (GET, POST, PUT, DELETE) maneja ese metodo HTTP.`,
+> Cada función exportada (GET, POST, PUT, DELETE) maneja ese método HTTP.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -84,7 +84,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     },
     {
       id: "njs04-leccion-02",
-      title: "Validacion y errores",
+      title: "Validación y errores",
       content: `## Validar con Zod
 
 \`\`\`typescript
@@ -170,7 +170,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que archivo define una API route en App Router?",
+      prompt: "¿Qué archivo define una API route en App Router?",
       options: [
         { id: "a", text: "api.ts", isCorrect: false },
         { id: "b", text: "route.ts", isCorrect: true },
@@ -187,7 +187,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Como defines un endpoint POST en un Route Handler?",
+      prompt: "¿Cómo defines un endpoint POST en un Route Handler?",
       options: [
         { id: "a", text: "app.post('/api/users', handler)", isCorrect: false },
         { id: "b", text: "export async function POST(request: Request) { ... }", isCorrect: true },
@@ -195,8 +195,8 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
         { id: "d", text: "export default handler", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Se exporta una funcion con el nombre del metodo HTTP.",
-      explanation: "Exportas funciones nombradas GET, POST, PUT, DELETE. Next.js las asocia al metodo HTTP correspondiente.",
+      hint: "Se exporta una función con el nombre del método HTTP.",
+      explanation: "Exportas funciones nombradas GET, POST, PUT, DELETE. Next.js las asocia al método HTTP correspondiente.",
     },
     {
       id: "njs04-ej-03",
@@ -204,7 +204,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que status code se usa al crear un recurso exitosamente?",
+      prompt: "¿Qué status code se usa al crear un recurso exitosamente?",
       options: [
         { id: "a", text: "200", isCorrect: false },
         { id: "b", text: "201", isCorrect: true },
@@ -212,7 +212,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
         { id: "d", text: "301", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "2XX = exito, pero uno es especifico para 'creado'.",
+      hint: "2XX = exito, pero uno es específico para 'creado'.",
       explanation: "201 Created indica que el recurso se creo exitosamente. 200 es para respuestas generales.",
     },
     {
@@ -221,7 +221,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada metodo HTTP con su accion:",
+      prompt: "Asocia cada método HTTP con su acción:",
       dragItems: [
         { id: "drag-1", content: "GET", correctZone: "zone-leer" },
         { id: "drag-2", content: "POST", correctZone: "zone-crear" },

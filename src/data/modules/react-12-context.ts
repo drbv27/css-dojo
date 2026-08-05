@@ -4,7 +4,7 @@ export const reactContextModule: ModuleData = {
   slug: "react-context",
   title: "Context API",
   description:
-    "Aprende a compartir datos entre componentes sin prop drilling usando createContext, useContext y el patron Provider.",
+    "Aprende a compartir datos entre componentes sin prop drilling usando createContext, useContext y el patrón Provider.",
   order: 212,
   category: "react-intermediate",
   icon: "share-2",
@@ -28,9 +28,9 @@ Cuando necesitas pasar datos a componentes profundamente anidados, tienes que pa
 </App>
 \`\`\`
 
-Esto se llama **prop drilling** y hace el codigo dificil de mantener.
+Esto se llama **prop drilling** y hace el código difícil de mantener.
 
-### La solucion: Context API
+### La solución: Context API
 
 Context permite compartir valores entre componentes sin pasar props manualmente por cada nivel.
 
@@ -123,9 +123,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     {
       id: "react12-leccion-02",
       title: "Context con estado",
-      content: `## Context + Estado: El Patron Completo
+      content: `## Context + Estado: El Patrón Completo
 
-### Patron recomendado
+### Patrón recomendado
 Crea un componente Provider que encapsule el estado y las funciones:
 
 \`\`\`jsx
@@ -168,7 +168,7 @@ function Perfil() {
 }
 \`\`\`
 
-### Multiples Contexts
+### Múltiples Contexts
 Puedes anidar varios Providers para diferentes datos:
 \`\`\`jsx
 <AuthProvider>
@@ -180,7 +180,7 @@ Puedes anidar varios Providers para diferentes datos:
 </AuthProvider>
 \`\`\`
 
-> **Tip:** Crea un custom hook (como useAuth) para cada contexto. Facilita el uso y agrega validacion.`,
+> **Tip:** Crea un custom hook (como useAuth) para cada contexto. Facilita el uso y agrega validación.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -266,10 +266,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 ### Usa Context cuando:
 - Muchos componentes en diferentes niveles necesitan el mismo dato
 - Los datos son "globales" (tema, idioma, usuario, preferencias)
-- El prop drilling hace el codigo dificil de mantener
+- El prop drilling hace el código difícil de mantener
 
-### Alternativa: Composicion
-Antes de usar Context, considera la **composicion**:
+### Alternativa: Composición
+Antes de usar Context, considera la **composición**:
 
 \`\`\`jsx
 // En vez de pasar usuario por 3 niveles...
@@ -377,9 +377,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que problema resuelve la Context API de React?",
+      prompt: "¿Qué problema resuelve la Context API de React?",
       options: [
-        { id: "a", text: "Manejo de rutas en la aplicacion", isCorrect: false },
+        { id: "a", text: "Manejo de rutas en la aplicación", isCorrect: false },
         { id: "b", text: "Prop drilling (pasar props por muchos niveles)", isCorrect: true },
         { id: "c", text: "Animaciones de componentes", isCorrect: false },
         { id: "d", text: "Peticiones HTTP al servidor", isCorrect: false },
@@ -394,7 +394,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cuales son los tres pasos para usar Context?",
+      prompt: "¿Cuáles son los tres pasos para usar Context?",
       options: [
         { id: "a", text: "import, export, render", isCorrect: false },
         { id: "b", text: "createContext, Provider, useContext", isCorrect: true },
@@ -420,7 +420,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "useContext" },
       hint: "Es el hook para consumir un contexto.",
-      explanation: "useContext(TemaContext) lee el valor actual del contexto mas cercano TemaContext.Provider en el arbol de componentes.",
+      explanation: "useContext(TemaContext) lee el valor actual del contexto mas cercano TemaContext.Provider en el árbol de componentes.",
     },
     {
       id: "react12-ej-04",
@@ -442,8 +442,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "context", label: "Context" },
       ],
       validation: { type: "exact", answer: { d1: "context", d2: "props", d3: "context", d4: "props", d5: "context", d6: "props" } },
-      hint: "Context para datos globales, Props para datos especificos del componente.",
-      explanation: "Context es ideal para datos globales (tema, usuario, idioma). Props son mejores para datos locales y especificos de un componente.",
+      hint: "Context para datos globales, Props para datos específicos del componente.",
+      explanation: "Context es ideal para datos globales (tema, usuario, idioma). Props son mejores para datos locales y específicos de un componente.",
     },
     {
       id: "react12-ej-05",
@@ -451,7 +451,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que pasa cuando cambia el value del Provider?",
+      prompt: "¿Qué pasa cuando cambia el value del Provider?",
       options: [
         { id: "a", text: "Solo el Provider se re-renderiza", isCorrect: false },
         { id: "b", text: "Todos los componentes de la app se re-renderizan", isCorrect: false },
@@ -460,7 +460,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Los componentes que leen el contexto necesitan actualizarse.",
-      explanation: "Cuando el value del Provider cambia, todos los componentes que usan useContext con ese contexto se re-renderizan automaticamente.",
+      explanation: "Cuando el value del Provider cambia, todos los componentes que usan useContext con ese contexto se re-renderizan automáticamente.",
     },
     {
       id: "react12-ej-06",
@@ -487,14 +487,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 7,
       prompt: "¿Por que es mejor separar contextos no relacionados en lugar de tener uno solo?",
       options: [
-        { id: "a", text: "React no permite multiples valores en un Provider", isCorrect: false },
+        { id: "a", text: "React no permite múltiples valores en un Provider", isCorrect: false },
         { id: "b", text: "Evita re-renders innecesarios en consumidores que no usan todos los datos", isCorrect: true },
         { id: "c", text: "Es obligatorio por las reglas de React", isCorrect: false },
-        { id: "d", text: "Reduce el tamano del bundle", isCorrect: false },
+        { id: "d", text: "Reduce el tamaño del bundle", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en que pasa cuando cambia solo uno de los valores.",
-      explanation: "Si cambias el tema en un contexto que tambien tiene carrito e idioma, TODOS los consumidores se re-renderizan. Separando, solo los que leen el tema se actualizan.",
+      explanation: "Si cambias el tema en un contexto que también tiene carrito e idioma, TODOS los consumidores se re-renderizan. Separando, solo los que leen el tema se actualizan.",
     },
     {
       id: "react12-ej-08",
@@ -502,7 +502,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Cual es una buena practica al crear un contexto con estado?",
+      prompt: "¿Cuál es una buena práctica al crear un contexto con estado?",
       options: [
         { id: "a", text: "Siempre usar Redux en vez de Context", isCorrect: false },
         { id: "b", text: "Crear un custom hook (useAuth, useTema) que valide el contexto", isCorrect: true },
@@ -510,8 +510,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Poner todo el estado de la app en un solo contexto", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Encapsular la logica del contexto en un hook facilita el uso.",
-      explanation: "Crear un custom hook como useAuth() encapsula useContext, agrega validacion (error si no hay Provider), y proporciona una API mas limpia.",
+      hint: "Encapsular la lógica del contexto en un hook facilita el uso.",
+      explanation: "Crear un custom hook como useAuth() encapsula useContext, agrega validación (error si no hay Provider), y proporciona una API mas limpia.",
     },
   ],
 };

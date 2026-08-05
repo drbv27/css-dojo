@@ -12,10 +12,10 @@ export const tailwindModule: ModuleData = {
   lessons: [
     {
       id: "24-leccion-01",
-      title: "Introduccion a Tailwind CSS",
-      content: `## Introduccion a Tailwind CSS
+      title: "Introducción a Tailwind CSS",
+      content: `## Introducción a Tailwind CSS
 
-### ¿Que es Tailwind CSS?
+### ¿Qué es Tailwind CSS?
 
 **Tailwind CSS** es un framework CSS **utility-first** (utilidades primero). En lugar de componentes predefinidos como Bootstrap, Tailwind proporciona cientos de clases utilitarias de bajo nivel que se combinan directamente en el HTML.
 
@@ -42,33 +42,33 @@ export const tailwindModule: ModuleData = {
 1. **No inventas nombres de clases** - No mas ".contenedor-principal-wrapper"
 2. **CSS no crece** - Reutilizas clases existentes, el archivo CSS no crece con cada componente
 3. **Cambios seguros** - Modificar una clase solo afecta al elemento donde la usas
-4. **Diseno consistente** - Sistema de espaciado y colores predefinido
+4. **Diseño consistente** - Sistema de espaciado y colores predefinido
 5. **Responsive built-in** - Prefijos como \`md:\`, \`lg:\` para cada breakpoint
 
 ### Como incluir Tailwind
 
-Para prototipar rapido, usa el CDN (Play CDN):
+Para prototipar rápido, usa el CDN (Play CDN):
 
 \`\`\`html
 <script src="https://cdn.tailwindcss.com"></script>
 \`\`\`
 
-Para produccion, instala con npm:
+Para producción, instala con npm:
 
 \`\`\`bash
 npm install -D tailwindcss
 npx tailwindcss init
 \`\`\`
 
-### Comparacion con Bootstrap
+### Comparación con Bootstrap
 
 | Aspecto | Bootstrap | Tailwind CSS |
 |---------|-----------|-------------|
 | Enfoque | Componentes predefinidos | Clases utilitarias |
-| Personalizacion | Sobreescribir variables | Configurar tailwind.config.js |
-| Tamano final | Incluye todo | Solo lo que usas (purge) |
-| Curva de aprendizaje | Rapido al inicio | Memorizar clases, luego rapido |
-| Diseno | Sitios "Bootstrap-like" | Diseno totalmente personalizado |
+| Personalización | Sobreescribir variables | Configurar tailwind.config.js |
+| Tamaño final | Incluye todo | Solo lo que usas (purge) |
+| Curva de aprendizaje | Rápido al inicio | Memorizar clases, luego rápido |
+| Diseño | Sitios "Bootstrap-like" | Diseño totalmente personalizado |
 
 ### Primeros pasos
 
@@ -185,7 +185,7 @@ Tailwind hace que Flexbox sea extremadamente simple:
 
 El sistema de espaciado de Tailwind usa una escala de 4px:
 
-| Clase | Valor | Pixeles |
+| Clase | Valor | Píxeles |
 |-------|-------|---------|
 | \`p-0\` | 0 | 0px |
 | \`p-1\` | 0.25rem | 4px |
@@ -251,7 +251,7 @@ Tailwind incluye una paleta de colores extensa con 10 tonos por color:
 
 Colores disponibles: slate, gray, zinc, neutral, stone, red, orange, amber, yellow, lime, green, emerald, teal, cyan, sky, blue, indigo, violet, purple, fuchsia, pink, rose.
 
-### Tipografia
+### Tipografía
 
 \`\`\`html
 <!-- Tamanio -->
@@ -371,9 +371,9 @@ Colores disponibles: slate, gray, zinc, neutral, stone, red, orange, amber, yell
 
 Tailwind usa un sistema mobile-first con prefijos de breakpoint:
 
-| Prefijo | Ancho minimo | Equivale a |
+| Prefijo | Ancho mínimo | Equivale a |
 |---------|-------------|------------|
-| (sin prefijo) | 0px | Movil por defecto |
+| (sin prefijo) | 0px | Móvil por defecto |
 | \`sm:\` | 640px | @media (min-width: 640px) |
 | \`md:\` | 768px | @media (min-width: 768px) |
 | \`lg:\` | 1024px | @media (min-width: 1024px) |
@@ -412,7 +412,7 @@ Tailwind usa un sistema mobile-first con prefijos de breakpoint:
 
 ### State variants (estados)
 
-Tailwind permite aplicar estilos a estados especificos con prefijos:
+Tailwind permite aplicar estilos a estados específicos con prefijos:
 
 \`\`\`html
 <!-- Hover -->
@@ -504,7 +504,7 @@ Los prefijos se pueden combinar:
 </button>
 \`\`\`
 
-> **Importante:** Tailwind es mobile-first. Los estilos base son para movil, y los prefijos (\`md:\`, \`lg:\`) agregan estilos para pantallas mas grandes. No existe un prefijo para "solo movil" - simplemente no uses prefijo.`,
+> **Importante:** Tailwind es mobile-first. Los estilos base son para móvil, y los prefijos (\`md:\`, \`lg:\`) agregan estilos para pantallas mas grandes. No existe un prefijo para "solo móvil" - simplemente no uses prefijo.`,
       codeExample: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-6 bg-gray-100 space-y-4">\n  <button class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg">\n    Hover y Active\n  </button>\n  <div class="group bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100">\n    <h3 class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Group Hover</h3>\n    <p class="text-gray-500 group-hover:text-gray-700 transition-colors text-sm mt-1">Pasa el mouse sobre toda la tarjeta para ver el efecto group-hover.</p>\n  </div>\n  <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="Focus en este input...">\n</div>`,
         css: ``,
@@ -521,7 +521,7 @@ Los prefijos se pueden combinar:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cual es el enfoque principal de Tailwind CSS?",
+        "¿Cuál es el enfoque principal de Tailwind CSS?",
       options: [
         { id: "a", text: "Componentes predefinidos como Bootstrap", isCorrect: false },
         { id: "b", text: "Utility-first: clases utilitarias de bajo nivel", isCorrect: true },
@@ -529,9 +529,9 @@ Los prefijos se pueden combinar:
         { id: "d", text: "Preprocesamiento de CSS como Sass", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Tailwind se basa en utilidades pequenas que se combinan, no en componentes grandes.",
+      hint: "Tailwind se basa en utilidades pequeñas que se combinan, no en componentes grandes.",
       explanation:
-        "Tailwind CSS usa el enfoque utility-first: proporciona cientos de clases utilitarias de bajo nivel (como p-4, text-xl, bg-blue-500) que se combinan directamente en el HTML para construir cualquier diseno.",
+        "Tailwind CSS usa el enfoque utility-first: proporciona cientos de clases utilitarias de bajo nivel (como p-4, text-xl, bg-blue-500) que se combinan directamente en el HTML para construir cualquier diseño.",
     },
     {
       id: "24-ej-02",
@@ -548,9 +548,9 @@ Los prefijos se pueden combinar:
         blanks: ["p-4"],
       },
       validation: { type: "exact", answer: "p-4" },
-      hint: "En Tailwind, p = padding y el numero sigue la escala de 4px. Para 16px, necesitas 16/4 = 4.",
+      hint: "En Tailwind, p = padding y el número sigue la escala de 4px. Para 16px, necesitas 16/4 = 4.",
       explanation:
-        "En Tailwind, p-4 aplica padding de 1rem (16px) en todos los lados. La escala de espaciado multiplica el numero por 4px: p-1 = 4px, p-2 = 8px, p-3 = 12px, p-4 = 16px.",
+        "En Tailwind, p-4 aplica padding de 1rem (16px) en todos los lados. La escala de espaciado multiplica el número por 4px: p-1 = 4px, p-2 = 8px, p-3 = 12px, p-4 = 16px.",
     },
     {
       id: "24-ej-03",
@@ -569,7 +569,7 @@ Los prefijos se pueden combinar:
       validation: { type: "exact", answer: "b" },
       hint: "flex activa flexbox, justify-between separa los items, items-center los centra verticalmente.",
       explanation:
-        "'flex' activa display: flex. 'justify-between' aplica justify-content: space-between (distribuye con espacio entre elementos). 'items-center' aplica align-items: center (centra verticalmente). Es un patron muy comun para barras de navegacion.",
+        "'flex' activa display: flex. 'justify-between' aplica justify-content: space-between (distribuye con espacio entre elementos). 'items-center' aplica align-items: center (centra verticalmente). Es un patrón muy común para barras de navegación.",
     },
     {
       id: "24-ej-04",
@@ -630,7 +630,7 @@ Los prefijos se pueden combinar:
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un boton con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver mas'.",
+        "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un botón con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver mas'.",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-8 bg-gray-100 min-h-[200px] flex items-center justify-center">`,
         cssPrefix: "",
@@ -654,9 +654,9 @@ Los prefijos se pueden combinar:
           ".p-6 button.bg-blue-500.rounded-lg :: Ver mas",
         ],
       },
-      hint: "Construye la tarjeta paso a paso: contenedor con max-w-sm, padding con p-6, titulo con text-xl font-bold, y boton con bg-blue-500.",
+      hint: "Construye la tarjeta paso a paso: contenedor con max-w-sm, padding con p-6, título con text-xl font-bold, y botón con bg-blue-500.",
       explanation:
-        "La tarjeta de Tailwind se construye combinando clases utilitarias: max-w-sm para ancho maximo, rounded-xl y shadow-lg para apariencia, p-6 para padding interno, y clases de tipografia y color para el contenido. El boton usa hover:bg-blue-600 para interactividad.",
+        "La tarjeta de Tailwind se construye combinando clases utilitarias: max-w-sm para ancho máximo, rounded-xl y shadow-lg para apariencia, p-6 para padding interno, y clases de tipografía y color para el contenido. El botón usa hover:bg-blue-600 para interactividad.",
     },
     {
       id: "24-ej-07",
@@ -665,7 +665,7 @@ Los prefijos se pueden combinar:
       xpReward: 30,
       order: 7,
       prompt:
-        "¿Como se aplica un estilo de hover al padre que afecte a un hijo en Tailwind?",
+        "¿Cómo se aplica un estilo de hover al padre que afecte a un hijo en Tailwind?",
       options: [
         { id: "a", text: "Usando 'parent-hover:' en el hijo", isCorrect: false },
         { id: "b", text: "Usando 'group' en el padre y 'group-hover:' en el hijo", isCorrect: true },

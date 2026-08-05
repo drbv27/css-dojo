@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const jsDomSeleccionModule: ModuleData = {
   slug: "js-dom-seleccion",
-  title: "DOM: Seleccion de Elementos",
+  title: "DOM: Selección de Elementos",
   description:
     "Aprende a seleccionar elementos HTML desde JavaScript usando getElementById, querySelector y mas.",
   order: 111,
@@ -12,10 +12,10 @@ export const jsDomSeleccionModule: ModuleData = {
   lessons: [
     {
       id: "js11-leccion-01",
-      title: "¿Que es el DOM?",
+      title: "¿Qué es el DOM?",
       content: `## El DOM (Document Object Model)
 
-El **DOM** es la representacion en forma de arbol de un documento HTML. JavaScript puede leer y modificar este arbol.
+El **DOM** es la representación en forma de árbol de un documento HTML. JavaScript puede leer y modificar este árbol.
 
 ### Estructura del DOM
 
@@ -44,7 +44,7 @@ document.documentElement // elemento <html>
 ### ¿Por que es importante?
 
 Sin el DOM, JavaScript no podria:
-- Cambiar el contenido de la pagina
+- Cambiar el contenido de la página
 - Responder a clicks y otros eventos
 - Crear elementos dinamicamente
 - Modificar estilos
@@ -64,8 +64,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js11-leccion-02",
-      title: "Metodos de seleccion",
-      content: `## Metodos de seleccion de elementos
+      title: "Métodos de selección",
+      content: `## Métodos de selección de elementos
 
 ### getElementById()
 Selecciona UN elemento por su atributo id:
@@ -89,13 +89,13 @@ const items = document.querySelectorAll(".item");
 \`\`\`
 
 ### getElementsByClassName() / getElementsByTagName()
-Devuelven HTMLCollection (coleccion viva):
+Devuelven HTMLCollection (colección viva):
 \`\`\`javascript
 const clases = document.getElementsByClassName("item");
 const divs = document.getElementsByTagName("div");
 \`\`\`
 
-> **Recomendacion:** Usa \`querySelector\` y \`querySelectorAll\` en codigo moderno. Son mas flexibles y aceptan cualquier selector CSS.`,
+> **Recomendación:** Usa \`querySelector\` y \`querySelectorAll\` en código moderno. Son mas flexibles y aceptan cualquier selector CSS.`,
       codeExample: {
         html: '<ul id="lista">\n  <li class="item">Elemento 1</li>\n  <li class="item activo">Elemento 2</li>\n  <li class="item">Elemento 3</li>\n</ul>\n<div id="resultado"></div>',
         css: '.item { padding: 4px 0; color: #cdd6f4; } .activo { color: #a6e3a1; font-weight: bold; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -128,8 +128,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js11-leccion-03",
-      title: "Navegacion por el DOM",
-      content: `## Navegacion por el DOM
+      title: "Navegación por el DOM",
+      content: `## Navegación por el DOM
 
 Desde cualquier elemento puedes navegar a sus parientes:
 
@@ -193,7 +193,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que metodo selecciona un elemento por su atributo id?",
+      prompt: "¿Qué método selecciona un elemento por su atributo id?",
       options: [
         { id: "a", text: "document.querySelector()", isCorrect: false },
         { id: "b", text: "document.getElementById()", isCorrect: true },
@@ -201,8 +201,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "document.findById()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El nombre del metodo incluye 'ById'.",
-      explanation: "document.getElementById() selecciona un unico elemento por su atributo id.",
+      hint: "El nombre del método incluye 'ById'.",
+      explanation: "document.getElementById() selecciona un único elemento por su atributo id.",
     },
     {
       id: "js11-ej-02",
@@ -210,7 +210,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que metodo es recomendado para seleccionar elementos en codigo moderno?",
+      prompt: "¿Qué método es recomendado para seleccionar elementos en código moderno?",
       options: [
         { id: "a", text: "getElementsByTagName()", isCorrect: false },
         { id: "b", text: "getElementsByClassName()", isCorrect: false },
@@ -219,7 +219,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Acepta cualquier selector CSS.",
-      explanation: "querySelector y querySelectorAll son los metodos recomendados porque aceptan cualquier selector CSS valido.",
+      explanation: "querySelector y querySelectorAll son los métodos recomendados porque aceptan cualquier selector CSS valido.",
     },
     {
       id: "js11-ej-03",
@@ -244,7 +244,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que devuelve querySelectorAll() si no encuentra ningun elemento?",
+      prompt: "¿Qué devuelve querySelectorAll() si no encuentra ningun elemento?",
       options: [
         { id: "a", text: "null", isCorrect: false },
         { id: "b", text: "undefined", isCorrect: false },
@@ -261,7 +261,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que propiedad accede al elemento padre de un nodo?",
+      prompt: "¿Qué propiedad accede al elemento padre de un nodo?",
       options: [
         { id: "a", text: "parentElement", isCorrect: true },
         { id: "b", text: "parent", isCorrect: false },
@@ -278,9 +278,9 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: '¿Cual es la diferencia entre querySelector("#id") y getElementById("id")?',
+      prompt: '¿Cuál es la diferencia entre querySelector("#id") y getElementById("id")?',
       options: [
-        { id: "a", text: "querySelector es mas rapido", isCorrect: false },
+        { id: "a", text: "querySelector es mas rápido", isCorrect: false },
         { id: "b", text: "getElementById no acepta selectores CSS, querySelector si", isCorrect: true },
         { id: "c", text: "No hay diferencia", isCorrect: false },
         { id: "d", text: "getElementById devuelve un array", isCorrect: false },

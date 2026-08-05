@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const htmlSemanticaModule: ModuleData = {
   slug: "html-semantica",
-  title: "HTML Semantico",
+  title: "HTML Semántico",
   description:
-    "Aprende a usar etiquetas semanticas como header, nav, main, article, section y mas para crear paginas web mejor estructuradas, accesibles y optimizadas para SEO.",
+    "Aprende a usar etiquetas semánticas como header, nav, main, article, section y mas para crear páginas web mejor estructuradas, accesibles y optimizadas para SEO.",
   order: 10,
   category: "html-intermediate",
   icon: "bookmark",
@@ -12,12 +12,12 @@ export const htmlSemanticaModule: ModuleData = {
   lessons: [
     {
       id: "html10-leccion-01",
-      title: "¿Que es HTML semantico?",
-      content: `## ¿Que es HTML semantico?
+      title: "¿Qué es HTML semántico?",
+      content: `## ¿Qué es HTML semántico?
 
-**HTML semantico** significa usar etiquetas que describen el **significado** del contenido, no solo su apariencia.
+**HTML semántico** significa usar etiquetas que describen el **significado** del contenido, no solo su apariencia.
 
-### Div soup vs HTML semantico
+### Div soup vs HTML semántico
 
 **Mal (div soup):**
 \`\`\`html
@@ -28,7 +28,7 @@ export const htmlSemanticaModule: ModuleData = {
 <div class="footer">...</div>
 \`\`\`
 
-**Bien (semantico):**
+**Bien (semántico):**
 \`\`\`html
 <header>
   <nav>...</nav>
@@ -40,11 +40,11 @@ export const htmlSemanticaModule: ModuleData = {
 ### ¿Por que importa?
 
 1. **SEO:** Los motores de busqueda entienden mejor tu contenido
-2. **Accesibilidad:** Los lectores de pantalla navegan por secciones semanticas
-3. **Legibilidad:** El codigo es mas facil de leer y mantener
+2. **Accesibilidad:** Los lectores de pantalla navegan por secciones semánticas
+3. **Legibilidad:** El código es mas fácil de leer y mantener
 4. **Estandares:** Es la forma correcta de escribir HTML moderno
 
-> **Regla de oro:** Si una etiqueta semantica describe tu contenido, usala en lugar de un \`<div>\`.`,
+> **Regla de oro:** Si una etiqueta semántica describe tu contenido, usala en lugar de un \`<div>\`.`,
       codeExample: {
         html: `<!-- Estructura semantica basica -->
 <header style="background:#6c5ce7;color:white;padding:16px;">
@@ -80,15 +80,15 @@ a { text-decoration: none; }`,
 
 ### header
 
-Representa la cabecera de la pagina o de una seccion. Suele contener el logo, titulo y navegacion.
+Representa la cabecera de la página o de una sección. Suele contener el logo, título y navegación.
 
 ### nav
 
-Contiene los enlaces de navegacion principales del sitio.
+Contiene los enlaces de navegación principales del sitio.
 
 ### main
 
-El contenido principal de la pagina. **Solo debe haber un \`<main>\` por pagina.**
+El contenido principal de la página. **Solo debe haber un \`<main>\` por página.**
 
 ### section
 
@@ -104,7 +104,7 @@ Contenido complementario o lateral (barras laterales, publicidad, enlaces relaci
 
 ### footer
 
-Pie de pagina del sitio o de una seccion. Contiene informacion de contacto, copyright, enlaces legales.
+Pie de página del sitio o de una sección. Contiene información de contacto, copyright, enlaces legales.
 
 ### Estructura tipica
 
@@ -169,7 +169,7 @@ ul { padding-left: 20px; }`,
 
 ### figure y figcaption
 
-\`<figure>\` envuelve contenido visual (imagenes, diagramas, codigo) con su leyenda \`<figcaption>\`.
+\`<figure>\` envuelve contenido visual (imágenes, diagramas, código) con su leyenda \`<figcaption>\`.
 
 \`\`\`html
 <figure>
@@ -201,7 +201,7 @@ Representa una fecha u hora en formato legible por humanos y maquinas:
 
 ### address
 
-Informacion de contacto del autor o propietario del contenido:
+Información de contacto del autor o propietario del contenido:
 
 \`\`\`html
 <address>
@@ -253,20 +253,20 @@ Informacion de contacto del autor o propietario del contenido:
     },
     {
       id: "html10-leccion-04",
-      title: "Buenas practicas de HTML semantico",
-      content: `## Buenas practicas de HTML semantico
+      title: "Buenas prácticas de HTML semántico",
+      content: `## Buenas prácticas de HTML semántico
 
 ### 1. No abuses de div y span
 
-Usa \`<div>\` solo cuando **ninguna etiqueta semantica** sea apropiada. ¿Piensa siempre: "Existe una etiqueta que describa mejor este contenido?"
+Usa \`<div>\` solo cuando **ninguna etiqueta semántica** sea apropiada. ¿Piensa siempre: "Existe una etiqueta que describa mejor este contenido?"
 
-### 2. Un solo main por pagina
+### 2. Un solo main por página
 
 Solo debe existir **un elemento \`<main>\`** que contenga el contenido principal.
 
 ### 3. Los encabezados importan
 
-Respeta la **jerarquia de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada seccion deberia tener su encabezado.
+Respeta la **jerarquía de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada sección deberia tener su encabezado.
 
 \`\`\`html
 <!-- Correcto -->
@@ -282,19 +282,19 @@ Respeta la **jerarquia de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada 
 ### 4. article vs section
 
 - **article:** Contenido que tiene sentido **independiente** (se podria publicar solo)
-- **section:** Agrupa contenido **tematicamente relacionado** dentro de una pagina
+- **section:** Agrupa contenido **tematicamente relacionado** dentro de una página
 
-### 5. nav para navegacion principal
+### 5. nav para navegación principal
 
-No uses \`<nav>\` para cada grupo de enlaces. Reservalo para la **navegacion principal** del sitio.
+No uses \`<nav>\` para cada grupo de enlaces. Reservalo para la **navegación principal** del sitio.
 
-### Checklist de semantica
+### Checklist de semántica
 
 - ¿[ ] Usas header, main y footer?
 - ¿[ ] Tus articulos son independientes?
-- ¿[ ] Los encabezados siguen jerarquia?
-- ¿[ ] Usas figure para imagenes con leyenda?
-- ¿[ ] Evitas div donde hay alternativa semantica?`,
+- ¿[ ] Los encabezados siguen jerarquía?
+- ¿[ ] Usas figure para imágenes con leyenda?
+- ¿[ ] Evitas div donde hay alternativa semántica?`,
       codeExample: {
         html: `<!-- Pagina bien estructurada -->
 <header>
@@ -358,7 +358,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que etiqueta semantica representa el contenido principal de una pagina?",
+      prompt: "¿Qué etiqueta semántica representa el contenido principal de una página?",
       options: [
         { id: "a", text: "<content>", isCorrect: false },
         { id: "b", text: "<main>", isCorrect: true },
@@ -366,9 +366,9 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
         { id: "d", text: "<body>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Solo debe haber uno por pagina.",
+      hint: "Solo debe haber uno por página.",
       explanation:
-        "<main> representa el contenido principal de la pagina. Solo debe existir un <main> por documento y no debe estar dentro de header, footer o nav.",
+        "<main> representa el contenido principal de la página. Solo debe existir un <main> por documento y no debe estar dentro de header, footer o nav.",
     },
     {
       id: "html10-ej-02",
@@ -376,7 +376,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que etiqueta se usa para la navegacion principal de un sitio?",
+      prompt: "¿Qué etiqueta se usa para la navegación principal de un sitio?",
       options: [
         { id: "a", text: "<menu>", isCorrect: false },
         { id: "b", text: "<links>", isCorrect: false },
@@ -386,7 +386,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       validation: { type: "exact", answer: "d" },
       hint: "Es una abreviatura de 'navigation'.",
       explanation:
-        "<nav> se usa para envolver la navegacion principal del sitio. Los lectores de pantalla la identifican automaticamente como zona de navegacion.",
+        "<nav> se usa para envolver la navegación principal del sitio. Los lectores de pantalla la identifican automáticamente como zona de navegación.",
     },
     {
       id: "html10-ej-03",
@@ -394,7 +394,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Clasifica cada etiqueta como semantica o no semantica:",
+      prompt: "Clasifica cada etiqueta como semántica o no semántica:",
       dragItems: [
         { id: "drag-1", content: "<header>", correctZone: "zone-semantica" },
         { id: "drag-2", content: "<div>", correctZone: "zone-no-semantica" },
@@ -403,8 +403,8 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
         { id: "drag-5", content: "<footer>", correctZone: "zone-semantica" },
       ],
       dropZones: [
-        { id: "zone-semantica", label: "Semantica" },
-        { id: "zone-no-semantica", label: "No semantica" },
+        { id: "zone-semantica", label: "Semántica" },
+        { id: "zone-no-semantica", label: "No semántica" },
       ],
       validation: {
         type: "exact",
@@ -416,9 +416,9 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
           "drag-5": "zone-semantica",
         },
       },
-      hint: "Las etiquetas semanticas describen el significado del contenido.",
+      hint: "Las etiquetas semánticas describen el significado del contenido.",
       explanation:
-        "header, article y footer son semanticas porque describen el tipo de contenido. div y span son contenedores genericos sin significado semantico.",
+        "header, article y footer son semánticas porque describen el tipo de contenido. div y span son contenedores genéricos sin significado semántico.",
     },
     {
       id: "html10-ej-04",
@@ -444,7 +444,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Cual es la diferencia principal entre <article> y <section>?",
+      prompt: "¿Cuál es la diferencia principal entre <article> y <section>?",
       options: [
         { id: "a", text: "No hay diferencia, son intercambiables", isCorrect: false },
         { id: "b", text: "article es para contenido independiente; section agrupa contenido tematico", isCorrect: true },
@@ -454,7 +454,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       validation: { type: "exact", answer: "b" },
       hint: "Piensa si el contenido tendria sentido publicado por separado.",
       explanation:
-        "Un <article> contiene contenido que tiene sentido por si solo (un post, una noticia). <section> agrupa contenido relacionado tematicamente dentro de la pagina.",
+        "Un <article> contiene contenido que tiene sentido por si solo (un post, una noticia). <section> agrupa contenido relacionado tematicamente dentro de la página.",
     },
     {
       id: "html10-ej-06",
@@ -462,7 +462,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que elemento se usa para asociar una leyenda o descripcion a una imagen?",
+      prompt: "¿Qué elemento se usa para asociar una leyenda o descripción a una imagen?",
       options: [
         { id: "a", text: "<caption>", isCorrect: false },
         { id: "b", text: "<legend>", isCorrect: false },
@@ -472,7 +472,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       validation: { type: "exact", answer: "c" },
       hint: "Es un elemento hijo de <figure>.",
       explanation:
-        "<figcaption> se coloca dentro de <figure> para dar una leyenda o descripcion. <caption> es para tablas y <legend> para fieldsets.",
+        "<figcaption> se coloca dentro de <figure> para dar una leyenda o descripción. <caption> es para tablas y <legend> para fieldsets.",
     },
     {
       id: "html10-ej-07",
@@ -480,7 +480,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Organiza las etiquetas segun donde van en la estructura tipica de una pagina:",
+      prompt: "Organiza las etiquetas según donde van en la estructura tipica de una página:",
       dragItems: [
         { id: "drag-1", content: "<header>", correctZone: "zone-arriba" },
         { id: "drag-2", content: "<main>", correctZone: "zone-centro" },
@@ -501,9 +501,9 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
           "drag-4": "zone-arriba",
         },
       },
-      hint: "Piensa en la posicion tipica de cada elemento en un sitio web.",
+      hint: "Piensa en la posición tipica de cada elemento en un sitio web.",
       explanation:
-        "header y nav suelen ir arriba, main contiene el contenido central, y footer va al final de la pagina.",
+        "header y nav suelen ir arriba, main contiene el contenido central, y footer va al final de la página.",
     },
     {
       id: "html10-ej-08",
@@ -511,17 +511,17 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Cuantos elementos <main> deberia tener una pagina HTML bien estructurada?",
+      prompt: "¿Cuántos elementos <main> deberia tener una página HTML bien estructurada?",
       options: [
         { id: "a", text: "Los que sean necesarios", isCorrect: false },
         { id: "b", text: "Exactamente uno", isCorrect: true },
-        { id: "c", text: "Uno por cada seccion", isCorrect: false },
+        { id: "c", text: "Uno por cada sección", isCorrect: false },
         { id: "d", text: "Ninguno, es opcional", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es el contenido PRINCIPAL, no pueden haber varios principales.",
       explanation:
-        "Segun la especificacion HTML, solo debe existir un elemento <main> por pagina. Representa el contenido principal y unico del documento.",
+        "Según la especificación HTML, solo debe existir un elemento <main> por página. Representa el contenido principal y único del documento.",
     },
     {
       id: "html10-ej-09",
@@ -530,7 +530,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       xpReward: 30,
       order: 9,
       prompt:
-        "Reescribe esta 'sopa de divs' usando HTML semantico. Respeta el orden: un header (con la nav dentro), luego un main (con un article dentro), y al final un footer.",
+        "Reescribe esta 'sopa de divs' usando HTML semántico. Respeta el orden: un header (con la nav dentro), luego un main (con un article dentro), y al final un footer.",
       codeTemplate: {
         html: `<div class="top">Mi Blog</div>\n<div class="menu">Inicio | Contacto</div>\n<div class="contenido">\n  <div class="post">Un articulo</div>\n</div>\n<div class="pie">2026</div>`,
         cssPrefix: "",
@@ -542,7 +542,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       },
       hint: "Orden: header (con nav) -> main (con article) -> footer.",
       explanation:
-        "Los landmarks (header, nav, main, article, footer) reemplazan a los divs genericos y dan significado a cada zona para navegadores y lectores de pantalla.",
+        "Los landmarks (header, nav, main, article, footer) reemplazan a los divs genéricos y dan significado a cada zona para navegadores y lectores de pantalla.",
     },
   ],
 };

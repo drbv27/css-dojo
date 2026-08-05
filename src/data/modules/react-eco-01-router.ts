@@ -3,7 +3,7 @@ import type { ModuleData } from "@/types";
 export const reactEcoRouterModule: ModuleData = {
   slug: "react-eco-01-router",
   title: "React Router DOM",
-  description: "Navegacion en React con React Router v6: rutas, enlaces, parametros y rutas anidadas.",
+  description: "Navegación en React con React Router v6: rutas, enlaces, parámetros y rutas anidadas.",
   order: 201,
   category: "react-eco-routing",
   icon: "code",
@@ -11,18 +11,18 @@ export const reactEcoRouterModule: ModuleData = {
   lessons: [
     {
       id: "reco01-leccion-01",
-      title: "Rutas basicas",
+      title: "Rutas básicas",
       content: `## React Router DOM v6
 
-React Router es la libreria estandar para manejar **navegacion** en aplicaciones React.
+React Router es la libreria estándar para manejar **navegación** en aplicaciones React.
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npm install react-router-dom
 \`\`\`
 
-### Configuracion basica
+### Configuración básica
 
 \`\`\`jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -41,7 +41,7 @@ function App() {
 }
 \`\`\`
 
-### Link — navegacion sin recargar
+### Link — navegación sin recargar
 
 \`\`\`jsx
 import { Link } from "react-router-dom";
@@ -56,7 +56,7 @@ function Navbar() {
 }
 \`\`\`
 
-### useNavigate — navegacion programatica
+### useNavigate — navegación programatica
 
 \`\`\`jsx
 import { useNavigate } from "react-router-dom";
@@ -73,7 +73,7 @@ function LoginForm() {
 }
 \`\`\`
 
-> Link es para clicks del usuario, useNavigate es para redirigir desde codigo.`,
+> Link es para clicks del usuario, useNavigate es para redirigir desde código.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -83,8 +83,8 @@ function LoginForm() {
     },
     {
       id: "reco01-leccion-02",
-      title: "Rutas dinamicas y anidadas",
-      content: `## Rutas dinamicas con useParams
+      title: "Rutas dinámicas y anidadas",
+      content: `## Rutas dinámicas con useParams
 
 \`\`\`jsx
 import { useParams } from "react-router-dom";
@@ -165,7 +165,7 @@ function Busqueda() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que componente se usa para navegar sin recargar la pagina?",
+      prompt: "¿Qué componente se usa para navegar sin recargar la página?",
       options: [
         { id: "a", text: "<a href>", isCorrect: false },
         { id: "b", text: "<Link to>", isCorrect: true },
@@ -174,7 +174,7 @@ function Busqueda() {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es el reemplazo de <a> en React Router.",
-      explanation: "<Link to> navega sin recargar la pagina, manteniendo el estado de la aplicacion.",
+      explanation: "<Link to> navega sin recargar la página, manteniendo el estado de la aplicación.",
     },
     {
       id: "reco01-ej-02",
@@ -182,7 +182,7 @@ function Busqueda() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Que hook se usa para obtener parametros de la URL como /usuario/:id?",
+      prompt: "¿Qué hook se usa para obtener parámetros de la URL como /usuario/:id?",
       options: [
         { id: "a", text: "useNavigate", isCorrect: false },
         { id: "b", text: "useLocation", isCorrect: false },
@@ -190,8 +190,8 @@ function Busqueda() {
         { id: "d", text: "useSearchParams", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Params = parametros de la ruta.",
-      explanation: "useParams() devuelve un objeto con los parametros dinamicos definidos en la ruta (ej: :id).",
+      hint: "Params = parámetros de la ruta.",
+      explanation: "useParams() devuelve un objeto con los parámetros dinámicos definidos en la ruta (ej: :id).",
     },
     {
       id: "reco01-ej-03",
@@ -201,7 +201,7 @@ function Busqueda() {
       order: 3,
       prompt: "¿Para que sirve <Outlet /> en rutas anidadas?",
       options: [
-        { id: "a", text: "Para redirigir a otra pagina", isCorrect: false },
+        { id: "a", text: "Para redirigir a otra página", isCorrect: false },
         { id: "b", text: "Para renderizar el componente de la ruta hija activa", isCorrect: true },
         { id: "c", text: "Para mostrar un loading", isCorrect: false },
         { id: "d", text: "Para manejar errores 404", isCorrect: false },
@@ -216,14 +216,14 @@ function Busqueda() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada hook con su funcion:",
+      prompt: "Asocia cada hook con su función:",
       dragItems: [
         { id: "drag-1", content: "useNavigate", correctZone: "zone-nav" },
         { id: "drag-2", content: "useParams", correctZone: "zone-params" },
         { id: "drag-3", content: "useSearchParams", correctZone: "zone-query" },
       ],
       dropZones: [
-        { id: "zone-nav", label: "Redirigir desde codigo" },
+        { id: "zone-nav", label: "Redirigir desde código" },
         { id: "zone-params", label: "Leer :id de la URL" },
         { id: "zone-query", label: "Leer ?q=valor de la URL" },
       ],
@@ -231,8 +231,8 @@ function Busqueda() {
         type: "exact",
         answer: { "drag-1": "zone-nav", "drag-2": "zone-params", "drag-3": "zone-query" },
       },
-      hint: "Navigate = navegar, Params = parametros de ruta, SearchParams = query string.",
-      explanation: "Cada hook tiene un proposito especifico para manejar diferentes partes de la URL.",
+      hint: "Navigate = navegar, Params = parámetros de ruta, SearchParams = query string.",
+      explanation: "Cada hook tiene un propósito específico para manejar diferentes partes de la URL.",
     },
   ],
 };

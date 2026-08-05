@@ -4,7 +4,7 @@ export const jsAsincronismoModule: ModuleData = {
   slug: "js-asincronismo",
   title: "Asincronismo",
   description:
-    "Comprende el modelo asincrono de JavaScript: callbacks, Promises y async/await.",
+    "Comprende el modelo asíncrono de JavaScript: callbacks, Promises y async/await.",
   order: 117,
   category: "js-advanced",
   icon: "Clock",
@@ -12,7 +12,7 @@ export const jsAsincronismoModule: ModuleData = {
   lessons: [
     {
       id: "js17-leccion-01",
-      title: "JavaScript asincrono",
+      title: "JavaScript asíncrono",
       content: `## Asincronismo en JavaScript
 
 JavaScript es **single-threaded** (un solo hilo), pero puede manejar operaciones asincronas gracias al **Event Loop**.
@@ -42,7 +42,7 @@ clearInterval(id);
 
 ### Callbacks
 
-Un **callback** es una funcion que se pasa como argumento para ejecutarse despues:
+Un **callback** es una función que se pasa como argumento para ejecutarse después:
 
 \`\`\`javascript
 function hacerAlgo(callback) {
@@ -55,7 +55,7 @@ hacerAlgo(function(resultado) {
 });
 \`\`\`
 
-> **Callback Hell:** Anidar muchos callbacks crea codigo dificil de leer. Promises resuelven este problema.`,
+> **Callback Hell:** Anidar muchos callbacks crea código difícil de leer. Promises resuelven este problema.`,
       codeExample: {
         html: '<button id="iniciar">Iniciar secuencia</button>\n<div id="resultado"></div>',
         css: '#iniciar { padding: 8px 16px; background: #89b4fa; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 100px; }',
@@ -132,7 +132,7 @@ fetch(url)
   .catch(function(err) { console.error(err); });
 \`\`\`
 
-> Las Promises eliminan el callback hell y hacen el codigo asincrono mas legible.`,
+> Las Promises eliminan el callback hell y hacen el código asíncrono mas legible.`,
       codeExample: {
         html: '<button id="ejecutar">Ejecutar Promise</button>\n<div id="resultado"></div>',
         css: '#ejecutar { padding: 8px 16px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 80px; }',
@@ -179,7 +179,7 @@ document.getElementById("ejecutar").addEventListener("click", function() {
 
 **async/await** es una forma mas limpia de trabajar con Promises:
 
-### Funcion async
+### Función async
 \`\`\`javascript
 async function obtenerDatos() {
   const resultado = await fetch(url);
@@ -204,8 +204,8 @@ async function cargar() {
 
 ### Reglas
 - \`await\` solo se puede usar dentro de funciones \`async\`
-- Una funcion \`async\` siempre devuelve una Promise
-- \`await\` pausa la ejecucion hasta que la Promise se resuelva
+- Una función \`async\` siempre devuelve una Promise
+- \`await\` pausa la ejecución hasta que la Promise se resuelva
 
 ### Promise.all — Ejecutar en paralelo
 \`\`\`javascript
@@ -215,7 +215,7 @@ const [usuarios, productos] = await Promise.all([
 ]);
 \`\`\`
 
-> **async/await** es la forma preferida de manejar codigo asincrono en JavaScript moderno.`,
+> **async/await** es la forma preferida de manejar código asíncrono en JavaScript moderno.`,
       codeExample: {
         html: '<button id="cargar">Cargar datos</button>\n<div id="resultado"></div>',
         css: '#cargar { padding: 8px 16px; background: #f9e2af; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 80px; }',
@@ -260,16 +260,16 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuantos hilos de ejecucion tiene JavaScript?",
+      prompt: "¿Cuántos hilos de ejecución tiene JavaScript?",
       options: [
-        { id: "a", text: "Multiples hilos", isCorrect: false },
+        { id: "a", text: "Múltiples hilos", isCorrect: false },
         { id: "b", text: "Un solo hilo (single-threaded)", isCorrect: true },
         { id: "c", text: "Depende del navegador", isCorrect: false },
         { id: "d", text: "Dos hilos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "JavaScript es single-threaded.",
-      explanation: "JavaScript tiene un solo hilo de ejecucion. Maneja la asincronia con el Event Loop, no con multiples hilos.",
+      explanation: "JavaScript tiene un solo hilo de ejecución. Maneja la asincronía con el Event Loop, no con múltiples hilos.",
     },
     {
       id: "js17-ej-02",
@@ -277,7 +277,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cuales son los tres estados de una Promise?",
+      prompt: "¿Cuáles son los tres estados de una Promise?",
       options: [
         { id: "a", text: "open, closed, error", isCorrect: false },
         { id: "b", text: "pending, fulfilled, rejected", isCorrect: true },
@@ -294,7 +294,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa la palabra clave para declarar una funcion asincrona:",
+      prompt: "Completa la palabra clave para declarar una función asíncrona:",
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -302,8 +302,8 @@ document.getElementById("cargar").addEventListener("click", function() {
         blanks: ["async"],
       },
       validation: { type: "exact", answer: "async" },
-      hint: "Es la palabra clave que permite usar await dentro de la funcion.",
-      explanation: "async declara una funcion asincrona que puede usar await para esperar Promises.",
+      hint: "Es la palabra clave que permite usar await dentro de la función.",
+      explanation: "async declara una función asíncrona que puede usar await para esperar Promises.",
     },
     {
       id: "js17-ej-04",
@@ -311,7 +311,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que metodo de Promise se usa para manejar errores?",
+      prompt: "¿Qué método de Promise se usa para manejar errores?",
       options: [
         { id: "a", text: ".error()", isCorrect: false },
         { id: "b", text: ".catch()", isCorrect: true },
@@ -328,16 +328,16 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que hace Promise.all()?",
+      prompt: "¿Qué hace Promise.all()?",
       options: [
-        { id: "a", text: "Ejecuta Promises una despues de otra", isCorrect: false },
-        { id: "b", text: "Ejecuta multiples Promises en paralelo y espera a todas", isCorrect: true },
+        { id: "a", text: "Ejecuta Promises una después de otra", isCorrect: false },
+        { id: "b", text: "Ejecuta múltiples Promises en paralelo y espera a todas", isCorrect: true },
         { id: "c", text: "Cancela todas las Promises pendientes", isCorrect: false },
         { id: "d", text: "Devuelve la primera Promise que se resuelva", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "all = todas.",
-      explanation: "Promise.all() ejecuta multiples Promises en paralelo y se resuelve cuando TODAS terminan.",
+      explanation: "Promise.all() ejecuta múltiples Promises en paralelo y se resuelve cuando TODAS terminan.",
     },
     {
       id: "js17-ej-06",
@@ -345,7 +345,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "¿Que sucede si usas await fuera de una funcion async?",
+      prompt: "¿Qué sucede si usas await fuera de una función async?",
       options: [
         { id: "a", text: "Funciona normalmente", isCorrect: false },
         { id: "b", text: "Error de sintaxis", isCorrect: true },

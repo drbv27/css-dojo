@@ -11,19 +11,19 @@ export const reactEcoShadcnModule: ModuleData = {
   lessons: [
     {
       id: "reco03-leccion-01",
-      title: "Introduccion a Shadcn/ui",
-      content: `## ¿Que es Shadcn/ui?
+      title: "Introducción a Shadcn/ui",
+      content: `## ¿Qué es Shadcn/ui?
 
-Shadcn/ui **no es una libreria** que instalas. Es una coleccion de componentes que **copias a tu proyecto** y personalizas libremente.
+Shadcn/ui **no es una libreria** que instalas. Es una colección de componentes que **copias a tu proyecto** y personalizas libremente.
 
 ### ¿Por que Shadcn?
 
-- Los componentes son **tuyos** — viven en tu codigo
+- Los componentes son **tuyos** — viven en tu código
 - Basado en **Radix UI** (accesibilidad) + **Tailwind CSS** (estilos)
 - Totalmente personalizable — cambias lo que quieras
 - No agrega dependencias pesadas
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npx shadcn@latest init
@@ -45,7 +45,7 @@ src/
     utils.ts       <- cn() helper
 \`\`\`
 
-### La funcion cn()
+### La función cn()
 
 Combina clases de Tailwind de forma inteligente:
 
@@ -152,7 +152,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
 });
 \`\`\`
 
-> Shadcn + Tailwind + CVA es la combinacion mas popular en el ecosistema React moderno.`,
+> Shadcn + Tailwind + CVA es la combinación mas popular en el ecosistema React moderno.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cba6f7; border-radius: 8px; white-space: pre-line; }',
@@ -168,16 +168,16 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que diferencia a Shadcn/ui de otras librerias de componentes como MUI?",
+      prompt: "¿Qué diferencia a Shadcn/ui de otras librerias de componentes como MUI?",
       options: [
-        { id: "a", text: "Es mas rapido", isCorrect: false },
+        { id: "a", text: "Es mas rápido", isCorrect: false },
         { id: "b", text: "Los componentes se copian a tu proyecto y son tuyos", isCorrect: true },
         { id: "c", text: "Tiene mas componentes", isCorrect: false },
         { id: "d", text: "No usa React", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "No se instala como dependencia npm.",
-      explanation: "Shadcn copia los componentes a tu proyecto — tienes control total del codigo fuente.",
+      explanation: "Shadcn copia los componentes a tu proyecto — tienes control total del código fuente.",
     },
     {
       id: "reco03-ej-02",
@@ -185,7 +185,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Que hace la funcion cn() de Shadcn?",
+      prompt: "¿Qué hace la función cn() de Shadcn?",
       options: [
         { id: "a", text: "Crea nuevos componentes", isCorrect: false },
         { id: "b", text: "Combina clases de Tailwind resolviendo conflictos", isCorrect: true },
@@ -226,7 +226,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
         { id: "drag-3", content: "<Card>", correctZone: "zone-contenedor" },
       ],
       dropZones: [
-        { id: "zone-accion", label: "Boton con borde sin fondo" },
+        { id: "zone-accion", label: "Botón con borde sin fondo" },
         { id: "zone-modal", label: "Ventana modal" },
         { id: "zone-contenedor", label: "Contenedor con header/content/footer" },
       ],

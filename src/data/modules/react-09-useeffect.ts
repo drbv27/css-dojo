@@ -4,7 +4,7 @@ export const reactUseEffectModule: ModuleData = {
   slug: "react-useeffect",
   title: "useEffect: Efectos Secundarios",
   description:
-    "Domina el hook useEffect para manejar efectos secundarios: suscripciones, peticiones de datos, manipulacion del DOM y funciones de limpieza.",
+    "Domina el hook useEffect para manejar efectos secundarios: suscripciones, peticiones de datos, manipulación del DOM y funciones de limpieza.",
   order: 209,
   category: "react-intermediate",
   icon: "refresh-cw",
@@ -12,16 +12,16 @@ export const reactUseEffectModule: ModuleData = {
   lessons: [
     {
       id: "react09-leccion-01",
-      title: "Introduccion a useEffect",
+      title: "Introducción a useEffect",
       content: `## useEffect: Efectos Secundarios en React
 
-En React, un **efecto secundario** es cualquier operacion que interactua con el mundo exterior al componente:
+En React, un **efecto secundario** es cualquier operación que interactua con el mundo exterior al componente:
 - Peticiones HTTP (fetch)
 - Suscripciones (WebSockets, eventos del DOM)
-- Manipulacion directa del DOM
+- Manipulación directa del DOM
 - Temporizadores (setTimeout, setInterval)
 
-### Sintaxis basica
+### Sintaxis básica
 
 \`\`\`jsx
 useEffect(() => {
@@ -30,13 +30,13 @@ useEffect(() => {
 }, [dependencias]);
 \`\`\`
 
-### ¿Cuando se ejecuta useEffect?
+### ¿Cuándo se ejecuta useEffect?
 
 1. **Sin array de dependencias** — se ejecuta en cada render
 2. **Array vacio \`[]\`** — solo al montar el componente
 3. **Con dependencias \`[a, b]\`** — al montar y cuando cambie \`a\` o \`b\`
 
-> **Regla clave:** useEffect se ejecuta **despues** del render, no durante el render.`,
+> **Regla clave:** useEffect se ejecuta **después** del render, no durante el render.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -95,7 +95,7 @@ useEffect(() => {
 }, []);
 \`\`\`
 
-### Con dependencias especificas
+### Con dependencias específicas
 \`\`\`jsx
 useEffect(() => {
   console.log("Se ejecuta cuando cambia 'query'");
@@ -103,7 +103,7 @@ useEffect(() => {
 }, [query]);
 \`\`\`
 
-### Error comun: Loop infinito
+### Error común: Loop infinito
 \`\`\`jsx
 // MAL - loop infinito!
 useEffect(() => {
@@ -189,7 +189,7 @@ useEffect(() => {
 }, []);
 \`\`\`
 
-### ¿Cuando se ejecuta el cleanup?
+### ¿Cuándo se ejecuta el cleanup?
 1. **Antes** de re-ejecutar el efecto (si las dependencias cambian)
 2. Cuando el componente se **desmonta**
 
@@ -215,7 +215,7 @@ useEffect(() => {
 }, [url]);
 \`\`\`
 
-> **Importante:** Siempre limpia lo que crees. Si no, tendras bugs dificiles de encontrar.`,
+> **Importante:** Siempre limpia lo que crees. Si no, tendras bugs difíciles de encontrar.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -365,7 +365,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuando se ejecuta un useEffect con array de dependencias vacio []?",
+      prompt: "¿Cuándo se ejecuta un useEffect con array de dependencias vacio []?",
       options: [
         { id: "a", text: "En cada render del componente", isCorrect: false },
         { id: "b", text: "Solo cuando el componente se monta (primer render)", isCorrect: true },
@@ -382,7 +382,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que causa un loop infinito en useEffect?",
+      prompt: "¿Qué causa un loop infinito en useEffect?",
       options: [
         { id: "a", text: "Usar async/await dentro del efecto", isCorrect: false },
         { id: "b", text: "Modificar una variable de estado que esta en las dependencias", isCorrect: true },
@@ -431,7 +431,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       ],
       validation: { type: "exact", answer: { d1: "useEffect", d2: "eventHandler", d3: "useEffect", d4: "eventHandler", d5: "useEffect", d6: "eventHandler" } },
       hint: "useEffect = sincronizar con sistemas externos. Event handler = responder a acciones del usuario.",
-      explanation: "useEffect es para sincronizacion con el mundo exterior (DOM, suscripciones). Los event handlers son para responder directamente a interacciones del usuario.",
+      explanation: "useEffect es para sincronización con el mundo exterior (DOM, suscripciones). Los event handlers son para responder directamente a interacciones del usuario.",
     },
     {
       id: "react09-ej-05",
@@ -439,7 +439,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa la funcion de limpieza para limpiar un intervalo:",
+      prompt: "Completa la función de limpieza para limpiar un intervalo:",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  const id = setInterval(tick, 1000);\n  return () => ",
@@ -448,7 +448,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       },
       validation: { type: "exact", answer: "clearInterval(id)" },
       hint: "Usa clearInterval para detener el temporizador.",
-      explanation: "La funcion de retorno del useEffect es el cleanup. clearInterval(id) detiene el intervalo cuando el componente se desmonta.",
+      explanation: "La función de retorno del useEffect es el cleanup. clearInterval(id) detiene el intervalo cuando el componente se desmonta.",
     },
     {
       id: "react09-ej-06",
@@ -456,16 +456,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cuando se ejecuta la funcion de cleanup de useEffect?",
+      prompt: "¿Cuándo se ejecuta la función de cleanup de useEffect?",
       options: [
         { id: "a", text: "Solo al montar el componente", isCorrect: false },
-        { id: "b", text: "Antes de cada re-ejecucion del efecto y al desmontar", isCorrect: true },
+        { id: "b", text: "Antes de cada re-ejecución del efecto y al desmontar", isCorrect: true },
         { id: "c", text: "Solo al desmontar el componente", isCorrect: false },
-        { id: "d", text: "Despues de cada render", isCorrect: false },
+        { id: "d", text: "Después de cada render", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "El cleanup se ejecuta en dos momentos distintos.",
-      explanation: "El cleanup se ejecuta antes de que el efecto se re-ejecute (si cambian las dependencias) y tambien cuando el componente se desmonta.",
+      explanation: "El cleanup se ejecuta antes de que el efecto se re-ejecute (si cambian las dependencias) y también cuando el componente se desmonta.",
     },
     {
       id: "react09-ej-07",
@@ -473,9 +473,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Cual de estos NO es un buen uso de useEffect?",
+      prompt: "¿Cuál de estos NO es un buen uso de useEffect?",
       options: [
-        { id: "a", text: "Sincronizar el titulo del documento con el estado", isCorrect: false },
+        { id: "a", text: "Sincronizar el título del documento con el estado", isCorrect: false },
         { id: "b", text: "Calcular un valor derivado del estado para mostrarlo", isCorrect: true },
         { id: "c", text: "Suscribirse a un evento del navegador", isCorrect: false },
         { id: "d", text: "Hacer fetch de datos al montar el componente", isCorrect: false },
@@ -490,7 +490,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa para cancelar una peticion fetch con AbortController en el cleanup:",
+      prompt: "Completa para cancelar una petición fetch con AbortController en el cleanup:",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  const controller = new AbortController();\n  fetch(url, { signal: controller.signal });\n  return () => controller.",
@@ -498,8 +498,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
         blanks: ["abort()"],
       },
       validation: { type: "exact", answer: "abort()" },
-      hint: "El metodo para cancelar una peticion en AbortController.",
-      explanation: "controller.abort() cancela la peticion fetch. Es importante hacerlo en el cleanup para evitar actualizar estado en componentes desmontados.",
+      hint: "El método para cancelar una petición en AbortController.",
+      explanation: "controller.abort() cancela la petición fetch. Es importante hacerlo en el cleanup para evitar actualizar estado en componentes desmontados.",
     },
   ],
 };

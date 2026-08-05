@@ -4,7 +4,7 @@ export const jsErroresModule: ModuleData = {
   slug: "js-errores",
   title: "Manejo de Errores",
   description:
-    "Aprende a manejar errores con try/catch, crear errores personalizados y tecnicas de depuracion.",
+    "Aprende a manejar errores con try/catch, crear errores personalizados y técnicas de depuración.",
   order: 121,
   category: "js-advanced",
   icon: "AlertTriangle",
@@ -108,7 +108,7 @@ function validarEdad(edad) {
 }
 \`\`\`
 
-### Capturar tipos especificos
+### Capturar tipos específicos
 
 \`\`\`javascript
 try {
@@ -122,7 +122,7 @@ try {
 }
 \`\`\`
 
-> **Buena practica:** Crea errores personalizados para diferentes tipos de fallos en tu aplicacion.`,
+> **Buena práctica:** Crea errores personalizados para diferentes tipos de fallos en tu aplicación.`,
       codeExample: {
         html: '<input id="edad" type="number" placeholder="Ingresa una edad" />\n<button id="validar">Validar</button>\n<div id="resultado"></div>',
         css: 'input { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } button { margin-left: 4px; padding: 8px 12px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -162,8 +162,8 @@ document.getElementById("validar").addEventListener("click", function() {
     },
     {
       id: "js21-leccion-03",
-      title: "Tecnicas de depuracion",
-      content: `## Depuracion (Debugging)
+      title: "Técnicas de depuración",
+      content: `## Depuración (Debugging)
 
 ### console avanzado
 \`\`\`javascript
@@ -183,12 +183,12 @@ console.timeEnd("operacion");  // muestra tiempo
 
 En DevTools (F12):
 1. Abre la pestana **Sources**
-2. Haz click en el numero de linea para poner un breakpoint
-3. El codigo se pausa ahi y puedes inspeccionar variables
+2. Haz click en el número de línea para poner un breakpoint
+3. El código se pausa ahi y puedes inspeccionar variables
 
 ### debugger
 
-Agrega \`debugger;\` en tu codigo para pausar la ejecucion:
+Agrega \`debugger;\` en tu código para pausar la ejecución:
 \`\`\`javascript
 function problematica(datos) {
   debugger; // se pausa aqui si DevTools esta abierto
@@ -254,7 +254,7 @@ function procesar(datos) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que estructura se usa para capturar errores en JavaScript?",
+      prompt: "¿Qué estructura se usa para capturar errores en JavaScript?",
       options: [
         { id: "a", text: "if/else", isCorrect: false },
         { id: "b", text: "try/catch", isCorrect: true },
@@ -263,7 +263,7 @@ function procesar(datos) {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "try = intentar, catch = capturar.",
-      explanation: "try/catch permite ejecutar codigo que puede fallar y capturar el error sin que el programa se detenga.",
+      explanation: "try/catch permite ejecutar código que puede fallar y capturar el error sin que el programa se detenga.",
     },
     {
       id: "js21-ej-02",
@@ -271,7 +271,7 @@ function procesar(datos) {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que bloque se ejecuta siempre, haya o no haya error?",
+      prompt: "¿Qué bloque se ejecuta siempre, haya o no haya error?",
       options: [
         { id: "a", text: "try", isCorrect: false },
         { id: "b", text: "catch", isCorrect: false },
@@ -305,7 +305,7 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que tipo de error se produce al acceder a una variable que no existe?",
+      prompt: "¿Qué tipo de error se produce al acceder a una variable que no existe?",
       options: [
         { id: "a", text: "TypeError", isCorrect: false },
         { id: "b", text: "SyntaxError", isCorrect: false },
@@ -322,7 +322,7 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que propiedad del objeto error contiene la descripcion del error?",
+      prompt: "¿Qué propiedad del objeto error contiene la descripción del error?",
       options: [
         { id: "a", text: "error.text", isCorrect: false },
         { id: "b", text: "error.description", isCorrect: false },
@@ -331,7 +331,7 @@ function procesar(datos) {
       ],
       validation: { type: "exact", answer: "c" },
       hint: "message = mensaje.",
-      explanation: "error.message contiene la descripcion del error. error.name contiene el tipo.",
+      explanation: "error.message contiene la descripción del error. error.name contiene el tipo.",
     },
     {
       id: "js21-ej-06",
@@ -339,16 +339,16 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que hace la palabra clave debugger en el codigo?",
+      prompt: "¿Qué hace la palabra clave debugger en el código?",
       options: [
-        { id: "a", text: "Elimina todos los bugs automaticamente", isCorrect: false },
-        { id: "b", text: "Pausa la ejecucion si DevTools esta abierto", isCorrect: true },
+        { id: "a", text: "Elimina todos los bugs automáticamente", isCorrect: false },
+        { id: "b", text: "Pausa la ejecución si DevTools esta abierto", isCorrect: true },
         { id: "c", text: "Muestra un error en la consola", isCorrect: false },
-        { id: "d", text: "Activa el modo de depuracion del navegador", isCorrect: false },
+        { id: "d", text: "Activa el modo de depuración del navegador", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Funciona como un breakpoint programatico.",
-      explanation: "debugger pausa la ejecucion del codigo en ese punto si las DevTools del navegador estan abiertas.",
+      explanation: "debugger pausa la ejecución del código en ese punto si las DevTools del navegador estan abiertas.",
     },
   ],
 };

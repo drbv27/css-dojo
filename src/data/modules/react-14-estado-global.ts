@@ -4,7 +4,7 @@ export const reactEstadoGlobalModule: ModuleData = {
   slug: "react-estado-global",
   title: "Estado Global y useReducer",
   description:
-    "Aprende patrones de manejo de estado global: useReducer, useReducer + Context y una introduccion a Zustand.",
+    "Aprende patrones de manejo de estado global: useReducer, useReducer + Context y una introducción a Zustand.",
   order: 214,
   category: "react-advanced",
   icon: "globe",
@@ -16,8 +16,8 @@ export const reactEstadoGlobalModule: ModuleData = {
       content: `## useReducer: Alternativa a useState
 
 useReducer es ideal cuando:
-- El estado tiene **multiples sub-valores**
-- La **logica de actualizacion** es compleja
+- El estado tiene **múltiples sub-valores**
+- La **lógica de actualización** es compleja
 - Las actualizaciones dependen del **estado anterior**
 
 ### Sintaxis
@@ -25,7 +25,7 @@ useReducer es ideal cuando:
 const [state, dispatch] = useReducer(reducer, initialState);
 \`\`\`
 
-### El patron Reducer
+### El patrón Reducer
 \`\`\`jsx
 // Estado inicial
 const initialState = { count: 0, error: null };
@@ -54,7 +54,7 @@ dispatch({ type: 'reset' });
 |----------|------------|
 | Estado simple | Estado complejo |
 | Pocas actualizaciones | Muchas acciones |
-| Logica simple | Logica predecible |
+| Lógica simple | Lógica predecible |
 
 > **Regla:** Si tienes mas de 3-4 setState relacionados, considera useReducer.`,
       codeExample: {
@@ -145,7 +145,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Carrito />);
       title: "useReducer + Context",
       content: `## Combinando useReducer + Context
 
-El patron mas poderoso para estado global sin librerias externas:
+El patrón mas poderoso para estado global sin librerias externas:
 
 ### Paso 1: Crear el contexto y reducer
 \`\`\`jsx
@@ -189,7 +189,7 @@ function useApp() {
 - Acciones predecibles y testeables
 - Estado centralizado accesible desde cualquier componente
 
-> **Este patron** es la base de como funcionan Redux y otras librerias de estado.`,
+> **Este patrón** es la base de como funcionan Redux y otras librerias de estado.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -294,18 +294,18 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     },
     {
       id: "react14-leccion-03",
-      title: "Introduccion a Zustand",
+      title: "Introducción a Zustand",
       content: `## Zustand: Estado Global Simple
 
 Zustand es una libreria de estado global minimalista y poderosa.
 
 ### ¿Por que Zustand?
-- **Minimo boilerplate** (mucho menos que Redux)
+- **Mínimo boilerplate** (mucho menos que Redux)
 - **Sin Providers** necesarios
 - **Selectores** para evitar re-renders innecesarios
-- Solo **~1KB** de tamano
+- Solo **~1KB** de tamaño
 
-### Instalacion
+### Instalación
 \`\`\`bash
 npm install zustand
 \`\`\`
@@ -337,15 +337,15 @@ function Contador() {
 }
 \`\`\`
 
-### ¿Cuando usar que?
-| Solucion | Cuando usar |
+### ¿Cuándo usar que?
+| Solución | Cuando usar |
 |----------|-------------|
 | useState | Estado local simple |
 | useReducer | Estado local complejo |
 | Context | Pocos datos globales (tema, auth) |
 | Zustand | Estado global frecuentemente actualizado |
 
-> **Zustand** es la opcion preferida en la comunidad React moderna por su simplicidad y rendimiento.`,
+> **Zustand** es la opción preferida en la comunidad React moderna por su simplicidad y rendimiento.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -453,10 +453,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que devuelve el hook useReducer?",
+      prompt: "¿Qué devuelve el hook useReducer?",
       options: [
         { id: "a", text: "Un valor y un setter, como useState", isCorrect: false },
-        { id: "b", text: "El estado actual y una funcion dispatch", isCorrect: true },
+        { id: "b", text: "El estado actual y una función dispatch", isCorrect: true },
         { id: "c", text: "Solo el estado actual", isCorrect: false },
         { id: "d", text: "Un objeto con get y set", isCorrect: false },
       ],
@@ -470,7 +470,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que parametros recibe una funcion reducer?",
+      prompt: "¿Qué parámetros recibe una función reducer?",
       options: [
         { id: "a", text: "props y state", isCorrect: false },
         { id: "b", text: "state y action", isCorrect: true },
@@ -478,8 +478,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "prevState y nextState", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El estado actual y la accion a realizar.",
-      explanation: "Un reducer recibe el estado actual (state) y una accion (action), y retorna el nuevo estado.",
+      hint: "El estado actual y la acción a realizar.",
+      explanation: "Un reducer recibe el estado actual (state) y una acción (action), y retorna el nuevo estado.",
     },
     {
       id: "react14-ej-03",
@@ -487,7 +487,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para despachar una accion de tipo 'increment':",
+      prompt: "Completa para despachar una acción de tipo 'increment':",
       codeTemplate: {
         html: "",
         cssPrefix: "const [state, dispatch] = useReducer(reducer, { count: 0 });\n\n// Incrementar:\n",
@@ -495,8 +495,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["dispatch"],
       },
       validation: { type: "exact", answer: "dispatch" },
-      hint: "Es la funcion que envia acciones al reducer.",
-      explanation: "dispatch() envia una accion al reducer. El reducer recibe el estado actual y la accion, y retorna el nuevo estado.",
+      hint: "Es la función que envia acciones al reducer.",
+      explanation: "dispatch() envia una acción al reducer. El reducer recibe el estado actual y la acción, y retorna el nuevo estado.",
     },
     {
       id: "react14-ej-04",
@@ -504,7 +504,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada solucion de estado con su caso de uso ideal:",
+      prompt: "Asocia cada solución de estado con su caso de uso ideal:",
       dragItems: [
         { id: "d1", content: "useState", correctZone: "simple" },
         { id: "d2", content: "useReducer", correctZone: "complejo" },
@@ -513,13 +513,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       dropZones: [
         { id: "simple", label: "Estado local simple" },
-        { id: "complejo", label: "Estado local con logica compleja" },
+        { id: "complejo", label: "Estado local con lógica compleja" },
         { id: "global", label: "Pocos datos globales (tema, auth)" },
         { id: "frecuente", label: "Estado global frecuentemente actualizado" },
       ],
       validation: { type: "exact", answer: { d1: "simple", d2: "complejo", d3: "global", d4: "frecuente" } },
       hint: "Cada herramienta tiene su escenario ideal.",
-      explanation: "useState para lo simple, useReducer para logica compleja, Context para pocos datos globales, Zustand para estado global con muchas actualizaciones.",
+      explanation: "useState para lo simple, useReducer para lógica compleja, Context para pocos datos globales, Zustand para estado global con muchas actualizaciones.",
     },
     {
       id: "react14-ej-05",
@@ -527,11 +527,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Que ventaja tiene Zustand sobre Context para estado global?",
+      prompt: "¿Qué ventaja tiene Zustand sobre Context para estado global?",
       options: [
         { id: "a", text: "Es mas grande y tiene mas funcionalidades", isCorrect: false },
         { id: "b", text: "No necesita Provider y tiene selectores para evitar re-renders", isCorrect: true },
-        { id: "c", text: "Es parte de React, no necesita instalacion", isCorrect: false },
+        { id: "c", text: "Es parte de React, no necesita instalación", isCorrect: false },
         { id: "d", text: "Solo funciona con TypeScript", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -552,8 +552,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["action.payload"],
       },
       validation: { type: "exact", answer: "action.payload" },
-      hint: "El dato del item viene dentro de la accion.",
-      explanation: "action.payload es la convencion para enviar datos junto con la accion. El reducer usa esos datos para calcular el nuevo estado.",
+      hint: "El dato del item viene dentro de la acción.",
+      explanation: "action.payload es la convención para enviar datos junto con la acción. El reducer usa esos datos para calcular el nuevo estado.",
     },
     {
       id: "react14-ej-07",
@@ -561,16 +561,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Por que el patron useReducer + Context es similar a Redux?",
+      prompt: "¿Por que el patrón useReducer + Context es similar a Redux?",
       options: [
-        { id: "a", text: "Ambos usan el mismo codigo internamente", isCorrect: false },
+        { id: "a", text: "Ambos usan el mismo código internamente", isCorrect: false },
         { id: "b", text: "Ambos tienen store, reducer, dispatch y acceso global al estado", isCorrect: true },
         { id: "c", text: "Redux esta construido sobre useReducer", isCorrect: false },
-        { id: "d", text: "No tienen nada en comun", isCorrect: false },
+        { id: "d", text: "No tienen nada en común", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Los conceptos fundamentales son los mismos.",
-      explanation: "Ambos siguen el patron Flux: un store centralizado, reducers puros que calculan nuevo estado, y dispatch para enviar acciones. Context reemplaza al Provider de Redux.",
+      explanation: "Ambos siguen el patrón Flux: un store centralizado, reducers puros que calculan nuevo estado, y dispatch para enviar acciones. Context reemplaza al Provider de Redux.",
     },
     {
       id: "react14-ej-08",

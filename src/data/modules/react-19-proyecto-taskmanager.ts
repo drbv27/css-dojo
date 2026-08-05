@@ -48,11 +48,11 @@ App
 \`\`\`
 
 ### ¿Por que useReducer?
-- Multiples acciones (agregar, eliminar, editar, toggle, filtrar)
+- Múltiples acciones (agregar, eliminar, editar, toggle, filtrar)
 - Estado complejo con sub-valores
-- Logica predecible y testeable
+- Lógica predecible y testeable
 
-> **Principio:** Separa la logica de estado (reducer) de la presentacion (componentes).`,
+> **Principio:** Separa la lógica de estado (reducer) de la presentación (componentes).`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -229,11 +229,11 @@ function useReducerWithStorage(key, reducer, initialState) {
 
 ### Consideraciones
 - **Serializar:** Solo datos serializables (no funciones ni Dates)
-- **Tamano:** localStorage tiene limite de ~5MB
+- **Tamaño:** localStorage tiene límite de ~5MB
 - **Performance:** No guardar en cada keystroke (usa debounce)
-- **Migracion:** Maneja versiones del esquema de datos
+- **Migración:** Maneja versiones del esquema de datos
 
-> **Tip:** Crea un custom hook generico y reutilizalo en todos tus proyectos.`,
+> **Tip:** Crea un custom hook genérico y reutilizalo en todos tus proyectos.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -326,10 +326,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<NotasApp />);
     },
     {
       id: "react19-leccion-03",
-      title: "Filtros, ordenamiento y edicion",
-      content: `## Filtros Avanzados y Edicion
+      title: "Filtros, ordenamiento y edición",
+      content: `## Filtros Avanzados y Edición
 
-### Filtros multiples
+### Filtros múltiples
 \`\`\`jsx
 function filtrarTareas(tareas, filtros) {
   return tareas
@@ -362,7 +362,7 @@ function ordenarTareas(tareas, criterio) {
 }
 \`\`\`
 
-### Edicion inline
+### Edición inline
 \`\`\`jsx
 function TaskItem({ tarea, onUpdate }) {
   const [editando, setEditando] = useState(false);
@@ -512,7 +512,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     },
     {
       id: "react19-leccion-04",
-      title: "Arquitectura limpia y mejores practicas",
+      title: "Arquitectura limpia y mejores prácticas",
       content: `## Arquitectura Limpia en React
 
 ### Estructura de carpetas recomendada
@@ -537,8 +537,8 @@ src/
 \`\`\`
 
 ### Principios aplicados
-1. **Separacion de responsabilidades** — cada archivo tiene un solo proposito
-2. **Custom hooks** — encapsulan logica de estado reutilizable
+1. **Separación de responsabilidades** — cada archivo tiene un solo propósito
+2. **Custom hooks** — encapsulan lógica de estado reutilizable
 3. **Funciones puras** — filtros y ordenamiento son testeables
 4. **Componentes presentacionales** — solo reciben props y renderizan
 
@@ -560,13 +560,13 @@ function useTasks() {
 }
 \`\`\`
 
-### Mejores practicas
-- **No mezclar** logica de negocio con presentacion
+### Mejores prácticas
+- **No mezclar** lógica de negocio con presentación
 - **Nombrar** acciones del reducer de forma descriptiva
 - **Tipar** todo con TypeScript en proyectos reales
 - **Testear** el reducer y las funciones de filtro por separado
 
-> **Regla de oro:** Si un archivo tiene mas de 100-150 lineas, probablemente necesita dividirse.`,
+> **Regla de oro:** Si un archivo tiene mas de 100-150 líneas, probablemente necesita dividirse.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -684,8 +684,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 1,
       prompt: "¿Por que useReducer es mejor que useState para un Task Manager?",
       options: [
-        { id: "a", text: "Es mas rapido que useState", isCorrect: false },
-        { id: "b", text: "Tiene multiples acciones y estado complejo con sub-valores", isCorrect: true },
+        { id: "a", text: "Es mas rápido que useState", isCorrect: false },
+        { id: "b", text: "Tiene múltiples acciones y estado complejo con sub-valores", isCorrect: true },
         { id: "c", text: "useState no funciona con arrays", isCorrect: false },
         { id: "d", text: "useReducer no necesita re-renders", isCorrect: false },
       ],
@@ -699,7 +699,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Completa la accion del reducer para marcar una tarea como completada/no completada:",
+      prompt: "Completa la acción del reducer para marcar una tarea como completada/no completada:",
       codeTemplate: {
         html: "",
         cssPrefix: "case 'TOGGLE':\n  return state.map(t =>\n    t.id === action.payload\n      ? { ...t, completada: ",
@@ -708,7 +708,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "!t.completada" },
       hint: "Invierte el valor booleano actual.",
-      explanation: "!t.completada invierte el valor: si era true pasa a false y viceversa. Es el patron toggle clasico.",
+      explanation: "!t.completada invierte el valor: si era true pasa a false y viceversa. Es el patrón toggle clasico.",
     },
     {
       id: "react19-ej-03",
@@ -716,16 +716,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Como se inicializa useReducer leyendo de localStorage?",
+      prompt: "¿Cómo se inicializa useReducer leyendo de localStorage?",
       options: [
         { id: "a", text: "Con un useEffect que lea localStorage", isCorrect: false },
-        { id: "b", text: "Pasando una funcion inicializadora como tercer argumento de useReducer", isCorrect: true },
+        { id: "b", text: "Pasando una función inicializadora como tercer argumento de useReducer", isCorrect: true },
         { id: "c", text: "Llamando a localStorage antes del componente", isCorrect: false },
         { id: "d", text: "No es posible combinarlos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "useReducer acepta tres argumentos: reducer, initialArg, init.",
-      explanation: "El tercer argumento de useReducer es una funcion inicializadora que se ejecuta solo una vez. Ahi puedes leer de localStorage para hidratar el estado.",
+      explanation: "El tercer argumento de useReducer es una función inicializadora que se ejecuta solo una vez. Ahi puedes leer de localStorage para hidratar el estado.",
     },
     {
       id: "react19-ej-04",
@@ -742,13 +742,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       dropZones: [
         { id: "ui", label: "Interfaz de usuario" },
-        { id: "logica", label: "Logica reutilizable" },
+        { id: "logica", label: "Lógica reutilizable" },
         { id: "estado", label: "Manejo de estado" },
         { id: "utilidades", label: "Funciones puras auxiliares" },
       ],
       validation: { type: "exact", answer: { d1: "ui", d2: "logica", d3: "estado", d4: "utilidades" } },
-      hint: "Cada carpeta tiene un proposito especifico.",
-      explanation: "components/ para UI, hooks/ para logica reutilizable, reducers/ para estado, utils/ para funciones puras. Esta separacion facilita el testing y mantenimiento.",
+      hint: "Cada carpeta tiene un propósito específico.",
+      explanation: "components/ para UI, hooks/ para lógica reutilizable, reducers/ para estado, utils/ para funciones puras. Esta separación facilita el testing y mantenimiento.",
     },
     {
       id: "react19-ej-05",
@@ -756,16 +756,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Cual es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
+      prompt: "¿Cuál es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
       options: [
-        { id: "a", text: "Son mas rapidas que los metodos de array", isCorrect: false },
-        { id: "b", text: "Son faciles de testear y reutilizar sin depender de React", isCorrect: true },
-        { id: "c", text: "React las ejecuta automaticamente", isCorrect: false },
+        { id: "a", text: "Son mas rápidas que los métodos de array", isCorrect: false },
+        { id: "b", text: "Son fáciles de testear y reutilizar sin depender de React", isCorrect: true },
+        { id: "c", text: "React las ejecuta automáticamente", isCorrect: false },
         { id: "d", text: "No necesitan importarse", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Funciones puras no dependen de estado externo.",
-      explanation: "Las funciones puras reciben datos y retornan datos, sin efectos secundarios. Son faciles de testear con cualquier test runner sin necesidad de renderizar componentes.",
+      explanation: "Las funciones puras reciben datos y retornan datos, sin efectos secundarios. Son fáciles de testear con cualquier test runner sin necesidad de renderizar componentes.",
     },
     {
       id: "react19-ej-06",
@@ -781,7 +781,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["setItem"],
       },
       validation: { type: "exact", answer: "setItem" },
-      hint: "Es el metodo de localStorage para guardar datos.",
+      hint: "Es el método de localStorage para guardar datos.",
       explanation: "localStorage.setItem(key, value) guarda un par clave-valor. Dentro del useEffect, se ejecuta cada vez que el estado cambia.",
     },
   ],

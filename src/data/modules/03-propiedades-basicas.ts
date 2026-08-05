@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const propiedadesBasicasModule: ModuleData = {
   slug: "propiedades-basicas",
-  title: "Propiedades basicas",
+  title: "Propiedades básicas",
   description:
     "Domina las propiedades fundamentales de CSS: color de texto, fondos y bordes para dar vida a tus elementos.",
   order: 3,
@@ -22,7 +22,7 @@ La propiedad \`color\` define el **color del texto** de un elemento. Es una de l
 CSS ofrece varias formas de definir colores:
 
 #### 1. Nombres de color
-CSS reconoce **140 nombres de colores** estandar:
+CSS reconoce **140 nombres de colores** estándar:
 
 \`\`\`css
 p { color: red; }
@@ -39,7 +39,7 @@ h1 { color: #4682B4; }  /* Steel Blue */
 span { color: #000000; } /* Negro */
 \`\`\`
 
-Tambien existe la forma abreviada de 3 digitos: \`#F00\` es igual a \`#FF0000\`.
+También existe la forma abreviada de 3 digitos: \`#F00\` es igual a \`#FF0000\`.
 
 #### 3. RGB y RGBA
 Usa valores de 0 a 255 para cada canal. RGBA agrega un canal **alfa** (opacidad) de 0 a 1:
@@ -50,14 +50,14 @@ h1 { color: rgba(0, 0, 0, 0.5); }   /* Negro al 50% de opacidad */
 \`\`\`
 
 #### 4. HSL y HSLA
-Define colores por **tono** (0-360), **saturacion** (0%-100%) y **luminosidad** (0%-100%):
+Define colores por **tono** (0-360), **saturación** (0%-100%) y **luminosidad** (0%-100%):
 
 \`\`\`css
 p { color: hsl(0, 100%, 50%); }     /* Rojo */
 h1 { color: hsla(210, 50%, 50%, 0.8); } /* Azul semi-transparente */
 \`\`\`
 
-> **Consejo:** Los nombres de color son perfectos para prototipos rapidos. Para proyectos profesionales, usa hexadecimal o HSL.`,
+> **Consejo:** Los nombres de color son perfectos para prototipos rápidos. Para proyectos profesionales, usa hexadecimal o HSL.`,
       codeExample: {
         html: `<h1>Color hexadecimal</h1>\n<p class="nombre">Color por nombre</p>\n<p class="rgb">Color RGB</p>\n<p class="hsl">Color HSL</p>`,
         css: `h1 {\n  color: #4682B4;\n}\n.nombre {\n  color: tomato;\n}\n.rgb {\n  color: rgb(34, 139, 34);\n}\n.hsl {\n  color: hsl(270, 60%, 50%);\n}`,
@@ -99,7 +99,7 @@ Permite usar una **imagen** o un **degradado** como fondo:
 
 ### Degradados (gradients)
 
-CSS puede crear degradados sin necesidad de imagenes:
+CSS puede crear degradados sin necesidad de imágenes:
 
 \`\`\`css
 .degradado {
@@ -113,7 +113,7 @@ CSS puede crear degradados sin necesidad de imagenes:
 
 ### Propiedad abreviada background
 
-Puedes combinar varias propiedades de fondo en una sola linea:
+Puedes combinar varias propiedades de fondo en una sola línea:
 
 \`\`\`css
 .hero {
@@ -138,7 +138,7 @@ La propiedad \`border\` permite agregar un **borde visible** alrededor de cualqu
 
 ### Propiedad abreviada border
 
-La forma mas comun usa tres valores: **ancho**, **estilo** y **color**:
+La forma mas común usa tres valores: **ancho**, **estilo** y **color**:
 
 \`\`\`css
 .caja {
@@ -150,10 +150,10 @@ La forma mas comun usa tres valores: **ancho**, **estilo** y **color**:
 
 | Valor | Resultado |
 |-------|-----------|
-| \`solid\` | Linea solida continua |
-| \`dashed\` | Linea de guiones |
-| \`dotted\` | Linea de puntos |
-| \`double\` | Linea doble |
+| \`solid\` | Línea solida continua |
+| \`dashed\` | Línea de guiones |
+| \`dotted\` | Línea de puntos |
+| \`double\` | Línea doble |
 | \`none\` | Sin borde |
 
 ### Bordes individuales
@@ -201,7 +201,7 @@ Redondea las esquinas de un elemento:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que propiedad CSS cambia el color del texto de un elemento?",
+      prompt: "¿Qué propiedad CSS cambia el color del texto de un elemento?",
       options: [
         { id: "a", text: "color", isCorrect: true },
         { id: "b", text: "text-color", isCorrect: false },
@@ -220,7 +220,7 @@ Redondea las esquinas de un elemento:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad CSS para cambiar el color del texto del titulo a rojo (#FF0000):",
+        "Completa la propiedad CSS para cambiar el color del texto del título a rojo (#FF0000):",
       codeTemplate: {
         html: `<h1 class="titulo">Mi titulo rojo</h1>`,
         cssPrefix: ".titulo {\n  ",
@@ -230,7 +230,7 @@ Redondea las esquinas de un elemento:
       validation: { type: "exact", answer: "color" },
       hint: "Es una propiedad de una sola palabra que define el color del texto.",
       explanation:
-        "La propiedad 'color' se usa para definir el color del texto. La regla completa es: .titulo { color: #FF0000; }",
+        "La propiedad 'color' se usa para definir el color del texto. La regla completa es: .título { color: #FF0000; }",
     },
     {
       id: "03-ej-03",
@@ -239,7 +239,7 @@ Redondea las esquinas de un elemento:
       xpReward: 20,
       order: 3,
       prompt:
-        "Aplica color de fondo lightblue al body y color de texto darkblue a todos los parrafos.",
+        "Aplica color de fondo lightblue al body y color de texto darkblue a todos los párrafos.",
       codeTemplate: {
         html: `<body>\n  <h1>Bienvenido</h1>\n  <p>Primer parrafo.</p>\n  <p>Segundo parrafo.</p>\n</body>`,
         cssPrefix: "",
@@ -255,7 +255,7 @@ Redondea las esquinas de un elemento:
       },
       hint: "Necesitas dos reglas: una para 'body' con background-color y otra para 'p' con color.",
       explanation:
-        "Se usan dos reglas: 'body { background-color: lightblue; }' para el fondo de la pagina y 'p { color: darkblue; }' para el texto de los parrafos.",
+        "Se usan dos reglas: 'body { background-color: lightblue; }' para el fondo de la página y 'p { color: darkblue; }' para el texto de los párrafos.",
     },
     {
       id: "03-ej-04",
@@ -264,7 +264,7 @@ Redondea las esquinas de un elemento:
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada formato de color a su categoria correspondiente:",
+        "Arrastra cada formato de color a su categoría correspondiente:",
       dragItems: [
         { id: "drag-1", content: "#FF0000", correctZone: "zone-hex" },
         { id: "drag-2", content: "red", correctZone: "zone-nombre" },
@@ -287,9 +287,9 @@ Redondea las esquinas de un elemento:
           "drag-3": "zone-rgb",
         },
       },
-      hint: "El formato hexadecimal empieza con #, el RGB usa la funcion rgb(), y los nombres son palabras en ingles.",
+      hint: "El formato hexadecimal empieza con #, el RGB usa la función rgb(), y los nombres son palabras en ingles.",
       explanation:
-        "'#FF0000' es formato hexadecimal (prefijo #). 'red' es un nombre de color estandar. 'rgb(255, 0, 0)' usa la funcion RGB con valores de 0 a 255.",
+        "'#FF0000' es formato hexadecimal (prefijo #). 'red' es un nombre de color estándar. 'rgb(255, 0, 0)' usa la función RGB con valores de 0 a 255.",
     },
     {
       id: "03-ej-05",
@@ -306,7 +306,7 @@ Redondea las esquinas de un elemento:
         blanks: ["2px"],
       },
       validation: { type: "exact", answer: "2px" },
-      hint: "El primer valor de border es el ancho. Se expresa en pixeles (px).",
+      hint: "El primer valor de border es el ancho. Se expresa en píxeles (px).",
       explanation:
         "La propiedad border abreviada sigue el orden: ancho estilo color. La regla completa es: border: 2px solid red;",
     },
@@ -342,7 +342,7 @@ Redondea las esquinas de un elemento:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un boton con: fondo verde (green), texto blanco (white), borde redondeado de 8px (border-radius) y padding de 10px arriba/abajo y 20px izquierda/derecha.",
+        "Crea un botón con: fondo verde (green), texto blanco (white), borde redondeado de 8px (border-radius) y padding de 10px arriba/abajo y 20px izquierda/derecha.",
       codeTemplate: {
         html: `<button class="boton">Hacer clic</button>`,
         cssPrefix: "",
@@ -358,7 +358,7 @@ Redondea las esquinas de un elemento:
       },
       hint: "Usa padding con dos valores: el primero para arriba/abajo y el segundo para izquierda/derecha.",
       explanation:
-        "El boton usa background-color: green para el fondo, color: white para el texto, border-radius: 8px para esquinas redondeadas y padding: 10px 20px para el espacio interior (vertical y horizontal).",
+        "El botón usa background-color: green para el fondo, color: white para el texto, border-radius: 8px para esquinas redondeadas y padding: 10px 20px para el espacio interior (vertical y horizontal).",
     },
     {
       id: "03-ej-08",
@@ -366,7 +366,7 @@ Redondea las esquinas de un elemento:
       difficulty: 2 ,
       xpReward: 20,
       order: 8,
-      prompt: "¿Cuantos nombres de colores estandar reconoce CSS?",
+      prompt: "¿Cuántos nombres de colores estándar reconoce CSS?",
       options: [
         { id: "a", text: "16", isCorrect: false },
         { id: "b", text: "50", isCorrect: false },
@@ -374,9 +374,9 @@ Redondea las esquinas de un elemento:
         { id: "d", text: "256", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Son mas de 100 pero menos de 200. Incluyen desde los basicos (red, blue) hasta los exoticos (papayawhip, rebeccapurple).",
+      hint: "Son mas de 100 pero menos de 200. Incluyen desde los básicos (red, blue) hasta los exoticos (papayawhip, rebeccapurple).",
       explanation:
-        "CSS reconoce aproximadamente 140 nombres de colores estandar. Algunos ejemplos inusuales: 'papayawhip', 'rebeccapurple', 'lemonchiffon' y 'midnightblue'.",
+        "CSS reconoce aproximadamente 140 nombres de colores estándar. Algunos ejemplos inusuales: 'papayawhip', 'rebeccapurple', 'lemonchiffon' y 'midnightblue'.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const reactFormulariosModule: ModuleData = {
   slug: "react-formularios",
   title: "Formularios en React",
   description:
-    "Maneja formularios con componentes controlados y no controlados, validacion, multiples inputs y mejores practicas.",
+    "Maneja formularios con componentes controlados y no controlados, validación, múltiples inputs y mejores prácticas.",
   order: 211,
   category: "react-intermediate",
   icon: "file-input",
@@ -17,7 +17,7 @@ export const reactFormulariosModule: ModuleData = {
 
 En un **componente controlado**, React controla el valor del input a traves del estado.
 
-### Patron basico
+### Patrón básico
 \`\`\`jsx
 function Formulario() {
   const [nombre, setNombre] = useState('');
@@ -34,10 +34,10 @@ function Formulario() {
 ### ¿Por que controlados?
 - **Una sola fuente de verdad** (el estado de React)
 - Puedes **validar** y **transformar** el valor en cada cambio
-- Facil de **resetear** el formulario
+- Fácil de **resetear** el formulario
 - El valor siempre esta disponible sin consultar el DOM
 
-### Manejo de multiples inputs
+### Manejo de múltiples inputs
 \`\`\`jsx
 const [form, setForm] = useState({ nombre: '', email: '' });
 
@@ -52,7 +52,7 @@ const handleChange = (e) => {
 <input name="email" value={form.email} onChange={handleChange} />
 \`\`\`
 
-> **Tip:** Usa el atributo \`name\` del input como clave dinamica para manejar muchos campos con un solo handler.`,
+> **Tip:** Usa el atributo \`name\` del input como clave dinámica para manejar muchos campos con un solo handler.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -115,7 +115,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormularioRegistro 
 
 En un componente **no controlado**, el DOM maneja el valor del input. Usamos useRef para leer el valor cuando lo necesitamos.
 
-### Patron basico
+### Patrón básico
 \`\`\`jsx
 function Formulario() {
   const inputRef = useRef(null);
@@ -138,9 +138,9 @@ function Formulario() {
 - \`value\` = controlado por React (necesita onChange)
 - \`defaultValue\` = valor inicial, luego el DOM lo maneja
 
-### ¿Cuando usar no controlados?
+### ¿Cuándo usar no controlados?
 - Formularios simples donde no necesitas validar en tiempo real
-- Integracion con librerias externas
+- Integración con librerias externas
 - Inputs de tipo file (siempre son no controlados)
 
 \`\`\`jsx
@@ -161,7 +161,7 @@ const fileRef = useRef(null);
 </select>
 \`\`\`
 
-> **Recomendacion:** Prefiere componentes controlados. Usa no controlados solo cuando sea necesario.`,
+> **Recomendación:** Prefiere componentes controlados. Usa no controlados solo cuando sea necesario.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -226,10 +226,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormNoControlado />
     },
     {
       id: "react11-leccion-03",
-      title: "Validacion de formularios",
-      content: `## Validacion de Formularios en React
+      title: "Validación de formularios",
+      content: `## Validación de Formularios en React
 
-### Validacion en tiempo real
+### Validación en tiempo real
 \`\`\`jsx
 const [email, setEmail] = useState('');
 const [error, setError] = useState('');
@@ -245,7 +245,7 @@ const handleChange = (e) => {
 };
 \`\`\`
 
-### Validacion al enviar
+### Validación al enviar
 \`\`\`jsx
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -263,9 +263,9 @@ const handleSubmit = (e) => {
 
 ### Librerias de formularios
 Para formularios complejos, considera usar:
-- **React Hook Form** — minimo re-renders, excelente performance
+- **React Hook Form** — mínimo re-renders, excelente performance
 - **Formik** — popular, muchas integraciones
-- **Zod + react-hook-form** — validacion con tipos TypeScript
+- **Zod + react-hook-form** — validación con tipos TypeScript
 
 \`\`\`jsx
 // Ejemplo conceptual con React Hook Form
@@ -284,7 +284,7 @@ function MiForm() {
 }
 \`\`\`
 
-> **Tip:** Para 1-3 campos, validacion manual esta bien. Para formularios complejos, usa una libreria.`,
+> **Tip:** Para 1-3 campos, validación manual esta bien. Para formularios complejos, usa una libreria.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -370,7 +370,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "En un componente controlado, ¿quien controla el valor del input?",
+      prompt: "En un componente controlado, ¿quién controla el valor del input?",
       options: [
         { id: "a", text: "El DOM del navegador", isCorrect: false },
         { id: "b", text: "El estado de React", isCorrect: true },
@@ -395,8 +395,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
         blanks: ["preventDefault()"],
       },
       validation: { type: "exact", answer: "preventDefault()" },
-      hint: "Es un metodo del evento que evita el comportamiento por defecto.",
-      explanation: "e.preventDefault() evita que el formulario se envie de forma tradicional (recargando la pagina) para manejarlo con JavaScript.",
+      hint: "Es un método del evento que evita el comportamiento por defecto.",
+      explanation: "e.preventDefault() evita que el formulario se envie de forma tradicional (recargando la página) para manejarlo con JavaScript.",
     },
     {
       id: "react11-ej-03",
@@ -404,7 +404,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que atributo se usa en un componente NO controlado para establecer un valor inicial?",
+      prompt: "¿Qué atributo se usa en un componente NO controlado para establecer un valor inicial?",
       options: [
         { id: "a", text: "value", isCorrect: false },
         { id: "b", text: "initialValue", isCorrect: false },
@@ -421,7 +421,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa para manejar multiples inputs con un solo handler usando name dinamico:",
+      prompt: "Completa para manejar múltiples inputs con un solo handler usando name dinámico:",
       codeTemplate: {
         html: "",
         cssPrefix: "const handleChange = (e) => {\n  setForm({\n    ...form,\n    [e.target.",
@@ -430,7 +430,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       },
       validation: { type: "exact", answer: "name" },
       hint: "Es el atributo HTML que identifica al input.",
-      explanation: "Usando [e.target.name] como clave dinamica, un solo handler puede actualizar cualquier campo del formulario basandose en el atributo name del input.",
+      explanation: "Usando [e.target.name] como clave dinámica, un solo handler puede actualizar cualquier campo del formulario basandose en el atributo name del input.",
     },
     {
       id: "react11-ej-05",
@@ -461,7 +461,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Como se maneja un textarea en React?",
+      prompt: "¿Cómo se maneja un textarea en React?",
       options: [
         { id: "a", text: "Con contenido entre las etiquetas <textarea>texto</textarea>", isCorrect: false },
         { id: "b", text: "Con el atributo value, igual que un input", isCorrect: true },
@@ -478,7 +478,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que libreria de formularios React es conocida por minimizar los re-renders?",
+      prompt: "¿Qué libreria de formularios React es conocida por minimizar los re-renders?",
       options: [
         { id: "a", text: "Formik", isCorrect: false },
         { id: "b", text: "Redux Form", isCorrect: false },
@@ -487,7 +487,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Su nombre incluye 'Hook' y 'Form'.",
-      explanation: "React Hook Form esta disenada para minimizar re-renders usando refs internamente, ofreciendo excelente rendimiento en formularios complejos.",
+      explanation: "React Hook Form esta diseñada para minimizar re-renders usando refs internamente, ofreciendo excelente rendimiento en formularios complejos.",
     },
     {
       id: "react11-ej-08",
@@ -495,7 +495,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa la validacion para verificar que el email contiene '@':",
+      prompt: "Completa la validación para verificar que el email contiene '@':",
       codeTemplate: {
         html: "",
         cssPrefix: "const validar = () => {\n  const errores = {};\n  if (!email.",
@@ -503,8 +503,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
         blanks: ["includes"],
       },
       validation: { type: "exact", answer: "includes" },
-      hint: "Es un metodo de string que verifica si contiene un substring.",
-      explanation: "El metodo .includes() de String verifica si una cadena contiene el substring especificado, retornando true o false.",
+      hint: "Es un método de string que verifica si contiene un substring.",
+      explanation: "El método .includes() de String verifica si una cadena contiene el substring especificado, retornando true o false.",
     },
   ],
 };

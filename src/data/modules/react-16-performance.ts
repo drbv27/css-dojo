@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const reactPerformanceModule: ModuleData = {
   slug: "react-performance",
-  title: "Performance y Optimizacion",
+  title: "Performance y Optimización",
   description:
     "Optimiza tus aplicaciones React: React.memo, useMemo, useCallback, lazy loading, code splitting y evita re-renders innecesarios.",
   order: 216,
@@ -15,7 +15,7 @@ export const reactPerformanceModule: ModuleData = {
       title: "React.memo y evitar re-renders",
       content: `## Entendiendo Re-renders en React
 
-### ¿Cuando se re-renderiza un componente?
+### ¿Cuándo se re-renderiza un componente?
 1. Su **estado** cambia (useState, useReducer)
 2. Su **padre** se re-renderiza
 3. El **contexto** que consume cambia
@@ -30,8 +30,8 @@ const MiComponente = React.memo(function MiComponente({ nombre }) {
 });
 \`\`\`
 
-### ¿Como funciona?
-- React.memo hace una comparacion **superficial** de props
+### ¿Cómo funciona?
+- React.memo hace una comparación **superficial** de props
 - Si las props son iguales, **reutiliza** el render anterior
 - Si las props cambian, re-renderiza normalmente
 
@@ -43,9 +43,9 @@ const MiComponente = React.memo(function MiComponente({ nombre }) {
 // PROBLEMA: funcion nueva en cada render
 <MemoComponent onClick={() => console.log('click')} />
 \`\`\`
-Cada render crea un nuevo objeto/funcion, haciendo que memo sea inutil.
+Cada render crea un nuevo objeto/función, haciendo que memo sea inutil.
 
-### Solucion: useMemo + useCallback
+### Solución: useMemo + useCallback
 \`\`\`jsx
 const style = useMemo(() => ({ color: 'red' }), []);
 const onClick = useCallback(() => console.log('click'), []);
@@ -126,7 +126,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       content: `## React.lazy y Suspense
 
 ### El problema
-En aplicaciones grandes, el bundle de JavaScript puede ser enorme. El usuario descarga todo aunque solo visite una pagina.
+En aplicaciones grandes, el bundle de JavaScript puede ser enorme. El usuario descarga todo aunque solo visite una página.
 
 ### Code Splitting con React.lazy
 \`\`\`jsx
@@ -153,10 +153,10 @@ function App() {
 - Puedes anidar Suspense para diferentes secciones
 - El fallback puede ser un spinner, skeleton, o cualquier JSX
 
-### Mejores practicas
-- Aplica lazy loading en **rutas** (lo mas comun)
-- Lazy load en componentes pesados (editores, graficos)
-- No uses lazy para componentes pequenos (el overhead no vale)
+### Mejores prácticas
+- Aplica lazy loading en **rutas** (lo mas común)
+- Lazy load en componentes pesados (editores, gráficos)
+- No uses lazy para componentes pequeños (el overhead no vale)
 
 ### Ejemplo con rutas
 \`\`\`jsx
@@ -169,7 +169,7 @@ function App() {
 </Suspense>
 \`\`\`
 
-> **Tip:** La pagina principal (Home) no deberia ser lazy. Las paginas secundarias si.`,
+> **Tip:** La página principal (Home) no deberia ser lazy. Las páginas secundarias si.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -238,8 +238,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorLazy />);
     },
     {
       id: "react16-leccion-03",
-      title: "Herramientas y estrategias de optimizacion",
-      content: `## Estrategias de Optimizacion
+      title: "Herramientas y estrategias de optimización",
+      content: `## Estrategias de Optimización
 
 ### 1. Mover estado hacia abajo
 \`\`\`jsx
@@ -295,7 +295,7 @@ function ColorPicker({ children }) {
 4. Usa useMemo/useCallback para estabilizar props
 5. Lazy load rutas y componentes pesados
 
-> **Recuerda:** Mide antes de optimizar. La optimizacion prematura es la raiz de todo mal.`,
+> **Recuerda:** Mide antes de optimizar. La optimización prematura es la raíz de todo mal.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -373,7 +373,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que hace React.memo?",
+      prompt: "¿Qué hace React.memo?",
       options: [
         { id: "a", text: "Memoriza el estado del componente", isCorrect: false },
         { id: "b", text: "Evita re-renders si las props no cambian", isCorrect: true },
@@ -381,8 +381,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Guarda el componente en localStorage", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es una optimizacion que compara props.",
-      explanation: "React.memo envuelve un componente y hace una comparacion superficial de props. Si son iguales al render anterior, reutiliza el resultado sin re-renderizar.",
+      hint: "Es una optimización que compara props.",
+      explanation: "React.memo envuelve un componente y hace una comparación superficial de props. Si son iguales al render anterior, reutiliza el resultado sin re-renderizar.",
     },
     {
       id: "react16-ej-02",
@@ -390,7 +390,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que componente de React se usa como fallback mientras se carga un componente lazy?",
+      prompt: "¿Qué componente de React se usa como fallback mientras se carga un componente lazy?",
       options: [
         { id: "a", text: "Loading", isCorrect: false },
         { id: "b", text: "Fallback", isCorrect: false },
@@ -415,8 +415,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["lazy"],
       },
       validation: { type: "exact", answer: "lazy" },
-      hint: "Es la funcion de React para carga diferida.",
-      explanation: "React.lazy() permite importar componentes de forma dinamica. Solo se descargan cuando se necesitan, reduciendo el bundle inicial.",
+      hint: "Es la función de React para carga diferida.",
+      explanation: "React.lazy() permite importar componentes de forma dinámica. Solo se descargan cuando se necesitan, reduciendo el bundle inicial.",
     },
     {
       id: "react16-ej-04",
@@ -424,7 +424,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada herramienta de optimizacion con su proposito:",
+      prompt: "Asocia cada herramienta de optimización con su propósito:",
       dragItems: [
         { id: "d1", content: "React.memo", correctZone: "props" },
         { id: "d2", content: "useMemo", correctZone: "valores" },
@@ -447,16 +447,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Por que pasar una funcion inline como prop puede anular el efecto de React.memo?",
+      prompt: "¿Por que pasar una función inline como prop puede anular el efecto de React.memo?",
       options: [
         { id: "a", text: "Las funciones inline causan errores", isCorrect: false },
-        { id: "b", text: "Cada render crea una nueva referencia de funcion, que memo detecta como cambio", isCorrect: true },
+        { id: "b", text: "Cada render crea una nueva referencia de función, que memo detecta como cambio", isCorrect: true },
         { id: "c", text: "React.memo no funciona con funciones", isCorrect: false },
         { id: "d", text: "Las funciones inline son mas lentas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en la comparacion superficial de objetos/funciones.",
-      explanation: "Cada render crea una nueva instancia de la funcion con diferente referencia. La comparacion superficial de memo ve que es 'diferente' y re-renderiza.",
+      hint: "Piensa en la comparación superficial de objetos/funciones.",
+      explanation: "Cada render crea una nueva instancia de la función con diferente referencia. La comparación superficial de memo ve que es 'diferente' y re-renderiza.",
     },
     {
       id: "react16-ej-06",
@@ -464,15 +464,15 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cual es la mejor estrategia antes de aplicar optimizaciones?",
+      prompt: "¿Cuál es la mejor estrategia antes de aplicar optimizaciones?",
       options: [
-        { id: "a", text: "Envolver todo en React.memo por precaucion", isCorrect: false },
+        { id: "a", text: "Envolver todo en React.memo por precaución", isCorrect: false },
         { id: "b", text: "Medir con React DevTools Profiler e identificar el problema real", isCorrect: true },
         { id: "c", text: "Usar useMemo en todos los valores", isCorrect: false },
         { id: "d", text: "Convertir todo a componentes de clase", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Mide primero, optimiza despues.",
+      hint: "Mide primero, optimiza después.",
       explanation: "Siempre mide antes de optimizar. El React DevTools Profiler muestra exactamente que componentes se re-renderizan y cuanto tiempo toman.",
     },
     {
@@ -489,7 +489,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         blanks: ["memo"],
       },
       validation: { type: "exact", answer: "memo" },
-      hint: "La funcion de React para memorizar componentes.",
+      hint: "La función de React para memorizar componentes.",
       explanation: "React.memo() envuelve el componente para que solo se re-renderice cuando sus props realmente cambien.",
     },
     {
@@ -498,7 +498,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Que tecnica evita re-renders sin usar memo ni useMemo?",
+      prompt: "¿Qué técnica evita re-renders sin usar memo ni useMemo?",
       options: [
         { id: "a", text: "Usar componentes de clase", isCorrect: false },
         { id: "b", text: "Mover el estado hacia abajo o levantar el contenido", isCorrect: true },

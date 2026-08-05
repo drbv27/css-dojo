@@ -4,7 +4,7 @@ export const htmlFormulariosAvanzadosModule: ModuleData = {
   slug: "html-formularios-avanzados",
   title: "Formularios Avanzados",
   description:
-    "Domina los tipos de input avanzados, validacion nativa, atributos de formulario y elementos como datalist, fieldset y legend.",
+    "Domina los tipos de input avanzados, validación nativa, atributos de formulario y elementos como datalist, fieldset y legend.",
   order: 9,
   category: "html-intermediate",
   icon: "settings",
@@ -17,26 +17,26 @@ export const htmlFormulariosAvanzadosModule: ModuleData = {
 
 HTML5 introdujo muchos tipos de input nuevos que facilitan la captura de datos y mejoran la experiencia del usuario.
 
-### Tipos mas utiles
+### Tipos mas útiles
 
-| Tipo | Descripcion |
+| Tipo | Descripción |
 |------|-------------|
-| \`range\` | Control deslizante para seleccionar un valor numerico |
+| \`range\` | Control deslizante para seleccionar un valor numérico |
 | \`color\` | Selector de color |
 | \`file\` | Permite subir archivos |
 | \`hidden\` | Campo oculto (no visible para el usuario) |
 | \`search\` | Campo optimizado para busquedas |
 | \`date\` | Selector de fecha |
 | \`time\` | Selector de hora |
-| \`number\` | Solo acepta numeros |
+| \`number\` | Solo acepta números |
 
 ### Ventajas
 
-- **Validacion nativa:** el navegador valida automaticamente el formato
-- **Mejor UX en moviles:** el teclado se adapta al tipo de input
-- **Sin JavaScript:** muchas validaciones funcionan sin codigo adicional
+- **Validación nativa:** el navegador valida automáticamente el formato
+- **Mejor UX en móviles:** el teclado se adapta al tipo de input
+- **Sin JavaScript:** muchas validaciones funcionan sin código adicional
 
-> **Tip:** Siempre usa el tipo de input mas especifico posible. Esto mejora la accesibilidad y la experiencia del usuario.`,
+> **Tip:** Siempre usa el tipo de input mas específico posible. Esto mejora la accesibilidad y la experiencia del usuario.`,
       codeExample: {
         html: `<form>
   <label>Color favorito:</label><br>
@@ -91,7 +91,7 @@ El elemento \`<datalist>\` proporciona una lista de sugerencias para un input. E
 
 ### Fieldset y legend
 
-\`<fieldset>\` agrupa campos relacionados dentro de un formulario, y \`<legend>\` le da un titulo al grupo.
+\`<fieldset>\` agrupa campos relacionados dentro de un formulario, y \`<legend>\` le da un título al grupo.
 
 \`\`\`html
 <fieldset>
@@ -105,7 +105,7 @@ El elemento \`<datalist>\` proporciona una lista de sugerencias para un input. E
 
 - **Organiza** formularios largos en secciones
 - **Mejora la accesibilidad:** los lectores de pantalla anuncian el legend al entrar al grupo
-- **Estilo visual:** agrega un borde automatico alrededor del grupo`,
+- **Estilo visual:** agrega un borde automático alrededor del grupo`,
       codeExample: {
         html: `<form>
   <fieldset>
@@ -154,29 +154,29 @@ input {
     },
     {
       id: "html09-leccion-03",
-      title: "Validacion y atributos de formulario",
-      content: `## Validacion y atributos de formulario
+      title: "Validación y atributos de formulario",
+      content: `## Validación y atributos de formulario
 
 HTML5 incluye atributos poderosos para validar formularios sin JavaScript.
 
-### Atributos de validacion
+### Atributos de validación
 
-| Atributo | Funcion |
+| Atributo | Función |
 |----------|---------|
 | \`required\` | El campo es obligatorio |
-| \`pattern\` | Expresion regular que el valor debe cumplir |
-| \`min\` / \`max\` | Valor minimo y maximo (numeros y fechas) |
+| \`pattern\` | Expresión regular que el valor debe cumplir |
+| \`min\` / \`max\` | Valor mínimo y máximo (números y fechas) |
 | \`step\` | Incremento permitido |
-| \`minlength\` / \`maxlength\` | Longitud minima y maxima del texto |
+| \`minlength\` / \`maxlength\` | Longitud mínima y máxima del texto |
 
 ### Atributos de comportamiento
 
-| Atributo | Funcion |
+| Atributo | Función |
 |----------|---------|
 | \`placeholder\` | Texto de ayuda dentro del campo |
 | \`disabled\` | Desactiva el campo (no se envia) |
 | \`readonly\` | Solo lectura (si se envia) |
-| \`autofocus\` | El campo recibe foco automaticamente |
+| \`autofocus\` | El campo recibe foco automáticamente |
 | \`autocomplete\` | Activa o desactiva el autocompletado (\`on\`/\`off\`) |
 
 ### Ejemplo de pattern
@@ -185,7 +185,7 @@ HTML5 incluye atributos poderosos para validar formularios sin JavaScript.
 <input type="text" pattern="[A-Za-z]{3,}" title="Minimo 3 letras">
 \`\`\`
 
-> **Importante:** La validacion HTML es una primera linea de defensa. Siempre valida tambien en el servidor.`,
+> **Importante:** La validación HTML es una primera línea de defensa. Siempre valida también en el servidor.`,
       codeExample: {
         html: `<form onsubmit="event.preventDefault(); document.getElementById('msg').textContent='Formulario valido!'">
   <label>Usuario (solo letras, min 3):</label><br>
@@ -242,7 +242,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que tipo de input muestra un control deslizante para seleccionar un valor numerico?",
+      prompt: "¿Qué tipo de input muestra un control deslizante para seleccionar un valor numérico?",
       options: [
         { id: "a", text: 'type="slider"', isCorrect: false },
         { id: "b", text: 'type="range"', isCorrect: true },
@@ -260,7 +260,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que elemento HTML proporciona una lista de sugerencias para un campo de texto?",
+      prompt: "¿Qué elemento HTML proporciona una lista de sugerencias para un campo de texto?",
       options: [
         { id: "a", text: "<select>", isCorrect: false },
         { id: "b", text: "<options>", isCorrect: false },
@@ -278,7 +278,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el codigo para hacer que el campo de email sea obligatorio:",
+      prompt: "Completa el código para hacer que el campo de email sea obligatorio:",
       codeTemplate: {
         html: "",
         cssPrefix: '<input type="email" ',
@@ -296,7 +296,7 @@ button {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la diferencia entre disabled y readonly en un input?",
+      prompt: "¿Cuál es la diferencia entre disabled y readonly en un input?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "disabled no envia el valor; readonly si lo envia", isCorrect: true },
@@ -314,7 +314,7 @@ button {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada atributo segun su funcion en formularios:",
+      prompt: "Clasifica cada atributo según su función en formularios:",
       dragItems: [
         { id: "drag-1", content: "required", correctZone: "zone-validacion" },
         { id: "drag-2", content: "pattern", correctZone: "zone-validacion" },
@@ -322,7 +322,7 @@ button {
         { id: "drag-4", content: "autofocus", correctZone: "zone-ux" },
       ],
       dropZones: [
-        { id: "zone-validacion", label: "Validacion" },
+        { id: "zone-validacion", label: "Validación" },
         { id: "zone-ux", label: "Experiencia de usuario" },
       ],
       validation: {
@@ -336,7 +336,7 @@ button {
       },
       hint: "Piensa en cuales atributos impiden enviar el formulario y cuales mejoran la interfaz.",
       explanation:
-        "required y pattern son atributos de validacion que impiden enviar datos incorrectos. placeholder y autofocus mejoran la experiencia del usuario sin validar nada.",
+        "required y pattern son atributos de validación que impiden enviar datos incorrectos. placeholder y autofocus mejoran la experiencia del usuario sin validar nada.",
     },
     {
       id: "html09-ej-06",
@@ -344,7 +344,7 @@ button {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el atributo para que el input solo acepte numeros entre 1 y 10:",
+      prompt: "Completa el atributo para que el input solo acepte números entre 1 y 10:",
       codeTemplate: {
         html: "",
         cssPrefix: '<input type="number" min="1" ',
@@ -352,9 +352,9 @@ button {
         blanks: ["max"],
       },
       validation: { type: "exact", answer: "max" },
-      hint: "Es el atributo que define el valor maximo permitido.",
+      hint: "Es el atributo que define el valor máximo permitido.",
       explanation:
-        "El atributo max establece el valor maximo que se puede ingresar en un input de tipo number, range o date.",
+        "El atributo max establece el valor máximo que se puede ingresar en un input de tipo number, range o date.",
     },
     {
       id: "html09-ej-07",
@@ -362,17 +362,17 @@ button {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que hace el atributo pattern en un campo de texto?",
+      prompt: "¿Qué hace el atributo pattern en un campo de texto?",
       options: [
         { id: "a", text: "Define el estilo visual del campo", isCorrect: false },
-        { id: "b", text: "Establece una expresion regular que el valor debe cumplir", isCorrect: true },
-        { id: "c", text: "Agrega un patron de fondo al input", isCorrect: false },
-        { id: "d", text: "Define el orden de tabulacion", isCorrect: false },
+        { id: "b", text: "Establece una expresión regular que el valor debe cumplir", isCorrect: true },
+        { id: "c", text: "Agrega un patrón de fondo al input", isCorrect: false },
+        { id: "d", text: "Define el orden de tabulación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Esta relacionado con la validacion del formato del texto ingresado.",
+      hint: "Esta relacionado con la validación del formato del texto ingresado.",
       explanation:
-        'El atributo pattern acepta una expresion regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 digitos.',
+        'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 digitos.',
     },
   ],
 };

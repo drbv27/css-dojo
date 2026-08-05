@@ -15,11 +15,11 @@ export const react19Module: ModuleData = {
       title: "React Compiler y el hook use()",
       content: `## React 19: Una Nueva Era
 
-React 19 es la actualizacion mas grande desde los Hooks. Simplifica muchos patrones y elimina codigo repetitivo.
+React 19 es la actualización mas grande desde los Hooks. Simplifica muchos patrones y elimina código repetitivo.
 
 ### React Compiler (React Forget)
 
-Antes de React 19, optimizar rendimiento requeria usar manualmente \`useMemo\`, \`useCallback\` y \`React.memo\`. El **React Compiler** hace esto automaticamente.
+Antes de React 19, optimizar rendimiento requeria usar manualmente \`useMemo\`, \`useCallback\` y \`React.memo\`. El **React Compiler** hace esto automáticamente.
 
 #### Antes (React 18):
 \`\`\`jsx
@@ -39,7 +39,7 @@ function Componente({ items, filtro }) {
 }
 \`\`\`
 
-#### Despues (React 19 con Compiler):
+#### Después (React 19 con Compiler):
 \`\`\`jsx
 function Componente({ items, filtro }) {
   // El Compiler memoriza automaticamente!
@@ -53,7 +53,7 @@ function Componente({ items, filtro }) {
 }
 \`\`\`
 
-El compilador analiza tu codigo y agrega memorizacion donde sea beneficioso. **No necesitas cambiar tu codigo.**
+El compilador analiza tu código y agrega memorización donde sea beneficioso. **No necesitas cambiar tu código.**
 
 ### El hook use()
 
@@ -88,7 +88,7 @@ function Tema({ isAdmin }) {
 ### Diferencia clave: use() vs useContext()
 - \`useContext()\` solo puede llamarse en el nivel superior
 - \`use()\` puede llamarse dentro de condicionales y loops
-- \`use()\` tambien funciona con Promises
+- \`use()\` también funciona con Promises
 
 > **El React Compiler elimina la necesidad de useMemo, useCallback y React.memo en la mayoria de los casos.** Es la mejora mas impactante de React 19.`,
       codeExample: {
@@ -177,7 +177,7 @@ Las **Actions** simplifican el manejo de formularios y mutaciones de datos. Elim
 
 ### useActionState (antes useFormState)
 
-Reemplaza el patron comun de \`useState\` + \`setLoading\` + \`setError\`:
+Reemplaza el patrón común de \`useState\` + \`setLoading\` + \`setError\`:
 
 \`\`\`jsx
 // React 19
@@ -237,7 +237,7 @@ function BotonSubmit() {
 
 ### form action con funciones
 
-En React 19, el atributo \`action\` de un \`<form>\` puede ser una funcion:
+En React 19, el atributo \`action\` de un \`<form>\` puede ser una función:
 
 \`\`\`jsx
 <form action={async (formData) => {
@@ -249,12 +249,12 @@ En React 19, el atributo \`action\` de un \`<form>\` puede ser una funcion:
 
 | React 18 | React 19 |
 |----------|----------|
-| useState para loading | isPending automatico |
+| useState para loading | isPending automático |
 | useState para errores | Estado en useActionState |
 | onSubmit + preventDefault | action={funcion} |
-| Manejo manual de FormData | FormData automatico |
+| Manejo manual de FormData | FormData automático |
 
-> **Las Actions transforman como manejamos formularios.** Menos codigo, menos bugs, mejor UX.`,
+> **Las Actions transforman como manejamos formularios.** Menos código, menos bugs, mejor UX.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -361,7 +361,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorActions />
       title: "useOptimistic y ref como prop",
       content: `## useOptimistic: Actualizaciones Optimistas
 
-Una **actualizacion optimista** muestra el resultado esperado inmediatamente, antes de que el servidor confirme.
+Una **actualización optimista** muestra el resultado esperado inmediatamente, antes de que el servidor confirme.
 
 ### useOptimistic
 \`\`\`jsx
@@ -407,7 +407,7 @@ const MiInput = forwardRef(function MiInput(props, ref) {
 });
 \`\`\`
 
-#### Despues (React 19):
+#### Después (React 19):
 \`\`\`jsx
 function MiInput({ ref, ...props }) {
   return <input ref={ref} {...props} />;
@@ -416,11 +416,11 @@ function MiInput({ ref, ...props }) {
 \`\`\`
 
 ### Beneficios
-- Codigo mas simple y legible
+- Código mas simple y legible
 - Menos indirecciones
 - \`forwardRef\` sera deprecado en futuras versiones
 
-> **useOptimistic** mejora drasticamente la experiencia del usuario al eliminar la sensacion de espera en operaciones de red.`,
+> **useOptimistic** mejora drasticamente la experiencia del usuario al eliminar la sensación de espera en operaciones de red.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -533,7 +533,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Chat />);
 
 ### Document Metadata en Componentes
 
-En React 19, puedes renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automaticamente al \`<head>\` del documento.
+En React 19, puedes renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automáticamente al \`<head>\` del documento.
 
 \`\`\`jsx
 function PaginaProducto({ producto }) {
@@ -570,14 +570,14 @@ async function ListaProductos() {
 
 **Caracteristicas de los Server Components:**
 - Acceden directamente a la base de datos
-- No envian JavaScript al cliente (bundle mas pequeno)
+- No envian JavaScript al cliente (bundle mas pequeño)
 - Pueden ser \`async\` directamente
 - No pueden tener estado ni efectos (no useState, no useEffect)
 - Se complementan con Client Components (\`"use client"\`)
 
 ### Manejo de Errores Mejorado
 
-React 19 mejora el manejo de errores de hidratacion y errores en general:
+React 19 mejora el manejo de errores de hidratación y errores en general:
 
 \`\`\`jsx
 // Mejor reporte de errores de hidratacion
@@ -614,9 +614,9 @@ function Componente() {
 | ref como prop | Elimina forwardRef |
 | Metadata | title/meta directamente en componentes |
 | Server Components | Menos JS al cliente |
-| Mejor errores | Diffs de hidratacion claros |
+| Mejor errores | Diffs de hidratación claros |
 
-> **React 19 marca un cambio de paradigma.** Muchos patrones que requerían codigo manual ahora son automaticos o tienen APIs dedicadas.`,
+> **React 19 marca un cambio de paradigma.** Muchos patrones que requerían código manual ahora son automáticos o tienen APIs dedicadas.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -757,16 +757,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que hace el React Compiler (React Forget)?",
+      prompt: "¿Qué hace el React Compiler (React Forget)?",
       options: [
-        { id: "a", text: "Compila React a codigo nativo", isCorrect: false },
-        { id: "b", text: "Agrega memorizacion automatica (elimina useMemo/useCallback manuales)", isCorrect: true },
+        { id: "a", text: "Compila React a código nativo", isCorrect: false },
+        { id: "b", text: "Agrega memorización automática (elimina useMemo/useCallback manuales)", isCorrect: true },
         { id: "c", text: "Convierte componentes de clase a funcionales", isCorrect: false },
-        { id: "d", text: "Minifica el codigo automaticamente", isCorrect: false },
+        { id: "d", text: "Minifica el código automáticamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Automatiza algo que antes hacias manualmente para optimizar rendimiento.",
-      explanation: "El React Compiler analiza tu codigo y agrega automaticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente.",
+      explanation: "El React Compiler analiza tu código y agrega automáticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente.",
     },
     {
       id: "react18-ej-02",
@@ -774,9 +774,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es una ventaja del hook use() sobre useContext?",
+      prompt: "¿Cuál es una ventaja del hook use() sobre useContext?",
       options: [
-        { id: "a", text: "use() es mas rapido", isCorrect: false },
+        { id: "a", text: "use() es mas rápido", isCorrect: false },
         { id: "b", text: "use() puede llamarse dentro de condicionales y loops", isCorrect: true },
         { id: "c", text: "use() no necesita un Provider", isCorrect: false },
         { id: "d", text: "use() reemplaza todos los hooks", isCorrect: false },
@@ -791,7 +791,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que devuelve useActionState?",
+      prompt: "¿Qué devuelve useActionState?",
       options: [
         { id: "a", text: "[state, setState]", isCorrect: false },
         { id: "b", text: "[state, dispatch]", isCorrect: false },
@@ -799,8 +799,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "d", text: "[formData, submit, reset]", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Devuelve tres valores: el estado, la accion para el form, y un booleano.",
-      explanation: "useActionState retorna: state (resultado de la accion), formAction (funcion para el atributo action del form), e isPending (booleano de si esta procesando).",
+      hint: "Devuelve tres valores: el estado, la acción para el form, y un booleano.",
+      explanation: "useActionState retorna: state (resultado de la acción), formAction (función para el atributo action del form), e isPending (booleano de si esta procesando).",
     },
     {
       id: "react18-ej-04",
@@ -826,8 +826,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "manual", label: "Reemplaza updates optimistas manuales" },
       ],
       validation: { type: "exact", answer: { d1: "memo", d2: "useeffect", d3: "usestate", d4: "forwardref", d5: "helmet", d6: "manual" } },
-      hint: "Cada feature de React 19 simplifica o elimina un patron comun de React 18.",
-      explanation: "React 19 sistematicamente simplifica patrones: Compiler memoriza automaticamente, use() reemplaza useEffect para fetch, Actions manejan forms, ref es prop normal, metadata nativo, y optimismo integrado.",
+      hint: "Cada feature de React 19 simplifica o elimina un patrón común de React 18.",
+      explanation: "React 19 sistematicamente simplifica patrones: Compiler memoriza automáticamente, use() reemplaza useEffect para fetch, Actions manejan forms, ref es prop normal, metadata nativo, y optimismo integrado.",
     },
     {
       id: "react18-ej-05",
@@ -856,12 +856,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       options: [
         { id: "a", text: "Validar campos del formulario", isCorrect: false },
         { id: "b", text: "Obtener el estado de envio del formulario padre en componentes hijos", isCorrect: true },
-        { id: "c", text: "Crear formularios automaticamente", isCorrect: false },
+        { id: "c", text: "Crear formularios automáticamente", isCorrect: false },
         { id: "d", text: "Serializar los datos del formulario", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Permite que un boton dentro del form sepa si se esta enviando.",
-      explanation: "useFormStatus permite a componentes hijos del form (como un boton) saber si el formulario esta en proceso de envio (pending), sin pasar props manualmente.",
+      hint: "Permite que un botón dentro del form sepa si se esta enviando.",
+      explanation: "useFormStatus permite a componentes hijos del form (como un botón) saber si el formulario esta en proceso de envio (pending), sin pasar props manualmente.",
     },
     {
       id: "react18-ej-07",
@@ -869,7 +869,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que caracteristica tienen los Server Components que los Client Components no?",
+      prompt: "¿Qué caracteristica tienen los Server Components que los Client Components no?",
       options: [
         { id: "a", text: "Pueden usar useState y useEffect", isCorrect: false },
         { id: "b", text: "Pueden ser funciones async y acceder a la base de datos directamente", isCorrect: true },
@@ -877,7 +877,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "d", text: "Pueden manejar eventos del usuario como onClick", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Se ejecutan en el servidor, asi que pueden acceder a recursos del servidor.",
+      hint: "Se ejecutan en el servidor, así que pueden acceder a recursos del servidor.",
       explanation: "Los Server Components se ejecutan en el servidor, pueden ser async, acceder a bases de datos y APIs internas sin enviar JavaScript al cliente. No pueden tener estado ni manejar eventos.",
     },
     {
@@ -894,8 +894,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         blanks: ["title"],
       },
       validation: { type: "exact", answer: "title" },
-      hint: "Es la etiqueta HTML que define el titulo de la pagina.",
-      explanation: "En React 19, puedes renderizar <title> directamente dentro de tus componentes. React automaticamente lo eleva al <head> del documento.",
+      hint: "Es la etiqueta HTML que define el título de la página.",
+      explanation: "En React 19, puedes renderizar <title> directamente dentro de tus componentes. React automáticamente lo eleva al <head> del documento.",
     },
   ],
 };

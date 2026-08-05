@@ -14,9 +14,9 @@ export const reactEcoTanstackModule: ModuleData = {
       title: "useQuery — leer datos",
       content: `## TanStack Query (React Query)
 
-Maneja **data fetching, caching y sincronizacion** de datos del servidor.
+Maneja **data fetching, caching y sincronización** de datos del servidor.
 
-### Instalacion
+### Instalación
 
 \`\`\`bash
 npm install @tanstack/react-query
@@ -76,7 +76,7 @@ useQuery({ queryKey: ["usuario", id], queryFn: () => fetchUsuario(id) });
 useQuery({ queryKey: ["usuarios", { rol: "admin" }], queryFn: ... });
 \`\`\`
 
-> TanStack Query cachea automaticamente: si ya tienes los datos, los muestra al instante mientras re-valida en background.`,
+> TanStack Query cachea automáticamente: si ya tienes los datos, los muestra al instante mientras re-valida en background.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -146,13 +146,13 @@ useQuery({
 
 | Caracteristica | useEffect + fetch | TanStack Query |
 |---------------|------------------|----------------|
-| Cache | Manual | Automatico |
+| Cache | Manual | Automático |
 | Loading/Error | Manual con useState | Built-in |
-| Refetch automatico | No | Si |
-| Deduplicacion | No | Si (misma queryKey) |
+| Refetch automático | No | Si |
+| Deduplicación | No | Si (misma queryKey) |
 | Optimistic updates | Manual | Built-in |
 
-> TanStack Query elimina el 90% del codigo de data fetching que escribirias con useEffect.`,
+> TanStack Query elimina el 90% del código de data fetching que escribirias con useEffect.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -168,7 +168,7 @@ useQuery({
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que hook de TanStack Query se usa para LEER datos del servidor?",
+      prompt: "¿Qué hook de TanStack Query se usa para LEER datos del servidor?",
       options: [
         { id: "a", text: "useMutation", isCorrect: false },
         { id: "b", text: "useQuery", isCorrect: true },
@@ -177,7 +177,7 @@ useQuery({
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Query = consulta, leer datos.",
-      explanation: "useQuery se usa para leer/obtener datos del servidor con cache automatico.",
+      explanation: "useQuery se usa para leer/obtener datos del servidor con cache automático.",
     },
     {
       id: "reco05-ej-02",
@@ -188,13 +188,13 @@ useQuery({
       prompt: "¿Para que sirve queryKey en useQuery?",
       options: [
         { id: "a", text: "Para encriptar los datos", isCorrect: false },
-        { id: "b", text: "Para identificar y cachear la query de forma unica", isCorrect: true },
-        { id: "c", text: "Para autenticar la peticion", isCorrect: false },
+        { id: "b", text: "Para identificar y cachear la query de forma única", isCorrect: true },
+        { id: "c", text: "Para autenticar la petición", isCorrect: false },
         { id: "d", text: "Para ordenar los resultados", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es la clave que identifica estos datos en el cache.",
-      explanation: "queryKey identifica la query de forma unica. Sirve para cachear, invalidar y deduplicar peticiones.",
+      explanation: "queryKey identifica la query de forma única. Sirve para cachear, invalidar y deduplicar peticiones.",
     },
     {
       id: "reco05-ej-03",
@@ -202,7 +202,7 @@ useQuery({
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Despues de crear un usuario con useMutation, como actualizas la lista?",
+      prompt: "¿Después de crear un usuario con useMutation, como actualizas la lista?",
       options: [
         { id: "a", text: "window.location.reload()", isCorrect: false },
         { id: "b", text: "queryClient.invalidateQueries()", isCorrect: true },
@@ -211,7 +211,7 @@ useQuery({
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Invalidas el cache para que se re-fetchen los datos.",
-      explanation: "invalidateQueries marca el cache como stale, provocando un re-fetch automatico de los datos.",
+      explanation: "invalidateQueries marca el cache como stale, provocando un re-fetch automático de los datos.",
     },
     {
       id: "reco05-ej-04",
@@ -219,7 +219,7 @@ useQuery({
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada hook con su proposito:",
+      prompt: "Asocia cada hook con su propósito:",
       dragItems: [
         { id: "drag-1", content: "useQuery", correctZone: "zone-leer" },
         { id: "drag-2", content: "useMutation", correctZone: "zone-escribir" },

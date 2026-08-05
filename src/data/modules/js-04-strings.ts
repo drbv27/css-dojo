@@ -4,7 +4,7 @@ export const jsStringsModule: ModuleData = {
   slug: "js-strings",
   title: "Strings (Cadenas de Texto)",
   description:
-    "Aprende a trabajar con cadenas de texto: metodos, template literals y manipulacion de strings.",
+    "Aprende a trabajar con cadenas de texto: métodos, template literals y manipulación de strings.",
   order: 104,
   category: "js-fundamentals",
   icon: "Type",
@@ -12,7 +12,7 @@ export const jsStringsModule: ModuleData = {
   lessons: [
     {
       id: "js04-leccion-01",
-      title: "Creacion y propiedades",
+      title: "Creación y propiedades",
       content: `## Strings en JavaScript
 
 Un **string** es una secuencia de caracteres. Se puede crear con comillas simples, dobles o backticks:
@@ -32,7 +32,7 @@ Devuelve la cantidad de caracteres:
 
 ### Acceso a caracteres
 
-Los strings son como arrays de caracteres (indice desde 0):
+Los strings son como arrays de caracteres (índice desde 0):
 
 \`\`\`javascript
 const texto = "JavaScript";
@@ -43,9 +43,9 @@ texto.charAt(0) // "J"
 
 ### Inmutabilidad
 
-Los strings son **inmutables**: no puedes cambiar un caracter directamente. Debes crear un nuevo string.
+Los strings son **inmutables**: no puedes cambiar un carácter directamente. Debes crear un nuevo string.
 
-> **Nota:** Los indices empiezan en 0, no en 1.`,
+> **Nota:** Los índices empiezan en 0, no en 1.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -63,27 +63,27 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     },
     {
       id: "js04-leccion-02",
-      title: "Metodos de strings",
-      content: `## Metodos comunes de strings
+      title: "Métodos de strings",
+      content: `## Métodos comunes de strings
 
 ### Busqueda
 - \`includes(texto)\` — devuelve true/false si contiene el texto
-- \`indexOf(texto)\` — devuelve la posicion (o -1 si no existe)
+- \`indexOf(texto)\` — devuelve la posición (o -1 si no existe)
 - \`startsWith(texto)\` / \`endsWith(texto)\`
 
-### Transformacion
-- \`toUpperCase()\` — convierte a mayusculas
-- \`toLowerCase()\` — convierte a minusculas
+### Transformación
+- \`toUpperCase()\` — convierte a mayúsculas
+- \`toLowerCase()\` — convierte a minúsculas
 - \`trim()\` — elimina espacios al inicio y final
 - \`replace(buscar, reemplazar)\` — reemplaza la primera coincidencia
 - \`replaceAll(buscar, reemplazar)\` — reemplaza todas
 
-### Extraccion
-- \`slice(inicio, fin)\` — extrae una porcion del string
+### Extracción
+- \`slice(inicio, fin)\` — extrae una porción del string
 - \`substring(inicio, fin)\` — similar a slice
 - \`split(separador)\` — divide el string en un array
 
-> **Recuerda:** Todos los metodos devuelven un **nuevo string** sin modificar el original.`,
+> **Recuerda:** Todos los métodos devuelven un **nuevo string** sin modificar el original.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -109,7 +109,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
 
 Los **template literals** usan backticks y permiten:
 
-### 1. Interpolacion de variables
+### 1. Interpolación de variables
 
 En lugar de concatenar con +, puedes insertar variables directamente:
 
@@ -132,7 +132,7 @@ Tercera linea\\\`;
 
 ### 3. Expresiones dentro de \${}
 
-Puedes poner cualquier expresion JavaScript:
+Puedes poner cualquier expresión JavaScript:
 
 \`\`\`javascript
 \\\`El doble de 5 es \${5 * 2}\\\`
@@ -161,7 +161,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: '¿Que devuelve "JavaScript".length?',
+      prompt: '¿Qué devuelve "JavaScript".length?',
       options: [
         { id: "a", text: "9", isCorrect: false },
         { id: "b", text: "10", isCorrect: true },
@@ -169,7 +169,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "Error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Cuenta cada caracter, incluyendo mayusculas.",
+      hint: "Cuenta cada carácter, incluyendo mayúsculas.",
       explanation:
         '"JavaScript" tiene 10 caracteres: J-a-v-a-S-c-r-i-p-t.',
     },
@@ -179,7 +179,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: '¿Que devuelve "Hola"[0]?',
+      prompt: '¿Qué devuelve "Hola"[0]?',
       options: [
         { id: "a", text: '"Hola"', isCorrect: false },
         { id: "b", text: '"H"', isCorrect: true },
@@ -187,9 +187,9 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "undefined", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los indices empiezan en 0.",
+      hint: "Los índices empiezan en 0.",
       explanation:
-        'El indice 0 es el primer caracter. "Hola"[0] devuelve "H".',
+        'El índice 0 es el primer carácter. "Hola"[0] devuelve "H".',
     },
     {
       id: "js04-ej-03",
@@ -197,7 +197,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el metodo para convertir el texto a mayusculas:",
+      prompt: "Completa el método para convertir el texto a mayúsculas:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const resultado = "hola".to',
@@ -205,9 +205,9 @@ document.getElementById("resultado").textContent = mensaje;`,
         blanks: ["UpperCase"],
       },
       validation: { type: "exact", answer: "UpperCase" },
-      hint: "El metodo tiene Upper y Case con la primera letra en mayuscula.",
+      hint: "El método tiene Upper y Case con la primera letra en mayúscula.",
       explanation:
-        'toUpperCase() convierte todo el string a mayusculas: "hola".toUpperCase() = "HOLA".',
+        'toUpperCase() convierte todo el string a mayúsculas: "hola".toUpperCase() = "HOLA".',
     },
     {
       id: "js04-ej-04",
@@ -215,7 +215,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: '¿Que metodo usarias para verificar si un string contiene la palabra "mundo"?',
+      prompt: '¿Qué método usarias para verificar si un string contiene la palabra "mundo"?',
       options: [
         { id: "a", text: "contains()", isCorrect: false },
         { id: "b", text: "has()", isCorrect: false },
@@ -223,7 +223,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "find()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "El nombre del metodo significa 'incluye' en ingles.",
+      hint: "El nombre del método significa 'incluye' en ingles.",
       explanation:
         'includes() devuelve true si el string contiene el texto buscado: "Hola mundo".includes("mundo") = true.',
     },
@@ -233,7 +233,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: '¿Que devuelve "Hola Mundo".split(" ")?',
+      prompt: '¿Qué devuelve "Hola Mundo".split(" ")?',
       options: [
         { id: "a", text: '"Hola Mundo"', isCorrect: false },
         { id: "b", text: '["Hola", "Mundo"]', isCorrect: true },
@@ -251,7 +251,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: '¿Que devuelve "  Hola  ".trim()?',
+      prompt: '¿Qué devuelve "  Hola  ".trim()?',
       options: [
         { id: "a", text: '"Hola"', isCorrect: true },
         { id: "b", text: '"  Hola  "', isCorrect: false },

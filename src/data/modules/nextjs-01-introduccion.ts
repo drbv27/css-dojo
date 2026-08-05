@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const nextjsIntroModule: ModuleData = {
   slug: "nextjs-01-introduccion",
-  title: "Introduccion a Next.js",
+  title: "Introducción a Next.js",
   description: "Que es Next.js, App Router vs Pages Router y por que elegirlo sobre React puro.",
   order: 301,
   category: "nextjs-fundamentals",
@@ -16,11 +16,11 @@ export const nextjsIntroModule: ModuleData = {
 
 Next.js es un **framework** construido sobre React que agrega:
 
-- **Rendering en el servidor** (SSR) y generacion estatica (SSG)
+- **Rendering en el servidor** (SSR) y generación estática (SSG)
 - **Routing basado en archivos** — no necesitas React Router
 - **Server Components** — componentes que se ejecutan en el servidor
 - **API Routes** — backend integrado
-- **Optimizacion automatica** — imagenes, fonts, scripts
+- **Optimización automática** — imágenes, fonts, scripts
 
 ### App Router vs Pages Router
 
@@ -34,7 +34,7 @@ Next.js tiene dos sistemas de routing:
 | Loading states | Manual | loading.tsx |
 | Data fetching | getServerSideProps | async/await directo |
 
-> Este curso usa **App Router** — es el estandar desde Next.js 13+.
+> Este curso usa **App Router** — es el estándar desde Next.js 13+.
 
 ### Crear un proyecto
 
@@ -66,7 +66,7 @@ mi-app/
     {
       id: "njs01-leccion-02",
       title: "Pages y Layouts",
-      content: `## page.tsx — cada pagina es un archivo
+      content: `## page.tsx — cada página es un archivo
 
 \`\`\`tsx
 // app/page.tsx -> ruta: /
@@ -139,7 +139,7 @@ export const metadata: Metadata = {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que es Next.js?",
+      prompt: "¿Qué es Next.js?",
       options: [
         { id: "a", text: "Una libreria de CSS", isCorrect: false },
         { id: "b", text: "Un framework construido sobre React", isCorrect: true },
@@ -156,7 +156,7 @@ export const metadata: Metadata = {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "En App Router, ¿donde creas la pagina para la ruta /about?",
+      prompt: "En App Router, ¿dónde creas la página para la ruta /about?",
       options: [
         { id: "a", text: "pages/about.tsx", isCorrect: false },
         { id: "b", text: "app/about/page.tsx", isCorrect: true },
@@ -176,12 +176,12 @@ export const metadata: Metadata = {
       prompt: "¿Para que sirve layout.tsx en Next.js?",
       options: [
         { id: "a", text: "Para definir estilos CSS", isCorrect: false },
-        { id: "b", text: "Para definir la estructura compartida entre paginas", isCorrect: true },
+        { id: "b", text: "Para definir la estructura compartida entre páginas", isCorrect: true },
         { id: "c", text: "Para manejar errores", isCorrect: false },
         { id: "d", text: "Para conectar a la base de datos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Layout = estructura que envuelve las paginas.",
+      hint: "Layout = estructura que envuelve las páginas.",
       explanation: "layout.tsx define UI compartida (navbar, sidebar, footer) que persiste entre navegaciones.",
     },
     {
@@ -190,7 +190,7 @@ export const metadata: Metadata = {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada archivo con su funcion en Next.js:",
+      prompt: "Asocia cada archivo con su función en Next.js:",
       dragItems: [
         { id: "drag-1", content: "page.tsx", correctZone: "zone-page" },
         { id: "drag-2", content: "layout.tsx", correctZone: "zone-layout" },
@@ -205,7 +205,7 @@ export const metadata: Metadata = {
         type: "exact",
         answer: { "drag-1": "zone-page", "drag-2": "zone-layout", "drag-3": "zone-loading" },
       },
-      hint: "page = pagina, layout = estructura, loading = carga.",
+      hint: "page = página, layout = estructura, loading = carga.",
       explanation: "page.tsx es el contenido, layout.tsx es la estructura envolvente, loading.tsx se muestra mientras carga.",
     },
   ],

@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const htmlBuenasPracticasModule: ModuleData = {
   slug: "html-buenas-practicas",
-  title: "Buenas Practicas de HTML",
+  title: "Buenas Prácticas de HTML",
   description:
-    "Aprende validacion HTML, codigo limpio, etiquetas obsoletas, rendimiento con defer/async, preload/prefetch y una introduccion a las APIs de HTML5.",
+    "Aprende validación HTML, código limpio, etiquetas obsoletas, rendimiento con defer/async, preload/prefetch y una introducción a las APIs de HTML5.",
   order: 15,
   category: "html-advanced",
   icon: "check-circle",
@@ -12,31 +12,31 @@ export const htmlBuenasPracticasModule: ModuleData = {
   lessons: [
     {
       id: "html15-leccion-01",
-      title: "Validacion y codigo limpio",
-      content: `## Validacion y codigo limpio
+      title: "Validación y código limpio",
+      content: `## Validación y código limpio
 
 ### Validador W3C
 
-El **W3C Markup Validation Service** (validator.w3.org) analiza tu HTML y reporta errores. Es la herramienta oficial para verificar que tu codigo cumple con los estandares.
+El **W3C Markup Validation Service** (validator.w3.org) analiza tu HTML y reporta errores. Es la herramienta oficial para verificar que tu código cumple con los estandares.
 
 ### Errores comunes que detecta
 
 - Etiquetas sin cerrar
 - Atributos invalidos
 - Elementos mal anidados
-- Falta de \`alt\` en imagenes
+- Falta de \`alt\` en imágenes
 - Uso de etiquetas obsoletas
 
-### Buenas practicas de codigo limpio
+### Buenas prácticas de código limpio
 
-1. **Indentacion consistente:** Usa 2 o 4 espacios (nunca mezcles tabs y espacios)
+1. **Indentación consistente:** Usa 2 o 4 espacios (nunca mezcles tabs y espacios)
 2. **Cierra todas las etiquetas:** Incluso las opcionales como \`</li>\` y \`</p>\`
-3. **Usa minusculas:** Para nombres de etiquetas y atributos
+3. **Usa minúsculas:** Para nombres de etiquetas y atributos
 4. **Comillas dobles:** En valores de atributos
-5. **Un atributo por linea:** En elementos con muchos atributos
-6. **Comentarios utiles:** Explica el "por que", no el "que"
+5. **Un atributo por línea:** En elementos con muchos atributos
+6. **Comentarios útiles:** Explica el "por que", no el "que"
 
-### Anidacion correcta
+### Anidación correcta
 
 \`\`\`html
 <!-- Correcto -->
@@ -46,7 +46,7 @@ El **W3C Markup Validation Service** (validator.w3.org) analiza tu HTML y report
 <p>Texto con <strong>negrita y <em></strong>cursiva</em></p>
 \`\`\`
 
-### DOCTYPE y estructura minima
+### DOCTYPE y estructura mínima
 
 \`\`\`html
 <!DOCTYPE html>
@@ -115,7 +115,7 @@ ul { padding-left: 20px; }`,
       title: "Etiquetas obsoletas y alternativas modernas",
       content: `## Etiquetas obsoletas y alternativas modernas
 
-HTML5 elimino muchas etiquetas presentacionales. Aqui estan las mas comunes y sus **alternativas correctas**:
+HTML5 elimino muchas etiquetas presentacionales. Aquí estan las mas comunes y sus **alternativas correctas**:
 
 ### Etiquetas obsoletas
 
@@ -135,9 +135,9 @@ Estas NO son obsoletas pero tienen significados diferentes:
 
 | Etiqueta | Significado |
 |----------|-------------|
-| \`<b>\` | Texto visualmente en negrita (sin importancia semantica) |
+| \`<b>\` | Texto visualmente en negrita (sin importancia semántica) |
 | \`<strong>\` | Texto importante (negrita con significado) |
-| \`<i>\` | Texto visualmente en cursiva (terminos tecnicos, titulos) |
+| \`<i>\` | Texto visualmente en cursiva (términos técnicos, títulos) |
 | \`<em>\` | Enfasis (cursiva con significado) |
 
 ### Ejemplo
@@ -211,7 +211,7 @@ ins { color: #00b894; text-decoration: none; font-weight: bold; }`,
 
 ### Carga de scripts: defer y async
 
-La posicion y atributos de \`<script>\` afectan el rendimiento:
+La posición y atributos de \`<script>\` afectan el rendimiento:
 
 \`\`\`html
 <!-- Bloquea el renderizado -->
@@ -224,7 +224,7 @@ La posicion y atributos de \`<script>\` afectan el rendimiento:
 <script src="app.js" async></script>
 \`\`\`
 
-| Atributo | Descarga | Ejecucion |
+| Atributo | Descarga | Ejecución |
 |----------|----------|-----------|
 | (ninguno) | Bloquea | Inmediata, bloquea |
 | \`defer\` | En paralelo | Al terminar el DOM, en orden |
@@ -245,16 +245,16 @@ La posicion y atributos de \`<script>\` afectan el rendimiento:
 <link rel="preconnect" href="https://fonts.googleapis.com">
 \`\`\`
 
-### APIs de HTML5 (introduccion)
+### APIs de HTML5 (introducción)
 
 HTML5 incluye APIs de JavaScript poderosas:
 
-| API | Funcion |
+| API | Función |
 |-----|---------|
 | **Web Storage** | localStorage y sessionStorage para guardar datos |
-| **Geolocation** | Obtener ubicacion del usuario |
+| **Geolocation** | Obtener ubicación del usuario |
 | **Drag & Drop** | Arrastrar y soltar elementos nativamente |
-| **Canvas** | Dibujar graficos 2D con JavaScript |
+| **Canvas** | Dibujar gráficos 2D con JavaScript |
 | **Web Workers** | Ejecutar JavaScript en segundo plano |
 | **History API** | Manipular el historial del navegador (SPA) |
 
@@ -337,7 +337,7 @@ function borrar() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que herramienta oficial verifica que tu HTML cumple con los estandares web?",
+      prompt: "¿Qué herramienta oficial verifica que tu HTML cumple con los estandares web?",
       options: [
         { id: "a", text: "Google Lighthouse", isCorrect: false },
         { id: "b", text: "W3C Markup Validation Service", isCorrect: true },
@@ -345,9 +345,9 @@ function borrar() {
         { id: "d", text: "Prettier", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es mantenido por la organizacion que crea los estandares web.",
+      hint: "Es mantenido por la organización que crea los estandares web.",
       explanation:
-        "El W3C Markup Validation Service (validator.w3.org) es la herramienta oficial del World Wide Web Consortium para validar codigo HTML.",
+        "El W3C Markup Validation Service (validator.w3.org) es la herramienta oficial del World Wide Web Consortium para validar código HTML.",
     },
     {
       id: "html15-ej-02",
@@ -355,7 +355,7 @@ function borrar() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la alternativa moderna a la etiqueta obsoleta <center>?",
+      prompt: "¿Cuál es la alternativa moderna a la etiqueta obsoleta <center>?",
       options: [
         { id: "a", text: "<middle>", isCorrect: false },
         { id: "b", text: '<div align="center">', isCorrect: false },
@@ -363,7 +363,7 @@ function borrar() {
         { id: "d", text: "<align-center>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "La presentacion visual se maneja con CSS, no con HTML.",
+      hint: "La presentación visual se maneja con CSS, no con HTML.",
       explanation:
         "La etiqueta <center> es obsoleta. En HTML moderno, el centrado se hace con CSS usando text-align: center para texto o margin: auto para bloques.",
     },
@@ -397,7 +397,7 @@ function borrar() {
       },
       hint: "Las etiquetas que controlan apariencia visual fueron reemplazadas por CSS.",
       explanation:
-        "center, font y marquee son obsoletas porque son etiquetas presentacionales. strong y em son vigentes porque tienen significado semantico.",
+        "center, font y marquee son obsoletas porque son etiquetas presentacionales. strong y em son vigentes porque tienen significado semántico.",
     },
     {
       id: "html15-ej-04",
@@ -405,17 +405,17 @@ function borrar() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la diferencia entre <strong> y <b>?",
+      prompt: "¿Cuál es la diferencia entre <strong> y <b>?",
       options: [
         { id: "a", text: "No hay diferencia, se ven igual", isCorrect: false },
-        { id: "b", text: "strong indica importancia semantica; b solo es negrita visual", isCorrect: true },
-        { id: "c", text: "b es la version moderna de strong", isCorrect: false },
+        { id: "b", text: "strong indica importancia semántica; b solo es negrita visual", isCorrect: true },
+        { id: "c", text: "b es la versión moderna de strong", isCorrect: false },
         { id: "d", text: "strong solo funciona en formularios", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Una tiene significado para lectores de pantalla, la otra no.",
       explanation:
-        "<strong> indica que el texto es importante (los lectores de pantalla lo enfatizan). <b> solo aplica negrita visual sin significado semantico adicional.",
+        "<strong> indica que el texto es importante (los lectores de pantalla lo enfatizan). <b> solo aplica negrita visual sin significado semántico adicional.",
     },
     {
       id: "html15-ej-05",
@@ -441,7 +441,7 @@ function borrar() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada estrategia de carga segun su proposito:",
+      prompt: "Clasifica cada estrategia de carga según su propósito:",
       dragItems: [
         { id: "drag-1", content: "defer", correctZone: "zone-scripts" },
         { id: "drag-2", content: "async", correctZone: "zone-scripts" },
@@ -463,7 +463,7 @@ function borrar() {
       },
       hint: "defer y async son atributos de <script>. preload y prefetch son valores de rel en <link>.",
       explanation:
-        "defer y async controlan como se cargan y ejecutan los scripts. preload y prefetch anticipan la descarga de recursos (fuentes, paginas, etc.) para mejorar el rendimiento.",
+        "defer y async controlan como se cargan y ejecutan los scripts. preload y prefetch anticipan la descarga de recursos (fuentes, páginas, etc.) para mejorar el rendimiento.",
     },
     {
       id: "html15-ej-07",
@@ -471,7 +471,7 @@ function borrar() {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que API de HTML5 permite guardar datos en el navegador de forma persistente?",
+      prompt: "¿Qué API de HTML5 permite guardar datos en el navegador de forma persistente?",
       options: [
         { id: "a", text: "Geolocation API", isCorrect: false },
         { id: "b", text: "Drag & Drop API", isCorrect: false },
@@ -481,7 +481,7 @@ function borrar() {
       validation: { type: "exact", answer: "c" },
       hint: "Permite guardar pares clave-valor que persisten al cerrar el navegador.",
       explanation:
-        "Web Storage incluye localStorage (persistente) y sessionStorage (solo durante la sesion). Permite guardar datos clave-valor en el navegador sin necesidad de un servidor.",
+        "Web Storage incluye localStorage (persistente) y sessionStorage (solo durante la sesión). Permite guardar datos clave-valor en el navegador sin necesidad de un servidor.",
     },
   ],
 };

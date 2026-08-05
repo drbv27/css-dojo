@@ -17,12 +17,12 @@ export const boxModelModule: ModuleData = {
 
 En CSS, **cada elemento es una caja rectangular**. El Box Model (modelo de caja) describe las capas que componen esa caja, desde el centro hacia afuera:
 
-1. **Content** (contenido): el texto, imagenes u otros elementos dentro de la caja
+1. **Content** (contenido): el texto, imágenes u otros elementos dentro de la caja
 2. **Padding** (relleno): espacio transparente entre el contenido y el borde
-3. **Border** (borde): la linea que rodea el padding y el contenido
+3. **Border** (borde): la línea que rodea el padding y el contenido
 4. **Margin** (margen): espacio transparente fuera del borde, que separa la caja de otros elementos
 
-### Visualizacion
+### Visualización
 
 \`\`\`
 +---------------------------+
@@ -39,9 +39,9 @@ En CSS, **cada elemento es una caja rectangular**. El Box Model (modelo de caja)
 +---------------------------+
 \`\`\`
 
-### Cada capa suma al tamano total
+### Cada capa suma al tamaño total
 
-Con el comportamiento por defecto (\`box-sizing: content-box\`), el tamano total de una caja se calcula asi:
+Con el comportamiento por defecto (\`box-sizing: content-box\`), el tamaño total de una caja se calcula así:
 
 \`\`\`
 Ancho total = width + padding-left + padding-right + border-left + border-right + margin-left + margin-right
@@ -78,7 +78,7 @@ La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un ele
 
 ### content-box (valor por defecto)
 
-\`width\` y \`height\` solo definen el tamano del **contenido**. El padding y el border se suman por fuera:
+\`width\` y \`height\` solo definen el tamaño del **contenido**. El padding y el border se suman por fuera:
 
 \`\`\`css
 .caja {
@@ -92,7 +92,7 @@ La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un ele
 
 ### border-box
 
-\`width\` y \`height\` incluyen el contenido, el padding **y** el border. El tamano visible es exactamente lo que defines:
+\`width\` y \`height\` incluyen el contenido, el padding **y** el border. El tamaño visible es exactamente lo que defines:
 
 \`\`\`css
 .caja {
@@ -104,7 +104,7 @@ La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un ele
 /* Ancho visible = 300px (el contenido se reduce a 250px) */
 \`\`\`
 
-### Comparacion directa
+### Comparación directa
 
 | Propiedad | content-box | border-box |
 |-----------|------------|------------|
@@ -112,7 +112,7 @@ La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un ele
 | Ancho visible con padding/border | Mayor que width | Igual a width |
 | Calculo mental | Mas complejo | Mas intuitivo |
 
-### Buena practica universal
+### Buena práctica universal
 
 La gran mayoria de proyectos modernos usan este reset al inicio de sus estilos:
 
@@ -134,8 +134,8 @@ Esto hace que **todos los elementos** usen \`border-box\`, lo cual simplifica en
     },
     {
       id: "11-leccion-03",
-      title: "Interaccion entre width, padding y border",
-      content: `## Interaccion entre width, padding y border
+      title: "Interacción entre width, padding y border",
+      content: `## Interacción entre width, padding y border
 
 Entender como interactuan \`width\`, \`padding\` y \`border\` es clave para evitar sorpresas en tus layouts.
 
@@ -208,7 +208,7 @@ En general, es mejor usar \`min-height\` para que la caja crezca si el contenido
       title: "Outline y su diferencia con border",
       content: `## Outline y su diferencia con border
 
-Existe otra propiedad que dibuja una linea alrededor de un elemento: \`outline\`. Aunque visualmente se parece al \`border\`, tiene diferencias importantes.
+Existe otra propiedad que dibuja una línea alrededor de un elemento: \`outline\`. Aunque visualmente se parece al \`border\`, tiene diferencias importantes.
 
 ### Sintaxis de outline
 
@@ -224,7 +224,7 @@ Existe otra propiedad que dibuja una linea alrededor de un elemento: \`outline\`
 | Caracteristica | border | outline |
 |---------------|--------|---------|
 | Forma parte del Box Model | Si | No |
-| Afecta el tamano del elemento | Si | No |
+| Afecta el tamaño del elemento | Si | No |
 | Puede tener esquinas redondeadas | Si (border-radius) | Depende del navegador |
 | Puede ser diferente en cada lado | Si | No |
 | Se puede desplazar con offset | No | Si (outline-offset) |
@@ -272,7 +272,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cuales son las 4 capas del Box Model, desde el centro hacia afuera?",
+        "¿Cuáles son las 4 capas del Box Model, desde el centro hacia afuera?",
       options: [
         { id: "a", text: "content, padding, border, margin", isCorrect: true },
         { id: "b", text: "margin, border, padding, content", isCorrect: false },
@@ -280,9 +280,9 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         { id: "d", text: "padding, content, margin, border", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa desde el contenido hacia afuera: primero el relleno interior, luego la linea del borde, y finalmente el espacio exterior.",
+      hint: "Piensa desde el contenido hacia afuera: primero el relleno interior, luego la línea del borde, y finalmente el espacio exterior.",
       explanation:
-        "El Box Model tiene 4 capas desde adentro hacia afuera: content (contenido), padding (relleno), border (borde) y margin (margen). Este orden es fundamental para calcular el tamano total de un elemento.",
+        "El Box Model tiene 4 capas desde adentro hacia afuera: content (contenido), padding (relleno), border (borde) y margin (margen). Este orden es fundamental para calcular el tamaño total de un elemento.",
     },
     {
       id: "11-ej-02",
@@ -291,7 +291,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 2,
       prompt:
-        "Un elemento tiene width: 200px, padding: 15px, border: 5px solid black, y usa box-sizing: content-box. ¿Cual es su ancho visible (sin contar margin)?",
+        "Un elemento tiene width: 200px, padding: 15px, border: 5px solid black, y usa box-sizing: content-box. ¿Cuál es su ancho visible (sin contar margin)?",
       options: [
         { id: "a", text: "200px", isCorrect: false },
         { id: "b", text: "230px", isCorrect: false },
@@ -310,7 +310,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la propiedad para que el width incluya padding y border en el calculo del tamano:",
+        "Completa la propiedad para que el width incluya padding y border en el calculo del tamaño:",
       codeTemplate: {
         html: `<div class="caja">Contenido</div>`,
         cssPrefix: ".caja {\n  ",
@@ -318,9 +318,9 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         blanks: ["box-sizing"],
       },
       validation: { type: "exact", answer: "box-sizing" },
-      hint: "Es la propiedad que define como se calcula el tamano de la caja. Dos palabras unidas con guion.",
+      hint: "Es la propiedad que define como se calcula el tamaño de la caja. Dos palabras unidas con guion.",
       explanation:
-        "La propiedad 'box-sizing: border-box' hace que width y height incluyan el contenido, el padding y el border. Asi el elemento mide exactamente 300px de ancho visible.",
+        "La propiedad 'box-sizing: border-box' hace que width y height incluyan el contenido, el padding y el border. Así el elemento mide exactamente 300px de ancho visible.",
     },
     {
       id: "11-ej-04",
@@ -329,7 +329,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada descripcion a la capa correcta del Box Model:",
+        "Arrastra cada descripción a la capa correcta del Box Model:",
       dragItems: [
         {
           id: "drag-1",
@@ -367,9 +367,9 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
           "drag-4": "zone-margin",
         },
       },
-      hint: "El padding es el espacio interior (relleno), el border es la linea visible, y el margin es el espacio exterior.",
+      hint: "El padding es el espacio interior (relleno), el border es la línea visible, y el margin es el espacio exterior.",
       explanation:
-        "Content es el contenido real (texto, imagenes). Padding es el espacio transparente entre el contenido y el borde. Border es la linea visible que rodea el padding. Margin es el espacio fuera del borde que separa el elemento de sus vecinos.",
+        "Content es el contenido real (texto, imágenes). Padding es el espacio transparente entre el contenido y el borde. Border es la línea visible que rodea el padding. Margin es el espacio fuera del borde que separa el elemento de sus vecinos.",
     },
     {
       id: "11-ej-05",
@@ -394,7 +394,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       },
       hint: "Necesitas box-sizing: border-box para que el ancho total sea 350px, incluyendo el padding y el border.",
       explanation:
-        "Con box-sizing: border-box, el ancho total visible de la tarjeta es exactamente 350px. El contenido se reduce automaticamente para dejar espacio al padding (25px * 2) y al border (3px * 2).",
+        "Con box-sizing: border-box, el ancho total visible de la tarjeta es exactamente 350px. El contenido se reduce automáticamente para dejar espacio al padding (25px * 2) y al border (3px * 2).",
     },
     {
       id: "11-ej-06",
@@ -403,7 +403,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 30,
       order: 6,
       prompt:
-        "Reproduce el diseno: dos cajas de 50% de ancho lado a lado dentro de un contenedor. Ambas con padding: 15px, border: 2px solid #666 y box-sizing: border-box. La izquierda con background-color: #d4edda y la derecha con background-color: #cce5ff. Usa float: left en ambas.",
+        "Reproduce el diseño: dos cajas de 50% de ancho lado a lado dentro de un contenedor. Ambas con padding: 15px, border: 2px solid #666 y box-sizing: border-box. La izquierda con background-color: #d4edda y la derecha con background-color: #cce5ff. Usa float: left en ambas.",
       codeTemplate: {
         html: `<div class="contenedor">\n  <div class="mitad izq">Columna izquierda</div>\n  <div class="mitad der">Columna derecha</div>\n</div>`,
         cssPrefix: "",
@@ -438,7 +438,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       validation: { type: "exact", answer: "border-box" },
       hint: "Es el valor que hace que width y height incluyan padding y border.",
       explanation:
-        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una practica estandar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en practicamente todos los frameworks CSS modernos.",
+        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una práctica estándar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en practicamente todos los frameworks CSS modernos.",
     },
     {
       id: "11-ej-08",
@@ -447,7 +447,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 8,
       prompt:
-        "¿Cual es la principal diferencia entre outline y border respecto al Box Model?",
+        "¿Cuál es la principal diferencia entre outline y border respecto al Box Model?",
       options: [
         { id: "a", text: "El outline solo puede ser de color negro", isCorrect: false },
         { id: "b", text: "El outline no forma parte del Box Model y no afecta las dimensiones", isCorrect: true },
@@ -457,7 +457,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en que propiedad ocupa espacio en el layout y cual no.",
       explanation:
-        "El outline NO forma parte del Box Model: no ocupa espacio, no afecta las dimensiones del elemento ni mueve a otros elementos. El border si forma parte del Box Model y suma al tamano total del elemento.",
+        "El outline NO forma parte del Box Model: no ocupa espacio, no afecta las dimensiones del elemento ni mueve a otros elementos. El border si forma parte del Box Model y suma al tamaño total del elemento.",
     },
   ],
 };

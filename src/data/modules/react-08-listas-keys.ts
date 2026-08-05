@@ -15,7 +15,7 @@ export const reactListasModule: ModuleData = {
       title: "Renderizar listas con map()",
       content: `## Renderizar listas en React
 
-En React, la forma estandar de renderizar una lista de elementos es usando el metodo **map()** de los arrays:
+En React, la forma estándar de renderizar una lista de elementos es usando el método **map()** de los arrays:
 
 \`\`\`jsx
 const frutas = ["Manzana", "Pera", "Uva", "Naranja"];
@@ -31,7 +31,7 @@ function ListaFrutas() {
 }
 \`\`\`
 
-### ¿Como funciona?
+### ¿Cómo funciona?
 
 1. \`map()\` recorre cada elemento del array
 2. Para cada elemento, retorna un fragmento de JSX
@@ -77,7 +77,7 @@ function UsuarioCard({ usuario }) {
 {usuarios.map(user => <UsuarioCard key={user.id} usuario={user} />)}
 \`\`\`
 
-> **Regla:** Siempre que renderices una lista con map(), cada elemento necesita una prop \`key\` unica.`,
+> **Regla:** Siempre que renderices una lista con map(), cada elemento necesita una prop \`key\` única.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -130,7 +130,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 
 Las **keys** ayudan a React a **identificar que elementos cambiaron** (se agregaron, eliminaron o reordenaron). Sin keys, React no puede optimizar las actualizaciones de listas.
 
-### ¿Que pasa sin keys?
+### ¿Qué pasa sin keys?
 
 Sin keys (o con keys incorrectas), React:
 - Puede recrear todos los elementos de la lista
@@ -139,14 +139,14 @@ Sin keys (o con keys incorrectas), React:
 
 ### Reglas para keys
 
-1. **Deben ser unicas** entre hermanos (no globalmente)
+1. **Deben ser únicas** entre hermanos (no globalmente)
 2. **Deben ser estables** (no cambiar entre renderizados)
 3. **No deben ser el index** si la lista puede cambiar
 
 ### Cuando SI usar index como key
 
 El index esta bien si:
-- La lista es **estatica** (no se reordena ni filtra)
+- La lista es **estática** (no se reordena ni filtra)
 - Los elementos **no tienen estado** interno
 - Los elementos **no se agregan/eliminan** del medio
 
@@ -237,7 +237,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Filtrar, ordenar y listas anidadas",
       content: `## Filtrar y ordenar antes de renderizar
 
-Es muy comun **filtrar** o **ordenar** datos antes de pasarlos a \`map()\`:
+Es muy común **filtrar** o **ordenar** datos antes de pasarlos a \`map()\`:
 
 ### Filtrar
 
@@ -289,7 +289,7 @@ return categorias.map(cat => (
 ));
 \`\`\`
 
-### Patron: lista vacia
+### Patrón: lista vacia
 
 Siempre maneja el caso cuando la lista esta vacia:
 
@@ -382,7 +382,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que metodo de JavaScript se usa para renderizar listas en React?",
+      prompt: "¿Qué método de JavaScript se usa para renderizar listas en React?",
       options: [
         { id: "a", text: "forEach()", isCorrect: false },
         { id: "b", text: "map()", isCorrect: true },
@@ -390,9 +390,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "reduce()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es un metodo de array que retorna un nuevo array con los resultados.",
+      hint: "Es un método de array que retorna un nuevo array con los resultados.",
       explanation:
-        "map() es el metodo estandar para renderizar listas en React porque retorna un nuevo array (de elementos JSX). forEach() no retorna nada, por eso no funciona directamente en JSX.",
+        "map() es el método estándar para renderizar listas en React porque retorna un nuevo array (de elementos JSX). forEach() no retorna nada, por eso no funciona directamente en JSX.",
     },
     {
       id: "react08-ej-02",
@@ -400,7 +400,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa el codigo para renderizar una lista de nombres con map():",
+      prompt: "Completa el código para renderizar una lista de nombres con map():",
       codeTemplate: {
         html: "",
         cssPrefix: "nombres.",
@@ -408,7 +408,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["map"],
       },
       validation: { type: "exact", answer: "map" },
-      hint: "Es el metodo de array que transforma cada elemento en algo nuevo.",
+      hint: "Es el método de array que transforma cada elemento en algo nuevo.",
       explanation:
         "map() recorre el array y para cada elemento retorna un nuevo valor (en este caso, un elemento JSX <li>). El resultado es un array de elementos que React renderiza.",
     },
@@ -421,14 +421,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       prompt: "¿Para que sirve la prop 'key' en listas de React?",
       options: [
         { id: "a", text: "Para dar estilo a cada elemento", isCorrect: false },
-        { id: "b", text: "Para identificar de forma unica cada elemento y optimizar actualizaciones", isCorrect: true },
-        { id: "c", text: "Para ordenar los elementos automaticamente", isCorrect: false },
+        { id: "b", text: "Para identificar de forma única cada elemento y optimizar actualizaciones", isCorrect: true },
+        { id: "c", text: "Para ordenar los elementos automáticamente", isCorrect: false },
         { id: "d", text: "Para acceder al elemento desde JavaScript", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "React necesita saber cual elemento cambio, se agrego o se elimino.",
       explanation:
-        "La prop key permite a React identificar de forma unica cada elemento de la lista. Gracias a las keys, React puede determinar que elementos cambiaron y actualizar solo los necesarios.",
+        "La prop key permite a React identificar de forma única cada elemento de la lista. Gracias a las keys, React puede determinar que elementos cambiaron y actualizar solo los necesarios.",
     },
     {
       id: "react08-ej-04",
@@ -436,17 +436,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cuando es SEGURO usar el index como key?",
+      prompt: "¿Cuándo es SEGURO usar el index como key?",
       options: [
         { id: "a", text: "Siempre, es la forma recomendada", isCorrect: false },
         { id: "b", text: "Nunca, siempre causa problemas", isCorrect: false },
-        { id: "c", text: "Cuando la lista es estatica, no se reordena y los items no tienen estado", isCorrect: true },
+        { id: "c", text: "Cuando la lista es estática, no se reordena y los items no tienen estado", isCorrect: true },
         { id: "d", text: "Solo cuando la lista tiene menos de 10 elementos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
       hint: "El index es problematico cuando el orden de los elementos puede cambiar.",
       explanation:
-        "El index como key es seguro solo en listas estaticas que no se reordenan, filtran o modifican dinamicamente. Para listas dinamicas, usa un ID unico y estable.",
+        "El index como key es seguro solo en listas estáticas que no se reordenan, filtran o modifican dinamicamente. Para listas dinámicas, usa un ID único y estable.",
     },
     {
       id: "react08-ej-05",
@@ -454,7 +454,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el codigo para filtrar solo los productos en stock antes de renderizar:",
+      prompt: "Completa el código para filtrar solo los productos en stock antes de renderizar:",
       codeTemplate: {
         html: "",
         cssPrefix: "const enStock = productos.",
@@ -462,9 +462,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["filter"],
       },
       validation: { type: "exact", answer: "filter" },
-      hint: "Es un metodo de array que retorna solo los elementos que cumplen una condicion.",
+      hint: "Es un método de array que retorna solo los elementos que cumplen una condición.",
       explanation:
-        "filter() crea un nuevo array con solo los elementos que pasan la condicion. En este caso, solo los productos donde 'disponible' es true. Luego puedes usar map() para renderizarlos.",
+        "filter() crea un nuevo array con solo los elementos que pasan la condición. En este caso, solo los productos donde 'disponible' es true. Luego puedes usar map() para renderizarlos.",
     },
     {
       id: "react08-ej-06",
@@ -472,7 +472,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada valor segun si es una BUENA o MALA key para una lista dinamica:",
+      prompt: "Clasifica cada valor según si es una BUENA o MALA key para una lista dinámica:",
       dragItems: [
         { id: "drag-1", content: "item.id (de la base de datos)", correctZone: "zone-buena" },
         { id: "drag-2", content: "index del array", correctZone: "zone-mala" },
@@ -494,9 +494,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
           "drag-5": "zone-buena",
         },
       },
-      hint: "Una buena key es unica y estable (no cambia entre renderizados).",
+      hint: "Una buena key es única y estable (no cambia entre renderizados).",
       explanation:
-        "Buenas keys son IDs estables y unicos (de DB, UUID generado al crear, o cualquier valor unico del dato). Malas keys son el index (cambia al reordenar) y Math.random() (cambia cada renderizado).",
+        "Buenas keys son IDs estables y únicos (de DB, UUID generado al crear, o cualquier valor único del dato). Malas keys son el index (cambia al reordenar) y Math.random() (cambia cada renderizado).",
     },
     {
       id: "react08-ej-07",

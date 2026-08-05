@@ -4,7 +4,7 @@ export const pseudoClasesModule: ModuleData = {
   slug: "pseudo-clases",
   title: "Pseudo-clases CSS",
   description:
-    "Aprende a usar pseudo-clases para aplicar estilos segun el estado (:hover, :focus), la posicion (:first-child, :nth-child) y las relaciones (:not) de los elementos.",
+    "Aprende a usar pseudo-clases para aplicar estilos según el estado (:hover, :focus), la posición (:first-child, :nth-child) y las relaciones (:not) de los elementos.",
   order: 9,
   dojo: "css" as const,
   category: "intermediate",
@@ -15,7 +15,7 @@ export const pseudoClasesModule: ModuleData = {
       title: "Pseudo-clases de estado",
       content: `## Pseudo-clases de estado
 
-Las **pseudo-clases** permiten aplicar estilos a un elemento cuando se encuentra en un **estado especifico**. Se escriben con **dos puntos (:)** despues del selector.
+Las **pseudo-clases** permiten aplicar estilos a un elemento cuando se encuentra en un **estado específico**. Se escriben con **dos puntos (:)** después del selector.
 
 ### Sintaxis
 
@@ -70,7 +70,7 @@ a:hover   { color: red; }
 a:active  { color: orange; }
 \`\`\`
 
-> **Consejo:** Las pseudo-clases de estado son fundamentales para crear interfaces interactivas. Todo boton deberia tener al menos un estilo :hover para indicar que es clickeable.`,
+> **Consejo:** Las pseudo-clases de estado son fundamentales para crear interfaces interactivas. Todo botón deberia tener al menos un estilo :hover para indicar que es clickeable.`,
       codeExample: {
         html: `<button class="boton">Pasa el cursor aqui</button>\n<br><br>\n<input type="text" placeholder="Haz clic para ver :focus">\n<br><br>\n<a href="#" class="enlace">Enlace interactivo</a>`,
         css: `.boton {\n  background-color: steelblue;\n  color: white;\n  border: none;\n  padding: 12px 24px;\n  font-size: 16px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.boton:hover {\n  background-color: #3a7cbd;\n}\n.boton:active {\n  background-color: #2a5a8a;\n  transform: scale(0.97);\n}\n\ninput:focus {\n  border: 2px solid steelblue;\n  outline: none;\n  padding: 8px;\n  border-radius: 4px;\n}\n\n.enlace:hover {\n  color: tomato;\n  text-decoration: none;\n}`,
@@ -80,14 +80,14 @@ a:active  { color: orange; }
     },
     {
       id: "07-leccion-02",
-      title: "Pseudo-clases de posicion",
-      content: `## Pseudo-clases de posicion
+      title: "Pseudo-clases de posición",
+      content: `## Pseudo-clases de posición
 
-Estas pseudo-clases seleccionan elementos segun su **posicion** dentro de su elemento padre.
+Estas pseudo-clases seleccionan elementos según su **posición** dentro de su elemento padre.
 
 ### :first-child y :last-child
 
-Seleccionan el **primer** o **ultimo** hijo de un padre:
+Seleccionan el **primer** o **último** hijo de un padre:
 
 \`\`\`css
 li:first-child {
@@ -102,7 +102,7 @@ li:last-child {
 
 ### :nth-child(n)
 
-Selecciona elementos segun su **posicion numerica**:
+Selecciona elementos según su **posición numérica**:
 
 \`\`\`css
 /* El tercer elemento */
@@ -134,7 +134,7 @@ li:nth-child(2n+1) { color: tomato; }
 
 ### :first-of-type y :last-of-type
 
-Seleccionan el primer o ultimo elemento **de un tipo especifico**:
+Seleccionan el primer o último elemento **de un tipo específico**:
 
 \`\`\`css
 /* El primer parrafo (ignora otros tipos de elementos) */
@@ -145,7 +145,7 @@ p:first-of-type {
 
 La diferencia con \`:first-child\` es que \`:first-of-type\` busca el primero de su tipo, aunque no sea el primer hijo.
 
-> **Atencion:** \`:first-child\` requiere que el elemento sea literalmente el primer hijo. Si hay un \`<h2>\` antes del \`<p>\`, entonces \`p:first-child\` NO seleccionara nada, pero \`p:first-of-type\` si.`,
+> **Atención:** \`:first-child\` requiere que el elemento sea literalmente el primer hijo. Si hay un \`<h2>\` antes del \`<p>\`, entonces \`p:first-child\` NO seleccionara nada, pero \`p:first-of-type\` si.`,
       codeExample: {
         html: `<ul>\n  <li>Primer item (first-child)</li>\n  <li>Segundo item</li>\n  <li>Tercer item</li>\n  <li>Cuarto item</li>\n  <li>Quinto item (last-child)</li>\n</ul>`,
         css: `li {\n  padding: 8px 12px;\n  border-bottom: 1px solid #eee;\n}\n\nli:first-child {\n  font-weight: bold;\n  color: steelblue;\n}\n\nli:last-child {\n  border-bottom: none;\n  color: tomato;\n}\n\nli:nth-child(even) {\n  background-color: #f5f5f5;\n}`,
@@ -156,9 +156,9 @@ La diferencia con \`:first-child\` es que \`:first-of-type\` busca el primero de
     {
       id: "07-leccion-03",
       title: "Pseudo-clase :not()",
-      content: `## Pseudo-clase :not() - Negacion
+      content: `## Pseudo-clase :not() - Negación
 
-La pseudo-clase **:not()** selecciona elementos que **NO coinciden** con el selector indicado. Es una pseudo-clase de **relacion** o **funcional**.
+La pseudo-clase **:not()** selecciona elementos que **NO coinciden** con el selector indicado. Es una pseudo-clase de **relación** o **funcional**.
 
 ### Sintaxis
 
@@ -168,7 +168,7 @@ selector:not(selector-excluido) {
 }
 \`\`\`
 
-### Ejemplos practicos
+### Ejemplos prácticos
 
 \`\`\`css
 /* Todos los parrafos excepto los de clase "intro" */
@@ -209,14 +209,14 @@ p:not(:empty) {
 
 ### Usos comunes
 
-| Patron | Descripcion |
+| Patrón | Descripción |
 |--------|-----------|
-| \`li:not(:last-child)\` | Borde inferior en todos menos el ultimo |
+| \`li:not(:last-child)\` | Borde inferior en todos menos el último |
 | \`.btn:not(:disabled)\` | Estilos solo si no esta deshabilitado |
 | \`input:not(:focus)\` | Estilos cuando NO tiene foco |
 | \`*:not(h1):not(h2)\` | Todo excepto h1 y h2 |
 
-> **Consejo:** \`:not()\` es muy util para evitar escribir reglas de "reset" al final. En lugar de aplicar un estilo a todos y luego quitarlo al ultimo, aplica directamente a todos menos el ultimo.`,
+> **Consejo:** \`:not()\` es muy útil para evitar escribir reglas de "reset" al final. En lugar de aplicar un estilo a todos y luego quitarlo al último, aplica directamente a todos menos el último.`,
       codeExample: {
         html: `<ul class="lista">\n  <li class="activo">Inicio</li>\n  <li>Productos</li>\n  <li>Servicios</li>\n  <li>Blog</li>\n  <li>Contacto</li>\n</ul>`,
         css: `li {\n  padding: 10px 16px;\n  cursor: pointer;\n}\n\n/* Borde inferior en todos menos el ultimo */\nli:not(:last-child) {\n  border-bottom: 1px solid #e0e0e0;\n}\n\n/* Todos los li excepto el activo en gris */\nli:not(.activo) {\n  color: #666;\n}\n\n/* El activo resaltado */\nli.activo {\n  color: steelblue;\n  font-weight: bold;\n  background-color: #e8f4fd;\n}`,
@@ -302,7 +302,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que pseudo-clase se activa cuando el usuario pasa el cursor sobre un elemento?",
+        "¿Qué pseudo-clase se activa cuando el usuario pasa el cursor sobre un elemento?",
       options: [
         { id: "a", text: ":active", isCorrect: false },
         { id: "b", text: ":focus", isCorrect: false },
@@ -321,7 +321,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la pseudo-clase para que el boton cambie de color al pasar el cursor:",
+        "Completa la pseudo-clase para que el botón cambie de color al pasar el cursor:",
       codeTemplate: {
         html: `<button class="btn">Hover me</button>`,
         cssPrefix: `.btn {\n  background: steelblue;\n  color: white;\n  padding: 10px 20px;\n  border: none;\n}\n\n.btn`,
@@ -331,7 +331,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       validation: { type: "exact", answer: ":hover" },
       hint: "La pseudo-clase se escribe con dos puntos (:) seguido del nombre del estado.",
       explanation:
-        "La pseudo-clase ':hover' se anade al selector para aplicar estilos cuando el cursor esta sobre el elemento. La sintaxis es selector:hover { ... }.",
+        "La pseudo-clase ':hover' se añade al selector para aplicar estilos cuando el cursor esta sobre el elemento. La sintaxis es selector:hover { ... }.",
     },
     {
       id: "07-ej-03",
@@ -340,7 +340,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 20,
       order: 3,
       prompt:
-        "¿Cual es la diferencia entre li:first-child y li:first-of-type?",
+        "¿Cuál es la diferencia entre li:first-child y li:first-of-type?",
       options: [
         {
           id: "a",
@@ -375,7 +375,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada pseudo-clase a su categoria correspondiente:",
+        "Arrastra cada pseudo-clase a su categoría correspondiente:",
       dragItems: [
         { id: "drag-1", content: ":hover", correctZone: "zone-estado" },
         { id: "drag-2", content: ":first-child", correctZone: "zone-posicion" },
@@ -385,9 +385,9 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         { id: "drag-6", content: ":active", correctZone: "zone-estado" },
       ],
       dropZones: [
-        { id: "zone-estado", label: "Estado (interaccion)" },
-        { id: "zone-posicion", label: "Posicion (estructura)" },
-        { id: "zone-relacion", label: "Relacion (negacion)" },
+        { id: "zone-estado", label: "Estado (interacción)" },
+        { id: "zone-posicion", label: "Posición (estructura)" },
+        { id: "zone-relacion", label: "Relación (negación)" },
       ],
       validation: {
         type: "exact",
@@ -400,9 +400,9 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
           "drag-6": "zone-estado",
         },
       },
-      hint: ":hover, :focus y :active dependen de la interaccion del usuario. :first-child y :nth-child dependen de la posicion en el DOM. :not() es una pseudo-clase funcional de negacion.",
+      hint: ":hover, :focus y :active dependen de la interacción del usuario. :first-child y :nth-child dependen de la posición en el DOM. :not() es una pseudo-clase funcional de negación.",
       explanation:
-        "Las pseudo-clases de estado (:hover, :focus, :active) dependen de la interaccion del usuario. Las de posicion (:first-child, :nth-child) dependen de la ubicacion en el DOM. :not() es una pseudo-clase de relacion que permite excluir elementos.",
+        "Las pseudo-clases de estado (:hover, :focus, :active) dependen de la interacción del usuario. Las de posición (:first-child, :nth-child) dependen de la ubicación en el DOM. :not() es una pseudo-clase de relación que permite excluir elementos.",
     },
     {
       id: "07-ej-05",
@@ -419,9 +419,9 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         blanks: [":nth-child(even)"],
       },
       validation: { type: "exact", answer: ":nth-child(even)" },
-      hint: "Necesitas la pseudo-clase :nth-child con la palabra clave para numeros pares (2, 4, 6...).",
+      hint: "Necesitas la pseudo-clase :nth-child con la palabra clave para números pares (2, 4, 6...).",
       explanation:
-        "El selector 'tr:nth-child(even)' selecciona todas las filas pares. La palabra clave 'even' equivale a '2n'. Tambien existe 'odd' para las impares.",
+        "El selector 'tr:nth-child(even)' selecciona todas las filas pares. La palabra clave 'even' equivale a '2n'. También existe 'odd' para las impares.",
     },
     {
       id: "07-ej-06",
@@ -455,21 +455,21 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 30,
       order: 7,
       prompt:
-        "¿Que selecciona el selector li:not(:last-child)?",
+        "¿Qué selecciona el selector li:not(:last-child)?",
       options: [
-        { id: "a", text: "Solo el ultimo <li>", isCorrect: false },
+        { id: "a", text: "Solo el último <li>", isCorrect: false },
         {
           id: "b",
-          text: "Todos los <li> excepto el ultimo",
+          text: "Todos los <li> excepto el último",
           isCorrect: true,
         },
         { id: "c", text: "Solo el primer <li>", isCorrect: false },
         { id: "d", text: "Ningun <li>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: ":not() excluye lo que esta dentro del parentesis. :last-child es el ultimo hijo.",
+      hint: ":not() excluye lo que esta dentro del paréntesis. :last-child es el último hijo.",
       explanation:
-        "El selector 'li:not(:last-child)' selecciona todos los <li> que NO son el ultimo hijo. Es muy util para poner separadores (bordes) entre items sin que aparezca uno extra al final.",
+        "El selector 'li:not(:last-child)' selecciona todos los <li> que NO son el último hijo. Es muy útil para poner separadores (bordes) entre items sin que aparezca uno extra al final.",
     },
     {
       id: "07-ej-08",
@@ -478,7 +478,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 30,
       order: 8,
       prompt:
-        "Reproduce el diseno: una lista donde las filas pares tienen background #f5f5f5, el primer item tiene color steelblue y font-weight bold, y todos los items excepto el ultimo tienen border-bottom: 1px solid #ddd. Cada li debe tener padding: 10px.",
+        "Reproduce el diseño: una lista donde las filas pares tienen background #f5f5f5, el primer item tiene color steelblue y font-weight bold, y todos los items excepto el último tienen border-bottom: 1px solid #ddd. Cada li debe tener padding: 10px.",
       codeTemplate: {
         html: `<ul class="lista">\n  <li>Elemento uno</li>\n  <li>Elemento dos</li>\n  <li>Elemento tres</li>\n  <li>Elemento cuatro</li>\n  <li>Elemento cinco</li>\n</ul>`,
         cssPrefix: "",
@@ -494,7 +494,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       },
       hint: "Necesitas 4 reglas: padding general, :nth-child(even) para fondo alterno, :first-child para el primero, y :not(:last-child) para los bordes.",
       explanation:
-        "Se combinan varias pseudo-clases: :nth-child(even) para filas alternas, :first-child para destacar el primer item, y :not(:last-child) para poner bordes en todos menos el ultimo.",
+        "Se combinan varias pseudo-clases: :nth-child(even) para filas alternas, :first-child para destacar el primer item, y :not(:last-child) para poner bordes en todos menos el último.",
     },
     {
       id: "07-ej-09",
@@ -511,9 +511,9 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         { id: "d", text: "A las tarjetas que NO tienen imagen", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El estilo siempre se aplica al elemento que esta ANTES de :has(). Lo que va entre parentesis es solo la condicion.",
+      hint: "El estilo siempre se aplica al elemento que esta ANTES de :has(). Lo que va entre paréntesis es solo la condición.",
       explanation:
-        "El objetivo es el elemento de afuera: la tarjeta. Lo que va dentro de :has() es la condicion que debe cumplirse, no el elemento a estilar. Por eso se lo llama el selector del padre.",
+        "El objetivo es el elemento de afuera: la tarjeta. Lo que va dentro de :has() es la condición que debe cumplirse, no el elemento a estilar. Por eso se lo llama el selector del padre.",
     },
     {
       id: "07-ej-10",
@@ -522,7 +522,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 25,
       order: 10,
       prompt:
-        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase 'tarjeta' que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase 'opcion' que contengan un input marcado, dales font-weight: bold.",
+        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase 'tarjeta' que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase 'opción' que contengan un input marcado, dales font-weight: bold.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <img src="https://placehold.co/60x40" alt="Miniatura" />\n  <p>Con imagen</p>\n</div>\n<div class="tarjeta">\n  <p>Sin imagen</p>\n</div>\n<label class="opcion"><input type="checkbox" checked /> Marcada</label>`,
         cssPrefix: "",
@@ -536,9 +536,9 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Para la negacion, envolve el :has() completo dentro de :not(). Para el checkbox marcado, adentro de :has() va input:checked.",
+      hint: "Para la negación, envolve el :has() completo dentro de :not(). Para el checkbox marcado, adentro de :has() va input:checked.",
       explanation:
-        "Las tres reglas apuntan al elemento de afuera y usan el contenido como condicion. La segunda combina :not() con :has() para expresar 'las que no contienen imagen', algo que antes exigia agregar una clase a mano en el HTML.",
+        "Las tres reglas apuntan al elemento de afuera y usan el contenido como condición. La segunda combina :not() con :has() para expresar 'las que no contienen imagen', algo que antes exigia agregar una clase a mano en el HTML.",
     },
   ],
 };

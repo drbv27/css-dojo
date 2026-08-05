@@ -3,7 +3,7 @@ import type { ModuleData } from "@/types";
 export const nextjsRoutingModule: ModuleData = {
   slug: "nextjs-02-routing",
   title: "Routing en Next.js",
-  description: "File-based routing, rutas dinamicas, grupos de rutas y archivos especiales.",
+  description: "File-based routing, rutas dinámicas, grupos de rutas y archivos especiales.",
   order: 302,
   category: "nextjs-fundamentals",
   icon: "code",
@@ -11,8 +11,8 @@ export const nextjsRoutingModule: ModuleData = {
   lessons: [
     {
       id: "njs02-leccion-01",
-      title: "Rutas dinamicas y grupos",
-      content: `## Rutas dinamicas con [slug]
+      title: "Rutas dinámicas y grupos",
+      content: `## Rutas dinámicas con [slug]
 
 \`\`\`
 app/
@@ -82,7 +82,7 @@ export default async function Docs({ params }: { params: Promise<{ slug: string[
       title: "Archivos especiales",
       content: `## Archivos especiales de Next.js
 
-Cada carpeta puede tener estos archivos con funciones especificas:
+Cada carpeta puede tener estos archivos con funciones específicas:
 
 ### loading.tsx — skeleton mientras carga
 
@@ -93,7 +93,7 @@ export default function Loading() {
 }
 \`\`\`
 
-Next.js lo muestra automaticamente mientras page.tsx se renderiza en el servidor.
+Next.js lo muestra automáticamente mientras page.tsx se renderiza en el servidor.
 
 ### error.tsx — manejo de errores
 
@@ -111,7 +111,7 @@ export default function Error({ error, reset }: { error: Error; reset: () => voi
 }
 \`\`\`
 
-### not-found.tsx — pagina 404
+### not-found.tsx — página 404
 
 \`\`\`tsx
 // app/not-found.tsx
@@ -125,7 +125,7 @@ export default function NotFound() {
 }
 \`\`\`
 
-### Jerarquia de archivos
+### Jerarquía de archivos
 
 \`\`\`
 layout.tsx      <- estructura
@@ -134,7 +134,7 @@ layout.tsx      <- estructura
       page.tsx  <- contenido
 \`\`\`
 
-> Next.js envuelve tu page.tsx automaticamente con Suspense (loading) y ErrorBoundary (error).`,
+> Next.js envuelve tu page.tsx automáticamente con Suspense (loading) y ErrorBoundary (error).`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f38ba8; border-radius: 8px; white-space: pre-line; }',
@@ -150,7 +150,7 @@ layout.tsx      <- estructura
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Como creas una ruta dinamica en Next.js App Router?",
+      prompt: "¿Cómo creas una ruta dinámica en Next.js App Router?",
       options: [
         { id: "a", text: "Usando :id en el nombre del archivo", isCorrect: false },
         { id: "b", text: "Creando una carpeta con [brackets]", isCorrect: true },
@@ -158,8 +158,8 @@ layout.tsx      <- estructura
         { id: "d", text: "Usando React Router", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los corchetes [] indican un segmento dinamico.",
-      explanation: "Una carpeta [slug] crea una ruta dinamica. El valor se accede via params.",
+      hint: "Los corchetes [] indican un segmento dinámico.",
+      explanation: "Una carpeta [slug] crea una ruta dinámica. El valor se accede via params.",
     },
     {
       id: "njs02-ej-02",
@@ -171,12 +171,12 @@ layout.tsx      <- estructura
       options: [
         { id: "a", text: "Agregan /auth a la URL", isCorrect: false },
         { id: "b", text: "Organizan archivos sin afectar la URL", isCorrect: true },
-        { id: "c", text: "Protegen rutas con autenticacion", isCorrect: false },
+        { id: "c", text: "Protegen rutas con autenticación", isCorrect: false },
         { id: "d", text: "Crean APIs", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los parentesis () se usan para agrupar sin impacto en la URL.",
-      explanation: "Route groups (parentesis) organizan carpetas y permiten layouts diferentes sin modificar la URL.",
+      hint: "Los paréntesis () se usan para agrupar sin impacto en la URL.",
+      explanation: "Route groups (paréntesis) organizan carpetas y permiten layouts diferentes sin modificar la URL.",
     },
     {
       id: "njs02-ej-03",
@@ -184,7 +184,7 @@ layout.tsx      <- estructura
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Que archivo se muestra automaticamente mientras una pagina carga en el servidor?",
+      prompt: "¿Qué archivo se muestra automáticamente mientras una página carga en el servidor?",
       options: [
         { id: "a", text: "skeleton.tsx", isCorrect: false },
         { id: "b", text: "loading.tsx", isCorrect: true },
@@ -192,8 +192,8 @@ layout.tsx      <- estructura
         { id: "d", text: "spinner.tsx", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El nombre del archivo describe su funcion.",
-      explanation: "loading.tsx se muestra automaticamente como fallback de Suspense mientras page.tsx renderiza.",
+      hint: "El nombre del archivo describe su función.",
+      explanation: "loading.tsx se muestra automáticamente como fallback de Suspense mientras page.tsx renderiza.",
     },
     {
       id: "njs02-ej-04",
@@ -201,7 +201,7 @@ layout.tsx      <- estructura
       difficulty: 3 ,
       xpReward: 30,
       order: 4,
-      prompt: "Asocia cada archivo especial con su funcion:",
+      prompt: "Asocia cada archivo especial con su función:",
       dragItems: [
         { id: "drag-1", content: "loading.tsx", correctZone: "zone-load" },
         { id: "drag-2", content: "error.tsx", correctZone: "zone-error" },
@@ -210,13 +210,13 @@ layout.tsx      <- estructura
       dropZones: [
         { id: "zone-load", label: "UI de carga (skeleton)" },
         { id: "zone-error", label: "Manejo de errores de runtime" },
-        { id: "zone-404", label: "Pagina no encontrada" },
+        { id: "zone-404", label: "Página no encontrada" },
       ],
       validation: {
         type: "exact",
         answer: { "drag-1": "zone-load", "drag-2": "zone-error", "drag-3": "zone-404" },
       },
-      hint: "Cada archivo tiene un nombre descriptivo de su funcion.",
+      hint: "Cada archivo tiene un nombre descriptivo de su función.",
       explanation: "loading = carga, error = errores, not-found = 404.",
     },
   ],

@@ -4,7 +4,7 @@ export const reactEstadoModule: ModuleData = {
   slug: "react-estado-usestate",
   title: "Estado con useState",
   description:
-    "Aprende a manejar datos dinamicos en tus componentes con el hook useState, el pilar fundamental del estado en React.",
+    "Aprende a manejar datos dinámicos en tus componentes con el hook useState, el pilar fundamental del estado en React.",
   order: 205,
   category: "react-fundamentals",
   icon: "database",
@@ -12,8 +12,8 @@ export const reactEstadoModule: ModuleData = {
   lessons: [
     {
       id: "react05-leccion-01",
-      title: "¿Que es el estado?",
-      content: `## ¿Que es el estado en React?
+      title: "¿Qué es el estado?",
+      content: `## ¿Qué es el estado en React?
 
 El **estado** (state) son datos que **pueden cambiar con el tiempo** y que, al cambiar, hacen que el componente se **re-renderice** (se vuelva a pintar).
 
@@ -89,10 +89,10 @@ const [estado, setEstado] = React.useState(valorInicial);
 \`\`\`
 
 - **estado**: el valor actual
-- **setEstado**: funcion para actualizar el valor
+- **setEstado**: función para actualizar el valor
 - **valorInicial**: el valor con el que empieza (puede ser cualquier tipo)
 
-### Convencion de nombres
+### Convención de nombres
 
 \`\`\`jsx
 const [nombre, setNombre] = React.useState("");
@@ -101,11 +101,11 @@ const [activo, setActivo] = React.useState(true);
 const [items, setItems] = React.useState([]);
 \`\`\`
 
-La convencion es \`[algo, setAlgo]\` — el setter siempre empieza con "set".
+La convención es \`[algo, setAlgo]\` — el setter siempre empieza con "set".
 
-### Multiples estados
+### Múltiples estados
 
-Un componente puede tener **multiples llamadas a useState**:
+Un componente puede tener **múltiples llamadas a useState**:
 
 \`\`\`jsx
 function Formulario() {
@@ -119,7 +119,7 @@ function Formulario() {
 ### Reglas de los Hooks
 
 1. Solo llamar Hooks **en el nivel superior** (no dentro de if, for, o funciones anidadas)
-2. Solo llamar Hooks en **componentes de funcion** o en **custom hooks**
+2. Solo llamar Hooks en **componentes de función** o en **custom hooks**
 
 > **Por que?** React usa el **orden** de las llamadas a Hooks para saber cual es cual. Si el orden cambia entre renderizados, React se confunde.`,
       codeExample: {
@@ -300,11 +300,11 @@ setCuenta(prev => prev + 1);
 setCuenta(prev => prev + 1);
 \`\`\`
 
-React agrupa las actualizaciones (**batching**). La forma funcional garantiza que cada actualizacion use el valor mas reciente.
+React agrupa las actualizaciones (**batching**). La forma funcional garantiza que cada actualización use el valor mas reciente.
 
 ## Levantar estado (Lifting State Up)
 
-Cuando dos componentes hermanos necesitan compartir estado, lo **levantas** al padre comun:
+Cuando dos componentes hermanos necesitan compartir estado, lo **levantas** al padre común:
 
 \`\`\`jsx
 function Padre() {
@@ -318,9 +318,9 @@ function Padre() {
 }
 \`\`\`
 
-El padre es el **dueno del estado** y lo comparte con los hijos via props.
+El padre es el **dueño del estado** y lo comparte con los hijos via props.
 
-> **Principio:** El estado debe vivir en el componente mas cercano que sea ancestro comun de todos los componentes que lo necesitan.`,
+> **Principio:** El estado debe vivir en el componente mas cercano que sea ancestro común de todos los componentes que lo necesitan.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -375,17 +375,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que retorna el hook useState?",
+      prompt: "¿Qué retorna el hook useState?",
       options: [
         { id: "a", text: "Solo el valor del estado", isCorrect: false },
-        { id: "b", text: "Un array con el valor actual y una funcion para actualizarlo", isCorrect: true },
+        { id: "b", text: "Un array con el valor actual y una función para actualizarlo", isCorrect: true },
         { id: "c", text: "Un objeto con propiedades get y set", isCorrect: false },
         { id: "d", text: "Una promesa que resuelve con el estado", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Usamos desestructuracion de array para obtener dos cosas.",
+      hint: "Usamos desestructuración de array para obtener dos cosas.",
       explanation:
-        "useState retorna un array con exactamente dos elementos: [valorActual, funcionSetter]. Se usa desestructuracion de array: const [estado, setEstado] = useState(inicial).",
+        "useState retorna un array con exactamente dos elementos: [valorActual, funcionSetter]. Se usa desestructuración de array: const [estado, setEstado] = useState(inicial).",
     },
     {
       id: "react05-ej-02",
@@ -393,7 +393,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la declaracion de useState para inicializar un contador en 0:",
+      prompt: "Completa la declaración de useState para inicializar un contador en 0:",
       codeTemplate: {
         html: "",
         cssPrefix: "const [cuenta, setCuenta] = React.",
@@ -403,7 +403,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       validation: { type: "exact", answer: "useState" },
       hint: "Es un hook que empieza con 'use'.",
       explanation:
-        "React.useState(0) crea una variable de estado llamada 'cuenta' con valor inicial 0, y una funcion 'setCuenta' para modificarla.",
+        "React.useState(0) crea una variable de estado llamada 'cuenta' con valor inicial 0, y una función 'setCuenta' para modificarla.",
     },
     {
       id: "react05-ej-03",
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la forma CORRECTA de actualizar un objeto en el estado?",
+      prompt: "¿Cuál es la forma CORRECTA de actualizar un objeto en el estado?",
       options: [
         { id: "a", text: "usuario.nombre = \"Nuevo\"; setUsuario(usuario);", isCorrect: false },
         { id: "b", text: "setUsuario({ ...usuario, nombre: \"Nuevo\" });", isCorrect: true },
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el codigo para agregar un elemento a un array en el estado sin mutarlo:",
+      prompt: "Completa el código para agregar un elemento a un array en el estado sin mutarlo:",
       codeTemplate: {
         html: "",
         cssPrefix: "setItems([",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
         blanks: ["..."],
       },
       validation: { type: "exact", answer: "..." },
-      hint: "Usa el operador de expansion para copiar los elementos existentes.",
+      hint: "Usa el operador de expansión para copiar los elementos existentes.",
       explanation:
         "El operador spread (...items) crea una copia de todos los elementos existentes del array, y luego se agrega nuevoItem al final. Esto crea un array completamente nuevo.",
     },
@@ -465,7 +465,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada operacion segun si es CORRECTA o INCORRECTA para actualizar estado en React:",
+      prompt: "Clasifica cada operación según si es CORRECTA o INCORRECTA para actualizar estado en React:",
       dragItems: [
         { id: "drag-1", content: "setItems([...items, nuevo])", correctZone: "zone-correcto" },
         { id: "drag-2", content: "items.push(nuevo)", correctZone: "zone-incorrecto" },
@@ -499,7 +499,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa la actualizacion funcional del estado que usa el valor anterior:",
+      prompt: "Completa la actualización funcional del estado que usa el valor anterior:",
       codeTemplate: {
         html: "",
         cssPrefix: "setCuenta(",
@@ -507,7 +507,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
         blanks: ["prev"],
       },
       validation: { type: "exact", answer: "prev" },
-      hint: "La funcion recibe el valor anterior como parametro.",
+      hint: "La función recibe el valor anterior como parámetro.",
       explanation:
         "La forma funcional setCuenta(prev => prev + 1) recibe el estado anterior como argumento y retorna el nuevo estado. Es la forma mas segura cuando el nuevo valor depende del anterior.",
     },
@@ -517,17 +517,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Que significa 'levantar el estado' (lifting state up)?",
+      prompt: "¿Qué significa 'levantar el estado' (lifting state up)?",
       options: [
         { id: "a", text: "Mover el estado a un componente hijo", isCorrect: false },
-        { id: "b", text: "Mover el estado al componente padre comun mas cercano cuando varios hijos lo necesitan", isCorrect: true },
+        { id: "b", text: "Mover el estado al componente padre común mas cercano cuando varios hijos lo necesitan", isCorrect: true },
         { id: "c", text: "Eliminar el estado y usar solo props", isCorrect: false },
         { id: "d", text: "Guardar el estado en localStorage", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Cuando dos hermanos necesitan compartir estado, sube al ancestro comun.",
+      hint: "Cuando dos hermanos necesitan compartir estado, sube al ancestro común.",
       explanation:
-        "Lifting state up significa mover el estado al componente ancestro comun mas cercano de todos los componentes que lo necesitan. El padre maneja el estado y lo pasa a los hijos via props.",
+        "Lifting state up significa mover el estado al componente ancestro común mas cercano de todos los componentes que lo necesitan. El padre maneja el estado y lo pasa a los hijos via props.",
     },
   ],
 };

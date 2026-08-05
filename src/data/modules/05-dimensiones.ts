@@ -4,7 +4,7 @@ export const dimensionesModule: ModuleData = {
   slug: "dimensiones",
   title: "Dimensiones y espaciado",
   description:
-    "Controla el tamano de los elementos y el espacio que los rodea con width, height, padding y margin.",
+    "Controla el tamaño de los elementos y el espacio que los rodea con width, height, padding y margin.",
   order: 7,
   dojo: "css" as const,
   category: "intro",
@@ -28,16 +28,16 @@ Las propiedades \`width\` y \`height\` definen el **ancho** y **alto** de un ele
 
 ### Unidades comunes
 
-| Unidad | Descripcion | Ejemplo |
+| Unidad | Descripción | Ejemplo |
 |--------|------------|---------|
-| \`px\` | Pixeles (valor fijo) | \`width: 300px\` |
+| \`px\` | Píxeles (valor fijo) | \`width: 300px\` |
 | \`%\` | Porcentaje del elemento padre | \`width: 50%\` |
 | \`vw\` / \`vh\` | Porcentaje del viewport | \`width: 100vw\` |
 | \`em\` / \`rem\` | Relativa a la fuente | \`width: 20rem\` |
 
 ### El valor auto
 
-El valor \`auto\` deja que el navegador **calcule la dimension** automaticamente:
+El valor \`auto\` deja que el navegador **calcule la dimensión** automáticamente:
 
 \`\`\`css
 .imagen {
@@ -49,13 +49,13 @@ El valor \`auto\` deja que el navegador **calcule la dimension** automaticamente
 ### Comportamiento por defecto
 
 - Los elementos **de bloque** (div, p, h1...) tienen \`width: auto\` (ocupan todo el ancho disponible) y \`height: auto\` (se ajustan al contenido)
-- Los elementos **en linea** (span, a, strong...) **ignoran** width y height
+- Los elementos **en línea** (span, a, strong...) **ignoran** width y height
 
 ### Por que width no siempre mide lo que crees
 
 En el modulo anterior viste el box model: contenido, padding, border y margin. Aca es donde eso importa de verdad.
 
-Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el border se suman por fuera. Asi que esto:
+Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el border se suman por fuera. Así que esto:
 
 \`\`\`css
 .caja {
@@ -67,7 +67,7 @@ Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el
 
 ...no ocupa 300px. Ocupa **350px**: 300 de contenido + 20 de padding a cada lado + 5 de borde a cada lado. Y el dia que le cambies el padding, el ancho total cambia con el.
 
-### La solucion: box-sizing
+### La solución: box-sizing
 
 \`\`\`css
 * {
@@ -77,7 +77,7 @@ Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el
 
 Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y el borde se descuentan del contenido en vez de sumarse por fuera. La caja del ejemplo mide 300px, y si le agregas padding el contenido se encoge pero la caja no se mueve.
 
-> **Buena practica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que mas dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
+> **Buena práctica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que mas dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
       codeExample: {
         html: `<div class="caja-fija">Caja fija: 300px x 150px</div>\n<div class="caja-porcentaje">Caja flexible: 80% del padre</div>\n<div class="caja-auto">Caja auto: se ajusta al contenido</div>`,
         css: `.caja-fija {\n  width: 300px;\n  height: 150px;\n  background-color: lightblue;\n  margin-bottom: 10px;\n}\n.caja-porcentaje {\n  width: 80%;\n  height: 100px;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n}\n.caja-auto {\n  width: auto;\n  height: auto;\n  background-color: lightgreen;\n  padding: 10px;\n}`,
@@ -87,14 +87,14 @@ Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y e
     },
     {
       id: "05-leccion-02",
-      title: "Limites: max y min",
-      content: `## Limites: max-width, min-width, max-height, min-height
+      title: "Límites: max y min",
+      content: `## Límites: max-width, min-width, max-height, min-height
 
-Estas propiedades establecen **limites** para las dimensiones de un elemento, permitiendo que sea flexible dentro de un rango.
+Estas propiedades establecen **límites** para las dimensiones de un elemento, permitiendo que sea flexible dentro de un rango.
 
 ### max-width
 
-Define el **ancho maximo** que puede tener un elemento. Es clave para el **diseno responsivo**:
+Define el **ancho máximo** que puede tener un elemento. Es clave para el **diseño responsivo**:
 
 \`\`\`css
 .contenedor {
@@ -103,11 +103,11 @@ Define el **ancho maximo** que puede tener un elemento. Es clave para el **disen
 }
 \`\`\`
 
-Esto crea un contenedor que ocupa todo el ancho en pantallas pequenas pero no crece mas de 800px en pantallas grandes.
+Esto crea un contenedor que ocupa todo el ancho en pantallas pequeñas pero no crece mas de 800px en pantallas grandes.
 
 ### min-width
 
-Define el **ancho minimo**. El elemento nunca sera mas estrecho que este valor:
+Define el **ancho mínimo**. El elemento nunca sera mas estrecho que este valor:
 
 \`\`\`css
 .boton {
@@ -127,7 +127,7 @@ Funcionan igual pero para el **alto**:
 }
 \`\`\`
 
-### Patron comun: contenedor centrado
+### Patrón común: contenedor centrado
 
 Este es uno de los patrones mas usados en CSS:
 
@@ -139,7 +139,7 @@ Este es uno de los patrones mas usados en CSS:
 }
 \`\`\`
 
-> **Consejo:** Prefiere \`max-width\` sobre \`width\` fijo para crear disenos que se adapten a diferentes tamanos de pantalla.`,
+> **Consejo:** Prefiere \`max-width\` sobre \`width\` fijo para crear diseños que se adapten a diferentes tamaños de pantalla.`,
       codeExample: {
         html: `<div class="contenedor">\n  <h2>Contenedor responsivo</h2>\n  <p>Este contenedor tiene un max-width de 600px y esta centrado con margin auto.</p>\n</div>`,
         css: `.contenedor {\n  max-width: 600px;\n  min-height: 150px;\n  margin: 0 auto;\n  padding: 20px;\n  background-color: #f0f0f0;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}`,
@@ -210,7 +210,7 @@ Los 4 valores van en **sentido del reloj** empezando por arriba: **T**op, **R**i
       title: "Margin: espacio exterior",
       content: `## Margin: espacio exterior
 
-El \`margin\` es el **espacio fuera del borde** de un elemento. Crea separacion entre un elemento y sus vecinos.
+El \`margin\` es el **espacio fuera del borde** de un elemento. Crea separación entre un elemento y sus vecinos.
 
 ### Sintaxis
 
@@ -237,9 +237,9 @@ Uno de los trucos mas clasicos de CSS. Para centrar un elemento horizontalmente:
 
 El valor \`auto\` reparte el espacio restante **equitativamente** a ambos lados, centrando el elemento.
 
-### Margenes negativos
+### Márgenes negativos
 
-A diferencia del padding, los margenes **si pueden ser negativos**:
+A diferencia del padding, los márgenes **si pueden ser negativos**:
 
 \`\`\`css
 .superpuesto {
@@ -247,9 +247,9 @@ A diferencia del padding, los margenes **si pueden ser negativos**:
 }
 \`\`\`
 
-### Colapso de margenes (margin collapse)
+### Colapso de márgenes (margin collapse)
 
-Cuando dos margenes verticales se tocan, **no se suman sino que se fusionan**: gana el mayor.
+Cuando dos márgenes verticales se tocan, **no se suman sino que se fusionan**: gana el mayor.
 
 \`\`\`css
 .parrafo1 { margin-bottom: 30px; }
@@ -257,9 +257,9 @@ Cuando dos margenes verticales se tocan, **no se suman sino que se fusionan**: g
 /* El espacio real entre ellos es 30px, NO 50px */
 \`\`\`
 
-Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca con horizontales.
+Este comportamiento solo ocurre con **márgenes verticales** (top/bottom), nunca con horizontales.
 
-> **Atencion:** El colapso de margenes es una de las fuentes de confusion mas comunes en CSS. Recuerda: margenes verticales adyacentes se fusionan, los horizontales no.`,
+> **Atención:** El colapso de márgenes es una de las fuentes de confusión mas comunes en CSS. Recuerda: márgenes verticales adyacentes se fusionan, los horizontales no.`,
       codeExample: {
         html: `<div class="caja-1">Caja 1 (margin-bottom: 30px)</div>\n<div class="caja-2">Caja 2 (margin-top: 20px)</div>\n<div class="centrada">Caja centrada con margin: 20px auto</div>`,
         css: `.caja-1 {\n  background-color: lightcoral;\n  padding: 15px;\n  margin-bottom: 30px;\n}\n.caja-2 {\n  background-color: lightblue;\n  padding: 15px;\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.centrada {\n  width: 300px;\n  margin: 20px auto;\n  background-color: lightgreen;\n  padding: 15px;\n  text-align: center;\n  border-radius: 8px;\n}`,
@@ -342,7 +342,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que propiedad define el espacio entre el contenido y el borde de un elemento?",
+        "¿Qué propiedad define el espacio entre el contenido y el borde de un elemento?",
       options: [
         { id: "a", text: "margin", isCorrect: false },
         { id: "b", text: "padding", isCorrect: true },
@@ -361,7 +361,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 2,
       prompt:
-        "Completa la propiedad para limitar el ancho maximo del contenedor a 800px, permitiendo que sea mas pequeno en pantallas chicas:",
+        "Completa la propiedad para limitar el ancho máximo del contenedor a 800px, permitiendo que sea mas pequeño en pantallas chicas:",
       codeTemplate: {
         html: `<div class="contenedor">Contenido del contenedor</div>`,
         cssPrefix: ".contenedor {\n  ",
@@ -369,9 +369,9 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         blanks: ["max-width"],
       },
       validation: { type: "exact", answer: "max-width" },
-      hint: "Es una propiedad que establece el MAXIMO ancho que un elemento puede tener. Dos palabras unidas con guion.",
+      hint: "Es una propiedad que establece el Máximo ancho que un elemento puede tener. Dos palabras unidas con guion.",
       explanation:
-        "La propiedad 'max-width' limita el ancho maximo de un elemento. Combinada con 'width: 100%', crea un contenedor que es flexible en pantallas pequenas pero no crece mas de 800px.",
+        "La propiedad 'max-width' limita el ancho máximo de un elemento. Combinada con 'width: 100%', crea un contenedor que es flexible en pantallas pequeñas pero no crece mas de 800px.",
     },
     {
       id: "05-ej-03",
@@ -456,7 +456,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 5,
       prompt:
-        "En la declaracion `padding: 10px 20px 30px;`, ¿que valor tiene padding-left?",
+        "En la declaración `padding: 10px 20px 30px;`, ¿qué valor tiene padding-left?",
       options: [
         { id: "a", text: "10px", isCorrect: false },
         { id: "b", text: "20px", isCorrect: true },
@@ -485,7 +485,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       validation: { type: "exact", answer: "0" },
       hint: "Necesitas 0 de margen vertical y auto para horizontal. El primer valor es para arriba y abajo.",
       explanation:
-        "La declaracion 'margin: 0 auto' usa 0 para los margenes verticales (top/bottom) y 'auto' para los horizontales (left/right). El valor 'auto' reparte el espacio equitativamente, centrando el elemento.",
+        "La declaración 'margin: 0 auto' usa 0 para los márgenes verticales (top/bottom) y 'auto' para los horizontales (left/right). El valor 'auto' reparte el espacio equitativamente, centrando el elemento.",
     },
     {
       id: "05-ej-07",
@@ -494,7 +494,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 30,
       order: 7,
       prompt:
-        "Reproduce el diseno objetivo: una caja centrada horizontalmente con ancho de 500px, padding de 30px, margin de 20px auto, borde de 1px solid #ccc y border-radius de 8px. Agrega background-color: white.",
+        "Reproduce el diseño objetivo: una caja centrada horizontalmente con ancho de 500px, padding de 30px, margin de 20px auto, borde de 1px solid #ccc y border-radius de 8px. Agrega background-color: white.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h2>Tarjeta centrada</h2>\n  <p>Esta tarjeta esta centrada y tiene espaciado correcto.</p>\n</div>`,
         cssPrefix: "",
@@ -544,7 +544,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 15,
       order: 9,
       prompt:
-        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. ¿Que forma termina teniendo la caja?",
+        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. ¿Qué forma termina teniendo la caja?",
       options: [
         { id: "a", text: "Un cuadrado de 400x400", isCorrect: false },
         { id: "b", text: "Un cuadrado de 100x100", isCorrect: false },
@@ -552,9 +552,9 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         { id: "d", text: "La caja no se muestra", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "aspect-ratio calcula la dimension que NO declaraste. Aca declaraste las dos.",
+      hint: "aspect-ratio calcula la dimensión que NO declaraste. Aca declaraste las dos.",
       explanation:
-        "aspect-ratio solo calcula la dimension que falta. Al declarar width y height a la vez no queda nada por calcular, asi que se ignora y la caja mide 400x100. Para que la proporcion funcione hay que declarar una sola de las dos.",
+        "aspect-ratio solo calcula la dimensión que falta. Al declarar width y height a la vez no queda nada por calcular, así que se ignora y la caja mide 400x100. Para que la proporción funcione hay que declarar una sola de las dos.",
     },
     {
       id: "05-ej-10",
@@ -563,7 +563,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 10,
       prompt:
-        "Arma dos piezas con proporcion fija. A la clase 'avatar' dale width: 80px, aspect-ratio: 1 / 1 y background-color: lightcoral. A la clase 'miniatura' dale width: 240px, aspect-ratio: 16 / 9 y background-color: lightblue. No declares height en ninguna.",
+        "Arma dos piezas con proporción fija. A la clase 'avatar' dale width: 80px, aspect-ratio: 1 / 1 y background-color: lightcoral. A la clase 'miniatura' dale width: 240px, aspect-ratio: 16 / 9 y background-color: lightblue. No declares height en ninguna.",
       codeTemplate: {
         html: `<div class="avatar"></div>\n<div class="miniatura"></div>`,
         cssPrefix: "",
@@ -577,9 +577,9 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "La proporcion se escribe ancho / alto. Un cuadrado es 1 / 1 y una pantalla ancha es 16 / 9. Nada de height.",
+      hint: "La proporción se escribe ancho / alto. Un cuadrado es 1 / 1 y una pantalla ancha es 16 / 9. Nada de height.",
       explanation:
-        "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiara, el alto acompana y la proporcion se mantiene.",
+        "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiara, el alto acompana y la proporción se mantiene.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const reactPropsModule: ModuleData = {
   slug: "react-props",
   title: "Props en React",
   description:
-    "Aprende a pasar datos entre componentes usando props, el mecanismo fundamental de comunicacion en React.",
+    "Aprende a pasar datos entre componentes usando props, el mecanismo fundamental de comunicación en React.",
   order: 204,
   category: "react-fundamentals",
   icon: "arrow-right",
@@ -12,12 +12,12 @@ export const reactPropsModule: ModuleData = {
   lessons: [
     {
       id: "react04-leccion-01",
-      title: "¿Que son las props?",
-      content: `## ¿Que son las props?
+      title: "¿Qué son las props?",
+      content: `## ¿Qué son las props?
 
-**Props** (abreviatura de "properties") son la forma de **pasar datos de un componente padre a un componente hijo**. Son como los argumentos de una funcion.
+**Props** (abreviatura de "properties") son la forma de **pasar datos de un componente padre a un componente hijo**. Son como los argumentos de una función.
 
-### Sintaxis basica
+### Sintaxis básica
 
 \`\`\`jsx
 // Padre pasa datos via props
@@ -29,7 +29,7 @@ function Saludo(props) {
 }
 \`\`\`
 
-### Desestructuracion de props (recomendado)
+### Desestructuración de props (recomendado)
 
 \`\`\`jsx
 function Saludo({ nombre, edad }) {
@@ -39,7 +39,7 @@ function Saludo({ nombre, edad }) {
 
 ### Regla fundamental: las props son de solo lectura
 
-Un componente **nunca debe modificar sus propias props**. Las props fluyen en una sola direccion: de padre a hijo.
+Un componente **nunca debe modificar sus propias props**. Las props fluyen en una sola dirección: de padre a hijo.
 
 \`\`\`jsx
 // NUNCA hagas esto:
@@ -49,7 +49,7 @@ function Saludo({ nombre }) {
 }
 \`\`\`
 
-> **Piensa en las props como parametros de una funcion:** los recibes, los usas, pero no los modificas.`,
+> **Piensa en las props como parámetros de una función:** los recibes, los usas, pero no los modificas.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -99,7 +99,7 @@ Se pasan con comillas (sin llaves):
 <Componente titulo="Hola Mundo" />
 \`\`\`
 
-### Numeros, booleanos, arrays, objetos
+### Números, booleanos, arrays, objetos
 Se pasan con llaves:
 \`\`\`jsx
 <Componente
@@ -130,7 +130,7 @@ const datos = { nombre: "Ana", edad: 25, rol: "dev" };
 // Equivale a: <Perfil nombre="Ana" edad={25} rol="dev" />
 \`\`\`
 
-> **Tip:** El spread de props es util pero usalo con moderacion. Puede hacer dificil saber que props recibe un componente.`,
+> **Tip:** El spread de props es útil pero usalo con moderación. Puede hacer difícil saber que props recibe un componente.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -194,7 +194,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Valores por defecto",
       content: `## Valores por defecto en props
 
-Puedes asignar **valores por defecto** a las props usando la sintaxis de desestructuracion de JavaScript:
+Puedes asignar **valores por defecto** a las props usando la sintaxis de desestructuración de JavaScript:
 
 \`\`\`jsx
 function Boton({ texto = "Clic aqui", color = "blue", tamano = "md" }) {
@@ -238,7 +238,7 @@ Boton.propTypes = {
 };
 \`\`\`
 
-> **Buena practica:** Siempre proporciona valores por defecto para props opcionales. Esto evita errores cuando el componente se usa sin pasar todas las props.`,
+> **Buena práctica:** Siempre proporciona valores por defecto para props opcionales. Esto evita errores cuando el componente se usa sin pasar todas las props.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -323,14 +323,14 @@ Layout y Sidebar **solo pasan la prop sin usarla**. Esto es prop drilling.
 
 ### ¿Por que es un problema?
 
-- Hace el codigo **dificil de mantener**
+- Hace el código **difícil de mantener**
 - Los componentes intermedios se acoplan a datos que no necesitan
 - Cambiar la estructura de datos requiere modificar muchos componentes
 
 ### Soluciones (las veremos mas adelante)
 
 1. **Context API** — compartir datos sin pasar props manualmente
-2. **Composicion** — reestructurar componentes para evitar niveles innecesarios
+2. **Composición** — reestructurar componentes para evitar niveles innecesarios
 3. **Librerias de estado global** — Redux, Zustand, etc.
 
 > **Por ahora:** el prop drilling es normal y aceptable para 2-3 niveles. Solo se vuelve problema con niveles mas profundos.`,
@@ -393,15 +393,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que son las props en React?",
+      prompt: "¿Qué son las props en React?",
       options: [
-        { id: "a", text: "Variables globales de la aplicacion", isCorrect: false },
+        { id: "a", text: "Variables globales de la aplicación", isCorrect: false },
         { id: "b", text: "Datos que un componente padre pasa a un componente hijo", isCorrect: true },
         { id: "c", text: "Estilos CSS del componente", isCorrect: false },
         { id: "d", text: "Eventos del navegador", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Las props fluyen en una sola direccion.",
+      hint: "Las props fluyen en una sola dirección.",
       explanation:
         "Las props son el mecanismo para pasar datos de un componente padre a un componente hijo. Fluyen de arriba hacia abajo (unidireccional) y son de solo lectura.",
     },
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la desestructuracion de props en este componente:",
+      prompt: "Completa la desestructuración de props en este componente:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Saludo(",
@@ -419,9 +419,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["{ nombre }"],
       },
       validation: { type: "exact", answer: "{ nombre }" },
-      hint: "Las props se desestructuran usando llaves en el parametro de la funcion.",
+      hint: "Las props se desestructuran usando llaves en el parámetro de la función.",
       explanation:
-        "La desestructuracion { nombre } extrae la propiedad 'nombre' directamente del objeto props, permitiendo usarla sin escribir props.nombre.",
+        "La desestructuración { nombre } extrae la propiedad 'nombre' directamente del objeto props, permitiendo usarla sin escribir props.nombre.",
     },
     {
       id: "react04-ej-03",
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Como se pasa un numero como prop en JSX?",
+      prompt: "¿Cómo se pasa un número como prop en JSX?",
       options: [
         { id: "a", text: "<Comp edad=\"25\" />", isCorrect: false },
         { id: "b", text: "<Comp edad={25} />", isCorrect: true },
@@ -439,7 +439,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "b" },
       hint: "Los valores que no son strings necesitan llaves.",
       explanation:
-        "En JSX, los valores que no son strings (numeros, booleanos, arrays, objetos) se pasan entre llaves { }. Con comillas se pasaria el string \"25\" en vez del numero 25.",
+        "En JSX, los valores que no son strings (números, booleanos, arrays, objetos) se pasan entre llaves { }. Con comillas se pasaria el string \"25\" en vez del número 25.",
     },
     {
       id: "react04-ej-04",
@@ -452,7 +452,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "a", text: "Si, las props son mutables", isCorrect: false },
         { id: "b", text: "No, las props son de solo lectura", isCorrect: true },
         { id: "c", text: "Solo si el padre lo permite", isCorrect: false },
-        { id: "d", text: "Solo con el metodo setProps()", isCorrect: false },
+        { id: "d", text: "Solo con el método setProps()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Las props son inmutables para el componente que las recibe.",
@@ -473,9 +473,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["="],
       },
       validation: { type: "exact", answer: "=" },
-      hint: "Es la sintaxis estandar de JavaScript para valores por defecto en desestructuracion.",
+      hint: "Es la sintaxis estándar de JavaScript para valores por defecto en desestructuración.",
       explanation:
-        "Los valores por defecto se asignan con = en la desestructuracion: { nombre = \"Invitado\" }. Si no se pasa la prop nombre, se usara \"Invitado\".",
+        "Los valores por defecto se asignan con = en la desestructuración: { nombre = \"Invitado\" }. Si no se pasa la prop nombre, se usara \"Invitado\".",
     },
     {
       id: "react04-ej-06",
@@ -483,7 +483,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada tipo de valor segun como se pasa en JSX (con comillas o con llaves):",
+      prompt: "Clasifica cada tipo de valor según como se pasa en JSX (con comillas o con llaves):",
       dragItems: [
         { id: "drag-1", content: "\"Hola Mundo\"", correctZone: "zone-comillas" },
         { id: "drag-2", content: "{42}", correctZone: "zone-llaves" },
@@ -509,7 +509,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       },
       hint: "Solo los textos literales (strings) van con comillas. Todo lo demas va con llaves.",
       explanation:
-        "En JSX, los strings se pasan con comillas. Los numeros, booleanos, arrays, objetos y funciones se pasan entre llaves porque son expresiones JavaScript.",
+        "En JSX, los strings se pasan con comillas. Los números, booleanos, arrays, objetos y funciones se pasan entre llaves porque son expresiones JavaScript.",
     },
     {
       id: "react04-ej-07",
@@ -517,17 +517,17 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "¿Que es el prop drilling?",
+      prompt: "¿Qué es el prop drilling?",
       options: [
-        { id: "a", text: "Un patron para validar props automaticamente", isCorrect: false },
+        { id: "a", text: "Un patrón para validar props automáticamente", isCorrect: false },
         { id: "b", text: "Pasar props a traves de muchos niveles de componentes intermedios que no las usan", isCorrect: true },
-        { id: "c", text: "Una tecnica para optimizar el rendimiento de props", isCorrect: false },
-        { id: "d", text: "Un metodo para crear props dinamicas", isCorrect: false },
+        { id: "c", text: "Una técnica para optimizar el rendimiento de props", isCorrect: false },
+        { id: "d", text: "Un método para crear props dinámicas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se llama 'drilling' porque las props 'perforan' muchos niveles.",
       explanation:
-        "El prop drilling ocurre cuando datos se pasan a traves de multiples niveles de componentes que no necesitan esos datos, solo para que lleguen al componente que realmente los usa. Se puede resolver con Context API o librerias de estado.",
+        "El prop drilling ocurre cuando datos se pasan a traves de múltiples niveles de componentes que no necesitan esos datos, solo para que lleguen al componente que realmente los usa. Se puede resolver con Context API o librerias de estado.",
     },
     {
       id: "react04-ej-08",
@@ -535,7 +535,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa el codigo para pasar todas las propiedades del objeto 'datos' como props al componente:",
+      prompt: "Completa el código para pasar todas las propiedades del objeto 'datos' como props al componente:",
       codeTemplate: {
         html: "",
         cssPrefix: "const datos = { nombre: \"Ana\", edad: 25 };\n<Perfil ",

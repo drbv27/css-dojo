@@ -15,11 +15,11 @@ export const transicionesAnimacionesModule: ModuleData = {
       title: "Transiciones CSS",
       content: `## Transiciones CSS
 
-Las **transiciones** permiten cambiar suavemente el valor de una propiedad CSS durante un periodo de tiempo, en lugar de que el cambio sea instantaneo.
+Las **transiciones** permiten cambiar suavemente el valor de una propiedad CSS durante un período de tiempo, en lugar de que el cambio sea instantaneo.
 
-### Propiedades de transicion
+### Propiedades de transición
 
-| Propiedad | Descripcion | Ejemplo |
+| Propiedad | Descripción | Ejemplo |
 |-----------|------------|---------|
 | \`transition-property\` | Que propiedad animar | \`background-color\`, \`all\` |
 | \`transition-duration\` | Cuanto dura | \`0.3s\`, \`500ms\` |
@@ -35,7 +35,7 @@ Las **transiciones** permiten cambiar suavemente el valor de una propiedad CSS d
 }
 \`\`\`
 
-### Ejemplo basico
+### Ejemplo básico
 
 \`\`\`css
 .boton {
@@ -50,9 +50,9 @@ Las **transiciones** permiten cambiar suavemente el valor de una propiedad CSS d
 }
 \`\`\`
 
-Sin la transicion, el cambio de color seria instantaneo. Con ella, el color cambia suavemente en 0.3 segundos.
+Sin la transición, el cambio de color seria instantaneo. Con ella, el color cambia suavemente en 0.3 segundos.
 
-### Transiciones multiples
+### Transiciones múltiples
 
 Puedes animar varias propiedades separandolas con comas:
 
@@ -78,7 +78,7 @@ O anima todas las propiedades con \`all\`:
 }
 \`\`\`
 
-> **Consejo de rendimiento:** Evita usar \`transition: all\` en produccion. Es mejor especificar cada propiedad para evitar transiciones no deseadas y mejorar el rendimiento.`,
+> **Consejo de rendimiento:** Evita usar \`transition: all\` en producción. Es mejor especificar cada propiedad para evitar transiciones no deseadas y mejorar el rendimiento.`,
       codeExample: {
         html: `<button class="btn-transicion">Pasa el cursor sobre mi</button>\n<div class="tarjeta-hover">\n  <h3>Tarjeta interactiva</h3>\n  <p>Hover para ver el efecto</p>\n</div>`,
         css: `.btn-transicion {\n  background-color: #3498db;\n  color: white;\n  padding: 12px 32px;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.3s ease, transform 0.2s ease;\n}\n.btn-transicion:hover {\n  background-color: #2980b9;\n  transform: scale(1.05);\n}\n\n.tarjeta-hover {\n  margin-top: 16px;\n  padding: 24px;\n  background: white;\n  border: 1px solid #ddd;\n  border-radius: 12px;\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.tarjeta-hover:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 25px rgba(0,0,0,0.1);\n}`,
@@ -91,16 +91,16 @@ O anima todas las propiedades con \`all\`:
       title: "Funciones de temporizado",
       content: `## Funciones de temporizado (timing functions)
 
-La funcion de temporizado controla la **velocidad** de la transicion a lo largo del tiempo. No todas las animaciones deben moverse a velocidad constante.
+La función de temporizado controla la **velocidad** de la transición a lo largo del tiempo. No todas las animaciones deben moverse a velocidad constante.
 
 ### Funciones predefinidas
 
-| Funcion | Comportamiento |
+| Función | Comportamiento |
 |---------|---------------|
 | \`ease\` | Empieza lento, acelera, termina lento (por defecto) |
 | \`linear\` | Velocidad constante |
-| \`ease-in\` | Empieza lento, termina rapido |
-| \`ease-out\` | Empieza rapido, termina lento |
+| \`ease-in\` | Empieza lento, termina rápido |
+| \`ease-out\` | Empieza rápido, termina lento |
 | \`ease-in-out\` | Lento al inicio y al final |
 
 ### Curvas personalizadas con cubic-bezier()
@@ -114,9 +114,9 @@ Para control total, usa \`cubic-bezier(x1, y1, x2, y2)\`:
 }
 \`\`\`
 
-Los cuatro numeros definen dos puntos de control de una curva Bezier. Puedes experimentar con herramientas como **cubic-bezier.com**.
+Los cuatro números definen dos puntos de control de una curva Bezier. Puedes experimentar con herramientas como **cubic-bezier.com**.
 
-### Funcion steps()
+### Función steps()
 
 Crea animaciones escalonadas (saltos discretos):
 
@@ -127,14 +127,14 @@ Crea animaciones escalonadas (saltos discretos):
 }
 \`\`\`
 
-### ¿Cual usar?
+### ¿Cuál usar?
 
 - **ease-out**: Para elementos que **entran** a la pantalla (llegan y frenan)
 - **ease-in**: Para elementos que **salen** de la pantalla (aceleran y desaparecen)
 - **ease-in-out**: Para movimientos que **empiezan y terminan** en la vista
 - **linear**: Para rotaciones continuas o barras de progreso
 
-> **Regla de oro:** \`ease-out\` es la mejor opcion por defecto para interacciones de usuario (hover, click). Siente natural porque los objetos en el mundo real desaceleran al detenerse.`,
+> **Regla de oro:** \`ease-out\` es la mejor opción por defecto para interacciones de usuario (hover, click). Siente natural porque los objetos en el mundo real desaceleran al detenerse.`,
       codeExample: {
         html: `<div class="demo-timing">\n  <div class="barra ease">ease</div>\n  <div class="barra linear">linear</div>\n  <div class="barra ease-in">ease-in</div>\n  <div class="barra ease-out">ease-out</div>\n  <div class="barra ease-in-out">ease-in-out</div>\n</div>\n<p class="instruccion">Pasa el cursor sobre el contenedor</p>`,
         css: `.demo-timing {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n}\n.barra {\n  height: 40px;\n  width: 120px;\n  color: white;\n  display: flex;\n  align-items: center;\n  padding-left: 12px;\n  border-radius: 6px;\n  font-size: 0.85rem;\n  font-weight: bold;\n}\n.demo-timing:hover .barra {\n  width: 100%;\n}\n.ease { background: #e74c3c; transition: width 1.5s ease; }\n.linear { background: #f39c12; transition: width 1.5s linear; }\n.ease-in { background: #27ae60; transition: width 1.5s ease-in; }\n.ease-out { background: #3498db; transition: width 1.5s ease-out; }\n.ease-in-out { background: #9b59b6; transition: width 1.5s ease-in-out; }\n.instruccion {\n  margin-top: 12px;\n  font-style: italic;\n  color: #666;\n}`,
@@ -147,9 +147,9 @@ Crea animaciones escalonadas (saltos discretos):
       title: "Animaciones con @keyframes",
       content: `## Animaciones con @keyframes
 
-Mientras las transiciones van de un estado A a un estado B, las **animaciones** permiten definir multiples estados intermedios y se pueden ejecutar automaticamente (sin necesidad de hover u otro trigger).
+Mientras las transiciones van de un estado A a un estado B, las **animaciones** permiten definir múltiples estados intermedios y se pueden ejecutar automáticamente (sin necesidad de hover u otro trigger).
 
-### Definir una animacion
+### Definir una animación
 
 Usa \`@keyframes\` para definir los pasos:
 
@@ -166,7 +166,7 @@ Usa \`@keyframes\` para definir los pasos:
 }
 \`\`\`
 
-Tambien puedes usar porcentajes para mas control:
+También puedes usar porcentajes para mas control:
 
 \`\`\`css
 @keyframes rebotar {
@@ -177,7 +177,7 @@ Tambien puedes usar porcentajes para mas control:
 }
 \`\`\`
 
-### Aplicar la animacion
+### Aplicar la animación
 
 \`\`\`css
 .elemento {
@@ -187,14 +187,14 @@ Tambien puedes usar porcentajes para mas control:
 
 ### Propiedades de animation
 
-| Propiedad | Valores comunes | Descripcion |
+| Propiedad | Valores comunes | Descripción |
 |-----------|----------------|-------------|
-| \`animation-name\` | Nombre del @keyframes | Que animacion aplicar |
-| \`animation-duration\` | \`0.5s\`, \`1s\` | Duracion de un ciclo |
+| \`animation-name\` | Nombre del @keyframes | Que animación aplicar |
+| \`animation-duration\` | \`0.5s\`, \`1s\` | Duración de un ciclo |
 | \`animation-timing-function\` | \`ease\`, \`linear\` | Curva de velocidad |
 | \`animation-delay\` | \`0s\`, \`0.5s\` | Retardo antes de empezar |
 | \`animation-iteration-count\` | \`1\`, \`3\`, \`infinite\` | Cuantas veces se repite |
-| \`animation-direction\` | \`normal\`, \`reverse\`, \`alternate\` | Direccion de la animacion |
+| \`animation-direction\` | \`normal\`, \`reverse\`, \`alternate\` | Dirección de la animación |
 | \`animation-fill-mode\` | \`none\`, \`forwards\`, \`backwards\`, \`both\` | Estado al terminar |
 
 ### Propiedad abreviada
@@ -208,14 +208,14 @@ Tambien puedes usar porcentajes para mas control:
 
 ### animation-fill-mode
 
-Controla el estado del elemento fuera del tiempo de la animacion:
+Controla el estado del elemento fuera del tiempo de la animación:
 
 - \`none\`: Vuelve a su estado original (por defecto)
-- \`forwards\`: Mantiene los estilos del ultimo keyframe
+- \`forwards\`: Mantiene los estilos del último keyframe
 - \`backwards\`: Aplica los estilos del primer keyframe durante el delay
 - \`both\`: Combina forwards y backwards
 
-> **Importante:** \`forwards\` es esencial cuando quieres que el elemento mantenga su estado final despues de animarse (por ejemplo, permanecer visible despues de un fade-in).`,
+> **Importante:** \`forwards\` es esencial cuando quieres que el elemento mantenga su estado final después de animarse (por ejemplo, permanecer visible después de un fade-in).`,
       codeExample: {
         html: `<div class="contenedor-animaciones">\n  <div class="pulso">Pulso</div>\n  <div class="flotante">Flotante</div>\n  <div class="entrada">Entrada</div>\n</div>`,
         css: `@keyframes pulsar {\n  0% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n  100% { transform: scale(1); }\n}\n\n@keyframes flotar {\n  0% { transform: translateY(0); }\n  50% { transform: translateY(-10px); }\n  100% { transform: translateY(0); }\n}\n\n@keyframes entrar {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n.contenedor-animaciones {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  padding: 20px;\n}\n\n.pulso, .flotante, .entrada {\n  padding: 20px 28px;\n  border-radius: 12px;\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.pulso {\n  background: #e74c3c;\n  animation: pulsar 2s ease-in-out infinite;\n}\n.flotante {\n  background: #3498db;\n  animation: flotar 3s ease-in-out infinite;\n}\n.entrada {\n  background: #27ae60;\n  animation: entrar 1s ease-out forwards;\n}`,
@@ -225,8 +225,8 @@ Controla el estado del elemento fuera del tiempo de la animacion:
     },
     {
       id: "18-leccion-04",
-      title: "Buenas practicas y rendimiento",
-      content: `## Buenas practicas y rendimiento
+      title: "Buenas prácticas y rendimiento",
+      content: `## Buenas prácticas y rendimiento
 
 ### Propiedades baratas de animar
 
@@ -259,7 +259,7 @@ No todas las propiedades CSS se animan con la misma eficiencia. Las mejores para
 }
 \`\`\`
 
-### will-change: optimizacion explicita
+### will-change: optimización explícita
 
 Indica al navegador que una propiedad va a cambiar para que se prepare:
 
@@ -269,7 +269,7 @@ Indica al navegador que una propiedad va a cambiar para que se prepare:
 }
 \`\`\`
 
-> **Precaucion:** No abuses de \`will-change\`. Usalo solo en elementos que realmente se van a animar. Aplicarlo a muchos elementos consume memoria.
+> **Precaución:** No abuses de \`will-change\`. Usalo solo en elementos que realmente se van a animar. Aplicarlo a muchos elementos consume memoria.
 
 ### Respetar preferencias del usuario
 
@@ -296,14 +296,14 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
 
 ### Transiciones vs Animaciones: cuando usar cada una
 
-| Caracteristica | Transicion | Animacion |
+| Caracteristica | Transición | Animación |
 |---------------|-----------|-----------|
-| Trigger | Requiere cambio de estado (hover, clase) | Puede ser automatica |
-| Complejidad | Solo A a B | Multiples pasos |
-| Repeticion | Una vez por trigger | Se puede repetir infinitamente |
+| Trigger | Requiere cambio de estado (hover, clase) | Puede ser automática |
+| Complejidad | Solo A a B | Múltiples pasos |
+| Repetición | Una vez por trigger | Se puede repetir infinitamente |
 | Control | Limitado | Total (pausar, revertir, iterar) |
 
-> **Regla practica:** Usa transiciones para interacciones simples (hover, focus, toggle de clases). Usa animaciones para efectos complejos, automaticos o repetitivos.`,
+> **Regla práctica:** Usa transiciones para interacciones simples (hover, focus, toggle de clases). Usa animaciones para efectos complejos, automáticos o repetitivos.`,
       codeExample: {
         html: `<div class="demo-rendimiento">\n  <div class="bueno">Buen rendimiento<br>(transform)</div>\n  <div class="accesible">Respetuoso<br>(reduced-motion)</div>\n</div>`,
         css: `@keyframes mover-bien {\n  0% { transform: translateX(0); }\n  50% { transform: translateX(30px); }\n  100% { transform: translateX(0); }\n}\n\n.demo-rendimiento {\n  display: flex;\n  gap: 20px;\n  padding: 20px;\n}\n\n.bueno, .accesible {\n  padding: 24px;\n  border-radius: 12px;\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.bueno {\n  background: #27ae60;\n  will-change: transform;\n  animation: mover-bien 2s ease-in-out infinite;\n}\n\n.accesible {\n  background: #8e44ad;\n  animation: mover-bien 2s ease-in-out infinite;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .accesible {\n    animation: none;\n  }\n}`,
@@ -320,17 +320,17 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cual es la diferencia principal entre una transicion y una animacion CSS?",
+        "¿Cuál es la diferencia principal entre una transición y una animación CSS?",
       options: [
-        { id: "a", text: "Las transiciones son mas rapidas que las animaciones", isCorrect: false },
-        { id: "b", text: "Las transiciones van de un estado A a B; las animaciones pueden tener multiples pasos intermedios", isCorrect: true },
-        { id: "c", text: "Las animaciones solo funcionan en moviles", isCorrect: false },
+        { id: "a", text: "Las transiciones son mas rápidas que las animaciones", isCorrect: false },
+        { id: "b", text: "Las transiciones van de un estado A a B; las animaciones pueden tener múltiples pasos intermedios", isCorrect: true },
+        { id: "c", text: "Las animaciones solo funcionan en móviles", isCorrect: false },
         { id: "d", text: "No hay diferencia, son lo mismo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en la cantidad de estados que cada una puede manejar.",
       explanation:
-        "Las transiciones cambian suavemente de un estado A a un estado B (requieren un trigger como :hover). Las animaciones con @keyframes pueden definir multiples estados intermedios con porcentajes y ejecutarse automaticamente.",
+        "Las transiciones cambian suavemente de un estado A a un estado B (requieren un trigger como :hover). Las animaciones con @keyframes pueden definir múltiples estados intermedios con porcentajes y ejecutarse automáticamente.",
     },
     {
       id: "18-ej-02",
@@ -339,7 +339,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para que el cambio de color del boton dure 0.3 segundos con curva ease:",
+        "Completa la propiedad para que el cambio de color del botón dure 0.3 segundos con curva ease:",
       codeTemplate: {
         html: `<button class="btn">Hover</button>`,
         cssPrefix: ".btn {\n  background-color: #3498db;\n  ",
@@ -349,7 +349,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       validation: { type: "exact", answer: "transition" },
       hint: "Es la propiedad que define un cambio suave entre dos estados de un elemento.",
       explanation:
-        "La propiedad 'transition' permite definir una transicion suave. Aqui se aplica a 'background-color' con duracion de 0.3s y curva 'ease', creando un cambio de color fluido al hacer hover.",
+        "La propiedad 'transition' permite definir una transición suave. Aquí se aplica a 'background-color' con duración de 0.3s y curva 'ease', creando un cambio de color fluido al hacer hover.",
     },
     {
       id: "18-ej-03",
@@ -358,7 +358,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 3,
       prompt:
-        "Arrastra cada funcion de temporizado a su comportamiento correcto:",
+        "Arrastra cada función de temporizado a su comportamiento correcto:",
       dragItems: [
         { id: "drag-1", content: "ease", correctZone: "zone-suave" },
         { id: "drag-2", content: "linear", correctZone: "zone-constante" },
@@ -368,8 +368,8 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       dropZones: [
         { id: "zone-suave", label: "Lento al inicio y al final (por defecto)" },
         { id: "zone-constante", label: "Velocidad constante" },
-        { id: "zone-lento-inicio", label: "Empieza lento, termina rapido" },
-        { id: "zone-lento-final", label: "Empieza rapido, termina lento" },
+        { id: "zone-lento-inicio", label: "Empieza lento, termina rápido" },
+        { id: "zone-lento-final", label: "Empieza rápido, termina lento" },
       ],
       validation: {
         type: "exact",
@@ -382,7 +382,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       },
       hint: "'ease-in' significa que 'entra lentamente' (empieza lento). 'ease-out' significa que 'sale lentamente' (termina lento).",
       explanation:
-        "'ease' es la curva por defecto (lenta al inicio y final). 'linear' mantiene velocidad constante. 'ease-in' arranca lento y acelera. 'ease-out' arranca rapido y desacelera al final.",
+        "'ease' es la curva por defecto (lenta al inicio y final). 'linear' mantiene velocidad constante. 'ease-in' arranca lento y acelera. 'ease-out' arranca rápido y desacelera al final.",
     },
     {
       id: "18-ej-04",
@@ -391,7 +391,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa la regla para definir una animacion llamada 'girar' que rote el elemento 360 grados:",
+        "Completa la regla para definir una animación llamada 'girar' que rote el elemento 360 grados:",
       codeTemplate: {
         html: `<div class="icono">*</div>`,
         cssPrefix: "@",
@@ -399,9 +399,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         blanks: ["keyframes"],
       },
       validation: { type: "exact", answer: "keyframes" },
-      hint: "Es la regla que define los 'fotogramas clave' de una animacion CSS.",
+      hint: "Es la regla que define los 'fotogramas clave' de una animación CSS.",
       explanation:
-        "La regla @keyframes define los fotogramas clave de una animacion. Aqui define la animacion 'girar' que rota de 0 a 360 grados. Se aplica con la propiedad 'animation' que la ejecuta infinitamente.",
+        "La regla @keyframes define los fotogramas clave de una animación. Aquí define la animación 'girar' que rota de 0 a 360 grados. Se aplica con la propiedad 'animation' que la ejecuta infinitamente.",
     },
     {
       id: "18-ej-05",
@@ -410,7 +410,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una animacion @keyframes llamada 'fadeIn' que cambie opacity de 0 a 1. Aplica esta animacion a un elemento con clase 'aparecer' con duracion de 1s, ease-out, y animation-fill-mode: forwards.",
+        "Crea una animación @keyframes llamada 'fadeIn' que cambie opacity de 0 a 1. Aplica esta animación a un elemento con clase 'aparecer' con duración de 1s, ease-out, y animation-fill-mode: forwards.",
       codeTemplate: {
         html: `<div class="aparecer">\n  <h2>Hola mundo!</h2>\n  <p>Este contenido aparece con animacion.</p>\n</div>`,
         cssPrefix: "",
@@ -424,9 +424,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define @keyframes fadeIn con from { opacity: 0 } y to { opacity: 1 }, luego aplica la animacion en .aparecer.",
+      hint: "Define @keyframes fadeIn con from { opacity: 0 } y to { opacity: 1 }, luego aplica la animación en .aparecer.",
       explanation:
-        "Se define @keyframes fadeIn con opacity de 0 a 1. Luego se aplica con 'animation: fadeIn 1s ease-out forwards'. El 'forwards' asegura que el elemento mantenga opacity: 1 al terminar la animacion.",
+        "Se define @keyframes fadeIn con opacity de 0 a 1. Luego se aplica con 'animation: fadeIn 1s ease-out forwards'. El 'forwards' asegura que el elemento mantenga opacity: 1 al terminar la animación.",
     },
     {
       id: "18-ej-06",
@@ -435,7 +435,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 6,
       prompt:
-        "¿Que valor de animation-fill-mode hace que el elemento mantenga los estilos del ultimo keyframe despues de terminar la animacion?",
+        "¿Qué valor de animation-fill-mode hace que el elemento mantenga los estilos del último keyframe después de terminar la animación?",
       options: [
         { id: "a", text: "none", isCorrect: false },
         { id: "b", text: "backwards", isCorrect: false },
@@ -443,9 +443,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         { id: "d", text: "inherit", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es el valor que mira 'hacia adelante' (al final de la animacion).",
+      hint: "Es el valor que mira 'hacia adelante' (al final de la animación).",
       explanation:
-        "'forwards' mantiene los estilos del ultimo keyframe al finalizar la animacion. Sin el, el elemento volveria a su estado original. Es esencial para animaciones de entrada como fade-in.",
+        "'forwards' mantiene los estilos del último keyframe al finalizar la animación. Sin el, el elemento volveria a su estado original. Es esencial para animaciones de entrada como fade-in.",
     },
     {
       id: "18-ej-07",
@@ -454,7 +454,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un boton con clase 'btn-animado' que tenga transicion suave al hover: fondo de #3498db a #2c3e50, transformacion scale(1.05), y box-shadow. Duracion de transicion: 0.3s ease.",
+        "Crea un botón con clase 'btn-animado' que tenga transición suave al hover: fondo de #3498db a #2c3e50, transformación scale(1.05), y box-shadow. Duración de transición: 0.3s ease.",
       codeTemplate: {
         html: `<button class="btn-animado">Boton Animado</button>`,
         cssPrefix: "",
@@ -468,9 +468,9 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define los estilos base del boton con transition para las 3 propiedades, y en :hover cambia el fondo, agrega scale y box-shadow.",
+      hint: "Define los estilos base del botón con transition para las 3 propiedades, y en :hover cambia el fondo, agrega scale y box-shadow.",
       explanation:
-        "El boton usa transition para animar suavemente background-color, transform y box-shadow en 0.3s. Al hover, se oscurece el fondo, se agranda ligeramente con scale(1.05) y se agrega una sombra.",
+        "El botón usa transition para animar suavemente background-color, transform y box-shadow en 0.3s. Al hover, se oscurece el fondo, se agranda ligeramente con scale(1.05) y se agrega una sombra.",
     },
     {
       id: "18-ej-08",
@@ -479,7 +479,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Cuales son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",
+        "¿Cuáles son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",
       options: [
         { id: "a", text: "width y height", isCorrect: false },
         { id: "b", text: "transform y opacity", isCorrect: true },

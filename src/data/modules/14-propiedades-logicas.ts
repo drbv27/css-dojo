@@ -2,9 +2,9 @@ import type { ModuleData } from "@/types";
 
 export const propiedadesLogicasModule: ModuleData = {
   slug: "propiedades-logicas",
-  title: "Propiedades logicas",
+  title: "Propiedades lógicas",
   description:
-    "Aprende las propiedades logicas de CSS que se adaptan automaticamente a diferentes modos de escritura e idiomas, reemplazando width/height por inline-size/block-size.",
+    "Aprende las propiedades lógicas de CSS que se adaptan automáticamente a diferentes modos de escritura e idiomas, reemplazando width/height por inline-size/block-size.",
   order: 14,
   dojo: "css" as const,
   category: "intermediate",
@@ -12,8 +12,8 @@ export const propiedadesLogicasModule: ModuleData = {
   lessons: [
     {
       id: "14-leccion-01",
-      title: "¿Por que propiedades logicas?",
-      content: `## ¿Por que propiedades logicas?
+      title: "¿Por que propiedades lógicas?",
+      content: `## ¿Por que propiedades lógicas?
 
 Las propiedades tradicionales de CSS como \`width\`, \`height\`, \`margin-left\`, \`padding-top\`, etc., son **fisicas**: se refieren a direcciones fijas (arriba, abajo, izquierda, derecha).
 
@@ -35,12 +35,12 @@ Si usas propiedades fisicas, tu layout se rompe al cambiar de idioma:
 /* Pero en arabe (RTL), el inicio esta a la derecha! */
 \`\`\`
 
-### La solucion: propiedades logicas
+### La solución: propiedades lógicas
 
-Las propiedades logicas usan conceptos **relativos al flujo de escritura**:
+Las propiedades lógicas usan conceptos **relativos al flujo de escritura**:
 
-- **Inline**: la direccion en que fluye el texto (horizontal en espanol)
-- **Block**: la direccion en que se apilan los bloques (vertical en espanol)
+- **Inline**: la dirección en que fluye el texto (horizontal en espanol)
+- **Block**: la dirección en que se apilan los bloques (vertical en espanol)
 - **Start**: donde empieza el texto (izquierda en espanol, derecha en arabe)
 - **End**: donde termina el texto (derecha en espanol, izquierda en arabe)
 
@@ -50,16 +50,16 @@ Las propiedades logicas usan conceptos **relativos al flujo de escritura**:
 }
 \`\`\`
 
-### Ejes logicos vs fisicos
+### Ejes lógicos vs fisicos
 
-| Eje logico | En espanol (LTR) | En arabe (RTL) | En japones vertical |
+| Eje lógico | En espanol (LTR) | En arabe (RTL) | En japones vertical |
 |-----------|------------------|----------------|-------------------|
 | inline | Horizontal | Horizontal | Vertical |
 | block | Vertical | Vertical | Horizontal |
 | inline-start | Izquierda | Derecha | Arriba |
 | inline-end | Derecha | Izquierda | Abajo |
 
-> **Buena practica:** Aunque tu sitio solo sea en espanol, usar propiedades logicas es una buena costumbre. Hace tu CSS mas semántico y preparado para el futuro.`,
+> **Buena práctica:** Aunque tu sitio solo sea en espanol, usar propiedades lógicas es una buena costumbre. Hace tu CSS mas semántico y preparado para el futuro.`,
       codeExample: {
         html: `<div class="ejemplo-ltr" dir="ltr">\n  <div class="caja">Espanol (LTR) - margin-inline-start</div>\n</div>\n<div class="ejemplo-rtl" dir="rtl">\n  <div class="caja">عربي (RTL) - margin-inline-start</div>\n</div>`,
         css: `.ejemplo-ltr, .ejemplo-rtl {\n  background-color: #f0f0f0;\n  padding: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #ddd;\n}\n.caja {\n  margin-inline-start: 30px;\n  padding: 10px;\n  background-color: steelblue;\n  color: white;\n  border-radius: 4px;\n}`,
@@ -72,18 +72,18 @@ Las propiedades logicas usan conceptos **relativos al flujo de escritura**:
       title: "inline-size y block-size",
       content: `## inline-size y block-size
 
-Las propiedades logicas \`inline-size\` y \`block-size\` reemplazan a \`width\` y \`height\`:
+Las propiedades lógicas \`inline-size\` y \`block-size\` reemplazan a \`width\` y \`height\`:
 
 ### Equivalencias (en modo de escritura horizontal)
 
-| Propiedad fisica | Propiedad logica | Descripcion |
+| Propiedad fisica | Propiedad lógica | Descripción |
 |-----------------|-----------------|-------------|
-| \`width\` | \`inline-size\` | Tamano en la direccion inline |
-| \`height\` | \`block-size\` | Tamano en la direccion block |
-| \`min-width\` | \`min-inline-size\` | Tamano minimo inline |
-| \`max-width\` | \`max-inline-size\` | Tamano maximo inline |
-| \`min-height\` | \`min-block-size\` | Tamano minimo block |
-| \`max-height\` | \`max-block-size\` | Tamano maximo block |
+| \`width\` | \`inline-size\` | Tamaño en la dirección inline |
+| \`height\` | \`block-size\` | Tamaño en la dirección block |
+| \`min-width\` | \`min-inline-size\` | Tamaño mínimo inline |
+| \`max-width\` | \`max-inline-size\` | Tamaño máximo inline |
+| \`min-height\` | \`min-block-size\` | Tamaño mínimo block |
+| \`max-height\` | \`max-block-size\` | Tamaño máximo block |
 
 ### Ejemplo
 
@@ -105,7 +105,7 @@ Las propiedades logicas \`inline-size\` y \`block-size\` reemplazan a \`width\` 
 
 ### Con writing-mode
 
-Cuando cambias el modo de escritura, las propiedades logicas se adaptan automaticamente:
+Cuando cambias el modo de escritura, las propiedades lógicas se adaptan automáticamente:
 
 \`\`\`css
 .vertical {
@@ -115,7 +115,7 @@ Cuando cambias el modo de escritura, las propiedades logicas se adaptan automati
 }
 \`\`\`
 
-### Patron comun: contenedor responsivo logico
+### Patrón común: contenedor responsivo lógico
 
 \`\`\`css
 .contenedor {
@@ -135,23 +135,23 @@ Cuando cambias el modo de escritura, las propiedades logicas se adaptan automati
     },
     {
       id: "14-leccion-03",
-      title: "margin, padding y border logicos",
-      content: `## margin, padding y border logicos
+      title: "margin, padding y border lógicos",
+      content: `## margin, padding y border lógicos
 
-Las propiedades de margin, padding y border tambien tienen equivalentes logicos.
+Las propiedades de margin, padding y border también tienen equivalentes lógicos.
 
-### Margin logico
+### Margin lógico
 
-| Propiedad fisica | Propiedad logica |
+| Propiedad fisica | Propiedad lógica |
 |-----------------|-----------------|
 | \`margin-top\` | \`margin-block-start\` |
 | \`margin-bottom\` | \`margin-block-end\` |
 | \`margin-left\` | \`margin-inline-start\` |
 | \`margin-right\` | \`margin-inline-end\` |
 
-### Shorthands logicos
+### Shorthands lógicos
 
-CSS ofrece shorthands muy practicos:
+CSS ofrece shorthands muy prácticos:
 
 \`\`\`css
 .elemento {
@@ -163,7 +163,7 @@ CSS ofrece shorthands muy practicos:
 }
 \`\`\`
 
-Tambien puedes dar dos valores (start y end):
+También puedes dar dos valores (start y end):
 
 \`\`\`css
 .elemento {
@@ -172,7 +172,7 @@ Tambien puedes dar dos valores (start y end):
 }
 \`\`\`
 
-### Padding logico
+### Padding lógico
 
 Funciona de la misma forma:
 
@@ -183,7 +183,7 @@ Funciona de la misma forma:
 }
 \`\`\`
 
-### Border logico
+### Border lógico
 
 \`\`\`css
 .seccion {
@@ -198,7 +198,7 @@ Funciona de la misma forma:
 }
 \`\`\`
 
-### Patron util: centrado con margin-inline
+### Patrón útil: centrado con margin-inline
 
 \`\`\`css
 .contenedor {
@@ -220,7 +220,7 @@ Funciona de la misma forma:
       title: "Writing modes",
       content: `## Writing modes
 
-La propiedad \`writing-mode\` define la **direccion del flujo de texto y bloques**. Es la razon por la que existen las propiedades logicas.
+La propiedad \`writing-mode\` define la **dirección del flujo de texto y bloques**. Es la razón por la que existen las propiedades lógicas.
 
 ### Valores principales
 
@@ -257,7 +257,7 @@ Complementa a \`writing-mode\` para definir si el texto va de izquierda a derech
 }
 \`\`\`
 
-> **Mejor practica:** Usa el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la direccion del texto. El atributo HTML es mas semantico y accesible.
+> **Mejor práctica:** Usa el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la dirección del texto. El atributo HTML es mas semántico y accesible.
 
 ### Uso creativo de writing-mode
 
@@ -273,7 +273,7 @@ Puedes usar \`writing-mode\` para efectos visuales interesantes:
 
 ### text-orientation
 
-Controla la orientacion de los caracteres en texto vertical:
+Controla la orientación de los caracteres en texto vertical:
 
 \`\`\`css
 .vertical {
@@ -284,7 +284,7 @@ Controla la orientacion de los caracteres en texto vertical:
 }
 \`\`\`
 
-> **Recuerda:** Las propiedades logicas se adaptan automaticamente al writing-mode. Si cambias el modo de escritura, \`inline-size\`, \`margin-inline\`, etc. cambian de eje automaticamente.`,
+> **Recuerda:** Las propiedades lógicas se adaptan automáticamente al writing-mode. Si cambias el modo de escritura, \`inline-size\`, \`margin-inline\`, etc. cambian de eje automáticamente.`,
       codeExample: {
         html: `<div class="contenedor-wm">\n  <div class="modo-h">horizontal-tb (por defecto)</div>\n  <div class="modo-vrl">vertical-rl</div>\n  <div class="modo-vlr">vertical-lr</div>\n</div>`,
         css: `.contenedor-wm {\n  display: flex;\n  gap: 15px;\n  align-items: flex-start;\n}\n.modo-h, .modo-vrl, .modo-vlr {\n  padding: 15px;\n  border: 2px solid;\n  border-radius: 4px;\n  font-size: 14px;\n}\n.modo-h {\n  writing-mode: horizontal-tb;\n  inline-size: 180px;\n  background-color: #d4edda;\n  border-color: #28a745;\n}\n.modo-vrl {\n  writing-mode: vertical-rl;\n  inline-size: 150px;\n  background-color: #cce5ff;\n  border-color: #007bff;\n}\n.modo-vlr {\n  writing-mode: vertical-lr;\n  inline-size: 150px;\n  background-color: #f8d7da;\n  border-color: #dc3545;\n}`,
@@ -301,7 +301,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Cual es la propiedad logica equivalente a 'width' en CSS?",
+        "¿Cuál es la propiedad lógica equivalente a 'width' en CSS?",
       options: [
         { id: "a", text: "block-size", isCorrect: false },
         { id: "b", text: "inline-size", isCorrect: true },
@@ -309,9 +309,9 @@ Controla la orientacion de los caracteres en texto vertical:
         { id: "d", text: "flow-size", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "En modo de escritura horizontal, el ancho corresponde a la direccion 'inline' (la direccion del texto).",
+      hint: "En modo de escritura horizontal, el ancho corresponde a la dirección 'inline' (la dirección del texto).",
       explanation:
-        "En modo de escritura horizontal (el por defecto en espanol), 'inline-size' es equivalente a 'width' porque la direccion inline es horizontal. Si el writing-mode fuera vertical, inline-size definiria el alto.",
+        "En modo de escritura horizontal (el por defecto en espanol), 'inline-size' es equivalente a 'width' porque la dirección inline es horizontal. Si el writing-mode fuera vertical, inline-size definiria el alto.",
     },
     {
       id: "14-ej-02",
@@ -320,7 +320,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 2,
       prompt:
-        "Arrastra cada propiedad fisica a su equivalente logico:",
+        "Arrastra cada propiedad fisica a su equivalente lógico:",
       dragItems: [
         {
           id: "drag-1",
@@ -360,7 +360,7 @@ Controla la orientacion de los caracteres en texto vertical:
       },
       hint: "En modo horizontal: inline = horizontal (izquierda/derecha/ancho) y block = vertical (arriba/abajo/alto). Start = inicio del flujo.",
       explanation:
-        "En escritura horizontal LTR: margin-left = margin-inline-start (inicio de la linea), margin-top = margin-block-start (inicio del bloque), width = inline-size (tamano en direccion del texto), height = block-size (tamano en direccion de los bloques).",
+        "En escritura horizontal LTR: margin-left = margin-inline-start (inicio de la línea), margin-top = margin-block-start (inicio del bloque), width = inline-size (tamaño en dirección del texto), height = block-size (tamaño en dirección de los bloques).",
     },
     {
       id: "14-ej-03",
@@ -369,7 +369,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 3,
       prompt:
-        "Completa la propiedad logica para centrar horizontalmente este contenedor (equivalente a 'margin-left: auto; margin-right: auto'):",
+        "Completa la propiedad lógica para centrar horizontalmente este contenedor (equivalente a 'margin-left: auto; margin-right: auto'):",
       codeTemplate: {
         html: `<div class="centrado">Contenido centrado</div>`,
         cssPrefix: ".centrado {\n  max-inline-size: 600px;\n  ",
@@ -377,9 +377,9 @@ Controla la orientacion de los caracteres en texto vertical:
         blanks: ["margin-inline"],
       },
       validation: { type: "exact", answer: "margin-inline" },
-      hint: "Es el shorthand logico que aplica margen a ambos lados del eje inline (izquierda y derecha en modo horizontal).",
+      hint: "Es el shorthand lógico que aplica margen a ambos lados del eje inline (izquierda y derecha en modo horizontal).",
       explanation:
-        "margin-inline: auto es el equivalente logico de margin-left: auto; margin-right: auto. Es un shorthand que no existe en las propiedades fisicas (no hay 'margin-horizontal') y centra el elemento en la direccion inline.",
+        "margin-inline: auto es el equivalente lógico de margin-left: auto; margin-right: auto. Es un shorthand que no existe en las propiedades fisicas (no hay 'margin-horizontal') y centra el elemento en la dirección inline.",
     },
     {
       id: "14-ej-04",
@@ -388,7 +388,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 4,
       prompt:
-        "¿En un documento con writing-mode: vertical-rl, que dimension controla inline-size?",
+        "¿En un documento con writing-mode: vertical-rl, que dimensión controla inline-size?",
       options: [
         { id: "a", text: "El ancho (horizontal)", isCorrect: false },
         { id: "b", text: "El alto (vertical)", isCorrect: true },
@@ -396,9 +396,9 @@ Controla la orientacion de los caracteres en texto vertical:
         { id: "d", text: "Ninguna, no funciona en modo vertical", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "En modo vertical, la direccion 'inline' (del flujo de texto) es vertical, de arriba a abajo.",
+      hint: "En modo vertical, la dirección 'inline' (del flujo de texto) es vertical, de arriba a abajo.",
       explanation:
-        "En writing-mode: vertical-rl, el texto fluye verticalmente (de arriba a abajo). Por lo tanto, la direccion inline es vertical, e inline-size controla el alto del elemento. Block-size controlaria el ancho.",
+        "En writing-mode: vertical-rl, el texto fluye verticalmente (de arriba a abajo). Por lo tanto, la dirección inline es vertical, e inline-size controla el alto del elemento. Block-size controlaria el ancho.",
     },
     {
       id: "14-ej-05",
@@ -407,7 +407,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una tarjeta (clase 'tarjeta') usando solo propiedades logicas: max-inline-size: 400px, margin-inline: auto, padding-inline: 25px, padding-block: 20px, border-inline-start: 4px solid steelblue, y background-color: #f0f4f8.",
+        "Crea una tarjeta (clase 'tarjeta') usando solo propiedades lógicas: max-inline-size: 400px, margin-inline: auto, padding-inline: 25px, padding-block: 20px, border-inline-start: 4px solid steelblue, y background-color: #f0f4f8.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h3>Tarjeta con propiedades logicas</h3>\n  <p>Todo el espaciado usa propiedades logicas en lugar de fisicas.</p>\n</div>`,
         cssPrefix: "",
@@ -423,7 +423,7 @@ Controla la orientacion de los caracteres en texto vertical:
       },
       hint: "Usa inline-size en lugar de width, margin-inline en lugar de margin-left/right, padding-inline/padding-block en lugar de padding individual.",
       explanation:
-        "Esta tarjeta usa exclusivamente propiedades logicas. Si el sitio se traduce a un idioma RTL, el borde decorativo (border-inline-start) automaticamente se movera al lado derecho, y el centrado con margin-inline: auto seguira funcionando correctamente.",
+        "Esta tarjeta usa exclusivamente propiedades lógicas. Si el sitio se traduce a un idioma RTL, el borde decorativo (border-inline-start) automáticamente se movera al lado derecho, y el centrado con margin-inline: auto seguira funcionando correctamente.",
     },
     {
       id: "14-ej-06",
@@ -432,7 +432,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 10,
       order: 6,
       prompt:
-        "Completa la propiedad para agregar padding de 20px a los lados superior e inferior usando la propiedad logica shorthand:",
+        "Completa la propiedad para agregar padding de 20px a los lados superior e inferior usando la propiedad lógica shorthand:",
       codeTemplate: {
         html: `<div class="seccion">Contenido</div>`,
         cssPrefix: ".seccion {\n  ",
@@ -440,9 +440,9 @@ Controla la orientacion de los caracteres en texto vertical:
         blanks: ["padding-block"],
       },
       validation: { type: "exact", answer: "padding-block" },
-      hint: "En modo horizontal, 'block' se refiere a la direccion vertical (arriba/abajo). El shorthand aplica a ambos lados del eje.",
+      hint: "En modo horizontal, 'block' se refiere a la dirección vertical (arriba/abajo). El shorthand aplica a ambos lados del eje.",
       explanation:
-        "padding-block: 20px aplica 20px de padding tanto arriba (block-start) como abajo (block-end). Es el equivalente logico de 'padding-top: 20px; padding-bottom: 20px'.",
+        "padding-block: 20px aplica 20px de padding tanto arriba (block-start) como abajo (block-end). Es el equivalente lógico de 'padding-top: 20px; padding-bottom: 20px'.",
     },
     {
       id: "14-ej-07",
@@ -451,7 +451,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 30,
       order: 7,
       prompt:
-        "Arrastra cada shorthand logico a lo que reemplaza en modo de escritura horizontal:",
+        "Arrastra cada shorthand lógico a lo que reemplaza en modo de escritura horizontal:",
       dragItems: [
         {
           id: "drag-1",
@@ -502,17 +502,17 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 8,
       prompt:
-        "¿Cual es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",
+        "¿Cuál es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",
       options: [
-        { id: "a", text: "Es mas rapido de renderizar por el navegador", isCorrect: false },
-        { id: "b", text: "Es un shorthand mas conciso que se adapta automaticamente a idiomas RTL", isCorrect: true },
+        { id: "a", text: "Es mas rápido de renderizar por el navegador", isCorrect: false },
+        { id: "b", text: "Es un shorthand mas conciso que se adapta automáticamente a idiomas RTL", isCorrect: true },
         { id: "c", text: "Solo funciona con Flexbox", isCorrect: false },
         { id: "d", text: "No hay ninguna ventaja, es exactamente lo mismo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en que pasa cuando cambias de un idioma LTR a un RTL.",
       explanation:
-        "margin-inline: auto tiene dos ventajas: 1) Es un shorthand mas conciso (una linea en lugar de dos). 2) Se adapta automaticamente al modo de escritura, funcionando correctamente tanto en idiomas LTR como RTL sin cambios adicionales.",
+        "margin-inline: auto tiene dos ventajas: 1) Es un shorthand mas conciso (una línea en lugar de dos). 2) Se adapta automáticamente al modo de escritura, funcionando correctamente tanto en idiomas LTR como RTL sin cambios adicionales.",
     },
   ],
 };

@@ -15,7 +15,7 @@ export const floatDisplayModule: ModuleData = {
       title: "La propiedad float",
       content: `## La propiedad float
 
-La propiedad \`float\` fue originalmente disenada para **envolver texto alrededor de imagenes**, similar a lo que vemos en revistas y periodicos.
+La propiedad \`float\` fue originalmente diseñada para **envolver texto alrededor de imágenes**, similar a lo que vemos en revistas y periodicos.
 
 ### Valores de float
 
@@ -31,7 +31,7 @@ Cuando un elemento flota:
 
 1. Se **saca parcialmente del flujo** normal
 2. Se mueve hacia la izquierda o derecha del contenedor
-3. El **texto y elementos en linea** lo rodean
+3. El **texto y elementos en línea** lo rodean
 4. Los **elementos de bloque** pasan por debajo (ignoran al float)
 
 ### Ejemplo clasico: imagen con texto
@@ -54,9 +54,9 @@ Cuando **todos los hijos** de un contenedor flotan, el contenedor **colapsa** (s
 .hijo { float: left; }
 \`\`\`
 
-### Solucion: clearfix
+### Solución: clearfix
 
-El patron \`clearfix\` soluciona este problema:
+El patrón \`clearfix\` soluciona este problema:
 
 \`\`\`css
 .contenedor::after {
@@ -74,7 +74,7 @@ O mas sencillo, usar \`overflow: hidden\` o \`overflow: auto\` en el padre:
 }
 \`\`\`
 
-> **Nota historica:** Antes de Flexbox y Grid, \`float\` era la tecnica principal para crear layouts de multiples columnas. Hoy se usa principalmente para envolver texto alrededor de imagenes.`,
+> **Nota historica:** Antes de Flexbox y Grid, \`float\` era la técnica principal para crear layouts de múltiples columnas. Hoy se usa principalmente para envolver texto alrededor de imágenes.`,
       codeExample: {
         html: `<div class="articulo">\n  <div class="img-placeholder">IMG</div>\n  <p>Este texto rodea a la imagen flotada a la izquierda. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>\n</div>`,
         css: `.articulo {\n  overflow: hidden;\n  padding: 15px;\n  background-color: #f9f9f9;\n  border: 1px solid #ddd;\n}\n.img-placeholder {\n  float: left;\n  width: 100px;\n  height: 100px;\n  margin: 0 15px 10px 0;\n  background-color: steelblue;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  border-radius: 4px;\n}`,
@@ -98,7 +98,7 @@ La propiedad \`clear\` indica que un elemento **no debe estar al lado de un elem
 .elemento { clear: none; }   /* Valor por defecto */
 \`\`\`
 
-### Uso comun: separar secciones
+### Uso común: separar secciones
 
 \`\`\`css
 .imagen { float: left; }
@@ -107,7 +107,7 @@ La propiedad \`clear\` indica que un elemento **no debe estar al lado de un elem
 }
 \`\`\`
 
-### Ejemplo practico: layout con floats
+### Ejemplo práctico: layout con floats
 
 \`\`\`css
 .columna-izq {
@@ -123,7 +123,7 @@ La propiedad \`clear\` indica que un elemento **no debe estar al lado de un elem
 }
 \`\`\`
 
-### El patron clearfix moderno
+### El patrón clearfix moderno
 
 Para contenedores con hijos flotados, el clearfix mas utilizado es:
 
@@ -135,9 +135,9 @@ Para contenedores con hijos flotados, el clearfix mas utilizado es:
 }
 \`\`\`
 
-Aplicas la clase \`clearfix\` al contenedor padre y automaticamente se expande para envolver a sus hijos flotados.
+Aplicas la clase \`clearfix\` al contenedor padre y automáticamente se expande para envolver a sus hijos flotados.
 
-> **En la practica moderna:** Para layouts de columnas, usa Flexbox o Grid en lugar de floats. Reserva \`float\` para su proposito original: envolver texto alrededor de elementos.`,
+> **En la práctica moderna:** Para layouts de columnas, usa Flexbox o Grid en lugar de floats. Reserva \`float\` para su propósito original: envolver texto alrededor de elementos.`,
       codeExample: {
         html: `<div class="layout clearfix">\n  <div class="col-izq">Columna izquierda (float: left)</div>\n  <div class="col-der">Columna derecha (float: right)</div>\n</div>\n<div class="footer">Footer (clear: both) - aparece debajo de los floats</div>`,
         css: `.layout {\n  background-color: #f0f0f0;\n  padding: 10px;\n}\n.clearfix::after {\n  content: "";\n  display: block;\n  clear: both;\n}\n.col-izq {\n  float: left;\n  width: 65%;\n  padding: 15px;\n  background-color: #d4edda;\n  box-sizing: border-box;\n}\n.col-der {\n  float: right;\n  width: 33%;\n  padding: 15px;\n  background-color: #cce5ff;\n  box-sizing: border-box;\n}\n.footer {\n  clear: both;\n  padding: 15px;\n  background-color: #333;\n  color: white;\n  text-align: center;\n  margin-top: 10px;\n}`,
@@ -155,18 +155,18 @@ La propiedad \`display\` es una de las mas importantes de CSS. Controla **como s
 ### Valores principales
 
 #### display: block
-El elemento ocupa **todo el ancho disponible** y empieza en una nueva linea:
+El elemento ocupa **todo el ancho disponible** y empieza en una nueva línea:
 
 \`\`\`css
 div, p, h1, section, article { display: block; } /* Por defecto */
 \`\`\`
 
 - Ocupa el 100% del ancho del padre
-- Comienza en nueva linea
+- Comienza en nueva línea
 - Acepta width, height, margin y padding en todas las direcciones
 
 #### display: inline
-El elemento ocupa **solo el espacio de su contenido** y no rompe la linea:
+El elemento ocupa **solo el espacio de su contenido** y no rompe la línea:
 
 \`\`\`css
 span, a, strong, em { display: inline; } /* Por defecto */
@@ -174,7 +174,7 @@ span, a, strong, em { display: inline; } /* Por defecto */
 
 - No acepta width ni height
 - margin y padding verticales no empujan a otros elementos
-- Se mantiene en la misma linea que el texto circundante
+- Se mantiene en la misma línea que el texto circundante
 
 #### display: inline-block
 Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **block** hacia adentro:
@@ -188,7 +188,7 @@ Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **blo
 }
 \`\`\`
 
-- Se mantiene en la misma linea que otros elementos
+- Se mantiene en la misma línea que otros elementos
 - **Si** acepta width, height, margin y padding
 - Ideal para botones, badges y chips
 
@@ -196,7 +196,7 @@ Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **blo
 
 | Caracteristica | block | inline | inline-block |
 |---------------|-------|--------|--------------|
-| Nueva linea | Si | No | No |
+| Nueva línea | Si | No | No |
 | Acepta width/height | Si | No | Si |
 | Acepta margin vertical | Si | No | Si |
 | Ocupa todo el ancho | Si | No | No |
@@ -214,7 +214,7 @@ Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **blo
       title: "display: none, flex y grid",
       content: `## display: none, flex y grid
 
-Ademas de block, inline e inline-block, existen otros valores de display muy importantes.
+Además de block, inline e inline-block, existen otros valores de display muy importantes.
 
 ### display: none
 
@@ -242,7 +242,7 @@ Oculta completamente el elemento. **No ocupa espacio** en el layout, como si no 
 
 ### display: flex
 
-Activa el modelo de layout **Flexbox** en el contenedor. Los hijos se distribuyen automaticamente:
+Activa el modelo de layout **Flexbox** en el contenedor. Los hijos se distribuyen automáticamente:
 
 \`\`\`css
 .contenedor {
@@ -271,7 +271,7 @@ Grid es ideal para layouts complejos con **filas y columnas simultaneamente**.
 
 ### display: inline-flex e inline-grid
 
-Son las versiones en linea de flex y grid. El contenedor se comporta como inline hacia afuera:
+Son las versiones en línea de flex y grid. El contenedor se comporta como inline hacia afuera:
 
 \`\`\`css
 .badge {
@@ -298,17 +298,17 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Para que fue disenada originalmente la propiedad float?",
+        "¿Para que fue diseñada originalmente la propiedad float?",
       options: [
-        { id: "a", text: "Para crear layouts de multiples columnas", isCorrect: false },
-        { id: "b", text: "Para envolver texto alrededor de imagenes", isCorrect: true },
-        { id: "c", text: "Para centrar elementos en la pagina", isCorrect: false },
+        { id: "a", text: "Para crear layouts de múltiples columnas", isCorrect: false },
+        { id: "b", text: "Para envolver texto alrededor de imágenes", isCorrect: true },
+        { id: "c", text: "Para centrar elementos en la página", isCorrect: false },
         { id: "d", text: "Para animar elementos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en como se ven las imagenes en una revista o periodico, con texto fluyendo alrededor.",
+      hint: "Piensa en como se ven las imágenes en una revista o periodico, con texto fluyendo alrededor.",
       explanation:
-        "Float fue disenado originalmente para envolver texto alrededor de imagenes, similar al efecto que vemos en revistas impresas. Aunque se uso mucho para layouts de columnas, hoy Flexbox y Grid son mejores opciones para eso.",
+        "Float fue diseñado originalmente para envolver texto alrededor de imágenes, similar al efecto que vemos en revistas impresas. Aunque se uso mucho para layouts de columnas, hoy Flexbox y Grid son mejores opciones para eso.",
     },
     {
       id: "13-ej-02",
@@ -362,7 +362,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       dropZones: [
         {
           id: "zone-block",
-          label: "Ocupa todo el ancho, empieza en nueva linea",
+          label: "Ocupa todo el ancho, empieza en nueva línea",
         },
         {
           id: "zone-inline",
@@ -370,7 +370,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
         },
         {
           id: "zone-inline-block",
-          label: "Se mantiene en linea pero acepta width/height",
+          label: "Se mantiene en línea pero acepta width/height",
         },
         {
           id: "zone-none",
@@ -388,7 +388,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       },
       hint: "Block es como un div, inline es como un span, inline-block combina ambos, y none oculta totalmente.",
       explanation:
-        "Block ocupa todo el ancho y empieza en nueva linea. Inline fluye con el texto y no acepta dimensiones. Inline-block combina ambos: fluye en linea pero acepta width/height. None oculta el elemento completamente.",
+        "Block ocupa todo el ancho y empieza en nueva línea. Inline fluye con el texto y no acepta dimensiones. Inline-block combina ambos: fluye en línea pero acepta width/height. None oculta el elemento completamente.",
     },
     {
       id: "13-ej-04",
@@ -397,7 +397,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 20,
       order: 4,
       prompt:
-        "¿Cual es la diferencia principal entre display: none y visibility: hidden?",
+        "¿Cuál es la diferencia principal entre display: none y visibility: hidden?",
       options: [
         { id: "a", text: "No hay diferencia, ambos ocultan el elemento", isCorrect: false },
         { id: "b", text: "display: none quita el espacio; visibility: hidden conserva el espacio", isCorrect: true },
@@ -432,7 +432,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       },
       hint: "La imagen necesita float: left y el contenedor necesita overflow: hidden para evitar el colapso del contenedor.",
       explanation:
-        "Float: left mueve la imagen a la izquierda y el texto fluye a su alrededor. Overflow: hidden en el contenedor padre es una tecnica para que el contenedor reconozca la altura del elemento flotado y no colapse.",
+        "Float: left mueve la imagen a la izquierda y el texto fluye a su alrededor. Overflow: hidden en el contenedor padre es una técnica para que el contenedor reconozca la altura del elemento flotado y no colapse.",
     },
     {
       id: "13-ej-06",
@@ -441,7 +441,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa el valor de display para que estos span acepten width y height pero se mantengan en la misma linea:",
+        "Completa el valor de display para que estos span acepten width y height pero se mantengan en la misma línea:",
       codeTemplate: {
         html: `<span class="chip">HTML</span>\n<span class="chip">CSS</span>\n<span class="chip">JS</span>`,
         cssPrefix: ".chip {\n  display: ",
@@ -449,9 +449,9 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
         blanks: ["inline-block"],
       },
       validation: { type: "exact", answer: "inline-block" },
-      hint: "Necesitas un display que permita dimensiones (como block) pero que no rompa la linea (como inline).",
+      hint: "Necesitas un display que permita dimensiones (como block) pero que no rompa la línea (como inline).",
       explanation:
-        "Display inline-block combina lo mejor de ambos mundos: los elementos se mantienen en la misma linea (como inline) pero aceptan width, height y margin/padding completos (como block).",
+        "Display inline-block combina lo mejor de ambos mundos: los elementos se mantienen en la misma línea (como inline) pero aceptan width, height y margin/padding completos (como block).",
     },
     {
       id: "13-ej-07",
@@ -460,7 +460,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea tres botones (clase 'btn') en la misma linea usando display: inline-block, con padding: 10px 25px, background-color: #007bff, color: white, border: none, border-radius: 4px, margin: 5px, font-size: 14px y cursor: pointer.",
+        "Crea tres botones (clase 'btn') en la misma línea usando display: inline-block, con padding: 10px 25px, background-color: #007bff, color: white, border: none, border-radius: 4px, margin: 5px, font-size: 14px y cursor: pointer.",
       codeTemplate: {
         html: `<button class="btn">Aceptar</button>\n<button class="btn">Cancelar</button>\n<button class="btn">Ayuda</button>`,
         cssPrefix: "",
@@ -474,9 +474,9 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa display: inline-block para que los botones se mantengan en la misma linea pero acepten padding y dimensiones.",
+      hint: "Usa display: inline-block para que los botones se mantengan en la misma línea pero acepten padding y dimensiones.",
       explanation:
-        "Display inline-block es perfecto para botones que deben estar en la misma linea. Cada boton acepta padding, border-radius y margin completos mientras se mantiene al lado de los otros botones.",
+        "Display inline-block es perfecto para botones que deben estar en la misma línea. Cada botón acepta padding, border-radius y margin completos mientras se mantiene al lado de los otros botones.",
     },
     {
       id: "13-ej-08",
@@ -485,7 +485,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 10,
       order: 8,
       prompt:
-        "¿Que propiedad se usa hoy en dia en lugar de float para crear layouts de columnas?",
+        "¿Qué propiedad se usa hoy en dia en lugar de float para crear layouts de columnas?",
       options: [
         { id: "a", text: "position: absolute", isCorrect: false },
         { id: "b", text: "display: inline", isCorrect: false },
@@ -493,9 +493,9 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
         { id: "d", text: "margin: auto", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Son las dos tecnicas modernas de layout que reemplazaron a float para crear columnas y distribuciones complejas.",
+      hint: "Son las dos técnicas modernas de layout que reemplazaron a float para crear columnas y distribuciones complejas.",
       explanation:
-        "Flexbox (display: flex) y CSS Grid (display: grid) son las tecnicas modernas para crear layouts. Flexbox es ideal para layouts unidimensionales (fila o columna) y Grid para bidimensionales (filas y columnas a la vez). Float debe reservarse para envolver texto alrededor de elementos.",
+        "Flexbox (display: flex) y CSS Grid (display: grid) son las técnicas modernas para crear layouts. Flexbox es ideal para layouts unidimensionales (fila o columna) y Grid para bidimensionales (filas y columnas a la vez). Float debe reservarse para envolver texto alrededor de elementos.",
     },
   ],
 };

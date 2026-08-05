@@ -30,7 +30,7 @@ Muestra u oculta contenido al hacer clic. **Cero JavaScript.**
 </details>
 \`\`\`
 
-- El \`<summary>\` es la parte siempre visible (el titulo que se clickea).
+- El \`<summary>\` es la parte siempre visible (el título que se clickea).
 - Todo lo demas dentro del \`<details>\` se muestra/oculta.
 - Agrega el atributo \`open\` para que aparezca **abierto por defecto**: \`<details open>\`.
 
@@ -44,7 +44,7 @@ Muestra u oculta contenido al hacer clic. **Cero JavaScript.**
 </dialog>
 \`\`\`
 
-> **Honestidad tecnica:** con el atributo \`open\` se muestra estatica. Para **abrirla y cerrarla** con
+> **Honestidad técnica:** con el atributo \`open\` se muestra estática. Para **abrirla y cerrarla** con
 > botones se usa JavaScript (\`dialog.showModal()\` y \`dialog.close()\`), que veras mas adelante. Hoy
 > aprendemos su **estructura**.`,
       codeExample: {
@@ -82,7 +82,7 @@ Para algo que **avanza** de 0 a un total: una descarga, una subida, el paso de u
 
 ### meter — una medida dentro de un rango
 
-Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disco, una puntuacion.
+Para una **medición fija** dentro de un rango conocido: bateria, espacio en disco, una puntuación.
 
 \`\`\`html
 <meter value="0.7" min="0" max="1"></meter>
@@ -121,7 +121,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       difficulty: 2,
       xpReward: 15,
       order: 1,
-      prompt: "Quieres mostrar el nivel de bateria de un dispositivo (una cantidad fija en un rango). ¿Que elemento usas?",
+      prompt: "Quieres mostrar el nivel de bateria de un dispositivo (una cantidad fija en un rango). ¿Qué elemento usas?",
       options: [
         { id: "a", text: "<meter> — es una medida dentro de un rango conocido", isCorrect: true },
         { id: "b", text: "<progress> — porque siempre se usa para barras", isCorrect: false },
@@ -131,7 +131,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       validation: { type: "exact", answer: "a" },
       hint: "progress = avanza hacia una meta; meter = una medida fija en un rango.",
       explanation:
-        "La bateria es una medicion dentro de un rango (0 a 100%), no un avance hacia una meta: por eso <meter>. <progress> es para cosas que progresan, como una descarga.",
+        "La bateria es una medición dentro de un rango (0 a 100%), no un avance hacia una meta: por eso <meter>. <progress> es para cosas que progresan, como una descarga.",
     },
     {
       id: "html17-ej-02",
@@ -140,15 +140,15 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       xpReward: 15,
       order: 2,
       prompt:
-        "Crea un acordeon con <details>: un <summary> que diga 'Horario de atencion' y dentro un <p> con el horario.",
+        "Crea un acordeon con <details>: un <summary> que diga 'Horario de atención' y dentro un <p> con el horario.",
       codeTemplate: { html: `<!-- Tu <details> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         type: "includes-ordered",
         answer: ["<details", "<summary", "</summary>", "<p>", "</p>", "</details>"],
       },
-      hint: "El <summary> va primero (es lo visible); el resto del contenido va despues, todo dentro de <details>.",
+      hint: "El <summary> va primero (es lo visible); el resto del contenido va después, todo dentro de <details>.",
       explanation:
-        "<details> envuelve todo; el <summary> es la parte clickeable siempre visible, y lo demas se muestra/oculta. Sin una linea de JavaScript.",
+        "<details> envuelve todo; el <summary> es la parte clickeable siempre visible, y lo demas se muestra/oculta. Sin una línea de JavaScript.",
     },
     {
       id: "html17-ej-03",
@@ -180,7 +180,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un <meter> que muestre una puntuacion de 8 en un rango de 0 a 10.",
+        "Crea un <meter> que muestre una puntuación de 8 en un rango de 0 a 10.",
       codeTemplate: { html: `<!-- Tu <meter> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -195,7 +195,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       },
       hint: "meter necesita value (8), min (0) y max (10).",
       explanation:
-        "<meter> representa una medida dentro de un rango conocido; aqui una puntuacion de 8 sobre 10.",
+        "<meter> representa una medida dentro de un rango conocido; aquí una puntuación de 8 sobre 10.",
     },
     {
       id: "html17-ej-05",
@@ -236,7 +236,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       },
       hint: "Escribe <dialog open> ... </dialog>, y dentro un <p> y un <button>.",
       explanation:
-        "Con el atributo open el <dialog> se ve estatico. Para abrirlo/cerrarlo con el boton se necesita JavaScript (showModal/close), que veras mas adelante.",
+        "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que veras mas adelante.",
     },
   ],
 };

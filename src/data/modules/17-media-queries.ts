@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const mediaQueriesModule: ModuleData = {
   slug: "media-queries",
-  title: "Media Queries y Diseno Responsivo",
+  title: "Media Queries y Diseño Responsivo",
   description:
     "Aprende a crear sitios web que se adaptan a cualquier dispositivo usando media queries, breakpoints y el enfoque mobile-first.",
   order: 17,
@@ -12,12 +12,12 @@ export const mediaQueriesModule: ModuleData = {
   lessons: [
     {
       id: "17-leccion-01",
-      title: "Introduccion a Media Queries",
-      content: `## Introduccion a Media Queries
+      title: "Introducción a Media Queries",
+      content: `## Introducción a Media Queries
 
-Las **media queries** permiten aplicar estilos CSS solo cuando se cumplen ciertas condiciones, como el ancho de la pantalla, la orientacion del dispositivo o la resolucion.
+Las **media queries** permiten aplicar estilos CSS solo cuando se cumplen ciertas condiciones, como el ancho de la pantalla, la orientación del dispositivo o la resolución.
 
-### Sintaxis basica
+### Sintaxis básica
 
 \`\`\`css
 @media (condicion) {
@@ -53,13 +53,13 @@ Puedes especificar el tipo de medio:
 @media all and (min-width: 768px) { /* Todos los medios */ }
 \`\`\`
 
-### Operadores logicos
+### Operadores lógicos
 
-| Operador | Descripcion | Ejemplo |
+| Operador | Descripción | Ejemplo |
 |----------|------------|---------|
 | \`and\` | Ambas condiciones deben cumplirse | \`(min-width: 768px) and (max-width: 1024px)\` |
-| \`or\` / \`,\` | Al menos una condicion | \`(max-width: 600px), (orientation: portrait)\` |
-| \`not\` | Niega la condicion | \`not (min-width: 768px)\` |
+| \`or\` / \`,\` | Al menos una condición | \`(max-width: 600px), (orientation: portrait)\` |
+| \`not\` | Niega la condición | \`not (min-width: 768px)\` |
 
 ### Ejemplo combinado
 
@@ -85,15 +85,15 @@ Puedes especificar el tipo de medio:
       title: "Breakpoints y enfoque Mobile-First",
       content: `## Breakpoints y enfoque Mobile-First
 
-### ¿Que son los breakpoints?
+### ¿Qué son los breakpoints?
 
-Los **breakpoints** son los puntos de ancho donde el diseno cambia para adaptarse mejor al dispositivo. Son los valores que usas en tus media queries.
+Los **breakpoints** son los puntos de ancho donde el diseño cambia para adaptarse mejor al dispositivo. Son los valores que usas en tus media queries.
 
 ### Breakpoints comunes
 
 | Nombre | Ancho | Dispositivo tipico |
 |--------|-------|-------------------|
-| sm | 640px | Moviles grandes |
+| sm | 640px | Móviles grandes |
 | md | 768px | Tablets |
 | lg | 1024px | Laptops |
 | xl | 1280px | Escritorio |
@@ -101,7 +101,7 @@ Los **breakpoints** son los puntos de ancho donde el diseno cambia para adaptars
 
 ### Enfoque Mobile-First
 
-La estrategia **mobile-first** consiste en escribir los estilos base para moviles y luego agregar complejidad para pantallas mas grandes con \`min-width\`:
+La estrategia **mobile-first** consiste en escribir los estilos base para móviles y luego agregar complejidad para pantallas mas grandes con \`min-width\`:
 
 \`\`\`css
 /* Base: movil (1 columna) */
@@ -153,12 +153,12 @@ Usa \`max-width\` para empezar desde escritorio y reducir:
 
 ### ¿Por que preferir Mobile-First?
 
-1. **Rendimiento**: Los moviles cargan solo los estilos basicos
+1. **Rendimiento**: Los móviles cargan solo los estilos básicos
 2. **Simplicidad**: Empiezas con lo mas simple y agregas complejidad
-3. **Progresivo**: Es mas facil agregar que quitar
-4. **Estandar**: Es la convencion de la industria (Tailwind, Bootstrap)
+3. **Progresivo**: Es mas fácil agregar que quitar
+4. **Estándar**: Es la convención de la industria (Tailwind, Bootstrap)
 
-> **Buena practica:** Siempre usa mobile-first (\`min-width\`) a menos que tengas una razon especifica para no hacerlo. Ordena tus media queries de menor a mayor.`,
+> **Buena práctica:** Siempre usa mobile-first (\`min-width\`) a menos que tengas una razón específica para no hacerlo. Ordena tus media queries de menor a mayor.`,
       codeExample: {
         html: `<div class="tarjetas">\n  <div class="tarjeta">Tarjeta 1</div>\n  <div class="tarjeta">Tarjeta 2</div>\n  <div class="tarjeta">Tarjeta 3</div>\n  <div class="tarjeta">Tarjeta 4</div>\n</div>`,
         css: `/* Mobile-first: base = 1 columna */\n.tarjetas {\n  display: grid;\n  grid-template-columns: 1fr;\n  gap: 12px;\n}\n\n.tarjeta {\n  background: #3498db;\n  color: white;\n  padding: 24px;\n  border-radius: 8px;\n  text-align: center;\n  font-weight: bold;\n}\n\n/* Tablet: 2 columnas */\n@media (min-width: 500px) {\n  .tarjetas {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n\n/* Desktop: 4 columnas */\n@media (min-width: 800px) {\n  .tarjetas {\n    grid-template-columns: repeat(4, 1fr);\n  }\n}`,
@@ -173,17 +173,17 @@ Usa \`max-width\` para empezar desde escritorio y reducir:
 
 ### Unidades relativas clave
 
-| Unidad | Relativa a | Uso comun |
+| Unidad | Relativa a | Uso común |
 |--------|-----------|-----------|
 | \`%\` | Elemento padre | Anchos flexibles |
-| \`vw\` | Ancho del viewport | Tipografia fluida, secciones full-width |
+| \`vw\` | Ancho del viewport | Tipografía fluida, secciones full-width |
 | \`vh\` | Alto del viewport | Secciones de pantalla completa |
 | \`rem\` | Font-size del root (html) | Espaciado consistente |
 | \`em\` | Font-size del elemento padre | Espaciado relativo al texto |
 
-### Tipografia fluida con clamp()
+### Tipografía fluida con clamp()
 
-La funcion \`clamp()\` define un valor con minimo, ideal y maximo:
+La función \`clamp()\` define un valor con mínimo, ideal y máximo:
 
 \`\`\`css
 h1 {
@@ -197,7 +197,7 @@ h1 {
 }
 \`\`\`
 
-### Patron: contenedor responsivo
+### Patrón: contenedor responsivo
 
 \`\`\`css
 .contenedor {
@@ -208,7 +208,7 @@ h1 {
 }
 \`\`\`
 
-### Patron: navegacion responsiva
+### Patrón: navegación responsiva
 
 \`\`\`css
 .nav {
@@ -226,7 +226,7 @@ h1 {
 }
 \`\`\`
 
-### Patron: ocultar/mostrar elementos
+### Patrón: ocultar/mostrar elementos
 
 \`\`\`css
 .menu-movil { display: block; }
@@ -238,7 +238,7 @@ h1 {
 }
 \`\`\`
 
-### Patron: imagenes responsivas
+### Patrón: imágenes responsivas
 
 \`\`\`css
 img {
@@ -247,7 +247,7 @@ img {
 }
 \`\`\`
 
-> **Consejo:** Combina unidades relativas con media queries para crear disenos verdaderamente fluidos que se adaptan a cualquier tamano de pantalla.`,
+> **Consejo:** Combina unidades relativas con media queries para crear diseños verdaderamente fluidos que se adaptan a cualquier tamaño de pantalla.`,
       codeExample: {
         html: `<div class="contenedor-responsivo">\n  <h1 class="titulo-fluido">Titulo Responsivo</h1>\n  <p class="texto">Este contenedor usa clamp() para el padding y la tipografia se adapta fluidamente al tamano de la pantalla.</p>\n  <div class="acciones">\n    <button class="btn">Accion 1</button>\n    <button class="btn">Accion 2</button>\n  </div>\n</div>`,
         css: `.contenedor-responsivo {\n  max-width: 800px;\n  margin: 0 auto;\n  padding: clamp(1rem, 3vw, 2.5rem);\n  background: #f8f9fa;\n  border-radius: 12px;\n}\n\n.titulo-fluido {\n  font-size: clamp(1.25rem, 4vw, 2.5rem);\n  color: #2c3e50;\n  margin-bottom: 1rem;\n}\n\n.texto {\n  font-size: clamp(0.875rem, 2vw, 1.125rem);\n  line-height: 1.6;\n  color: #555;\n}\n\n.acciones {\n  display: flex;\n  flex-direction: column;\n  gap: 8px;\n  margin-top: 1.5rem;\n}\n\n@media (min-width: 500px) {\n  .acciones {\n    flex-direction: row;\n  }\n}\n\n.btn {\n  padding: 10px 24px;\n  background: #3498db;\n  color: white;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-size: 1rem;\n}`,
@@ -441,7 +441,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que regla CSS se usa para aplicar estilos segun el tamano de la pantalla?",
+        "¿Qué regla CSS se usa para aplicar estilos según el tamaño de la pantalla?",
       options: [
         { id: "a", text: "@screen", isCorrect: false },
         { id: "b", text: "@responsive", isCorrect: false },
@@ -451,7 +451,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       validation: { type: "exact", answer: "c" },
       hint: "Es una regla que empieza con @ y se refiere al 'medio' o dispositivo.",
       explanation:
-        "La regla @media permite aplicar estilos condicionalmente segun las caracteristicas del dispositivo, como el ancho de la pantalla, la orientacion o la resolucion.",
+        "La regla @media permite aplicar estilos condicionalmente según las caracteristicas del dispositivo, como el ancho de la pantalla, la orientación o la resolución.",
     },
     {
       id: "17-ej-02",
@@ -468,9 +468,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         blanks: ["min-width"],
       },
       validation: { type: "exact", answer: "min-width" },
-      hint: "En mobile-first usamos un 'ancho minimo' para aplicar estilos desde cierto punto hacia arriba.",
+      hint: "En mobile-first usamos un 'ancho mínimo' para aplicar estilos desde cierto punto hacia arriba.",
       explanation:
-        "En el enfoque mobile-first se usa 'min-width' para aplicar estilos cuando la pantalla es de al menos X pixeles de ancho. Los estilos se 'activan' a partir de ese punto.",
+        "En el enfoque mobile-first se usa 'min-width' para aplicar estilos cuando la pantalla es de al menos X píxeles de ancho. Los estilos se 'activan' a partir de ese punto.",
     },
     {
       id: "17-ej-03",
@@ -479,7 +479,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 3,
       prompt:
-        "En un enfoque mobile-first, ¿cual es el orden correcto de las media queries?",
+        "En un enfoque mobile-first, ¿cuál es el orden correcto de las media queries?",
       options: [
         { id: "a", text: "De mayor a menor: 1280px, 1024px, 768px", isCorrect: false },
         { id: "b", text: "De menor a mayor: 640px, 768px, 1024px", isCorrect: true },
@@ -487,7 +487,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         { id: "d", text: "Solo se usa una media query", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Mobile-first empieza con los estilos base para movil y va agregando para pantallas mas grandes.",
+      hint: "Mobile-first empieza con los estilos base para móvil y va agregando para pantallas mas grandes.",
       explanation:
         "En mobile-first, las media queries con min-width deben ir de menor a mayor (640px, 768px, 1024px...) para que cada breakpoint sobreescriba al anterior correctamente.",
     },
@@ -498,7 +498,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada breakpoint comun al tipo de dispositivo que representa:",
+        "Arrastra cada breakpoint común al tipo de dispositivo que representa:",
       dragItems: [
         { id: "drag-1", content: "640px", correctZone: "zone-movil" },
         { id: "drag-2", content: "768px", correctZone: "zone-tablet" },
@@ -506,7 +506,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         { id: "drag-4", content: "1280px", correctZone: "zone-escritorio" },
       ],
       dropZones: [
-        { id: "zone-movil", label: "Moviles grandes (sm)" },
+        { id: "zone-movil", label: "Móviles grandes (sm)" },
         { id: "zone-tablet", label: "Tablets (md)" },
         { id: "zone-laptop", label: "Laptops (lg)" },
         { id: "zone-escritorio", label: "Escritorio (xl)" },
@@ -520,9 +520,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
           "drag-4": "zone-escritorio",
         },
       },
-      hint: "Los breakpoints van de menor a mayor: 640 para moviles grandes, 768 para tablets, 1024 para laptops y 1280 para escritorio.",
+      hint: "Los breakpoints van de menor a mayor: 640 para móviles grandes, 768 para tablets, 1024 para laptops y 1280 para escritorio.",
       explanation:
-        "Estos son los breakpoints estandar usados por frameworks como Tailwind CSS: sm=640px (moviles grandes), md=768px (tablets), lg=1024px (laptops), xl=1280px (escritorio).",
+        "Estos son los breakpoints estándar usados por frameworks como Tailwind CSS: sm=640px (móviles grandes), md=768px (tablets), lg=1024px (laptops), xl=1280px (escritorio).",
     },
     {
       id: "17-ej-05",
@@ -547,7 +547,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       hint: "Primero escribe los estilos base de .caja, luego una @media con min-width: 600px que cambie el background-color.",
       explanation:
-        "Se definen los estilos base (movil) fuera de la media query. Luego con @media (min-width: 600px) se sobreescribe el background-color para pantallas de 600px o mas.",
+        "Se definen los estilos base (móvil) fuera de la media query. Luego con @media (min-width: 600px) se sobreescribe el background-color para pantallas de 600px o mas.",
     },
     {
       id: "17-ej-06",
@@ -556,7 +556,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la funcion CSS para crear un font-size fluido con un minimo de 1rem, un valor ideal de 3vw, y un maximo de 2rem:",
+        "Completa la función CSS para crear un font-size fluido con un mínimo de 1rem, un valor ideal de 3vw, y un máximo de 2rem:",
       codeTemplate: {
         html: `<h1 class="titulo">Titulo fluido</h1>`,
         cssPrefix: ".titulo {\n  font-size: ",
@@ -564,9 +564,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         blanks: ["clamp"],
       },
       validation: { type: "exact", answer: "clamp" },
-      hint: "Es una funcion CSS que recibe tres valores: minimo, preferido y maximo. Su nombre significa 'sujetar'.",
+      hint: "Es una función CSS que recibe tres valores: mínimo, preferido y máximo. Su nombre significa 'sujetar'.",
       explanation:
-        "La funcion clamp() acepta tres parametros: un minimo, un valor preferido y un maximo. El navegador usa el valor preferido pero nunca baja del minimo ni sube del maximo. Ideal para tipografia responsiva.",
+        "La función clamp() acepta tres parámetros: un mínimo, un valor preferido y un máximo. El navegador usa el valor preferido pero nunca baja del mínimo ni sube del máximo. Ideal para tipografía responsiva.",
     },
     {
       id: "17-ej-07",
@@ -591,7 +591,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       hint: "Empieza con estilos base de 1 columna, luego agrega media queries para 500px (2 columnas) y 800px (3 columnas).",
       explanation:
-        "El patron mobile-first define la base con 1 columna (grid-template-columns: 1fr), luego agrega columnas en breakpoints mayores: 2 columnas a 500px y 3 a 800px, usando @media (min-width).",
+        "El patrón mobile-first define la base con 1 columna (grid-template-columns: 1fr), luego agrega columnas en breakpoints mayores: 2 columnas a 500px y 3 a 800px, usando @media (min-width).",
     },
     {
       id: "17-ej-08",
@@ -600,17 +600,17 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Que hace la declaracion 'font-size: clamp(1rem, 2.5vw, 2rem)'?",
+        "¿Qué hace la declaración 'font-size: clamp(1rem, 2.5vw, 2rem)'?",
       options: [
-        { id: "a", text: "Fija el tamano en 2.5vw siempre", isCorrect: false },
-        { id: "b", text: "Alterna entre 1rem y 2rem segun el viewport", isCorrect: false },
+        { id: "a", text: "Fija el tamaño en 2.5vw siempre", isCorrect: false },
+        { id: "b", text: "Alterna entre 1rem y 2rem según el viewport", isCorrect: false },
         { id: "c", text: "Usa 2.5vw pero nunca baja de 1rem ni sube de 2rem", isCorrect: true },
-        { id: "d", text: "Aplica 1rem en movil y 2rem en escritorio", isCorrect: false },
+        { id: "d", text: "Aplica 1rem en móvil y 2rem en escritorio", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "clamp() toma tres valores: minimo, preferido y maximo. El navegador usa el del medio respetando los limites.",
+      hint: "clamp() toma tres valores: mínimo, preferido y máximo. El navegador usa el del medio respetando los límites.",
       explanation:
-        "clamp(1rem, 2.5vw, 2rem) indica: usa 2.5vw como tamano ideal, pero nunca menor a 1rem ni mayor a 2rem. Esto crea una tipografia fluida con limites seguros.",
+        "clamp(1rem, 2.5vw, 2rem) indica: usa 2.5vw como tamaño ideal, pero nunca menor a 1rem ni mayor a 2rem. Esto crea una tipografía fluida con límites seguros.",
     },
     {
       id: "17-ej-09",
@@ -619,7 +619,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 9,
       prompt:
-        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. ¿Que pasa?",
+        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. ¿Qué pasa?",
       options: [
         {
           id: "a",
@@ -637,7 +637,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       validation: { type: "exact", answer: "b" },
       hint: "@container consulta a un ancestro que se haya declarado consultable. Si nadie se declaro, no hay a quien preguntarle.",
       explanation:
-        "Hacen falta los dos pasos: declarar container-type en un ancestro y despues consultarlo. Sin el primero la regla se ignora en silencio, sin error, que es lo que la hace difícil de depurar. Y ojo: el contenedor tiene que ser un ancestro, un elemento no puede consultarse a si mismo.",
+        "Hacen falta los dos pasos: declarar container-type en un ancestro y después consultarlo. Sin el primero la regla se ignora en silencio, sin error, que es lo que la hace difícil de depurar. Y ojo: el contenedor tiene que ser un ancestro, un elemento no puede consultarse a si mismo.",
     },
     {
       id: "17-ej-10",
@@ -660,7 +660,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Primero el ancestro se declara consultable con container-type. Despues la consulta @container va por fuera, envolviendo la regla de la tarjeta.",
+      hint: "Primero el ancestro se declara consultable con container-type. Después la consulta @container va por fuera, envolviendo la regla de la tarjeta.",
       explanation:
         "La columna se declara contenedor con container-type: inline-size, y la tarjeta arranca apilada. Dentro del @container, cuando la columna mide 400px o mas, pasa a fila. La misma tarjeta se ve distinta en una barra lateral y en el contenido principal, en la misma pantalla, porque pregunta por su espacio y no por el viewport.",
     },
@@ -671,7 +671,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 25,
       order: 11,
       prompt:
-        "Usa subgrid con red de contencion. Dentro de un @supports (grid-template-rows: subgrid), a la clase 'tarjeta' dale grid-row: span 3 y grid-template-rows: subgrid. Y dentro de un @supports not (grid-template-rows: subgrid), dale min-height: 180px.",
+        "Usa subgrid con red de contención. Dentro de un @supports (grid-template-rows: subgrid), a la clase 'tarjeta' dale grid-row: span 3 y grid-template-rows: subgrid. Y dentro de un @supports not (grid-template-rows: subgrid), dale min-height: 180px.",
       codeTemplate: {
         html: `<div class="galeria">\n  <article class="tarjeta"><h4>Una</h4><p>Texto.</p><button>Ver</button></article>\n  <article class="tarjeta"><h4>Un titulo de dos lineas</h4><p>Texto.</p><button>Ver</button></article>\n</div>`,
         cssPrefix: ".galeria {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n.tarjeta {\n  display: grid;\n  gap: 8px;\n}\n\n",
@@ -685,7 +685,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Son dos bloques @supports separados: uno con la condicion y otro con not. Cada uno lleva adentro la regla .tarjeta.",
+      hint: "Son dos bloques @supports separados: uno con la condición y otro con not. Cada uno lleva adentro la regla .tarjeta.",
       explanation:
         "El primer bloque aplica subgrid solo si el navegador lo entiende, y como necesita dos declaraciones juntas para tener sentido, envolverlas es lo correcto. El segundo da la alternativa para quien no lo soporta. ¿Preguntar 'entendes esto?' en lugar de 'que navegador sos' es lo que no envejece.",
     },

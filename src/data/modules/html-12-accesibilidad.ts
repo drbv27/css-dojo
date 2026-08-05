@@ -4,7 +4,7 @@ export const htmlAccesibilidadModule: ModuleData = {
   slug: "html-accesibilidad",
   title: "Accesibilidad en HTML",
   description:
-    "Aprende a crear paginas web accesibles usando roles ARIA, texto alternativo, navegacion por teclado y buenas practicas de accesibilidad.",
+    "Aprende a crear páginas web accesibles usando roles ARIA, texto alternativo, navegación por teclado y buenas prácticas de accesibilidad.",
   order: 12,
   category: "html-intermediate",
   icon: "eye",
@@ -19,22 +19,22 @@ La **accesibilidad web** (a11y) significa crear sitios que todas las personas pu
 
 ### Datos importantes
 
-- Mas del **15% de la poblacion mundial** tiene alguna discapacidad
+- Mas del **15% de la población mundial** tiene alguna discapacidad
 - En muchos paises, la accesibilidad web es un **requisito legal**
-- Un sitio accesible tambien es mejor para **todos** los usuarios
+- Un sitio accesible también es mejor para **todos** los usuarios
 
 ### Los 4 principios WCAG
 
 Las **Pautas de Accesibilidad para el Contenido Web** (WCAG) se basan en:
 
-1. **Perceptible:** La informacion debe poder percibirse (no solo visual)
+1. **Perceptible:** La información debe poder percibirse (no solo visual)
 2. **Operable:** La interfaz debe poder operarse (teclado, no solo raton)
-3. **Comprensible:** El contenido debe ser facil de entender
+3. **Comprensible:** El contenido debe ser fácil de entender
 4. **Robusto:** Debe funcionar con diferentes tecnologias asistivas
 
-### HTML semantico = base de la accesibilidad
+### HTML semántico = base de la accesibilidad
 
-Usar etiquetas semanticas es el **primer paso** hacia un sitio accesible. Los lectores de pantalla dependen de la estructura HTML para navegar.
+Usar etiquetas semánticas es el **primer paso** hacia un sitio accesible. Los lectores de pantalla dependen de la estructura HTML para navegar.
 
 > **Recuerda:** La accesibilidad no es un extra, es una parte fundamental del desarrollo web.`,
       codeExample: {
@@ -66,34 +66,34 @@ button:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       title: "Roles y atributos ARIA",
       content: `## Roles y atributos ARIA
 
-**ARIA** (Accessible Rich Internet Applications) es un conjunto de atributos que mejoran la accesibilidad cuando el HTML semantico no es suficiente.
+**ARIA** (Accessible Rich Internet Applications) es un conjunto de atributos que mejoran la accesibilidad cuando el HTML semántico no es suficiente.
 
 ### Regla de oro de ARIA
 
-> No uses ARIA si puedes usar HTML semantico. Un \`<button>\` es mejor que \`<div role="button">\`.
+> No uses ARIA si puedes usar HTML semántico. Un \`<button>\` es mejor que \`<div role="button">\`.
 
 ### Roles ARIA comunes
 
 | Rol | Uso |
 |-----|-----|
-| \`role="button"\` | Indica que un elemento actua como boton |
-| \`role="navigation"\` | Zona de navegacion |
+| \`role="button"\` | Indica que un elemento actua como botón |
+| \`role="navigation"\` | Zona de navegación |
 | \`role="alert"\` | Mensaje importante que se anuncia inmediatamente |
 | \`role="dialog"\` | Ventana de dialogo o modal |
 | \`role="tab"\` / \`role="tabpanel"\` | Interfaz de pestanas |
 
 ### Atributos ARIA esenciales
 
-| Atributo | Funcion |
+| Atributo | Función |
 |----------|---------|
 | \`aria-label\` | Etiqueta accesible (cuando no hay texto visible) |
 | \`aria-hidden="true"\` | Oculta el elemento de lectores de pantalla |
-| \`aria-describedby\` | Referencia a un elemento con descripcion adicional |
+| \`aria-describedby\` | Referencia a un elemento con descripción adicional |
 | \`aria-expanded\` | Indica si un elemento desplegable esta abierto |
-| \`aria-live\` | Anuncia cambios dinamicos (\`polite\` o \`assertive\`) |
+| \`aria-live\` | Anuncia cambios dinámicos (\`polite\` o \`assertive\`) |
 | \`aria-required\` | Indica que un campo es obligatorio |
 
-### Ejemplo practico
+### Ejemplo práctico
 
 \`\`\`html
 <button aria-label="Cerrar menu" aria-expanded="false">
@@ -144,12 +144,12 @@ input:focus { outline: 3px solid #6c5ce7; outline-offset: 2px; }`,
 
 ### Texto alternativo (alt)
 
-El atributo \`alt\` en imagenes es **obligatorio** para la accesibilidad.
+El atributo \`alt\` en imágenes es **obligatorio** para la accesibilidad.
 
-**Buenas practicas:**
+**Buenas prácticas:**
 - Describe lo que muestra la imagen, no "imagen de..."
 - Si la imagen es decorativa, usa \`alt=""\` (vacio, no omitido)
-- Se especifico: "Gato naranja durmiendo en un sofa" es mejor que "Gato"
+- Se específico: "Gato naranja durmiendo en un sofa" es mejor que "Gato"
 
 \`\`\`html
 <!-- Informativa -->
@@ -172,13 +172,13 @@ Un enlace oculto que permite a usuarios de teclado **saltar al contenido princip
 ### Gestion del foco
 
 - Todos los elementos interactivos deben ser **enfocables con Tab**
-- El **orden de foco** debe ser logico (izquierda a derecha, arriba a abajo)
+- El **orden de foco** debe ser lógico (izquierda a derecha, arriba a abajo)
 - Nunca uses \`outline: none\` sin una alternativa visual
 - Usa \`:focus-visible\` para mostrar indicadores de foco solo con teclado
 
 ### Contraste de colores
 
-El texto debe tener un **contraste minimo de 4.5:1** con el fondo (WCAG AA). Herramientas como "WebAIM Contrast Checker" ayudan a verificar.`,
+El texto debe tener un **contraste mínimo de 4.5:1** con el fondo (WCAG AA). Herramientas como "WebAIM Contrast Checker" ayudan a verificar.`,
       codeExample: {
         html: `<!-- Skip navigation -->
 <a href="#contenido" class="skip-link">Ir al contenido principal</a>
@@ -242,7 +242,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que significan las siglas ARIA en accesibilidad web?",
+      prompt: "¿Qué significan las siglas ARIA en accesibilidad web?",
       options: [
         { id: "a", text: "Advanced Rendering Interface for Applications", isCorrect: false },
         { id: "b", text: "Accessible Rich Internet Applications", isCorrect: true },
@@ -252,7 +252,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       validation: { type: "exact", answer: "b" },
       hint: "Se enfoca en hacer aplicaciones de internet accesibles.",
       explanation:
-        "ARIA significa Accessible Rich Internet Applications. Son atributos que mejoran la accesibilidad cuando el HTML semantico no es suficiente.",
+        "ARIA significa Accessible Rich Internet Applications. Son atributos que mejoran la accesibilidad cuando el HTML semántico no es suficiente.",
     },
     {
       id: "html12-ej-02",
@@ -260,7 +260,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que atributo ARIA se usa para dar una etiqueta accesible a un boton con solo un icono?",
+      prompt: "¿Qué atributo ARIA se usa para dar una etiqueta accesible a un botón con solo un icono?",
       options: [
         { id: "a", text: "aria-text", isCorrect: false },
         { id: "b", text: "aria-name", isCorrect: false },
@@ -288,7 +288,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       validation: { type: "exact", answer: "aria-hidden" },
       hint: "Este atributo ARIA oculta elementos de la tecnologia asistiva.",
       explanation:
-        'aria-hidden="true" oculta un elemento de los lectores de pantalla. Es util para iconos decorativos que no aportan informacion.',
+        'aria-hidden="true" oculta un elemento de los lectores de pantalla. Es útil para iconos decorativos que no aportan información.',
     },
     {
       id: "html12-ej-04",
@@ -296,17 +296,17 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Cual es la regla de oro de ARIA?",
+      prompt: "¿Cuál es la regla de oro de ARIA?",
       options: [
-        { id: "a", text: "Siempre usar el maximo de atributos ARIA posible", isCorrect: false },
+        { id: "a", text: "Siempre usar el máximo de atributos ARIA posible", isCorrect: false },
         { id: "b", text: "ARIA solo funciona en formularios", isCorrect: false },
-        { id: "c", text: "No usar ARIA si puedes usar HTML semantico nativo", isCorrect: true },
+        { id: "c", text: "No usar ARIA si puedes usar HTML semántico nativo", isCorrect: true },
         { id: "d", text: "Cada elemento debe tener al menos un atributo ARIA", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en que es mejor: un boton real o un div con role='button'.",
+      hint: "Piensa en que es mejor: un botón real o un div con role='button'.",
       explanation:
-        'La regla de oro es preferir HTML semantico sobre ARIA. Un <button> nativo ya tiene toda la accesibilidad integrada, mientras que <div role="button"> requiere implementar teclado y foco manualmente.',
+        'La regla de oro es preferir HTML semántico sobre ARIA. Un <button> nativo ya tiene toda la accesibilidad integrada, mientras que <div role="button"> requiere implementar teclado y foco manualmente.',
     },
     {
       id: "html12-ej-05",
@@ -314,7 +314,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada practica de texto alt como buena o mala:",
+      prompt: "Clasifica cada práctica de texto alt como buena o mala:",
       dragItems: [
         { id: "drag-1", content: 'alt="Gato naranja durmiendo en un sofa azul"', correctZone: "zone-buena" },
         { id: "drag-2", content: 'alt="imagen"', correctZone: "zone-mala" },
@@ -322,8 +322,8 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
         { id: "drag-4", content: "Omitir el atributo alt completamente", correctZone: "zone-mala" },
       ],
       dropZones: [
-        { id: "zone-buena", label: "Buena practica" },
-        { id: "zone-mala", label: "Mala practica" },
+        { id: "zone-buena", label: "Buena práctica" },
+        { id: "zone-mala", label: "Mala práctica" },
       ],
       validation: {
         type: "exact",
@@ -334,9 +334,9 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
           "drag-4": "zone-mala",
         },
       },
-      hint: "El alt debe describir el contenido de la imagen de forma util.",
+      hint: "El alt debe describir el contenido de la imagen de forma útil.",
       explanation:
-        'Un buen alt describe especificamente la imagen. Para imagenes decorativas se usa alt="" vacio. Nunca se debe omitir el atributo ni usar textos genericos como "imagen".',
+        'Un buen alt describe especificamente la imagen. Para imágenes decorativas se usa alt="" vacio. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
     },
     {
       id: "html12-ej-06",
@@ -344,15 +344,15 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Que es un 'skip navigation link'?",
+      prompt: "¿Qué es un 'skip navigation link'?",
       options: [
         { id: "a", text: "Un enlace para saltar animaciones CSS", isCorrect: false },
         { id: "b", text: "Un enlace oculto que permite saltar al contenido principal", isCorrect: true },
-        { id: "c", text: "Un boton para desactivar el menu de navegacion", isCorrect: false },
-        { id: "d", text: "Un atributo ARIA para ignorar la navegacion", isCorrect: false },
+        { id: "c", text: "Un botón para desactivar el menu de navegación", isCorrect: false },
+        { id: "d", text: "Un atributo ARIA para ignorar la navegación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es util para usuarios que navegan con teclado.",
+      hint: "Es útil para usuarios que navegan con teclado.",
       explanation:
         "Un skip navigation link es un enlace (generalmente oculto visualmente) que aparece al presionar Tab y permite a usuarios de teclado saltar directamente al contenido principal, sin tener que recorrer todo el menu.",
     },
@@ -362,7 +362,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Cual es el ratio minimo de contraste recomendado por WCAG AA para texto normal?",
+      prompt: "¿Cuál es el ratio mínimo de contraste recomendado por WCAG AA para texto normal?",
       options: [
         { id: "a", text: "2:1", isCorrect: false },
         { id: "b", text: "3:1", isCorrect: false },
@@ -372,7 +372,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       validation: { type: "exact", answer: "c" },
       hint: "Es mayor que 4 pero menor que 5.",
       explanation:
-        "WCAG AA requiere un contraste minimo de 4.5:1 para texto normal y 3:1 para texto grande. El nivel AAA requiere 7:1 para texto normal.",
+        "WCAG AA requiere un contraste mínimo de 4.5:1 para texto normal y 3:1 para texto grande. El nivel AAA requiere 7:1 para texto normal.",
     },
     {
       id: "html12-ej-08",
@@ -381,7 +381,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       xpReward: 30,
       order: 8,
       prompt:
-        "Haz accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al boton de icono, y conecta el label con el input usando for e id.",
+        "Haz accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al botón de icono, y conecta el label con el input usando for e id.",
       codeTemplate: {
         html: `<img src="logo.png">\n<button>🔍</button>\n<label>Correo</label>\n<input type="email" id="correo">`,
         cssPrefix: "",
@@ -391,9 +391,9 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
         type: "includes-ordered",
         answer: ["<img", "alt=", "<button", "aria-label=", "<label", 'for="correo"', "<input", 'id="correo"'],
       },
-      hint: 'La imagen necesita alt="..."; el boton un aria-label="..."; el label un for="correo" que coincida con el id del input.',
+      hint: 'La imagen necesita alt="..."; el botón un aria-label="..."; el label un for="correo" que coincida con el id del input.',
       explanation:
-        "Sin alt la imagen es invisible para lectores de pantalla; el boton de solo-icono necesita aria-label; y el label debe asociarse al input con for/id para que al tocarlo enfoque el campo.",
+        "Sin alt la imagen es invisible para lectores de pantalla; el botón de solo-icono necesita aria-label; y el label debe asociarse al input con for/id para que al tocarlo enfoque el campo.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const jsCondicionalesModule: ModuleData = {
   slug: "js-condicionales",
   title: "Condicionales",
   description:
-    "Aprende a tomar decisiones en tu codigo con if, else, else if, switch y el operador ternario.",
+    "Aprende a tomar decisiones en tu código con if, else, else if, switch y el operador ternario.",
   order: 105,
   category: "js-fundamentals",
   icon: "GitBranch",
@@ -15,7 +15,7 @@ export const jsCondicionalesModule: ModuleData = {
       title: "if, else if y else",
       content: `## Condicionales: if / else
 
-Las estructuras condicionales permiten ejecutar codigo **solo si se cumple una condicion**.
+Las estructuras condicionales permiten ejecutar código **solo si se cumple una condición**.
 
 ### if
 \`\`\`javascript
@@ -46,7 +46,7 @@ if (nota >= 90) {
 }
 \`\`\`
 
-> **Importante:** La condicion se evalua como booleano. Recuerda los valores falsy y truthy.`,
+> **Importante:** La condición se evalua como booleano. Recuerda los valores falsy y truthy.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -73,7 +73,7 @@ document.getElementById("resultado").textContent = "Nota: " + nota + "\\nCalific
       title: "Operador ternario y switch",
       content: `## Operador ternario
 
-Es una forma compacta de if/else en una sola linea:
+Es una forma compacta de if/else en una sola línea:
 
 \`\`\`javascript
 const resultado = condicion ? valorSiTrue : valorSiFalse;
@@ -87,7 +87,7 @@ const acceso = edad >= 18 ? "Permitido" : "Denegado";
 
 ## Switch
 
-Ideal cuando comparas una variable contra **multiples valores exactos**:
+Ideal cuando comparas una variable contra **múltiples valores exactos**:
 
 \`\`\`javascript
 switch (dia) {
@@ -144,7 +144,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Condiciones compuestas",
       content: `## Condiciones compuestas
 
-Puedes combinar multiples condiciones usando operadores logicos:
+Puedes combinar múltiples condiciones usando operadores lógicos:
 
 ### AND (&&) — Ambas deben ser verdaderas
 \`\`\`javascript
@@ -160,14 +160,14 @@ if (esEstudiante || esMayor65) {
 }
 \`\`\`
 
-### Negacion (!)
+### Negación (!)
 \`\`\`javascript
 if (!estaLloviendo) {
   // entra si NO esta lloviendo
 }
 \`\`\`
 
-### Anidacion de condicionales
+### Anidación de condicionales
 
 Puedes poner un if dentro de otro, pero no abuses:
 
@@ -220,7 +220,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que se ejecuta si la condicion de un if es false y hay un bloque else?",
+      prompt: "¿Qué se ejecuta si la condición de un if es false y hay un bloque else?",
       options: [
         { id: "a", text: "El bloque if", isCorrect: false },
         { id: "b", text: "El bloque else", isCorrect: true },
@@ -228,8 +228,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Ninguno", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "else se ejecuta cuando la condicion NO se cumple.",
-      explanation: "Si la condicion es false, se salta el bloque if y se ejecuta el bloque else.",
+      hint: "else se ejecuta cuando la condición NO se cumple.",
+      explanation: "Si la condición es false, se salta el bloque if y se ejecuta el bloque else.",
     },
     {
       id: "js05-ej-02",
@@ -237,7 +237,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: '¿Cual es el resultado de: 10 > 5 ? ¿"mayor" : "menor"?',
+      prompt: '¿Cuál es el resultado de: 10 > 5 ? ¿"mayor" : "menor"?',
       options: [
         { id: "a", text: '"mayor"', isCorrect: true },
         { id: "b", text: '"menor"', isCorrect: false },
@@ -245,7 +245,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "10 > 5 es true, asi que se devuelve el valor antes de los dos puntos.",
+      hint: "10 > 5 es true, así que se devuelve el valor antes de los dos puntos.",
       explanation:
         'Como 10 > 5 es true, el operador ternario devuelve "mayor" (el valor antes de :).',
     },
@@ -255,7 +255,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la estructura condicional para manejar el caso en que la condicion sea falsa:",
+      prompt: "Completa la estructura condicional para manejar el caso en que la condición sea falsa:",
       codeTemplate: {
         html: "",
         cssPrefix: 'if (edad >= 18) {\n  acceso = "Si";\n} ',
@@ -264,7 +264,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       },
       validation: { type: "exact", answer: "else" },
       hint: "La palabra clave para el caso contrario del if...",
-      explanation: "else define el bloque que se ejecuta cuando la condicion del if es false.",
+      explanation: "else define el bloque que se ejecuta cuando la condición del if es false.",
     },
     {
       id: "js05-ej-04",
@@ -280,9 +280,9 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Salta al default", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Sin break, la ejecucion 'cae' al siguiente case.",
+      hint: "Sin break, la ejecución 'cae' al siguiente case.",
       explanation:
-        "Sin break, JavaScript ejecuta el codigo del case actual y continua con los siguientes cases (fall-through) hasta encontrar un break o el final del switch.",
+        "Sin break, JavaScript ejecuta el código del case actual y continua con los siguientes cases (fall-through) hasta encontrar un break o el final del switch.",
     },
     {
       id: "js05-ej-05",
@@ -290,7 +290,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Cual es la forma correcta de verificar si una variable x esta entre 10 y 20 (inclusive)?",
+      prompt: "¿Cuál es la forma correcta de verificar si una variable x esta entre 10 y 20 (inclusive)?",
       options: [
         { id: "a", text: "if (10 <= x <= 20)", isCorrect: false },
         { id: "b", text: "if (x >= 10 && x <= 20)", isCorrect: true },
@@ -300,7 +300,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "b" },
       hint: "Necesitas que ambas condiciones sean verdaderas al mismo tiempo.",
       explanation:
-        "Se usa && porque x debe cumplir AMBAS condiciones: ser >= 10 Y <= 20. Con || cualquier numero seria valido.",
+        "Se usa && porque x debe cumplir AMBAS condiciones: ser >= 10 Y <= 20. Con || cualquier número seria valido.",
     },
     {
       id: "js05-ej-06",
@@ -315,8 +315,8 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "drag-3", content: "else", correctZone: "zone-3" },
       ],
       dropZones: [
-        { id: "zone-1", label: "Primera condicion" },
-        { id: "zone-2", label: "Segunda condicion" },
+        { id: "zone-1", label: "Primera condición" },
+        { id: "zone-2", label: "Segunda condición" },
         { id: "zone-3", label: "Caso por defecto" },
       ],
       validation: {
@@ -329,7 +329,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       },
       hint: "Primero if, luego else if, y al final else.",
       explanation:
-        "La estructura correcta es: if (primera condicion) -> else if (segunda condicion) -> else (caso por defecto).",
+        "La estructura correcta es: if (primera condición) -> else if (segunda condición) -> else (caso por defecto).",
     },
   ],
 };

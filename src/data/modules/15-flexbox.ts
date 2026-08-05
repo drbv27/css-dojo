@@ -12,8 +12,8 @@ export const flexboxModule: ModuleData = {
   lessons: [
     {
       id: "15-leccion-01",
-      title: "Introduccion a Flexbox",
-      content: `## Introduccion a Flexbox
+      title: "Introducción a Flexbox",
+      content: `## Introducción a Flexbox
 
 Flexbox (Flexible Box Layout) es un sistema de layout **unidimensional** que facilita distribuir, alinear y organizar elementos dentro de un contenedor.
 
@@ -33,21 +33,21 @@ Esto convierte a todos los **hijos directos** en "flex items" (elementos flex).
 
 - **Flex container**: el elemento padre con \`display: flex\`
 - **Flex items**: los hijos directos del contenedor
-- **Main axis** (eje principal): la direccion principal de distribucion (por defecto, horizontal)
+- **Main axis** (eje principal): la dirección principal de distribución (por defecto, horizontal)
 - **Cross axis** (eje cruzado): perpendicular al eje principal (por defecto, vertical)
 
-### ¿Que cambia al activar Flexbox?
+### ¿Qué cambia al activar Flexbox?
 
 Sin Flexbox, los hijos se apilan verticalmente (como bloques). Con Flexbox:
 
 1. Los hijos se colocan **en fila** (horizontal por defecto)
 2. Los hijos se **ajustan al contenido** (no ocupan todo el ancho)
 3. Los hijos tienen la **misma altura** (se estiran en el eje cruzado)
-4. No hay colapso de margenes entre flex items
+4. No hay colapso de márgenes entre flex items
 
 ### flex-direction
 
-Define la direccion del **eje principal**:
+Define la dirección del **eje principal**:
 
 \`\`\`css
 .contenedor {
@@ -66,7 +66,7 @@ Define la direccion del **eje principal**:
 .en-linea { display: inline-flex; } /* El contenedor es inline */
 \`\`\`
 
-> **Clave:** Flexbox trabaja en **una sola dimension** a la vez: fila O columna. Si necesitas filas Y columnas simultaneamente, considera CSS Grid.`,
+> **Clave:** Flexbox trabaja en **una sola dimensión** a la vez: fila O columna. Si necesitas filas Y columnas simultaneamente, considera CSS Grid.`,
       codeExample: {
         html: `<div class="flex-row">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>\n<h4>flex-direction: column</h4>\n<div class="flex-col">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
         css: `.flex-row {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  margin-bottom: 15px;\n}\n.flex-col {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.item {\n  background-color: steelblue;\n  color: white;\n  padding: 15px 25px;\n  border-radius: 6px;\n  font-weight: bold;\n  font-size: 18px;\n  text-align: center;\n}`,
@@ -76,10 +76,10 @@ Define la direccion del **eje principal**:
     },
     {
       id: "15-leccion-02",
-      title: "Alineacion: justify-content y align-items",
-      content: `## Alineacion: justify-content y align-items
+      title: "Alineación: justify-content y align-items",
+      content: `## Alineación: justify-content y align-items
 
-Flexbox ofrece un control poderoso sobre la alineacion de los elementos, tanto en el eje principal como en el cruzado.
+Flexbox ofrece un control poderoso sobre la alineación de los elementos, tanto en el eje principal como en el cruzado.
 
 ### justify-content (eje principal)
 
@@ -99,13 +99,13 @@ Controla como se distribuyen los items a lo largo del **eje principal**:
 
 ### Diferencia entre space-between, space-around y space-evenly
 
-- **space-between**: primer item al inicio, ultimo al final, espacio igual entre ellos
+- **space-between**: primer item al inicio, último al final, espacio igual entre ellos
 - **space-around**: cada item tiene el mismo espacio alrededor (los bordes tienen la mitad)
 - **space-evenly**: espacio exactamente igual entre todos los items y los bordes
 
 ### align-items (eje cruzado)
 
-Controla la alineacion en el **eje cruzado** (perpendicular al principal):
+Controla la alineación en el **eje cruzado** (perpendicular al principal):
 
 \`\`\`css
 .contenedor {
@@ -120,7 +120,7 @@ Controla la alineacion en el **eje cruzado** (perpendicular al principal):
 
 ### El truco del centrado perfecto
 
-Con solo 3 lineas, puedes centrar un elemento **vertical y horizontalmente**:
+Con solo 3 líneas, puedes centrar un elemento **vertical y horizontalmente**:
 
 \`\`\`css
 .centrado-perfecto {
@@ -157,7 +157,7 @@ Un item puede sobreescribir el \`align-items\` del contenedor:
 
 ### flex-wrap
 
-Por defecto, los flex items intentan caber en **una sola linea**, incluso si eso significa reducir su tamano. Con \`flex-wrap\` puedes permitir que se muevan a la siguiente linea:
+Por defecto, los flex items intentan caber en **una sola línea**, incluso si eso significa reducir su tamaño. Con \`flex-wrap\` puedes permitir que se muevan a la siguiente línea:
 
 \`\`\`css
 .contenedor {
@@ -168,7 +168,7 @@ Por defecto, los flex items intentan caber en **una sola linea**, incluso si eso
 }
 \`\`\`
 
-### Ejemplo practico
+### Ejemplo práctico
 
 \`\`\`css
 .galeria {
@@ -193,7 +193,7 @@ Combina \`flex-direction\` y \`flex-wrap\` en una sola propiedad:
 
 ### gap
 
-La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho mas limpio que usar margenes:
+La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho mas limpio que usar márgenes:
 
 \`\`\`css
 .contenedor {
@@ -209,11 +209,11 @@ La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho mas li
 
 - No crea espacio extra en los bordes del contenedor
 - No necesitas selectores como \`:last-child\` para quitar el margen final
-- Es mas facil de mantener y modificar
+- Es mas fácil de mantener y modificar
 
-### align-content (multiples lineas)
+### align-content (múltiples líneas)
 
-Cuando hay wrap y multiples lineas, \`align-content\` controla la distribucion de las **lineas** en el eje cruzado:
+Cuando hay wrap y múltiples líneas, \`align-content\` controla la distribución de las **líneas** en el eje cruzado:
 
 \`\`\`css
 .contenedor {
@@ -225,7 +225,7 @@ Cuando hay wrap y multiples lineas, \`align-content\` controla la distribucion d
 }
 \`\`\`
 
-> **Diferencia:** \`align-items\` alinea items dentro de su linea. \`align-content\` alinea las lineas dentro del contenedor (solo funciona con wrap y multiples lineas).`,
+> **Diferencia:** \`align-items\` alinea items dentro de su línea. \`align-content\` alinea las líneas dentro del contenedor (solo funciona con wrap y múltiples líneas).`,
       codeExample: {
         html: `<div class="galeria">\n  <div class="foto">1</div>\n  <div class="foto">2</div>\n  <div class="foto">3</div>\n  <div class="foto">4</div>\n  <div class="foto">5</div>\n  <div class="foto">6</div>\n  <div class="foto">7</div>\n</div>`,
         css: `.galeria {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 10px;\n  padding: 10px;\n  background-color: #f0f0f0;\n  border-radius: 8px;\n}\n.foto {\n  width: 80px;\n  height: 80px;\n  background-color: steelblue;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n  font-weight: bold;\n  font-size: 20px;\n}`,
@@ -264,7 +264,7 @@ Define cuanto **se reduce** un item cuando no hay suficiente espacio:
 
 ### flex-basis
 
-Define el **tamano base** del item antes de aplicar grow/shrink:
+Define el **tamaño base** del item antes de aplicar grow/shrink:
 
 \`\`\`css
 .item { flex-basis: auto; }   /* Usa el width/height del item (por defecto) */
@@ -296,7 +296,7 @@ Cambia el **orden visual** de los items sin modificar el HTML:
 
 Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`order\` mantienen su orden del DOM.
 
-### Patron comun: layout clasico con sidebar
+### Patrón común: layout clasico con sidebar
 
 \`\`\`css
 .layout { display: flex; }
@@ -304,7 +304,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
 .contenido { flex: 1; }          /* Ocupa todo el espacio restante */
 \`\`\`
 
-> **Buena practica:** Usa el shorthand \`flex\` en lugar de las propiedades individuales. Los valores mas comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamano fijo).`,
+> **Buena práctica:** Usa el shorthand \`flex\` en lugar de las propiedades individuales. Los valores mas comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamaño fijo).`,
       codeExample: {
         html: `<div class="layout">\n  <aside class="sidebar">Sidebar (flex: 0 0 150px)</aside>\n  <main class="contenido">Contenido principal (flex: 1)</main>\n  <aside class="panel">Panel (flex: 0 0 100px)</aside>\n</div>`,
         css: `.layout {\n  display: flex;\n  gap: 10px;\n  height: 150px;\n}\n.sidebar {\n  flex: 0 0 150px;\n  background-color: #2c3e50;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}\n.contenido {\n  flex: 1;\n  background-color: #ecf0f1;\n  padding: 15px;\n  border-radius: 6px;\n}\n.panel {\n  flex: 0 0 100px;\n  background-color: #3498db;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}`,
@@ -321,7 +321,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Que propiedad activa Flexbox en un contenedor?",
+        "¿Qué propiedad activa Flexbox en un contenedor?",
       options: [
         { id: "a", text: "flex: 1", isCorrect: false },
         { id: "b", text: "display: flex", isCorrect: true },
@@ -331,7 +331,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       validation: { type: "exact", answer: "b" },
       hint: "Se aplica al contenedor padre usando la propiedad display.",
       explanation:
-        "display: flex activa Flexbox en el contenedor. Todos los hijos directos del contenedor se convierten en flex items y se distribuyen automaticamente en fila.",
+        "display: flex activa Flexbox en el contenedor. Todos los hijos directos del contenedor se convierten en flex items y se distribuyen automáticamente en fila.",
     },
     {
       id: "15-ej-02",
@@ -348,7 +348,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         blanks: ["justify-content"],
       },
       validation: { type: "exact", answer: "justify-content" },
-      hint: "Es la propiedad que controla la distribucion de items en el eje principal. Empieza con 'justify'.",
+      hint: "Es la propiedad que controla la distribución de items en el eje principal. Empieza con 'justify'.",
       explanation:
         "justify-content: center centra los items a lo largo del eje principal. En flex-direction: row (por defecto), esto centra horizontalmente. En column, centraria verticalmente.",
     },
@@ -359,7 +359,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 20,
       order: 3,
       prompt:
-        "Arrastra cada valor de justify-content a su descripcion:",
+        "Arrastra cada valor de justify-content a su descripción:",
       dragItems: [
         {
           id: "drag-1",
@@ -393,7 +393,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         },
         {
           id: "zone-between",
-          label: "Primer item al inicio, ultimo al final, espacio igual entre ellos",
+          label: "Primer item al inicio, último al final, espacio igual entre ellos",
         },
         {
           id: "zone-evenly",
@@ -411,7 +411,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       },
       hint: "Space-between no tiene espacio en los bordes. Space-evenly tiene espacio igual en todas partes, incluyendo los bordes.",
       explanation:
-        "flex-start agrupa al inicio. center centra todo. space-between deja el primer y ultimo item en los bordes con espacio igual entre ellos. space-evenly distribuye espacio perfectamente igual entre items y bordes.",
+        "flex-start agrupa al inicio. center centra todo. space-between deja el primer y último item en los bordes con espacio igual entre ellos. space-evenly distribuye espacio perfectamente igual entre items y bordes.",
     },
     {
       id: "15-ej-04",
@@ -445,17 +445,17 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 20,
       order: 5,
       prompt:
-        "¿Que hace flex-wrap: wrap en un contenedor flex?",
+        "¿Qué hace flex-wrap: wrap en un contenedor flex?",
       options: [
         { id: "a", text: "Invierte el orden de los items", isCorrect: false },
-        { id: "b", text: "Permite que los items pasen a la siguiente linea si no caben", isCorrect: true },
+        { id: "b", text: "Permite que los items pasen a la siguiente línea si no caben", isCorrect: true },
         { id: "c", text: "Hace que los items se superpongan", isCorrect: false },
-        { id: "d", text: "Centra los items automaticamente", isCorrect: false },
+        { id: "d", text: "Centra los items automáticamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando los items son demasiado anchos para caber en una sola linea.",
+      hint: "Piensa en que pasa cuando los items son demasiado anchos para caber en una sola línea.",
       explanation:
-        "flex-wrap: wrap permite que los items que no caben en una linea bajen a la siguiente, creando multiples filas. Sin wrap (nowrap por defecto), los items se comprimen para caber en una sola linea.",
+        "flex-wrap: wrap permite que los items que no caben en una línea bajen a la siguiente, creando múltiples filas. Sin wrap (nowrap por defecto), los items se comprimen para caber en una sola línea.",
     },
     {
       id: "15-ej-06",
@@ -472,9 +472,9 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         blanks: ["0 0 250px"],
       },
       validation: { type: "exact", answer: "0 0 250px" },
-      hint: "El shorthand flex recibe tres valores: grow, shrink y basis. Para un ancho fijo, grow y shrink deben ser 0 y basis el tamano deseado.",
+      hint: "El shorthand flex recibe tres valores: grow, shrink y basis. Para un ancho fijo, grow y shrink deben ser 0 y basis el tamaño deseado.",
       explanation:
-        "flex: 0 0 250px significa: flex-grow: 0 (no crece), flex-shrink: 0 (no se encoge), flex-basis: 250px (tamano base fijo). Esto crea un sidebar de exactamente 250px que no cambia de tamano.",
+        "flex: 0 0 250px significa: flex-grow: 0 (no crece), flex-shrink: 0 (no se encoge), flex-basis: 250px (tamaño base fijo). Esto crea un sidebar de exactamente 250px que no cambia de tamaño.",
     },
     {
       id: "15-ej-07",
@@ -483,7 +483,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una barra de navegacion con Flexbox. El contenedor (clase 'nav') debe usar display: flex, justify-content: space-between, align-items: center, padding: 10px 20px, background-color: #2c3e50. El logo (clase 'logo') con color: white, font-size: 20px, font-weight: bold. Los links (clase 'links') con display: flex y gap: 15px. Cada link (clase 'link') con color: #ecf0f1 y text-decoration: none.",
+        "Crea una barra de navegación con Flexbox. El contenedor (clase 'nav') debe usar display: flex, justify-content: space-between, align-items: center, padding: 10px 20px, background-color: #2c3e50. El logo (clase 'logo') con color: white, font-size: 20px, font-weight: bold. Los links (clase 'links') con display: flex y gap: 15px. Cada link (clase 'link') con color: #ecf0f1 y text-decoration: none.",
       codeTemplate: {
         html: `<nav class="nav">\n  <div class="logo">MiSitio</div>\n  <div class="links">\n    <a class="link" href="#">Inicio</a>\n    <a class="link" href="#">Sobre</a>\n    <a class="link" href="#">Contacto</a>\n  </div>\n</nav>`,
         cssPrefix: "",
@@ -497,9 +497,9 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "La nav usa Flexbox con space-between para separar el logo y los links. El contenedor de links tambien usa Flexbox con gap para espaciar los enlaces.",
+      hint: "La nav usa Flexbox con space-between para separar el logo y los links. El contenedor de links también usa Flexbox con gap para espaciar los enlaces.",
       explanation:
-        "Este es un patron muy comun: Flexbox anidado. La barra de navegacion usa justify-content: space-between para poner el logo a la izquierda y los links a la derecha. Los links a su vez usan otro flex container con gap para espaciarse uniformemente.",
+        "Este es un patrón muy común: Flexbox anidado. La barra de navegación usa justify-content: space-between para poner el logo a la izquierda y los links a la derecha. Los links a su vez usan otro flex container con gap para espaciarse uniformemente.",
     },
     {
       id: "15-ej-08",
@@ -550,9 +550,9 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
           "drag-5": "zone-item",
         },
       },
-      hint: "Las propiedades de distribucion y alineacion general van en el contenedor. Las propiedades de tamano individual, auto-alineacion y orden van en los items.",
+      hint: "Las propiedades de distribución y alineación general van en el contenedor. Las propiedades de tamaño individual, auto-alineación y orden van en los items.",
       explanation:
-        "Propiedades del contenedor: justify-content (distribucion en eje principal), flex-wrap (salto de linea), align-items, gap. Propiedades del item: flex-grow (cuanto crece), flex-shrink, flex-basis, align-self (alineacion individual), order (orden visual).",
+        "Propiedades del contenedor: justify-content (distribución en eje principal), flex-wrap (salto de línea), align-items, gap. Propiedades del item: flex-grow (cuanto crece), flex-shrink, flex-basis, align-self (alineación individual), order (orden visual).",
     },
   ],
 };

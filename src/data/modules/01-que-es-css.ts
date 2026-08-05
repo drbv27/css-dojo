@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const queEsCSSModule: ModuleData = {
   slug: "que-es-css",
-  title: "¿Que es CSS?",
+  title: "¿Qué es CSS?",
   description:
     "Descubre que es CSS, como funciona y las distintas formas de agregar estilos a tus documentos HTML.",
   order: 1,
@@ -12,24 +12,24 @@ export const queEsCSSModule: ModuleData = {
   lessons: [
     {
       id: "01-leccion-01",
-      title: "¿Que es CSS?",
-      content: `## ¿Que es CSS?
+      title: "¿Qué es CSS?",
+      content: `## ¿Qué es CSS?
 
-**CSS** significa **Cascading Style Sheets** (Hojas de Estilo en Cascada). Es el lenguaje que utilizamos para **dar estilo y presentacion** a los documentos HTML.
+**CSS** significa **Cascading Style Sheets** (Hojas de Estilo en Cascada). Es el lenguaje que utilizamos para **dar estilo y presentación** a los documentos HTML.
 
-Si HTML es el esqueleto de una pagina web, **CSS es la piel, la ropa y el maquillaje**. Sin CSS, todas las paginas web se verian como documentos de texto plano con enlaces azules.
+Si HTML es el esqueleto de una página web, **CSS es la piel, la ropa y el maquillaje**. Sin CSS, todas las páginas web se verian como documentos de texto plano con enlaces azules.
 
-### ¿Que puede hacer CSS?
+### ¿Qué puede hacer CSS?
 
 - Cambiar **colores** de texto y fondos
-- Definir **tipografias** y tamanos de letra
-- Controlar el **espaciado** y la disposicion de los elementos
+- Definir **tipografías** y tamaños de letra
+- Controlar el **espaciado** y la disposición de los elementos
 - Crear **animaciones** y transiciones
-- Adaptar el diseno a **diferentes dispositivos** (responsive design)
+- Adaptar el diseño a **diferentes dispositivos** (responsive design)
 
 ### Un poco de historia
 
-CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera version oficial (CSS1) se publico en 1996. Actualmente trabajamos con CSS3, que se desarrolla en modulos independientes.
+CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (CSS1) se público en 1996. Actualmente trabajamos con CSS3, que se desarrolla en modulos independientes.
 
 > **Dato curioso:** Antes de CSS, los estilos se aplicaban directamente en HTML con etiquetas como \`<font>\` y atributos como \`bgcolor\`. Era un caos absoluto.`,
       codeExample: {
@@ -53,7 +53,7 @@ Indica **a que elemento(s)** HTML se le aplicaran los estilos. En el ejemplo de 
 Es el **aspecto visual** que queremos cambiar. Por ejemplo, \`background-color\` cambia el color de fondo.
 
 ### 3. Valor
-Es el **dato especifico** que le asignamos a la propiedad. Por ejemplo, \`lightslategray\` es un color valido en CSS.
+Es el **dato específico** que le asignamos a la propiedad. Por ejemplo, \`lightslategray\` es un color valido en CSS.
 
 ### Estructura completa
 
@@ -63,9 +63,9 @@ selector {
 }
 \`\`\`
 
-Cada par \`propiedad: valor\` se llama **declaracion** y termina con punto y coma (\`;\`). Las declaraciones van dentro de llaves (\`{ }\`), que forman el **bloque de declaraciones**.
+Cada par \`propiedad: valor\` se llama **declaración** y termina con punto y coma (\`;\`). Las declaraciones van dentro de llaves (\`{ }\`), que forman el **bloque de declaraciones**.
 
-### Multiples declaraciones
+### Múltiples declaraciones
 
 Puedes incluir tantas declaraciones como necesites dentro de una misma regla:
 
@@ -77,7 +77,7 @@ main {
 }
 \`\`\`
 
-> **Importante:** No olvides el punto y coma al final de cada declaracion. Olvidarlo es uno de los errores mas comunes para principiantes.`,
+> **Importante:** No olvides el punto y coma al final de cada declaración. Olvidarlo es uno de los errores mas comunes para principiantes.`,
       codeExample: {
         html: `<main>\n  <h2>Bienvenido al Dev Dojo</h2>\n  <p>Aprende CSS paso a paso.</p>\n</main>`,
         css: `main {\n  background-color: lightslategray;\n  color: white;\n  padding: 20px;\n  border-radius: 8px;\n}`,
@@ -87,14 +87,14 @@ main {
     },
     {
       id: "01-leccion-03",
-      title: "Formas de anadir estilos",
-      content: `## Formas de anadir estilos CSS
+      title: "Formas de añadir estilos",
+      content: `## Formas de añadir estilos CSS
 
 Existen **tres formas** de agregar CSS a un documento HTML. Cada una tiene sus ventajas y desventajas.
 
 ---
 
-### 1. Estilos en linea (inline)
+### 1. Estilos en línea (inline)
 
 Se agregan directamente en el atributo \`style\` de un elemento HTML:
 
@@ -102,7 +102,7 @@ Se agregan directamente en el atributo \`style\` de un elemento HTML:
 <p style="color: red; font-size: 18px;">Texto rojo</p>
 \`\`\`
 
-**Desventajas:** No se puede reutilizar, mezcla contenido con presentacion, dificil de mantener. Se considera un **anti-patron**.
+**Desventajas:** No se puede reutilizar, mezcla contenido con presentación, difícil de mantener. Se considera un **anti-patrón**.
 
 ---
 
@@ -118,8 +118,8 @@ Se escriben dentro de una etiqueta \`<style>\` en el \`<head>\` del documento:
 </head>
 \`\`\`
 
-**Ventaja:** Util para paginas unicas o prototipos rapidos.
-**Desventaja:** No se comparte entre paginas.
+**Ventaja:** Útil para páginas únicas o prototipos rápidos.
+**Desventaja:** No se comparte entre páginas.
 
 ---
 
@@ -134,12 +134,12 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
 \`\`\`
 
 **Ventajas:**
-- **Separacion de responsabilidades:** HTML para contenido, CSS para presentacion
-- **Reutilizacion:** Un mismo archivo CSS para multiples paginas
+- **Separación de responsabilidades:** HTML para contenido, CSS para presentación
+- **Reutilización:** Un mismo archivo CSS para múltiples páginas
 - **Cache del navegador:** Se descarga una vez y se reutiliza
 - **Mantenimiento:** Cambias un archivo y se actualiza todo el sitio
 
-> **Recomendacion:** Siempre usa hojas de estilo externas en proyectos reales.`,
+> **Recomendación:** Siempre usa hojas de estilo externas en proyectos reales.`,
       codeExample: {
         html: `<!-- Forma recomendada: archivo externo -->\n<head>\n  <link rel="stylesheet" href="estilos.css">\n</head>\n<body>\n  <p>Este parrafo recibe estilos del archivo externo.</p>\n</body>`,
         css: `/* Contenido de estilos.css */\np {\n  color: darkslateblue;\n  font-size: 18px;\n  line-height: 1.6;\n}`,
@@ -155,7 +155,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que significa CSS?",
+      prompt: "¿Qué significa CSS?",
       options: [
         { id: "a", text: "Cascading Style Sheets", isCorrect: true },
         { id: "b", text: "Computer Style Sheets", isCorrect: false },
@@ -165,7 +165,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       validation: { type: "exact", answer: "a" },
       hint: "La primera palabra hace referencia a como se aplican los estilos: en cascada.",
       explanation:
-        "CSS significa Cascading Style Sheets (Hojas de Estilo en Cascada). El termino 'cascada' se refiere al mecanismo que determina que estilos se aplican cuando hay multiples reglas en conflicto.",
+        "CSS significa Cascading Style Sheets (Hojas de Estilo en Cascada). El término 'cascada' se refiere al mecanismo que determina que estilos se aplican cuando hay múltiples reglas en conflicto.",
     },
     {
       id: "01-ej-02",
@@ -173,9 +173,9 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cual es la forma recomendada de anadir estilos CSS a un sitio web?",
+      prompt: "¿Cuál es la forma recomendada de añadir estilos CSS a un sitio web?",
       options: [
-        { id: "a", text: "Estilos en linea (atributo style)", isCorrect: false },
+        { id: "a", text: "Estilos en línea (atributo style)", isCorrect: false },
         { id: "b", text: "Estilos internos (etiqueta <style>)", isCorrect: false },
         {
           id: "c",
@@ -185,9 +185,9 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         { id: "d", text: "Usando JavaScript para modificar estilos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en cual opcion permite reutilizar estilos en multiples paginas.",
+      hint: "Piensa en cual opción permite reutilizar estilos en múltiples páginas.",
       explanation:
-        "La hoja de estilos externa es la forma recomendada porque separa el contenido (HTML) de la presentacion (CSS), permite reutilizar estilos en multiples paginas y el navegador puede almacenarla en cache.",
+        "La hoja de estilos externa es la forma recomendada porque separa el contenido (HTML) de la presentación (CSS), permite reutilizar estilos en múltiples páginas y el navegador puede almacenarla en cache.",
     },
     {
       id: "01-ej-03",
@@ -215,7 +215,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       xpReward: 20,
       order: 4,
       prompt:
-        "Arrastra cada parte de la regla CSS `main { background-color: lightslategray; }` a su categoria correcta:",
+        "Arrastra cada parte de la regla CSS `main { background-color: lightslategray; }` a su categoría correcta:",
       dragItems: [
         { id: "drag-1", content: "main", correctZone: "zone-selector" },
         {
@@ -244,7 +244,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       },
       hint: "El selector indica A QUIEN se aplica, la propiedad indica QUE se cambia y el valor indica COMO se cambia.",
       explanation:
-        "'main' es el selector (indica el elemento), 'background-color' es la propiedad (que aspecto cambiar) y 'lightslategray' es el valor (el color especifico).",
+        "'main' es el selector (indica el elemento), 'background-color' es la propiedad (que aspecto cambiar) y 'lightslategray' es el valor (el color específico).",
     },
     {
       id: "01-ej-05",
@@ -261,7 +261,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         blanks: ["stylesheet"],
       },
       validation: { type: "exact", answer: "stylesheet" },
-      hint: "El atributo 'rel' indica la relacion entre el documento HTML y el archivo enlazado. En CSS, esa relacion es...",
+      hint: "El atributo 'rel' indica la relación entre el documento HTML y el archivo enlazado. En CSS, esa relación es...",
       explanation:
         "El valor 'stylesheet' en el atributo rel indica al navegador que el archivo enlazado es una hoja de estilos CSS. La etiqueta completa es: <link rel=\"stylesheet\" href=\"estilos.css\">",
     },
@@ -272,11 +272,11 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       xpReward: 20,
       order: 6,
       prompt:
-        "¿Cual de estas formas de anadir estilos CSS es considerada un anti-patron en proyectos profesionales?",
+        "¿Cuál de estas formas de añadir estilos CSS es considerada un anti-patrón en proyectos profesionales?",
       options: [
         {
           id: "a",
-          text: "Estilos en linea (atributo style)",
+          text: "Estilos en línea (atributo style)",
           isCorrect: true,
         },
         {
@@ -288,9 +288,9 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         { id: "d", text: "Ninguna", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Un anti-patron es una practica que parece funcionar pero genera problemas a largo plazo. Piensa en cual forma mezcla contenido y presentacion directamente.",
+      hint: "Un anti-patrón es una práctica que parece funcionar pero genera problemas a largo plazo. Piensa en cual forma mezcla contenido y presentación directamente.",
       explanation:
-        "Los estilos en linea (inline) se consideran un anti-patron porque mezclan contenido con presentacion, no se pueden reutilizar, tienen una especificidad muy alta y hacen que el codigo sea dificil de mantener.",
+        "Los estilos en línea (inline) se consideran un anti-patrón porque mezclan contenido con presentación, no se pueden reutilizar, tienen una especificidad muy alta y hacen que el código sea difícil de mantener.",
     },
   ],
 };

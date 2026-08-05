@@ -4,7 +4,7 @@ export const htmlMetaSeoModule: ModuleData = {
   slug: "html-meta-seo",
   title: "Meta Tags y SEO",
   description:
-    "Aprende a optimizar tus paginas para motores de busqueda y redes sociales con meta tags, Open Graph, Twitter Cards y datos estructurados.",
+    "Aprende a optimizar tus páginas para motores de busqueda y redes sociales con meta tags, Open Graph, Twitter Cards y datos estructurados.",
   order: 13,
   category: "html-advanced",
   icon: "search",
@@ -15,9 +15,9 @@ export const htmlMetaSeoModule: ModuleData = {
       title: "Meta tags esenciales",
       content: `## Meta tags esenciales
 
-Las **meta tags** son etiquetas dentro del \`<head>\` que proporcionan informacion sobre la pagina a los navegadores y motores de busqueda.
+Las **meta tags** son etiquetas dentro del \`<head>\` que proporcionan información sobre la página a los navegadores y motores de busqueda.
 
-### Meta tags basicas
+### Meta tags básicas
 
 \`\`\`html
 <!-- Codificacion de caracteres -->
@@ -38,20 +38,20 @@ Las **meta tags** son etiquetas dentro del \`<head>\` que proporcionan informaci
 
 ### La meta viewport
 
-Es **obligatoria** para sitios responsive. Sin ella, los moviles mostraran la version de escritorio reducida.
+Es **obligatoria** para sitios responsive. Sin ella, los móviles mostraran la versión de escritorio reducida.
 
 ### Meta description
 
-Es el texto que aparece en los resultados de Google debajo del titulo. Debe tener entre **120-160 caracteres** y ser descriptivo.
+Es el texto que aparece en los resultados de Google debajo del título. Debe tener entre **120-160 caracteres** y ser descriptivo.
 
 ### Meta robots
 
-Controla como los motores de busqueda tratan tu pagina:
+Controla como los motores de busqueda tratan tu página:
 
 | Valor | Efecto |
 |-------|--------|
-| \`index, follow\` | Indexar pagina y seguir enlaces (por defecto) |
-| \`noindex\` | No indexar la pagina |
+| \`index, follow\` | Indexar página y seguir enlaces (por defecto) |
+| \`noindex\` | No indexar la página |
 | \`nofollow\` | No seguir los enlaces |
 | \`noindex, nofollow\` | Ni indexar ni seguir |
 
@@ -114,9 +114,9 @@ Cuando compartes un enlace en redes sociales, las **meta tags de Open Graph** co
 
 ### Tipos de Twitter Card
 
-| Tipo | Descripcion |
+| Tipo | Descripción |
 |------|-------------|
-| \`summary\` | Tarjeta pequena con imagen cuadrada |
+| \`summary\` | Tarjeta pequeña con imagen cuadrada |
 | \`summary_large_image\` | Tarjeta con imagen grande horizontal |
 
 ### Favicon y canonical
@@ -189,12 +189,12 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
 
 ### Resultados enriquecidos comunes
 
-- **Recetas:** con tiempo de preparacion, ingredientes
-- **Resenas:** estrellas de calificacion
+- **Recetas:** con tiempo de preparación, ingredientes
+- **Resenas:** estrellas de calificación
 - **FAQ:** preguntas y respuestas desplegables
-- **Breadcrumbs:** ruta de navegacion
+- **Breadcrumbs:** ruta de navegación
 
-### Otras meta tags utiles
+### Otras meta tags útiles
 
 \`\`\`html
 <!-- Preconectar a un dominio externo -->
@@ -207,9 +207,9 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
 <meta name="theme-color" content="#6c5ce7">
 \`\`\`
 
-### Checklist de SEO basico
+### Checklist de SEO básico
 
-- [ ] Titulo unico y descriptivo (50-60 caracteres)
+- [ ] Título único y descriptivo (50-60 caracteres)
 - [ ] Meta description (120-160 caracteres)
 - [ ] Meta viewport para responsive
 - [ ] Open Graph tags para redes sociales
@@ -264,7 +264,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Que meta tag es esencial para que un sitio se vea correctamente en moviles?",
+      prompt: "¿Qué meta tag es esencial para que un sitio se vea correctamente en móviles?",
       options: [
         { id: "a", text: '<meta name="mobile">',  isCorrect: false },
         { id: "b", text: '<meta name="viewport">',  isCorrect: true },
@@ -272,9 +272,9 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
         { id: "d", text: '<meta name="screen">',  isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Tiene que ver con la 'ventana de vision' del dispositivo.",
+      hint: "Tiene que ver con la 'ventana de visión' del dispositivo.",
       explanation:
-        "La meta viewport con content='width=device-width, initial-scale=1.0' es esencial para el diseno responsive. Sin ella, los moviles muestran la version de escritorio reducida.",
+        "La meta viewport con content='width=device-width, initial-scale=1.0' es esencial para el diseño responsive. Sin ella, los móviles muestran la versión de escritorio reducida.",
     },
     {
       id: "html13-ej-02",
@@ -282,7 +282,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Que meta tag controla el texto que aparece en los resultados de Google?",
+      prompt: "¿Qué meta tag controla el texto que aparece en los resultados de Google?",
       options: [
         { id: "a", text: '<meta name="title">',  isCorrect: false },
         { id: "b", text: '<meta name="google-text">',  isCorrect: false },
@@ -290,9 +290,9 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
         { id: "d", text: '<meta name="summary">',  isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es una 'descripcion' de la pagina para los buscadores.",
+      hint: "Es una 'descripción' de la página para los buscadores.",
       explanation:
-        "La meta description aparece como el fragmento de texto bajo el titulo en los resultados de busqueda. Debe tener entre 120-160 caracteres.",
+        "La meta description aparece como el fragmento de texto bajo el título en los resultados de busqueda. Debe tener entre 120-160 caracteres.",
     },
     {
       id: "html13-ej-03",
@@ -300,7 +300,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la meta tag para definir el titulo que se muestra al compartir en Facebook:",
+      prompt: "Completa la meta tag para definir el título que se muestra al compartir en Facebook:",
       codeTemplate: {
         html: "",
         cssPrefix: '<meta property="',
@@ -310,7 +310,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       validation: { type: "exact", answer: "og:title" },
       hint: "Open Graph usa el prefijo 'og:' seguido del nombre de la propiedad.",
       explanation:
-        'og:title es la meta tag de Open Graph que define el titulo que aparece cuando se comparte un enlace en redes sociales como Facebook, WhatsApp o LinkedIn.',
+        'og:title es la meta tag de Open Graph que define el título que aparece cuando se comparte un enlace en redes sociales como Facebook, WhatsApp o LinkedIn.',
     },
     {
       id: "html13-ej-04",
@@ -318,7 +318,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "¿Que valor de meta robots evita que Google indexe una pagina?",
+      prompt: "¿Qué valor de meta robots evita que Google indexe una página?",
       options: [
         { id: "a", text: 'content="noindex"',  isCorrect: true },
         { id: "b", text: 'content="hidden"',  isCorrect: false },
@@ -328,7 +328,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       validation: { type: "exact", answer: "a" },
       hint: "Es lo opuesto a 'index'.",
       explanation:
-        'noindex indica a los motores de busqueda que no indexen la pagina. nofollow solo evita que sigan los enlaces, pero no impide la indexacion.',
+        'noindex indica a los motores de busqueda que no indexen la página. nofollow solo evita que sigan los enlaces, pero no impide la indexación.',
     },
     {
       id: "html13-ej-05",
@@ -336,7 +336,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada meta tag segun su proposito:",
+      prompt: "Clasifica cada meta tag según su propósito:",
       dragItems: [
         { id: "drag-1", content: "og:title", correctZone: "zone-social" },
         { id: "drag-2", content: "meta description", correctZone: "zone-seo" },
@@ -370,15 +370,15 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       order: 6,
       prompt: "¿Para que sirve la etiqueta <link rel='canonical'>?",
       options: [
-        { id: "a", text: "Para definir el estilo principal de la pagina", isCorrect: false },
+        { id: "a", text: "Para definir el estilo principal de la página", isCorrect: false },
         { id: "b", text: "Para indicar la URL preferida y evitar contenido duplicado", isCorrect: true },
         { id: "c", text: "Para enlazar el favicon del sitio", isCorrect: false },
         { id: "d", text: "Para cargar fuentes externas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Resuelve el problema de cuando una misma pagina puede accederse desde varias URLs.",
+      hint: "Resuelve el problema de cuando una misma página puede accederse desde varias URLs.",
       explanation:
-        "La etiqueta canonical indica a los motores de busqueda cual es la URL 'oficial' de una pagina, evitando penalizaciones por contenido duplicado.",
+        "La etiqueta canonical indica a los motores de busqueda cual es la URL 'oficial' de una página, evitando penalizaciones por contenido duplicado.",
     },
     {
       id: "html13-ej-07",
@@ -386,7 +386,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Que formato se usa para escribir datos estructurados (Schema.org) recomendado por Google?",
+      prompt: "¿Qué formato se usa para escribir datos estructurados (Schema.org) recomendado por Google?",
       options: [
         { id: "a", text: "XML", isCorrect: false },
         { id: "b", text: "JSON-LD", isCorrect: true },
@@ -417,7 +417,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       },
       hint: 'El title primero; la description es <meta name="description" content="...">; el Open Graph usa <meta property="og:...">.',
       explanation:
-        "El title y la meta description controlan como se ve tu pagina en Google; las etiquetas Open Graph (og:) controlan la tarjeta que aparece al compartir el enlace en redes sociales.",
+        "El title y la meta description controlan como se ve tu página en Google; las etiquetas Open Graph (og:) controlan la tarjeta que aparece al compartir el enlace en redes sociales.",
     },
   ],
 };
