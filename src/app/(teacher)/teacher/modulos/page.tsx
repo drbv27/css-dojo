@@ -6,7 +6,8 @@ import { ArrowLeft } from "lucide-react";
 import { FaHtml5, FaReact } from "react-icons/fa";
 import { SiCss, SiJavascript, SiNextdotjs } from "react-icons/si";
 import { ALL_MODULES } from "@/data/modules";
-import type { DojoType, ModuleCategory } from "@/types";
+import { categoriesForDojo } from "@/data/moduleCategories";
+import type { DojoType } from "@/types";
 
 const dojoMeta: Record<DojoType, { Icon: React.ComponentType<{ className?: string }>; label: string; accent: string; accentBg: string; accentBorder: string }> = {
   html: { Icon: FaHtml5, label: "HTML", accent: "text-neon-orange", accentBg: "bg-neon-orange/10", accentBorder: "border-neon-orange/30" },
@@ -21,51 +22,6 @@ interface ModuleSetting {
   slug: string;
   enabled: boolean;
 }
-
-const htmlCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "html-fundamentals", label: "HTML Fundamentos", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "html-intermediate", label: "HTML Intermedio", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow" },
-  { key: "html-advanced", label: "HTML Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red" },
-];
-
-const cssCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "intro", label: "Introduccion", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple" },
-  { key: "intermediate", label: "Intermedio", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple" },
-  { key: "advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
-  { key: "preprocessors", label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink" },
-  { key: "frameworks", label: "Frameworks CSS", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple" },
-];
-
-const jsCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "js-fundamentals", label: "Fundamentos", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow" },
-  { key: "js-intermediate", label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue" },
-  { key: "js-advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
-  { key: "js-async", label: "Asincronia", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange" },
-  { key: "js-dom", label: "DOM y Eventos", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-  { key: "js-projects", label: "Proyectos", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink" },
-  { key: "js-typescript", label: "TypeScript", color: "text-ts-blue", badge: "bg-ts-blue/10 text-ts-blue" },
-];
-
-const reactCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "react-fundamentals", label: "React Fundamentos", color: "text-neon-teal", badge: "bg-neon-teal/10 text-neon-teal" },
-  { key: "react-intermediate", label: "React Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue" },
-  { key: "react-advanced", label: "React Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
-  { key: "react-projects", label: "React Proyectos", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-];
-
-const reactEcoCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "react-eco-routing", label: "Routing", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-  { key: "react-eco-state", label: "Estado Global", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-  { key: "react-eco-ui", label: "UI y Componentes", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-  { key: "react-eco-forms", label: "Formularios", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-  { key: "react-eco-data", label: "Data Fetching", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green" },
-];
-
-const nextjsCategories: { key: ModuleCategory; label: string; color: string; badge: string }[] = [
-  { key: "nextjs-fundamentals", label: "Fundamentos", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue" },
-  { key: "nextjs-intermediate", label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue" },
-  { key: "nextjs-advanced", label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple" },
-];
 
 interface CohortCfg {
   activeCohort: number;
@@ -417,15 +373,15 @@ export default function TeacherModulosPage() {
         );
       })()}
 
-      {(activeDojoFilter === "html" ? htmlCategories : activeDojoFilter === "css" ? cssCategories : activeDojoFilter === "js" ? jsCategories : activeDojoFilter === "react" ? reactCategories : activeDojoFilter === "react-eco" ? reactEcoCategories : nextjsCategories).map((cat) => {
-        const catModules = ALL_MODULES.filter((m) => m.dojo === activeDojoFilter && m.category === cat.key);
+      {categoriesForDojo(activeDojoFilter).map(({ key, meta }) => {
+        const catModules = ALL_MODULES.filter((m) => m.dojo === activeDojoFilter && m.category === key);
         if (catModules.length === 0) return null;
 
         return (
-          <div key={cat.key}>
+          <div key={key}>
             <div className="flex items-center gap-3 mb-5">
-              <h2 className={`text-lg font-semibold ${cat.color}`}>{cat.label}</h2>
-              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${cat.badge}`}>
+              <h2 className={`text-lg font-semibold ${meta.color}`}>{meta.label}</h2>
+              <span className={`text-xs px-2.5 py-1 rounded-full font-medium ${meta.badge}`}>
                 {catModules.length} modulos
               </span>
             </div>
@@ -449,8 +405,8 @@ export default function TeacherModulosPage() {
                         <h3 className="font-semibold text-editor-text mb-1">
                           {mod.title}
                         </h3>
-                        <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${cat.badge}`}>
-                          {cat.label}
+                        <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${meta.badge}`}>
+                          {meta.label}
                         </span>
                       </div>
 
