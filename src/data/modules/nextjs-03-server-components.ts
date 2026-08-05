@@ -206,5 +206,43 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       hint: "El padre obtiene los datos, el hijo maneja la interactividad.",
       explanation: "El patrón ideal: Server Component obtiene datos y los pasa como props a Client Components interactivos.",
     },
+    {
+      id: "njs03-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Este componente usa useState, así que necesita correr en el navegador. Completá la directiva que lo marca como Client Component:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: '"',
+        cssSuffix: '";\n\nexport default function Contador() {\n  const [n, setN] = useState(0);\n}',
+        blanks: ["use client"],
+      },
+      validation: { type: "exact", answer: "use client" },
+      hint: "Dos palabras, en inglés, y va en la primera línea del archivo antes de cualquier import.",
+      explanation:
+        "En el App Router todo es Server Component por defecto, y ahí no hay estado ni eventos ni acceso al DOM. La directiva tiene que ir en la PRIMERA línea, antes de los imports, y marca el límite: ese archivo y todo lo que importe se manda al navegador. Por eso conviene ponerla lo más abajo posible en el árbol.",
+    },
+    {
+      id: "njs03-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Importar un Server Component dentro de uno de cliente lo arrastra al navegador. El patrón para evitarlo es pasarlo desde el padre. Completá la prop:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "// Panel es Client Component; Tabla es Server Component\n<Panel>{<Tabla />}</Panel>\n// dentro de Panel se renderiza con la prop ",
+        cssSuffix: "",
+        blanks: ["children"],
+      },
+      validation: { type: "exact", answer: "children" },
+      hint: "La misma prop que usa cualquier componente para su contenido anidado.",
+      explanation:
+        "El Server Component se renderiza en el servidor y lo que viaja al cliente es su resultado, no su código: el Panel solo recibe algo ya renderizado por children. Importarlo con un import normal habría convertido a Tabla en código de cliente, arrastrando sus dependencias al bundle. Es el patrón que mantiene el JavaScript del navegador chico.",
+    },
   ],
 };

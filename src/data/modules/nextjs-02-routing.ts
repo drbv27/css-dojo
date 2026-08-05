@@ -219,5 +219,43 @@ layout.tsx      <- estructura
       hint: "Cada archivo tiene un nombre descriptivo de su función.",
       explanation: "loading = carga, error = errores, not-found = 404.",
     },
+    {
+      id: "njs02-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Esta ruta tiene que servir /blog/mi-post y cualquier otro slug. Completá el nombre de la carpeta dinámica:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "app/blog/",
+        cssSuffix: "/page.tsx",
+        blanks: ["[slug]"],
+      },
+      validation: { type: "exact", answer: "[slug]" },
+      hint: "Los corchetes marcan la parte variable de la URL, y el nombre de adentro es la clave que llega en params.",
+      explanation:
+        "Los corchetes convierten el tramo en parámetro y el nombre elegido es la clave que llega en params, así que params.slug sale de haber escrito [slug]. Sin corchetes la carpeta responde solo a la URL literal /blog/slug.",
+    },
+    {
+      id: "njs02-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Querés agrupar las rutas de autenticación para darles un layout propio, pero SIN que aparezca en la URL: /login tiene que seguir siendo /login. Completá la carpeta:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "app/",
+        cssSuffix: "/login/page.tsx\n// -> la URL sigue siendo /login",
+        blanks: ["(auth)"],
+      },
+      validation: { type: "exact", answer: "(auth)" },
+      hint: "Los paréntesis crean un grupo de rutas que se ignora al armar la URL.",
+      explanation:
+        "Los paréntesis crean un grupo: la carpeta organiza y puede tener su propio layout, pero desaparece de la URL. Con auth/ sin paréntesis la ruta pasaría a ser /auth/login. Es lo que permite que un grupo de rutas comparta layout sin ensuciar las direcciones que ve el usuario.",
+    },
   ],
 };

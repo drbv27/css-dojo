@@ -237,5 +237,43 @@ revalidateTag("posts");
       hint: "Empieza con el usuario, termina con la UI actualizada.",
       explanation: "El flujo: submit → serializar FormData → ejecutar en servidor → revalidar y actualizar UI.",
     },
+    {
+      id: "njs05-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Esta función tiene que ejecutarse en el servidor aunque se la llame desde un formulario del cliente. Completá la directiva:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: 'export async function crearPost(formData) {\n  "',
+        cssSuffix: '";\n  await db.posts.insert(formData);\n}',
+        blanks: ["use server"],
+      },
+      validation: { type: "exact", answer: "use server" },
+      hint: "Dos palabras, en inglés. Es la contraparte de la que marca los componentes de cliente.",
+      explanation:
+        "La directiva convierte la función en un endpoint que Next.js expone solo, y el cliente recibe una referencia en lugar del código. Por eso adentro podés tocar la base de datos y usar secretos sin que nada de eso llegue al navegador. Y por eso mismo hay que validar los datos que entran: la llamada viene de afuera, como cualquier endpoint.",
+    },
+    {
+      id: "njs05-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Después de insertar el post, la lista cacheada quedó vieja. Completá la función que marca esa ruta para volver a generarla:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "await db.posts.insert(formData);\n",
+        cssSuffix: '("/blog");',
+        blanks: ["revalidatePath"],
+      },
+      validation: { type: "exact", answer: "revalidatePath" },
+      hint: "Invalida el cache de una ruta concreta. El nombre dice qué revalida.",
+      explanation:
+        "Sin esto la mutación funciona y la pantalla sigue mostrando la lista vieja, que es el bug más frustrante de depurar: los datos están bien en la base y mal en el navegador. revalidatePath descarta el cache de esa ruta y la próxima visita la regenera. Es el equivalente de invalidateQueries, pero del lado del servidor.",
+    },
   ],
 };
