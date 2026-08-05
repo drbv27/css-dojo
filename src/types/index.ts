@@ -15,6 +15,9 @@ export type ModuleCategory =
   | "html-fundamentals"
   | "html-intermediate"
   | "html-advanced"
+  // Closes the HTML track, after html-advanced. Mirrors "project" for CSS and
+  // "react-projects"/"js-projects": a capstone renders last, never mid-list.
+  | "html-projects"
   | "intro"
   | "intermediate"
   | "advanced"

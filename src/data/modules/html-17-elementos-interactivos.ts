@@ -5,7 +5,9 @@ export const htmlInteractivosModule: ModuleData = {
   title: "HTML moderno: elementos interactivos",
   description:
     "Elementos nativos de HTML que hacen cosas sin (casi) JavaScript: details/summary, dialog, y los indicadores progress y meter.",
-  order: 17,
+  // Last content module of the track; the capstone project follows it. The slug
+  // keeps its original "17" because it is a live URL.
+  order: 16,
   dojo: "html",
   category: "html-advanced",
   icon: "layout",

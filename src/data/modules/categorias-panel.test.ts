@@ -75,9 +75,43 @@ describe("category coverage of the module panels", () => {
     expect(collisions).toEqual([]);
   });
 
-  it("renders the project category last in the CSS track", () => {
-    // A capstone integrates everything before it, so it closes the track.
-    const cssOrder = DOJO_CATEGORY_ORDER.css;
-    expect(cssOrder[cssOrder.length - 1]).toBe("project");
-  });
+  /**
+   * A capstone integrates everything before it, so it closes its track and must
+   * never render mid-list. `js` is deliberately absent: that track teaches
+   * TypeScript after its projects, which is a curriculum decision this test has
+   * no business overruling.
+   */
+  const CLOSING_CATEGORY: Partial<Record<DojoType, ModuleCategory>> = {
+    css: "project",
+    html: "html-projects",
+    react: "react-projects",
+  };
+
+  it.each(Object.entries(CLOSING_CATEGORY) as [DojoType, ModuleCategory][])(
+    "closes the %s track with its project category",
+    (dojo, expected) => {
+      const order = DOJO_CATEGORY_ORDER[dojo];
+      expect(order[order.length - 1]).toBe(expected);
+    }
+  );
+
+  it.each(Object.entries(CLOSING_CATEGORY) as [DojoType, ModuleCategory][])(
+    "gives every %s capstone a higher order than every content module",
+    (dojo, closing) => {
+      const dojoModules = ALL_MODULES.filter((m) => m.dojo === dojo);
+      const capstones = dojoModules.filter((m) => m.category === closing);
+      const content = dojoModules.filter((m) => m.category !== closing);
+
+      expect(capstones.length).toBeGreaterThan(0);
+
+      // The card badge prints `order`, so a capstone rendered last while
+      // carrying a lower number than the module above it reads as a mistake.
+      const highestContent = Math.max(...content.map((m) => m.order));
+      const misnumbered = capstones
+        .filter((m) => m.order <= highestContent)
+        .map((m) => `${m.slug} (order ${m.order} <= ${highestContent})`);
+
+      expect(misnumbered).toEqual([]);
+    }
+  );
 });

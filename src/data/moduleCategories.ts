@@ -30,6 +30,7 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
   "html-fundamentals": { label: "HTML Fundamentos", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange", accent: "border-neon-orange/40", hoverBorder: "hover:border-neon-orange/40", hoverBg: "hover:bg-neon-orange/[0.04]", hoverTitle: "group-hover:text-neon-orange" },
   "html-intermediate": { label: "HTML Intermedio", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
   "html-advanced": { label: "HTML Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red", accent: "border-neon-red/40", hoverBorder: "hover:border-neon-red/40", hoverBg: "hover:bg-neon-red/[0.04]", hoverTitle: "group-hover:text-neon-red" },
+  "html-projects": { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
 
   intro: { label: "Introduccion", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
   intermediate: { label: "Intermedio", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
@@ -68,7 +69,7 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
  * which is why the guard test asserts full coverage.
  */
 export const DOJO_CATEGORY_ORDER: Record<DojoType, ModuleCategory[]> = {
-  html: ["html-fundamentals", "html-intermediate", "html-advanced"],
+  html: ["html-fundamentals", "html-intermediate", "html-advanced", "html-projects"],
   css: ["intro", "intermediate", "advanced", "preprocessors", "frameworks", "project"],
   js: [
     "js-fundamentals",
