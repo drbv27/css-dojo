@@ -274,6 +274,81 @@ Valores de \`grid-auto-flow\`:
       },
       order: 4,
     },
+    {
+      id: "16-leccion-05",
+      title: "subgrid: alinear cuadrículas anidadas",
+      content: `## subgrid: alinear cuadrículas anidadas
+
+Ya podés armar una cuadrícula y poner cuadrículas adentro. Pero hay un problema que aparece siempre y que hasta hace poco no tenía solución limpia.
+
+### El problema
+
+Tenés tres tarjetas en una fila. Cada tarjeta lleva un título, un texto y un botón abajo:
+
+\`\`\`
+┌──────────┐  ┌──────────┐  ┌──────────┐
+│ Título    │  │ Un título │  │ Título    │
+│           │  │ de dos    │  │           │
+│ Texto     │  │ líneas    │  │ Texto     │
+│           │  │ Texto     │  │           │
+│ [Botón]   │  │ [Botón]   │  │ [Botón]   │
+└──────────┘  └──────────┘  └──────────┘
+\`\`\`
+
+Como el título del medio ocupa dos líneas, **sus botones no quedan alineados** entre tarjetas. Cada tarjeta calcula sus propias filas sin saber nada de las vecinas.
+
+Y ahí está el punto: una cuadrícula anidada es **independiente**. Sus filas y columnas no tienen ninguna relación con las del padre.
+
+### La solución: heredar las pistas del padre
+
+\`subgrid\` le dice a la cuadrícula hija: no calcules tus propias pistas, **usá las de tu padre**.
+
+\`\`\`css
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto 1fr auto;   /* titulo | texto | boton */
+}
+
+.tarjeta {
+  grid-row: span 3;                    /* ocupa las 3 filas del padre */
+  display: grid;
+  grid-template-rows: subgrid;         /* y adopta esas mismas filas */
+}
+\`\`\`
+
+Ahora las tres tarjetas comparten las mismas tres líneas de fila. La fila del título mide lo que mida el título más alto, **para todas**. Y los botones quedan alineados.
+
+### Las dos condiciones
+
+Para que funcione hacen falta las dos, y olvidarse de una es el error típico:
+
+1. La hija tiene que **abarcar** las pistas que quiere heredar: \`grid-row: span 3\`.
+2. La hija tiene que declarar \`subgrid\` en el eje que corresponde.
+
+Si pusieras \`grid-template-rows: subgrid\` sin el \`span\`, no hay pistas que heredar y no pasa nada.
+
+### Funciona por eje
+
+\`\`\`css
+grid-template-rows: subgrid;      /* hereda solo las filas */
+grid-template-columns: subgrid;   /* hereda solo las columnas */
+\`\`\`
+
+Podés heredar uno y definir el otro a mano. Son decisiones independientes.
+
+### Cómo saber si el navegador lo soporta
+
+\`subgrid\` es reciente. CSS tiene una forma de preguntarle al navegador si entiende una función **antes** de usarla, y así darle una alternativa a quien no la soporta. Es lo último que vas a ver en el módulo siguiente, y este es justo el caso que la justifica: acá hacen falta dos declaraciones juntas, así que si el navegador no entiende \`subgrid\`, no querés que se aplique la mitad.
+
+> **La idea para llevarse:** sin \`subgrid\`, alinear elementos entre tarjetas hermanas obligaba a fijar alturas a mano y rezar. Con \`subgrid\`, las hijas comparten la regla del padre y la alineación sale sola.`,
+      codeExample: {
+        html: `<div class="galeria">\n  <article class="tarjeta">\n    <h3>Titulo corto</h3>\n    <p>Texto de la primera tarjeta.</p>\n    <button>Ver mas</button>\n  </article>\n  <article class="tarjeta">\n    <h3>Un titulo bastante mas largo que ocupa dos lineas</h3>\n    <p>Texto de la segunda.</p>\n    <button>Ver mas</button>\n  </article>\n  <article class="tarjeta">\n    <h3>Otro corto</h3>\n    <p>Texto de la tercera.</p>\n    <button>Ver mas</button>\n  </article>\n</div>`,
+        css: `.galeria {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  /* titulo | texto | boton */\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n\n.tarjeta {\n  /* 1. abarca las tres filas del padre */\n  grid-row: span 3;\n  /* 2. y adopta esas mismas filas en lugar de calcular las propias */\n  display: grid;\n  grid-template-rows: subgrid;\n  gap: 8px;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}\n\n.tarjeta h3 {\n  margin: 0;\n  font-size: 1rem;\n}\n\n.tarjeta button {\n  padding: 8px;\n  border: none;\n  border-radius: 4px;\n  background: steelblue;\n  color: white;\n  cursor: pointer;\n}`,
+        editable: true,
+      },
+      order: 5,
+    },
   ],
   exercises: [
     {
@@ -492,6 +567,58 @@ Valores de \`grid-auto-flow\`:
       hint: "El header y footer ocupan todas las columnas (nombre repetido). El sidebar ocupa la primera columna y main las demas.",
       explanation:
         "En grid-template-areas, cada string entre comillas es una fila. Repetir un nombre (como 'header header header') indica que esa area ocupa varias columnas. Asi se crea un layout con encabezado completo, sidebar + contenido, y pie completo.",
+    },
+    {
+      id: "16-ej-09",
+      type: "quiz",
+      difficulty: 3,
+      xpReward: 20,
+      order: 9,
+      prompt:
+        "Escribis .tarjeta { display: grid; grid-template-rows: subgrid; } pero no le pones grid-row: span 3. Que pasa?",
+      options: [
+        {
+          id: "a",
+          text: "Funciona igual, subgrid detecta las filas del padre solo",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "No hereda nada, porque no abarca ninguna pista del padre",
+          isCorrect: true,
+        },
+        { id: "c", text: "Hereda las columnas en lugar de las filas", isCorrect: false },
+        { id: "d", text: "El navegador muestra un error en consola", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "subgrid hereda las pistas que el elemento ABARCA. Si no abarca ninguna, no hay nada que heredar.",
+      explanation:
+        "Hacen falta las dos cosas: abarcar las pistas con grid-row: span 3 y declarar subgrid. Sin el span la tarjeta ocupa una sola fila del padre, asi que no hay tres pistas que adoptar y la alineacion entre tarjetas no ocurre. Es el olvido mas comun con subgrid.",
+    },
+    {
+      id: "16-ej-10",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Alinea los botones de las tres tarjetas. A 'galeria' dale display: grid, grid-template-columns: repeat(3, 1fr), grid-template-rows: auto 1fr auto y gap: 12px. A 'tarjeta' dale grid-row: span 3, display: grid y grid-template-rows: subgrid.",
+      codeTemplate: {
+        html: `<div class="galeria">\n  <article class="tarjeta">\n    <h3>Corto</h3>\n    <p>Texto uno.</p>\n    <button>Ver</button>\n  </article>\n  <article class="tarjeta">\n    <h3>Un titulo mucho mas largo de dos lineas</h3>\n    <p>Texto dos.</p>\n    <button>Ver</button>\n  </article>\n  <article class="tarjeta">\n    <h3>Corto</h3>\n    <p>Texto tres.</p>\n    <button>Ver</button>\n  </article>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".galeria {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n.tarjeta {\n  grid-row: span 3;\n  display: grid;\n  grid-template-rows: subgrid;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "El padre define las tres filas con nombres implicitos: auto para el titulo, 1fr para el texto y auto para el boton. La hija las abarca con span 3 y las adopta con subgrid.",
+      explanation:
+        "El padre declara tres filas y cada tarjeta abarca las tres con grid-row: span 3. Al declarar grid-template-rows: subgrid, la tarjeta deja de calcular sus propias filas y usa las del padre, asi que la fila del titulo mide lo mismo en las tres y los botones quedan alineados.",
     },
   ],
 };
