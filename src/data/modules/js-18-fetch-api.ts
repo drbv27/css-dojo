@@ -240,7 +240,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que metodo se usa para hacer peticiones HTTP en JavaScript moderno?",
+      prompt: "¿Que metodo se usa para hacer peticiones HTTP en JavaScript moderno?",
       options: [
         { id: "a", text: "XMLHttpRequest", isCorrect: false },
         { id: "b", text: "fetch()", isCorrect: true },
@@ -257,7 +257,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que metodo convierte la respuesta de fetch a un objeto JavaScript?",
+      prompt: "¿Que metodo convierte la respuesta de fetch a un objeto JavaScript?",
       options: [
         { id: "a", text: "response.parse()", isCorrect: false },
         { id: "b", text: "response.json()", isCorrect: true },
@@ -274,7 +274,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "fetch rechaza la Promise cuando el servidor devuelve un error 404?",
+      prompt: "¿fetch rechaza la Promise cuando el servidor devuelve un error 404?",
       options: [
         { id: "a", text: "Si, siempre rechaza en errores HTTP", isCorrect: false },
         { id: "b", text: "No, solo rechaza en errores de red", isCorrect: true },
@@ -308,7 +308,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que propiedad de response indica si la peticion fue exitosa (status 200-299)?",
+      prompt: "¿Que propiedad de response indica si la peticion fue exitosa (status 200-299)?",
       options: [
         { id: "a", text: "response.success", isCorrect: false },
         { id: "b", text: "response.ok", isCorrect: true },
@@ -325,7 +325,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que metodo HTTP se usa para enviar nuevos datos al servidor?",
+      prompt: "¿Que metodo HTTP se usa para enviar nuevos datos al servidor?",
       options: [
         { id: "a", text: "GET", isCorrect: false },
         { id: "b", text: "POST", isCorrect: true },

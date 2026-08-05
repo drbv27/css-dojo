@@ -201,7 +201,7 @@ Redondea las esquinas de un elemento:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que propiedad CSS cambia el color del texto de un elemento?",
+      prompt: "¿Que propiedad CSS cambia el color del texto de un elemento?",
       options: [
         { id: "a", text: "color", isCorrect: true },
         { id: "b", text: "text-color", isCorrect: false },
@@ -366,7 +366,7 @@ Redondea las esquinas de un elemento:
       difficulty: 2 ,
       xpReward: 20,
       order: 8,
-      prompt: "Cuantos nombres de colores estandar reconoce CSS?",
+      prompt: "¿Cuantos nombres de colores estandar reconoce CSS?",
       options: [
         { id: "a", text: "16", isCorrect: false },
         { id: "b", text: "50", isCorrect: false },

@@ -144,7 +144,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 1,
-      prompt: "Que permite hacer un generic en TypeScript?",
+      prompt: "¿Que permite hacer un generic en TypeScript?",
       options: [
         { id: "a", text: "Crear variables globales", isCorrect: false },
         { id: "b", text: "Crear funciones/tipos reutilizables que trabajan con cualquier tipo", isCorrect: true },
@@ -161,7 +161,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Que hace Partial<Usuario>?",
+      prompt: "¿Que hace Partial<Usuario>?",
       options: [
         { id: "a", text: "Elimina todas las propiedades", isCorrect: false },
         { id: "b", text: "Hace todas las propiedades opcionales", isCorrect: true },
@@ -170,7 +170,7 @@ type ConfigCompleta = Required<Config>;
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Partial = parcial, no necesitas enviar todo.",
-      explanation: "Partial<T> convierte todas las propiedades de T en opcionales (?), util para actualizaciones parciales.",
+      explanation: "¿Partial<T> convierte todas las propiedades de T en opcionales (?), util para actualizaciones parciales.",
     },
     {
       id: "ts03-ej-03",
@@ -202,7 +202,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que hace 'extends' en un generic como <T extends { id: number }>?",
+      prompt: "¿Que hace 'extends' en un generic como <T extends { id: number }>?",
       options: [
         { id: "a", text: "Hereda de una clase", isCorrect: false },
         { id: "b", text: "Restringe T a tipos que tengan la propiedad id: number", isCorrect: true },
@@ -219,7 +219,7 @@ type ConfigCompleta = Required<Config>;
       difficulty: 3 ,
       xpReward: 30,
       order: 5,
-      prompt: 'Dado type Roles = "admin" | "user"; — que tipo crea Record<Roles, boolean>?',
+      prompt: '¿Dado type Roles = "admin" | "user"; — que tipo crea Record<Roles, boolean>?',
       options: [
         { id: "a", text: '{ admin: boolean; user: boolean }', isCorrect: true },
         { id: "b", text: "boolean[]", isCorrect: false },

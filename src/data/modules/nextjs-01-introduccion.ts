@@ -139,7 +139,7 @@ export const metadata: Metadata = {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que es Next.js?",
+      prompt: "¿Que es Next.js?",
       options: [
         { id: "a", text: "Una libreria de CSS", isCorrect: false },
         { id: "b", text: "Un framework construido sobre React", isCorrect: true },
@@ -156,7 +156,7 @@ export const metadata: Metadata = {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "En App Router, donde creas la pagina para la ruta /about?",
+      prompt: "En App Router, ¿donde creas la pagina para la ruta /about?",
       options: [
         { id: "a", text: "pages/about.tsx", isCorrect: false },
         { id: "b", text: "app/about/page.tsx", isCorrect: true },
@@ -173,7 +173,7 @@ export const metadata: Metadata = {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Para que sirve layout.tsx en Next.js?",
+      prompt: "¿Para que sirve layout.tsx en Next.js?",
       options: [
         { id: "a", text: "Para definir estilos CSS", isCorrect: false },
         { id: "b", text: "Para definir la estructura compartida entre paginas", isCorrect: true },

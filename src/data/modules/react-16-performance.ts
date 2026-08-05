@@ -15,7 +15,7 @@ export const reactPerformanceModule: ModuleData = {
       title: "React.memo y evitar re-renders",
       content: `## Entendiendo Re-renders en React
 
-### Cuando se re-renderiza un componente?
+### ¿Cuando se re-renderiza un componente?
 1. Su **estado** cambia (useState, useReducer)
 2. Su **padre** se re-renderiza
 3. El **contexto** que consume cambia
@@ -30,7 +30,7 @@ const MiComponente = React.memo(function MiComponente({ nombre }) {
 });
 \`\`\`
 
-### Como funciona?
+### ¿Como funciona?
 - React.memo hace una comparacion **superficial** de props
 - Si las props son iguales, **reutiliza** el render anterior
 - Si las props cambian, re-renderiza normalmente
@@ -373,7 +373,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que hace React.memo?",
+      prompt: "¿Que hace React.memo?",
       options: [
         { id: "a", text: "Memoriza el estado del componente", isCorrect: false },
         { id: "b", text: "Evita re-renders si las props no cambian", isCorrect: true },
@@ -390,7 +390,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que componente de React se usa como fallback mientras se carga un componente lazy?",
+      prompt: "¿Que componente de React se usa como fallback mientras se carga un componente lazy?",
       options: [
         { id: "a", text: "Loading", isCorrect: false },
         { id: "b", text: "Fallback", isCorrect: false },
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Por que pasar una funcion inline como prop puede anular el efecto de React.memo?",
+      prompt: "¿Por que pasar una funcion inline como prop puede anular el efecto de React.memo?",
       options: [
         { id: "a", text: "Las funciones inline causan errores", isCorrect: false },
         { id: "b", text: "Cada render crea una nueva referencia de funcion, que memo detecta como cambio", isCorrect: true },
@@ -464,7 +464,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Cual es la mejor estrategia antes de aplicar optimizaciones?",
+      prompt: "¿Cual es la mejor estrategia antes de aplicar optimizaciones?",
       options: [
         { id: "a", text: "Envolver todo en React.memo por precaucion", isCorrect: false },
         { id: "b", text: "Medir con React DevTools Profiler e identificar el problema real", isCorrect: true },
@@ -498,7 +498,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Que tecnica evita re-renders sin usar memo ni useMemo?",
+      prompt: "¿Que tecnica evita re-renders sin usar memo ni useMemo?",
       options: [
         { id: "a", text: "Usar componentes de clase", isCorrect: false },
         { id: "b", text: "Mover el estado hacia abajo o levantar el contenido", isCorrect: true },

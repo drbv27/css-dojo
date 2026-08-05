@@ -225,7 +225,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que propiedad se usa para obtener el valor de un input de texto?",
+      prompt: "¿Que propiedad se usa para obtener el valor de un input de texto?",
       options: [
         { id: "a", text: "input.text", isCorrect: false },
         { id: "b", text: "input.value", isCorrect: true },
@@ -242,7 +242,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que metodo previene que un formulario se envie y recargue la pagina?",
+      prompt: "¿Que metodo previene que un formulario se envie y recargue la pagina?",
       options: [
         { id: "a", text: "e.stopPropagation()", isCorrect: false },
         { id: "b", text: "e.preventDefault()", isCorrect: true },
@@ -276,7 +276,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la diferencia entre los eventos 'input' y 'change'?",
+      prompt: "¿Cual es la diferencia entre los eventos 'input' y 'change'?",
       options: [
         { id: "a", text: "No hay diferencia", isCorrect: false },
         { id: "b", text: "input se dispara con cada tecla, change al perder foco", isCorrect: true },
@@ -293,7 +293,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que hace form.reset()?",
+      prompt: "¿Que hace form.reset()?",
       options: [
         { id: "a", text: "Elimina el formulario del DOM", isCorrect: false },
         { id: "b", text: "Envia el formulario", isCorrect: false },
@@ -310,7 +310,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Por que se debe validar en el servidor ademas del frontend?",
+      prompt: "¿Por que se debe validar en el servidor ademas del frontend?",
       options: [
         { id: "a", text: "Porque JavaScript es lento", isCorrect: false },
         { id: "b", text: "Porque la validacion del frontend puede ser evadida por el usuario", isCorrect: true },

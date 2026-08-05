@@ -31,7 +31,7 @@ function Formulario() {
 }
 \`\`\`
 
-### Por que controlados?
+### ¿Por que controlados?
 - **Una sola fuente de verdad** (el estado de React)
 - Puedes **validar** y **transformar** el valor en cada cambio
 - Facil de **resetear** el formulario
@@ -138,7 +138,7 @@ function Formulario() {
 - \`value\` = controlado por React (necesita onChange)
 - \`defaultValue\` = valor inicial, luego el DOM lo maneja
 
-### Cuando usar no controlados?
+### ¿Cuando usar no controlados?
 - Formularios simples donde no necesitas validar en tiempo real
 - Integracion con librerias externas
 - Inputs de tipo file (siempre son no controlados)
@@ -370,7 +370,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "En un componente controlado, quien controla el valor del input?",
+      prompt: "En un componente controlado, ¿quien controla el valor del input?",
       options: [
         { id: "a", text: "El DOM del navegador", isCorrect: false },
         { id: "b", text: "El estado de React", isCorrect: true },
@@ -404,7 +404,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que atributo se usa en un componente NO controlado para establecer un valor inicial?",
+      prompt: "¿Que atributo se usa en un componente NO controlado para establecer un valor inicial?",
       options: [
         { id: "a", text: "value", isCorrect: false },
         { id: "b", text: "initialValue", isCorrect: false },
@@ -438,7 +438,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica: componente controlado o no controlado?",
+      prompt: "¿Clasifica: componente controlado o no controlado?",
       dragItems: [
         { id: "d1", content: "Usa value + onChange", correctZone: "controlado" },
         { id: "d2", content: "Usa ref para leer valor", correctZone: "noControlado" },
@@ -461,7 +461,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Como se maneja un textarea en React?",
+      prompt: "¿Como se maneja un textarea en React?",
       options: [
         { id: "a", text: "Con contenido entre las etiquetas <textarea>texto</textarea>", isCorrect: false },
         { id: "b", text: "Con el atributo value, igual que un input", isCorrect: true },
@@ -478,7 +478,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que libreria de formularios React es conocida por minimizar los re-renders?",
+      prompt: "¿Que libreria de formularios React es conocida por minimizar los re-renders?",
       options: [
         { id: "a", text: "Formik", isCorrect: false },
         { id: "b", text: "Redux Form", isCorrect: false },

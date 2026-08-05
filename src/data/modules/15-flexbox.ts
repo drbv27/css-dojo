@@ -36,7 +36,7 @@ Esto convierte a todos los **hijos directos** en "flex items" (elementos flex).
 - **Main axis** (eje principal): la direccion principal de distribucion (por defecto, horizontal)
 - **Cross axis** (eje cruzado): perpendicular al eje principal (por defecto, vertical)
 
-### Que cambia al activar Flexbox?
+### ¿Que cambia al activar Flexbox?
 
 Sin Flexbox, los hijos se apilan verticalmente (como bloques). Con Flexbox:
 
@@ -321,7 +321,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 10,
       order: 1,
       prompt:
-        "Que propiedad activa Flexbox en un contenedor?",
+        "¿Que propiedad activa Flexbox en un contenedor?",
       options: [
         { id: "a", text: "flex: 1", isCorrect: false },
         { id: "b", text: "display: flex", isCorrect: true },
@@ -445,7 +445,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 20,
       order: 5,
       prompt:
-        "Que hace flex-wrap: wrap en un contenedor flex?",
+        "¿Que hace flex-wrap: wrap en un contenedor flex?",
       options: [
         { id: "a", text: "Invierte el orden de los items", isCorrect: false },
         { id: "b", text: "Permite que los items pasen a la siguiente linea si no caben", isCorrect: true },

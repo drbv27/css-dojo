@@ -173,7 +173,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que etiqueta se usa para crear una lista no ordenada?",
+      prompt: "¿Que etiqueta se usa para crear una lista no ordenada?",
       options: [
         { id: "a", text: "<list>", isCorrect: false },
         { id: "b", text: "<ol>", isCorrect: false },
@@ -209,7 +209,7 @@ Las listas de descripcion asocian **terminos con sus definiciones**:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Que atributo de <ol> hace que la numeracion vaya de mayor a menor?",
+      prompt: "¿Que atributo de <ol> hace que la numeracion vaya de mayor a menor?",
       options: [
         { id: "a", text: "reverse", isCorrect: false },
         { id: "b", text: "reversed", isCorrect: true },

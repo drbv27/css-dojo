@@ -153,7 +153,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que funcion se usa para crear un store en Zustand?",
+      prompt: "¿Que funcion se usa para crear un store en Zustand?",
       options: [
         { id: "a", text: "createStore()", isCorrect: false },
         { id: "b", text: "create()", isCorrect: true },
@@ -170,7 +170,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Cual es la ventaja principal de usar selectores en Zustand?",
+      prompt: "¿Cual es la ventaja principal de usar selectores en Zustand?",
       options: [
         { id: "a", text: "Hace el codigo mas corto", isCorrect: false },
         { id: "b", text: "Solo re-renderiza el componente cuando cambia el dato seleccionado", isCorrect: true },
@@ -187,7 +187,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que middleware de Zustand guarda el estado en localStorage?",
+      prompt: "¿Que middleware de Zustand guarda el estado en localStorage?",
       options: [
         { id: "a", text: "devtools", isCorrect: false },
         { id: "b", text: "immer", isCorrect: false },

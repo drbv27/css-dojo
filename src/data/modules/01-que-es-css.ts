@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const queEsCSSModule: ModuleData = {
   slug: "que-es-css",
-  title: "Que es CSS?",
+  title: "¿Que es CSS?",
   description:
     "Descubre que es CSS, como funciona y las distintas formas de agregar estilos a tus documentos HTML.",
   order: 1,
@@ -12,14 +12,14 @@ export const queEsCSSModule: ModuleData = {
   lessons: [
     {
       id: "01-leccion-01",
-      title: "Que es CSS?",
-      content: `## Que es CSS?
+      title: "¿Que es CSS?",
+      content: `## ¿Que es CSS?
 
 **CSS** significa **Cascading Style Sheets** (Hojas de Estilo en Cascada). Es el lenguaje que utilizamos para **dar estilo y presentacion** a los documentos HTML.
 
 Si HTML es el esqueleto de una pagina web, **CSS es la piel, la ropa y el maquillaje**. Sin CSS, todas las paginas web se verian como documentos de texto plano con enlaces azules.
 
-### Que puede hacer CSS?
+### ¿Que puede hacer CSS?
 
 - Cambiar **colores** de texto y fondos
 - Definir **tipografias** y tamanos de letra
@@ -155,7 +155,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que significa CSS?",
+      prompt: "¿Que significa CSS?",
       options: [
         { id: "a", text: "Cascading Style Sheets", isCorrect: true },
         { id: "b", text: "Computer Style Sheets", isCorrect: false },
@@ -173,7 +173,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es la forma recomendada de anadir estilos CSS a un sitio web?",
+      prompt: "¿Cual es la forma recomendada de anadir estilos CSS a un sitio web?",
       options: [
         { id: "a", text: "Estilos en linea (atributo style)", isCorrect: false },
         { id: "b", text: "Estilos internos (etiqueta <style>)", isCorrect: false },
@@ -272,7 +272,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       xpReward: 20,
       order: 6,
       prompt:
-        "Cual de estas formas de anadir estilos CSS es considerada un anti-patron en proyectos profesionales?",
+        "¿Cual de estas formas de anadir estilos CSS es considerada un anti-patron en proyectos profesionales?",
       options: [
         {
           id: "a",

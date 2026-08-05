@@ -15,7 +15,7 @@ export const sassAvanzadoModule: ModuleData = {
       title: "Herencia con @extend",
       content: `## Herencia con @extend
 
-### Que es @extend?
+### ¿Que es @extend?
 
 \`@extend\` permite que un selector **herede** todos los estilos de otro selector. Es util cuando varios elementos comparten una base comun:
 
@@ -619,7 +619,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 10,
       order: 1,
       prompt:
-        "Que hace la directiva @extend en Sass?",
+        "¿Que hace la directiva @extend en Sass?",
       options: [
         { id: "a", text: "Crea una variable global", isCorrect: false },
         { id: "b", text: "Hace que un selector herede todos los estilos de otro selector", isCorrect: true },
@@ -657,7 +657,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 3,
       prompt:
-        "Cual es la diferencia entre '@for $i from 1 through 5' y '@for $i from 1 to 5'?",
+        "¿Cual es la diferencia entre '@for $i from 1 through 5' y '@for $i from 1 to 5'?",
       options: [
         { id: "a", text: "No hay diferencia", isCorrect: false },
         { id: "b", text: "'through' incluye el 5, 'to' no incluye el 5", isCorrect: true },
@@ -728,7 +728,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 6,
       prompt:
-        "En la metodologia BEM con Sass, como se escribe el selector para el elemento 'titulo' del bloque 'tarjeta'?",
+        "¿En la metodologia BEM con Sass, como se escribe el selector para el elemento 'titulo' del bloque 'tarjeta'?",
       options: [
         { id: "a", text: ".tarjeta { .titulo { } }", isCorrect: false },
         { id: "b", text: ".tarjeta { &__titulo { } }", isCorrect: true },
@@ -766,7 +766,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 30,
       order: 8,
       prompt:
-        "En el patron de arquitectura 7-1, donde se colocan las variables globales y los mixins?",
+        "En el patron de arquitectura 7-1, ¿donde se colocan las variables globales y los mixins?",
       options: [
         { id: "a", text: "En la carpeta 'base/'", isCorrect: false },
         { id: "b", text: "En la carpeta 'componentes/'", isCorrect: false },

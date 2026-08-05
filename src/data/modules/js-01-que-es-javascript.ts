@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const jsQueEsModule: ModuleData = {
   slug: "js-que-es-javascript",
-  title: "Que es JavaScript?",
+  title: "¿Que es JavaScript?",
   description:
     "Descubre que es JavaScript, para que se usa y como ejecutar tu primer programa en el navegador.",
   order: 101,
@@ -12,12 +12,12 @@ export const jsQueEsModule: ModuleData = {
   lessons: [
     {
       id: "js01-leccion-01",
-      title: "Que es JavaScript?",
-      content: `## Que es JavaScript?
+      title: "¿Que es JavaScript?",
+      content: `## ¿Que es JavaScript?
 
 **JavaScript** es el lenguaje de programacion de la web. Es el unico lenguaje que los navegadores ejecutan de forma nativa, y hoy en dia se usa tanto en el **frontend** como en el **backend**.
 
-### Para que sirve?
+### ¿Para que sirve?
 
 - **Interactividad:** hacer que botones, formularios y menus respondan al usuario
 - **Manipular el DOM:** cambiar el contenido y estilos de una pagina sin recargarla
@@ -60,7 +60,7 @@ console.log(true);
 - \`console.error()\` — muestra un error (rojo)
 - \`console.table()\` — muestra datos en formato tabla
 
-### Por que es importante?
+### ¿Por que es importante?
 
 La consola es tu mejor amiga para **depurar** (encontrar errores). Siempre que algo no funcione, usa \`console.log()\` para inspeccionar valores.
 
@@ -129,7 +129,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Quien creo JavaScript y en que ano?",
+      prompt: "¿Quien creo JavaScript y en que ano?",
       options: [
         { id: "a", text: "Brendan Eich en 1995", isCorrect: true },
         { id: "b", text: "Tim Berners-Lee en 1991", isCorrect: false },
@@ -147,7 +147,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que metodo se usa para mostrar mensajes en la consola del navegador?",
+      prompt: "¿Que metodo se usa para mostrar mensajes en la consola del navegador?",
       options: [
         { id: "a", text: "print()", isCorrect: false },
         { id: "b", text: "console.log()", isCorrect: true },
@@ -165,7 +165,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "JavaScript tiene relacion directa con el lenguaje Java?",
+      prompt: "¿JavaScript tiene relacion directa con el lenguaje Java?",
       options: [
         { id: "a", text: "Si, JavaScript es una version ligera de Java", isCorrect: false },
         { id: "b", text: "No, son lenguajes completamente diferentes", isCorrect: true },
@@ -201,7 +201,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Cual es la forma correcta de escribir un comentario de una linea en JavaScript?",
+      prompt: "¿Cual es la forma correcta de escribir un comentario de una linea en JavaScript?",
       options: [
         { id: "a", text: "<!-- comentario -->", isCorrect: false },
         { id: "b", text: "# comentario", isCorrect: false },

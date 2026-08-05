@@ -147,7 +147,7 @@ function procesar(valor: string | number | boolean) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que define una interface en TypeScript?",
+      prompt: "¿Que define una interface en TypeScript?",
       options: [
         { id: "a", text: "Una funcion reutilizable", isCorrect: false },
         { id: "b", text: "La forma/estructura de un objeto", isCorrect: true },
@@ -164,7 +164,7 @@ function procesar(valor: string | number | boolean) {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: 'Que tipo describe un valor que puede ser "exito", "error" o "pendiente"?',
+      prompt: '¿Que tipo describe un valor que puede ser "exito", "error" o "pendiente"?',
       options: [
         { id: "a", text: "enum", isCorrect: false },
         { id: "b", text: "Union de literal types", isCorrect: true },
@@ -198,7 +198,7 @@ function procesar(valor: string | number | boolean) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que hace el operador & en TypeScript?",
+      prompt: "¿Que hace el operador & en TypeScript?",
       options: [
         { id: "a", text: "Crea un union type", isCorrect: false },
         { id: "b", text: "Compara dos tipos", isCorrect: false },

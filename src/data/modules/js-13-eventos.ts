@@ -200,7 +200,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual es la forma moderna de escuchar un evento en JavaScript?",
+      prompt: "¿Cual es la forma moderna de escuchar un evento en JavaScript?",
       options: [
         { id: "a", text: 'onclick = "funcion()"', isCorrect: false },
         { id: "b", text: 'addEventListener("click", funcion)', isCorrect: true },
@@ -217,7 +217,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que propiedad del objeto evento indica que elemento disparo el evento?",
+      prompt: "¿Que propiedad del objeto evento indica que elemento disparo el evento?",
       options: [
         { id: "a", text: "e.element", isCorrect: false },
         { id: "b", text: "e.source", isCorrect: false },
@@ -251,7 +251,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que metodo previene el comportamiento por defecto de un evento?",
+      prompt: "¿Que metodo previene el comportamiento por defecto de un evento?",
       options: [
         { id: "a", text: "e.stop()", isCorrect: false },
         { id: "b", text: "e.cancel()", isCorrect: false },
@@ -268,7 +268,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que es la delegacion de eventos?",
+      prompt: "¿Que es la delegacion de eventos?",
       options: [
         { id: "a", text: "Agregar multiples listeners al mismo elemento", isCorrect: false },
         { id: "b", text: "Escuchar eventos en el padre para manejar clicks en los hijos", isCorrect: true },
@@ -285,7 +285,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que propiedad del evento keydown devuelve el valor de la tecla presionada?",
+      prompt: "¿Que propiedad del evento keydown devuelve el valor de la tecla presionada?",
       options: [
         { id: "a", text: "e.char", isCorrect: false },
         { id: "b", text: "e.keyCode", isCorrect: false },

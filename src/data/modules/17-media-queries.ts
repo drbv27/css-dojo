@@ -85,7 +85,7 @@ Puedes especificar el tipo de medio:
       title: "Breakpoints y enfoque Mobile-First",
       content: `## Breakpoints y enfoque Mobile-First
 
-### Que son los breakpoints?
+### ¿Que son los breakpoints?
 
 Los **breakpoints** son los puntos de ancho donde el diseno cambia para adaptarse mejor al dispositivo. Son los valores que usas en tus media queries.
 
@@ -151,7 +151,7 @@ Usa \`max-width\` para empezar desde escritorio y reducir:
 }
 \`\`\`
 
-### Por que preferir Mobile-First?
+### ¿Por que preferir Mobile-First?
 
 1. **Rendimiento**: Los moviles cargan solo los estilos basicos
 2. **Simplicidad**: Empiezas con lo mas simple y agregas complejidad
@@ -424,7 +424,7 @@ No hace falta envolver todo. Usalo cuando:
 
 Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia natural de CSS ya te cubre.
 
-> **La idea para llevarse:** \`@supports\` es lo que te permite usar CSS moderno sin esperar años. No preguntás "qué navegador es" — preguntás "entendés esto?", que es la única pregunta que no envejece.`,
+> **La idea para llevarse:** \`@supports\` es lo que te permite usar CSS moderno sin esperar años. ¿No preguntás "qué navegador es" — preguntás "entendés esto?", que es la única pregunta que no envejece.`,
       codeExample: {
         html: `<div class="galeria">\n  <article class="tarjeta"><h4>Una</h4><p>Texto corto.</p><button>Ver</button></article>\n  <article class="tarjeta"><h4>Un titulo de dos lineas para desalinear</h4><p>Texto.</p><button>Ver</button></article>\n</div>\n<p class="nota">Si tu navegador soporta subgrid, los botones estan alineados. Si no, cada tarjeta usa una altura minima.</p>`,
         css: `.galeria {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n\n.tarjeta {\n  display: grid;\n  gap: 8px;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}\n\n/* Camino moderno: las tarjetas comparten las filas del padre */\n@supports (grid-template-rows: subgrid) {\n  .tarjeta {\n    grid-row: span 3;\n    grid-template-rows: subgrid;\n  }\n}\n\n/* Alternativa para quien no lo soporta */\n@supports not (grid-template-rows: subgrid) {\n  .tarjeta {\n    min-height: 180px;\n  }\n}\n\n.tarjeta h4 {\n  margin: 0;\n}\n\n.nota {\n  font-size: 13px;\n  color: #666;\n}`,
@@ -441,7 +441,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 10,
       order: 1,
       prompt:
-        "Que regla CSS se usa para aplicar estilos segun el tamano de la pantalla?",
+        "¿Que regla CSS se usa para aplicar estilos segun el tamano de la pantalla?",
       options: [
         { id: "a", text: "@screen", isCorrect: false },
         { id: "b", text: "@responsive", isCorrect: false },
@@ -479,7 +479,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 3,
       prompt:
-        "En un enfoque mobile-first, cual es el orden correcto de las media queries?",
+        "En un enfoque mobile-first, ¿cual es el orden correcto de las media queries?",
       options: [
         { id: "a", text: "De mayor a menor: 1280px, 1024px, 768px", isCorrect: false },
         { id: "b", text: "De menor a mayor: 640px, 768px, 1024px", isCorrect: true },
@@ -600,7 +600,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 30,
       order: 8,
       prompt:
-        "Que hace la declaracion 'font-size: clamp(1rem, 2.5vw, 2rem)'?",
+        "¿Que hace la declaracion 'font-size: clamp(1rem, 2.5vw, 2rem)'?",
       options: [
         { id: "a", text: "Fija el tamano en 2.5vw siempre", isCorrect: false },
         { id: "b", text: "Alterna entre 1rem y 2rem segun el viewport", isCorrect: false },
@@ -619,7 +619,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 9,
       prompt:
-        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. Que pasa?",
+        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. ¿Que pasa?",
       options: [
         {
           id: "a",
@@ -687,7 +687,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       hint: "Son dos bloques @supports separados: uno con la condicion y otro con not. Cada uno lleva adentro la regla .tarjeta.",
       explanation:
-        "El primer bloque aplica subgrid solo si el navegador lo entiende, y como necesita dos declaraciones juntas para tener sentido, envolverlas es lo correcto. El segundo da la alternativa para quien no lo soporta. Preguntar 'entendes esto?' en lugar de 'que navegador sos' es lo que no envejece.",
+        "El primer bloque aplica subgrid solo si el navegador lo entiende, y como necesita dos declaraciones juntas para tener sentido, envolverlas es lo correcto. El segundo da la alternativa para quien no lo soporta. ¿Preguntar 'entendes esto?' en lugar de 'que navegador sos' es lo que no envejece.",
     },
   ],
 };

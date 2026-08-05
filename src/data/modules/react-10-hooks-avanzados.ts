@@ -136,7 +136,7 @@ const handleClick = useCallback(() => {
 \`\`\`
 Devuelve la misma referencia de funcion entre renders. Util cuando pasas callbacks a componentes hijos optimizados con React.memo.
 
-### Cuando usarlos?
+### ¿Cuando usarlos?
 
 **useMemo:**
 - Calculos costosos (filtrar/ordenar listas grandes)
@@ -146,7 +146,7 @@ Devuelve la misma referencia de funcion entre renders. Util cuando pasas callbac
 - Funciones que se pasan como props a componentes memorizados
 - Funciones usadas como dependencias en otros hooks
 
-### Cuando NO usarlos?
+### ¿Cuando NO usarlos?
 - Para calculos simples (el costo de memorizar supera el beneficio)
 - Si no hay problemas de rendimiento reales
 
@@ -215,7 +215,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ListaFiltrable />);
 
 Un **custom hook** es una funcion que empieza con \`use\` y puede usar otros hooks dentro.
 
-### Por que custom hooks?
+### ¿Por que custom hooks?
 - **Reutilizar logica** entre componentes
 - **Separar** logica compleja del componente
 - **Testear** logica de forma aislada
@@ -333,7 +333,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que propiedad de useRef se usa para acceder al valor almacenado?",
+      prompt: "¿Que propiedad de useRef se usa para acceder al valor almacenado?",
       options: [
         { id: "a", text: ".value", isCorrect: false },
         { id: "b", text: ".current", isCorrect: true },
@@ -350,7 +350,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que pasa cuando cambias el valor de useRef.current?",
+      prompt: "¿Que pasa cuando cambias el valor de useRef.current?",
       options: [
         { id: "a", text: "El componente se re-renderiza", isCorrect: false },
         { id: "b", text: "Se lanza un error", isCorrect: false },
@@ -384,7 +384,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la diferencia principal entre useMemo y useCallback?",
+      prompt: "¿Cual es la diferencia principal entre useMemo y useCallback?",
       options: [
         { id: "a", text: "useMemo es para valores, useCallback es para funciones", isCorrect: true },
         { id: "b", text: "No hay diferencia, son aliases", isCorrect: false },
@@ -425,7 +425,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Cual es la regla mas importante de los hooks?",
+      prompt: "¿Cual es la regla mas importante de los hooks?",
       options: [
         { id: "a", text: "Siempre usar useEffect despues de useState", isCorrect: false },
         { id: "b", text: "Solo llamar hooks en el nivel superior, nunca dentro de condicionales", isCorrect: true },
@@ -459,7 +459,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Para que sirve el hook useId de React?",
+      prompt: "¿Para que sirve el hook useId de React?",
       options: [
         { id: "a", text: "Generar IDs unicos para elementos, compatibles con SSR", isCorrect: true },
         { id: "b", text: "Obtener el ID del componente en el arbol de React", isCorrect: false },

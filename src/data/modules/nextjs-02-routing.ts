@@ -150,7 +150,7 @@ layout.tsx      <- estructura
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Como creas una ruta dinamica en Next.js App Router?",
+      prompt: "¿Como creas una ruta dinamica en Next.js App Router?",
       options: [
         { id: "a", text: "Usando :id en el nombre del archivo", isCorrect: false },
         { id: "b", text: "Creando una carpeta con [brackets]", isCorrect: true },
@@ -167,7 +167,7 @@ layout.tsx      <- estructura
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Para que sirven los route groups como (auth)?",
+      prompt: "¿Para que sirven los route groups como (auth)?",
       options: [
         { id: "a", text: "Agregan /auth a la URL", isCorrect: false },
         { id: "b", text: "Organizan archivos sin afectar la URL", isCorrect: true },
@@ -184,7 +184,7 @@ layout.tsx      <- estructura
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que archivo se muestra automaticamente mientras una pagina carga en el servidor?",
+      prompt: "¿Que archivo se muestra automaticamente mientras una pagina carga en el servidor?",
       options: [
         { id: "a", text: "skeleton.tsx", isCorrect: false },
         { id: "b", text: "loading.tsx", isCorrect: true },

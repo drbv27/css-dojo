@@ -274,7 +274,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 10,
       order: 1,
       prompt:
-        "Como se declara una variable CSS llamada 'color-primario' con el valor #3498db?",
+        "¿Como se declara una variable CSS llamada 'color-primario' con el valor #3498db?",
       options: [
         { id: "a", text: "$color-primario: #3498db;", isCorrect: false },
         { id: "b", text: "--color-primario: #3498db;", isCorrect: true },
@@ -312,7 +312,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 3,
       prompt:
-        "Que hace la declaracion 'color: var(--color-texto, #333)'?",
+        "¿Que hace la declaracion 'color: var(--color-texto, #333)'?",
       options: [
         { id: "a", text: "Aplica ambos colores al mismo tiempo", isCorrect: false },
         { id: "b", text: "Usa --color-texto, o #333 si la variable no esta definida", isCorrect: true },
@@ -433,7 +433,7 @@ Detecta automaticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 8,
       prompt:
-        "Si declaras --color: blue en :root y --color: red en .seccion, que color tendra un <p> dentro de .seccion?",
+        "¿Si declaras --color: blue en :root y --color: red en .seccion, que color tendra un <p> dentro de .seccion?",
       options: [
         { id: "a", text: "blue (la variable global tiene prioridad)", isCorrect: false },
         { id: "b", text: "red (la variable mas cercana tiene prioridad)", isCorrect: true },

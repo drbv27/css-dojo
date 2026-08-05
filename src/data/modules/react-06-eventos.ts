@@ -226,7 +226,7 @@ function Formulario() {
 }
 \`\`\`
 
-### Por que controlados?
+### ¿Por que controlados?
 
 - **Una sola fuente de verdad:** el estado de React
 - **Validacion en tiempo real** mientras el usuario escribe
@@ -333,7 +333,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Como se escribe un evento de clic en JSX?",
+      prompt: "¿Como se escribe un evento de clic en JSX?",
       options: [
         { id: "a", text: "onclick={handleClick}", isCorrect: false },
         { id: "b", text: "onClick={handleClick}", isCorrect: true },
@@ -351,7 +351,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es el error en este codigo? <button onClick={handleClick()}>Clic</button>",
+      prompt: "¿Cual es el error en este codigo? <button onClick={handleClick()}>Clic</button>",
       options: [
         { id: "a", text: "Falta el atributo type en el button", isCorrect: false },
         { id: "b", text: "handleClick() se ejecuta inmediatamente en vez de al hacer clic", isCorrect: true },
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que es un componente controlado en React?",
+      prompt: "¿Que es un componente controlado en React?",
       options: [
         { id: "a", text: "Un componente que no acepta props", isCorrect: false },
         { id: "b", text: "Un input cuyo valor es manejado por el estado de React", isCorrect: true },
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Como pasas un argumento adicional a un event handler en JSX?",
+      prompt: "¿Como pasas un argumento adicional a un event handler en JSX?",
       options: [
         { id: "a", text: "onClick={handleDelete, item.id}", isCorrect: false },
         { id: "b", text: "onClick={() => handleDelete(item.id)}", isCorrect: true },

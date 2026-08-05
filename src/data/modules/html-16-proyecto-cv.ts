@@ -299,7 +299,7 @@ anidacion correcta, atributos validos. Pega tu codigo ahi y corrige lo que marqu
       difficulty: 2,
       xpReward: 15,
       order: 8,
-      prompt: "En tu CV pusiste el nombre en <h1> y luego los cargos en <h3>, saltandote el <h2>. Por que esta mal?",
+      prompt: "En tu CV pusiste el nombre en <h1> y luego los cargos en <h3>, saltandote el <h2>. ¿Por que esta mal?",
       options: [
         { id: "a", text: "Rompe la jerarquia de encabezados; debe ir h1 -> h2 -> h3 sin saltos (accesibilidad)", isCorrect: true },
         { id: "b", text: "No pasa nada, los numeros de h son solo tamano", isCorrect: false },

@@ -169,7 +169,7 @@ Una URL relativa se basa en la **ubicacion del archivo actual**. Se usa para enl
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que atributo de la etiqueta <a> especifica la URL de destino?",
+      prompt: "¿Que atributo de la etiqueta <a> especifica la URL de destino?",
       options: [
         { id: "a", text: "src", isCorrect: false },
         { id: "b", text: "link", isCorrect: false },
@@ -205,7 +205,7 @@ Una URL relativa se basa en la **ubicacion del archivo actual**. Se usa para enl
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Cual es la forma correcta de crear un enlace interno a una seccion con id='info'?",
+      prompt: "¿Cual es la forma correcta de crear un enlace interno a una seccion con id='info'?",
       options: [
         { id: "a", text: "<a href='info'>Info</a>", isCorrect: false },
         { id: "b", text: "<a href='#info'>Info</a>", isCorrect: true },
@@ -297,7 +297,7 @@ Una URL relativa se basa en la **ubicacion del archivo actual**. Se usa para enl
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Por que es importante agregar rel='noopener noreferrer' cuando usas target='_blank'?",
+      prompt: "¿Por que es importante agregar rel='noopener noreferrer' cuando usas target='_blank'?",
       options: [
         { id: "a", text: "Para que el enlace cargue mas rapido", isCorrect: false },
         { id: "b", text: "Para mejorar el SEO de la pagina", isCorrect: false },

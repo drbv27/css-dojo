@@ -165,7 +165,7 @@ function Busqueda() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que componente se usa para navegar sin recargar la pagina?",
+      prompt: "¿Que componente se usa para navegar sin recargar la pagina?",
       options: [
         { id: "a", text: "<a href>", isCorrect: false },
         { id: "b", text: "<Link to>", isCorrect: true },
@@ -182,7 +182,7 @@ function Busqueda() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Que hook se usa para obtener parametros de la URL como /usuario/:id?",
+      prompt: "¿Que hook se usa para obtener parametros de la URL como /usuario/:id?",
       options: [
         { id: "a", text: "useNavigate", isCorrect: false },
         { id: "b", text: "useLocation", isCorrect: false },
@@ -199,7 +199,7 @@ function Busqueda() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Para que sirve <Outlet /> en rutas anidadas?",
+      prompt: "¿Para que sirve <Outlet /> en rutas anidadas?",
       options: [
         { id: "a", text: "Para redirigir a otra pagina", isCorrect: false },
         { id: "b", text: "Para renderizar el componente de la ruta hija activa", isCorrect: true },

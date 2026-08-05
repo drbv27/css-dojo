@@ -254,7 +254,7 @@ function procesar(datos) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que estructura se usa para capturar errores en JavaScript?",
+      prompt: "¿Que estructura se usa para capturar errores en JavaScript?",
       options: [
         { id: "a", text: "if/else", isCorrect: false },
         { id: "b", text: "try/catch", isCorrect: true },
@@ -271,7 +271,7 @@ function procesar(datos) {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que bloque se ejecuta siempre, haya o no haya error?",
+      prompt: "¿Que bloque se ejecuta siempre, haya o no haya error?",
       options: [
         { id: "a", text: "try", isCorrect: false },
         { id: "b", text: "catch", isCorrect: false },
@@ -305,7 +305,7 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que tipo de error se produce al acceder a una variable que no existe?",
+      prompt: "¿Que tipo de error se produce al acceder a una variable que no existe?",
       options: [
         { id: "a", text: "TypeError", isCorrect: false },
         { id: "b", text: "SyntaxError", isCorrect: false },
@@ -322,7 +322,7 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que propiedad del objeto error contiene la descripcion del error?",
+      prompt: "¿Que propiedad del objeto error contiene la descripcion del error?",
       options: [
         { id: "a", text: "error.text", isCorrect: false },
         { id: "b", text: "error.description", isCorrect: false },
@@ -339,7 +339,7 @@ function procesar(datos) {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que hace la palabra clave debugger en el codigo?",
+      prompt: "¿Que hace la palabra clave debugger en el codigo?",
       options: [
         { id: "a", text: "Elimina todos los bugs automaticamente", isCorrect: false },
         { id: "b", text: "Pausa la ejecucion si DevTools esta abierto", isCorrect: true },

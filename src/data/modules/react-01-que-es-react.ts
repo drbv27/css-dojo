@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const reactQueEsModule: ModuleData = {
   slug: "react-que-es-react",
-  title: "Que es React?",
+  title: "¿Que es React?",
   description:
     "Descubre que es React, como funciona el Virtual DOM, y por que es la libreria mas popular para construir interfaces de usuario.",
   order: 201,
@@ -12,12 +12,12 @@ export const reactQueEsModule: ModuleData = {
   lessons: [
     {
       id: "react01-leccion-01",
-      title: "Que es React?",
-      content: `## Que es React?
+      title: "¿Que es React?",
+      content: `## ¿Que es React?
 
 **React** es una **libreria de JavaScript** creada por Facebook (ahora Meta) en 2013 para construir **interfaces de usuario** (UI) de forma declarativa y eficiente.
 
-### Por que React?
+### ¿Por que React?
 
 - **Declarativo:** describes *que* quieres ver, no *como* lograrlo paso a paso
 - **Basado en componentes:** divides tu UI en piezas reutilizables
@@ -27,7 +27,7 @@ export const reactQueEsModule: ModuleData = {
 
 A diferencia de Angular o Vue, React es solo una **libreria** enfocada en la capa de vista. Para routing, manejo de estado global, etc., necesitas librerias adicionales o frameworks como **Next.js**.
 
-### Quien usa React?
+### ¿Quien usa React?
 
 Facebook, Instagram, Netflix, Airbnb, Uber, WhatsApp Web, Discord y miles de empresas mas.
 
@@ -167,7 +167,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que es React?",
+      prompt: "¿Que es React?",
       options: [
         { id: "a", text: "Un lenguaje de programacion", isCorrect: false },
         { id: "b", text: "Una libreria de JavaScript para construir interfaces de usuario", isCorrect: true },
@@ -185,7 +185,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que problema resuelve el Virtual DOM?",
+      prompt: "¿Que problema resuelve el Virtual DOM?",
       options: [
         { id: "a", text: "Hace que el CSS se cargue mas rapido", isCorrect: false },
         { id: "b", text: "Evita manipular el DOM real directamente, mejorando el rendimiento", isCorrect: true },
@@ -203,7 +203,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Que es una SPA (Single-Page Application)?",
+      prompt: "¿Que es una SPA (Single-Page Application)?",
       options: [
         { id: "a", text: "Una aplicacion que solo tiene una pagina de contenido", isCorrect: false },
         { id: "b", text: "Una aplicacion que carga un solo HTML y actualiza el contenido dinamicamente sin recargar", isCorrect: true },
@@ -269,7 +269,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Cual es la herramienta recomendada actualmente para crear un nuevo proyecto React?",
+      prompt: "¿Cual es la herramienta recomendada actualmente para crear un nuevo proyecto React?",
       options: [
         { id: "a", text: "Create React App", isCorrect: false },
         { id: "b", text: "Webpack manual", isCorrect: false },

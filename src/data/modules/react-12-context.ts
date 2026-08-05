@@ -377,7 +377,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que problema resuelve la Context API de React?",
+      prompt: "¿Que problema resuelve la Context API de React?",
       options: [
         { id: "a", text: "Manejo de rutas en la aplicacion", isCorrect: false },
         { id: "b", text: "Prop drilling (pasar props por muchos niveles)", isCorrect: true },
@@ -394,7 +394,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cuales son los tres pasos para usar Context?",
+      prompt: "¿Cuales son los tres pasos para usar Context?",
       options: [
         { id: "a", text: "import, export, render", isCorrect: false },
         { id: "b", text: "createContext, Provider, useContext", isCorrect: true },
@@ -428,7 +428,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Clasifica: es mejor usar Props o Context para este caso?",
+      prompt: "¿Clasifica: es mejor usar Props o Context para este caso?",
       dragItems: [
         { id: "d1", content: "Tema oscuro/claro de toda la app", correctZone: "context" },
         { id: "d2", content: "Titulo de un boton", correctZone: "props" },
@@ -451,7 +451,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que pasa cuando cambia el value del Provider?",
+      prompt: "¿Que pasa cuando cambia el value del Provider?",
       options: [
         { id: "a", text: "Solo el Provider se re-renderiza", isCorrect: false },
         { id: "b", text: "Todos los componentes de la app se re-renderizan", isCorrect: false },
@@ -485,7 +485,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Por que es mejor separar contextos no relacionados en lugar de tener uno solo?",
+      prompt: "¿Por que es mejor separar contextos no relacionados en lugar de tener uno solo?",
       options: [
         { id: "a", text: "React no permite multiples valores en un Provider", isCorrect: false },
         { id: "b", text: "Evita re-renders innecesarios en consumidores que no usan todos los datos", isCorrect: true },
@@ -502,7 +502,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Cual es una buena practica al crear un contexto con estado?",
+      prompt: "¿Cual es una buena practica al crear un contexto con estado?",
       options: [
         { id: "a", text: "Siempre usar Redux en vez de Context", isCorrect: false },
         { id: "b", text: "Crear un custom hook (useAuth, useTema) que valide el contexto", isCorrect: true },

@@ -12,8 +12,8 @@ export const reactEstadoModule: ModuleData = {
   lessons: [
     {
       id: "react05-leccion-01",
-      title: "Que es el estado?",
-      content: `## Que es el estado en React?
+      title: "¿Que es el estado?",
+      content: `## ¿Que es el estado en React?
 
 El **estado** (state) son datos que **pueden cambiar con el tiempo** y que, al cambiar, hacen que el componente se **re-renderice** (se vuelva a pintar).
 
@@ -25,7 +25,7 @@ El **estado** (state) son datos que **pueden cambiar con el tiempo** y que, al c
 | Solo lectura | Pueden cambiar |
 | El hijo no las puede modificar | El componente puede actualizarlo |
 
-### Por que necesitamos estado?
+### ¿Por que necesitamos estado?
 
 Las variables normales de JavaScript **no causan re-renderizado**:
 
@@ -286,7 +286,7 @@ setCuenta(cuenta + 1);
 setCuenta(prev => prev + 1);
 \`\`\`
 
-### Por que importa?
+### ¿Por que importa?
 
 \`\`\`jsx
 // Esto NO suma 3, suma solo 1:
@@ -375,7 +375,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que retorna el hook useState?",
+      prompt: "¿Que retorna el hook useState?",
       options: [
         { id: "a", text: "Solo el valor del estado", isCorrect: false },
         { id: "b", text: "Un array con el valor actual y una funcion para actualizarlo", isCorrect: true },
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Por que una variable normal (let) no funciona como estado en React?",
+      prompt: "¿Por que una variable normal (let) no funciona como estado en React?",
       options: [
         { id: "a", text: "Porque JavaScript no permite cambiar variables con let", isCorrect: false },
         { id: "b", text: "Porque React no detecta el cambio y no re-renderiza el componente", isCorrect: true },
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la forma CORRECTA de actualizar un objeto en el estado?",
+      prompt: "¿Cual es la forma CORRECTA de actualizar un objeto en el estado?",
       options: [
         { id: "a", text: "usuario.nombre = \"Nuevo\"; setUsuario(usuario);", isCorrect: false },
         { id: "b", text: "setUsuario({ ...usuario, nombre: \"Nuevo\" });", isCorrect: true },
@@ -517,7 +517,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Que significa 'levantar el estado' (lifting state up)?",
+      prompt: "¿Que significa 'levantar el estado' (lifting state up)?",
       options: [
         { id: "a", text: "Mover el estado a un componente hijo", isCorrect: false },
         { id: "b", text: "Mover el estado al componente padre comun mas cercano cuando varios hijos lo necesitan", isCorrect: true },

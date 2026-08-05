@@ -297,7 +297,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual de las siguientes es una unidad ABSOLUTA en CSS?",
+      prompt: "¿Cual de las siguientes es una unidad ABSOLUTA en CSS?",
       options: [
         { id: "a", text: "em", isCorrect: false },
         { id: "b", text: "%", isCorrect: false },
@@ -352,7 +352,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       xpReward: 20,
       order: 3,
       prompt:
-        "Si html { font-size: 16px; }, cuanto equivale 1.5rem?",
+        "Si html { font-size: 16px; }, ¿cuanto equivale 1.5rem?",
       options: [
         { id: "a", text: "15px", isCorrect: false },
         { id: "b", text: "24px", isCorrect: true },
@@ -390,7 +390,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       xpReward: 20,
       order: 5,
       prompt:
-        "Cual es la diferencia principal entre em y rem?",
+        "¿Cual es la diferencia principal entre em y rem?",
       options: [
         {
           id: "a",

@@ -757,7 +757,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que hace el React Compiler (React Forget)?",
+      prompt: "¿Que hace el React Compiler (React Forget)?",
       options: [
         { id: "a", text: "Compila React a codigo nativo", isCorrect: false },
         { id: "b", text: "Agrega memorizacion automatica (elimina useMemo/useCallback manuales)", isCorrect: true },
@@ -774,7 +774,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es una ventaja del hook use() sobre useContext?",
+      prompt: "¿Cual es una ventaja del hook use() sobre useContext?",
       options: [
         { id: "a", text: "use() es mas rapido", isCorrect: false },
         { id: "b", text: "use() puede llamarse dentro de condicionales y loops", isCorrect: true },
@@ -791,7 +791,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que devuelve useActionState?",
+      prompt: "¿Que devuelve useActionState?",
       options: [
         { id: "a", text: "[state, setState]", isCorrect: false },
         { id: "b", text: "[state, dispatch]", isCorrect: false },
@@ -852,7 +852,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Para que sirve useFormStatus de React 19?",
+      prompt: "¿Para que sirve useFormStatus de React 19?",
       options: [
         { id: "a", text: "Validar campos del formulario", isCorrect: false },
         { id: "b", text: "Obtener el estado de envio del formulario padre en componentes hijos", isCorrect: true },
@@ -869,7 +869,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que caracteristica tienen los Server Components que los Client Components no?",
+      prompt: "¿Que caracteristica tienen los Server Components que los Client Components no?",
       options: [
         { id: "a", text: "Pueden usar useState y useEffect", isCorrect: false },
         { id: "b", text: "Pueden ser funciones async y acceder a la base de datos directamente", isCorrect: true },

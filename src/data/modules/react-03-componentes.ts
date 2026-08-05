@@ -12,8 +12,8 @@ export const reactComponentesModule: ModuleData = {
   lessons: [
     {
       id: "react03-leccion-01",
-      title: "Que es un componente?",
-      content: `## Que es un componente?
+      title: "¿Que es un componente?",
+      content: `## ¿Que es un componente?
 
 Un **componente** en React es una **funcion de JavaScript que retorna JSX**. Es el bloque basico de construccion de cualquier aplicacion React.
 
@@ -31,7 +31,7 @@ function Saludo() {
 2. **Retornan JSX:** deben devolver un elemento JSX (o null)
 3. **Son funciones puras** (idealmente): dado el mismo input, producen el mismo output
 
-### Por que PascalCase?
+### ¿Por que PascalCase?
 
 React distingue entre elementos HTML y componentes por la primera letra:
 
@@ -325,7 +325,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual es la convencion de nombres para componentes en React?",
+      prompt: "¿Cual es la convencion de nombres para componentes en React?",
       options: [
         { id: "a", text: "camelCase (miComponente)", isCorrect: false },
         { id: "b", text: "PascalCase (MiComponente)", isCorrect: true },
@@ -361,7 +361,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Como se usa un componente llamado MiBoton dentro de JSX?",
+      prompt: "¿Como se usa un componente llamado MiBoton dentro de JSX?",
       options: [
         { id: "a", text: "<mi-boton />", isCorrect: false },
         { id: "b", text: "<MiBoton />", isCorrect: true },
@@ -379,7 +379,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que es la prop 'children' en React?",
+      prompt: "¿Que es la prop 'children' en React?",
       options: [
         { id: "a", text: "Una prop que lista los componentes hijos del DOM", isCorrect: false },
         { id: "b", text: "El contenido que se coloca entre las etiquetas de apertura y cierre de un componente", isCorrect: true },
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Por que React recomienda componentes de funcion sobre componentes de clase?",
+      prompt: "¿Por que React recomienda componentes de funcion sobre componentes de clase?",
       options: [
         { id: "a", text: "Las funciones son mas rapidas que las clases en JavaScript", isCorrect: false },
         { id: "b", text: "Los Hooks solo funcionan en componentes de funcion, haciendo el codigo mas simple y reutilizable", isCorrect: true },

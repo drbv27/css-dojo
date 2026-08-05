@@ -16,7 +16,7 @@ export const nextjsServerComponentsModule: ModuleData = {
 
 En App Router, **todos los componentes son Server Components** por defecto.
 
-### Que pueden hacer los Server Components?
+### ¿Que pueden hacer los Server Components?
 
 \`\`\`tsx
 // Esto se ejecuta en el SERVIDOR, no en el navegador
@@ -39,7 +39,7 @@ export default async function Usuarios() {
 }
 \`\`\`
 
-### Que NO pueden hacer?
+### ¿Que NO pueden hacer?
 
 - No pueden usar \`useState\`, \`useEffect\`, ni ningun hook de React
 - No pueden usar event handlers (\`onClick\`, \`onChange\`)
@@ -111,7 +111,7 @@ const data = await fetchExpensiveData(); // se ejecuta en el servidor
 return <ClientChart data={data} />; // data se serializa y se envia al cliente
 \`\`\`
 
-### Cuando usar cada uno?
+### ¿Cuando usar cada uno?
 
 | Necesitas... | Server Component | Client Component |
 |-------------|-----------------|-----------------|
@@ -137,7 +137,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "En Next.js App Router, los componentes son Server o Client por defecto?",
+      prompt: "¿En Next.js App Router, los componentes son Server o Client por defecto?",
       options: [
         { id: "a", text: "Client Components por defecto", isCorrect: false },
         { id: "b", text: "Server Components por defecto", isCorrect: true },
@@ -154,7 +154,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: 'Que directiva convierte un componente en Client Component?',
+      prompt: '¿Que directiva convierte un componente en Client Component?',
       options: [
         { id: "a", text: '"use server"', isCorrect: false },
         { id: "b", text: '"use client"', isCorrect: true },
@@ -195,7 +195,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es el patron recomendado para combinar Server y Client Components?",
+      prompt: "¿Cual es el patron recomendado para combinar Server y Client Components?",
       options: [
         { id: "a", text: "Todo Client Component con useEffect para fetch", isCorrect: false },
         { id: "b", text: "Server Component como padre que pasa datos a Client Components hijos", isCorrect: true },

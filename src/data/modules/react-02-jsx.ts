@@ -12,8 +12,8 @@ export const reactJsxModule: ModuleData = {
   lessons: [
     {
       id: "react02-leccion-01",
-      title: "Que es JSX?",
-      content: `## Que es JSX?
+      title: "¿Que es JSX?",
+      content: `## ¿Que es JSX?
 
 **JSX** (JavaScript XML) es una extension de sintaxis para JavaScript que te permite escribir algo muy similar a HTML dentro de tu codigo JavaScript.
 
@@ -26,7 +26,7 @@ Aunque se parece mucho, JSX tiene diferencias importantes:
 const titulo = <h1 className="principal">Hola Mundo</h1>;
 \`\`\`
 
-### Como funciona?
+### ¿Como funciona?
 
 Babel transforma JSX en llamadas a \`React.createElement()\`:
 
@@ -305,7 +305,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que es JSX?",
+      prompt: "¿Que es JSX?",
       options: [
         { id: "a", text: "Un nuevo lenguaje de programacion", isCorrect: false },
         { id: "b", text: "Una extension de sintaxis que permite escribir HTML dentro de JavaScript", isCorrect: true },
@@ -323,7 +323,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "En JSX, cual es el atributo correcto para asignar una clase CSS? Completa: <div ___=\"caja\">",
+      prompt: "En JSX, ¿cual es el atributo correcto para asignar una clase CSS? Completa: <div ___=\"caja\">",
       codeTemplate: {
         html: "",
         cssPrefix: "<div ",
@@ -341,7 +341,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Como se inserta una expresion JavaScript dentro de JSX?",
+      prompt: "¿Como se inserta una expresion JavaScript dentro de JSX?",
       options: [
         { id: "a", text: "Con doble llaves: {{ expresion }}", isCorrect: false },
         { id: "b", text: "Con llaves simples: { expresion }", isCorrect: true },
@@ -359,7 +359,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual de estas opciones es JSX valido?",
+      prompt: "¿Cual de estas opciones es JSX valido?",
       options: [
         { id: "a", text: "<div class=\"caja\"><input type=\"text\"></div>", isCorrect: false },
         { id: "b", text: "<div className=\"caja\"><input type=\"text\" /></div>", isCorrect: true },
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Como se aplica un estilo inline en JSX?",
+      prompt: "¿Como se aplica un estilo inline en JSX?",
       options: [
         { id: "a", text: "style=\"color: red\"", isCorrect: false },
         { id: "b", text: "style={{ color: \"red\" }}", isCorrect: true },

@@ -25,7 +25,7 @@ p { color: blue; }
 #principal p { color: red; }
 \`\`\`
 
-Si un parrafo tiene clase "intro" y esta dentro de \`#principal\`, que color tendra? La respuesta es **rojo**, porque \`#principal p\` tiene mayor especificidad.
+Si un parrafo tiene clase "intro" y esta dentro de \`#principal\`, ¿que color tendra? La respuesta es **rojo**, porque \`#principal p\` tiene mayor especificidad.
 
 ### La cascada CSS
 
@@ -456,7 +456,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las u
       xpReward: 10,
       order: 1,
       prompt:
-        "Que tipo de selector tiene MAYOR especificidad?",
+        "¿Que tipo de selector tiene MAYOR especificidad?",
       options: [
         { id: "a", text: "Selector de tipo (p, div)", isCorrect: false },
         { id: "b", text: "Selector de clase (.card)", isCorrect: false },
@@ -508,7 +508,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las u
       xpReward: 20,
       order: 3,
       prompt:
-        "Cual es la especificidad del selector #header .nav a?",
+        "¿Cual es la especificidad del selector #header .nav a?",
       options: [
         { id: "a", text: "(0,1,1)", isCorrect: false },
         { id: "b", text: "(1,1,1)", isCorrect: true },
@@ -546,7 +546,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las u
       xpReward: 20,
       order: 5,
       prompt:
-        "Que selector gana? A: .card .titulo { color: blue; } vs B: #principal p { color: red; }. El parrafo tiene clase 'titulo', esta dentro de .card y de #principal.",
+        "¿Que selector gana? A: .card .titulo { color: blue; } vs B: #principal p { color: red; }. El parrafo tiene clase 'titulo', esta dentro de .card y de #principal.",
       options: [
         { id: "a", text: "A gana porque tiene dos clases", isCorrect: false },
         { id: "b", text: "B gana porque tiene un ID", isCorrect: true },
@@ -645,7 +645,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las u
       difficulty: 3,
       xpReward: 20,
       order: 9,
-      prompt: "Cuanto pesa el selector :is(#titulo, p) ?",
+      prompt: "¿Cuanto pesa el selector :is(#titulo, p) ?",
       options: [
         { id: "a", text: "0-0-1, porque termina aplicandose a un p", isCorrect: false },
         { id: "b", text: "1-0-0, porque toma la especificidad de su argumento mas especifico", isCorrect: true },
@@ -664,7 +664,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las u
       xpReward: 20,
       order: 10,
       prompt:
-        "Declaras @layer libreria, componentes; La capa libreria tiene .boton.boton-primario (0-2-0) y la capa componentes tiene .mi-boton (0-1-0). Ambas definen background. Cual gana?",
+        "Declaras @layer libreria, componentes; La capa libreria tiene .boton.boton-primario (0-2-0) y la capa componentes tiene .mi-boton (0-1-0). Ambas definen background. ¿Cual gana?",
       options: [
         { id: "a", text: "La de libreria, porque su selector es mas especifico", isCorrect: false },
         { id: "b", text: "La de componentes, porque su capa se declaro despues", isCorrect: true },

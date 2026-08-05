@@ -188,7 +188,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cuantos niveles de encabezados tiene HTML?",
+      prompt: "¿Cuantos niveles de encabezados tiene HTML?",
       options: [
         { id: "a", text: "4 niveles (h1 a h4)", isCorrect: false },
         { id: "b", text: "6 niveles (h1 a h6)", isCorrect: true },
@@ -206,7 +206,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es la diferencia principal entre <strong> y <b>?",
+      prompt: "¿Cual es la diferencia principal entre <strong> y <b>?",
       options: [
         { id: "a", text: "No hay diferencia, son identicos", isCorrect: false },
         { id: "b", text: "<strong> tiene significado semantico de importancia, <b> solo es visual", isCorrect: true },
@@ -319,7 +319,7 @@ Para mostrar bloques de codigo con formato, combina ambas etiquetas:
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Que etiqueta se usa para insertar un salto de linea dentro de un parrafo?",
+      prompt: "¿Que etiqueta se usa para insertar un salto de linea dentro de un parrafo?",
       options: [
         { id: "a", text: "<break>", isCorrect: false },
         { id: "b", text: "<lb>", isCorrect: false },

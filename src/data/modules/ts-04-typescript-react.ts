@@ -146,7 +146,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Como se tipan las props de un componente React en TypeScript?",
+      prompt: "¿Como se tipan las props de un componente React en TypeScript?",
       options: [
         { id: "a", text: "Con PropTypes", isCorrect: false },
         { id: "b", text: "Con una interface o type", isCorrect: true },
@@ -163,7 +163,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Como tipas un useState que puede ser un objeto Usuario o null?",
+      prompt: "¿Como tipas un useState que puede ser un objeto Usuario o null?",
       options: [
         { id: "a", text: "useState(null)", isCorrect: false },
         { id: "b", text: "useState<Usuario>(null)", isCorrect: false },
@@ -180,7 +180,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Cual es el tipo correcto para el evento onChange de un input?",
+      prompt: "¿Cual es el tipo correcto para el evento onChange de un input?",
       options: [
         { id: "a", text: "React.MouseEvent<HTMLInputElement>", isCorrect: false },
         { id: "b", text: "React.ChangeEvent<HTMLInputElement>", isCorrect: true },
@@ -221,7 +221,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que tipo se usa para la prop children en React con TypeScript?",
+      prompt: "¿Que tipo se usa para la prop children en React con TypeScript?",
       options: [
         { id: "a", text: "React.Children", isCorrect: false },
         { id: "b", text: "JSX.Element", isCorrect: false },

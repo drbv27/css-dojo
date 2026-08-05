@@ -15,7 +15,7 @@ export const bootstrapModule: ModuleData = {
       title: "Introduccion a Bootstrap",
       content: `## Introduccion a Bootstrap
 
-### Que es Bootstrap?
+### ¿Que es Bootstrap?
 
 **Bootstrap** es el framework CSS mas popular del mundo. Creado por Twitter en 2011, proporciona:
 
@@ -462,7 +462,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 1,
       prompt:
-        "Cuantas columnas tiene el sistema de grid de Bootstrap?",
+        "¿Cuantas columnas tiene el sistema de grid de Bootstrap?",
       options: [
         { id: "a", text: "6 columnas", isCorrect: false },
         { id: "b", text: "10 columnas", isCorrect: false },
@@ -481,7 +481,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 2,
       prompt:
-        "Cual es la estructura correcta del grid de Bootstrap?",
+        "¿Cual es la estructura correcta del grid de Bootstrap?",
       options: [
         { id: "a", text: "row > container > col", isCorrect: false },
         { id: "b", text: "container > row > col", isCorrect: true },
@@ -640,7 +640,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 30,
       order: 8,
       prompt:
-        "Como ocultas un elemento en movil pero lo muestras en pantallas medianas (md) y superiores con Bootstrap?",
+        "¿Como ocultas un elemento en movil pero lo muestras en pantallas medianas (md) y superiores con Bootstrap?",
       options: [
         { id: "a", text: "class='hidden-mobile visible-md'", isCorrect: false },
         { id: "b", text: "class='d-none d-md-block'", isCorrect: true },

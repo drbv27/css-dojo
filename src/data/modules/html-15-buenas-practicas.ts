@@ -337,7 +337,7 @@ function borrar() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que herramienta oficial verifica que tu HTML cumple con los estandares web?",
+      prompt: "¿Que herramienta oficial verifica que tu HTML cumple con los estandares web?",
       options: [
         { id: "a", text: "Google Lighthouse", isCorrect: false },
         { id: "b", text: "W3C Markup Validation Service", isCorrect: true },
@@ -355,7 +355,7 @@ function borrar() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es la alternativa moderna a la etiqueta obsoleta <center>?",
+      prompt: "¿Cual es la alternativa moderna a la etiqueta obsoleta <center>?",
       options: [
         { id: "a", text: "<middle>", isCorrect: false },
         { id: "b", text: '<div align="center">', isCorrect: false },
@@ -405,7 +405,7 @@ function borrar() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la diferencia entre <strong> y <b>?",
+      prompt: "¿Cual es la diferencia entre <strong> y <b>?",
       options: [
         { id: "a", text: "No hay diferencia, se ven igual", isCorrect: false },
         { id: "b", text: "strong indica importancia semantica; b solo es negrita visual", isCorrect: true },
@@ -471,7 +471,7 @@ function borrar() {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que API de HTML5 permite guardar datos en el navegador de forma persistente?",
+      prompt: "¿Que API de HTML5 permite guardar datos en el navegador de forma persistente?",
       options: [
         { id: "a", text: "Geolocation API", isCorrect: false },
         { id: "b", text: "Drag & Drop API", isCorrect: false },

@@ -358,7 +358,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 10,
       order: 1,
       prompt:
-        "Que propiedad se usa para activar el sistema de cuadricula CSS Grid en un contenedor?",
+        "¿Que propiedad se usa para activar el sistema de cuadricula CSS Grid en un contenedor?",
       options: [
         { id: "a", text: "display: flex", isCorrect: false },
         { id: "b", text: "display: grid", isCorrect: true },
@@ -470,7 +470,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 20,
       order: 5,
       prompt:
-        "Que hace la declaracion 'grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))'?",
+        "¿Que hace la declaracion 'grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))'?",
       options: [
         { id: "a", text: "Crea exactamente 4 columnas de 250px", isCorrect: false },
         { id: "b", text: "Crea columnas responsivas que se ajustan automaticamente al espacio disponible", isCorrect: true },
@@ -575,7 +575,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 20,
       order: 9,
       prompt:
-        "Escribis .tarjeta { display: grid; grid-template-rows: subgrid; } pero no le pones grid-row: span 3. Que pasa?",
+        "Escribis .tarjeta { display: grid; grid-template-rows: subgrid; } pero no le pones grid-row: span 3. ¿Que pasa?",
       options: [
         {
           id: "a",

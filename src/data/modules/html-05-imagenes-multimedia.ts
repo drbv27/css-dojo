@@ -168,7 +168,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que atributo de la etiqueta <img> es obligatorio por accesibilidad?",
+      prompt: "¿Que atributo de la etiqueta <img> es obligatorio por accesibilidad?",
       options: [
         { id: "a", text: "src", isCorrect: false },
         { id: "b", text: "title", isCorrect: false },
@@ -204,7 +204,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Que etiqueta se usa para agregar una leyenda o descripcion a una imagen?",
+      prompt: "¿Que etiqueta se usa para agregar una leyenda o descripcion a una imagen?",
       options: [
         { id: "a", text: "<caption>", isCorrect: false },
         { id: "b", text: "<figcaption>", isCorrect: true },
@@ -296,7 +296,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **multip
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Para que sirve la etiqueta <picture> en HTML?",
+      prompt: "¿Para que sirve la etiqueta <picture> en HTML?",
       options: [
         { id: "a", text: "Para aplicar filtros a una imagen", isCorrect: false },
         { id: "b", text: "Para crear una galeria de fotos", isCorrect: false },

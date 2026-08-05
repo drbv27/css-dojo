@@ -15,7 +15,7 @@ export const reactTestingModule: ModuleData = {
       title: "Filosofia de testing y herramientas",
       content: `## Testing en React
 
-### Por que testear?
+### ¿Por que testear?
 - Detectar bugs antes de que lleguen a produccion
 - Documentar el comportamiento esperado
 - Refactorizar con confianza
@@ -450,7 +450,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual es la filosofia principal de React Testing Library?",
+      prompt: "¿Cual es la filosofia principal de React Testing Library?",
       options: [
         { id: "a", text: "Testear cada funcion interna del componente", isCorrect: false },
         { id: "b", text: "Testear como el usuario interactua con el componente", isCorrect: true },
@@ -467,7 +467,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es la query preferida en React Testing Library?",
+      prompt: "¿Cual es la query preferida en React Testing Library?",
       options: [
         { id: "a", text: "getByTestId", isCorrect: false },
         { id: "b", text: "getByClassName", isCorrect: false },
@@ -524,7 +524,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
+      prompt: "¿Que es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
       options: [
         { id: "a", text: "fireEvent porque es mas rapido", isCorrect: false },
         { id: "b", text: "userEvent porque simula mejor el comportamiento real del usuario", isCorrect: true },
@@ -558,7 +558,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que debes mockear al testear un componente que hace fetch?",
+      prompt: "¿Que debes mockear al testear un componente que hace fetch?",
       options: [
         { id: "a", text: "Los hooks de React", isCorrect: false },
         { id: "b", text: "La funcion fetch o el modulo de API", isCorrect: true },
@@ -575,7 +575,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Que tipo de testing da mas confianza pero es mas lento y fragil?",
+      prompt: "¿Que tipo de testing da mas confianza pero es mas lento y fragil?",
       options: [
         { id: "a", text: "Tests unitarios", isCorrect: false },
         { id: "b", text: "Tests de integracion", isCorrect: false },

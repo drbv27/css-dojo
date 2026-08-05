@@ -170,7 +170,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que archivo define una API route en App Router?",
+      prompt: "¿Que archivo define una API route en App Router?",
       options: [
         { id: "a", text: "api.ts", isCorrect: false },
         { id: "b", text: "route.ts", isCorrect: true },
@@ -187,7 +187,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Como defines un endpoint POST en un Route Handler?",
+      prompt: "¿Como defines un endpoint POST en un Route Handler?",
       options: [
         { id: "a", text: "app.post('/api/users', handler)", isCorrect: false },
         { id: "b", text: "export async function POST(request: Request) { ... }", isCorrect: true },
@@ -204,7 +204,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que status code se usa al crear un recurso exitosamente?",
+      prompt: "¿Que status code se usa al crear un recurso exitosamente?",
       options: [
         { id: "a", text: "200", isCorrect: false },
         { id: "b", text: "201", isCorrect: true },

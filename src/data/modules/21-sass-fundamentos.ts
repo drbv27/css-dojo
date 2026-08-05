@@ -12,12 +12,12 @@ export const sassFundamentosModule: ModuleData = {
   lessons: [
     {
       id: "21-leccion-01",
-      title: "Que es Sass?",
-      content: `## Que es Sass?
+      title: "¿Que es Sass?",
+      content: `## ¿Que es Sass?
 
 **Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y mas. El codigo Sass se **compila** a CSS estandar que los navegadores pueden interpretar.
 
-### Por que usar Sass?
+### ¿Por que usar Sass?
 
 CSS es poderoso, pero a medida que los proyectos crecen, mantener hojas de estilo grandes se vuelve complejo. Sass resuelve esto ofreciendo:
 
@@ -534,7 +534,7 @@ Diferencias clave:
       xpReward: 10,
       order: 1,
       prompt:
-        "Que es Sass?",
+        "¿Que es Sass?",
       options: [
         { id: "a", text: "Un lenguaje de programacion independiente de CSS", isCorrect: false },
         { id: "b", text: "Un preprocesador que extiende CSS y se compila a CSS estandar", isCorrect: true },
@@ -553,7 +553,7 @@ Diferencias clave:
       xpReward: 10,
       order: 2,
       prompt:
-        "Cual es la diferencia principal entre la sintaxis SCSS y Sass indentado?",
+        "¿Cual es la diferencia principal entre la sintaxis SCSS y Sass indentado?",
       options: [
         { id: "a", text: "SCSS usa llaves y punto y coma; Sass indentado usa indentacion sin llaves", isCorrect: true },
         { id: "b", text: "Sass indentado es mas nuevo que SCSS", isCorrect: false },
@@ -610,7 +610,7 @@ Diferencias clave:
       xpReward: 20,
       order: 5,
       prompt:
-        "Cual es la diferencia entre un @mixin y una @function en Sass?",
+        "¿Cual es la diferencia entre un @mixin y una @function en Sass?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "Los mixins generan bloques de CSS; las funciones retornan un solo valor", isCorrect: true },
@@ -681,7 +681,7 @@ Diferencias clave:
       xpReward: 30,
       order: 8,
       prompt:
-        "En Sass moderno, cual es la forma recomendada de importar archivos parciales?",
+        "En Sass moderno, ¿cual es la forma recomendada de importar archivos parciales?",
       options: [
         { id: "a", text: "@import 'variables';", isCorrect: false },
         { id: "b", text: "@use 'variables';", isCorrect: true },

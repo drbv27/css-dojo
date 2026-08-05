@@ -127,7 +127,7 @@ Crea animaciones escalonadas (saltos discretos):
 }
 \`\`\`
 
-### Cual usar?
+### ¿Cual usar?
 
 - **ease-out**: Para elementos que **entran** a la pantalla (llegan y frenan)
 - **ease-in**: Para elementos que **salen** de la pantalla (aceleran y desaparecen)
@@ -320,7 +320,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 10,
       order: 1,
       prompt:
-        "Cual es la diferencia principal entre una transicion y una animacion CSS?",
+        "¿Cual es la diferencia principal entre una transicion y una animacion CSS?",
       options: [
         { id: "a", text: "Las transiciones son mas rapidas que las animaciones", isCorrect: false },
         { id: "b", text: "Las transiciones van de un estado A a B; las animaciones pueden tener multiples pasos intermedios", isCorrect: true },
@@ -435,7 +435,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 6,
       prompt:
-        "Que valor de animation-fill-mode hace que el elemento mantenga los estilos del ultimo keyframe despues de terminar la animacion?",
+        "¿Que valor de animation-fill-mode hace que el elemento mantenga los estilos del ultimo keyframe despues de terminar la animacion?",
       options: [
         { id: "a", text: "none", isCorrect: false },
         { id: "b", text: "backwards", isCorrect: false },
@@ -479,7 +479,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 8,
       prompt:
-        "Cuales son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",
+        "¿Cuales son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",
       options: [
         { id: "a", text: "width y height", isCorrect: false },
         { id: "b", text: "transform y opacity", isCorrect: true },

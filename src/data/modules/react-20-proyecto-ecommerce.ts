@@ -721,7 +721,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Por que Context es ideal para el carrito de compras?",
+      prompt: "¿Por que Context es ideal para el carrito de compras?",
       options: [
         { id: "a", text: "Porque es mas rapido que useState", isCorrect: false },
         { id: "b", text: "Porque muchos componentes (header, lista, checkout) necesitan acceder al carrito", isCorrect: true },
@@ -755,7 +755,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que debe pasar al agregar un producto que ya esta en el carrito?",
+      prompt: "¿Que debe pasar al agregar un producto que ya esta en el carrito?",
       options: [
         { id: "a", text: "Agregar un duplicado al array", isCorrect: false },
         { id: "b", text: "Incrementar la cantidad del item existente", isCorrect: true },
@@ -795,7 +795,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Por que los totales del carrito deben ser valores derivados y no estado?",
+      prompt: "¿Por que los totales del carrito deben ser valores derivados y no estado?",
       options: [
         { id: "a", text: "Porque React no permite setState para numeros", isCorrect: false },
         { id: "b", text: "Porque se calculan a partir de items, y tener dos fuentes de verdad causa bugs", isCorrect: true },

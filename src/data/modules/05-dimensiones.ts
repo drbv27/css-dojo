@@ -276,7 +276,7 @@ Ya sabés fijar el ancho y el alto por separado. Pero hay un caso muy común don
 
 ### El problema
 
-Pensá en la miniatura de un video. Tiene que ser rectangular 16:9. Si el ancho depende del espacio disponible, cuánto mide el alto?
+Pensá en la miniatura de un video. Tiene que ser rectangular 16:9. Si el ancho depende del espacio disponible, ¿cuánto mide el alto?
 
 Con \`width\` y \`height\` sueltos no se puede: cada vez que el ancho cambia, habría que recalcular el alto a mano.
 
@@ -342,7 +342,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 10,
       order: 1,
       prompt:
-        "Que propiedad define el espacio entre el contenido y el borde de un elemento?",
+        "¿Que propiedad define el espacio entre el contenido y el borde de un elemento?",
       options: [
         { id: "a", text: "margin", isCorrect: false },
         { id: "b", text: "padding", isCorrect: true },
@@ -456,7 +456,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 5,
       prompt:
-        "En la declaracion `padding: 10px 20px 30px;`, que valor tiene padding-left?",
+        "En la declaracion `padding: 10px 20px 30px;`, ¿que valor tiene padding-left?",
       options: [
         { id: "a", text: "10px", isCorrect: false },
         { id: "b", text: "20px", isCorrect: true },
@@ -544,7 +544,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 15,
       order: 9,
       prompt:
-        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. Que forma termina teniendo la caja?",
+        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. ¿Que forma termina teniendo la caja?",
       options: [
         { id: "a", text: "Un cuadrado de 400x400", isCorrect: false },
         { id: "b", text: "Un cuadrado de 100x100", isCorrect: false },

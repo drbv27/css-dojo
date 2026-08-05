@@ -383,7 +383,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que componente de React Router envuelve toda la aplicacion para habilitar el enrutamiento?",
+      prompt: "¿Que componente de React Router envuelve toda la aplicacion para habilitar el enrutamiento?",
       options: [
         { id: "a", text: "Routes", isCorrect: false },
         { id: "b", text: "BrowserRouter", isCorrect: true },
@@ -400,7 +400,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que componente se usa en vez de <a href> para la navegacion interna?",
+      prompt: "¿Que componente se usa en vez de <a href> para la navegacion interna?",
       options: [
         { id: "a", text: "<Navigate>", isCorrect: false },
         { id: "b", text: "<Anchor>", isCorrect: false },
@@ -434,7 +434,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que hook se usa para navegar programaticamente (ej: despues de un login)?",
+      prompt: "¿Que hook se usa para navegar programaticamente (ej: despues de un login)?",
       options: [
         { id: "a", text: "useRouter", isCorrect: false },
         { id: "b", text: "useNavigate", isCorrect: true },
@@ -495,7 +495,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que hace path='*' en una ruta de React Router?",
+      prompt: "¿Que hace path='*' en una ruta de React Router?",
       options: [
         { id: "a", text: "Redirige a la pagina principal", isCorrect: false },
         { id: "b", text: "Captura todas las rutas que no coincidan con ninguna otra (404)", isCorrect: true },
@@ -512,7 +512,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "En rutas anidadas, que componente se usa dentro del layout padre para renderizar las rutas hijas?",
+      prompt: "¿En rutas anidadas, que componente se usa dentro del layout padre para renderizar las rutas hijas?",
       options: [
         { id: "a", text: "Children", isCorrect: false },
         { id: "b", text: "Routes", isCorrect: false },
