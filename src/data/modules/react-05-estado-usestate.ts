@@ -300,7 +300,7 @@ setCuenta(prev => prev + 1);
 setCuenta(prev => prev + 1);
 \`\`\`
 
-React agrupa las actualizaciones (**batching**). La forma funcional garantiza que cada actualización use el valor mas reciente.
+React agrupa las actualizaciones (**batching**). La forma funcional garantiza que cada actualización use el valor más reciente.
 
 ## Levantar estado (Lifting State Up)
 
@@ -320,7 +320,7 @@ function Padre() {
 
 El padre es el **dueño del estado** y lo comparte con los hijos via props.
 
-> **Principio:** El estado debe vivir en el componente mas cercano que sea ancestro común de todos los componentes que lo necesitan.`,
+> **Principio:** El estado debe vivir en el componente más cercano que sea ancestro común de todos los componentes que lo necesitan.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -416,7 +416,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
         { id: "a", text: "Porque JavaScript no permite cambiar variables con let", isCorrect: false },
         { id: "b", text: "Porque React no detecta el cambio y no re-renderiza el componente", isCorrect: true },
         { id: "c", text: "Porque let no se puede usar dentro de funciones", isCorrect: false },
-        { id: "d", text: "Porque let es mas lento que useState", isCorrect: false },
+        { id: "d", text: "Porque let es más lento que useState", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "React necesita saber cuando algo cambia para actualizar la pantalla.",
@@ -509,7 +509,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       validation: { type: "exact", answer: "prev" },
       hint: "La función recibe el valor anterior como parámetro.",
       explanation:
-        "La forma funcional setCuenta(prev => prev + 1) recibe el estado anterior como argumento y retorna el nuevo estado. Es la forma mas segura cuando el nuevo valor depende del anterior.",
+        "La forma funcional setCuenta(prev => prev + 1) recibe el estado anterior como argumento y retorna el nuevo estado. Es la forma más segura cuando el nuevo valor depende del anterior.",
     },
     {
       id: "react05-ej-08",
@@ -520,14 +520,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       prompt: "¿Qué significa 'levantar el estado' (lifting state up)?",
       options: [
         { id: "a", text: "Mover el estado a un componente hijo", isCorrect: false },
-        { id: "b", text: "Mover el estado al componente padre común mas cercano cuando varios hijos lo necesitan", isCorrect: true },
+        { id: "b", text: "Mover el estado al componente padre común más cercano cuando varios hijos lo necesitan", isCorrect: true },
         { id: "c", text: "Eliminar el estado y usar solo props", isCorrect: false },
         { id: "d", text: "Guardar el estado en localStorage", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Cuando dos hermanos necesitan compartir estado, sube al ancestro común.",
       explanation:
-        "Lifting state up significa mover el estado al componente ancestro común mas cercano de todos los componentes que lo necesitan. El padre maneja el estado y lo pasa a los hijos via props.",
+        "Lifting state up significa mover el estado al componente ancestro común más cercano de todos los componentes que lo necesitan. El padre maneja el estado y lo pasa a los hijos via props.",
     },
   ],
 };

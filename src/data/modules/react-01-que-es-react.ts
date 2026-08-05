@@ -4,7 +4,7 @@ export const reactQueEsModule: ModuleData = {
   slug: "react-que-es-react",
   title: "¿Qué es React?",
   description:
-    "Descubre que es React, como funciona el Virtual DOM, y por que es la libreria mas popular para construir interfaces de usuario.",
+    "Descubre que es React, cómo funciona el Virtual DOM, y por que es la libreria más popular para construir interfaces de usuario.",
   order: 201,
   category: "react-fundamentals",
   icon: "atom",
@@ -29,7 +29,7 @@ A diferencia de Angular o Vue, React es solo una **libreria** enfocada en la cap
 
 ### ¿Quién usa React?
 
-Facebook, Instagram, Netflix, Airbnb, Uber, WhatsApp Web, Discord y miles de empresas mas.
+Facebook, Instagram, Netflix, Airbnb, Uber, WhatsApp Web, Discord y miles de empresas más.
 
 > **Dato curioso:** React fue creado por Jordan Walke, un ingeniero de Facebook, y se uso por primera vez en el News Feed de Facebook en 2011.`,
       codeExample: {
@@ -62,7 +62,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 En una aplicación tradicional, cada vez que el usuario navega, el servidor envia una **página HTML completa**. Esto causa recargas completas del navegador.
 
 ### SPA (Single-Page Application)
-React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho mas fluida.
+React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho más fluida.
 
 ## El Virtual DOM
 
@@ -104,13 +104,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(<Contador />);
       title: "Ecosistema y herramientas",
       content: `## Ecosistema de React
 
-React tiene un ecosistema enorme. Estas son las herramientas mas importantes:
+React tiene un ecosistema enorme. Estas son las herramientas más importantes:
 
 ### Crear un proyecto React
 
 - **Vite** (recomendado): \`npm create vite@latest mi-app -- --template react\`
 - **Create React App** (legado): \`npx create-react-app mi-app\`
-- **Next.js**: framework completo con SSR, routing y mas
+- **Next.js**: framework completo con SSR, routing y más
 
 ### Herramientas esenciales
 
@@ -187,7 +187,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       order: 2,
       prompt: "¿Qué problema resuelve el Virtual DOM?",
       options: [
-        { id: "a", text: "Hace que el CSS se cargue mas rápido", isCorrect: false },
+        { id: "a", text: "Hace que el CSS se cargue más rápido", isCorrect: false },
         { id: "b", text: "Evita manipular el DOM real directamente, mejorando el rendimiento", isCorrect: true },
         { id: "c", text: "Permite escribir HTML sin etiquetas", isCorrect: false },
         { id: "d", text: "Reemplaza completamente al DOM del navegador", isCorrect: false },
@@ -195,7 +195,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "b" },
       hint: "Tiene que ver con el rendimiento al actualizar la página.",
       explanation:
-        "El Virtual DOM mantiene una copia ligera del DOM en memoria. React compara los cambios (diffing) y solo actualiza las partes necesarias del DOM real, lo que es mucho mas eficiente.",
+        "El Virtual DOM mantiene una copia ligera del DOM en memoria. React compara los cambios (diffing) y solo actualiza las partes necesarias del DOM real, lo que es mucho más eficiente.",
     },
     {
       id: "react01-ej-03",
@@ -279,7 +279,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "c" },
       hint: "Es una herramienta moderna y muy rápida para el desarrollo.",
       explanation:
-        "Vite es la herramienta recomendada actualmente para crear proyectos React. Es mucho mas rápida que Create React App gracias a su uso de ES modules nativos durante el desarrollo.",
+        "Vite es la herramienta recomendada actualmente para crear proyectos React. Es mucho más rápida que Create React App gracias a su uso de ES modules nativos durante el desarrollo.",
     },
   ],
 };

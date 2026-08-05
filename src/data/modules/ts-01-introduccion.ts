@@ -4,7 +4,7 @@ export const tsIntroModule: ModuleData = {
   slug: "ts-01-introduccion",
   title: "Introducción a TypeScript",
   description:
-    "Aprende que es TypeScript, por que usarlo y los tipos básicos: string, number, boolean y mas.",
+    "Aprende que es TypeScript, por que usarlo y los tipos básicos: string, number, boolean y más.",
   order: 126,
   category: "js-typescript",
   icon: "code",
@@ -21,7 +21,7 @@ TypeScript es un **superset de JavaScript** creado por Microsoft que agrega **ti
 
 - **Detecta errores antes de ejecutar** — el compilador te avisa si algo no cuadra
 - **Mejor autocompletado** en tu editor (VS Code)
-- **Código mas legible** — los tipos documentan tu código
+- **Código más legible** — los tipos documentan tu código
 - **Estándar en la industria** — React, Angular, Vue, Next.js lo usan
 
 ### Tipos básicos
@@ -50,7 +50,7 @@ let mensaje = "hola"; // TypeScript sabe que es string
 mensaje = 42; // Error! No puedes asignar number a string
 \`\`\`
 
-> TypeScript no cambia como se ejecuta tu código — solo agrega verificación en tiempo de desarrollo.`,
+> TypeScript no cambia cómo se ejecuta tu código — solo agrega verificación en tiempo de desarrollo.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -106,7 +106,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
 };
 \`\`\`
 
-> Tipar funciones es donde TypeScript brilla mas — evita bugs en las interfaces entre modulos.`,
+> Tipar funciones es donde TypeScript brilla más — evita bugs en las interfaces entre modulos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',

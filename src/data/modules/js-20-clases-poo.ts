@@ -124,7 +124,7 @@ rex instanceof Perro;   // true
 rex instanceof Animal;  // true
 \`\`\`
 
-> **Principio:** Prefiere la composición sobre la herencia cuando sea posible. No crees jerarquías de mas de 2-3 niveles.`,
+> **Principio:** Prefiere la composición sobre la herencia cuando sea posible. No crees jerarquías de más de 2-3 niveles.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',

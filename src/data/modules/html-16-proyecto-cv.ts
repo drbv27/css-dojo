@@ -133,7 +133,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       xpReward: 15,
       order: 1,
       prompt:
-        "Paso 1 - El esqueleto. Escribe la estructura base del documento: DOCTYPE, <html> con lang=\"es\", <head> con <title> 'CV de Ana Martinez', y un <body> vacio.",
+        "Paso 1 - El esqueleto. Escribe la estructura base del documento: DOCTYPE, <html> con lang=\"es\", <head> con <title> 'CV de Ana Martinez', y un <body> vacío.",
       codeTemplate: { html: `<!-- Escribe aqui el esqueleto -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -291,7 +291,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       },
       hint: "La <img> siempre con alt descriptivo (ej: alt=\"Foto de Ana Martinez\"); la leyenda en <figcaption>.",
       explanation:
-        "<figure> agrupa la imagen y su leyenda <figcaption>. El alt describe la foto (nunca vacio ni 'imagen').",
+        "<figure> agrupa la imagen y su leyenda <figcaption>. El alt describe la foto (nunca vacío ni 'imagen').",
     },
     {
       id: "html16-ej-08",

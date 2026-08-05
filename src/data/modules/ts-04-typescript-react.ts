@@ -62,7 +62,7 @@ const [user, setUser] = useState<Usuario | null>(null);
 const [items, setItems] = useState<string[]>([]);
 \`\`\`
 
-> Tipar props es la mejora mas inmediata al usar TypeScript con React.`,
+> Tipar props es la mejora más inmediata al usar TypeScript con React.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
@@ -229,7 +229,7 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
         { id: "d", text: "string", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Es el tipo mas flexible para children — acepta elementos, strings, números, etc.",
+      hint: "Es el tipo más flexible para children — acepta elementos, strings, números, etc.",
       explanation: "React.ReactNode acepta cualquier contenido valido en JSX: elementos, texto, números, null, etc.",
     },
   ],

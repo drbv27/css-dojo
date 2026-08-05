@@ -327,13 +327,13 @@ Layout y Sidebar **solo pasan la prop sin usarla**. Esto es prop drilling.
 - Los componentes intermedios se acoplan a datos que no necesitan
 - Cambiar la estructura de datos requiere modificar muchos componentes
 
-### Soluciones (las veremos mas adelante)
+### Soluciones (las veremos más adelante)
 
 1. **Context API** — compartir datos sin pasar props manualmente
 2. **Composición** — reestructurar componentes para evitar niveles innecesarios
 3. **Librerias de estado global** — Redux, Zustand, etc.
 
-> **Por ahora:** el prop drilling es normal y aceptable para 2-3 niveles. Solo se vuelve problema con niveles mas profundos.`,
+> **Por ahora:** el prop drilling es normal y aceptable para 2-3 niveles. Solo se vuelve problema con niveles más profundos.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -483,7 +483,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada tipo de valor según como se pasa en JSX (con comillas o con llaves):",
+      prompt: "Clasifica cada tipo de valor según cómo se pasa en JSX (con comillas o con llaves):",
       dragItems: [
         { id: "drag-1", content: "\"Hola Mundo\"", correctZone: "zone-comillas" },
         { id: "drag-2", content: "{42}", correctZone: "zone-llaves" },

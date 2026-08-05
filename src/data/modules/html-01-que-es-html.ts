@@ -17,7 +17,7 @@ export const htmlQueEsModule: ModuleData = {
 
 **HTML** significa **HyperText Markup Language** (Lenguaje de Marcado de Hipertexto). Es el lenguaje estándar que se utiliza para **crear y estructurar** el contenido de las páginas web.
 
-HTML no es un lenguaje de programación: es un **lenguaje de marcado**. Esto significa que usa **etiquetas** para indicar al navegador como mostrar el contenido.
+HTML no es un lenguaje de programación: es un **lenguaje de marcado**. Esto significa que usa **etiquetas** para indicar al navegador cómo mostrar el contenido.
 
 ### ¿Para que sirve HTML?
 
@@ -35,7 +35,7 @@ HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wi
 - **HTML 4.01** (1999) — Versión madura y ampliamente usada
 - **HTML5** (2014) — Versión actual con soporte multimedia nativo
 
-> **Dato curioso:** La primera página web de la historia todavia esta en línea. Fue creada por Tim Berners-Lee en 1991.`,
+> **Dato curioso:** La primera página web de la historia todavia está en línea. Fue creada por Tim Berners-Lee en 1991.`,
       codeExample: {
         html: `<h1>Mi primera pagina web</h1>\n<p>Esto es HTML en accion.</p>\n<p>Cada elemento esta definido por etiquetas.</p>`,
         css: `h1 {\n  color: #2d3748;\n  font-family: sans-serif;\n}\n\np {\n  color: #4a5568;\n  font-size: 16px;\n}`,
@@ -45,13 +45,13 @@ HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wi
     },
     {
       id: "html-01-leccion-02",
-      title: "Como funcionan los navegadores",
-      content: `## Como renderizan los navegadores
+      title: "Cómo funcionan los navegadores",
+      content: `## Cómo renderizan los navegadores
 
 Cuando escribes una URL en tu navegador y presionas Enter, ocurre un proceso fascinante:
 
 ### 1. Solicitud al servidor
-El navegador envia una **solicitud HTTP** al servidor donde esta alojada la página.
+El navegador envia una **solicitud HTTP** al servidor donde está alojada la página.
 
 ### 2. Respuesta del servidor
 El servidor responde enviando los archivos necesarios: **HTML**, CSS, JavaScript, imágenes, etc.
@@ -180,7 +180,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
       validation: { type: "exact", answer: ["<!DOCTYPE"] },
       hint: "Es una declaración que empieza con <! y la palabra DOCTYPE.",
       explanation:
-        "La declaración <!DOCTYPE html> le indica al navegador que el documento esta escrito en HTML5.",
+        "La declaración <!DOCTYPE html> le indica al navegador que el documento está escrito en HTML5.",
     },
     {
       id: "html-01-ej-04",

@@ -17,7 +17,7 @@ export const htmlFormulariosAvanzadosModule: ModuleData = {
 
 HTML5 introdujo muchos tipos de input nuevos que facilitan la captura de datos y mejoran la experiencia del usuario.
 
-### Tipos mas útiles
+### Tipos más útiles
 
 | Tipo | Descripción |
 |------|-------------|
@@ -36,7 +36,7 @@ HTML5 introdujo muchos tipos de input nuevos que facilitan la captura de datos y
 - **Mejor UX en móviles:** el teclado se adapta al tipo de input
 - **Sin JavaScript:** muchas validaciones funcionan sin código adicional
 
-> **Tip:** Siempre usa el tipo de input mas específico posible. Esto mejora la accesibilidad y la experiencia del usuario.`,
+> **Tip:** Siempre usa el tipo de input más específico posible. Esto mejora la accesibilidad y la experiencia del usuario.`,
       codeExample: {
         html: `<form>
   <label>Color favorito:</label><br>
@@ -288,7 +288,7 @@ button {
       validation: { type: "exact", answer: "required" },
       hint: "Es un atributo booleano que indica que el campo debe completarse.",
       explanation:
-        "El atributo required hace que el navegador no permita enviar el formulario si el campo esta vacio.",
+        "El atributo required hace que el navegador no permita enviar el formulario si el campo está vacío.",
     },
     {
       id: "html09-ej-04",
@@ -370,7 +370,7 @@ button {
         { id: "d", text: "Define el orden de tabulación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Esta relacionado con la validación del formato del texto ingresado.",
+      hint: "Está relacionado con la validación del formato del texto ingresado.",
       explanation:
         'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 digitos.',
     },

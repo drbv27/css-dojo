@@ -73,7 +73,7 @@ export default function Counter() {
       title: "Patrones de composición",
       content: `## Combinar Server y Client Components
 
-El patrón mas importante: **Server Component como padre, Client Component como hijo**.
+El patrón más importante: **Server Component como padre, Client Component como hijo**.
 
 \`\`\`tsx
 // app/dashboard/page.tsx — Server Component

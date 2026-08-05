@@ -135,7 +135,7 @@ function RegistroForm() {
 - Mensajes de error personalizados por campo
 - Validación en cliente y servidor con el mismo schema
 
-> Zod + React Hook Form es la combinación mas popular para formularios en React moderno.`,
+> Zod + React Hook Form es la combinación más popular para formularios en React moderno.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',

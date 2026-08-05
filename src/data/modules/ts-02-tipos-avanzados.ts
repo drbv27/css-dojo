@@ -131,7 +131,7 @@ function procesar(valor: string | number | boolean) {
 }
 \`\`\`
 
-> Union types + narrowing es una de las combinaciones mas poderosas de TypeScript.`,
+> Union types + narrowing es una de las combinaciones más poderosas de TypeScript.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cba6f7; border-radius: 8px; white-space: pre-line; }',

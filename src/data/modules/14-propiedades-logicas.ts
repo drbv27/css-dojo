@@ -59,7 +59,7 @@ Las propiedades lógicas usan conceptos **relativos al flujo de escritura**:
 | inline-start | Izquierda | Derecha | Arriba |
 | inline-end | Derecha | Izquierda | Abajo |
 
-> **Buena práctica:** Aunque tu sitio solo sea en espanol, usar propiedades lógicas es una buena costumbre. Hace tu CSS mas semántico y preparado para el futuro.`,
+> **Buena práctica:** Aunque tu sitio solo sea en espanol, usar propiedades lógicas es una buena costumbre. Hace tu CSS más semántico y preparado para el futuro.`,
       codeExample: {
         html: `<div class="ejemplo-ltr" dir="ltr">\n  <div class="caja">Espanol (LTR) - margin-inline-start</div>\n</div>\n<div class="ejemplo-rtl" dir="rtl">\n  <div class="caja">عربي (RTL) - margin-inline-start</div>\n</div>`,
         css: `.ejemplo-ltr, .ejemplo-rtl {\n  background-color: #f0f0f0;\n  padding: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #ddd;\n}\n.caja {\n  margin-inline-start: 30px;\n  padding: 10px;\n  background-color: steelblue;\n  color: white;\n  border-radius: 4px;\n}`,
@@ -236,7 +236,7 @@ La propiedad \`writing-mode\` define la **dirección del flujo de texto y bloque
 }
 \`\`\`
 
-### Como afecta al layout
+### Cómo afecta al layout
 
 | writing-mode | Inline (texto) | Block (bloques) |
 |-------------|---------------|----------------|
@@ -257,7 +257,7 @@ Complementa a \`writing-mode\` para definir si el texto va de izquierda a derech
 }
 \`\`\`
 
-> **Mejor práctica:** Usa el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la dirección del texto. El atributo HTML es mas semántico y accesible.
+> **Mejor práctica:** Usa el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la dirección del texto. El atributo HTML es más semántico y accesible.
 
 ### Uso creativo de writing-mode
 
@@ -504,15 +504,15 @@ Controla la orientación de los caracteres en texto vertical:
       prompt:
         "¿Cuál es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",
       options: [
-        { id: "a", text: "Es mas rápido de renderizar por el navegador", isCorrect: false },
-        { id: "b", text: "Es un shorthand mas conciso que se adapta automáticamente a idiomas RTL", isCorrect: true },
+        { id: "a", text: "Es más rápido de renderizar por el navegador", isCorrect: false },
+        { id: "b", text: "Es un shorthand más conciso que se adapta automáticamente a idiomas RTL", isCorrect: true },
         { id: "c", text: "Solo funciona con Flexbox", isCorrect: false },
         { id: "d", text: "No hay ninguna ventaja, es exactamente lo mismo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en que pasa cuando cambias de un idioma LTR a un RTL.",
       explanation:
-        "margin-inline: auto tiene dos ventajas: 1) Es un shorthand mas conciso (una línea en lugar de dos). 2) Se adapta automáticamente al modo de escritura, funcionando correctamente tanto en idiomas LTR como RTL sin cambios adicionales.",
+        "margin-inline: auto tiene dos ventajas: 1) Es un shorthand más conciso (una línea en lugar de dos). 2) Se adapta automáticamente al modo de escritura, funcionando correctamente tanto en idiomas LTR como RTL sin cambios adicionales.",
     },
   ],
 };

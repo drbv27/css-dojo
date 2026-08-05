@@ -420,7 +420,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "useContext" },
       hint: "Es el hook para consumir un contexto.",
-      explanation: "useContext(TemaContext) lee el valor actual del contexto mas cercano TemaContext.Provider en el árbol de componentes.",
+      explanation: "useContext(TemaContext) lee el valor actual del contexto más cercano TemaContext.Provider en el árbol de componentes.",
     },
     {
       id: "react12-ej-04",
@@ -511,7 +511,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Encapsular la lógica del contexto en un hook facilita el uso.",
-      explanation: "Crear un custom hook como useAuth() encapsula useContext, agrega validación (error si no hay Provider), y proporciona una API mas limpia.",
+      explanation: "Crear un custom hook como useAuth() encapsula useContext, agrega validación (error si no hay Provider), y proporciona una API más limpia.",
     },
   ],
 };

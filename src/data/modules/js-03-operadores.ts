@@ -235,7 +235,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "false", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El string vacio es falsy, entonces || busca el primer valor truthy.",
+      hint: "El string vacío es falsy, entonces || busca el primer valor truthy.",
       explanation:
         'Como "" es falsy, el operador || devuelve el segundo operando: "valor por defecto". Este patrón se usa mucho para asignar valores por defecto.',
     },

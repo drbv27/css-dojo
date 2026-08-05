@@ -105,7 +105,7 @@ switch (dia) {
 ### Importante sobre switch
 - Cada \`case\` necesita un \`break\` para evitar que siga ejecutando los siguientes casos
 - \`default\` es como el \`else\` — se ejecuta si ningun case coincide
-- Usa switch cuando tengas 3 o mas comparaciones con el mismo valor`,
+- Usa switch cuando tengas 3 o más comparaciones con el mismo valor`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -183,7 +183,7 @@ if (usuario && usuario.esAdmin) {
 }
 \`\`\`
 
-> **Tip:** Evita anidar mas de 2-3 niveles. Refactoriza usando funciones o early returns.`,
+> **Tip:** Evita anidar más de 2-3 niveles. Refactoriza usando funciones o early returns.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cdd6f4; border-radius: 8px; white-space: pre-line; }',
@@ -290,7 +290,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "¿Cuál es la forma correcta de verificar si una variable x esta entre 10 y 20 (inclusive)?",
+      prompt: "¿Cuál es la forma correcta de verificar si una variable x está entre 10 y 20 (inclusive)?",
       options: [
         { id: "a", text: "if (10 <= x <= 20)", isCorrect: false },
         { id: "b", text: "if (x >= 10 && x <= 20)", isCorrect: true },

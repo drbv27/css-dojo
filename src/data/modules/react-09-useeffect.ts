@@ -33,7 +33,7 @@ useEffect(() => {
 ### ¿Cuándo se ejecuta useEffect?
 
 1. **Sin array de dependencias** — se ejecuta en cada render
-2. **Array vacio \`[]\`** — solo al montar el componente
+2. **Array vacío \`[]\`** — solo al montar el componente
 3. **Con dependencias \`[a, b]\`** — al montar y cuando cambie \`a\` o \`b\`
 
 > **Regla clave:** useEffect se ejecuta **después** del render, no durante el render.`,
@@ -88,7 +88,7 @@ useEffect(() => {
 });
 \`\`\`
 
-### Array vacio (solo al montar)
+### Array vacío (solo al montar)
 \`\`\`jsx
 useEffect(() => {
   console.log("Solo al montar el componente");
@@ -365,7 +365,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuándo se ejecuta un useEffect con array de dependencias vacio []?",
+      prompt: "¿Cuándo se ejecuta un useEffect con array de dependencias vacío []?",
       options: [
         { id: "a", text: "En cada render del componente", isCorrect: false },
         { id: "b", text: "Solo cuando el componente se monta (primer render)", isCorrect: true },
@@ -373,7 +373,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
         { id: "d", text: "Antes del primer render", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Un array vacio significa: sin dependencias que cambien.",
+      hint: "Un array vacío significa: sin dependencias que cambien.",
       explanation: "Con [] el efecto solo se ejecuta una vez, al montar el componente, porque no hay dependencias que puedan cambiar.",
     },
     {
@@ -385,13 +385,13 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       prompt: "¿Qué causa un loop infinito en useEffect?",
       options: [
         { id: "a", text: "Usar async/await dentro del efecto", isCorrect: false },
-        { id: "b", text: "Modificar una variable de estado que esta en las dependencias", isCorrect: true },
+        { id: "b", text: "Modificar una variable de estado que está en las dependencias", isCorrect: true },
         { id: "c", text: "No retornar nada del efecto", isCorrect: false },
-        { id: "d", text: "Pasar un array vacio de dependencias", isCorrect: false },
+        { id: "d", text: "Pasar un array vacío de dependencias", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Si el efecto modifica algo que lo vuelve a disparar...",
-      explanation: "Si el efecto modifica un estado que esta en su array de dependencias, se crea un ciclo: efecto -> cambio estado -> re-render -> efecto -> ...",
+      explanation: "Si el efecto modifica un estado que está en su array de dependencias, se crea un ciclo: efecto -> cambio estado -> re-render -> efecto -> ...",
     },
     {
       id: "react09-ej-03",

@@ -4,7 +4,7 @@ export const htmlSemanticaModule: ModuleData = {
   slug: "html-semantica",
   title: "HTML Semántico",
   description:
-    "Aprende a usar etiquetas semánticas como header, nav, main, article, section y mas para crear páginas web mejor estructuradas, accesibles y optimizadas para SEO.",
+    "Aprende a usar etiquetas semánticas como header, nav, main, article, section y más para crear páginas web mejor estructuradas, accesibles y optimizadas para SEO.",
   order: 10,
   category: "html-intermediate",
   icon: "bookmark",
@@ -41,7 +41,7 @@ export const htmlSemanticaModule: ModuleData = {
 
 1. **SEO:** Los motores de busqueda entienden mejor tu contenido
 2. **Accesibilidad:** Los lectores de pantalla navegan por secciones semánticas
-3. **Legibilidad:** El código es mas fácil de leer y mantener
+3. **Legibilidad:** El código es más fácil de leer y mantener
 4. **Estandares:** Es la forma correcta de escribir HTML moderno
 
 > **Regla de oro:** Si una etiqueta semántica describe tu contenido, usala en lugar de un \`<div>\`.`,

@@ -46,7 +46,7 @@ Definen las **dimensiones** de la imagen en píxeles. Ayudan al navegador a rese
 <img src="foto.jpg" alt="Descripcion" width="400" height="300">
 \`\`\`
 
-> **Buena práctica:** Siempre incluye el atributo \`alt\`. Si la imagen es decorativa, usa \`alt=""\` (alt vacio), pero nunca lo omitas.`,
+> **Buena práctica:** Siempre incluye el atributo \`alt\`. Si la imagen es decorativa, usa \`alt=""\` (alt vacío), pero nunca lo omitas.`,
       codeExample: {
         html: `<h2>Ejemplo de imagen</h2>\n<img src="https://picsum.photos/400/200" alt="Imagen de ejemplo aleatoria" width="400" height="200">\n<p>Esta imagen tiene src, alt, width y height definidos.</p>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nimg {\n  border-radius: 8px;\n  display: block;\n  margin: 12px 0;\n}\n\np {\n  font-family: sans-serif;\n  color: #718096;\n  font-size: 14px;\n}`,

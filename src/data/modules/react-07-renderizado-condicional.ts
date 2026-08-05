@@ -55,7 +55,7 @@ function Alerta({ mostrar, mensaje }) {
 {count > 0 && <p>Tienes {count} items</p>}
 \`\`\`
 
-> **Regla:** Con \`&&\`, asegurate de que la parte izquierda sea un booleano real. Los números \`0\` y strings vacios \`""\` son falsy pero se muestran en pantalla.`,
+> **Regla:** Con \`&&\`, asegurate de que la parte izquierda sea un booleano real. Los números \`0\` y strings vacíos \`""\` son falsy pero se muestran en pantalla.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -157,7 +157,7 @@ function Notificacion({ visible, texto }) {
 }
 \`\`\`
 
-> **Tip:** Los retornos tempranos hacen tu código mas legible al evitar anidación excesiva de if/else.`,
+> **Tip:** Los retornos tempranos hacen tu código más legible al evitar anidación excesiva de if/else.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -228,7 +228,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Clases CSS condicionales y patrones avanzados",
       content: `## Clases CSS condicionales
 
-Una de las formas mas comunes de renderizado condicional es **aplicar clases CSS** según el estado:
+Una de las formas más comunes de renderizado condicional es **aplicar clases CSS** según el estado:
 
 ### Concatenación de strings
 
@@ -358,7 +358,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "b" },
       hint: "Necesitas un operador lógico que evalua la parte derecha solo si la izquierda es verdadera.",
       explanation:
-        "El operador && renderiza el elemento de la derecha solo si la condición de la izquierda es verdadera. Es la forma mas común de renderizar 'algo o nada' en JSX.",
+        "El operador && renderiza el elemento de la derecha solo si la condición de la izquierda es verdadera. Es la forma más común de renderizar 'algo o nada' en JSX.",
     },
     {
       id: "react07-ej-02",
@@ -394,7 +394,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "?" },
       hint: "Es el operador que tiene tres partes: condición, valor si verdadero, valor si falso.",
       explanation:
-        "¿El operador ternario (?) permite elegir entre dos opciones: {condicion ? elementoSiTrue : elementoSiFalse}. Es la forma mas usada de renderizado condicional con dos alternativas.",
+        "¿El operador ternario (?) permite elegir entre dos opciones: {condicion ? elementoSiTrue : elementoSiFalse}. Es la forma más usada de renderizado condicional con dos alternativas.",
     },
     {
       id: "react07-ej-04",

@@ -299,7 +299,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       order: 7,
       prompt: "¿Por que es importante agregar rel='noopener noreferrer' cuando usas target='_blank'?",
       options: [
-        { id: "a", text: "Para que el enlace cargue mas rápido", isCorrect: false },
+        { id: "a", text: "Para que el enlace cargue más rápido", isCorrect: false },
         { id: "b", text: "Para mejorar el SEO de la página", isCorrect: false },
         { id: "c", text: "Por seguridad, evita que la página destino acceda a la ventana de origen", isCorrect: true },
         { id: "d", text: "Para que el enlace se abra en una ventana emergente", isCorrect: false },

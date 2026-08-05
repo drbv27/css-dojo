@@ -115,7 +115,7 @@ ul { padding-left: 20px; }`,
       title: "Etiquetas obsoletas y alternativas modernas",
       content: `## Etiquetas obsoletas y alternativas modernas
 
-HTML5 elimino muchas etiquetas presentacionales. Aquí estan las mas comunes y sus **alternativas correctas**:
+HTML5 elimino muchas etiquetas presentacionales. Aquí estan las más comunes y sus **alternativas correctas**:
 
 ### Etiquetas obsoletas
 
@@ -463,7 +463,7 @@ function borrar() {
       },
       hint: "defer y async son atributos de <script>. preload y prefetch son valores de rel en <link>.",
       explanation:
-        "defer y async controlan como se cargan y ejecutan los scripts. preload y prefetch anticipan la descarga de recursos (fuentes, páginas, etc.) para mejorar el rendimiento.",
+        "defer y async controlan cómo se cargan y ejecutan los scripts. preload y prefetch anticipan la descarga de recursos (fuentes, páginas, etc.) para mejorar el rendimiento.",
     },
     {
       id: "html15-ej-07",

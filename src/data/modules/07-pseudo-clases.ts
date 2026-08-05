@@ -212,7 +212,7 @@ p:not(:empty) {
 | Patrón | Descripción |
 |--------|-----------|
 | \`li:not(:last-child)\` | Borde inferior en todos menos el último |
-| \`.btn:not(:disabled)\` | Estilos solo si no esta deshabilitado |
+| \`.btn:not(:disabled)\` | Estilos solo si no está deshabilitado |
 | \`input:not(:focus)\` | Estilos cuando NO tiene foco |
 | \`*:not(h1):not(h2)\` | Todo excepto h1 y h2 |
 
@@ -312,7 +312,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       validation: { type: "exact", answer: "c" },
       hint: "En ingles, 'hover' significa 'sobrevolar' o 'posarse sobre algo'.",
       explanation:
-        "La pseudo-clase :hover se activa cuando el cursor del mouse esta encima del elemento. :active se activa durante el clic, :focus cuando el elemento recibe foco (teclado o clic), y :visited para enlaces ya visitados.",
+        "La pseudo-clase :hover se activa cuando el cursor del mouse está encima del elemento. :active se activa durante el clic, :focus cuando el elemento recibe foco (teclado o clic), y :visited para enlaces ya visitados.",
     },
     {
       id: "07-ej-02",
@@ -467,7 +467,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         { id: "d", text: "Ningun <li>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: ":not() excluye lo que esta dentro del paréntesis. :last-child es el último hijo.",
+      hint: ":not() excluye lo que está dentro del paréntesis. :last-child es el último hijo.",
       explanation:
         "El selector 'li:not(:last-child)' selecciona todos los <li> que NO son el último hijo. Es muy útil para poner separadores (bordes) entre items sin que aparezca uno extra al final.",
     },
@@ -505,7 +505,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       prompt:
         "Escribis .tarjeta:has(img) { border-color: red; }. ¿A que elemento se le aplica el borde rojo?",
       options: [
-        { id: "a", text: "A la imagen que esta dentro de la tarjeta", isCorrect: false },
+        { id: "a", text: "A la imagen que está dentro de la tarjeta", isCorrect: false },
         { id: "b", text: "A la tarjeta que contiene una imagen", isCorrect: true },
         { id: "c", text: "A la tarjeta y a la imagen, a las dos", isCorrect: false },
         { id: "d", text: "A las tarjetas que NO tienen imagen", isCorrect: false },

@@ -257,7 +257,7 @@ function CampoEmail() {
 }
 \`\`\`
 
-> **Tip:** Extraer lógica a custom hooks hace tus componentes mas limpios y la lógica mas testeable.`,
+> **Tip:** Extraer lógica a custom hooks hace tus componentes más limpios y la lógica más testeable.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -388,7 +388,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       options: [
         { id: "a", text: "useMemo es para valores, useCallback es para funciones", isCorrect: true },
         { id: "b", text: "No hay diferencia, son aliases", isCorrect: false },
-        { id: "c", text: "useMemo es mas rápido que useCallback", isCorrect: false },
+        { id: "c", text: "useMemo es más rápido que useCallback", isCorrect: false },
         { id: "d", text: "useCallback es para efectos, useMemo para estado", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
@@ -425,7 +425,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cuál es la regla mas importante de los hooks?",
+      prompt: "¿Cuál es la regla más importante de los hooks?",
       options: [
         { id: "a", text: "Siempre usar useEffect después de useState", isCorrect: false },
         { id: "b", text: "Solo llamar hooks en el nivel superior, nunca dentro de condicionales", isCorrect: true },

@@ -278,7 +278,7 @@ nota.addEventListener("input", function() {
       order: 4,
       prompt: "¿Qué diferencia hay entre localStorage y sessionStorage?",
       options: [
-        { id: "a", text: "localStorage es mas grande", isCorrect: false },
+        { id: "a", text: "localStorage es más grande", isCorrect: false },
         { id: "b", text: "sessionStorage persiste al cerrar la pestana, localStorage no", isCorrect: false },
         { id: "c", text: "localStorage persiste al cerrar el navegador, sessionStorage no", isCorrect: true },
         { id: "d", text: "No hay diferencia", isCorrect: false },

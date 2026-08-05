@@ -43,7 +43,7 @@ estilos.color       // "rgb(255, 0, 0)"
 estilos.fontSize    // "16px"
 \`\`\`
 
-> **Tip:** Prefiere usar classList para agregar/quitar clases en vez de modificar estilos directamente. Es mas mantenible.`,
+> **Tip:** Prefiere usar classList para agregar/quitar clases en vez de modificar estilos directamente. Es más mantenible.`,
       codeExample: {
         html: '<div id="caja">Caja con estilos dinamicos</div>\n<button id="btn">Cambiar estilos</button>\n<div id="resultado"></div>',
         css: '#caja { padding: 20px; background: #313244; color: #cdd6f4; border-radius: 8px; text-align: center; transition: all 0.3s; } #btn { margin: 8px 0; padding: 6px 12px; background: #89b4fa; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -103,7 +103,7 @@ root.style.setProperty("--tamano", "20px");
 ### Ventajas
 - Cambias UN valor y afecta a TODOS los elementos que lo usen
 - Ideal para temas (dark/light mode)
-- Mas mantenible que cambiar estilos individuales
+- Más mantenible que cambiar estilos individuales
 
 > Las CSS variables son el puente perfecto entre CSS y JavaScript para temas dinámicos.`,
       codeExample: {
@@ -297,7 +297,7 @@ tabs.forEach(function(tab) {
       prompt: "¿Qué devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
       options: [
         { id: "a", text: "El color definido en CSS", isCorrect: false },
-        { id: "b", text: 'Un string vacio ""', isCorrect: true },
+        { id: "b", text: 'Un string vacío ""', isCorrect: true },
         { id: "c", text: "undefined", isCorrect: false },
         { id: "d", text: "null", isCorrect: false },
       ],

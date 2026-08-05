@@ -220,7 +220,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Piensa en 'empujar' un elemento al final.",
-      explanation: "push() agrega uno o mas elementos al final del array y devuelve la nueva longitud.",
+      explanation: "push() agrega uno o más elementos al final del array y devuelve la nueva longitud.",
     },
     {
       id: "js08-ej-03",

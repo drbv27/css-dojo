@@ -4,7 +4,7 @@ export const reactEventosModule: ModuleData = {
   slug: "react-eventos",
   title: "Eventos en React",
   description:
-    "Aprende a manejar interacciones del usuario con eventos en React: clics, formularios, teclado y mas.",
+    "Aprende a manejar interacciones del usuario con eventos en React: clics, formularios, teclado y más.",
   order: 206,
   category: "react-fundamentals",
   icon: "mouse-pointer",

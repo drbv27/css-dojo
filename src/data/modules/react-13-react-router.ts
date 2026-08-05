@@ -391,7 +391,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         { id: "d", text: "Router", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es el componente de mas alto nivel que habilita la navegación basada en el navegador.",
+      hint: "Es el componente de más alto nivel que habilita la navegación basada en el navegador.",
       explanation: "BrowserRouter envuelve la aplicación y proporciona el contexto necesario para que funcione la navegación con la History API del navegador.",
     },
     {

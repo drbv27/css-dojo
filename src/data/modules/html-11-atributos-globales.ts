@@ -4,7 +4,7 @@ export const htmlAtributosModule: ModuleData = {
   slug: "html-atributos-globales",
   title: "Atributos Globales de HTML",
   description:
-    "Aprende sobre los atributos globales que puedes usar en cualquier elemento HTML: id, class, data-*, contenteditable, tabindex y mas.",
+    "Aprende sobre los atributos globales que puedes usar en cualquier elemento HTML: id, class, data-*, contenteditable, tabindex y más.",
   order: 11,
   category: "html-intermediate",
   icon: "tag",
@@ -15,7 +15,7 @@ export const htmlAtributosModule: ModuleData = {
       title: "id, class y style",
       content: `## id, class y style
 
-Los **atributos globales** son atributos que se pueden usar en **cualquier elemento HTML**. Los tres mas comunes son:
+Los **atributos globales** son atributos que se pueden usar en **cualquier elemento HTML**. Los tres más comunes son:
 
 ### id
 

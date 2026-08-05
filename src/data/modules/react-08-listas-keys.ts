@@ -37,7 +37,7 @@ function ListaFrutas() {
 2. Para cada elemento, retorna un fragmento de JSX
 3. React renderiza todos los elementos retornados
 
-### Con datos mas complejos
+### Con datos más complejos
 
 \`\`\`jsx
 const usuarios = [
@@ -145,7 +145,7 @@ Sin keys (o con keys incorrectas), React:
 
 ### Cuando SI usar index como key
 
-El index esta bien si:
+El index está bien si:
 - La lista es **estática** (no se reordena ni filtra)
 - Los elementos **no tienen estado** interno
 - Los elementos **no se agregan/eliminan** del medio
@@ -289,9 +289,9 @@ return categorias.map(cat => (
 ));
 \`\`\`
 
-### Patrón: lista vacia
+### Patrón: lista vacía
 
-Siempre maneja el caso cuando la lista esta vacia:
+Siempre maneja el caso cuando la lista está vacía:
 
 \`\`\`jsx
 {items.length === 0 ? (

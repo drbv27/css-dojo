@@ -57,7 +57,7 @@ Define el **método HTTP** para enviar los datos:
 | Datos en URL | Si | No |
 | Marcadores | Se puede guardar | No se puede |
 | Límite de datos | ~2000 caracteres | Sin límite práctico |
-| Seguridad | Menos seguro | Mas seguro |
+| Seguridad | Menos seguro | Más seguro |
 | Uso tipico | Busquedas, filtros | Login, registro, pagos |
 
 > **Regla de oro:** Usa POST para formularios que envian datos sensibles (contrasenas, datos personales) y GET para busquedas y filtros.`,
@@ -75,7 +75,7 @@ Define el **método HTTP** para enviar los datos:
 
 ### La etiqueta \`<input>\`
 
-Es el elemento mas versatil de los formularios. El atributo \`type\` define que tipo de dato acepta.
+Es el elemento más versatil de los formularios. El atributo \`type\` define que tipo de dato acepta.
 
 ### Tipos comunes de input
 
@@ -232,7 +232,7 @@ No tiene comportamiento predeterminado. Se usa con JavaScript:
 
 ### \`<button>\` vs \`<input type="submit">\`
 
-Ambos envian el formulario, pero \`<button>\` es mas flexible porque puede contener **HTML dentro** (iconos, texto formateado):
+Ambos envian el formulario, pero \`<button>\` es más flexible porque puede contener **HTML dentro** (iconos, texto formateado):
 
 \`\`\`html
 <!-- Solo texto -->
@@ -295,7 +295,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Cuál método HTTP es mas seguro para enviar contrasenas?",
+      prompt: "¿Cuál método HTTP es más seguro para enviar contrasenas?",
       options: [
         { id: "a", text: "GET", isCorrect: false },
         { id: "b", text: "POST", isCorrect: true },
@@ -305,7 +305,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       validation: { type: "exact", answer: "b" },
       hint: "Uno envia datos en la URL (visible) y otro en el cuerpo de la solicitud.",
       explanation:
-        "POST envia los datos en el cuerpo de la solicitud HTTP, no en la URL, lo que lo hace mas apropiado para datos sensibles como contrasenas.",
+        "POST envia los datos en el cuerpo de la solicitud HTTP, no en la URL, lo que lo hace más apropiado para datos sensibles como contrasenas.",
     },
     {
       id: "html-08-ej-03",
@@ -331,7 +331,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Arrastra cada tipo de input a su uso mas apropiado:",
+      prompt: "Arrastra cada tipo de input a su uso más apropiado:",
       dragItems: [
         { id: "d1", content: "type=\"text\"", correctZone: "z1" },
         { id: "d2", content: "type=\"email\"", correctZone: "z2" },
@@ -350,7 +350,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4", d5: "z5" },
       },
-      hint: "Cada tipo de input esta diseñado para un tipo específico de dato.",
+      hint: "Cada tipo de input está diseñado para un tipo específico de dato.",
       explanation:
         "text para nombres, email para correos (con validación), password para contrasenas (oculta caracteres), number para números, y date para fechas.",
     },

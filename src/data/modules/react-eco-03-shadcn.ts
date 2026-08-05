@@ -152,7 +152,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
 });
 \`\`\`
 
-> Shadcn + Tailwind + CVA es la combinación mas popular en el ecosistema React moderno.`,
+> Shadcn + Tailwind + CVA es la combinación más popular en el ecosistema React moderno.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cba6f7; border-radius: 8px; white-space: pre-line; }',
@@ -170,9 +170,9 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       order: 1,
       prompt: "¿Qué diferencia a Shadcn/ui de otras librerias de componentes como MUI?",
       options: [
-        { id: "a", text: "Es mas rápido", isCorrect: false },
+        { id: "a", text: "Es más rápido", isCorrect: false },
         { id: "b", text: "Los componentes se copian a tu proyecto y son tuyos", isCorrect: true },
-        { id: "c", text: "Tiene mas componentes", isCorrect: false },
+        { id: "c", text: "Tiene más componentes", isCorrect: false },
         { id: "d", text: "No usa React", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -202,7 +202,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "¿Sobre que libreria de accesibilidad esta construido Shadcn/ui?",
+      prompt: "¿Sobre que libreria de accesibilidad está construido Shadcn/ui?",
       options: [
         { id: "a", text: "Headless UI", isCorrect: false },
         { id: "b", text: "Radix UI", isCorrect: true },

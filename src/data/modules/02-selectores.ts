@@ -39,7 +39,7 @@ nombre-etiqueta {
 
 Los selectores de tipo son útiles para definir **estilos base** que aplican a todos los elementos de un tipo. Por ejemplo, definir la tipografía base de todos los párrafos.
 
-> **Atención:** Como seleccionan TODOS los elementos de ese tipo, usarlos en exceso puede causar estilos no deseados. Es mejor combinarlos con selectores mas específicos.`,
+> **Atención:** Como seleccionan TODOS los elementos de ese tipo, usarlos en exceso puede causar estilos no deseados. Es mejor combinarlos con selectores más específicos.`,
       codeExample: {
         html: `<h1>Titulo principal</h1>\n<p>Este es el primer parrafo.</p>\n<p>Este es el segundo parrafo.</p>\n<p>Todos los parrafos tienen el mismo estilo.</p>`,
         css: `p {\n  color: firebrick;\n  font-size: 16px;\n  line-height: 1.6;\n}`,
@@ -81,7 +81,7 @@ El **selector de clase** selecciona todos los elementos que tengan un atributo \
 - Usa **guiones** para separar palabras: \`.tarjeta-producto\`
 - Evita nombres que describan el estilo: \`.texto-rojo\` (si luego lo cambias a azul, el nombre pierde sentido)
 
-> **Convención:** Los selectores de clase son los mas utilizados en CSS profesional. Dominarlos es fundamental.`,
+> **Convención:** Los selectores de clase son los más utilizados en CSS profesional. Dominarlos es fundamental.`,
       codeExample: {
         html: `<p>Parrafo normal.</p>\n<p class="destacado">Parrafo destacado.</p>\n<p>Otro parrafo normal.</p>\n<p class="destacado">Otro parrafo destacado.</p>`,
         css: `.destacado {\n  color: white;\n  background-color: tomato;\n  padding: 8px 16px;\n  border-radius: 4px;\n}`,
@@ -128,7 +128,7 @@ El **selector de ID** selecciona un elemento único que tenga el atributo \`id\`
 - Para **secciones únicas** como el pie de página
 - Para elementos que necesitan ser **referenciados** por JavaScript o enlaces ancla
 
-> **Consejo profesional:** En CSS moderno, se recomienda usar clases incluso para elementos únicos, ya que tienen menor especificidad y son mas fáciles de sobreescribir.`,
+> **Consejo profesional:** En CSS moderno, se recomienda usar clases incluso para elementos únicos, ya que tienen menor especificidad y son más fáciles de sobreescribir.`,
       codeExample: {
         html: `<div id="primario">\n  <h2>Seccion principal</h2>\n  <p>Este div tiene un ID unico.</p>\n</div>`,
         css: `#primario {\n  color: blue;\n  padding: 20px;\n  background-color: aliceblue;\n  border-left: 4px solid blue;\n}`,
@@ -141,7 +141,7 @@ El **selector de ID** selecciona un elemento único que tenga el atributo \`id\`
       title: "Combinando selectores",
       content: `## Combinando selectores
 
-En CSS puedes combinar selectores de distintas formas para crear reglas mas precisas y eficientes.
+En CSS puedes combinar selectores de distintas formas para crear reglas más precisas y eficientes.
 
 ### Agrupación con comas
 

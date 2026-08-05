@@ -36,7 +36,7 @@ h1 {
 \`\`\`
 
 1. Intenta usar **Georgia**
-2. Si no esta disponible, prueba **Times New Roman** (entre comillas porque tiene espacios)
+2. Si no está disponible, prueba **Times New Roman** (entre comillas porque tiene espacios)
 3. Como último recurso, usa cualquier fuente **serif** del sistema
 
 ### Fuentes seguras para la web (web safe fonts)
@@ -79,7 +79,7 @@ La propiedad \`font-size\` controla el **tamaño del texto**. Existen varias uni
 ### Unidades absolutas
 
 #### px (píxeles)
-La unidad mas común y fácil de entender:
+La unidad más común y fácil de entender:
 
 \`\`\`css
 p { font-size: 16px; }
@@ -188,7 +188,7 @@ strong { font-weight: bold; } /* Equivale a 700 */
 .bold { font-weight: 700; }
 \`\`\`
 
-> **Nota:** No todas las fuentes soportan los 9 pesos. Si usas un peso que la fuente no tiene, el navegador usara el mas cercano disponible.`,
+> **Nota:** No todas las fuentes soportan los 9 pesos. Si usas un peso que la fuente no tiene, el navegador usara el más cercano disponible.`,
       codeExample: {
         html: `<p class="light">Texto Light (300)</p>\n<p class="regular">Texto Regular (400)</p>\n<p class="semibold">Texto Semi Bold (600)</p>\n<p class="bold">Texto Bold (700)</p>\n<p class="italica">Texto en cursiva</p>`,
         css: `.light { font-weight: 300; }\n.regular { font-weight: 400; }\n.semibold { font-weight: 600; }\n.bold { font-weight: 700; }\n.italica {\n  font-style: italic;\n  color: slategray;\n}`,
@@ -201,7 +201,7 @@ strong { font-weight: bold; } /* Equivale a 700 */
       title: "Serif vs Sans-serif",
       content: `## Serif vs Sans-serif
 
-La distinción mas importante en tipografía es entre fuentes **serif** y **sans-serif**.
+La distinción más importante en tipografía es entre fuentes **serif** y **sans-serif**.
 
 ### ¿Qué es un serif?
 
@@ -446,7 +446,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       validation: { type: "exact", answer: "bold" },
       hint: "La palabra clave en ingles para 'negrita' es muy común y tiene cuatro letras.",
       explanation:
-        "El valor 'bold' establece el texto en negrita, equivalente a font-weight: 700. Es la forma mas común de poner texto en negrita con CSS.",
+        "El valor 'bold' establece el texto en negrita, equivalente a font-weight: 700. Es la forma más común de poner texto en negrita con CSS.",
     },
     {
       id: "04-ej-07",
@@ -539,7 +539,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Son tres reglas separadas, una por clase. Cada una lleva su text-align mas la segunda propiedad que pide el enunciado.",
+      hint: "Son tres reglas separadas, una por clase. Cada una lleva su text-align más la segunda propiedad que pide el enunciado.",
       explanation:
         "Cada alineación responde a su contenido: los títulos centrados equilibran el bloque, las firmas y fechas a la derecha se leen como un cierre, y el cuerpo a la izquierda es lo que mejor se lee en pantalla.",
     },

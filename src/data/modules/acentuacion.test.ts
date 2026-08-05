@@ -5,11 +5,16 @@ import { ALL_MODULES } from "./index";
  * El curriculum se escribio sin tildes ni ñ: 3.030 palabras mal escritas en 101
  * modulos. Este test evita que vuelvan.
  *
- * Cubre solo las INEQUIVOCAS -- las que no tienen una forma alternativa valida.
- * Deliberadamente NO cubre `esta`/`está`, `mas`/`más`, `solo` ni `como`: esas
- * dependen del contexto ("esta propiedad" va sin tilde, "esta en el modulo"
- * con ella) y una lista no puede decidirlas. Prohibirlas aca obligaria a
- * acentuarlas siempre, que es un error distinto y peor.
+ * Cubre las INEQUIVOCAS por diccionario, y ademas las dependientes de contexto
+ * cuyo patron sintactico las desambigua sin interpretar nada: `mas` siempre es
+ * `más`, `esta` ante participio es el verbo, `como se <verbo>` es pregunta
+ * indirecta.
+ *
+ * Lo que NO se exige, y es a proposito: `esta` ante sustantivo ("esta
+ * propiedad") es demostrativo y va SIN tilde, igual que el pronombre ("esta es
+ * la que gana") desde 2010. Y `solo` no lleva tilde nunca desde la misma
+ * reforma, asi que sus 298 apariciones ya estaban bien. Exigir tilde en esos
+ * casos seria un error distinto y peor que la omision.
  *
  * Se mide sobre PROSA. Enmascarar el codigo es imprescindible: `.titulo` como
  * clase CSS, `#boton` como id y `correctZone: "funcion"` como token de
@@ -90,6 +95,9 @@ const CON_FLEXION: [string, string][] = [
   ["indice", "índice"],
   ["limite", "límite"],
   ["pixeles", "píxeles"],
+  ["vacio", "vacío"],
+  ["vacia", "vacía"],
+  ["alla", "allá"],
 ];
 
 /** Reemplaza el codigo por espacios, conservando las posiciones. */
@@ -147,6 +155,48 @@ describe("acentuacion del contenido", () => {
       }
     }
 
+    expect(fallas).toEqual([]);
+  });
+
+  /**
+   * Las tres que siguen exigen palabras dependientes del contexto, y se pueden
+   * exigir porque el patron sintactico las desambigua. Cada una se reviso contra
+   * todas sus apariciones en el corpus antes de escribirla.
+   */
+  it("`mas` siempre es `más`: la conjuncion arcaica no aparece", () => {
+    // Revisadas las 300 apariciones: todas comparativas o cuantificadores. La
+    // unica precedida de coma era "mas confianza te dan", tambien comparativa.
+    // `mas` = "pero" es literario y no se usa en prosa tecnica.
+    const fallas: string[] = [];
+    for (const m of ALL_MODULES) {
+      const n = (prosaDe(m).match(/\bmas\b/gi) ?? []).length;
+      if (n > 0) fallas.push(`${m.dojo}/${m.slug}: "mas" x${n}`);
+    }
+    expect(fallas).toEqual([]);
+  });
+
+  it("`esta` ante participio o preposicion es el verbo `está`", () => {
+    // Solo la forma verbal. Ante sustantivo es demostrativo y va sin tilde.
+    const verbal =
+      /\besta\s+(en|dentro|entre|escrit[oa]s?|disponibles?|definid[oa]s?|pasando|diseñad[oa]s?|abiert[oa]|activ[oa]|marcad[oa]|construid[oa]|bien|vací[oa]|inmediatamente)\b/gi;
+    const fallas: string[] = [];
+    for (const m of ALL_MODULES) {
+      for (const w of prosaDe(m).match(verbal) ?? []) {
+        fallas.push(`${m.dojo}/${m.slug}: "${w}"`);
+      }
+    }
+    expect(fallas).toEqual([]);
+  });
+
+  it("`como se <verbo>` es pregunta indirecta y lleva tilde", () => {
+    // "define cómo se calcula", "controla cómo se comporta", "piensa en cómo se
+    // ven". El comparativo no toma esta forma en el corpus.
+    const fallas: string[] = [];
+    for (const m of ALL_MODULES) {
+      for (const w of prosaDe(m).match(/\bcomo\s+se\s+[a-záéíóúñ]+/gi) ?? []) {
+        fallas.push(`${m.dojo}/${m.slug}: "${w}"`);
+      }
+    }
     expect(fallas).toEqual([]);
   });
 

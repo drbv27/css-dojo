@@ -206,7 +206,7 @@ function procesar(datos) {
 }
 \`\`\`
 
-> **Consejo:** Aprende a usar DevTools. Es la herramienta mas poderosa para depurar JavaScript.`,
+> **Consejo:** Aprende a usar DevTools. Es la herramienta más poderosa para depurar JavaScript.`,
       codeExample: {
         html: '<button id="probar">Probar console methods</button>\n<div id="resultado"></div>',
         css: 'button { padding: 8px 16px; background: #f9e2af; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cdd6f4; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -342,7 +342,7 @@ function procesar(datos) {
       prompt: "¿Qué hace la palabra clave debugger en el código?",
       options: [
         { id: "a", text: "Elimina todos los bugs automáticamente", isCorrect: false },
-        { id: "b", text: "Pausa la ejecución si DevTools esta abierto", isCorrect: true },
+        { id: "b", text: "Pausa la ejecución si DevTools está abierto", isCorrect: true },
         { id: "c", text: "Muestra un error en la consola", isCorrect: false },
         { id: "d", text: "Activa el modo de depuración del navegador", isCorrect: false },
       ],

@@ -15,7 +15,7 @@ export const htmlTextoModule: ModuleData = {
       title: "Encabezados h1 a h6",
       content: `## Encabezados h1 a h6
 
-Los encabezados definen la **jerarquía** del contenido en una página web. HTML ofrece seis niveles de encabezados, desde \`<h1>\` (el mas importante) hasta \`<h6>\` (el menos importante).
+Los encabezados definen la **jerarquía** del contenido en una página web. HTML ofrece seis niveles de encabezados, desde \`<h1>\` (el más importante) hasta \`<h6>\` (el menos importante).
 
 ### Jerarquía de encabezados
 
@@ -24,7 +24,7 @@ Los encabezados definen la **jerarquía** del contenido en una página web. HTML
 - \`<h3>\` — Subsecciones
 - \`<h4>\` — Sub-subsecciones
 - \`<h5>\` — Detalles menores
-- \`<h6>\` — Nivel mas bajo de encabezado
+- \`<h6>\` — Nivel más bajo de encabezado
 
 ### Reglas importantes
 
@@ -146,7 +146,7 @@ Se usa para citas largas de otras fuentes. El atributo \`cite\` puede incluir la
 \`\`\`
 
 ### \`<pre>\` — Texto preformateado
-Muestra el texto **exactamente como esta escrito** en el código fuente, incluyendo espacios y saltos de línea.
+Muestra el texto **exactamente como está escrito** en el código fuente, incluyendo espacios y saltos de línea.
 
 \`\`\`html
 <pre>
@@ -196,9 +196,9 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
         { id: "d", text: "10 niveles (h1 a h10)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los encabezados van desde el mas importante hasta el menos importante.",
+      hint: "Los encabezados van desde el más importante hasta el menos importante.",
       explanation:
-        "HTML tiene 6 niveles de encabezados: h1 (mas importante) hasta h6 (menos importante).",
+        "HTML tiene 6 niveles de encabezados: h1 (más importante) hasta h6 (menos importante).",
     },
     {
       id: "html-03-ej-02",
@@ -210,7 +210,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       options: [
         { id: "a", text: "No hay diferencia, son identicos", isCorrect: false },
         { id: "b", text: "<strong> tiene significado semántico de importancia, <b> solo es visual", isCorrect: true },
-        { id: "c", text: "<b> es mas moderno que <strong>", isCorrect: false },
+        { id: "c", text: "<b> es más moderno que <strong>", isCorrect: false },
         { id: "d", text: "<strong> solo funciona en HTML5", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

@@ -166,7 +166,7 @@ Usa \`@keyframes\` para definir los pasos:
 }
 \`\`\`
 
-También puedes usar porcentajes para mas control:
+También puedes usar porcentajes para más control:
 
 \`\`\`css
 @keyframes rebotar {
@@ -322,7 +322,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       prompt:
         "¿Cuál es la diferencia principal entre una transición y una animación CSS?",
       options: [
-        { id: "a", text: "Las transiciones son mas rápidas que las animaciones", isCorrect: false },
+        { id: "a", text: "Las transiciones son más rápidas que las animaciones", isCorrect: false },
         { id: "b", text: "Las transiciones van de un estado A a B; las animaciones pueden tener múltiples pasos intermedios", isCorrect: true },
         { id: "c", text: "Las animaciones solo funcionan en móviles", isCorrect: false },
         { id: "d", text: "No hay diferencia, son lo mismo", isCorrect: false },
@@ -479,7 +479,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Cuáles son las dos propiedades CSS mas eficientes para animar (mejor rendimiento)?",
+        "¿Cuáles son las dos propiedades CSS más eficientes para animar (mejor rendimiento)?",
       options: [
         { id: "a", text: "width y height", isCorrect: false },
         { id: "b", text: "transform y opacity", isCorrect: true },
@@ -489,7 +489,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       validation: { type: "exact", answer: "b" },
       hint: "Son las propiedades que el navegador puede procesar en la GPU sin recalcular el layout.",
       explanation:
-        "'transform' y 'opacity' son las propiedades mas eficientes para animar porque el navegador las procesa en la GPU sin necesidad de recalcular el layout ni repintar. Las otras opciones fuerzan recalculos costosos.",
+        "'transform' y 'opacity' son las propiedades más eficientes para animar porque el navegador las procesa en la GPU sin necesidad de recalcular el layout ni repintar. Las otras opciones fuerzan recalculos costosos.",
     },
   ],
 };
