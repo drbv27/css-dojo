@@ -75,6 +75,34 @@ describe("curriculum CSS: integridad de la validacion", () => {
     expect(malos.map((m) => `${m.mod}/${m.id}`)).toEqual([]);
   });
 
+  /**
+   * The self-comparison below cannot catch a MALFORMED target, because a target
+   * always scores 100% against itself. A single missing semicolon makes the
+   * parser swallow the next property into the previous value -- `width: 80px`
+   * followed by `aspect-ratio: 1 / 1` becomes one declaration reading
+   * "width: 80px aspect-ratio: 1 / 1". The exercise then demands something no
+   * valid CSS can produce: a student writing the correct answer scores 33% and
+   * fails, and it looks like their mistake.
+   *
+   * A well-formed declaration has exactly one colon. Two or more means a
+   * property name ended up inside a value. Quoted strings and url() are
+   * stripped first, since those may legitimately contain a colon.
+   */
+  it("ningun targetCSS tiene una declaracion con un nombre de propiedad tragado", () => {
+    const sospechosas: string[] = [];
+    for (const e of conCssRules) {
+      for (const [selector, decls] of parseCssRules(e.ex.targetCSS!)) {
+        for (const decl of decls) {
+          const limpia = decl.replace(/"[^"]*"|'[^']*'|url\([^)]*\)/g, "");
+          if ((limpia.match(/:/g)?.length ?? 0) > 1) {
+            sospechosas.push(`${e.mod}/${e.id} -> ${selector} { ${decl} }`);
+          }
+        }
+      }
+    }
+    expect(sospechosas).toEqual([]);
+  });
+
   it("la respuesta correcta de cada ejercicio puntua 100%", () => {
     const malos = conCssRules.filter(
       (e) => !compararReglas(e.ex.targetCSS!, e.ex.targetCSS!).correct
