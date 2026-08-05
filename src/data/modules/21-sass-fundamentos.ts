@@ -693,5 +693,80 @@ Diferencias clave:
       explanation:
         "@use es la forma moderna y recomendada de importar partials en Sass. A diferencia de @import (deprecado), @use crea namespaces, evita duplicación de código y carga cada archivo una sola vez.",
     },
+    {
+      id: "21-ej-09",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 20,
+      order: 9,
+      prompt:
+        "Este Sass usa nesting y el selector padre. Escribí el CSS que produce al compilar:\n\n.tarjeta {\n  padding: 16px;\n  .titulo { font-size: 20px; }\n  &:hover { background-color: whitesmoke; }\n}\n\nSon tres reglas planas: .tarjeta, .tarjeta .titulo y .tarjeta:hover.",
+      codeTemplate: {
+        html: `<div class="tarjeta">\n  <h3 class="titulo">Pasá el mouse por encima</h3>\n  <p>El nesting no existe en CSS: el navegador solo ve reglas planas.</p>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".tarjeta {\n  padding: 16px;\n}\n.tarjeta .titulo {\n  font-size: 20px;\n}\n.tarjeta:hover {\n  background-color: whitesmoke;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "El nesting concatena con un espacio: .tarjeta más .titulo da '.tarjeta .titulo'. El & se reemplaza por el selector padre SIN espacio, así que &:hover da '.tarjeta:hover'.",
+      explanation:
+        "Sass no agrega nada al navegador: todo el nesting se aplana al compilar. El anidamiento normal inserta un espacio (selector descendiente), mientras que & pega el selector padre sin espacio, que es la única forma de generar .tarjeta:hover. Entender esta traducción es lo que evita anidar seis niveles y producir selectores imposibles de sobrescribir.",
+    },
+    {
+      id: "21-ej-10",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Este Sass combina variables y un mixin. Escribí el CSS compilado:\n\n$azul: #3498db;\n$radio: 6px;\n\n@mixin btn($fondo) {\n  background-color: $fondo;\n  border-radius: $radio;\n  padding: 10px 20px;\n}\n\n.btn-primario { @include btn($azul); color: white; }\n\nOjo: las variables desaparecen y el mixin se expande donde se lo incluye.",
+      codeTemplate: {
+        html: `<button class="btn-primario">Enviar</button>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".btn-primario {\n  background-color: #3498db;\n  border-radius: 6px;\n  padding: 10px 20px;\n  color: white;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "El mixin aporta tres declaraciones y la regla agrega una cuarta. Las variables se reemplazan por su valor: $azul es #3498db y $radio es 6px.",
+      explanation:
+        "En el CSS compilado no queda rastro de $azul, $radio ni del mixin: quedan las cuatro declaraciones dentro de una sola regla. Por eso un mixin incluido en veinte lugares duplica su contenido veinte veces en el archivo final -- es la diferencia con @extend, que agrupa selectores en lugar de copiar declaraciones.",
+    },
+    {
+      id: "21-ej-11",
+      type: "visual-match",
+      difficulty: 3,
+      xpReward: 25,
+      order: 11,
+      prompt:
+        "El objetivo es lo que produce este Sass al compilar. Reproducilo escribiendo el CSS plano:\n\n$borde: #e74c3c;\n\n.aviso {\n  border-left: 4px solid $borde;\n  padding: 12px;\n  background-color: #fdf2f0;\n  .titulo { color: $borde; font-weight: bold; }\n}",
+      codeTemplate: {
+        html: `<div class="aviso">\n  <p class="titulo">Atención</p>\n  <p>El nesting se aplana y la variable se reemplaza por su valor.</p>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".aviso {\n  border-left: 4px solid #e74c3c;\n  padding: 12px;\n  background-color: #fdf2f0;\n}\n.aviso .titulo {\n  color: #e74c3c;\n  font-weight: bold;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Dos reglas: .aviso con tres declaraciones y .aviso .titulo con dos. La misma variable $borde aparece en dos lugares distintos, y en el CSS compilado queda el valor repetido.",
+      explanation:
+        "Acá se ve la ventaja concreta de una variable: el color aparece dos veces en el CSS final, pero en el Sass se escribe una sola vez. Cambiar $borde cambia el borde y el título a la vez, lo que en CSS plano exigiría dos ediciones y la posibilidad de olvidarse una.",
+    },
   ],
 };

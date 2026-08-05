@@ -50,8 +50,11 @@ export default function LiveEditorExercise({
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Prompt */}
-      <div className="text-lg font-semibold text-editor-text leading-relaxed">
+      {/* Prompt. `whitespace-pre-wrap` para que un enunciado que muestra codigo
+          conserve sus saltos de linea: sin esto el Sass de los ejercicios de
+          preprocesadores se lee como un renglon corrido. Los enunciados de una
+          sola linea no cambian, porque igual se ajustan al ancho. */}
+      <div className="text-lg font-semibold text-editor-text leading-relaxed whitespace-pre-wrap">
         {exercise.prompt}
       </div>
 
