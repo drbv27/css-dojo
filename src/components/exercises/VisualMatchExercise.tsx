@@ -32,8 +32,9 @@ export default function VisualMatchExercise({
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Prompt */}
-      <div className="text-lg font-semibold text-editor-text leading-relaxed">
+      {/* Prompt. Ver la nota en LiveEditorExercise: `whitespace-pre-wrap` para
+          que un enunciado que muestra codigo conserve sus saltos de linea. */}
+      <div className="text-lg font-semibold text-editor-text leading-relaxed whitespace-pre-wrap">
         {exercise.prompt}
       </div>
 
