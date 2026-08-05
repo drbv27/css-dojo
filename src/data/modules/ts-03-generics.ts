@@ -230,5 +230,43 @@ type ConfigCompleta = Required<Config>;
       hint: "Record crea un objeto con las claves del primer tipo.",
       explanation: "Record<K, V> crea un objeto donde cada clave de K tiene valor de tipo V.",
     },
+    {
+      id: "ts03-ej-06",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 6,
+      prompt:
+        "Esta función devuelve el primer elemento de un array y tiene que conservar su tipo: si entra number[], sale number. Completá el parámetro de tipo:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function primero<T>(lista: ",
+        cssSuffix: "): T | undefined {\n  return lista[0];\n}",
+        blanks: ["T[]"],
+      },
+      validation: { type: "exact", answer: "T[]" },
+      hint: "El array es de T, y el retorno ya dice T | undefined. Dos caracteres después de la letra.",
+      explanation:
+        "Con T[] el parámetro de tipo queda atado al contenido del array, así que TypeScript infiere el retorno de la llamada: primero([1, 2]) devuelve number | undefined y primero(['a']) devuelve string | undefined. Si el parámetro fuera any[] la función seguiría corriendo igual, pero se perdería el tipo del retorno y con él todo el sentido de haber escrito un generic.",
+    },
+    {
+      id: "ts03-ej-07",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 7,
+      prompt:
+        "Tenés interface Usuario { id: number; nombre: string; email: string }. Necesitás un tipo para una función de actualización, donde todos los campos son opcionales. Completá el utility type:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "type UsuarioParcial = ",
+        cssSuffix: "<Usuario>;",
+        blanks: ["Partial"],
+      },
+      validation: { type: "exact", answer: "Partial" },
+      hint: "El que vuelve opcionales todas las propiedades. Su opuesto es Required.",
+      explanation:
+        "Partial<T> vuelve opcional cada propiedad, que es justo lo que necesita una función de actualización: se manda solo lo que cambia. Pick<Usuario, 'nombre'> elegiría campos concretos y Omit<Usuario, 'id'> quitaría uno, pero ninguno de los dos vuelve opcional lo que queda. Y la ventaja sobre escribir la interfaz a mano es que si Usuario gana un campo, UsuarioParcial lo gana solo.",
+    },
   ],
 };

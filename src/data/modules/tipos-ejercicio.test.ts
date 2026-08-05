@@ -46,7 +46,9 @@ describe("tipos de ejercicio por modulo", () => {
       return !PRODUCIR.some((t) => tipos.has(t));
     }).map((m) => `${m.dojo}/${m.slug}`);
 
-    expect(soloReconocer.length).toBeLessThanOrEqual(13);
+    // Bajó de 13 a 10 al agregar code-completion a js-patrones, ts-03-generics
+    // y ts-04-typescript-react. Los 10 que quedan son react-eco y nextjs.
+    expect(soloReconocer.length).toBeLessThanOrEqual(10);
   });
 
   it("los modulos de preprocesadores muestran el CSS compilado", () => {
