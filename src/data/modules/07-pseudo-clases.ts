@@ -224,6 +224,75 @@ p:not(:empty) {
       },
       order: 3,
     },
+    {
+      id: "07-leccion-04",
+      title: "Pseudo-clase :has()",
+      content: `## Pseudo-clase :has()
+
+Todo lo que viste hasta acá mira **hacia abajo o hacia el costado**: un selector apunta a un elemento y, como mucho, a sus hijos o a sus hermanos. Nunca hacia arriba.
+
+Eso significaba que esta pregunta no tenía respuesta en CSS:
+
+> "Quiero estilar la tarjeta **si** tiene una imagen adentro."
+
+Con lo que sabés hasta ahora es imposible. Podés estilar la imagen dentro de la tarjeta, pero no la tarjeta según lo que contiene. Fue la función más pedida de CSS durante casi veinte años, y \`:has()\` es la respuesta.
+
+### Cómo funciona
+
+\`\`\`css
+.tarjeta:has(img) {
+  border: 2px solid steelblue;
+}
+\`\`\`
+
+Se lee: "las tarjetas **que tengan** una img adentro". El estilo se aplica a **\`.tarjeta\`**, no a la imagen. Eso es lo nuevo: el elemento afectado es el de afuera.
+
+Por eso se lo conoce como **el selector del padre**, aunque el nombre engaña un poco: no mira solo hijos directos, mira todo lo que haya adentro.
+
+### Qué se puede poner adentro
+
+Cualquier selector de los que ya conocés, incluidos los combinadores del módulo anterior:
+
+\`\`\`css
+/* Un formulario que contenga algún campo inválido */
+form:has(input:invalid) { border-color: crimson; }
+
+/* Una etiqueta cuyo checkbox esté marcado */
+label:has(input:checked) { font-weight: bold; }
+
+/* Un artículo que tenga un h2 como hijo directo */
+article:has(> h2) { padding-top: 0; }
+
+/* Un título seguido inmediatamente por un párrafo */
+h2:has(+ p) { margin-bottom: 4px; }
+\`\`\`
+
+### Se combina con :not()
+
+Acá es donde se vuelve realmente útil. Recordá que \`:not()\` invierte:
+
+\`\`\`css
+/* Tarjetas que NO tienen imagen */
+.tarjeta:not(:has(img)) {
+  background-color: #f5f5f5;
+}
+\`\`\`
+
+Eso es "las tarjetas sin imagen", que antes había que resolver agregando una clase a mano en el HTML. Ahora el CSS solo se da cuenta.
+
+### Dos límites que conviene saber
+
+- **No se puede anidar \`:has()\` dentro de otro \`:has()\`.** El navegador lo rechaza.
+- **Aplica el estilo al elemento de afuera**, siempre. Si escribís \`.tarjeta:has(img)\` y esperabas que cambiara la imagen, no va a pasar nada: el objetivo es la tarjeta.
+
+> **La idea para llevarse:** \`:has()\` convierte a CSS en un lenguaje que puede reaccionar a su propio contenido. Muchas cosas que antes exigían JavaScript — agregar una clase al padre según lo que tiene adentro — ahora son una línea de CSS.`,
+      codeExample: {
+        html: `<div class="tarjeta">\n  <img src="https://placehold.co/80x50" alt="Miniatura" />\n  <p>Esta tarjeta tiene imagen</p>\n</div>\n<div class="tarjeta">\n  <p>Esta tarjeta no tiene imagen</p>\n</div>\n<label class="opcion">\n  <input type="checkbox" checked /> Marcada\n</label>\n<label class="opcion">\n  <input type="checkbox" /> Sin marcar\n</label>`,
+        css: `.tarjeta {\n  padding: 12px;\n  margin-bottom: 8px;\n  border: 1px solid #ddd;\n  border-radius: 6px;\n}\n\n/* La tarjeta cambia porque CONTIENE una imagen */\n.tarjeta:has(img) {\n  border-color: steelblue;\n  border-width: 2px;\n}\n\n/* Y las que no la contienen, al reves */\n.tarjeta:not(:has(img)) {\n  background-color: #f5f5f5;\n  color: #666;\n}\n\n/* La etiqueta reacciona al estado de su propio checkbox */\n.opcion:has(input:checked) {\n  font-weight: bold;\n  color: seagreen;\n}`,
+        editable: true,
+      },
+      order: 4,
+    },
   ],
   exercises: [
     {
@@ -426,6 +495,50 @@ p:not(:empty) {
       hint: "Necesitas 4 reglas: padding general, :nth-child(even) para fondo alterno, :first-child para el primero, y :not(:last-child) para los bordes.",
       explanation:
         "Se combinan varias pseudo-clases: :nth-child(even) para filas alternas, :first-child para destacar el primer item, y :not(:last-child) para poner bordes en todos menos el ultimo.",
+    },
+    {
+      id: "07-ej-09",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 15,
+      order: 9,
+      prompt:
+        "Escribis .tarjeta:has(img) { border-color: red; }. A que elemento se le aplica el borde rojo?",
+      options: [
+        { id: "a", text: "A la imagen que esta dentro de la tarjeta", isCorrect: false },
+        { id: "b", text: "A la tarjeta que contiene una imagen", isCorrect: true },
+        { id: "c", text: "A la tarjeta y a la imagen, a las dos", isCorrect: false },
+        { id: "d", text: "A las tarjetas que NO tienen imagen", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "El estilo siempre se aplica al elemento que esta ANTES de :has(). Lo que va entre parentesis es solo la condicion.",
+      explanation:
+        "El objetivo es el elemento de afuera: la tarjeta. Lo que va dentro de :has() es la condicion que debe cumplirse, no el elemento a estilar. Por eso se lo llama el selector del padre.",
+    },
+    {
+      id: "07-ej-10",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase 'tarjeta' que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase 'opcion' que contengan un input marcado, dales font-weight: bold.",
+      codeTemplate: {
+        html: `<div class="tarjeta">\n  <img src="https://placehold.co/60x40" alt="Miniatura" />\n  <p>Con imagen</p>\n</div>\n<div class="tarjeta">\n  <p>Sin imagen</p>\n</div>\n<label class="opcion"><input type="checkbox" checked /> Marcada</label>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".tarjeta:has(img) {\n  border-color: steelblue;\n}\n.tarjeta:not(:has(img)) {\n  background-color: whitesmoke;\n}\n.opcion:has(input:checked) {\n  font-weight: bold;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Para la negacion, envolve el :has() completo dentro de :not(). Para el checkbox marcado, adentro de :has() va input:checked.",
+      explanation:
+        "Las tres reglas apuntan al elemento de afuera y usan el contenido como condicion. La segunda combina :not() con :has() para expresar 'las que no contienen imagen', algo que antes exigia agregar una clase a mano en el HTML.",
     },
   ],
 };
