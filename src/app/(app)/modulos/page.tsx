@@ -5,10 +5,10 @@ import Link from "next/link";
 import { FaHtml5, FaReact } from "react-icons/fa";
 import { SiCss, SiJavascript, SiNextdotjs } from "react-icons/si";
 import { ALL_MODULES } from "@/data/modules";
+import { categoriesForDojo } from "@/data/moduleCategories";
 import { useProgress } from "@/hooks/useProgress";
 import { useAuth } from "@/hooks/useAuth";
 import { useDojo } from "@/hooks/useDojo";
-import type { ModuleCategory } from "@/types";
 
 const dojoIcon: Record<string, React.ComponentType<{ className?: string }>> = {
   html: FaHtml5,
@@ -28,51 +28,9 @@ const dojoAccentText: Record<string, string> = {
   nextjs: "text-neon-blue",
 };
 
-const htmlCategories = [
-  { key: "html-fundamentals" as const, label: "HTML Fundamentos", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange", accent: "border-neon-orange/40", hoverBorder: "hover:border-neon-orange/40", hoverBg: "hover:bg-neon-orange/[0.04]", hoverTitle: "group-hover:text-neon-orange" },
-  { key: "html-intermediate" as const, label: "HTML Intermedio", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
-  { key: "html-advanced" as const, label: "HTML Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red", accent: "border-neon-red/40", hoverBorder: "hover:border-neon-red/40", hoverBg: "hover:bg-neon-red/[0.04]", hoverTitle: "group-hover:text-neon-red" },
-];
-
-const cssCategories = [
-  { key: "intro" as const, label: "Introduccion", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  { key: "intermediate" as const, label: "Intermedio", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  { key: "advanced" as const, label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
-  { key: "preprocessors" as const, label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink", accent: "border-neon-pink/40", hoverBorder: "hover:border-neon-pink/40", hoverBg: "hover:bg-neon-pink/[0.04]", hoverTitle: "group-hover:text-neon-pink" },
-  { key: "frameworks" as const, label: "Frameworks CSS", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  { key: "project" as const, label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-];
-
-const jsCategories = [
-  { key: "js-fundamentals" as const, label: "Fundamentos", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
-  { key: "js-intermediate" as const, label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
-  { key: "js-advanced" as const, label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
-  { key: "js-async" as const, label: "Asincronia", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange", accent: "border-neon-orange/40", hoverBorder: "hover:border-neon-orange/40", hoverBg: "hover:bg-neon-orange/[0.04]", hoverTitle: "group-hover:text-neon-orange" },
-  { key: "js-dom" as const, label: "DOM y Eventos", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-  { key: "js-projects" as const, label: "Proyectos", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink", accent: "border-neon-pink/40", hoverBorder: "hover:border-neon-pink/40", hoverBg: "hover:bg-neon-pink/[0.04]", hoverTitle: "group-hover:text-neon-pink" },
-  { key: "js-typescript" as const, label: "TypeScript", color: "text-ts-blue", badge: "bg-ts-blue/10 text-ts-blue", accent: "border-ts-blue/40", hoverBorder: "hover:border-ts-blue/40", hoverBg: "hover:bg-ts-blue/[0.04]", hoverTitle: "group-hover:text-ts-blue" },
-];
-
-const reactCategories = [
-  { key: "react-fundamentals" as const, label: "React Fundamentos", color: "text-neon-teal", badge: "bg-neon-teal/10 text-neon-teal", accent: "border-neon-teal/40", hoverBorder: "hover:border-neon-teal/40", hoverBg: "hover:bg-neon-teal/[0.04]", hoverTitle: "group-hover:text-neon-teal" },
-  { key: "react-intermediate" as const, label: "React Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
-  { key: "react-advanced" as const, label: "React Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
-  { key: "react-projects" as const, label: "React Proyectos", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-];
-
-const reactEcoCategories = [
-  { key: "react-eco-routing" as const, label: "Routing", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-  { key: "react-eco-state" as const, label: "Estado Global", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-  { key: "react-eco-ui" as const, label: "UI y Componentes", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-  { key: "react-eco-forms" as const, label: "Formularios", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-  { key: "react-eco-data" as const, label: "Data Fetching", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-];
-
-const nextjsCategories = [
-  { key: "nextjs-fundamentals" as const, label: "Fundamentos", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
-  { key: "nextjs-intermediate" as const, label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
-  { key: "nextjs-advanced" as const, label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
-];
+// Category grouping, order and presentation live in @/data/moduleCategories so
+// this listing and the teacher panel can never disagree about which categories
+// exist. See that file for why.
 
 export default function ModulosPage() {
   const { getModuleProgress } = useProgress();
@@ -88,7 +46,7 @@ export default function ModulosPage() {
       .catch(() => setEnabledSlugs(ALL_MODULES.map((m) => m.slug)));
   }, []);
 
-  const categories = activeDojo === "html" ? htmlCategories : activeDojo === "css" ? cssCategories : activeDojo === "js" ? jsCategories : activeDojo === "react" ? reactCategories : activeDojo === "react-eco" ? reactEcoCategories : nextjsCategories;
+  const categories = categoriesForDojo(activeDojo);
   const dojoModules = ALL_MODULES.filter((m) => m.dojo === activeDojo);
   const DojoIcon = dojoIcon[activeDojo];
   const accentText = dojoAccentText[activeDojo] ?? "text-neon-blue";
@@ -117,11 +75,11 @@ export default function ModulosPage() {
         </div>
       </div>
 
-      {categories.map((cat) => {
-        const catModules = dojoModules.filter((m) => m.category === cat.key);
+      {categories.map(({ key, meta: cat }) => {
+        const catModules = dojoModules.filter((m) => m.category === key);
         if (catModules.length === 0) return null;
         return (
-          <div key={cat.key}>
+          <div key={key}>
             {/* Section header with left accent bar */}
             <div className={`flex items-center gap-3 mb-5 pl-3 border-l-2 ${cat.accent}`}>
               <h2 className={`text-sm font-semibold uppercase tracking-wider ${cat.color}`}>
