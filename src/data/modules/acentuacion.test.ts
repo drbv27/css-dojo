@@ -109,6 +109,12 @@ function sinCodigo(texto: string): string {
   tapar(/```[\s\S]*?```/g);
   tapar(/`[^`\n]*`/g);
   tapar(/\{[^{}\n]*\}/g);
+  // Un token pegado a `.`, `#` o `$` es codigo: clase CSS, id o variable Sass.
+  // `.titulo` no se acentua porque tiene que coincidir con class="titulo" en el
+  // HTML. Es la misma clase de falso positivo que hace imprescindible la
+  // mascara: sin ella `titulo` reporta 169 casos, todos selectores legitimos.
+  // El punto final de una oracion no matchea, porque le sigue un espacio.
+  tapar(/(?<![\w])[.#$][A-Za-z_][\w-]*/g);
   return out;
 }
 
