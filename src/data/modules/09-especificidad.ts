@@ -185,6 +185,199 @@ Si ambas reglas tienen \`!important\`, se vuelve a aplicar la **especificidad no
       order: 3,
     },
     {
+      id: "09-leccion-05",
+      title: ":is() y :where(): agrupar selectores",
+      content: `## :is() y :where(): agrupar selectores
+
+Ya sabés calcular especificidad. Ahora vamos a las dos herramientas que te dejan **controlarla**, en lugar de solo padecerla.
+
+### El problema: repetir el mismo prefijo
+
+Mirá esto:
+
+\`\`\`css
+.articulo h1,
+.articulo h2,
+.articulo h3 {
+  margin-top: 1.5em;
+}
+\`\`\`
+
+Funciona, pero \`.articulo\` está escrito tres veces. Con cuatro niveles de anidamiento y cinco etiquetas, esto se vuelve inmanejable.
+
+### :is() agrupa
+
+\`\`\`css
+.articulo :is(h1, h2, h3) {
+  margin-top: 1.5em;
+}
+\`\`\`
+
+Una sola regla, el prefijo escrito una vez. Se lee: "cualquier h1, h2 o h3 que esté dentro de .articulo".
+
+### La parte que sorprende: cuánto pesa :is()
+
+Acá es donde importa haber entendido la especificidad, porque \`:is()\` **no es neutral**:
+
+> \`:is()\` toma la especificidad de su argumento **más específico**.
+
+\`\`\`css
+:is(#titulo, p) { color: red; }
+\`\`\`
+
+Ese selector pesa **como un ID** (1-0-0), incluso cuando termina aplicándose a un \`<p>\`. El \`#titulo\` de adentro le contagia su peso a todo el grupo.
+
+Y eso puede arruinarte el día: metés un ID en la lista por comodidad y de golpe esa regla le gana a todas tus clases.
+
+### :where() pesa cero. Siempre.
+
+\`:where()\` se escribe **exactamente igual** y agrupa **exactamente igual**. La única diferencia es el peso:
+
+> \`:where()\` **siempre** tiene especificidad cero, sin importar lo que lleve adentro.
+
+\`\`\`css
+:where(#titulo, p) { color: red; }
+\`\`\`
+
+Ese selector pesa **0-0-0**. Cualquier regla posterior con una simple clase le gana.
+
+### Cuándo usar cada uno
+
+| | \`:is()\` | \`:where()\` |
+|---|---|---|
+| Agrupa selectores | sí | sí |
+| Especificidad | la del más específico | siempre cero |
+| Sirve para | acortar selectores propios | escribir estilos fáciles de sobrescribir |
+
+### Para qué sirve de verdad \`:where()\`
+
+Pensá que escribís los estilos base de un sitio y otra persona va a construir componentes encima. Si escribís:
+
+\`\`\`css
+.contenido h2 { color: navy; }  /* 0-1-1 */
+\`\`\`
+
+...quien venga después con \`.titulo-destacado { color: crimson; }\` (0-1-0) **no va a poder** sobrescribirlo, porque pesa menos. Va a terminar recurriendo a \`!important\`, y ya viste a dónde lleva eso.
+
+Pero si escribís:
+
+\`\`\`css
+:where(.contenido) h2 { color: navy; }  /* 0-0-1 */
+\`\`\`
+
+...ahora una clase cualquiera le gana sin pelear. Le estás diciendo al que venga después: "esto es un valor por defecto, pisalo cuando quieras".
+
+> **La regla para llevarse:** usá \`:is()\` para escribir menos, y \`:where()\` cuando quieras que tu estilo sea **fácil de sobrescribir a propósito**.`,
+      codeExample: {
+        html: `<div class="contenido">\n  <h2>Titulo por defecto (navy)</h2>\n  <h2 class="destacado">Titulo destacado (crimson)</h2>\n</div>\n<div class="articulo">\n  <h3>Agrupado con :is()</h3>\n  <p>Parrafo del articulo</p>\n</div>`,
+        css: `/* :where() pesa 0-0-1, asi que una clase suelta le gana */\n:where(.contenido) h2 {\n  color: navy;\n}\n\n/* 0-1-0 le gana al 0-0-1 de arriba, sin !important */\n.destacado {\n  color: crimson;\n}\n\n/* :is() agrupa y el prefijo se escribe una sola vez */\n.articulo :is(h3, p) {\n  margin-top: 12px;\n  padding-left: 8px;\n  border-left: 3px solid steelblue;\n}`,
+        editable: true,
+      },
+      // Lesson IDs keep their original numbering because they are live URLs;
+      // `order` is what the page sorts by, and good practices must close the
+      // module, after the tools it recommends.
+      order: 4,
+    },
+    {
+      id: "09-leccion-06",
+      title: "@layer: ordenar la cascada",
+      content: `## @layer: ordenar la cascada
+
+Hasta acá, cuando dos reglas chocan, gana la más específica. Y si empatan, gana la que está **más abajo** en la hoja.
+
+Eso funciona mientras controles todo tu CSS. El problema aparece cuando no.
+
+### El problema real
+
+Usás una librería de estilos y querés cambiarle un botón. La librería escribió:
+
+\`\`\`css
+.boton.boton-primario { background: blue; }  /* 0-2-0 */
+\`\`\`
+
+Vos escribís:
+
+\`\`\`css
+.mi-boton { background: green; }  /* 0-1-0 */
+\`\`\`
+
+Perdés. Y tus opciones eran las tres de siempre: subir la especificidad imitando la de ellos, duplicar clases, o \`!important\`. Todas son parches, y todas escalan mal.
+
+### La solución: declarar el orden vos
+
+\`@layer\` te deja crear **bandas de precedencia explícitas**:
+
+\`\`\`css
+/* Primero declaras el orden. Esta linea es la que decide. */
+@layer reset, libreria, componentes, utilidades;
+
+@layer libreria {
+  .boton.boton-primario { background: blue; }  /* 0-2-0 */
+}
+
+@layer componentes {
+  .mi-boton { background: green; }  /* 0-1-0 */
+}
+\`\`\`
+
+Ahora gana **verde**. Y esto es lo importante:
+
+> El orden de las capas **le gana a la especificidad**. Una capa declarada después vence a una anterior, aunque sus selectores pesen menos.
+
+Leelo de nuevo, porque invierte lo que venías aprendiendo. Dentro de una misma capa, la especificidad sigue decidiendo. Entre capas distintas, no: decide el orden que declaraste.
+
+### Cómo se escribe
+
+\`\`\`css
+/* 1. Declara el orden una sola vez, arriba de todo */
+@layer reset, base, componentes, utilidades;
+
+/* 2. Despues llena cada capa, en cualquier orden */
+@layer base {
+  h1 { font-size: 2rem; }
+}
+
+@layer componentes {
+  .tarjeta { padding: 16px; }
+}
+\`\`\`
+
+El orden de esa primera línea es el que manda. No importa en qué orden llenes las capas después: podés escribir \`componentes\` antes que \`base\` en el archivo y el resultado no cambia.
+
+### La trampa que hay que saber
+
+> El CSS que **no** está en ninguna capa le gana a **todas** las capas.
+
+\`\`\`css
+@layer componentes {
+  .titulo { color: blue; }
+}
+
+/* Esto no esta en ninguna capa: gana, aunque este arriba */
+.titulo { color: red; }
+\`\`\`
+
+Es intencional: te permite meter capas en un proyecto existente sin que tu CSS de siempre pierda de golpe. Pero si te olvidás, parece magia negra. La regla práctica es simple: **si usás capas, poné todo en capas.**
+
+### Cómo se relaciona con lo anterior
+
+Estas son las tres herramientas que ahora tenés para el mismo problema, de la más fina a la más brusca:
+
+| Herramienta | Qué hace |
+|---|---|
+| \`:where()\` | baja el peso de tu selector a cero |
+| \`@layer\` | decide quién gana sin tocar los selectores |
+| \`!important\` | rompe la cascada a martillazos |
+
+> **Consejo:** con \`@layer\` y \`:where()\` disponibles, \`!important\` deja de tener excusas en código propio. Si lo estás escribiendo, casi siempre es que falta ordenar la cascada.`,
+      codeExample: {
+        html: `<button class="boton boton-primario mi-boton">Mira mi color</button>\n<p class="nota">La capa componentes se declaro despues que libreria, asi que gana con menos especificidad.</p>`,
+        css: `/* Esta linea decide quien gana */\n@layer libreria, componentes;\n\n@layer libreria {\n  /* 0-2-0: mas especifico, pero en una capa anterior */\n  .boton.boton-primario {\n    background-color: steelblue;\n    color: white;\n  }\n}\n\n@layer componentes {\n  /* 0-1-0: menos especifico y gana igual */\n  .mi-boton {\n    background-color: seagreen;\n  }\n}\n\n.boton {\n  padding: 10px 20px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n}\n\n.nota {\n  font-size: 13px;\n  color: #666;\n}`,
+        editable: true,
+      },
+      order: 5,
+    },
+    {
       id: "09-leccion-04",
       title: "Buenas practicas de especificidad",
       content: `## Buenas practicas de especificidad
@@ -236,19 +429,23 @@ header nav ul li a.link { }
 
 ### Resolviendo conflictos sin !important
 
-En lugar de usar \`!important\`, puedes:
+En lugar de usar \`!important\`, tenés estas salidas, de la mas limpia a la mas sucia:
 
-1. **Reordenar** las reglas (la ultima gana si hay empate)
-2. **Anadir una clase** mas especifica
-3. **Duplicar la clase** para aumentar especificidad: \`.btn.btn { }\`
+1. **Declarar capas** con \`@layer\` y poner tu CSS en una capa posterior. Resuelve el conflicto sin tocar ni un selector.
+2. **Bajar el peso del estilo base** con \`:where()\`, para que una clase cualquiera pueda sobrescribirlo.
+3. **Reordenar** las reglas (la ultima gana si hay empate).
+4. **Anadir una clase** mas especifica.
+5. **Duplicar la clase** para aumentar especificidad: \`.btn.btn { }\`. Funciona, pero es un truco: el dia que alguien lo lea no va a entender por que esta escrito dos veces.
 
-> **Consejo final:** Piensa en la especificidad como una herramienta, no como un obstaculo. Un CSS bien organizado rara vez tiene problemas de especificidad.`,
+Las dos primeras son las que aprendiste en las lecciones anteriores, y son las unicas que no dejan deuda. Las ultimas tres son lo que se hacia cuando \`@layer\` y \`:where()\` no existian.
+
+> **Consejo final:** Piensa en la especificidad como una herramienta, no como un obstaculo. Y si te encontras escribiendo \`!important\` en tu propio codigo, el problema casi nunca es la especificidad: es que falta ordenar la cascada.`,
       codeExample: {
         html: `<nav class="nav">\n  <a href="#" class="nav-link activo">Inicio</a>\n  <a href="#" class="nav-link">Blog</a>\n  <a href="#" class="nav-link">Contacto</a>\n</nav>`,
         css: `/* Nivel 1: estilos base del componente */\n.nav {\n  display: flex;\n  gap: 4px;\n  background: #f5f5f5;\n  padding: 8px;\n  border-radius: 8px;\n}\n\n/* Nivel 2: elementos del componente */\n.nav-link {\n  padding: 8px 16px;\n  text-decoration: none;\n  color: #555;\n  border-radius: 4px;\n}\n\n/* Nivel 3: estados */\n.nav-link:hover {\n  background: #e0e0e0;\n  color: #333;\n}\n\n.nav-link.activo {\n  background: steelblue;\n  color: white;\n}`,
         editable: true,
       },
-      order: 4,
+      order: 6,
     },
   ],
   exercises: [
@@ -441,6 +638,68 @@ En lugar de usar \`!important\`, puedes:
       hint: "La regla mas fuerte actual tiene especificidad (0,2,0). Para ganarle, usa el ID #seccion combinado con las clases existentes.",
       explanation:
         "Las reglas existentes tienen especificidad (0,0,1) y (0,2,0). El selector '#seccion .articulo .texto' tiene (1,2,0), que supera a ambas. Al incluir el ID del ancestro, ganamos sin necesidad de !important.",
+    },
+    {
+      id: "09-ej-09",
+      type: "quiz",
+      difficulty: 3,
+      xpReward: 20,
+      order: 9,
+      prompt: "Cuanto pesa el selector :is(#titulo, p) ?",
+      options: [
+        { id: "a", text: "0-0-1, porque termina aplicandose a un p", isCorrect: false },
+        { id: "b", text: "1-0-0, porque toma la especificidad de su argumento mas especifico", isCorrect: true },
+        { id: "c", text: "0-0-0, igual que :where()", isCorrect: false },
+        { id: "d", text: "1-0-1, porque suma el ID y la etiqueta", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Una de las dos funciones pesa cero siempre, y la otra no. Esta es la que NO pesa cero.",
+      explanation:
+        ":is() adopta la especificidad de su argumento mas especifico, asi que el #titulo le contagia su peso a todo el grupo: 1-0-0. Esa es justamente la diferencia con :where(), que pesa 0-0-0 sin importar lo que lleve adentro. Meter un ID dentro de un :is() por comodidad puede hacer que esa regla le gane a todas tus clases.",
+    },
+    {
+      id: "09-ej-10",
+      type: "quiz",
+      difficulty: 3,
+      xpReward: 20,
+      order: 10,
+      prompt:
+        "Declaras @layer libreria, componentes; La capa libreria tiene .boton.boton-primario (0-2-0) y la capa componentes tiene .mi-boton (0-1-0). Ambas definen background. Cual gana?",
+      options: [
+        { id: "a", text: "La de libreria, porque su selector es mas especifico", isCorrect: false },
+        { id: "b", text: "La de componentes, porque su capa se declaro despues", isCorrect: true },
+        { id: "c", text: "Ninguna, hay que usar !important para desempatar", isCorrect: false },
+        { id: "d", text: "Depende de cual se escriba mas abajo en el archivo", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Entre capas distintas, la especificidad deja de decidir. Lo que decide es el orden que declaraste.",
+      explanation:
+        "El orden de las capas le gana a la especificidad: componentes se declaro despues de libreria, asi que gana con 0-1-0 contra 0-2-0. Dentro de una misma capa la especificidad sigue mandando, pero entre capas manda el orden. Y ojo: el CSS que no esta en ninguna capa le gana a todas.",
+    },
+    {
+      id: "09-ej-11",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 11,
+      prompt:
+        "El estilo base pinta el titulo de navy con especificidad 0-1-1, asi que una clase suelta no puede ganarle. Reescribilo para que sea facil de sobrescribir: usa :where(.contenido) h2 con color: navy, y despues una regla .destacado con color: crimson.",
+      codeTemplate: {
+        html: `<div class="contenido">\n  <h2>Titulo normal</h2>\n  <h2 class="destacado">Titulo destacado</h2>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ":where(.contenido) h2 {\n  color: navy;\n}\n.destacado {\n  color: crimson;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Envolve el .contenido dentro de :where() para que deje de aportar peso. El h2 queda afuera del parentesis.",
+      explanation:
+        "Con :where(.contenido) h2 el selector pasa de 0-1-1 a 0-0-1, porque :where() no aporta especificidad. Ahora .destacado, que pesa 0-1-0, le gana sin necesidad de !important. Es la forma de decir 'esto es un valor por defecto, pisalo cuando quieras'.",
     },
   ],
 };
