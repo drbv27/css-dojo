@@ -98,7 +98,7 @@ function presentarse(nombre, edad) {
 presentarse("Ana");  // "Ana tiene undefined anos"
 \`\`\`
 
-> **Tip:** Una función bien hecha tiene **una sola responsabilidad**. Si hace demasiado, dividela en funciones mas pequeñas.`,
+> **Tip:** Una función bien hecha tiene **una sola responsabilidad**. Si hace demasiado, dividela en funciones más pequeñas.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -269,7 +269,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Arrow functions",
       content: `## Arrow Functions (funciones flecha)
 
-Las arrow functions son una sintaxis **mas corta y moderna** para escribir funciones. Son las MAS USADAS en el código JavaScript actual (React, Vue, etc.).
+Las arrow functions son una sintaxis **más corta y moderna** para escribir funciones. Son las MÁS USADAS en el código JavaScript actual (React, Vue, etc.).
 
 ### Sintaxis básica
 
@@ -311,7 +311,7 @@ const sumar = (a, b) => a + b;
 
 ### Múltiples líneas: llaves obligatorias
 
-Cuando hay mas de UNA expresión, necesitas llaves Y \`return\` explícito:
+Cuando hay más de UNA expresión, necesitas llaves Y \`return\` explícito:
 
 \`\`\`javascript
 const procesar = texto => {
@@ -743,7 +743,7 @@ if (true) {
 console.log(bloque);  // ReferenceError ✗
 \`\`\`
 
-> **Importante:** \`var\` NO respeta el scope de bloque (solo el de función). Otra razón mas para usar \`const\` y \`let\`.
+> **Importante:** \`var\` NO respeta el scope de bloque (solo el de función). Otra razón más para usar \`const\` y \`let\`.
 
 ### Acceso jerarquico
 
@@ -836,7 +836,7 @@ ejecutarOperacion(10, 5, restar);  // 5
 
 ### Callback inline (arrow)
 
-Lo mas común:
+Lo más común:
 
 \`\`\`javascript
 ejecutarOperacion(10, 5, (a, b) => a * b);  // 50
@@ -908,14 +908,14 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Recursividad",
       content: `## Funciones recursivas
 
-Una **función recursiva** es una función que **se llama a si misma**. Es una herramienta poderosa para resolver problemas que se pueden dividir en sub-problemas mas pequeños del mismo tipo.
+Una **función recursiva** es una función que **se llama a si misma**. Es una herramienta poderosa para resolver problemas que se pueden dividir en sub-problemas más pequeños del mismo tipo.
 
 ### Anatomia de una función recursiva
 
 Toda función recursiva necesita **dos partes**:
 
 1. **Caso base:** la condición para DETENER la recursión (sino sera infinita).
-2. **Caso recursivo:** la función se llama a si misma con un problema mas pequeño.
+2. **Caso recursivo:** la función se llama a si misma con un problema más pequeño.
 
 \`\`\`javascript
 function recursiva(parametro) {
@@ -1007,9 +1007,9 @@ La recursión **siempre se puede reescribir como un ciclo**. La elección depend
 | Iteración simple sobre números o arrays | Ciclo (\`for\`, \`while\`) |
 | Estructuras anidadas (árboles, JSON profundo) | Recursión |
 | Problemas matematicos definidos recursivamente (factorial, fibonacci) | Recursión |
-| Cuando importa el rendimiento | Ciclo (es mas rápido) |
+| Cuando importa el rendimiento | Ciclo (es más rápido) |
 
-> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es mas eficiente**. Usa recursión cuando aporte claridad.
+> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usa recursión cuando aporte claridad.
 
 ### Número de Fibonacci (otro clasico)
 
@@ -1220,7 +1220,7 @@ console.log("hi");            // metodo de console
 
 > Todos los \`.algo()\` que has usado son métodos. Strings, arrays, Math, console... todos son objetos con métodos.
 
-> **Nota:** Veremos mas a fondo objetos y métodos en el modulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
+> **Nota:** Veremos más a fondo objetos y métodos en el modulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f38ba8; border-radius: 8px; white-space: pre-line; }',
@@ -1403,7 +1403,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       prompt: "Cuando se aplica el valor por defecto en: const saludar = (n = 'amigo') => 'Hola ' + n;",
       options: [
         { id: "a", text: "Cuando se pasa null", isCorrect: false },
-        { id: "b", text: "Cuando se pasa string vacio ''", isCorrect: false },
+        { id: "b", text: "Cuando se pasa string vacío ''", isCorrect: false },
         { id: "c", text: "Solo cuando NO se pasa argumento (undefined)", isCorrect: true },
         { id: "d", text: "Cuando se pasa 0", isCorrect: false },
       ],
@@ -1557,7 +1557,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       order: 16,
       prompt: "¿Por que NO es buena idea usar arrow functions como métodos de un objeto?",
       options: [
-        { id: "a", text: "Porque son mas lentas que las funciones normales", isCorrect: false },
+        { id: "a", text: "Porque son más lentas que las funciones normales", isCorrect: false },
         { id: "b", text: "Porque las arrow functions no tienen su propio 'this' y no pueden acceder a las propiedades del objeto", isCorrect: true },
         { id: "c", text: "Porque siempre devuelven undefined", isCorrect: false },
         { id: "d", text: "Porque no pueden tener parámetros", isCorrect: false },

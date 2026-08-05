@@ -4,7 +4,7 @@ export const reactPatronesModule: ModuleData = {
   slug: "react-patrones",
   title: "Patrones de Diseño en React",
   description:
-    "Domina los patrones mas usados: composición, render props, HOCs, compound components y container/presentational.",
+    "Domina los patrones más usados: composición, render props, HOCs, compound components y container/presentational.",
   order: 215,
   category: "react-advanced",
   icon: "puzzle",
@@ -17,7 +17,7 @@ export const reactPatronesModule: ModuleData = {
 
 La **composición** es el patrón fundamental de React. En vez de herencia, React usa composición para reutilizar código.
 
-### Children: el patrón mas básico
+### Children: el patrón más básico
 \`\`\`jsx
 function Card({ children, titulo }) {
   return (
@@ -57,10 +57,10 @@ function Layout({ header, sidebar, children }) {
 
 ### Composición vs Herencia
 - React **no usa herencia** entre componentes
-- La composición es mas flexible y predecible
+- La composición es más flexible y predecible
 - Puedes pasar componentes como props (slots)
 
-> **Principio:** Favorece la composición sobre la herencia. Es mas flexible y mas fácil de razonar.`,
+> **Principio:** Favorece la composición sobre la herencia. Es más flexible y más fácil de razonar.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -426,9 +426,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 3,
       prompt: "¿Qué es un Higher-Order Component (HOC)?",
       options: [
-        { id: "a", text: "Un componente que esta en la parte superior del árbol", isCorrect: false },
+        { id: "a", text: "Un componente que está en la parte superior del árbol", isCorrect: false },
         { id: "b", text: "Una función que recibe un componente y retorna uno nuevo mejorado", isCorrect: true },
-        { id: "c", text: "Un componente con mas de 10 props", isCorrect: false },
+        { id: "c", text: "Un componente con más de 10 props", isCorrect: false },
         { id: "d", text: "Un componente de clase", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -473,7 +473,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Una función que empieza con 'use'.",
-      explanation: "Los custom hooks permiten compartir lógica de forma mas limpia que render props y HOCs, sin modificar el árbol de componentes.",
+      explanation: "Los custom hooks permiten compartir lógica de forma más limpia que render props y HOCs, sin modificar el árbol de componentes.",
     },
     {
       id: "react15-ej-06",
@@ -518,7 +518,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       prompt: "¿Cuál es la diferencia entre el patrón Container y Presentational?",
       options: [
         { id: "a", text: "Container maneja lógica y datos; Presentational solo renderiza UI", isCorrect: true },
-        { id: "b", text: "Container es mas grande; Presentational es mas pequeño", isCorrect: false },
+        { id: "b", text: "Container es más grande; Presentational es más pequeño", isCorrect: false },
         { id: "c", text: "Container usa hooks; Presentational usa clases", isCorrect: false },
         { id: "d", text: "No hay diferencia real", isCorrect: false },
       ],

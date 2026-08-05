@@ -228,7 +228,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se usa un punto entre el objeto y la propiedad.",
-      explanation: "persona.nombre es la notación de punto, la forma mas común de acceder a propiedades.",
+      explanation: "persona.nombre es la notación de punto, la forma más común de acceder a propiedades.",
     },
     {
       id: "js10-ej-02",

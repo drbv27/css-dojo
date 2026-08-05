@@ -48,7 +48,7 @@ El atributo \`sandbox\` restringe el contenido incrustado:
 
 ### embed y object
 
-Son elementos mas antiguos para incrustar contenido. Hoy se usan poco:
+Son elementos más antiguos para incrustar contenido. Hoy se usan poco:
 
 \`\`\`html
 <embed src="archivo.pdf" type="application/pdf" width="600" height="400">
@@ -213,8 +213,8 @@ El atributo \`srcset\` en \`<img>\` permite al navegador elegir la mejor imagen 
 
 | Formato | Ventaja |
 |---------|---------|
-| **WebP** | 25-35% mas liviano que JPEG con misma calidad |
-| **AVIF** | 50% mas liviano que JPEG (nuevo, menos soporte) |
+| **WebP** | 25-35% más liviano que JPEG con misma calidad |
+| **AVIF** | 50% más liviano que JPEG (nuevo, menos soporte) |
 
 \`\`\`html
 <picture>
@@ -235,7 +235,7 @@ El atributo \`loading="lazy"\` retrasa la carga de imágenes e iframes hasta que
 
 Esto mejora el **rendimiento** y ahorra datos, especialmente en páginas con muchas imágenes.
 
-> **Tip:** No uses lazy loading en imágenes visibles inmediatamente (above the fold). Solo en las que estan mas abajo.`,
+> **Tip:** No uses lazy loading en imágenes visibles inmediatamente (above the fold). Solo en las que estan más abajo.`,
       codeExample: {
         html: `<h3>Elemento picture con formatos modernos</h3>
 <div style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre;overflow-x:auto;">&lt;picture&gt;
@@ -411,7 +411,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Cuál de estos formatos de imagen es mas eficiente en compresión?",
+      prompt: "¿Cuál de estos formatos de imagen es más eficiente en compresión?",
       options: [
         { id: "a", text: "PNG", isCorrect: false },
         { id: "b", text: "JPEG", isCorrect: false },
@@ -419,9 +419,9 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
         { id: "d", text: "AVIF", isCorrect: true },
       ],
       validation: { type: "exact", answer: "d" },
-      hint: "Es el formato mas nuevo de la lista.",
+      hint: "Es el formato más nuevo de la lista.",
       explanation:
-        "AVIF ofrece la mejor compresión, siendo hasta un 50% mas liviano que JPEG con calidad similar. WebP es el segundo mas eficiente, seguido de JPEG.",
+        "AVIF ofrece la mejor compresión, siendo hasta un 50% más liviano que JPEG con calidad similar. WebP es el segundo más eficiente, seguido de JPEG.",
     },
     {
       id: "html14-ej-08",

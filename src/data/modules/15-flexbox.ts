@@ -4,7 +4,7 @@ export const flexboxModule: ModuleData = {
   slug: "flexbox",
   title: "Flexbox",
   description:
-    "Domina Flexbox, el sistema de layout unidimensional mas utilizado en CSS moderno: flex-direction, justify-content, align-items, flex-wrap, gap y mas.",
+    "Domina Flexbox, el sistema de layout unidimensional más utilizado en CSS moderno: flex-direction, justify-content, align-items, flex-wrap, gap y más.",
   order: 15,
   dojo: "css" as const,
   category: "advanced",
@@ -83,7 +83,7 @@ Flexbox ofrece un control poderoso sobre la alineación de los elementos, tanto 
 
 ### justify-content (eje principal)
 
-Controla como se distribuyen los items a lo largo del **eje principal**:
+Controla cómo se distribuyen los items a lo largo del **eje principal**:
 
 \`\`\`css
 .contenedor {
@@ -130,7 +130,7 @@ Con solo 3 líneas, puedes centrar un elemento **vertical y horizontalmente**:
 }
 \`\`\`
 
-Este es uno de los patrones mas usados en CSS moderno.
+Este es uno de los patrones más usados en CSS moderno.
 
 ### align-self (por item individual)
 
@@ -193,7 +193,7 @@ Combina \`flex-direction\` y \`flex-wrap\` en una sola propiedad:
 
 ### gap
 
-La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho mas limpio que usar márgenes:
+La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho más limpio que usar márgenes:
 
 \`\`\`css
 .contenedor {
@@ -209,7 +209,7 @@ La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho mas li
 
 - No crea espacio extra en los bordes del contenedor
 - No necesitas selectores como \`:last-child\` para quitar el margen final
-- Es mas fácil de mantener y modificar
+- Es más fácil de mantener y modificar
 
 ### align-content (múltiples líneas)
 
@@ -304,7 +304,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
 .contenido { flex: 1; }          /* Ocupa todo el espacio restante */
 \`\`\`
 
-> **Buena práctica:** Usa el shorthand \`flex\` en lugar de las propiedades individuales. Los valores mas comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamaño fijo).`,
+> **Buena práctica:** Usa el shorthand \`flex\` en lugar de las propiedades individuales. Los valores más comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamaño fijo).`,
       codeExample: {
         html: `<div class="layout">\n  <aside class="sidebar">Sidebar (flex: 0 0 150px)</aside>\n  <main class="contenido">Contenido principal (flex: 1)</main>\n  <aside class="panel">Panel (flex: 0 0 100px)</aside>\n</div>`,
         css: `.layout {\n  display: flex;\n  gap: 10px;\n  height: 150px;\n}\n.sidebar {\n  flex: 0 0 150px;\n  background-color: #2c3e50;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}\n.contenido {\n  flex: 1;\n  background-color: #ecf0f1;\n  padding: 15px;\n  border-radius: 6px;\n}\n.panel {\n  flex: 0 0 100px;\n  background-color: #3498db;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}`,

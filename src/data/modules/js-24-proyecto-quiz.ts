@@ -124,7 +124,7 @@ mostrarPregunta();`,
       title: "Temporizador y feedback",
       content: `## Agregar temporizador
 
-Un temporizador añade urgencia y hace el quiz mas divertido:
+Un temporizador añade urgencia y hace el quiz más divertido:
 
 \`\`\`javascript
 let tiempoRestante = 30;
@@ -399,7 +399,7 @@ renderScores();`,
       order: 4,
       prompt: "En el patrón de 'maquina de estados', ¿por que es útil definir estados claros para el quiz?",
       options: [
-        { id: "a", text: "Para hacerlo mas lento", isCorrect: false },
+        { id: "a", text: "Para hacerlo más lento", isCorrect: false },
         { id: "b", text: "Para controlar que acciones son validas en cada momento", isCorrect: true },
         { id: "c", text: "Para usar menos variables", isCorrect: false },
         { id: "d", text: "No es necesario", isCorrect: false },
@@ -422,8 +422,8 @@ renderScores();`,
         blanks: ["round"],
       },
       validation: { type: "exact", answer: "round" },
-      hint: "Redondear al entero mas cercano.",
-      explanation: "Math.round() redondea al entero mas cercano. 7/10*100 = 70.0, Math.round(70.0) = 70.",
+      hint: "Redondear al entero más cercano.",
+      explanation: "Math.round() redondea al entero más cercano. 7/10*100 = 70.0, Math.round(70.0) = 70.",
     },
     {
       id: "js24-ej-06",

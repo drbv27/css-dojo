@@ -102,7 +102,7 @@ Paso 4: acc=6, val=4 → 10
 - Aplanar arrays
 - Contar ocurrencias
 
-> **Importante:** Siempre proporciona un valor inicial para evitar errores con arrays vacios.`,
+> **Importante:** Siempre proporciona un valor inicial para evitar errores con arrays vacíos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -291,7 +291,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       order: 6,
       prompt: "¿Cuál es la diferencia principal entre map() y forEach()?",
       options: [
-        { id: "a", text: "forEach es mas rápido", isCorrect: false },
+        { id: "a", text: "forEach es más rápido", isCorrect: false },
         { id: "b", text: "map devuelve un nuevo array, forEach no devuelve nada", isCorrect: true },
         { id: "c", text: "map modifica el array original", isCorrect: false },
         { id: "d", text: "No hay diferencia", isCorrect: false },

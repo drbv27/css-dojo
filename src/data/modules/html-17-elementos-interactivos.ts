@@ -45,7 +45,7 @@ Muestra u oculta contenido al hacer clic. **Cero JavaScript.**
 \`\`\`
 
 > **Honestidad técnica:** con el atributo \`open\` se muestra estática. Para **abrirla y cerrarla** con
-> botones se usa JavaScript (\`dialog.showModal()\` y \`dialog.close()\`), que veras mas adelante. Hoy
+> botones se usa JavaScript (\`dialog.showModal()\` y \`dialog.close()\`), que veras más adelante. Hoy
 > aprendemos su **estructura**.`,
       codeExample: {
         html: `<details>
@@ -236,7 +236,7 @@ Para una **medición fija** dentro de un rango conocido: bateria, espacio en dis
       },
       hint: "Escribe <dialog open> ... </dialog>, y dentro un <p> y un <button>.",
       explanation:
-        "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que veras mas adelante.",
+        "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que veras más adelante.",
     },
   ],
 };

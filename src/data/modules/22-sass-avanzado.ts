@@ -427,7 +427,7 @@ $temas: (
 
 ### El patrón 7-1
 
-El patrón 7-1 es la arquitectura mas popular para proyectos Sass grandes. Organiza los archivos en 7 carpetas y 1 archivo principal:
+El patrón 7-1 es la arquitectura más popular para proyectos Sass grandes. Organiza los archivos en 7 carpetas y 1 archivo principal:
 
 \`\`\`
 sass/
@@ -728,7 +728,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 6,
       prompt:
-        "¿En la metodologia BEM con Sass, como se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
+        "¿En la metodologia BEM con Sass, cómo se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
       options: [
         { id: "a", text: ".tarjeta { .título { } }", isCorrect: false },
         { id: "b", text: ".tarjeta { &__título { } }", isCorrect: true },

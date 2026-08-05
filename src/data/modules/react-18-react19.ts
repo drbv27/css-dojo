@@ -4,7 +4,7 @@ export const react19Module: ModuleData = {
   slug: "react-19-nuevas-features",
   title: "React 19: Nuevas Caracteristicas",
   description:
-    "Explora las novedades de React 19: React Compiler, hook use(), Actions, useActionState, useFormStatus, useOptimistic, ref como prop, metadata y mas.",
+    "Explora las novedades de React 19: React Compiler, hook use(), Actions, useActionState, useFormStatus, useOptimistic, ref como prop, metadata y más.",
   order: 218,
   category: "react-advanced",
   icon: "sparkles",
@@ -15,7 +15,7 @@ export const react19Module: ModuleData = {
       title: "React Compiler y el hook use()",
       content: `## React 19: Una Nueva Era
 
-React 19 es la actualización mas grande desde los Hooks. Simplifica muchos patrones y elimina código repetitivo.
+React 19 es la actualización más grande desde los Hooks. Simplifica muchos patrones y elimina código repetitivo.
 
 ### React Compiler (React Forget)
 
@@ -90,7 +90,7 @@ function Tema({ isAdmin }) {
 - \`use()\` puede llamarse dentro de condicionales y loops
 - \`use()\` también funciona con Promises
 
-> **El React Compiler elimina la necesidad de useMemo, useCallback y React.memo en la mayoria de los casos.** Es la mejora mas impactante de React 19.`,
+> **El React Compiler elimina la necesidad de useMemo, useCallback y React.memo en la mayoria de los casos.** Es la mejora más impactante de React 19.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -416,7 +416,7 @@ function MiInput({ ref, ...props }) {
 \`\`\`
 
 ### Beneficios
-- Código mas simple y legible
+- Código más simple y legible
 - Menos indirecciones
 - \`forwardRef\` sera deprecado en futuras versiones
 
@@ -529,7 +529,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Chat />);
     {
       id: "react18-leccion-04",
       title: "Metadata, Server Components y manejo de errores",
-      content: `## Mas Novedades de React 19
+      content: `## Más Novedades de React 19
 
 ### Document Metadata en Componentes
 
@@ -570,7 +570,7 @@ async function ListaProductos() {
 
 **Caracteristicas de los Server Components:**
 - Acceden directamente a la base de datos
-- No envian JavaScript al cliente (bundle mas pequeño)
+- No envian JavaScript al cliente (bundle más pequeño)
 - Pueden ser \`async\` directamente
 - No pueden tener estado ni efectos (no useState, no useEffect)
 - Se complementan con Client Components (\`"use client"\`)
@@ -776,7 +776,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       order: 2,
       prompt: "¿Cuál es una ventaja del hook use() sobre useContext?",
       options: [
-        { id: "a", text: "use() es mas rápido", isCorrect: false },
+        { id: "a", text: "use() es más rápido", isCorrect: false },
         { id: "b", text: "use() puede llamarse dentro de condicionales y loops", isCorrect: true },
         { id: "c", text: "use() no necesita un Provider", isCorrect: false },
         { id: "d", text: "use() reemplaza todos los hooks", isCorrect: false },
@@ -860,8 +860,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "d", text: "Serializar los datos del formulario", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Permite que un botón dentro del form sepa si se esta enviando.",
-      explanation: "useFormStatus permite a componentes hijos del form (como un botón) saber si el formulario esta en proceso de envio (pending), sin pasar props manualmente.",
+      hint: "Permite que un botón dentro del form sepa si se está enviando.",
+      explanation: "useFormStatus permite a componentes hijos del form (como un botón) saber si el formulario está en proceso de envio (pending), sin pasar props manualmente.",
     },
     {
       id: "react18-ej-07",

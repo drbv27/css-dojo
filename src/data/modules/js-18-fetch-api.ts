@@ -197,7 +197,7 @@ fetch(url, { signal: controller.signal });
 controller.abort(); // cancela la peticion
 \`\`\`
 
-> Siempre muestra al usuario que esta pasando: cargando, exito o error.`,
+> Siempre muestra al usuario que está pasando: cargando, exito o error.`,
       codeExample: {
         html: '<button id="exito">Peticion exitosa</button>\n<button id="error">Peticion con error</button>\n<div id="resultado"></div>',
         css: 'button { margin: 4px; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; } #exito { background: #a6e3a1; color: #1e1e2e; } #error { background: #f38ba8; color: #1e1e2e; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 60px; }',
@@ -317,7 +317,7 @@ document.getElementById("error").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es un booleano simple: ok o no ok.",
-      explanation: "response.ok es true si el status HTTP esta entre 200 y 299.",
+      explanation: "response.ok es true si el status HTTP está entre 200 y 299.",
     },
     {
       id: "js18-ej-06",

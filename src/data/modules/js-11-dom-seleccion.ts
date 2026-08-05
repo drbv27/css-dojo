@@ -4,7 +4,7 @@ export const jsDomSeleccionModule: ModuleData = {
   slug: "js-dom-seleccion",
   title: "DOM: Selección de Elementos",
   description:
-    "Aprende a seleccionar elementos HTML desde JavaScript usando getElementById, querySelector y mas.",
+    "Aprende a seleccionar elementos HTML desde JavaScript usando getElementById, querySelector y más.",
   order: 111,
   category: "js-intermediate",
   icon: "MousePointer",
@@ -95,7 +95,7 @@ const clases = document.getElementsByClassName("item");
 const divs = document.getElementsByTagName("div");
 \`\`\`
 
-> **Recomendación:** Usa \`querySelector\` y \`querySelectorAll\` en código moderno. Son mas flexibles y aceptan cualquier selector CSS.`,
+> **Recomendación:** Usa \`querySelector\` y \`querySelectorAll\` en código moderno. Son más flexibles y aceptan cualquier selector CSS.`,
       codeExample: {
         html: '<ul id="lista">\n  <li class="item">Elemento 1</li>\n  <li class="item activo">Elemento 2</li>\n  <li class="item">Elemento 3</li>\n</ul>\n<div id="resultado"></div>',
         css: '.item { padding: 4px 0; color: #cdd6f4; } .activo { color: #a6e3a1; font-weight: bold; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -159,7 +159,7 @@ const contenedor = document.getElementById("app");
 const btn = contenedor.querySelector("button"); // busca SOLO dentro del contenedor
 \`\`\`
 
-> **Tip:** Usa \`children\` en vez de \`childNodes\` para evitar nodos de texto vacios.`,
+> **Tip:** Usa \`children\` en vez de \`childNodes\` para evitar nodos de texto vacíos.`,
       codeExample: {
         html: '<div id="contenedor">\n  <h3>Titulo</h3>\n  <p id="parrafo">Texto del parrafo</p>\n  <span>Un span</span>\n</div>\n<div id="resultado"></div>',
         css: '#contenedor { padding: 8px; border: 1px solid #45475a; border-radius: 8px; color: #cdd6f4; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -248,12 +248,12 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       options: [
         { id: "a", text: "null", isCorrect: false },
         { id: "b", text: "undefined", isCorrect: false },
-        { id: "c", text: "Un NodeList vacio", isCorrect: true },
+        { id: "c", text: "Un NodeList vacío", isCorrect: true },
         { id: "d", text: "Un error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Siempre devuelve una lista, aunque este vacia.",
-      explanation: "querySelectorAll() siempre devuelve un NodeList. Si no hay coincidencias, sera un NodeList vacio con length 0.",
+      hint: "Siempre devuelve una lista, aunque este vacía.",
+      explanation: "querySelectorAll() siempre devuelve un NodeList. Si no hay coincidencias, sera un NodeList vacío con length 0.",
     },
     {
       id: "js11-ej-05",
@@ -280,7 +280,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       order: 6,
       prompt: '¿Cuál es la diferencia entre querySelector("#id") y getElementById("id")?',
       options: [
-        { id: "a", text: "querySelector es mas rápido", isCorrect: false },
+        { id: "a", text: "querySelector es más rápido", isCorrect: false },
         { id: "b", text: "getElementById no acepta selectores CSS, querySelector si", isCorrect: true },
         { id: "c", text: "No hay diferencia", isCorrect: false },
         { id: "d", text: "getElementById devuelve un array", isCorrect: false },

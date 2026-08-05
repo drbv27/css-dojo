@@ -15,7 +15,7 @@ export const posicionamientoModule: ModuleData = {
       title: "Position static y relative",
       content: `## Position static y relative
 
-La propiedad \`position\` determina **como se posiciona un elemento** en la página. Por defecto todos los elementos tienen \`position: static\`.
+La propiedad \`position\` determina **cómo se posiciona un elemento** en la página. Por defecto todos los elementos tienen \`position: static\`.
 
 ### position: static (por defecto)
 
@@ -69,7 +69,7 @@ El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a
 
 Un elemento con \`position: absolute\` se **saca del flujo normal** del documento. Los demas elementos actuan como si no existiera.
 
-### Como funciona
+### Cómo funciona
 
 \`\`\`css
 .absoluto {
@@ -79,11 +79,11 @@ Un elemento con \`position: absolute\` se **saca del flujo normal** del document
 }
 \`\`\`
 
-El elemento se posiciona respecto al **ancestro posicionado mas cercano** (cualquier ancestro con \`position\` distinto de \`static\`). Si no hay ninguno, se posiciona respecto al \`<html>\`.
+El elemento se posiciona respecto al **ancestro posicionado más cercano** (cualquier ancestro con \`position\` distinto de \`static\`). Si no hay ninguno, se posiciona respecto al \`<html>\`.
 
 ### El patrón padre relative + hijo absolute
 
-Este es uno de los patrones mas usados en CSS:
+Este es uno de los patrones más usados en CSS:
 
 \`\`\`css
 .contenedor {
@@ -99,7 +99,7 @@ Este es uno de los patrones mas usados en CSS:
 ### Caracteristicas de absolute
 
 - El elemento **sale del flujo**: no ocupa espacio
-- Se posiciona respecto al **ancestro posicionado** mas cercano
+- Se posiciona respecto al **ancestro posicionado** más cercano
 - Puedes usar \`top\`, \`right\`, \`bottom\`, \`left\` para ubicarlo
 - Pierde su ancho de bloque: se ajusta al contenido (como un inline)
 - Si defines \`top\` y \`bottom\` simultaneamente (o \`left\` y \`right\`), el elemento se **estira**
@@ -171,14 +171,14 @@ Es un **hibrido** entre relative y fixed. El elemento se comporta como \`relativ
 **Caracteristicas de sticky:**
 - Permanece en el flujo normal (como relative)
 - Se "pega" al alcanzar la posición definida en \`top\`, \`bottom\`, \`left\` o \`right\`
-- Solo funciona dentro de su **contenedor padre** (no se pega mas alla del padre)
+- Solo funciona dentro de su **contenedor padre** (no se pega más allá del padre)
 - Requiere al menos una propiedad de offset (\`top\`, \`bottom\`, etc.)
 
 ### Requisitos para que sticky funcione
 
 1. Debe tener \`top\`, \`bottom\`, \`left\` o \`right\` definido
 2. El padre **no debe** tener \`overflow: hidden\` o \`overflow: auto\`
-3. El padre debe ser mas alto que el elemento sticky
+3. El padre debe ser más alto que el elemento sticky
 
 > **Consejo:** Si \`sticky\` no funciona, revisa que ningun ancestro tenga \`overflow: hidden\` o \`overflow: auto\`.`,
       codeExample: {
@@ -211,7 +211,7 @@ La propiedad \`z-index\` controla el **orden de apilamiento** de los elementos p
 ### Reglas fundamentales
 
 1. **Solo funciona en elementos posicionados** (relative, absolute, fixed, sticky)
-2. Los valores mas altos se muestran **encima** de los mas bajos
+2. Los valores más altos se muestran **encima** de los más bajos
 3. Acepta valores **negativos** (\`z-index: -1\`)
 4. Sin z-index, los elementos se apilan en **orden del DOM** (los últimos quedan encima)
 
@@ -256,7 +256,7 @@ Define una escala organizada para tu proyecto:
 }
 \`\`\`
 
-> **Error común:** Usar z-index: 9999 no siempre funciona. Si el elemento esta dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahi.`,
+> **Error común:** Usar z-index: 9999 no siempre funciona. Si el elemento está dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahi.`,
       codeExample: {
         html: `<div class="capa capa-1">z-index: 1</div>\n<div class="capa capa-2">z-index: 2</div>\n<div class="capa capa-3">z-index: 3</div>`,
         css: `.capa {\n  position: absolute;\n  width: 150px;\n  height: 150px;\n  padding: 10px;\n  font-weight: bold;\n  color: white;\n  border: 2px solid rgba(0,0,0,0.3);\n  border-radius: 8px;\n}\n.capa-1 {\n  z-index: 1;\n  top: 10px;\n  left: 10px;\n  background-color: tomato;\n}\n.capa-2 {\n  z-index: 2;\n  top: 40px;\n  left: 40px;\n  background-color: steelblue;\n}\n.capa-3 {\n  z-index: 3;\n  top: 70px;\n  left: 70px;\n  background-color: seagreen;\n}`,
@@ -363,7 +363,7 @@ Define una escala organizada para tu proyecto:
       validation: { type: "exact", answer: "relative" },
       hint: "El padre necesita un valor de position que lo convierta en un 'ancestro posicionado' sin sacarlo del flujo.",
       explanation:
-        "Al usar position: relative en el contenedor, se crea un contexto de posicionamiento. Los hijos con position: absolute se posicionan respecto a este contenedor en lugar del viewport. Este patrón padre-relative/hijo-absolute es uno de los mas usados en CSS.",
+        "Al usar position: relative en el contenedor, se crea un contexto de posicionamiento. Los hijos con position: absolute se posicionan respecto a este contenedor en lugar del viewport. Este patrón padre-relative/hijo-absolute es uno de los más usados en CSS.",
     },
     {
       id: "12-ej-04",
@@ -397,7 +397,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 5,
       prompt:
-        "Un elemento tiene position: absolute y esta dentro de un div con position: static, que a su vez esta dentro de un div con position: relative. ¿Respecto a cual se posiciona?",
+        "Un elemento tiene position: absolute y está dentro de un div con position: static, que a su vez está dentro de un div con position: relative. ¿Respecto a cual se posiciona?",
       options: [
         { id: "a", text: "Respecto al div con position: static", isCorrect: false },
         { id: "b", text: "Respecto al div con position: relative", isCorrect: true },
@@ -405,9 +405,9 @@ Define una escala organizada para tu proyecto:
         { id: "d", text: "Respecto al body", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Un elemento absoluto busca el ancestro posicionado mas cercano. 'Posicionado' significa que tiene position distinto de static.",
+      hint: "Un elemento absoluto busca el ancestro posicionado más cercano. 'Posicionado' significa que tiene position distinto de static.",
       explanation:
-        "Un elemento con position: absolute busca el ancestro posicionado mas cercano (con position diferente de static). El div con static se ignora y sube hasta el div con relative, que es el que sirve como referencia.",
+        "Un elemento con position: absolute busca el ancestro posicionado más cercano (con position diferente de static). El div con static se ignora y sube hasta el div con relative, que es el que sirve como referencia.",
     },
     {
       id: "12-ej-06",
@@ -460,7 +460,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 30,
       order: 8,
       prompt:
-        "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, ¿cuál se muestra encima?",
+        "Si un elemento con z-index: 999 está dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, ¿cuál se muestra encima?",
       options: [
         { id: "a", text: "El elemento con z-index: 999", isCorrect: false },
         { id: "b", text: "El elemento con z-index: 2", isCorrect: true },

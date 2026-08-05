@@ -25,7 +25,7 @@ En HTML5, la declaración es muy simple:
 <!DOCTYPE html>
 \`\`\`
 
-En versiones anteriores era mucho mas complicada. Por ejemplo, en HTML 4.01:
+En versiones anteriores era mucho más complicada. Por ejemplo, en HTML 4.01:
 
 \`\`\`html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
@@ -141,12 +141,12 @@ Los comentarios pueden abarcar múltiples líneas:
 
 ### Indentación: buenas prácticas
 
-La indentación no afecta como se muestra la página, pero hace que el código sea **mucho mas legible**.
+La indentación no afecta cómo se muestra la página, pero hace que el código sea **mucho más legible**.
 
 #### Reglas recomendadas:
 
 1. Usa **2 o 4 espacios** de indentación (se consistente)
-2. Indenta los **elementos hijos** un nivel mas que su padre
+2. Indenta los **elementos hijos** un nivel más que su padre
 3. Las etiquetas de **apertura y cierre** deben estar al mismo nivel
 4. Los elementos que van **en una sola línea** no necesitan indentación extra
 

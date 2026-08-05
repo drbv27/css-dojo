@@ -4,7 +4,7 @@ export const jsQueEsModule: ModuleData = {
   slug: "js-que-es-javascript",
   title: "¿Qué es JavaScript?",
   description:
-    "Descubre que es JavaScript, para que se usa y como ejecutar tu primer programa en el navegador.",
+    "Descubre que es JavaScript, para que se usa y cómo ejecutar tu primer programa en el navegador.",
   order: 101,
   category: "js-fundamentals",
   icon: "Code",
@@ -46,7 +46,7 @@ La **consola** es la herramienta principal para probar código JavaScript. Puede
 
 ### console.log()
 
-El método mas usado para mostrar mensajes en la consola:
+El método más usado para mostrar mensajes en la consola:
 
 \`\`\`javascript
 console.log("Hola desde la consola");

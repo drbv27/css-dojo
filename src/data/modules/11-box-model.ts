@@ -4,7 +4,7 @@ export const boxModelModule: ModuleData = {
   slug: "box-model",
   title: "El modelo de caja",
   description:
-    "Comprende como funciona el Box Model de CSS: content, padding, border y margin, y como box-sizing cambia el calculo de dimensiones.",
+    "Comprende cómo funciona el Box Model de CSS: content, padding, border y margin, y como box-sizing cambia el calculo de dimensiones.",
   order: 4,
   dojo: "css" as const,
   category: "intro",
@@ -74,7 +74,7 @@ El ancho total ocupado sera: 300 + 20 + 20 + 5 + 5 + 10 + 10 = **370px**
       title: "content-box vs border-box",
       content: `## content-box vs border-box
 
-La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un elemento. Tiene dos valores principales:
+La propiedad \`box-sizing\` cambia **cómo se calcula** el ancho y alto de un elemento. Tiene dos valores principales:
 
 ### content-box (valor por defecto)
 
@@ -110,7 +110,7 @@ La propiedad \`box-sizing\` cambia **como se calcula** el ancho y alto de un ele
 |-----------|------------|------------|
 | width define... | Solo el contenido | Contenido + padding + border |
 | Ancho visible con padding/border | Mayor que width | Igual a width |
-| Calculo mental | Mas complejo | Mas intuitivo |
+| Calculo mental | Más complejo | Más intuitivo |
 
 ### Buena práctica universal
 
@@ -174,7 +174,7 @@ Cada columna ocupa exactamente un tercio del padre, sin importar cuanto padding 
 
 ### Height y overflow
 
-Si defines un \`height\` fijo y el contenido es mas grande, se desborda:
+Si defines un \`height\` fijo y el contenido es más grande, se desborda:
 
 \`\`\`css
 .caja {
@@ -318,7 +318,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         blanks: ["box-sizing"],
       },
       validation: { type: "exact", answer: "box-sizing" },
-      hint: "Es la propiedad que define como se calcula el tamaño de la caja. Dos palabras unidas con guion.",
+      hint: "Es la propiedad que define cómo se calcula el tamaño de la caja. Dos palabras unidas con guion.",
       explanation:
         "La propiedad 'box-sizing: border-box' hace que width y height incluyan el contenido, el padding y el border. Así el elemento mide exactamente 300px de ancho visible.",
     },
@@ -419,7 +419,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       },
       hint: "La clave es usar box-sizing: border-box para que el padding y border esten incluidos en el 50%. Sin esto, las cajas no caben en una fila.",
       explanation:
-        "Gracias a box-sizing: border-box, cada caja de 50% incluye su padding y border dentro de ese 50%. Sin border-box, cada caja ocuparia mas de 50% y no cabrian en la misma fila.",
+        "Gracias a box-sizing: border-box, cada caja de 50% incluye su padding y border dentro de ese 50%. Sin border-box, cada caja ocuparia más de 50% y no cabrian en la misma fila.",
     },
     {
       id: "11-ej-07",

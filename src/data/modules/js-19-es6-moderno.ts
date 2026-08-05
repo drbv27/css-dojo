@@ -4,7 +4,7 @@ export const jsEs6ModernoModule: ModuleData = {
   slug: "js-es6-moderno",
   title: "ES6+ JavaScript Moderno",
   description:
-    "Domina las caracteristicas modernas de JavaScript: desestructuración, spread, optional chaining, modulos y mas.",
+    "Domina las caracteristicas modernas de JavaScript: desestructuración, spread, optional chaining, modulos y más.",
   order: 119,
   category: "js-advanced",
   icon: "Sparkles",
@@ -128,7 +128,7 @@ x ||= valor;  // x = x || valor
 x &&= valor;  // x = x && valor
 \`\`\`
 
-> \`??\` es mas preciso que \`||\` porque solo reacciona a null/undefined, no a todos los valores falsy.`,
+> \`??\` es más preciso que \`||\` porque solo reacciona a null/undefined, no a todos los valores falsy.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -311,7 +311,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       order: 4,
       prompt: "¿Qué ventaja tiene Map sobre un objeto regular?",
       options: [
-        { id: "a", text: "Es mas rápido", isCorrect: false },
+        { id: "a", text: "Es más rápido", isCorrect: false },
         { id: "b", text: "Las claves pueden ser de cualquier tipo", isCorrect: true },
         { id: "c", text: "Usa menos memoria", isCorrect: false },
         { id: "d", text: "Es inmutable", isCorrect: false },

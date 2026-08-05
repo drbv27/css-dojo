@@ -101,7 +101,7 @@ Los **breakpoints** son los puntos de ancho donde el diseño cambia para adaptar
 
 ### Enfoque Mobile-First
 
-La estrategia **mobile-first** consiste en escribir los estilos base para móviles y luego agregar complejidad para pantallas mas grandes con \`min-width\`:
+La estrategia **mobile-first** consiste en escribir los estilos base para móviles y luego agregar complejidad para pantallas más grandes con \`min-width\`:
 
 \`\`\`css
 /* Base: movil (1 columna) */
@@ -154,8 +154,8 @@ Usa \`max-width\` para empezar desde escritorio y reducir:
 ### ¿Por que preferir Mobile-First?
 
 1. **Rendimiento**: Los móviles cargan solo los estilos básicos
-2. **Simplicidad**: Empiezas con lo mas simple y agregas complejidad
-3. **Progresivo**: Es mas fácil agregar que quitar
+2. **Simplicidad**: Empiezas con lo más simple y agregas complejidad
+3. **Progresivo**: Es más fácil agregar que quitar
 4. **Estándar**: Es la convención de la industria (Tailwind, Bootstrap)
 
 > **Buena práctica:** Siempre usa mobile-first (\`min-width\`) a menos que tengas una razón específica para no hacerlo. Ordena tus media queries de menor a mayor.`,
@@ -460,7 +460,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la media query para que los estilos se apliquen en pantallas de 768px o mas (enfoque mobile-first):",
+        "Completa la media query para que los estilos se apliquen en pantallas de 768px o más (enfoque mobile-first):",
       codeTemplate: {
         html: `<div class="contenedor">Contenido</div>`,
         cssPrefix: "@media (",
@@ -487,7 +487,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         { id: "d", text: "Solo se usa una media query", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Mobile-first empieza con los estilos base para móvil y va agregando para pantallas mas grandes.",
+      hint: "Mobile-first empieza con los estilos base para móvil y va agregando para pantallas más grandes.",
       explanation:
         "En mobile-first, las media queries con min-width deben ir de menor a mayor (640px, 768px, 1024px...) para que cada breakpoint sobreescriba al anterior correctamente.",
     },
@@ -547,7 +547,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       hint: "Primero escribe los estilos base de .caja, luego una @media con min-width: 600px que cambie el background-color.",
       explanation:
-        "Se definen los estilos base (móvil) fuera de la media query. Luego con @media (min-width: 600px) se sobreescribe el background-color para pantallas de 600px o mas.",
+        "Se definen los estilos base (móvil) fuera de la media query. Luego con @media (min-width: 600px) se sobreescribe el background-color para pantallas de 600px o más.",
     },
     {
       id: "17-ej-06",
@@ -662,7 +662,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       hint: "Primero el ancestro se declara consultable con container-type. Después la consulta @container va por fuera, envolviendo la regla de la tarjeta.",
       explanation:
-        "La columna se declara contenedor con container-type: inline-size, y la tarjeta arranca apilada. Dentro del @container, cuando la columna mide 400px o mas, pasa a fila. La misma tarjeta se ve distinta en una barra lateral y en el contenido principal, en la misma pantalla, porque pregunta por su espacio y no por el viewport.",
+        "La columna se declara contenedor con container-type: inline-size, y la tarjeta arranca apilada. Dentro del @container, cuando la columna mide 400px o más, pasa a fila. La misma tarjeta se ve distinta en una barra lateral y en el contenido principal, en la misma pantalla, porque pregunta por su espacio y no por el viewport.",
     },
     {
       id: "17-ej-11",

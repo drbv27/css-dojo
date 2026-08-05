@@ -172,7 +172,7 @@ const useUsers = create<UsersStore>((set) => ({
       order: 2,
       prompt: "¿Cuál es la ventaja principal de usar selectores en Zustand?",
       options: [
-        { id: "a", text: "Hace el código mas corto", isCorrect: false },
+        { id: "a", text: "Hace el código más corto", isCorrect: false },
         { id: "b", text: "Solo re-renderiza el componente cuando cambia el dato seleccionado", isCorrect: true },
         { id: "c", text: "Permite usar TypeScript", isCorrect: false },
         { id: "d", text: "Agrega validación automática", isCorrect: false },

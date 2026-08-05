@@ -259,7 +259,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para obtener si un checkbox esta marcado:",
+      prompt: "Completa para obtener si un checkbox está marcado:",
       codeTemplate: {
         html: "",
         cssPrefix: "const marcado = checkbox.",
@@ -268,7 +268,7 @@ document.getElementById("reset").addEventListener("click", function() {
       },
       validation: { type: "exact", answer: "checked" },
       hint: "checked = marcado.",
-      explanation: "checkbox.checked devuelve true si el checkbox esta marcado, false si no.",
+      explanation: "checkbox.checked devuelve true si el checkbox está marcado, false si no.",
     },
     {
       id: "js16-ej-04",

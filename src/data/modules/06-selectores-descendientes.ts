@@ -4,7 +4,7 @@ export const selectoresDescendientesModule: ModuleData = {
   slug: "selectores-descendientes",
   title: "Selectores descendientes y combinadores",
   description:
-    "Domina los selectores descendientes, hijos directos (>), hermanos adyacentes (+) y hermanos generales (~) para crear reglas CSS mas precisas.",
+    "Domina los selectores descendientes, hijos directos (>), hermanos adyacentes (+) y hermanos generales (~) para crear reglas CSS más precisas.",
   order: 8,
   dojo: "css" as const,
   category: "intermediate",
@@ -73,7 +73,7 @@ h3.destacado a {
 }
 \`\`\`
 
-> **Atención:** Evita encadenar demasiados selectores descendientes (mas de 3 niveles). Esto hace el CSS difícil de mantener y aumenta la especificidad innecesariamente.`,
+> **Atención:** Evita encadenar demasiados selectores descendientes (más de 3 niveles). Esto hace el CSS difícil de mantener y aumenta la especificidad innecesariamente.`,
       codeExample: {
         html: `<header>\n  <nav>\n    <a href="#">Inicio</a>\n    <a href="#">Servicios</a>\n    <a href="#">Contacto</a>\n  </nav>\n  <p>Bienvenido al sitio</p>\n</header>\n<p>Este parrafo esta FUERA del header.</p>`,
         css: `header nav a {\n  color: white;\n  background-color: steelblue;\n  padding: 8px 16px;\n  text-decoration: none;\n  margin-right: 4px;\n  border-radius: 4px;\n}\n\nheader p {\n  color: gray;\n  font-style: italic;\n}`,
@@ -133,10 +133,10 @@ padre > hijo {
 ### Cuando usarlo
 
 - Cuando tienes **estructuras anidadas** (menus con submenus, listas con sublistas)
-- Para evitar que los estilos **se filtren** a elementos mas profundos
-- Para crear selectores mas **predecibles** y controlados
+- Para evitar que los estilos **se filtren** a elementos más profundos
+- Para crear selectores más **predecibles** y controlados
 
-> **Consejo:** El selector hijo directo es mas específico y predecible que el descendiente. Usalo cuando solo quieras afectar al primer nivel de hijos.`,
+> **Consejo:** El selector hijo directo es más específico y predecible que el descendiente. Usalo cuando solo quieras afectar al primer nivel de hijos.`,
       codeExample: {
         html: `<ul class="menu">\n  <li>Inicio</li>\n  <li>Productos\n    <ul>\n      <li>Categoria A</li>\n      <li>Categoria B</li>\n    </ul>\n  </li>\n  <li>Contacto</li>\n</ul>`,
         css: `/* Solo hijos directos del menu */\n.menu > li {\n  font-weight: bold;\n  padding: 8px;\n  background-color: #e8f4fd;\n  border-bottom: 2px solid steelblue;\n}\n\n/* Los sub-items no se ven afectados */\n.menu ul li {\n  font-weight: normal;\n  padding-left: 20px;\n  background-color: #f8f8f8;\n  border-bottom: 1px solid #ddd;\n}`,
@@ -280,7 +280,7 @@ div.card {
 | \`table tbody tr\` | Filas del cuerpo de una tabla |
 | \`.card > .card-body p\` | Párrafos en el cuerpo de una tarjeta |
 
-> **Regla de oro:** Un buen selector es lo suficientemente específico para seleccionar lo que necesitas, pero no mas. Selectores demasiado largos son fragiles y difíciles de mantener.`,
+> **Regla de oro:** Un buen selector es lo suficientemente específico para seleccionar lo que necesitas, pero no más. Selectores demasiado largos son fragiles y difíciles de mantener.`,
       codeExample: {
         html: `<div id="principal">\n  <section>\n    <h3 class="destacado">Titulo destacado</h3>\n    <p>Primer parrafo con un <a href="#">enlace</a>.</p>\n    <p>Segundo parrafo.</p>\n  </section>\n  <section>\n    <h3>Titulo normal</h3>\n    <p>Otro parrafo.</p>\n  </section>\n</div>`,
         css: `/* Selector con ID, descendiente y tipo+clase */\n#principal section h3.destacado {\n  color: tomato;\n  border-bottom: 2px solid tomato;\n  padding-bottom: 4px;\n}\n\n/* Hermano adyacente del h3 */\nh3 + p {\n  font-weight: bold;\n  color: #333;\n}\n\n/* Enlace dentro de la seccion principal */\n#principal section p a {\n  color: steelblue;\n  font-weight: bold;\n}`,
@@ -376,7 +376,7 @@ div.card {
         { id: "d", text: "Solo A", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "El selector > solo selecciona hijos DIRECTOS, no nietos ni niveles mas profundos.",
+      hint: "El selector > solo selecciona hijos DIRECTOS, no nietos ni niveles más profundos.",
       explanation:
         "El selector '.menu > li' solo selecciona los <li> que son hijos directos de .menu, es decir A y B. El <li>C</li> es hijo del <ul> interior, no de .menu directamente.",
     },
@@ -455,9 +455,9 @@ div.card {
         },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "El + es mas restrictivo (adyacente = inmediatamente al lado), mientras que ~ es mas amplio (general = todos los hermanos siguientes).",
+      hint: "El + es más restrictivo (adyacente = inmediatamente al lado), mientras que ~ es más amplio (general = todos los hermanos siguientes).",
       explanation:
-        "El combinador + (adyacente) selecciona SOLO el elemento que esta inmediatamente después. El combinador ~ (general) selecciona TODOS los hermanos del mismo tipo que vienen después, sin importar si hay otros elementos entre medio.",
+        "El combinador + (adyacente) selecciona SOLO el elemento que está inmediatamente después. El combinador ~ (general) selecciona TODOS los hermanos del mismo tipo que vienen después, sin importar si hay otros elementos entre medio.",
     },
     {
       id: "06-ej-08",
@@ -482,7 +482,7 @@ div.card {
       },
       hint: "Usa nav > a para hijos directos del nav y nav + p para el párrafo inmediatamente después del nav.",
       explanation:
-        "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el párrafo que esta inmediatamente después del nav (hermano adyacente).",
+        "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el párrafo que está inmediatamente después del nav (hermano adyacente).",
     },
   ],
 };

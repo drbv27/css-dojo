@@ -4,7 +4,7 @@ export const jsDomManipulacionModule: ModuleData = {
   slug: "js-dom-manipulacion",
   title: "DOM: Manipulación",
   description:
-    "Aprende a crear, modificar y eliminar elementos del DOM: textContent, innerHTML, atributos y mas.",
+    "Aprende a crear, modificar y eliminar elementos del DOM: textContent, innerHTML, atributos y más.",
   order: 112,
   category: "js-intermediate",
   icon: "PenTool",
@@ -37,8 +37,8 @@ elemento.innerText = "Texto visible";
 | Propiedad | HTML | Rendimiento |
 |-----------|------|-------------|
 | textContent | No interpreta | Rápido |
-| innerHTML | Si interpreta | Mas lento |
-| innerText | No interpreta | Mas lento (recalcula estilos) |
+| innerHTML | Si interpreta | Más lento |
+| innerText | No interpreta | Más lento (recalcula estilos) |
 
 > **Seguridad:** Evita usar innerHTML con datos del usuario. Puede causar ataques XSS. Prefiere textContent.`,
       codeExample: {
@@ -279,7 +279,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Cuál es el método mas simple para eliminar un elemento del DOM?",
+      prompt: "¿Cuál es el método más simple para eliminar un elemento del DOM?",
       options: [
         { id: "a", text: "elemento.delete()", isCorrect: false },
         { id: "b", text: "elemento.destroy()", isCorrect: false },
@@ -288,7 +288,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "El elemento se remueve a si mismo.",
-      explanation: "elemento.remove() es la forma mas sencilla y moderna de eliminar un elemento del DOM.",
+      explanation: "elemento.remove() es la forma más sencilla y moderna de eliminar un elemento del DOM.",
     },
   ],
 };

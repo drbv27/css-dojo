@@ -35,7 +35,7 @@ export const reactTestingModule: ModuleData = {
 | **Playwright/Cypress** | Tests E2E |
 
 ### React Testing Library: Filosofía
-> "Cuanto mas se parecen tus tests a como el usuario usa tu software, mas confianza te dan."
+> "Cuanto más se parecen tus tests a como el usuario usa tu software, más confianza te dan."
 
 **No testees detalles de implementación.** Testea el comportamiento:
 - Lo que el usuario **ve** (texto, botones)
@@ -526,14 +526,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 5,
       prompt: "¿Qué es preferible usar para simular interacciones del usuario: fireEvent o userEvent?",
       options: [
-        { id: "a", text: "fireEvent porque es mas rápido", isCorrect: false },
+        { id: "a", text: "fireEvent porque es más rápido", isCorrect: false },
         { id: "b", text: "userEvent porque simula mejor el comportamiento real del usuario", isCorrect: true },
         { id: "c", text: "Son exactamente iguales", isCorrect: false },
         { id: "d", text: "Ninguno, se debe usar click() nativo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Uno simula eventos del DOM, otro simula el comportamiento completo del usuario.",
-      explanation: "userEvent simula el flujo completo del usuario (hover, focus, keydown, etc.), no solo el evento final. Esto detecta mas bugs reales.",
+      explanation: "userEvent simula el flujo completo del usuario (hover, focus, keydown, etc.), no solo el evento final. Esto detecta más bugs reales.",
     },
     {
       id: "react17-ej-06",
@@ -575,7 +575,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Qué tipo de testing da mas confianza pero es mas lento y fragil?",
+      prompt: "¿Qué tipo de testing da más confianza pero es más lento y fragil?",
       options: [
         { id: "a", text: "Tests unitarios", isCorrect: false },
         { id: "b", text: "Tests de integración", isCorrect: false },
@@ -584,7 +584,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Son tests que simulan el flujo completo del usuario en el navegador.",
-      explanation: "Los tests E2E (Playwright, Cypress) testean flujos completos y dan mucha confianza, pero son mas lentos, fragiles y costosos de mantener.",
+      explanation: "Los tests E2E (Playwright, Cypress) testean flujos completos y dan mucha confianza, pero son más lentos, fragiles y costosos de mantener.",
     },
   ],
 };

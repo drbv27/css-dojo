@@ -56,7 +56,7 @@ dispatch({ type: 'reset' });
 | Pocas actualizaciones | Muchas acciones |
 | Lógica simple | Lógica predecible |
 
-> **Regla:** Si tienes mas de 3-4 setState relacionados, considera useReducer.`,
+> **Regla:** Si tienes más de 3-4 setState relacionados, considera useReducer.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -145,7 +145,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Carrito />);
       title: "useReducer + Context",
       content: `## Combinando useReducer + Context
 
-El patrón mas poderoso para estado global sin librerias externas:
+El patrón más poderoso para estado global sin librerias externas:
 
 ### Paso 1: Crear el contexto y reducer
 \`\`\`jsx
@@ -189,7 +189,7 @@ function useApp() {
 - Acciones predecibles y testeables
 - Estado centralizado accesible desde cualquier componente
 
-> **Este patrón** es la base de como funcionan Redux y otras librerias de estado.`,
+> **Este patrón** es la base de cómo funcionan Redux y otras librerias de estado.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -529,7 +529,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 5,
       prompt: "¿Qué ventaja tiene Zustand sobre Context para estado global?",
       options: [
-        { id: "a", text: "Es mas grande y tiene mas funcionalidades", isCorrect: false },
+        { id: "a", text: "Es más grande y tiene más funcionalidades", isCorrect: false },
         { id: "b", text: "No necesita Provider y tiene selectores para evitar re-renders", isCorrect: true },
         { id: "c", text: "Es parte de React, no necesita instalación", isCorrect: false },
         { id: "d", text: "Solo funciona con TypeScript", isCorrect: false },
@@ -565,7 +565,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       options: [
         { id: "a", text: "Ambos usan el mismo código internamente", isCorrect: false },
         { id: "b", text: "Ambos tienen store, reducer, dispatch y acceso global al estado", isCorrect: true },
-        { id: "c", text: "Redux esta construido sobre useReducer", isCorrect: false },
+        { id: "c", text: "Redux está construido sobre useReducer", isCorrect: false },
         { id: "d", text: "No tienen nada en común", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
@@ -578,7 +578,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿En Zustand, como se evitan re-renders innecesarios al leer del store?",
+      prompt: "¿En Zustand, cómo se evitan re-renders innecesarios al leer del store?",
       options: [
         { id: "a", text: "Usando React.memo en todos los componentes", isCorrect: false },
         { id: "b", text: "Usando selectores: useStore(state => state.count)", isCorrect: true },

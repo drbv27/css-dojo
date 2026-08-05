@@ -400,7 +400,7 @@ renderApp();`,
       order: 5,
       prompt: "¿Cuál es la ventaja de re-renderizar toda la lista en cada cambio?",
       options: [
-        { id: "a", text: "Es mas rápido", isCorrect: false },
+        { id: "a", text: "Es más rápido", isCorrect: false },
         { id: "b", text: "Simplifica el código y evita bugs de sincronización", isCorrect: true },
         { id: "c", text: "Usa menos memoria", isCorrect: false },
         { id: "d", text: "No hay ventaja", isCorrect: false },

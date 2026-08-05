@@ -4,7 +4,7 @@ export const floatDisplayModule: ModuleData = {
   slug: "float-display",
   title: "Float y Display",
   description:
-    "Domina float para envolver contenido alrededor de elementos y display para controlar como se comportan los elementos en el layout.",
+    "Domina float para envolver contenido alrededor de elementos y display para controlar cómo se comportan los elementos en el layout.",
   order: 13,
   dojo: "css" as const,
   category: "intermediate",
@@ -25,7 +25,7 @@ La propiedad \`float\` fue originalmente diseñada para **envolver texto alreded
 .imagen { float: none; }   /* Valor por defecto: no flota */
 \`\`\`
 
-### Como funciona float
+### Cómo funciona float
 
 Cuando un elemento flota:
 
@@ -66,7 +66,7 @@ El patrón \`clearfix\` soluciona este problema:
 }
 \`\`\`
 
-O mas sencillo, usar \`overflow: hidden\` o \`overflow: auto\` en el padre:
+O más sencillo, usar \`overflow: hidden\` o \`overflow: auto\` en el padre:
 
 \`\`\`css
 .contenedor {
@@ -125,7 +125,7 @@ La propiedad \`clear\` indica que un elemento **no debe estar al lado de un elem
 
 ### El patrón clearfix moderno
 
-Para contenedores con hijos flotados, el clearfix mas utilizado es:
+Para contenedores con hijos flotados, el clearfix más utilizado es:
 
 \`\`\`css
 .clearfix::after {
@@ -150,7 +150,7 @@ Aplicas la clase \`clearfix\` al contenedor padre y automáticamente se expande 
       title: "La propiedad display",
       content: `## La propiedad display
 
-La propiedad \`display\` es una de las mas importantes de CSS. Controla **como se comporta un elemento** en el layout y **como se distribuyen sus hijos**.
+La propiedad \`display\` es una de las más importantes de CSS. Controla **cómo se comporta un elemento** en el layout y **cómo se distribuyen sus hijos**.
 
 ### Valores principales
 
@@ -281,7 +281,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
 }
 \`\`\`
 
-> **Importante:** Aprenderemos Flexbox y Grid en profundidad en modulos posteriores. Por ahora, lo importante es saber que \`display: flex\` y \`display: grid\` cambian radicalmente como se distribuyen los hijos de un elemento.`,
+> **Importante:** Aprenderemos Flexbox y Grid en profundidad en modulos posteriores. Por ahora, lo importante es saber que \`display: flex\` y \`display: grid\` cambian radicalmente cómo se distribuyen los hijos de un elemento.`,
       codeExample: {
         html: `<div class="flex-demo">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>\n<p class="visible">Soy visible</p>\n<p class="oculto-none">display: none (no me ves)</p>\n<p class="oculto-hidden">visibility: hidden (no me ves pero ocupo espacio)</p>\n<p class="visible">Soy visible tambien</p>`,
         css: `.flex-demo {\n  display: flex;\n  gap: 10px;\n  margin-bottom: 15px;\n}\n.item {\n  background-color: steelblue;\n  color: white;\n  padding: 20px 30px;\n  border-radius: 8px;\n  font-weight: bold;\n  font-size: 18px;\n}\n.visible {\n  background-color: #d4edda;\n  padding: 8px;\n}\n.oculto-none {\n  display: none;\n}\n.oculto-hidden {\n  visibility: hidden;\n  background-color: #f8d7da;\n  padding: 8px;\n}`,
@@ -306,7 +306,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         { id: "d", text: "Para animar elementos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en como se ven las imágenes en una revista o periodico, con texto fluyendo alrededor.",
+      hint: "Piensa en cómo se ven las imágenes en una revista o periodico, con texto fluyendo alrededor.",
       explanation:
         "Float fue diseñado originalmente para envolver texto alrededor de imágenes, similar al efecto que vemos en revistas impresas. Aunque se uso mucho para layouts de columnas, hoy Flexbox y Grid son mejores opciones para eso.",
     },
@@ -407,7 +407,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en que pasa con el espacio que ocupaba el elemento cuando se oculta.",
       explanation:
-        "display: none oculta el elemento Y lo saca del flujo (no ocupa espacio, como si no existiera). visibility: hidden oculta el elemento visualmente pero conserva su espacio en el layout (queda un hueco vacio).",
+        "display: none oculta el elemento Y lo saca del flujo (no ocupa espacio, como si no existiera). visibility: hidden oculta el elemento visualmente pero conserva su espacio en el layout (queda un hueco vacío).",
     },
     {
       id: "13-ej-05",

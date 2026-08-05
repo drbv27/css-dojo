@@ -15,7 +15,7 @@ export const propiedadesBasicasModule: ModuleData = {
       title: "La propiedad color",
       content: `## La propiedad color
 
-La propiedad \`color\` define el **color del texto** de un elemento. Es una de las propiedades mas usadas en CSS.
+La propiedad \`color\` define el **color del texto** de un elemento. Es una de las propiedades más usadas en CSS.
 
 ### Formas de especificar colores
 
@@ -138,7 +138,7 @@ La propiedad \`border\` permite agregar un **borde visible** alrededor de cualqu
 
 ### Propiedad abreviada border
 
-La forma mas común usa tres valores: **ancho**, **estilo** y **color**:
+La forma más común usa tres valores: **ancho**, **estilo** y **color**:
 
 \`\`\`css
 .caja {
@@ -209,7 +209,7 @@ Redondea las esquinas de un elemento:
         { id: "d", text: "background-color", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Es la propiedad mas sencilla y directa. No tiene ningun prefijo como 'text-' o 'font-'.",
+      hint: "Es la propiedad más sencilla y directa. No tiene ningun prefijo como 'text-' o 'font-'.",
       explanation:
         "La propiedad 'color' cambia el color del texto. 'text-color' y 'font-color' no existen en CSS. 'background-color' cambia el color de fondo, no del texto.",
     },
@@ -298,7 +298,7 @@ Redondea las esquinas de un elemento:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa la propiedad border para que la caja tenga un borde solido rojo. El ancho ya esta definido como 2px:",
+        "Completa la propiedad border para que la caja tenga un borde solido rojo. El ancho ya está definido como 2px:",
       codeTemplate: {
         html: `<div class="caja">Contenido de la caja</div>`,
         cssPrefix: ".caja {\n  border: ",
@@ -374,7 +374,7 @@ Redondea las esquinas de un elemento:
         { id: "d", text: "256", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Son mas de 100 pero menos de 200. Incluyen desde los básicos (red, blue) hasta los exoticos (papayawhip, rebeccapurple).",
+      hint: "Son más de 100 pero menos de 200. Incluyen desde los básicos (red, blue) hasta los exoticos (papayawhip, rebeccapurple).",
       explanation:
         "CSS reconoce aproximadamente 140 nombres de colores estándar. Algunos ejemplos inusuales: 'papayawhip', 'rebeccapurple', 'lemonchiffon' y 'midnightblue'.",
     },

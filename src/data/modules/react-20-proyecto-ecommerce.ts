@@ -723,7 +723,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 1,
       prompt: "¿Por que Context es ideal para el carrito de compras?",
       options: [
-        { id: "a", text: "Porque es mas rápido que useState", isCorrect: false },
+        { id: "a", text: "Porque es más rápido que useState", isCorrect: false },
         { id: "b", text: "Porque muchos componentes (header, lista, checkout) necesitan acceder al carrito", isCorrect: true },
         { id: "c", text: "Porque localStorage no funciona con React", isCorrect: false },
         { id: "d", text: "Porque Context es obligatorio en e-commerce", isCorrect: false },
@@ -755,7 +755,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "¿Qué debe pasar al agregar un producto que ya esta en el carrito?",
+      prompt: "¿Qué debe pasar al agregar un producto que ya está en el carrito?",
       options: [
         { id: "a", text: "Agregar un duplicado al array", isCorrect: false },
         { id: "b", text: "Incrementar la cantidad del item existente", isCorrect: true },
@@ -799,7 +799,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       options: [
         { id: "a", text: "Porque React no permite setState para números", isCorrect: false },
         { id: "b", text: "Porque se calculan a partir de items, y tener dos fuentes de verdad causa bugs", isCorrect: true },
-        { id: "c", text: "Porque useMemo es mas rápido que useState", isCorrect: false },
+        { id: "c", text: "Porque useMemo es más rápido que useState", isCorrect: false },
         { id: "d", text: "Porque los totales no cambian", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

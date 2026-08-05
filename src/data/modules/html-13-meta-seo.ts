@@ -91,7 +91,7 @@ Controla como los motores de busqueda tratan tu página:
       title: "Open Graph y Twitter Cards",
       content: `## Open Graph y Twitter Cards
 
-Cuando compartes un enlace en redes sociales, las **meta tags de Open Graph** controlan como se ve la vista previa.
+Cuando compartes un enlace en redes sociales, las **meta tags de Open Graph** controlan cómo se ve la vista previa.
 
 ### Open Graph (Facebook, LinkedIn, WhatsApp)
 
@@ -129,7 +129,7 @@ Cuando compartes un enlace en redes sociales, las **meta tags de Open Graph** co
 <link rel="canonical" href="https://devdojo.com/cursos/html">
 \`\`\`
 
-> **Tip:** Usa herramientas como "Open Graph Debugger" de Facebook para verificar como se ven tus previews.`,
+> **Tip:** Usa herramientas como "Open Graph Debugger" de Facebook para verificar cómo se ven tus previews.`,
       codeExample: {
         html: `<div style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre;overflow-x:auto;margin-bottom:16px;">&lt;!-- Open Graph --&gt;
 &lt;meta property="og:title" content="Dev Dojo"&gt;
@@ -360,7 +360,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       },
       hint: "Las tags con 'og:' y 'twitter:' son para redes sociales.",
       explanation:
-        "Open Graph (og:) y Twitter Cards son para controlar como se ven los enlaces en redes sociales. Meta description y robots son para motores de busqueda.",
+        "Open Graph (og:) y Twitter Cards son para controlar cómo se ven los enlaces en redes sociales. Meta description y robots son para motores de busqueda.",
     },
     {
       id: "html13-ej-06",
@@ -417,7 +417,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       },
       hint: 'El title primero; la description es <meta name="description" content="...">; el Open Graph usa <meta property="og:...">.',
       explanation:
-        "El title y la meta description controlan como se ve tu página en Google; las etiquetas Open Graph (og:) controlan la tarjeta que aparece al compartir el enlace en redes sociales.",
+        "El title y la meta description controlan cómo se ve tu página en Google; las etiquetas Open Graph (og:) controlan la tarjeta que aparece al compartir el enlace en redes sociales.",
     },
   ],
 };

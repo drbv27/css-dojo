@@ -149,7 +149,7 @@ type ConfigCompleta = Required<Config>;
         { id: "a", text: "Crear variables globales", isCorrect: false },
         { id: "b", text: "Crear funciones/tipos reutilizables que trabajan con cualquier tipo", isCorrect: true },
         { id: "c", text: "Importar modulos automáticamente", isCorrect: false },
-        { id: "d", text: "Compilar mas rápido", isCorrect: false },
+        { id: "d", text: "Compilar más rápido", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Generic = genérico, funciona con cualquier tipo.",

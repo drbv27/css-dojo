@@ -35,7 +35,7 @@ function Formulario() {
 - **Una sola fuente de verdad** (el estado de React)
 - Puedes **validar** y **transformar** el valor en cada cambio
 - Fácil de **resetear** el formulario
-- El valor siempre esta disponible sin consultar el DOM
+- El valor siempre está disponible sin consultar el DOM
 
 ### Manejo de múltiples inputs
 \`\`\`jsx
@@ -284,7 +284,7 @@ function MiForm() {
 }
 \`\`\`
 
-> **Tip:** Para 1-3 campos, validación manual esta bien. Para formularios complejos, usa una libreria.`,
+> **Tip:** Para 1-3 campos, validación manual está bien. Para formularios complejos, usa una libreria.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -487,7 +487,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Su nombre incluye 'Hook' y 'Form'.",
-      explanation: "React Hook Form esta diseñada para minimizar re-renders usando refs internamente, ofreciendo excelente rendimiento en formularios complejos.",
+      explanation: "React Hook Form está diseñada para minimizar re-renders usando refs internamente, ofreciendo excelente rendimiento en formularios complejos.",
     },
     {
       id: "react11-ej-08",

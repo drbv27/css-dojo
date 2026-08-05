@@ -4,7 +4,7 @@ export const queEsCSSModule: ModuleData = {
   slug: "que-es-css",
   title: "¿Qué es CSS?",
   description:
-    "Descubre que es CSS, como funciona y las distintas formas de agregar estilos a tus documentos HTML.",
+    "Descubre que es CSS, cómo funciona y las distintas formas de agregar estilos a tus documentos HTML.",
   order: 1,
   dojo: "css" as const,
   category: "intro",
@@ -77,7 +77,7 @@ main {
 }
 \`\`\`
 
-> **Importante:** No olvides el punto y coma al final de cada declaración. Olvidarlo es uno de los errores mas comunes para principiantes.`,
+> **Importante:** No olvides el punto y coma al final de cada declaración. Olvidarlo es uno de los errores más comunes para principiantes.`,
       codeExample: {
         html: `<main>\n  <h2>Bienvenido al Dev Dojo</h2>\n  <p>Aprende CSS paso a paso.</p>\n</main>`,
         css: `main {\n  background-color: lightslategray;\n  color: white;\n  padding: 20px;\n  border-radius: 8px;\n}`,
@@ -163,7 +163,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         { id: "d", text: "Colorful Style Sheets", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "La primera palabra hace referencia a como se aplican los estilos: en cascada.",
+      hint: "La primera palabra hace referencia a cómo se aplican los estilos: en cascada.",
       explanation:
         "CSS significa Cascading Style Sheets (Hojas de Estilo en Cascada). El término 'cascada' se refiere al mecanismo que determina que estilos se aplican cuando hay múltiples reglas en conflicto.",
     },
@@ -242,7 +242,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
           "drag-3": "zone-valor",
         },
       },
-      hint: "El selector indica A QUIEN se aplica, la propiedad indica QUE se cambia y el valor indica COMO se cambia.",
+      hint: "El selector indica A QUIEN se aplica, la propiedad indica QUE se cambia y el valor indica Cómo se cambia.",
       explanation:
         "'main' es el selector (indica el elemento), 'background-color' es la propiedad (que aspecto cambiar) y 'lightslategray' es el valor (el color específico).",
     },

@@ -29,7 +29,7 @@ export const proyectoCvCssModule: ModuleData = {
 
 En el track de HTML escribiste un CV. Funciona, es semántico y accesible... y se ve como un documento de 1994. Texto negro, fondo blanco, enlaces azules subrayados.
 
-Eso no es un defecto de tu HTML. **Es exactamente lo que HTML debe hacer:** decir que significa cada cosa, no como se ve. Ahora le toca a CSS.
+Eso no es un defecto de tu HTML. **Es exactamente lo que HTML debe hacer:** decir que significa cada cosa, no cómo se ve. Ahora le toca a CSS.
 
 ### Que vamos a construir
 
@@ -48,7 +48,7 @@ Vas a partir del mismo CV y llegar a una página que podrias mandar a una entrev
 
 Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV con tipografía mala y sombras hermosas se ve peor que uno con tipografía buena y cero sombras.** La jerarquía visual se construye con tamaño, peso y espacio; el resto es decoración.
 
-> Si no tenes tu CV a mano, cada paso trae el HTML que necesita. Pero si guardaste el tuyo, usalo: el proyecto vale mucho mas cuando estas estilando tus propios datos.`,
+> Si no tenes tu CV a mano, cada paso trae el HTML que necesita. Pero si guardaste el tuyo, usalo: el proyecto vale mucho más cuando estas estilando tus propios datos.`,
       codeExample: {
         html: `<header>\n  <h1>Ana Martinez</h1>\n  <p>Desarrolladora Frontend</p>\n</header>`,
         css: `/* Sin CSS: el navegador aplica sus estilos por defecto */\n/* h1 grande y negrita, p normal, todo apilado y pegado al borde */`,
@@ -100,7 +100,7 @@ Funciona hasta que movas una sección. **Estas atando tus estilos al orden del H
 
 Ahora el estilo dice **que es** cada cosa, no **donde esta**. Podes reordenar todo el CV y nada se rompe.
 
-### Como nombrar
+### Cómo nombrar
 
 No hay una regla universal, pero si una guia que ahorra dolor: **nombra por función, no por apariencia.**
 
@@ -140,11 +140,11 @@ body {
 }
 \`\`\`
 
-\`box-sizing: border-box\` hace que \`width\` incluya padding y borde. Sin eso, cada vez que agregues padding el elemento crece y tu layout se corre. **Este es el ajuste mas rentable de todo CSS.**
+\`box-sizing: border-box\` hace que \`width\` incluya padding y borde. Sin eso, cada vez que agregues padding el elemento crece y tu layout se corre. **Este es el ajuste más rentable de todo CSS.**
 
 ### 2. Tipografía antes que layout
 
-Antes de decidir donde va cada caja, decidi como se lee. Si cambias el \`font-size\` base después de maquetar, todos los espacios que ajustaste quedan mal.
+Antes de decidir donde va cada caja, decidi cómo se lee. Si cambias el \`font-size\` base después de maquetar, todos los espacios que ajustaste quedan mal.
 
 ### 3. Layout de afuera hacia adentro
 
@@ -167,7 +167,7 @@ body
   footer.pie
 \`\`\`
 
-> **Un consejo sobre el ancho de lectura:** un párrafo de 60 a 75 caracteres por línea es lo mas comodo de leer. En pantalla ancha eso es cerca de \`65ch\` o \`700px\`. Un CV a todo el ancho de un monitor de 27 pulgadas es incomodo, aunque "aproveche el espacio".`,
+> **Un consejo sobre el ancho de lectura:** un párrafo de 60 a 75 caracteres por línea es lo más comodo de leer. En pantalla ancha eso es cerca de \`65ch\` o \`700px\`. Un CV a todo el ancho de un monitor de 27 pulgadas es incomodo, aunque "aproveche el espacio".`,
       codeExample: {
         html: `<main class="contenido">\n  <section class="perfil">...</section>\n</main>`,
         css: `* { box-sizing: border-box; }\nbody { margin: 0; }\n\n.contenido {\n  max-width: 700px;\n  width: 100%;\n  margin: 0 auto;\n}`,
@@ -228,7 +228,7 @@ body
       },
       hint: "box-sizing: border-box en * hace que width incluya padding y borde. El margin-bottom: 4px del nombre y el margin-top: 0 del título los acercan como un bloque.",
       explanation:
-        "Este paso hace mas por la legibilidad que cualquier sombra. line-height: 1.6 da aire entre líneas; el contraste de tamaño entre 32px y 20px crea jerarquía sin necesidad de color. Y border-box en * evita que cada padding que agregues después te corra el layout.",
+        "Este paso hace más por la legibilidad que cualquier sombra. line-height: 1.6 da aire entre líneas; el contraste de tamaño entre 32px y 20px crea jerarquía sin necesidad de color. Y border-box en * evita que cada padding que agregues después te corra el layout.",
     },
     {
       id: "25-ej-03",
@@ -251,7 +251,7 @@ body
       },
       hint: "margin: 0 auto centra un elemento que tiene un ancho máximo. width: 100% lo deja encogerse en pantallas chicas.",
       explanation:
-        "max-width con width: 100% es el patrón responsive mas simple que existe: en pantalla ancha se detiene en 700px, en el teléfono ocupa todo. Un ancho fijo en px haria falta arreglarlo después con media queries. El padding lateral evita que el texto toque el borde en mobile.",
+        "max-width con width: 100% es el patrón responsive más simple que existe: en pantalla ancha se detiene en 700px, en el teléfono ocupa todo. Un ancho fijo en px haria falta arreglarlo después con media queries. El padding lateral evita que el texto toque el borde en mobile.",
     },
     {
       id: "25-ej-04",
@@ -274,7 +274,7 @@ body
       },
       hint: "space-between empuja el primer hijo a la izquierda y el último a la derecha. flex-wrap: wrap es lo que evita que se desborde en pantallas angostas.",
       explanation:
-        "flex-wrap: wrap hace la mitad del trabajo responsive antes de escribir una sola media query: cuando no hay ancho, el contacto baja abajo del nombre solo. Y fijate que el gap reemplaza los márgenes entre hijos, que es mas fácil de mantener que margin-right en todos menos el último.",
+        "flex-wrap: wrap hace la mitad del trabajo responsive antes de escribir una sola media query: cuando no hay ancho, el contacto baja abajo del nombre solo. Y fijate que el gap reemplaza los márgenes entre hijos, que es más fácil de mantener que margin-right en todos menos el último.",
     },
     {
       id: "25-ej-05",
@@ -312,7 +312,7 @@ body
       },
       hint: "Pensa en alguien con daltonismo, y en alguien que navega con Tab en vez de mouse.",
       explanation:
-        "El color NUNCA debe ser la única forma de transmitir información: es una de las reglas mas citadas de WCAG. Si quitas el subrayado, agrega otra señal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
+        "El color NUNCA debe ser la única forma de transmitir información: es una de las reglas más citadas de WCAG. Si quitas el subrayado, agrega otra señal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
     },
     {
       id: "25-ej-06",
@@ -335,7 +335,7 @@ body
       },
       hint: "repeat(auto-fit, minmax(260px, 1fr)) crea tantas columnas como quepan, cada una de 260px mínimo. No necesita media queries.",
       explanation:
-        "auto-fit con minmax es la técnica responsive mas potente de Grid: el navegador decide cuantas columnas caben y reacomoda solo. Dos tarjetas en escritorio, una apilada en el teléfono, sin escribir ni una media query. Esto es lo que Grid hace mejor que Flexbox.",
+        "auto-fit con minmax es la técnica responsive más potente de Grid: el navegador decide cuantas columnas caben y reacomoda solo. Dos tarjetas en escritorio, una apilada en el teléfono, sin escribir ni una media query. Esto es lo que Grid hace mejor que Flexbox.",
     },
     {
       id: "25-ej-07",
@@ -404,7 +404,7 @@ body
       },
       hint: "La media query envuelve las reglas: @media (max-width: 600px) { ... }. Redimensiona la vista previa para verla actuar.",
       explanation:
-        "Fijate cuanto NO hiciste falta escribir. El flex-wrap del paso 4 y el auto-fit del paso 6 ya resolvian buena parte del responsive solos. Una media query bien puesta ajusta lo que el layout fluido no puede adivinar -- como bajar el tamaño del nombre -- en vez de rehacer todo el layout. Si tu media query tiene 40 reglas, el problema esta en el layout base.",
+        "Fijate cuanto NO hiciste falta escribir. El flex-wrap del paso 4 y el auto-fit del paso 6 ya resolvian buena parte del responsive solos. Una media query bien puesta ajusta lo que el layout fluido no puede adivinar -- cómo bajar el tamaño del nombre -- en vez de rehacer todo el layout. Si tu media query tiene 40 reglas, el problema está en el layout base.",
     },
     {
       id: "25-ej-10",

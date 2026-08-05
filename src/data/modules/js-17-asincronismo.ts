@@ -132,7 +132,7 @@ fetch(url)
   .catch(function(err) { console.error(err); });
 \`\`\`
 
-> Las Promises eliminan el callback hell y hacen el código asíncrono mas legible.`,
+> Las Promises eliminan el callback hell y hacen el código asíncrono más legible.`,
       codeExample: {
         html: '<button id="ejecutar">Ejecutar Promise</button>\n<div id="resultado"></div>',
         css: '#ejecutar { padding: 8px 16px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 80px; }',
@@ -177,7 +177,7 @@ document.getElementById("ejecutar").addEventListener("click", function() {
       title: "async/await",
       content: `## async/await
 
-**async/await** es una forma mas limpia de trabajar con Promises:
+**async/await** es una forma más limpia de trabajar con Promises:
 
 ### Función async
 \`\`\`javascript

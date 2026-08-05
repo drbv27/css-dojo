@@ -138,7 +138,7 @@ function getIcono(codigo) {
 
 ### Manejo de estados de carga
 
-Siempre muestra al usuario que esta pasando:
+Siempre muestra al usuario que está pasando:
 - **Cargando:** skeleton o spinner
 - **Exito:** datos del clima
 - **Error:** mensaje descriptivo
@@ -247,7 +247,7 @@ async function buscarConCache(ciudad) {
 - **localStorage** para ciudades favoritas
 - **Geolocalización API** del navegador
 
-> Este proyecto demuestra como construir una aplicación real que consume datos externos y los presenta al usuario.`,
+> Este proyecto demuestra cómo construir una aplicación real que consume datos externos y los presenta al usuario.`,
       codeExample: {
         html: '<div id="wapp3">\n  <h3>Clima - Ciudades Favoritas</h3>\n  <div class="search">\n    <input id="city3" placeholder="Ciudad..." />\n    <button id="add-fav">Agregar favorita</button>\n  </div>\n  <div id="favs"></div>\n  <div id="weather3"></div>\n</div>',
         css: '#wapp3 { max-width: 450px; } .search { display: flex; gap: 4px; margin-bottom: 8px; } #city3 { flex: 1; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } #add-fav { padding: 8px 12px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; white-space: nowrap; font-size: 13px; } #favs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; } .fav-btn { padding: 4px 10px; background: #313244; color: #89b4fa; border: 1px solid #45475a; border-radius: 20px; cursor: pointer; font-size: 12px; } .fav-btn:hover { background: #45475a; } .fav-btn .remove { color: #f38ba8; margin-left: 4px; } #weather3 { padding: 16px; background: #313244; border-radius: 8px; color: #cdd6f4; min-height: 40px; text-align: center; }',
@@ -365,7 +365,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       order: 3,
       prompt: "¿Por que es buena práctica implementar cache para peticiones a APIs?",
       options: [
-        { id: "a", text: "Para hacer el código mas complejo", isCorrect: false },
+        { id: "a", text: "Para hacer el código más complejo", isCorrect: false },
         { id: "b", text: "Para evitar peticiones repetidas y mejorar rendimiento", isCorrect: true },
         { id: "c", text: "Porque las APIs lo requieren", isCorrect: false },
         { id: "d", text: "Para que funcione sin internet", isCorrect: false },
@@ -414,7 +414,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Qué deberias mostrar al usuario mientras una petición fetch esta en progreso?",
+      prompt: "¿Qué deberias mostrar al usuario mientras una petición fetch está en progreso?",
       options: [
         { id: "a", text: "Nada, dejarlo en blanco", isCorrect: false },
         { id: "b", text: "Un indicador de carga (spinner o skeleton)", isCorrect: true },
@@ -422,7 +422,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
         { id: "d", text: "Los datos anteriores", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El usuario necesita saber que algo esta pasando.",
+      hint: "El usuario necesita saber que algo está pasando.",
       explanation: "Mostrar un indicador de carga informa al usuario que la aplicación esta trabajando. Nunca dejes la UI sin feedback.",
     },
   ],

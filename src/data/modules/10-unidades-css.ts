@@ -28,9 +28,9 @@ Las unidades **absolutas** tienen un tamaño fijo que **no cambia** según el co
 | \`pt\` | Puntos | 1pt = 1/72 de pulgada = 1.33px |
 | \`pc\` | Picas | 1pc = 12pt = 16px |
 
-### El pixel (px): la unidad mas usada
+### El pixel (px): la unidad más usada
 
-El **pixel CSS** no es exactamente un pixel fisico de la pantalla. Es una unidad de referencia que equivale a **1/96 de pulgada**. En pantallas de alta resolución (Retina), un pixel CSS puede equivaler a 2 o mas píxeles fisicos.
+El **pixel CSS** no es exactamente un pixel fisico de la pantalla. Es una unidad de referencia que equivale a **1/96 de pulgada**. En pantallas de alta resolución (Retina), un pixel CSS puede equivaler a 2 o más píxeles fisicos.
 
 \`\`\`css
 .caja {
@@ -160,8 +160,8 @@ Las unidades de **viewport** son relativas al tamaño de la **ventana del navega
 |--------|-----------|-----------|
 | \`vw\` | Viewport Width | 1vw = 1% del ancho de la ventana |
 | \`vh\` | Viewport Height | 1vh = 1% del alto de la ventana |
-| \`vmin\` | Viewport Minimum | 1vmin = 1% del lado mas corto |
-| \`vmax\` | Viewport Maximum | 1vmax = 1% del lado mas largo |
+| \`vmin\` | Viewport Minimum | 1vmin = 1% del lado más corto |
+| \`vmax\` | Viewport Maximum | 1vmax = 1% del lado más largo |
 
 ### Ejemplo: ventana de 1200px x 800px
 
@@ -305,7 +305,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         { id: "d", text: "rem", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Las unidades absolutas tienen un tamaño fijo que no depende de ningun otro elemento. Es la unidad mas básica y común.",
+      hint: "Las unidades absolutas tienen un tamaño fijo que no depende de ningun otro elemento. Es la unidad más básica y común.",
       explanation:
         "El pixel (px) es una unidad absoluta: siempre representa 1/96 de pulgada, sin importar el contexto. Las unidades em, rem y % son relativas: su valor depende de otro elemento.",
     },
@@ -399,7 +399,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         },
         {
           id: "b",
-          text: "em es mas grande que rem",
+          text: "em es más grande que rem",
           isCorrect: false,
         },
         {
@@ -416,7 +416,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       validation: { type: "exact", answer: "a" },
       hint: "La 'r' en rem significa 'root'. Piensa en que es la referencia de calculo para cada unidad.",
       explanation:
-        "em se calcula relativa al font-size del propio elemento (o del padre si se usa en font-size). rem ('root em') siempre se calcula relativa al font-size del <html>. Esto hace que rem sea mas predecible y evite la acumulación de herencia.",
+        "em se calcula relativa al font-size del propio elemento (o del padre si se usa en font-size). rem ('root em') siempre se calcula relativa al font-size del <html>. Esto hace que rem sea más predecible y evite la acumulación de herencia.",
     },
     {
       id: "10-ej-06",
@@ -491,7 +491,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       },
       hint: "Tres unidades en un solo ejercicio: vh para el alto y el padding vertical, % para el padding horizontal, y clamp() con rem y vw en el título. El padding acepta dos valores: primero vertical, después horizontal.",
       explanation:
-        "Cada unidad esta elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen mas que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahi es donde entra el box-sizing: border-box del modulo anterior.",
+        "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahi es donde entra el box-sizing: border-box del modulo anterior.",
     },
   ],
 };

@@ -4,7 +4,7 @@ export const bootstrapModule: ModuleData = {
   slug: "bootstrap-5",
   title: "Bootstrap 5",
   description:
-    "Aprende el framework CSS mas popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseño responsivo con Bootstrap 5.",
+    "Aprende el framework CSS más popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseño responsivo con Bootstrap 5.",
   order: 23,
   dojo: "css" as const,
   category: "frameworks",
@@ -17,16 +17,16 @@ export const bootstrapModule: ModuleData = {
 
 ### ¿Qué es Bootstrap?
 
-**Bootstrap** es el framework CSS mas popular del mundo. Creado por Twitter en 2011, proporciona:
+**Bootstrap** es el framework CSS más popular del mundo. Creado por Twitter en 2011, proporciona:
 
 - **Sistema de grid** de 12 columnas responsive
 - **Componentes** predefinidos (botones, cards, modales, etc.)
 - **Clases utilitarias** para espaciado, colores, tipografía
 - **Diseño mobile-first** incorporado
 
-### Como incluir Bootstrap
+### Cómo incluir Bootstrap
 
-La forma mas rápida es usar el CDN:
+La forma más rápida es usar el CDN:
 
 \`\`\`html
 <!-- En el <head> de tu HTML -->
@@ -44,7 +44,7 @@ npm install bootstrap
 
 ### Filosofía Mobile-First
 
-Bootstrap esta diseñado **primero para móviles**. Los estilos base son para pantallas pequeñas y se van agregando para pantallas mas grandes:
+Bootstrap está diseñado **primero para móviles**. Los estilos base son para pantallas pequeñas y se van agregando para pantallas más grandes:
 
 \`\`\`html
 <!-- Esta columna es:
@@ -204,7 +204,7 @@ Define cuantas columnas por fila sin especificar en cada col:
 </div>
 \`\`\`
 
-> **Regla de oro:** Las columnas siempre deben sumar 12 (o menos) dentro de una fila. Si suman mas de 12, las columnas extra bajan a la siguiente línea.`,
+> **Regla de oro:** Las columnas siempre deben sumar 12 (o menos) dentro de una fila. Si suman más de 12, las columnas extra bajan a la siguiente línea.`,
       codeExample: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<div class="container py-3">\n  <div class="row g-3 mb-3">\n    <div class="col-md-8">\n      <div class="p-3 bg-primary bg-opacity-75 text-white rounded">col-md-8</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-primary bg-opacity-50 text-white rounded">col-md-4</div>\n    </div>\n  </div>\n  <div class="row g-3 mb-3">\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-75 text-white rounded">col-md-4</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-50 text-white rounded">col-md-4</div>\n    </div>\n    <div class="col-md-4">\n      <div class="p-3 bg-success bg-opacity-25 rounded">col-md-4</div>\n    </div>\n  </div>\n  <div class="row g-3">\n    <div class="col-md-6 offset-md-3">\n      <div class="p-3 bg-warning bg-opacity-75 rounded text-center">col-md-6 offset-md-3 (centrada)</div>\n    </div>\n  </div>\n</div>`,
         css: ``,
@@ -217,7 +217,7 @@ Define cuantas columnas por fila sin especificar en cada col:
       title: "Componentes Básicos",
       content: `## Componentes Básicos de Bootstrap
 
-Bootstrap incluye decenas de componentes listos para usar. Veamos los mas importantes.
+Bootstrap incluye decenas de componentes listos para usar. Veamos los más importantes.
 
 ### Botones (btn)
 
@@ -508,7 +508,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
         blanks: ["btn-primary"],
       },
       validation: { type: "exact", answer: "btn-primary" },
-      hint: "Los botones de Bootstrap usan la clase 'btn' mas una clase de color como btn-{color}.",
+      hint: "Los botones de Bootstrap usan la clase 'btn' más una clase de color como btn-{color}.",
       explanation:
         "Los botones de Bootstrap necesitan la clase base 'btn' y una clase de color como 'btn-primary' (azul), 'btn-success' (verde), 'btn-danger' (rojo), etc.",
     },
@@ -577,7 +577,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       },
       hint: "La estructura es: container > row.g-3 > col-md-4 (x3). Cada columna contiene un div con las clases de estilo.",
       explanation:
-        "El grid de Bootstrap sigue la estructura container > row > col. col-md-4 ocupa 4 de 12 columnas (33%) en pantallas medianas y mas grandes. g-3 agrega espacio (gutter) entre columnas.",
+        "El grid de Bootstrap sigue la estructura container > row > col. col-md-4 ocupa 4 de 12 columnas (33%) en pantallas medianas y más grandes. g-3 agrega espacio (gutter) entre columnas.",
     },
     {
       id: "23-ej-06",
@@ -605,7 +605,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un botón 'btn btn-primary' con texto 'Ver mas'. Agrega la clase 'shadow' a la card para sombra.",
+        "Crea una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un botón 'btn btn-primary' con texto 'Ver más'. Agrega la clase 'shadow' a la card para sombra.",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">`,
         cssPrefix: "",

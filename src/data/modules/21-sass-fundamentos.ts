@@ -4,7 +4,7 @@ export const sassFundamentosModule: ModuleData = {
   slug: "sass-fundamentos",
   title: "Sass Fundamentos",
   description:
-    "Aprende las bases del preprocesador CSS mas popular: variables, nesting, mixins, funciones, partials y la organización de archivos con Sass/SCSS.",
+    "Aprende las bases del preprocesador CSS más popular: variables, nesting, mixins, funciones, partials y la organización de archivos con Sass/SCSS.",
   order: 21,
   dojo: "css" as const,
   category: "preprocessors",
@@ -15,7 +15,7 @@ export const sassFundamentosModule: ModuleData = {
       title: "¿Qué es Sass?",
       content: `## ¿Qué es Sass?
 
-**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y mas. El código Sass se **compila** a CSS estándar que los navegadores pueden interpretar.
+**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y más. El código Sass se **compila** a CSS estándar que los navegadores pueden interpretar.
 
 ### ¿Por que usar Sass?
 
@@ -54,7 +54,7 @@ Existen dos sintaxis:
     font-size: 1.5rem
 \`\`\`
 
-> **Recomendación:** SCSS es la sintaxis mas usada porque cualquier CSS valido ya es SCSS valido, facilitando la migración.
+> **Recomendación:** SCSS es la sintaxis más usada porque cualquier CSS valido ya es SCSS valido, facilitando la migración.
 
 ### Compilación
 
@@ -102,7 +102,7 @@ $color-primario: #3498db;
 }
 \`\`\`
 
-> **Dato:** Sass fue creado en 2006 y sigue siendo el preprocesador mas usado. Alternativas como Less y Stylus existen pero Sass domina el mercado.`,
+> **Dato:** Sass fue creado en 2006 y sigue siendo el preprocesador más usado. Alternativas como Less y Stylus existen pero Sass domina el mercado.`,
       codeExample: {
         html: `<div class="sass-demo">\n  <h2>Sass se compila a CSS</h2>\n  <div class="comparacion">\n    <div class="bloque scss">\n      <h3>SCSS</h3>\n      <code>$color: #3498db;</code>\n      <code>.btn { background: $color; }</code>\n    </div>\n    <div class="flecha">→</div>\n    <div class="bloque css">\n      <h3>CSS</h3>\n      <code>.btn { background: #3498db; }</code>\n    </div>\n  </div>\n</div>`,
         css: `.sass-demo {\n  font-family: sans-serif;\n  color: #333;\n}\n.sass-demo h2 {\n  text-align: center;\n  margin-bottom: 20px;\n  color: #cf649a;\n}\n.comparacion {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  gap: 20px;\n}\n.bloque {\n  background: #1e1e2e;\n  padding: 20px;\n  border-radius: 10px;\n  color: #cdd6f4;\n}\n.bloque h3 {\n  margin-bottom: 10px;\n  color: #cf649a;\n}\n.bloque code {\n  display: block;\n  font-size: 0.85rem;\n  margin: 4px 0;\n}\n.flecha {\n  font-size: 2rem;\n  color: #cf649a;\n}`,
@@ -243,7 +243,7 @@ Sass permite anidar propiedades con el mismo prefijo:
 }
 \`\`\`
 
-> **Cuidado:** No anides mas de 3-4 niveles. El nesting excesivo genera selectores largos y especificidad innecesaria. Mantelo simple.`,
+> **Cuidado:** No anides más de 3-4 niveles. El nesting excesivo genera selectores largos y especificidad innecesaria. Mantelo simple.`,
       codeExample: {
         html: `<nav class="nav-demo">\n  <ul>\n    <li><a href="#" class="activo">Inicio</a></li>\n    <li><a href="#">Cursos</a></li>\n    <li><a href="#">Blog</a></li>\n  </ul>\n</nav>`,
         css: `.nav-demo {\n  background: #2c3e50;\n  padding: 12px 20px;\n  border-radius: 10px;\n}\n.nav-demo ul {\n  list-style: none;\n  display: flex;\n  gap: 16px;\n  margin: 0;\n  padding: 0;\n}\n.nav-demo a {\n  color: #ecf0f1;\n  text-decoration: none;\n  padding: 8px 16px;\n  border-radius: 6px;\n  transition: background 0.3s;\n}\n.nav-demo a:hover {\n  background: rgba(255,255,255,0.1);\n}\n.nav-demo a.activo {\n  background: #3498db;\n  color: white;\n}`,
@@ -282,7 +282,7 @@ Los mixins son bloques reutilizables de CSS. Los defines una vez y los incluyes 
 
 ### Mixins con parámetros
 
-Los mixins pueden recibir argumentos para ser mas flexibles:
+Los mixins pueden recibir argumentos para ser más flexibles:
 
 \`\`\`scss
 @mixin boton($bg-color, $text-color: white) {
@@ -314,7 +314,7 @@ Los mixins pueden recibir argumentos para ser mas flexibles:
 
 ### Mixin para media queries
 
-Uno de los usos mas populares de mixins:
+Uno de los usos más populares de mixins:
 
 \`\`\`scss
 @mixin responsive($breakpoint) {
@@ -498,7 +498,7 @@ scss/
 
 ### @import (deprecado)
 
-\`@import\` fue la forma original pero esta siendo reemplazado por \`@use\`:
+\`@import\` fue la forma original pero está siendo reemplazado por \`@use\`:
 
 \`\`\`scss
 // EVITAR - Forma antigua
@@ -544,7 +544,7 @@ Diferencias clave:
       validation: { type: "exact", answer: "b" },
       hint: "Sass agrega funcionalidades a CSS pero necesita un paso de compilación.",
       explanation:
-        "Sass es un preprocesador CSS que extiende el lenguaje con variables, nesting, mixins y mas. El código Sass se compila a CSS estándar que los navegadores pueden interpretar.",
+        "Sass es un preprocesador CSS que extiende el lenguaje con variables, nesting, mixins y más. El código Sass se compila a CSS estándar que los navegadores pueden interpretar.",
     },
     {
       id: "21-ej-02",
@@ -556,14 +556,14 @@ Diferencias clave:
         "¿Cuál es la diferencia principal entre la sintaxis SCSS y Sass indentado?",
       options: [
         { id: "a", text: "SCSS usa llaves y punto y coma; Sass indentado usa indentación sin llaves", isCorrect: true },
-        { id: "b", text: "Sass indentado es mas nuevo que SCSS", isCorrect: false },
+        { id: "b", text: "Sass indentado es más nuevo que SCSS", isCorrect: false },
         { id: "c", text: "SCSS no soporta variables, solo Sass indentado", isCorrect: false },
         { id: "d", text: "No hay diferencia, son exactamente iguales", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en como se delimitan los bloques de código en cada sintaxis.",
+      hint: "Piensa en cómo se delimitan los bloques de código en cada sintaxis.",
       explanation:
-        "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentación para definir la estructura. SCSS es la sintaxis mas popular.",
+        "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentación para definir la estructura. SCSS es la sintaxis más popular.",
     },
     {
       id: "21-ej-03",
@@ -614,7 +614,7 @@ Diferencias clave:
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "Los mixins generan bloques de CSS; las funciones retornan un solo valor", isCorrect: true },
-        { id: "c", text: "Las funciones son mas rápidas que los mixins", isCorrect: false },
+        { id: "c", text: "Las funciones son más rápidas que los mixins", isCorrect: false },
         { id: "d", text: "Los mixins solo funcionan con colores", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

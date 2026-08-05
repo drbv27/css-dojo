@@ -56,7 +56,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       title: "Tipos de datos primitivos",
       content: `## Tipos de datos primitivos
 
-JavaScript tiene **7 tipos primitivos**. Los mas comunes son:
+JavaScript tiene **7 tipos primitivos**. Los más comunes son:
 
 ### String (texto)
 Cadenas de texto entre comillas simples, dobles o backticks:
@@ -81,7 +81,7 @@ const eliminado = false;
 
 ### undefined y null
 - \`undefined\`: variable declarada pero sin valor asignado
-- \`null\`: valor intencionalmente vacio
+- \`null\`: valor intencionalmente vacío
 
 ### typeof
 El operador \`typeof\` te dice el tipo de un valor:
@@ -278,9 +278,9 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: '"0"', isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Un string vacio se convierte a false.",
+      hint: "Un string vacío se convierte a false.",
       explanation:
-        'Un string vacio "" es falsy. Pero "false" y "0" son strings no vacios, por lo tanto son truthy.',
+        'Un string vacío "" es falsy. Pero "false" y "0" son strings no vacíos, por lo tanto son truthy.',
     },
   ],
 };

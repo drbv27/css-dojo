@@ -15,7 +15,7 @@ export const shadowsGradientsFiltersModule: ModuleData = {
       title: "Sombras: box-shadow y text-shadow",
       content: `## Sombras: box-shadow y text-shadow
 
-Las sombras agregan profundidad y dimensión a los elementos, creando interfaces mas atractivas y con jerarquía visual.
+Las sombras agregan profundidad y dimensión a los elementos, creando interfaces más atractivas y con jerarquía visual.
 
 ### box-shadow
 
@@ -32,8 +32,8 @@ Agrega sombra a la **caja** del elemento:
 |-----------|------------|---------|
 | \`offset-x\` | Desplazamiento horizontal | \`4px\` (derecha), \`-4px\` (izquierda) |
 | \`offset-y\` | Desplazamiento vertical | \`4px\` (abajo), \`-4px\` (arriba) |
-| \`blur\` | Radio de desenfoque | \`10px\` (mas suave), \`0\` (solida) |
-| \`spread\` | Expansión de la sombra | \`2px\` (mas grande), \`-2px\` (mas pequeña) |
+| \`blur\` | Radio de desenfoque | \`10px\` (más suave), \`0\` (solida) |
+| \`spread\` | Expansión de la sombra | \`2px\` (más grande), \`-2px\` (más pequeña) |
 | \`color\` | Color de la sombra | \`rgba(0,0,0,0.2)\` |
 
 ### Sombra interior (inset)
@@ -98,7 +98,7 @@ box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
       title: "Degradados: linear-gradient y radial-gradient",
       content: `## Degradados: linear-gradient y radial-gradient
 
-Los degradados crean transiciones suaves entre dos o mas colores, usados como valor de \`background\` o \`background-image\`.
+Los degradados crean transiciones suaves entre dos o más colores, usados como valor de \`background\` o \`background-image\`.
 
 ### linear-gradient
 
@@ -428,7 +428,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra mas fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega transición de 0.3s.",
+        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra más fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega transición de 0.3s.",
       codeTemplate: {
         html: `<div class="tarjeta-visual">\n  <h3>Tarjeta con efectos</h3>\n  <p>Hover para ver la animacion de sombra</p>\n</div>`,
         cssPrefix: "",
@@ -444,7 +444,7 @@ Los filtros son excelentes para interacciones:
       },
       hint: "Define los estilos base con box-shadow sutil y transition, luego en :hover aumenta la sombra y agrega translateY negativo para que 'suba'.",
       explanation:
-        "La tarjeta combina box-shadow para profundidad, transition para suavidad, y en :hover usa translateY(-4px) para elevarla y una sombra mas grande. Este patrón es muy usado en interfaces modernas para indicar interactividad.",
+        "La tarjeta combina box-shadow para profundidad, transition para suavidad, y en :hover usa translateY(-4px) para elevarla y una sombra más grande. Este patrón es muy usado en interfaces modernas para indicar interactividad.",
     },
     {
       id: "20-ej-08",

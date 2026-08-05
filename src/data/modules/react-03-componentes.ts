@@ -95,7 +95,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Composición de componentes",
       content: `## Composición de componentes
 
-La verdadera potencia de React esta en **componer** componentes: usar componentes dentro de otros componentes.
+La verdadera potencia de React está en **componer** componentes: usar componentes dentro de otros componentes.
 
 ### Ejemplo básico
 
@@ -415,7 +415,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Ordena la jerarquía de componentes de una aplicación tipica, del mas externo al mas interno:",
+      prompt: "Ordena la jerarquía de componentes de una aplicación tipica, del más externo al más interno:",
       dragItems: [
         { id: "drag-1", content: "App", correctZone: "zone-1" },
         { id: "drag-2", content: "Layout", correctZone: "zone-2" },
@@ -426,7 +426,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "zone-1", label: "Nivel 1 (raíz)" },
         { id: "zone-2", label: "Nivel 2" },
         { id: "zone-3", label: "Nivel 3" },
-        { id: "zone-4", label: "Nivel 4 (mas interno)" },
+        { id: "zone-4", label: "Nivel 4 (más interno)" },
       ],
       validation: {
         type: "exact",
@@ -437,7 +437,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
           "drag-4": "zone-4",
         },
       },
-      hint: "App es siempre el componente raíz. Los componentes mas específicos estan mas adentro.",
+      hint: "App es siempre el componente raíz. Los componentes más específicos estan más adentro.",
       explanation:
         "En una aplicación React tipica, App es el componente raíz, que contiene un Layout, dentro del cual hay secciones como ListaProductos, y cada producto individual es un ProductoCard.",
     },
@@ -449,15 +449,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       order: 7,
       prompt: "¿Por que React recomienda componentes de función sobre componentes de clase?",
       options: [
-        { id: "a", text: "Las funciones son mas rápidas que las clases en JavaScript", isCorrect: false },
-        { id: "b", text: "Los Hooks solo funcionan en componentes de función, haciendo el código mas simple y reutilizable", isCorrect: true },
+        { id: "a", text: "Las funciones son más rápidas que las clases en JavaScript", isCorrect: false },
+        { id: "b", text: "Los Hooks solo funcionan en componentes de función, haciendo el código más simple y reutilizable", isCorrect: true },
         { id: "c", text: "Los componentes de clase fueron eliminados de React", isCorrect: false },
         { id: "d", text: "Las funciones usan menos memoria", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en la feature que se introdujo en React 16.8.",
       explanation:
-        "Desde React 16.8, los Hooks permiten usar estado y otras features en componentes de función, resultando en código mas simple y fácil de reutilizar. Los componentes de clase siguen funcionando pero ya no se recomiendan para código nuevo.",
+        "Desde React 16.8, los Hooks permiten usar estado y otras features en componentes de función, resultando en código más simple y fácil de reutilizar. Los componentes de clase siguen funcionando pero ya no se recomiendan para código nuevo.",
     },
   ],
 };

@@ -566,7 +566,7 @@ function useTasks() {
 - **Tipar** todo con TypeScript en proyectos reales
 - **Testear** el reducer y las funciones de filtro por separado
 
-> **Regla de oro:** Si un archivo tiene mas de 100-150 líneas, probablemente necesita dividirse.`,
+> **Regla de oro:** Si un archivo tiene más de 100-150 líneas, probablemente necesita dividirse.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -684,14 +684,14 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 1,
       prompt: "¿Por que useReducer es mejor que useState para un Task Manager?",
       options: [
-        { id: "a", text: "Es mas rápido que useState", isCorrect: false },
+        { id: "a", text: "Es más rápido que useState", isCorrect: false },
         { id: "b", text: "Tiene múltiples acciones y estado complejo con sub-valores", isCorrect: true },
         { id: "c", text: "useState no funciona con arrays", isCorrect: false },
         { id: "d", text: "useReducer no necesita re-renders", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en cuantas acciones diferentes tiene un Task Manager.",
-      explanation: "Un Task Manager tiene muchas acciones (agregar, editar, eliminar, toggle, filtrar) y estado complejo, lo que hace a useReducer mas organizado y predecible.",
+      explanation: "Un Task Manager tiene muchas acciones (agregar, editar, eliminar, toggle, filtrar) y estado complejo, lo que hace a useReducer más organizado y predecible.",
     },
     {
       id: "react19-ej-02",
@@ -758,7 +758,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       order: 5,
       prompt: "¿Cuál es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
       options: [
-        { id: "a", text: "Son mas rápidas que los métodos de array", isCorrect: false },
+        { id: "a", text: "Son más rápidas que los métodos de array", isCorrect: false },
         { id: "b", text: "Son fáciles de testear y reutilizar sin depender de React", isCorrect: true },
         { id: "c", text: "React las ejecuta automáticamente", isCorrect: false },
         { id: "d", text: "No necesitan importarse", isCorrect: false },

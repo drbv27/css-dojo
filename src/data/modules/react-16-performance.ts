@@ -154,7 +154,7 @@ function App() {
 - El fallback puede ser un spinner, skeleton, o cualquier JSX
 
 ### Mejores prácticas
-- Aplica lazy loading en **rutas** (lo mas común)
+- Aplica lazy loading en **rutas** (lo más común)
 - Lazy load en componentes pesados (editores, gráficos)
 - No uses lazy para componentes pequeños (el overhead no vale)
 
@@ -452,7 +452,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "a", text: "Las funciones inline causan errores", isCorrect: false },
         { id: "b", text: "Cada render crea una nueva referencia de función, que memo detecta como cambio", isCorrect: true },
         { id: "c", text: "React.memo no funciona con funciones", isCorrect: false },
-        { id: "d", text: "Las funciones inline son mas lentas", isCorrect: false },
+        { id: "d", text: "Las funciones inline son más lentas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en la comparación superficial de objetos/funciones.",

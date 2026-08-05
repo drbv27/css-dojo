@@ -39,7 +39,7 @@ selector::pseudo-elemento {
 
 ### Pseudo-elementos principales
 
-Los pseudo-elementos mas utilizados son:
+Los pseudo-elementos más utilizados son:
 - \`::first-letter\` - La primera letra
 - \`::first-line\` - La primera línea
 - \`::before\` - Contenido antes del elemento
@@ -97,7 +97,7 @@ p::first-line {
 
 ### Propiedades validas para ::first-line
 
-Las propiedades disponibles son mas limitadas que \`::first-letter\`:
+Las propiedades disponibles son más limitadas que \`::first-letter\`:
 - **Tipografía:** font, line-height, letter-spacing, word-spacing
 - **Color y fondo:** color, background
 - **Decoración:** text-decoration, text-transform
@@ -151,9 +151,9 @@ Estos pseudo-elementos **siempre** necesitan la propiedad \`content\`. Sin ella,
 | \`content: attr(data-info)\` | Inserta el valor de un atributo HTML |
 | \`content: counter(nombre)\` | Inserta un contador CSS |
 
-### Content vacio para decoraciones
+### Content vacío para decoraciones
 
-El uso mas común es \`content: ""\` combinado con posicionamiento para crear **decoraciones visuales**:
+El uso más común es \`content: ""\` combinado con posicionamiento para crear **decoraciones visuales**:
 
 \`\`\`css
 .titulo::after {
@@ -190,7 +190,7 @@ El uso mas común es \`content: ""\` combinado con posicionamiento para crear **
 - Son **hijos** del elemento (no hermanos)
 - Por defecto son elementos **en línea** (\`display: inline\`)
 - **No aparecen** en el DOM real (no los puedes seleccionar como texto)
-- No funcionan en elementos **vacios** como \`<img>\`, \`<input>\`, \`<br>\`
+- No funcionan en elementos **vacíos** como \`<img>\`, \`<input>\`, \`<br>\`
 
 > **Buena práctica:** Usa ::before y ::after para decoraciones visuales, no para contenido importante. El contenido insertado con \`content\` no es accesible para lectores de pantalla de la misma manera que el HTML real.`,
       codeExample: {
@@ -290,7 +290,7 @@ Crear triangulos, circulos y otras formas:
 }
 \`\`\`
 
-> **Resumen:** ::before y ::after son dos de las herramientas mas poderosas de CSS. Dominandolos puedes crear interfaces ricas sin agregar HTML extra.`,
+> **Resumen:** ::before y ::after son dos de las herramientas más poderosas de CSS. Dominandolos puedes crear interfaces ricas sin agregar HTML extra.`,
       codeExample: {
         html: `<blockquote class="cita">\n  El unico modo de hacer un gran trabajo es amar lo que haces.\n</blockquote>\n<div class="etiqueta" data-estado="Nuevo">Producto Premium</div>`,
         css: `.cita {\n  font-style: italic;\n  font-size: 18px;\n  color: #555;\n  padding: 16px 24px;\n  border-left: 4px solid steelblue;\n  position: relative;\n}\n\n.cita::before {\n  content: "\\201C";\n  font-size: 4em;\n  color: steelblue;\n  position: absolute;\n  top: -10px;\n  left: 8px;\n  opacity: 0.3;\n}\n\n.etiqueta {\n  display: inline-block;\n  padding: 8px 16px;\n  background: #f0f0f0;\n  border-radius: 4px;\n  margin-top: 20px;\n}\n\n.etiqueta::before {\n  content: attr(data-estado);\n  background: tomato;\n  color: white;\n  padding: 2px 8px;\n  border-radius: 3px;\n  font-size: 12px;\n  margin-right: 8px;\n}`,
@@ -355,7 +355,7 @@ Crear triangulos, circulos y otras formas:
       validation: { type: "exact", answer: "c" },
       hint: "Es la propiedad que define QUE contenido se inserta. Sin ella, el pseudo-elemento no existe.",
       explanation:
-        "La propiedad 'content' es absolutamente obligatoria para ::before y ::after. Incluso si no quieres mostrar texto, necesitas content: \"\" (cadena vacia). Sin esta propiedad, el pseudo-elemento simplemente no se renderiza.",
+        "La propiedad 'content' es absolutamente obligatoria para ::before y ::after. Incluso si no quieres mostrar texto, necesitas content: \"\" (cadena vacía). Sin esta propiedad, el pseudo-elemento simplemente no se renderiza.",
     },
     {
       id: "08-ej-04",
@@ -430,7 +430,7 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa .título::after con content: \"\" (vacio, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
+      hint: "Usa .título::after con content: \"\" (vacío, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
       explanation:
         "Se usa ::after con content: \"\" para crear un elemento visual sin texto. display: block hace que ocupe su propia línea. Luego se define el tamaño (width/height) y el color de fondo para crear la línea decorativa.",
     },
@@ -447,7 +447,7 @@ Crear triangulos, circulos y otras formas:
         { id: "b", text: "Elementos en línea como <span>", isCorrect: false },
         {
           id: "c",
-          text: "Elementos vacios como <img>, <input> y <br>",
+          text: "Elementos vacíos como <img>, <input> y <br>",
           isCorrect: true,
         },
         { id: "d", text: "Elementos con clase", isCorrect: false },
@@ -455,7 +455,7 @@ Crear triangulos, circulos y otras formas:
       validation: { type: "exact", answer: "c" },
       hint: "Son elementos que no pueden tener contenido hijo. No tienen etiqueta de cierre.",
       explanation:
-        "::before y ::after se insertan DENTRO del elemento, como hijos. Los elementos vacios (void elements) como <img>, <input>, <br> y <hr> no pueden tener contenido hijo, por lo que estos pseudo-elementos no funcionan en ellos.",
+        "::before y ::after se insertan DENTRO del elemento, como hijos. Los elementos vacíos (void elements) como <img>, <input>, <br> y <hr> no pueden tener contenido hijo, por lo que estos pseudo-elementos no funcionan en ellos.",
     },
     {
       id: "08-ej-08",

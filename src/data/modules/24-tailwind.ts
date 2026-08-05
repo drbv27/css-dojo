@@ -4,7 +4,7 @@ export const tailwindModule: ModuleData = {
   slug: "tailwind-css",
   title: "Tailwind CSS",
   description:
-    "Domina el framework utility-first mas moderno: construye interfaces completas usando clases utilitarias, responsive design, estados interactivos y dark mode con Tailwind CSS.",
+    "Domina el framework utility-first más moderno: construye interfaces completas usando clases utilitarias, responsive design, estados interactivos y dark mode con Tailwind CSS.",
   order: 24,
   dojo: "css" as const,
   category: "frameworks",
@@ -39,13 +39,13 @@ export const tailwindModule: ModuleData = {
 
 ### Ventajas de Tailwind
 
-1. **No inventas nombres de clases** - No mas ".contenedor-principal-wrapper"
+1. **No inventas nombres de clases** - No más ".contenedor-principal-wrapper"
 2. **CSS no crece** - Reutilizas clases existentes, el archivo CSS no crece con cada componente
 3. **Cambios seguros** - Modificar una clase solo afecta al elemento donde la usas
 4. **Diseño consistente** - Sistema de espaciado y colores predefinido
 5. **Responsive built-in** - Prefijos como \`md:\`, \`lg:\` para cada breakpoint
 
-### Como incluir Tailwind
+### Cómo incluir Tailwind
 
 Para prototipar rápido, usa el CDN (Play CDN):
 
@@ -504,7 +504,7 @@ Los prefijos se pueden combinar:
 </button>
 \`\`\`
 
-> **Importante:** Tailwind es mobile-first. Los estilos base son para móvil, y los prefijos (\`md:\`, \`lg:\`) agregan estilos para pantallas mas grandes. No existe un prefijo para "solo móvil" - simplemente no uses prefijo.`,
+> **Importante:** Tailwind es mobile-first. Los estilos base son para móvil, y los prefijos (\`md:\`, \`lg:\`) agregan estilos para pantallas más grandes. No existe un prefijo para "solo móvil" - simplemente no uses prefijo.`,
       codeExample: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-6 bg-gray-100 space-y-4">\n  <button class="px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 active:bg-blue-700 active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg">\n    Hover y Active\n  </button>\n  <div class="group bg-white rounded-xl p-5 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-gray-100">\n    <h3 class="text-lg font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Group Hover</h3>\n    <p class="text-gray-500 group-hover:text-gray-700 transition-colors text-sm mt-1">Pasa el mouse sobre toda la tarjeta para ver el efecto group-hover.</p>\n  </div>\n  <input class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all" placeholder="Focus en este input...">\n</div>`,
         css: ``,
@@ -630,7 +630,7 @@ Los prefijos se pueden combinar:
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un botón con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver mas'.",
+        "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un botón con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver más'.",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-8 bg-gray-100 min-h-[200px] flex items-center justify-center">`,
         cssPrefix: "",
@@ -684,7 +684,7 @@ Los prefijos se pueden combinar:
       xpReward: 30,
       order: 8,
       prompt:
-        "Completa el prefijo de Tailwind para aplicar un fondo oscuro cuando el modo oscuro esta activo:",
+        "Completa el prefijo de Tailwind para aplicar un fondo oscuro cuando el modo oscuro está activo:",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="bg-white ___:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg">\n  Contenido con dark mode\n</div>`,
         cssPrefix: "",
@@ -694,7 +694,7 @@ Los prefijos se pueden combinar:
       validation: { type: "exact", answer: "dark" },
       hint: "Es el prefijo de cuatro letras que activa estilos para el modo oscuro.",
       explanation:
-        "El prefijo dark: en Tailwind aplica estilos cuando el modo oscuro esta activo. Se puede activar por clase (agregando 'dark' al html) o por preferencia del sistema (prefers-color-scheme). Ejemplo: dark:bg-gray-900 aplica fondo oscuro solo en dark mode.",
+        "El prefijo dark: en Tailwind aplica estilos cuando el modo oscuro está activo. Se puede activar por clase (agregando 'dark' al html) o por preferencia del sistema (prefers-color-scheme). Ejemplo: dark:bg-gray-900 aplica fondo oscuro solo en dark mode.",
     },
   ],
 };

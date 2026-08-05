@@ -84,7 +84,7 @@ Se accede a las variables con la función \`var()\`:
 
 ### Scope (ámbito) de las variables
 
-Las variables CSS siguen las reglas de **cascada y herencia**. Una variable declarada en un elemento esta disponible para ese elemento y todos sus descendientes:
+Las variables CSS siguen las reglas de **cascada y herencia**. Una variable declarada en un elemento está disponible para ese elemento y todos sus descendientes:
 
 \`\`\`css
 :root {
@@ -122,7 +122,7 @@ Puedes declarar variables en cualquier selector para limitar su alcance:
 
 ### Valores de respaldo (fallback)
 
-La función \`var()\` acepta un segundo parámetro como **valor de respaldo** por si la variable no esta definida:
+La función \`var()\` acepta un segundo parámetro como **valor de respaldo** por si la variable no está definida:
 
 \`\`\`css
 .elemento {
@@ -172,7 +172,7 @@ Las variables se pueden usar dentro de \`calc()\` para calculos dinámicos:
       title: "Temas con variables CSS",
       content: `## Temas con variables CSS
 
-Una de las aplicaciones mas poderosas de las variables CSS es la creación de **temas** (como modo claro y oscuro).
+Una de las aplicaciones más poderosas de las variables CSS es la creación de **temas** (como modo claro y oscuro).
 
 ### Estructura de temas
 
@@ -315,14 +315,14 @@ Detecta automáticamente la preferencia del sistema operativo:
         "¿Qué hace la declaración 'color: var(--color-texto, #333)'?",
       options: [
         { id: "a", text: "Aplica ambos colores al mismo tiempo", isCorrect: false },
-        { id: "b", text: "Usa --color-texto, o #333 si la variable no esta definida", isCorrect: true },
+        { id: "b", text: "Usa --color-texto, o #333 si la variable no está definida", isCorrect: true },
         { id: "c", text: "Crea una nueva variable con valor #333", isCorrect: false },
         { id: "d", text: "Es un error de sintaxis", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "El segundo parámetro de var() es un valor de respaldo o fallback.",
       explanation:
-        "El segundo argumento de var() es un valor de respaldo (fallback). Si --color-texto no esta definida en ningun ancestro, se usa #333. Es una buena práctica incluir fallbacks en componentes reutilizables.",
+        "El segundo argumento de var() es un valor de respaldo (fallback). Si --color-texto no está definida en ningun ancestro, se usa #333. Es una buena práctica incluir fallbacks en componentes reutilizables.",
     },
     {
       id: "19-ej-04",
@@ -436,14 +436,14 @@ Detecta automáticamente la preferencia del sistema operativo:
         "¿Si declaras --color: blue en :root y --color: red en .sección, que color tendra un <p> dentro de .sección?",
       options: [
         { id: "a", text: "blue (la variable global tiene prioridad)", isCorrect: false },
-        { id: "b", text: "red (la variable mas cercana tiene prioridad)", isCorrect: true },
+        { id: "b", text: "red (la variable más cercana tiene prioridad)", isCorrect: true },
         { id: "c", text: "purple (se mezclan ambos valores)", isCorrect: false },
         { id: "d", text: "Es un error, no se puede redeclarar una variable", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Las variables CSS siguen las reglas de herencia y cascada, como cualquier propiedad CSS.",
       explanation:
-        "Las variables CSS se heredan de padres a hijos. Una variable declarada en .sección sobreescribe la de :root para todos los descendientes de .sección. El <p> hereda el valor 'red' de su ancestro mas cercano que define --color.",
+        "Las variables CSS se heredan de padres a hijos. Una variable declarada en .sección sobreescribe la de :root para todos los descendientes de .sección. El <p> hereda el valor 'red' de su ancestro más cercano que define --color.",
     },
   ],
 };

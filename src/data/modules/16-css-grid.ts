@@ -4,7 +4,7 @@ export const cssGridModule: ModuleData = {
   slug: "css-grid",
   title: "CSS Grid",
   description:
-    "Domina el sistema de cuadricula bidimensional mas poderoso de CSS: filas, columnas, areas y diseños responsivos con Grid.",
+    "Domina el sistema de cuadricula bidimensional más poderoso de CSS: filas, columnas, areas y diseños responsivos con Grid.",
   order: 16,
   dojo: "css" as const,
   category: "advanced",
@@ -170,7 +170,7 @@ Puedes asignar **nombres a las areas** de la cuadricula para crear layouts de fo
 .footer  { grid-area: footer; }
 \`\`\`
 
-Cada cadena entre comillas representa una **fila**. Los nombres repetidos indican que el area ocupa varias celdas. Usa un punto (\`.\`) para celdas vacias:
+Cada cadena entre comillas representa una **fila**. Los nombres repetidos indican que el area ocupa varias celdas. Usa un punto (\`.\`) para celdas vacías:
 
 \`\`\`css
 grid-template-areas:
@@ -201,7 +201,7 @@ Puedes dar nombres a las líneas de la cuadricula entre corchetes:
 - **Líneas con números**: Para posicionamiento rápido y preciso
 - **Líneas nombradas**: Cuando necesitas referenciar posiciones con nombres significativos
 
-> **Buena práctica:** \`grid-template-areas\` es una de las formas mas legibles de definir un layout. Usala siempre que puedas.`,
+> **Buena práctica:** \`grid-template-areas\` es una de las formas más legibles de definir un layout. Usala siempre que puedas.`,
       codeExample: {
         html: `<div class="pagina">\n  <header class="hd">Encabezado</header>\n  <nav class="nav">Navegacion</nav>\n  <main class="contenido">Contenido principal</main>\n  <aside class="lateral">Lateral</aside>\n  <footer class="pie">Pie de pagina</footer>\n</div>`,
         css: `.pagina {\n  display: grid;\n  grid-template-columns: 180px 1fr 150px;\n  grid-template-rows: 50px 1fr 40px;\n  grid-template-areas:\n    "hd hd hd"\n    "nav contenido lateral"\n    "pie pie pie";\n  gap: 8px;\n  min-height: 300px;\n}\n.hd { grid-area: hd; background: #1abc9c; }\n.nav { grid-area: nav; background: #3498db; }\n.contenido { grid-area: contenido; background: #ecf0f1; }\n.lateral { grid-area: lateral; background: #9b59b6; }\n.pie { grid-area: pie; background: #e74c3c; }\n.pagina > * {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: white;\n  font-weight: bold;\n  border-radius: 6px;\n}\n.contenido { color: #333; }`,
@@ -243,8 +243,8 @@ Estas palabras clave dentro de \`repeat()\` crean cuadriculas **responsivas auto
 
 ### Diferencia entre auto-fill y auto-fit
 
-- **auto-fill**: Crea columnas incluso si estan vacias. Las columnas vacias ocupan espacio
-- **auto-fit**: Colapsa las columnas vacias, permitiendo que las ocupadas se expandan
+- **auto-fill**: Crea columnas incluso si estan vacías. Las columnas vacías ocupan espacio
+- **auto-fit**: Colapsa las columnas vacías, permitiendo que las ocupadas se expandan
 
 En la práctica, cuando tienes suficientes elementos para llenar todas las columnas, ambos se comportan igual. La diferencia se nota cuando hay **pocos elementos**.
 
@@ -266,7 +266,7 @@ Valores de \`grid-auto-flow\`:
 - \`column\`: Nuevos elementos van en columnas
 - \`dense\`: Intenta rellenar huecos en la cuadricula
 
-> **Patrón estrella:** \`repeat(auto-fit, minmax(250px, 1fr))\` es la solución mas elegante para cuadriculas responsivas. Funciona sin media queries y se adapta a cualquier pantalla.`,
+> **Patrón estrella:** \`repeat(auto-fit, minmax(250px, 1fr))\` es la solución más elegante para cuadriculas responsivas. Funciona sin media queries y se adapta a cualquier pantalla.`,
       codeExample: {
         html: `<div class="galeria">\n  <div class="foto">1</div>\n  <div class="foto">2</div>\n  <div class="foto">3</div>\n  <div class="foto">4</div>\n  <div class="foto">5</div>\n  <div class="foto">6</div>\n  <div class="foto">7</div>\n  <div class="foto">8</div>\n</div>`,
         css: `.galeria {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));\n  grid-auto-rows: 100px;\n  gap: 10px;\n}\n.foto {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-radius: 8px;\n}`,
@@ -593,7 +593,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       validation: { type: "exact", answer: "b" },
       hint: "subgrid hereda las pistas que el elemento ABARCA. Si no abarca ninguna, no hay nada que heredar.",
       explanation:
-        "Hacen falta las dos cosas: abarcar las pistas con grid-row: span 3 y declarar subgrid. Sin el span la tarjeta ocupa una sola fila del padre, así que no hay tres pistas que adoptar y la alineación entre tarjetas no ocurre. Es el olvido mas común con subgrid.",
+        "Hacen falta las dos cosas: abarcar las pistas con grid-row: span 3 y declarar subgrid. Sin el span la tarjeta ocupa una sola fila del padre, así que no hay tres pistas que adoptar y la alineación entre tarjetas no ocurre. Es el olvido más común con subgrid.",
     },
     {
       id: "16-ej-10",

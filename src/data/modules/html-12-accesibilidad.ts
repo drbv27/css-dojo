@@ -19,7 +19,7 @@ La **accesibilidad web** (a11y) significa crear sitios que todas las personas pu
 
 ### Datos importantes
 
-- Mas del **15% de la población mundial** tiene alguna discapacidad
+- Más del **15% de la población mundial** tiene alguna discapacidad
 - En muchos paises, la accesibilidad web es un **requisito legal**
 - Un sitio accesible también es mejor para **todos** los usuarios
 
@@ -89,7 +89,7 @@ button:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
 | \`aria-label\` | Etiqueta accesible (cuando no hay texto visible) |
 | \`aria-hidden="true"\` | Oculta el elemento de lectores de pantalla |
 | \`aria-describedby\` | Referencia a un elemento con descripción adicional |
-| \`aria-expanded\` | Indica si un elemento desplegable esta abierto |
+| \`aria-expanded\` | Indica si un elemento desplegable está abierto |
 | \`aria-live\` | Anuncia cambios dinámicos (\`polite\` o \`assertive\`) |
 | \`aria-required\` | Indica que un campo es obligatorio |
 
@@ -148,7 +148,7 @@ El atributo \`alt\` en imágenes es **obligatorio** para la accesibilidad.
 
 **Buenas prácticas:**
 - Describe lo que muestra la imagen, no "imagen de..."
-- Si la imagen es decorativa, usa \`alt=""\` (vacio, no omitido)
+- Si la imagen es decorativa, usa \`alt=""\` (vacío, no omitido)
 - Se específico: "Gato naranja durmiendo en un sofa" es mejor que "Gato"
 
 \`\`\`html
@@ -336,7 +336,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       },
       hint: "El alt debe describir el contenido de la imagen de forma útil.",
       explanation:
-        'Un buen alt describe especificamente la imagen. Para imágenes decorativas se usa alt="" vacio. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
+        'Un buen alt describe especificamente la imagen. Para imágenes decorativas se usa alt="" vacío. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
     },
     {
       id: "html12-ej-06",

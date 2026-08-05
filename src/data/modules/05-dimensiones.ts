@@ -77,7 +77,7 @@ Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el
 
 Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y el borde se descuentan del contenido en vez de sumarse por fuera. La caja del ejemplo mide 300px, y si le agregas padding el contenido se encoge pero la caja no se mueve.
 
-> **Buena práctica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que mas dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
+> **Buena práctica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que más dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
       codeExample: {
         html: `<div class="caja-fija">Caja fija: 300px x 150px</div>\n<div class="caja-porcentaje">Caja flexible: 80% del padre</div>\n<div class="caja-auto">Caja auto: se ajusta al contenido</div>`,
         css: `.caja-fija {\n  width: 300px;\n  height: 150px;\n  background-color: lightblue;\n  margin-bottom: 10px;\n}\n.caja-porcentaje {\n  width: 80%;\n  height: 100px;\n  background-color: lightcoral;\n  margin-bottom: 10px;\n}\n.caja-auto {\n  width: auto;\n  height: auto;\n  background-color: lightgreen;\n  padding: 10px;\n}`,
@@ -103,11 +103,11 @@ Define el **ancho máximo** que puede tener un elemento. Es clave para el **dise
 }
 \`\`\`
 
-Esto crea un contenedor que ocupa todo el ancho en pantallas pequeñas pero no crece mas de 800px en pantallas grandes.
+Esto crea un contenedor que ocupa todo el ancho en pantallas pequeñas pero no crece más de 800px en pantallas grandes.
 
 ### min-width
 
-Define el **ancho mínimo**. El elemento nunca sera mas estrecho que este valor:
+Define el **ancho mínimo**. El elemento nunca sera más estrecho que este valor:
 
 \`\`\`css
 .boton {
@@ -129,7 +129,7 @@ Funcionan igual pero para el **alto**:
 
 ### Patrón común: contenedor centrado
 
-Este es uno de los patrones mas usados en CSS:
+Este es uno de los patrones más usados en CSS:
 
 \`\`\`css
 .contenedor {
@@ -226,7 +226,7 @@ Funciona igual que padding (1-4 valores, sentido del reloj):
 
 ### Centrar con margin auto
 
-Uno de los trucos mas clasicos de CSS. Para centrar un elemento horizontalmente:
+Uno de los trucos más clasicos de CSS. Para centrar un elemento horizontalmente:
 
 \`\`\`css
 .centrado {
@@ -259,7 +259,7 @@ Cuando dos márgenes verticales se tocan, **no se suman sino que se fusionan**: 
 
 Este comportamiento solo ocurre con **márgenes verticales** (top/bottom), nunca con horizontales.
 
-> **Atención:** El colapso de márgenes es una de las fuentes de confusión mas comunes en CSS. Recuerda: márgenes verticales adyacentes se fusionan, los horizontales no.`,
+> **Atención:** El colapso de márgenes es una de las fuentes de confusión más comunes en CSS. Recuerda: márgenes verticales adyacentes se fusionan, los horizontales no.`,
       codeExample: {
         html: `<div class="caja-1">Caja 1 (margin-bottom: 30px)</div>\n<div class="caja-2">Caja 2 (margin-top: 20px)</div>\n<div class="centrada">Caja centrada con margin: 20px auto</div>`,
         css: `.caja-1 {\n  background-color: lightcoral;\n  padding: 15px;\n  margin-bottom: 30px;\n}\n.caja-2 {\n  background-color: lightblue;\n  padding: 15px;\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.centrada {\n  width: 300px;\n  margin: 20px auto;\n  background-color: lightgreen;\n  padding: 15px;\n  text-align: center;\n  border-radius: 8px;\n}`,
@@ -361,7 +361,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 2,
       prompt:
-        "Completa la propiedad para limitar el ancho máximo del contenedor a 800px, permitiendo que sea mas pequeño en pantallas chicas:",
+        "Completa la propiedad para limitar el ancho máximo del contenedor a 800px, permitiendo que sea más pequeño en pantallas chicas:",
       codeTemplate: {
         html: `<div class="contenedor">Contenido del contenedor</div>`,
         cssPrefix: ".contenedor {\n  ",
@@ -371,7 +371,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       validation: { type: "exact", answer: "max-width" },
       hint: "Es una propiedad que establece el Máximo ancho que un elemento puede tener. Dos palabras unidas con guion.",
       explanation:
-        "La propiedad 'max-width' limita el ancho máximo de un elemento. Combinada con 'width: 100%', crea un contenedor que es flexible en pantallas pequeñas pero no crece mas de 800px.",
+        "La propiedad 'max-width' limita el ancho máximo de un elemento. Combinada con 'width: 100%', crea un contenedor que es flexible en pantallas pequeñas pero no crece más de 800px.",
     },
     {
       id: "05-ej-03",

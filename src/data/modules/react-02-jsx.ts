@@ -44,7 +44,7 @@ const titulo = React.createElement("h1", null, "Hola");
 2. **Todas las etiquetas deben cerrarse**: \`<img />\`, \`<br />\`, \`<input />\`
 3. **La mayoria de atributos usan camelCase**: \`className\`, \`onClick\`, \`htmlFor\`
 
-> **Recuerda:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu código mas legible y fácil de escribir.`,
+> **Recuerda:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu código más legible y fácil de escribir.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -421,7 +421,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "<>" },
       hint: "Es la versión corta de React.Fragment.",
       explanation:
-        "El Fragment corto <> </> permite retornar múltiples elementos sin agregar un nodo extra al DOM. Es equivalente a <React.Fragment> pero mas conciso.",
+        "El Fragment corto <> </> permite retornar múltiples elementos sin agregar un nodo extra al DOM. Es equivalente a <React.Fragment> pero más conciso.",
     },
     {
       id: "react02-ej-07",
