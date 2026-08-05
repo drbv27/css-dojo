@@ -267,6 +267,72 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
       },
       order: 4,
     },
+    {
+      id: "05-leccion-05",
+      title: "Proporción: aspect-ratio",
+      content: `## Proporción: aspect-ratio
+
+Ya sabés fijar el ancho y el alto por separado. Pero hay un caso muy común donde eso no alcanza: **cuando querés que la caja mantenga una proporción**.
+
+### El problema
+
+Pensá en la miniatura de un video. Tiene que ser rectangular 16:9. Si el ancho depende del espacio disponible, cuánto mide el alto?
+
+Con \`width\` y \`height\` sueltos no se puede: cada vez que el ancho cambia, habría que recalcular el alto a mano.
+
+\`\`\`css
+/* Esto NO se adapta: si el contenedor cambia, la proporción se rompe */
+.miniatura {
+  width: 320px;
+  height: 180px;
+}
+\`\`\`
+
+### La solución
+
+\`aspect-ratio\` declara la proporción y deja que el navegador calcule la dimensión que falta.
+
+\`\`\`css
+.miniatura {
+  width: 100%;
+  aspect-ratio: 16 / 9;  /* el alto sale solo */
+}
+\`\`\`
+
+Ahora el ancho puede ser lo que sea — 320px, 800px, el 100% de lo que haya — y el alto **siempre** va a ser la novena parte del ancho multiplicada por 9. La proporción no se rompe nunca.
+
+### Cómo se escribe
+
+\`\`\`css
+aspect-ratio: 1 / 1;    /* cuadrado */
+aspect-ratio: 16 / 9;   /* pantalla ancha */
+aspect-ratio: 4 / 3;    /* foto clásica */
+aspect-ratio: 3 / 4;    /* vertical, tipo retrato */
+aspect-ratio: 1.5;      /* un solo número también vale: equivale a 3 / 2 */
+\`\`\`
+
+Se lee **ancho / alto**. En \`16 / 9\` el ancho es 16 partes y el alto 9, así que queda apaisado. Si lo invertís a \`9 / 16\`, queda vertical como la pantalla de un teléfono.
+
+### La regla para no equivocarse
+
+> \`aspect-ratio\` calcula la dimensión que **no** declaraste. Si declarás las dos, no tiene nada que calcular y se ignora.
+
+| Declarás | \`aspect-ratio\` calcula |
+|---|---|
+| solo \`width\` | el alto |
+| solo \`height\` | el ancho |
+| ambos | nada, gana lo que escribiste |
+
+Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer, y \`aspect-ratio\` se encarga de que el alto acompañe.
+
+> **Para qué sirve de verdad:** avatares perfectamente cuadrados, miniaturas de video que no se deforman, y tarjetas que mantienen su forma sin importar el ancho de la pantalla.`,
+      codeExample: {
+        html: `<div class="avatar">1 / 1</div>\n<div class="video">16 / 9</div>\n<div class="retrato">3 / 4</div>`,
+        css: `.avatar {\n  width: 100px;\n  aspect-ratio: 1 / 1;\n  background-color: lightcoral;\n}\n.video {\n  width: 240px;\n  aspect-ratio: 16 / 9;\n  background-color: lightblue;\n}\n.retrato {\n  width: 120px;\n  aspect-ratio: 3 / 4;\n  background-color: lightgreen;\n}`,
+        editable: true,
+      },
+      order: 5,
+    },
   ],
   exercises: [
     {
@@ -470,6 +536,50 @@ Este comportamiento solo ocurre con **margenes verticales** (top/bottom), nunca 
       hint: "Para centrar un elemento necesitas dos cosas: un ancho definido (width) y margin: 0 auto.",
       explanation:
         "Para centrar horizontalmente se necesita: 1) Un ancho definido (width: 400px) para que haya espacio sobrante, y 2) margin: 0 auto que reparte ese espacio equitativamente a ambos lados.",
+    },
+    {
+      id: "05-ej-09",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 15,
+      order: 9,
+      prompt:
+        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. Que forma termina teniendo la caja?",
+      options: [
+        { id: "a", text: "Un cuadrado de 400x400", isCorrect: false },
+        { id: "b", text: "Un cuadrado de 100x100", isCorrect: false },
+        { id: "c", text: "Un rectangulo de 400x100", isCorrect: true },
+        { id: "d", text: "La caja no se muestra", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "c" },
+      hint: "aspect-ratio calcula la dimension que NO declaraste. Aca declaraste las dos.",
+      explanation:
+        "aspect-ratio solo calcula la dimension que falta. Al declarar width y height a la vez no queda nada por calcular, asi que se ignora y la caja mide 400x100. Para que la proporcion funcione hay que declarar una sola de las dos.",
+    },
+    {
+      id: "05-ej-10",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 20,
+      order: 10,
+      prompt:
+        "Arma dos piezas con proporcion fija. A la clase 'avatar' dale width: 80px, aspect-ratio: 1 / 1 y background-color: lightcoral. A la clase 'miniatura' dale width: 240px, aspect-ratio: 16 / 9 y background-color: lightblue. No declares height en ninguna.",
+      codeTemplate: {
+        html: `<div class="avatar"></div>\n<div class="miniatura"></div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".avatar {\n  width: 80px;\n  aspect-ratio: 1 / 1;\n  background-color: lightcoral;\n}\n.miniatura {\n  width: 240px;\n  aspect-ratio: 16 / 9;\n  background-color: lightblue;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "La proporcion se escribe ancho / alto. Un cuadrado es 1 / 1 y una pantalla ancha es 16 / 9. Nada de height.",
+      explanation:
+        "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiara, el alto acompana y la proporcion se mantiene.",
     },
   ],
 };

@@ -255,6 +255,62 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
       },
       order: 4,
     },
+    {
+      id: "04-leccion-05",
+      title: "Alinear el texto",
+      content: `## Alinear el texto
+
+Hasta ahora elegimos **qué** fuente usar y de **qué tamaño**. Falta decidir **dónde** se apoya el texto dentro de su espacio. Eso lo hace \`text-align\`.
+
+Vas a ver esta propiedad en casi todos los ejemplos del curso, así que conviene entenderla bien ahora.
+
+### Los cuatro valores
+
+\`\`\`css
+p { text-align: left; }     /* pegado a la izquierda (por defecto) */
+p { text-align: right; }    /* pegado a la derecha */
+p { text-align: center; }   /* centrado */
+p { text-align: justify; }  /* estirado para que ambos bordes queden rectos */
+\`\`\`
+
+### La trampa que atrapa a todo el mundo
+
+Esta es la parte importante, y la que genera más confusión al empezar:
+
+> \`text-align\` alinea el **contenido que va dentro** de una caja. **No mueve la caja.**
+
+Si tenés un \`div\` de 300px dentro de una página de 1000px y le ponés \`text-align: center\`, el div **no se centra**. Lo que se centra es el texto **adentro** del div, que sigue estando a la izquierda de la página.
+
+Para centrar la caja en sí hace falta otra técnica, y la vas a ver en el próximo módulo. Por ahora quedate con la distinción:
+
+| Querés centrar... | Herramienta |
+|---|---|
+| el **texto** dentro de una caja | \`text-align: center\` |
+| la **caja** dentro de su contenedor | otra cosa (próximo módulo) |
+
+### Se hereda
+
+\`text-align\` es **heredable**: si la aplicás a un contenedor, todo el texto de los elementos que están adentro se alinea igual, sin repetirla en cada uno.
+
+\`\`\`css
+.tarjeta { text-align: center; }
+/* el h3 y el p que estén dentro de .tarjeta quedan centrados */
+\`\`\`
+
+Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe una vez y baja sola.
+
+### Sobre \`justify\`
+
+\`justify\` estira los espacios entre palabras para que el borde derecho quede recto, como en un diario. Se ve prolijo en columnas anchas, pero en columnas angostas abre huecos enormes entre palabras — los tipógrafos les dicen **ríos**. Usalo con cuidado: en pantallas, \`left\` casi siempre se lee mejor.
+
+> **Regla práctica:** \`left\` para cuerpos de texto, \`center\` para títulos y tarjetas, \`right\` para números y fechas, \`justify\` casi nunca.`,
+      codeExample: {
+        html: `<div class="tarjeta">\n  <h3>Título centrado</h3>\n  <p>Este párrafo hereda el centrado de la tarjeta.</p>\n</div>\n<p class="fecha">12 de marzo</p>\n<p class="cuerpo">Un cuerpo de texto largo se lee mejor alineado a la izquierda, porque el ojo siempre encuentra el mismo punto de partida en cada línea nueva.</p>`,
+        css: `.tarjeta {\n  text-align: center;\n  font-family: Arial, sans-serif;\n}\n.fecha {\n  text-align: right;\n  font-size: 14px;\n}\n.cuerpo {\n  text-align: left;\n  line-height: 1.6;\n}`,
+        editable: true,
+      },
+      order: 5,
+    },
   ],
   exercises: [
     {
@@ -434,6 +490,58 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
       hint: "La propiedad empieza con 'font-' y su valor para cursiva es 'italic'.",
       explanation:
         "La propiedad 'font-style' con el valor 'italic' convierte el texto a cursiva. 'font-weight' controla el grosor, 'text-decoration' agrega subrayado/tachado, y 'font-variant' controla variantes como versalitas.",
+    },
+    {
+      id: "04-ej-09",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 15,
+      order: 9,
+      prompt:
+        "Un div de 300px de ancho está dentro de una página de 1000px. Le aplicás text-align: center. Qué pasa?",
+      options: [
+        {
+          id: "a",
+          text: "El div se mueve al centro de la página",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "El texto se centra dentro del div, pero el div no se mueve",
+          isCorrect: true,
+        },
+        { id: "c", text: "Se centran el div y su texto", isCorrect: false },
+        { id: "d", text: "No pasa nada, hace falta un ancho mayor", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "La propiedad se llama text-align. Pensá en qué palabra tiene: alinea texto, no cajas.",
+      explanation:
+        "text-align alinea el contenido que va DENTRO de la caja; no mueve la caja. El div sigue pegado a la izquierda de la página y su texto queda centrado en esos 300px. Para centrar la caja hace falta otra tecnica, que ves en el modulo de dimensiones.",
+    },
+    {
+      id: "04-ej-10",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 20,
+      order: 10,
+      prompt:
+        "Arma el encabezado de una nota. A la clase 'titulo' dale text-align: center y font-size: 28px. A la clase 'firma' dale text-align: right y font-style: italic. Al parrafo con clase 'cuerpo' dale text-align: left y line-height: 1.6.",
+      codeTemplate: {
+        html: `<h2 class="titulo">Cronica de un lunes</h2>\n<p class="cuerpo">El texto del cuerpo se lee mejor alineado a la izquierda, porque el ojo encuentra el mismo punto de partida en cada linea.</p>\n<p class="firma">Por Ana Martinez</p>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".titulo {\n  text-align: center;\n  font-size: 28px;\n}\n.firma {\n  text-align: right;\n  font-style: italic;\n}\n.cuerpo {\n  text-align: left;\n  line-height: 1.6;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Son tres reglas separadas, una por clase. Cada una lleva su text-align mas la segunda propiedad que pide el enunciado.",
+      explanation:
+        "Cada alineacion responde a su contenido: los titulos centrados equilibran el bloque, las firmas y fechas a la derecha se leen como un cierre, y el cuerpo a la izquierda es lo que mejor se lee en pantalla.",
     },
   ],
 };
