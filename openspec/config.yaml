@@ -5,12 +5,16 @@ context: |
   Tailwind CSS v4. Package manager: npm.
   Architecture: Route groups (app)/(auth)/(teacher)/api; custom JWT auth in src/lib/auth.ts
   (dev-dojo-token cookie), NOT NextAuth despite next-auth being a listed dependency.
-  Content: static TypeScript modules in src/data/modules/ (css/html/js/react tracks).
+  Content: static TypeScript modules in src/data/modules/ — 101 modules across SIX
+  tracks: css, html, js, react, react-eco, nextjs. Per-dojo category order and
+  presentation live in src/data/moduleCategories.ts and BOTH the student listing
+  and the teacher panel read from it; a module whose category is not listed there
+  renders NOWHERE and raises no error.
   Testing (as of 2026-08-04, after the automated-gates change merged to main):
   FIVE working gates — `npm run typecheck` (tsc --noEmit), `npm run lint`
   (eslint . against a flat eslint.config.mjs; exits 0 with 0 errors and 50
-  warnings), `npm run build`, `npm run test:run` (Vitest + jsdom, 18 tests over
-  src/lib/xp.ts), and `npm run test:e2e` (Playwright chromium, one landing smoke
+  warnings), `npm run build`, `npm run test:run` (Vitest + jsdom, 128 tests as of
+  2026-08-05), and `npm run test:e2e` (Playwright chromium, one landing smoke
   test). All five run in CI on every push to main and every PR via
   .github/workflows/ci.yml, verified green on a real runner.
   Deploy: Coolify + Nixpacks on a VPS, MANUAL redeploy from the UI after push.
@@ -21,6 +25,30 @@ context: |
   use a throwaway container: `docker run -d --name css-dojo-qa-mongo -p
   27019:27017 mongo:7` then `MONGODB_URI="mongodb://127.0.0.1:27019/cssdojo-qa"
   npm run dev`. Port 27018 is taken by an unrelated project.
+
+  EXERCISE GRADING (essential context for any change touching exercises):
+  Grading is CLIENT-SIDE. ValidationType is exact | regex | includes |
+  includes-ordered | css-rules | html-structure | visual. Only TWO are
+  structural: `css-rules` (src/lib/cssRules.ts, parses CSS into
+  selector -> declarations) and `html-structure` (src/lib/htmlStructure.ts,
+  parses into a DOM and checks CSS-selector expectations). There is NO validator
+  for JavaScript, and no JS parser is available in the browser — the only parser
+  dependency is `typescript` (~7MB), unusable client-side.
+  `includes` was REMOVED from all CSS and HTML exercises in PR #5 after 61 were
+  found passable by typing the answer as prose; a test forbids its return.
+  Exercise types: quiz | code-completion | live-editor | visual-match | drag-drop.
+  `live-editor` and `visual-match` exist ONLY in the css and html tracks.
+  src/components/editor/LivePreview.tsx ALREADY EXECUTES JavaScript: it builds a
+  srcDoc and injects `<script>${js}</script>` into an iframe with
+  sandbox="allow-scripts" (no allow-same-origin, so an opaque origin — it cannot
+  reach the parent DOM or cookies, and postMessage arrives with origin "null").
+  28 modules already ship `js:` in codeExample. Any JS-grading design should
+  start from this existing sandbox rather than adding a parser.
+  DATA GUARDS that will fail a careless content change: validacion-curriculum,
+  validacion-html, orden-curriculum-css (forward-reference ledger with a
+  never-raise threshold of 24), categorias-panel, orden-lecciones,
+  signos-interrogacion, acentuacion, tipos-ejercicio (asserts NO module can be
+  passed without producing something).
 
 strict_tdd: false
 # NOTE: a unit test runner now EXISTS (Vitest). strict_tdd stays false as the

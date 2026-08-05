@@ -1,0 +1,148 @@
+change: js-behavior-validator
+created: 2026-08-05
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 400
+  note: >
+    The /sdd-ff command instructs reading
+    ~/.claude/skills/_shared/sdd-orchestrator-workflow.md as authoritative. That
+    file does not exist anywhere on this machine: ~/.claude/skills/ contains only
+    find-skills, no _shared/ directory exists, and a filesystem-wide find for the
+    filename returns nothing. The installed skill is
+    ~/.claude/plugins/marketplaces/engram/skills/sdd-flow/SKILL.md, 48 lines, a
+    generic phase outline without the orchestration protocol.
+    The orchestrator initially treated this as blocking and escalated. That was an
+    over-reaction, corrected by the user: this repo already contains two complete
+    SDD cycles (automated-gates, loader-moderno-dojo) whose artifact shape is the
+    procedure, and openspec/config.yaml encodes the per-phase rules. The planning
+    phases below were therefore executed inline against those conventions rather
+    than through phase sub-agents.
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/js-behavior-validator/exploration.md
+    engram_topic_key: sdd/js-behavior-validator/explore
+    key_findings:
+      - >
+        src/components/editor/LivePreview.tsx ALREADY executes JavaScript:
+        srcDoc + injected <script> in an iframe with sandbox="allow-scripts" and
+        no allow-same-origin. 28 modules already ship `js:` in codeExample. The
+        capability to run student JS in isolation exists; what is missing is a way
+        to ask questions about the result.
+      - >
+        No JS parser is usable client-side. The only parser dependency is
+        typescript (~7MB). An AST validator would need a new dependency whose only
+        consumer is this feature.
+      - >
+        ValidationType has 7 members and only 2 are structural (css-rules,
+        html-structure). `includes` is not a fallback: PR #5 removed it after 61
+        exercises proved passable as prose, and a test forbids its return.
+  propose:
+    status: done
+    artifact: openspec/changes/js-behavior-validator/proposal.md
+    engram_topic_key: sdd/js-behavior-validator/proposal
+    selected_approach: >
+      Behavioral grading — run the submission in the existing sandbox and check
+      what it does. Three slices: engine (pure library), integration, content.
+    rejected:
+      - AST matching with acorn — grades shape not correctness; new dependency.
+      - regex/includes on the submission — the exact defect PR #5 removed.
+      - Server-side execution now — closes inspectability but is a bigger change.
+      - Web Worker — terminable but has no DOM, which the js track needs.
+    accepted_constraints:
+      - >
+        Grading stays client-side, so expected values are inspectable and a
+        student can hardcode a return. Closing it requires server-side execution,
+        which is also the standing ESTADO.md debt item.
+      - A runaway loop is abandoned via timeout and frame remount, never killed.
+      - Async submissions are deadline-bound.
+  spec:
+    status: done
+    artifact: openspec/changes/js-behavior-validator/specs/js-exercise-grading/spec.md
+    engram_topic_key: sdd/js-behavior-validator/spec
+    summary: >
+      7 ADDED requirements, 19 Given/When/Then scenarios, new capability
+      `js-exercise-grading`. Counted directly from the file with
+      `rg -c '^### Scenario'`, not estimated.
+    correction: >
+      An earlier revision of this file said 18 scenarios. The file contains 19.
+      Same class of error the loader-moderno-dojo state.yaml recorded when its
+      spec was reported as 17 and contained 15 — self-reported counts in SDD
+      artifacts are wrong often enough to be worth counting mechanically.
+    load_bearing_requirements:
+      - >
+        Requirement 3 — the harness must not affect existing previews. With no
+        cases the srcdoc must be BYTE-IDENTICAL to today's output. This is what
+        makes it safe to touch a component four tracks depend on.
+      - >
+        Requirement 6 — every exercise ships a reference solution proven to score
+        100, and the guard must NOT be a self-comparison. Both precedents were
+        earned in this repo: validacion-html.test.ts, and the malformed-targetCSS
+        finding where a correct submission scored 33%.
+  design:
+    status: done
+    artifact: openspec/changes/js-behavior-validator/design.md
+    engram_topic_key: sdd/js-behavior-validator/design
+    decisions:
+      - Comparison happens in the PARENT, not the harness, so the semantics live in the unit-tested pure module instead of inside injected script.
+      - Nonce, not origin — the opaque origin makes event.origin the string "null", so an origin check would enforce nothing while looking like a security control.
+      - Run-level union type makes "syntax error with per-case results" unrepresentable.
+    to_verify_in_slice_2: >
+      That a postMessage from this exact sandbox configuration reaches the parent
+      at all. The whole design rests on it, so task 2.8 asserts it with a real
+      test rather than a comment.
+    estimated_changed_lines: 760
+    per_slice_lines: [260, 300, 200]
+    budget_risk: low
+  tasks:
+    status: done
+    artifact: openspec/changes/js-behavior-validator/tasks.md
+    engram_topic_key: sdd/js-behavior-validator/tasks
+    summary: 3 phases, 24 tasks. Merge order equals revert order.
+    review_workload_forecast:
+      estimated_changed_lines: 760
+      per_slice_max: 300
+      budget_risk: low
+      chained_prs_recommended: false
+      chain_strategy: three-sequential-prs
+      decision_needed_before_apply: false
+    guard_notes:
+      - Tasks 2.1 and 3.1 write their guard BEFORE the code it protects.
+      - Task 3.2 requires committing before probing non-vacuity — undoing a probe with `git checkout --` has cost uncommitted work twice in this project.
+  apply:
+    status: ready
+    forward_to_apply:
+      delivery_strategy: ask-on-risk
+      chain_strategy: three-sequential-prs
+      pr_boundary: one-pr-per-phase
+      strict_tdd: false
+      test_command: "npm run test:run"
+      note: >
+        Five gates all work and run in CI. Start with Phase 1: it has no consumer,
+        so if the approach is wrong it is discovered cheaply and reverted cleanly.
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+next_recommended: apply
+
+notes:
+  - >
+    Not security-sensitive. Nothing touches src/lib/auth.ts, ApprovalGate,
+    MongoDB models, or XP computation. Score flows through the existing xpReward
+    scaling with no new branch (Requirement 7).
+  - >
+    openspec/config.yaml was refreshed before these phases ran. It still claimed
+    18 tests over src/lib/xp.ts and four tracks; the repo has 128 tests and six
+    tracks, and none of the data guards added since were listed. Artifacts built
+    on those stale facts would have been wrong.
+  - >
+    Working tree state at time of writing: branch sdd/validador-js, with the
+    config.yaml refresh and these artifacts uncommitted. main is clean at c8005b4
+    with PRs #1-#23 merged.
