@@ -232,5 +232,44 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       hint: "Es el tipo más flexible para children — acepta elementos, strings, números, etc.",
       explanation: "React.ReactNode acepta cualquier contenido valido en JSX: elementos, texto, números, null, etc.",
     },
+    {
+      id: "ts04-ej-06",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 6,
+      prompt:
+        "Este estado arranca en null y después va a guardar un Usuario. Sin ayuda, TypeScript lo infiere como null para siempre. Completá el parámetro de tipo de useState:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "const [usuario, setUsuario] = useState<",
+        cssSuffix: ">(null);",
+        blanks: ["Usuario | null"],
+      },
+      validation: { type: "exact", answer: "Usuario | null" },
+      hint: "Los dos estados posibles, separados por la barra de unión. El orden es el del enunciado.",
+      explanation:
+        "Sin el parámetro explícito, TypeScript infiere el tipo del valor inicial: null. Y entonces setUsuario(datos) no compila, porque para el compilador ese estado nunca puede ser otra cosa. Declarar la unión es lo que permite arrancar vacío y llenar después — y además obliga a chequear si hay usuario antes de leer sus campos, que es el bug que el tipo está previniendo.",
+    },
+    {
+      id: "ts04-ej-07",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 7,
+      prompt:
+        "Este handler recibe el evento de un input de texto y lee event.target.value. Completá el tipo del evento:",
+      codeTemplate: {
+        html: "",
+        cssPrefix:
+          "function alEscribir(event: React.ChangeEvent<",
+        cssSuffix: ">) {\n  setTexto(event.target.value);\n}",
+        blanks: ["HTMLInputElement"],
+      },
+      validation: { type: "exact", answer: "HTMLInputElement" },
+      hint: "El tipo del elemento del DOM que emite el evento. Empieza con HTML y termina con Element.",
+      explanation:
+        "ChangeEvent es genérico sobre el elemento que lo emite, y ese parámetro es lo que le da tipo a event.target.value. Con HTMLInputElement el value es string; si el campo fuera un select iría HTMLSelectElement y si fuera un textarea, HTMLTextAreaElement. Poner el elemento equivocado compila igual pero te miente sobre lo que hay en target.",
+    },
   ],
 };

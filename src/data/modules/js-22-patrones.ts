@@ -397,5 +397,45 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       hint: "Module encapsula, Observer notifica, Factory crea.",
       explanation: "Module encapsula datos privados, Observer notifica cambios a suscriptores, Factory crea objetos de diferentes tipos.",
     },
+    {
+      id: "js22-ej-07",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 7,
+      prompt:
+        "El patrón Module devuelve solo lo que quiere exponer. La variable 'privada' queda inaccesible desde afuera. Completá lo que falta para que 'incrementar' sea público:",
+      codeTemplate: {
+        html: "",
+        cssPrefix:
+          "const contador = (function () {\n  let privada = 0;\n  function incrementar() { privada++; return privada; }\n  return { incrementar: ",
+        cssSuffix: " };\n})();",
+        blanks: ["incrementar"],
+      },
+      validation: { type: "exact", answer: "incrementar" },
+      hint: "Se expone la función, no su resultado. Escribí el nombre sin paréntesis: con paréntesis la ejecutarías ahora y devolverías un número.",
+      explanation:
+        "Lo que se devuelve es la referencia a la función, no su resultado. Escribir 'incrementar()' la ejecutaría en ese momento y el objeto expondría el número 1 en lugar de algo llamable. La variable 'privada' no aparece en el objeto devuelto, y eso es todo el patrón: sigue viva por el closure, pero no hay forma de tocarla desde afuera.",
+    },
+    {
+      id: "js22-ej-08",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 8,
+      prompt:
+        "En el patrón Observer, notificar recorre los suscriptores y llama a cada uno con el dato. Completá el método que falta para recorrer el array:",
+      codeTemplate: {
+        html: "",
+        cssPrefix:
+          "const emisor = {\n  suscriptores: [],\n  suscribir(fn) { this.suscriptores.push(fn); },\n  notificar(dato) {\n    this.suscriptores.",
+        cssSuffix: "((fn) => fn(dato));\n  },\n};",
+        blanks: ["forEach"],
+      },
+      validation: { type: "exact", answer: "forEach" },
+      hint: "Recorre el array sin construir uno nuevo. No es map, porque el resultado de cada llamada no se usa.",
+      explanation:
+        "forEach recorre y descarta lo que devuelve cada llamada, que es exactamente lo que hace falta acá: al emisor no le importa qué devuelven sus suscriptores. Usar map funcionaría, pero armaría un array de resultados que nadie lee. Ese es el patrón completo: el emisor no sabe quién lo escucha ni qué hace cada uno.",
+    },
   ],
 };
