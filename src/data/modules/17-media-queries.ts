@@ -255,6 +255,183 @@ img {
       },
       order: 3,
     },
+    {
+      id: "17-leccion-04",
+      title: "@container: consultar el espacio real",
+      content: `## @container: consultar el espacio real
+
+Las media queries preguntan por **la ventana del navegador**. Eso es lo que te limita, aunque no se note al principio.
+
+### El problema
+
+Escribís una tarjeta que en pantalla ancha se muestra horizontal y en pantalla angosta vertical:
+
+\`\`\`css
+.tarjeta { display: block; }
+
+@media (min-width: 800px) {
+  .tarjeta { display: flex; }
+}
+\`\`\`
+
+Funciona. Hasta que ponés esa misma tarjeta dentro de una barra lateral de 250px, **en una pantalla de 1400px**. La media query dice "pantalla ancha, poneme horizontal", la tarjeta se estira a lo ancho de 250px y se rompe.
+
+El problema de fondo: la tarjeta preguntó por el tamaño de la **pantalla**, cuando lo que necesitaba saber era cuánto espacio tiene **ella**.
+
+Y no había forma de preguntar eso. Un componente no podía saber cuánto lugar le dieron.
+
+### La solución
+
+Dos pasos. Primero se declara que un elemento es un **contenedor consultable**:
+
+\`\`\`css
+.columna {
+  container-type: inline-size;
+}
+\`\`\`
+
+Y después se pregunta por **ese** contenedor, no por la pantalla:
+
+\`\`\`css
+@container (min-width: 400px) {
+  .tarjeta { display: flex; }
+}
+\`\`\`
+
+Ahora la tarjeta se adapta al espacio que realmente tiene. La misma tarjeta, sin cambiarle una línea, se ve horizontal en el contenido principal y vertical en la barra lateral — **en la misma pantalla, al mismo tiempo**.
+
+### Los dos errores típicos
+
+**Olvidarse de \`container-type\`.** Sin eso no hay contenedor que consultar, la \`@container\` no coincide con nada y no pasa absolutamente nada. No hay error: simplemente se ignora.
+
+**Querer consultar el propio elemento.** El contenedor tiene que ser un **ancestro** del que estás estilando. Esto no funciona:
+
+\`\`\`css
+.tarjeta {
+  container-type: inline-size;
+}
+@container (min-width: 400px) {
+  .tarjeta { display: flex; }   /* la tarjeta no puede consultarse a si misma */
+}
+\`\`\`
+
+La razón es lógica: si el tamaño del contenedor dependiera de las reglas que se aplican dentro de él, y esas reglas cambiaran su tamaño, no habría respuesta estable. Por eso hace falta un elemento que envuelva.
+
+### Qué valor de \`container-type\` usar
+
+| Valor | Qué permite consultar |
+|---|---|
+| \`inline-size\` | solo el ancho. Es el que se usa casi siempre |
+| \`size\` | ancho y alto, pero te obliga a fijarle un alto |
+| \`normal\` | ninguno. Es el valor por defecto |
+
+Empezá siempre con \`inline-size\`.
+
+### Contenedores con nombre
+
+Si hay contenedores anidados, por defecto se consulta **el más cercano**. Para elegir otro, se le pone nombre:
+
+\`\`\`css
+.pagina {
+  container-type: inline-size;
+  container-name: pagina;
+}
+
+@container pagina (min-width: 900px) {
+  .tarjeta { font-size: 1.25rem; }
+}
+\`\`\`
+
+> **La diferencia en una frase:** \`@media\` pregunta "cómo es la pantalla", \`@container\` pregunta "cuánto lugar tengo". Para un componente que se reutiliza en varios lugares, la segunda es casi siempre la pregunta correcta.`,
+      codeExample: {
+        html: `<div class="ancho">\n  <p class="etiqueta">Contenedor de 100%</p>\n  <article class="tarjeta">\n    <img src="https://placehold.co/80x80" alt="Miniatura" />\n    <div><h4>Tarjeta horizontal</h4><p>Hay lugar, se acomoda en fila.</p></div>\n  </article>\n</div>\n\n<div class="angosto">\n  <p class="etiqueta">Contenedor de 220px</p>\n  <article class="tarjeta">\n    <img src="https://placehold.co/80x80" alt="Miniatura" />\n    <div><h4>La misma tarjeta</h4><p>Sin lugar, se apila.</p></div>\n  </article>\n</div>`,
+        css: `/* Los dos son contenedores consultables */\n.ancho,\n.angosto {\n  container-type: inline-size;\n  border: 1px dashed #bbb;\n  padding: 8px;\n  margin-bottom: 16px;\n}\n\n.angosto {\n  width: 220px;\n}\n\n.tarjeta {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n\n/* Una sola regla, y cada tarjeta responde al lugar que TIENE */\n@container (min-width: 400px) {\n  .tarjeta {\n    flex-direction: row;\n    align-items: center;\n  }\n}\n\n.etiqueta {\n  font-size: 12px;\n  color: #666;\n  margin: 0 0 8px;\n}\n\n.tarjeta h4 {\n  margin: 0 0 4px;\n}`,
+        editable: true,
+      },
+      order: 4,
+    },
+    {
+      id: "17-leccion-05",
+      title: "@supports: preguntar antes de usar",
+      content: `## @supports: preguntar antes de usar
+
+Te queda una pregunta práctica: si CSS suma funciones nuevas todo el tiempo, **cómo las usás sin romper a quien tiene un navegador viejo?**
+
+### Lo que pasa por defecto
+
+CSS ya es tolerante: si un navegador no entiende una declaración, **la ignora y sigue**. Eso alcanza en muchos casos:
+
+\`\`\`css
+.caja {
+  background: gray;              /* lo entiende todo el mundo */
+  background: color-mix(in srgb, blue 40%, white);  /* si no lo entiende, queda gray */
+}
+\`\`\`
+
+Pero no alcanza cuando el cambio implica **varias reglas juntas**. Si vas a montar un layout con \`subgrid\`, no querés que se aplique la mitad.
+
+### La solución
+
+\`@supports\` pregunta si el navegador entiende algo, **antes** de aplicar el bloque:
+
+\`\`\`css
+@supports (grid-template-rows: subgrid) {
+  .tarjeta {
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+  }
+}
+\`\`\`
+
+Se escribe una propiedad y un valor entre paréntesis. Si el navegador entiende esa combinación, aplica todo el bloque. Si no, lo saltea entero.
+
+### Preguntar por lo contrario
+
+\`not\` invierte, y sirve para dar la alternativa:
+
+\`\`\`css
+@supports not (grid-template-rows: subgrid) {
+  .tarjeta { min-height: 220px; }  /* el apano de siempre */
+}
+\`\`\`
+
+### Combinar condiciones
+
+\`\`\`css
+@supports (display: grid) and (gap: 1rem) { }
+@supports (position: sticky) or (position: -webkit-sticky) { }
+\`\`\`
+
+### Preguntar por un selector
+
+Las propiedades se preguntan con paréntesis comunes. Para **selectores** hay una forma aparte:
+
+\`\`\`css
+@supports selector(:has(*)) {
+  .tarjeta:has(img) { border-color: steelblue; }
+}
+\`\`\`
+
+Eso te deja usar \`:has()\` con red de contención.
+
+### Cuándo vale la pena
+
+No hace falta envolver todo. Usalo cuando:
+
+- El cambio necesita **varias declaraciones juntas** para tener sentido.
+- Sin la función, el diseño no queda peor sino **roto**.
+- Querés dar una alternativa concreta con \`not\`.
+
+Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia natural de CSS ya te cubre.
+
+> **La idea para llevarse:** \`@supports\` es lo que te permite usar CSS moderno sin esperar años. No preguntás "qué navegador es" — preguntás "entendés esto?", que es la única pregunta que no envejece.`,
+      codeExample: {
+        html: `<div class="galeria">\n  <article class="tarjeta"><h4>Una</h4><p>Texto corto.</p><button>Ver</button></article>\n  <article class="tarjeta"><h4>Un titulo de dos lineas para desalinear</h4><p>Texto.</p><button>Ver</button></article>\n</div>\n<p class="nota">Si tu navegador soporta subgrid, los botones estan alineados. Si no, cada tarjeta usa una altura minima.</p>`,
+        css: `.galeria {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n\n.tarjeta {\n  display: grid;\n  gap: 8px;\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}\n\n/* Camino moderno: las tarjetas comparten las filas del padre */\n@supports (grid-template-rows: subgrid) {\n  .tarjeta {\n    grid-row: span 3;\n    grid-template-rows: subgrid;\n  }\n}\n\n/* Alternativa para quien no lo soporta */\n@supports not (grid-template-rows: subgrid) {\n  .tarjeta {\n    min-height: 180px;\n  }\n}\n\n.tarjeta h4 {\n  margin: 0;\n}\n\n.nota {\n  font-size: 13px;\n  color: #666;\n}`,
+        editable: true,
+      },
+      order: 5,
+    },
   ],
   exercises: [
     {
@@ -434,6 +611,83 @@ img {
       hint: "clamp() toma tres valores: minimo, preferido y maximo. El navegador usa el del medio respetando los limites.",
       explanation:
         "clamp(1rem, 2.5vw, 2rem) indica: usa 2.5vw como tamano ideal, pero nunca menor a 1rem ni mayor a 2rem. Esto crea una tipografia fluida con limites seguros.",
+    },
+    {
+      id: "17-ej-09",
+      type: "quiz",
+      difficulty: 3,
+      xpReward: 20,
+      order: 9,
+      prompt:
+        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. Que pasa?",
+      options: [
+        {
+          id: "a",
+          text: "Funciona como una media query normal, midiendo la pantalla",
+          isCorrect: false,
+        },
+        {
+          id: "b",
+          text: "No pasa nada: sin contenedor declarado la consulta no coincide con nada",
+          isCorrect: true,
+        },
+        { id: "c", text: "Toma el body como contenedor por defecto", isCorrect: false },
+        { id: "d", text: "El navegador lanza un error de sintaxis", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "@container consulta a un ancestro que se haya declarado consultable. Si nadie se declaro, no hay a quien preguntarle.",
+      explanation:
+        "Hacen falta los dos pasos: declarar container-type en un ancestro y despues consultarlo. Sin el primero la regla se ignora en silencio, sin error, que es lo que la hace difícil de depurar. Y ojo: el contenedor tiene que ser un ancestro, un elemento no puede consultarse a si mismo.",
+    },
+    {
+      id: "17-ej-10",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Haz que la tarjeta responda al espacio que tiene, no a la pantalla. A la clase 'columna' dale container-type: inline-size. A 'tarjeta' dale display: flex y flex-direction: column. Y dentro de un @container (min-width: 400px), a 'tarjeta' dale flex-direction: row.",
+      codeTemplate: {
+        html: `<div class="columna">\n  <article class="tarjeta">\n    <img src="https://placehold.co/60x60" alt="Miniatura" />\n    <p>Se acomoda segun el lugar de la columna.</p>\n  </article>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".columna {\n  container-type: inline-size;\n}\n.tarjeta {\n  display: flex;\n  flex-direction: column;\n}\n@container (min-width: 400px) {\n  .tarjeta {\n    flex-direction: row;\n  }\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Primero el ancestro se declara consultable con container-type. Despues la consulta @container va por fuera, envolviendo la regla de la tarjeta.",
+      explanation:
+        "La columna se declara contenedor con container-type: inline-size, y la tarjeta arranca apilada. Dentro del @container, cuando la columna mide 400px o mas, pasa a fila. La misma tarjeta se ve distinta en una barra lateral y en el contenido principal, en la misma pantalla, porque pregunta por su espacio y no por el viewport.",
+    },
+    {
+      id: "17-ej-11",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 11,
+      prompt:
+        "Usa subgrid con red de contencion. Dentro de un @supports (grid-template-rows: subgrid), a la clase 'tarjeta' dale grid-row: span 3 y grid-template-rows: subgrid. Y dentro de un @supports not (grid-template-rows: subgrid), dale min-height: 180px.",
+      codeTemplate: {
+        html: `<div class="galeria">\n  <article class="tarjeta"><h4>Una</h4><p>Texto.</p><button>Ver</button></article>\n  <article class="tarjeta"><h4>Un titulo de dos lineas</h4><p>Texto.</p><button>Ver</button></article>\n</div>`,
+        cssPrefix: ".galeria {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n.tarjeta {\n  display: grid;\n  gap: 8px;\n}\n\n",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        "@supports (grid-template-rows: subgrid) {\n  .tarjeta {\n    grid-row: span 3;\n    grid-template-rows: subgrid;\n  }\n}\n@supports not (grid-template-rows: subgrid) {\n  .tarjeta {\n    min-height: 180px;\n  }\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Son dos bloques @supports separados: uno con la condicion y otro con not. Cada uno lleva adentro la regla .tarjeta.",
+      explanation:
+        "El primer bloque aplica subgrid solo si el navegador lo entiende, y como necesita dos declaraciones juntas para tener sentido, envolverlas es lo correcto. El segundo da la alternativa para quien no lo soporta. Preguntar 'entendes esto?' en lugar de 'que navegador sos' es lo que no envejece.",
     },
   ],
 };
