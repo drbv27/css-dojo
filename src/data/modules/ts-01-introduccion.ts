@@ -13,11 +13,11 @@ export const tsIntroModule: ModuleData = {
     {
       id: "ts01-leccion-01",
       title: "Que es TypeScript",
-      content: `## Que es TypeScript?
+      content: `## ¿Que es TypeScript?
 
 TypeScript es un **superset de JavaScript** creado por Microsoft que agrega **tipado estatico** al lenguaje.
 
-### Por que TypeScript?
+### ¿Por que TypeScript?
 
 - **Detecta errores antes de ejecutar** — el compilador te avisa si algo no cuadra
 - **Mejor autocompletado** en tu editor (VS Code)
@@ -122,7 +122,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que es TypeScript?",
+      prompt: "¿Que es TypeScript?",
       options: [
         { id: "a", text: "Un lenguaje completamente diferente a JavaScript", isCorrect: false },
         { id: "b", text: "Un superset de JavaScript con tipado estatico", isCorrect: true },
@@ -156,7 +156,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que pasa si intentas asignar un string a una variable tipada como number?",
+      prompt: "¿Que pasa si intentas asignar un string a una variable tipada como number?",
       options: [
         { id: "a", text: "Se convierte automaticamente", isCorrect: false },
         { id: "b", text: "Da error en tiempo de ejecucion", isCorrect: false },
@@ -173,7 +173,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que indica el signo ? despues de un parametro en TypeScript?",
+      prompt: "¿Que indica el signo ? ¿despues de un parametro en TypeScript?",
       options: [
         { id: "a", text: "Que el parametro es de tipo any", isCorrect: false },
         { id: "b", text: "Que el parametro es opcional", isCorrect: true },
@@ -182,7 +182,7 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "function saludar(nombre: string, titulo?: string)",
-      explanation: "El ? marca un parametro como opcional — puede o no recibir un valor.",
+      explanation: "¿El ? marca un parametro como opcional — puede o no recibir un valor.",
     },
     {
       id: "ts01-ej-05",

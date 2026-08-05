@@ -209,7 +209,7 @@ tabs.forEach(function(tab) {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Como se escribe la propiedad CSS 'background-color' en JavaScript?",
+      prompt: "¿Como se escribe la propiedad CSS 'background-color' en JavaScript?",
       options: [
         { id: "a", text: "background-color", isCorrect: false },
         { id: "b", text: "backgroundColor", isCorrect: true },
@@ -226,7 +226,7 @@ tabs.forEach(function(tab) {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que metodo se usa para leer los estilos computados de un elemento?",
+      prompt: "¿Que metodo se usa para leer los estilos computados de un elemento?",
       options: [
         { id: "a", text: "elemento.style", isCorrect: false },
         { id: "b", text: "elemento.getStyles()", isCorrect: false },
@@ -260,7 +260,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Como modificas una CSS variable desde JavaScript?",
+      prompt: "¿Como modificas una CSS variable desde JavaScript?",
       options: [
         { id: "a", text: 'element.style.setVariable("--color", "red")', isCorrect: false },
         { id: "b", text: 'element.style.setProperty("--color", "red")', isCorrect: true },
@@ -277,7 +277,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que es mejor practica: modificar estilos directamente o usar classList?",
+      prompt: "¿Que es mejor practica: modificar estilos directamente o usar classList?",
       options: [
         { id: "a", text: "Modificar estilos directamente con style", isCorrect: false },
         { id: "b", text: "Usar classList para agregar/quitar clases CSS", isCorrect: true },
@@ -294,7 +294,7 @@ tabs.forEach(function(tab) {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
+      prompt: "¿Que devuelve elemento.style.color si el color fue definido en una hoja de estilos externa?",
       options: [
         { id: "a", text: "El color definido en CSS", isCorrect: false },
         { id: "b", text: 'Un string vacio ""', isCorrect: true },

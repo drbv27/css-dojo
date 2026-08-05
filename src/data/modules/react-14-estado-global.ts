@@ -299,7 +299,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 
 Zustand es una libreria de estado global minimalista y poderosa.
 
-### Por que Zustand?
+### ¿Por que Zustand?
 - **Minimo boilerplate** (mucho menos que Redux)
 - **Sin Providers** necesarios
 - **Selectores** para evitar re-renders innecesarios
@@ -337,7 +337,7 @@ function Contador() {
 }
 \`\`\`
 
-### Cuando usar que?
+### ¿Cuando usar que?
 | Solucion | Cuando usar |
 |----------|-------------|
 | useState | Estado local simple |
@@ -453,7 +453,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que devuelve el hook useReducer?",
+      prompt: "¿Que devuelve el hook useReducer?",
       options: [
         { id: "a", text: "Un valor y un setter, como useState", isCorrect: false },
         { id: "b", text: "El estado actual y una funcion dispatch", isCorrect: true },
@@ -470,7 +470,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que parametros recibe una funcion reducer?",
+      prompt: "¿Que parametros recibe una funcion reducer?",
       options: [
         { id: "a", text: "props y state", isCorrect: false },
         { id: "b", text: "state y action", isCorrect: true },
@@ -527,7 +527,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que ventaja tiene Zustand sobre Context para estado global?",
+      prompt: "¿Que ventaja tiene Zustand sobre Context para estado global?",
       options: [
         { id: "a", text: "Es mas grande y tiene mas funcionalidades", isCorrect: false },
         { id: "b", text: "No necesita Provider y tiene selectores para evitar re-renders", isCorrect: true },
@@ -561,7 +561,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Por que el patron useReducer + Context es similar a Redux?",
+      prompt: "¿Por que el patron useReducer + Context es similar a Redux?",
       options: [
         { id: "a", text: "Ambos usan el mismo codigo internamente", isCorrect: false },
         { id: "b", text: "Ambos tienen store, reducer, dispatch y acceso global al estado", isCorrect: true },
@@ -578,7 +578,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "En Zustand, como se evitan re-renders innecesarios al leer del store?",
+      prompt: "¿En Zustand, como se evitan re-renders innecesarios al leer del store?",
       options: [
         { id: "a", text: "Usando React.memo en todos los componentes", isCorrect: false },
         { id: "b", text: "Usando selectores: useStore(state => state.count)", isCorrect: true },

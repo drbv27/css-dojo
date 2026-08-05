@@ -51,7 +51,7 @@ export default function NuevoPost() {
 }
 \`\`\`
 
-### Como funciona?
+### ¿Como funciona?
 
 1. El usuario envia el formulario
 2. Next.js serializa el FormData
@@ -166,7 +166,7 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 1,
-      prompt: 'Que directiva marca una funcion como Server Action?',
+      prompt: '¿Que directiva marca una funcion como Server Action?',
       options: [
         { id: "a", text: '"use client"', isCorrect: false },
         { id: "b", text: '"use server"', isCorrect: true },
@@ -183,7 +183,7 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Como se conecta una Server Action a un formulario?",
+      prompt: "¿Como se conecta una Server Action a un formulario?",
       options: [
         { id: "a", text: "Con onSubmit={action}", isCorrect: false },
         { id: "b", text: "Con action={serverAction}", isCorrect: true },
@@ -200,7 +200,7 @@ revalidateTag("posts");
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que hace revalidatePath('/posts') despues de una Server Action?",
+      prompt: "¿Que hace revalidatePath('/posts') despues de una Server Action?",
       options: [
         { id: "a", text: "Redirige a /posts", isCorrect: false },
         { id: "b", text: "Borra la pagina /posts", isCorrect: false },

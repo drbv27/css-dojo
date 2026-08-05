@@ -390,7 +390,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que patron fundamental usa React en vez de herencia?",
+      prompt: "¿Que patron fundamental usa React en vez de herencia?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Composicion", isCorrect: true },
@@ -407,7 +407,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que es la prop especial 'children' en React?",
+      prompt: "¿Que es la prop especial 'children' en React?",
       options: [
         { id: "a", text: "Un array con los componentes padres", isCorrect: false },
         { id: "b", text: "El contenido que se pone entre las etiquetas del componente", isCorrect: true },
@@ -424,7 +424,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que es un Higher-Order Component (HOC)?",
+      prompt: "¿Que es un Higher-Order Component (HOC)?",
       options: [
         { id: "a", text: "Un componente que esta en la parte superior del arbol", isCorrect: false },
         { id: "b", text: "Una funcion que recibe un componente y retorna uno nuevo mejorado", isCorrect: true },
@@ -464,7 +464,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "En React moderno, que ha reemplazado en gran parte a Render Props y HOCs?",
+      prompt: "¿En React moderno, que ha reemplazado en gran parte a Render Props y HOCs?",
       options: [
         { id: "a", text: "Componentes de clase", isCorrect: false },
         { id: "b", text: "Custom Hooks", isCorrect: true },
@@ -498,7 +498,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "En el patron Compound Components, como comparten estado los componentes hijos?",
+      prompt: "¿En el patron Compound Components, como comparten estado los componentes hijos?",
       options: [
         { id: "a", text: "A traves de props explicitas", isCorrect: false },
         { id: "b", text: "Via Context internamente", isCorrect: true },
@@ -515,7 +515,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Cual es la diferencia entre el patron Container y Presentational?",
+      prompt: "¿Cual es la diferencia entre el patron Container y Presentational?",
       options: [
         { id: "a", text: "Container maneja logica y datos; Presentational solo renderiza UI", isCorrect: true },
         { id: "b", text: "Container es mas grande; Presentational es mas pequeno", isCorrect: false },

@@ -12,8 +12,8 @@ export const htmlAccesibilidadModule: ModuleData = {
   lessons: [
     {
       id: "html12-leccion-01",
-      title: "Por que importa la accesibilidad?",
-      content: `## Por que importa la accesibilidad?
+      title: "¿Por que importa la accesibilidad?",
+      content: `## ¿Por que importa la accesibilidad?
 
 La **accesibilidad web** (a11y) significa crear sitios que todas las personas puedan usar, incluyendo personas con discapacidades visuales, auditivas, motrices o cognitivas.
 
@@ -242,7 +242,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que significan las siglas ARIA en accesibilidad web?",
+      prompt: "¿Que significan las siglas ARIA en accesibilidad web?",
       options: [
         { id: "a", text: "Advanced Rendering Interface for Applications", isCorrect: false },
         { id: "b", text: "Accessible Rich Internet Applications", isCorrect: true },
@@ -260,7 +260,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que atributo ARIA se usa para dar una etiqueta accesible a un boton con solo un icono?",
+      prompt: "¿Que atributo ARIA se usa para dar una etiqueta accesible a un boton con solo un icono?",
       options: [
         { id: "a", text: "aria-text", isCorrect: false },
         { id: "b", text: "aria-name", isCorrect: false },
@@ -296,7 +296,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la regla de oro de ARIA?",
+      prompt: "¿Cual es la regla de oro de ARIA?",
       options: [
         { id: "a", text: "Siempre usar el maximo de atributos ARIA posible", isCorrect: false },
         { id: "b", text: "ARIA solo funciona en formularios", isCorrect: false },
@@ -344,7 +344,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que es un 'skip navigation link'?",
+      prompt: "¿Que es un 'skip navigation link'?",
       options: [
         { id: "a", text: "Un enlace para saltar animaciones CSS", isCorrect: false },
         { id: "b", text: "Un enlace oculto que permite saltar al contenido principal", isCorrect: true },
@@ -362,7 +362,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Cual es el ratio minimo de contraste recomendado por WCAG AA para texto normal?",
+      prompt: "¿Cual es el ratio minimo de contraste recomendado por WCAG AA para texto normal?",
       options: [
         { id: "a", text: "2:1", isCorrect: false },
         { id: "b", text: "3:1", isCorrect: false },

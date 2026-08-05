@@ -204,7 +204,7 @@ Selecciona **todos** los elementos. Util para resets:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual selector selecciona todos los elementos <h1> de la pagina?",
+      prompt: "¿Cual selector selecciona todos los elementos <h1> de la pagina?",
       options: [
         { id: "a", text: ".h1", isCorrect: false },
         { id: "b", text: "#h1", isCorrect: false },
@@ -314,7 +314,7 @@ Selecciona **todos** los elementos. Util para resets:
       difficulty: 1 ,
       xpReward: 10,
       order: 6,
-      prompt: "Que prefijo usa un selector de clase en CSS?",
+      prompt: "¿Que prefijo usa un selector de clase en CSS?",
       options: [
         { id: "a", text: ". (punto)", isCorrect: true },
         { id: "b", text: "# (numeral)", isCorrect: false },

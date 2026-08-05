@@ -294,7 +294,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 10,
       order: 1,
       prompt:
-        "Cual es el orden correcto de los valores en box-shadow?",
+        "¿Cual es el orden correcto de los valores en box-shadow?",
       options: [
         { id: "a", text: "color offset-x offset-y blur", isCorrect: false },
         { id: "b", text: "offset-x offset-y blur spread color", isCorrect: true },
@@ -409,7 +409,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 6,
       prompt:
-        "Cual es la diferencia entre 'filter' y 'backdrop-filter'?",
+        "¿Cual es la diferencia entre 'filter' y 'backdrop-filter'?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detras del elemento", isCorrect: true },

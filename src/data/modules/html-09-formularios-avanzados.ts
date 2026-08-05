@@ -101,7 +101,7 @@ El elemento \`<datalist>\` proporciona una lista de sugerencias para un input. E
 </fieldset>
 \`\`\`
 
-### Por que usar fieldset?
+### ¿Por que usar fieldset?
 
 - **Organiza** formularios largos en secciones
 - **Mejora la accesibilidad:** los lectores de pantalla anuncian el legend al entrar al grupo
@@ -242,7 +242,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que tipo de input muestra un control deslizante para seleccionar un valor numerico?",
+      prompt: "¿Que tipo de input muestra un control deslizante para seleccionar un valor numerico?",
       options: [
         { id: "a", text: 'type="slider"', isCorrect: false },
         { id: "b", text: 'type="range"', isCorrect: true },
@@ -260,7 +260,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que elemento HTML proporciona una lista de sugerencias para un campo de texto?",
+      prompt: "¿Que elemento HTML proporciona una lista de sugerencias para un campo de texto?",
       options: [
         { id: "a", text: "<select>", isCorrect: false },
         { id: "b", text: "<options>", isCorrect: false },
@@ -296,7 +296,7 @@ button {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cual es la diferencia entre disabled y readonly en un input?",
+      prompt: "¿Cual es la diferencia entre disabled y readonly en un input?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
         { id: "b", text: "disabled no envia el valor; readonly si lo envia", isCorrect: true },
@@ -362,7 +362,7 @@ button {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que hace el atributo pattern en un campo de texto?",
+      prompt: "¿Que hace el atributo pattern en un campo de texto?",
       options: [
         { id: "a", text: "Define el estilo visual del campo", isCorrect: false },
         { id: "b", text: "Establece una expresion regular que el valor debe cumplir", isCorrect: true },

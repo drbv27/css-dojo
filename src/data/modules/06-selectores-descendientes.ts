@@ -297,7 +297,7 @@ div.card {
       xpReward: 10,
       order: 1,
       prompt:
-        "Que selector CSS aplica estilos a TODOS los parrafos que estan dentro de un <header>, sin importar la profundidad?",
+        "¿Que selector CSS aplica estilos a TODOS los parrafos que estan dentro de un <header>, sin importar la profundidad?",
       options: [
         { id: "a", text: "header > p", isCorrect: false },
         { id: "b", text: "header p", isCorrect: true },
@@ -431,7 +431,7 @@ div.card {
       xpReward: 30,
       order: 7,
       prompt:
-        "Cual es la diferencia entre h2 + p y h2 ~ p?",
+        "¿Cual es la diferencia entre h2 + p y h2 ~ p?",
       options: [
         {
           id: "a",

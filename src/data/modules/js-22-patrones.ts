@@ -133,7 +133,7 @@ emitter.on("mensaje", function(data) {
 emitter.emit("mensaje", "Hola!"); // "Recibido: Hola!"
 \`\`\`
 
-### Donde se usa?
+### ¿Donde se usa?
 - Eventos del DOM (addEventListener es un Observer)
 - Frameworks reactivos (React, Vue)
 - Node.js EventEmitter
@@ -225,7 +225,7 @@ const Database = (function() {
 })();
 \`\`\`
 
-### Cuando usar cada patron?
+### ¿Cuando usar cada patron?
 
 | Patron | Usar cuando... |
 |--------|---------------|
@@ -290,7 +290,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que es un IIFE?",
+      prompt: "¿Que es un IIFE?",
       options: [
         { id: "a", text: "Un tipo de variable", isCorrect: false },
         { id: "b", text: "Una funcion que se ejecuta inmediatamente al definirse", isCorrect: true },
@@ -307,7 +307,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Que patron se usa cuando necesitas notificar a multiples componentes sobre un cambio?",
+      prompt: "¿Que patron se usa cuando necesitas notificar a multiples componentes sobre un cambio?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Factory", isCorrect: false },
@@ -324,7 +324,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que garantiza el patron Singleton?",
+      prompt: "¿Que garantiza el patron Singleton?",
       options: [
         { id: "a", text: "Que un objeto sea inmutable", isCorrect: false },
         { id: "b", text: "Que solo exista una instancia de un objeto", isCorrect: true },
@@ -341,7 +341,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que patron usarias para crear objetos de diferentes tipos con una funcion comun?",
+      prompt: "¿Que patron usarias para crear objetos de diferentes tipos con una funcion comun?",
       options: [
         { id: "a", text: "Observer", isCorrect: false },
         { id: "b", text: "Singleton", isCorrect: false },
@@ -358,7 +358,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "addEventListener del DOM es un ejemplo de que patron?",
+      prompt: "¿addEventListener del DOM es un ejemplo de que patron?",
       options: [
         { id: "a", text: "Factory", isCorrect: false },
         { id: "b", text: "Observer", isCorrect: true },

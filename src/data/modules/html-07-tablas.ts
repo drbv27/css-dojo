@@ -182,7 +182,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que etiqueta define una celda de encabezado en una tabla HTML?",
+      prompt: "¿Que etiqueta define una celda de encabezado en una tabla HTML?",
       options: [
         { id: "a", text: "<td>", isCorrect: false },
         { id: "b", text: "<th>", isCorrect: true },
@@ -218,7 +218,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que atributo permite que una celda ocupe multiples columnas?",
+      prompt: "¿Que atributo permite que una celda ocupe multiples columnas?",
       options: [
         { id: "a", text: "rowspan", isCorrect: false },
         { id: "b", text: "multicolumn", isCorrect: false },
@@ -310,7 +310,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Para que sirve el atributo scope en un <th>?",
+      prompt: "¿Para que sirve el atributo scope en un <th>?",
       options: [
         { id: "a", text: "Para definir el ancho de la columna", isCorrect: false },
         { id: "b", text: "Para indicar si el encabezado aplica a una columna o fila (accesibilidad)", isCorrect: true },

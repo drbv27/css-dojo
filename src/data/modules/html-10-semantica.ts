@@ -12,8 +12,8 @@ export const htmlSemanticaModule: ModuleData = {
   lessons: [
     {
       id: "html10-leccion-01",
-      title: "Que es HTML semantico?",
-      content: `## Que es HTML semantico?
+      title: "¿Que es HTML semantico?",
+      content: `## ¿Que es HTML semantico?
 
 **HTML semantico** significa usar etiquetas que describen el **significado** del contenido, no solo su apariencia.
 
@@ -37,7 +37,7 @@ export const htmlSemanticaModule: ModuleData = {
 <footer>...</footer>
 \`\`\`
 
-### Por que importa?
+### ¿Por que importa?
 
 1. **SEO:** Los motores de busqueda entienden mejor tu contenido
 2. **Accesibilidad:** Los lectores de pantalla navegan por secciones semanticas
@@ -258,7 +258,7 @@ Informacion de contacto del autor o propietario del contenido:
 
 ### 1. No abuses de div y span
 
-Usa \`<div>\` solo cuando **ninguna etiqueta semantica** sea apropiada. Piensa siempre: "Existe una etiqueta que describa mejor este contenido?"
+Usa \`<div>\` solo cuando **ninguna etiqueta semantica** sea apropiada. ¿Piensa siempre: "Existe una etiqueta que describa mejor este contenido?"
 
 ### 2. Un solo main por pagina
 
@@ -290,11 +290,11 @@ No uses \`<nav>\` para cada grupo de enlaces. Reservalo para la **navegacion pri
 
 ### Checklist de semantica
 
-- [ ] Usas header, main y footer?
-- [ ] Tus articulos son independientes?
-- [ ] Los encabezados siguen jerarquia?
-- [ ] Usas figure para imagenes con leyenda?
-- [ ] Evitas div donde hay alternativa semantica?`,
+- ¿[ ] Usas header, main y footer?
+- ¿[ ] Tus articulos son independientes?
+- ¿[ ] Los encabezados siguen jerarquia?
+- ¿[ ] Usas figure para imagenes con leyenda?
+- ¿[ ] Evitas div donde hay alternativa semantica?`,
       codeExample: {
         html: `<!-- Pagina bien estructurada -->
 <header>
@@ -358,7 +358,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que etiqueta semantica representa el contenido principal de una pagina?",
+      prompt: "¿Que etiqueta semantica representa el contenido principal de una pagina?",
       options: [
         { id: "a", text: "<content>", isCorrect: false },
         { id: "b", text: "<main>", isCorrect: true },
@@ -376,7 +376,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que etiqueta se usa para la navegacion principal de un sitio?",
+      prompt: "¿Que etiqueta se usa para la navegacion principal de un sitio?",
       options: [
         { id: "a", text: "<menu>", isCorrect: false },
         { id: "b", text: "<links>", isCorrect: false },
@@ -444,7 +444,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Cual es la diferencia principal entre <article> y <section>?",
+      prompt: "¿Cual es la diferencia principal entre <article> y <section>?",
       options: [
         { id: "a", text: "No hay diferencia, son intercambiables", isCorrect: false },
         { id: "b", text: "article es para contenido independiente; section agrupa contenido tematico", isCorrect: true },
@@ -462,7 +462,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que elemento se usa para asociar una leyenda o descripcion a una imagen?",
+      prompt: "¿Que elemento se usa para asociar una leyenda o descripcion a una imagen?",
       options: [
         { id: "a", text: "<caption>", isCorrect: false },
         { id: "b", text: "<legend>", isCorrect: false },
@@ -511,7 +511,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Cuantos elementos <main> deberia tener una pagina HTML bien estructurada?",
+      prompt: "¿Cuantos elementos <main> deberia tener una pagina HTML bien estructurada?",
       options: [
         { id: "a", text: "Los que sean necesarios", isCorrect: false },
         { id: "b", text: "Exactamente uno", isCorrect: true },

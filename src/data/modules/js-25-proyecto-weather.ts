@@ -329,7 +329,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que funcion se usa para codificar caracteres especiales en una URL?",
+      prompt: "¿Que funcion se usa para codificar caracteres especiales en una URL?",
       options: [
         { id: "a", text: "encodeURL()", isCorrect: false },
         { id: "b", text: "encodeURIComponent()", isCorrect: true },
@@ -346,7 +346,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que API del navegador permite obtener la ubicacion geografica del usuario?",
+      prompt: "¿Que API del navegador permite obtener la ubicacion geografica del usuario?",
       options: [
         { id: "a", text: "navigator.location", isCorrect: false },
         { id: "b", text: "navigator.geolocation", isCorrect: true },
@@ -363,7 +363,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Por que es buena practica implementar cache para peticiones a APIs?",
+      prompt: "¿Por que es buena practica implementar cache para peticiones a APIs?",
       options: [
         { id: "a", text: "Para hacer el codigo mas complejo", isCorrect: false },
         { id: "b", text: "Para evitar peticiones repetidas y mejorar rendimiento", isCorrect: true },
@@ -397,7 +397,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que patron de arquitectura separa datos, vista y logica de control?",
+      prompt: "¿Que patron de arquitectura separa datos, vista y logica de control?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Observer", isCorrect: false },
@@ -414,7 +414,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que deberias mostrar al usuario mientras una peticion fetch esta en progreso?",
+      prompt: "¿Que deberias mostrar al usuario mientras una peticion fetch esta en progreso?",
       options: [
         { id: "a", text: "Nada, dejarlo en blanco", isCorrect: false },
         { id: "b", text: "Un indicador de carga (spinner o skeleton)", isCorrect: true },

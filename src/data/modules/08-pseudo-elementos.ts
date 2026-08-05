@@ -307,7 +307,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 10,
       order: 1,
       prompt:
-        "Cuantos dos puntos se usan para escribir un pseudo-elemento en la notacion moderna de CSS3?",
+        "¿Cuantos dos puntos se usan para escribir un pseudo-elemento en la notacion moderna de CSS3?",
       options: [
         { id: "a", text: "Uno (:)", isCorrect: false },
         { id: "b", text: "Dos (::)", isCorrect: true },
@@ -345,7 +345,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 3,
       prompt:
-        "Que propiedad es OBLIGATORIA para que ::before y ::after se muestren?",
+        "¿Que propiedad es OBLIGATORIA para que ::before y ::after se muestren?",
       options: [
         { id: "a", text: "display", isCorrect: false },
         { id: "b", text: "position", isCorrect: false },
@@ -441,7 +441,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 7,
       prompt:
-        "En que tipo de elementos NO funcionan ::before y ::after?",
+        "¿En que tipo de elementos NO funcionan ::before y ::after?",
       options: [
         { id: "a", text: "Elementos de bloque como <div>", isCorrect: false },
         { id: "b", text: "Elementos en linea como <span>", isCorrect: false },

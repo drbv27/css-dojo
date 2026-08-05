@@ -236,7 +236,7 @@ Un contexto de apilamiento es un **grupo aislado**. Los z-index dentro de un con
 
 El \`.hijo\` con z-index: 999 nunca se mostrara encima de \`.grupo-B\` porque su contexto padre (\`.grupo-A\`) tiene z-index: 1.
 
-### Que crea un nuevo contexto de apilamiento?
+### ¿Que crea un nuevo contexto de apilamiento?
 
 - \`position\` + \`z-index\` (distinto de auto)
 - \`opacity\` menor a 1
@@ -273,7 +273,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 10,
       order: 1,
       prompt:
-        "Cual es el valor por defecto de la propiedad position?",
+        "¿Cual es el valor por defecto de la propiedad position?",
       options: [
         { id: "a", text: "relative", isCorrect: false },
         { id: "b", text: "absolute", isCorrect: false },
@@ -397,7 +397,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 5,
       prompt:
-        "Un elemento tiene position: absolute y esta dentro de un div con position: static, que a su vez esta dentro de un div con position: relative. Respecto a cual se posiciona?",
+        "Un elemento tiene position: absolute y esta dentro de un div con position: static, que a su vez esta dentro de un div con position: relative. ¿Respecto a cual se posiciona?",
       options: [
         { id: "a", text: "Respecto al div con position: static", isCorrect: false },
         { id: "b", text: "Respecto al div con position: relative", isCorrect: true },
@@ -460,7 +460,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 30,
       order: 8,
       prompt:
-        "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, cual se muestra encima?",
+        "Si un elemento con z-index: 999 esta dentro de un padre con z-index: 1, y otro elemento tiene z-index: 2, ¿cual se muestra encima?",
       options: [
         { id: "a", text: "El elemento con z-index: 999", isCorrect: false },
         { id: "b", text: "El elemento con z-index: 2", isCorrect: true },

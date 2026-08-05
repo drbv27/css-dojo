@@ -184,7 +184,7 @@ const saludar2 = function(nombre) {
 };
 \`\`\`
 
-### Por que usar const?
+### ¿Por que usar const?
 
 Al asignar la funcion a \`const\`, **proteges** la funcion de ser sobrescrita:
 
@@ -198,7 +198,7 @@ calcular = function() { return 0; };  // Error: Assignment to constant
 
 Con una declaracion normal, otro codigo podria redefinir tu funcion accidentalmente.
 
-### Cuando usar expresion de funciones?
+### ¿Cuando usar expresion de funciones?
 
 1. Cuando quieres ser **explicito** sobre el orden de definicion (no quieres hoisting).
 2. Cuando vas a **pasar la funcion como argumento** a otra funcion (callbacks).
@@ -421,7 +421,7 @@ JavaScript ofrece **tres maneras** de crear funciones. Todas hacen lo mismo, per
 | \`this\` propio | Si | Si | No (heredado) |
 | Mejor para | Codigo viejo | Asignacion condicional | Callbacks, codigo moderno |
 
-### Que es Hoisting?
+### ¿Que es Hoisting?
 
 JavaScript **"levanta"** las declaraciones al inicio de su scope antes de ejecutar el codigo. Esto solo aplica a **declaraciones de funcion**.
 
@@ -448,7 +448,7 @@ saludar3();  // ReferenceError ✗
 const saludar3 = () => console.log("Hola");
 \`\`\`
 
-### Por que pasa esto?
+### ¿Por que pasa esto?
 
 JavaScript procesa el codigo en dos fases:
 
@@ -483,7 +483,7 @@ const multiplicar = function(a, b) {
 const multiplicar = (a, b) => a * b;
 \`\`\`
 
-### Cual usar?
+### ¿Cual usar?
 
 **Regla pragmatica para principiantes:**
 
@@ -808,7 +808,7 @@ decuple(5);   // 50
 
 > Cada llamada a \`multiplicarPor\` crea un closure DIFERENTE con su propio \`factor\`.
 
-### Por que importan los closures?
+### ¿Por que importan los closures?
 
 1. **Encapsulamiento:** crear datos privados (no accesibles desde afuera).
 2. **Fabricas de funciones:** generar funciones especializadas.
@@ -842,7 +842,7 @@ Lo mas comun:
 ejecutarOperacion(10, 5, (a, b) => a * b);  // 50
 \`\`\`
 
-### Por que importan los callbacks?
+### ¿Por que importan los callbacks?
 
 Son la base de:
 - **Metodos de array:** \`.map(callback)\`, \`.filter(callback)\`, \`.forEach(callback)\`
@@ -1009,7 +1009,7 @@ La recursion **siempre se puede reescribir como un ciclo**. La eleccion depende 
 | Problemas matematicos definidos recursivamente (factorial, fibonacci) | Recursion |
 | Cuando importa el rendimiento | Ciclo (es mas rapido) |
 
-> **Tip:** Antes de usar recursion, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es mas eficiente**. Usa recursion cuando aporte claridad.
+> **¿Tip:** Antes de usar recursion, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es mas eficiente**. Usa recursion cuando aporte claridad.
 
 ### Numero de Fibonacci (otro clasico)
 
@@ -1064,7 +1064,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
     {
       id: "js07-leccion-08",
       title: "Funciones como metodos de objetos",
-      content: `## Que es un metodo?
+      content: `## ¿Que es un metodo?
 
 Un **metodo** es simplemente una **funcion que es propiedad de un objeto**. No hay nada especial: es una funcion guardada en un objeto.
 
@@ -1278,7 +1278,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1,
       xpReward: 10,
       order: 1,
-      prompt: "Que palabra clave se usa para que una funcion devuelva un valor?",
+      prompt: "¿Que palabra clave se usa para que una funcion devuelva un valor?",
       options: [
         { id: "a", text: "output", isCorrect: false },
         { id: "b", text: "return", isCorrect: true },
@@ -1295,7 +1295,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1,
       xpReward: 10,
       order: 2,
-      prompt: "Que devuelve una funcion si no tiene return?",
+      prompt: "¿Que devuelve una funcion si no tiene return?",
       options: [
         { id: "a", text: "null", isCorrect: false },
         { id: "b", text: "0", isCorrect: false },
@@ -1312,7 +1312,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1,
       xpReward: 10,
       order: 3,
-      prompt: "Cual es la diferencia entre un parametro y un argumento?",
+      prompt: "¿Cual es la diferencia entre un parametro y un argumento?",
       options: [
         { id: "a", text: "Son sinonimos, no hay diferencia", isCorrect: false },
         { id: "b", text: "El parametro va en la definicion de la funcion, el argumento en la llamada", isCorrect: true },
@@ -1347,7 +1347,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 5,
-      prompt: "Cual de estas es una EXPRESION DE FUNCION valida?",
+      prompt: "¿Cual de estas es una EXPRESION DE FUNCION valida?",
       options: [
         { id: "a", text: "function calcular() { return 42; }", isCorrect: false },
         { id: "b", text: "const calcular = function() { return 42; };", isCorrect: true },
@@ -1365,7 +1365,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 6,
-      prompt: "Cual de estas es una arrow function valida?",
+      prompt: "¿Cual de estas es una arrow function valida?",
       options: [
         { id: "a", text: "const f = => x * 2;", isCorrect: false },
         { id: "b", text: "const f = x => x * 2;", isCorrect: true },
@@ -1382,7 +1382,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 7,
-      prompt: "Cual de las 3 formas de declarar funciones SE PUEDE usar antes de declararla (hoisting)?",
+      prompt: "¿Cual de las 3 formas de declarar funciones SE PUEDE usar antes de declararla (hoisting)?",
       options: [
         { id: "a", text: "Las tres formas", isCorrect: false },
         { id: "b", text: "Declaracion (function nombre)", isCorrect: true },
@@ -1436,7 +1436,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 10,
-      prompt: "Que devuelve Math.max(...[3, 7, 1, 9, 2])?",
+      prompt: "¿Que devuelve Math.max(...[3, 7, 1, 9, 2])?",
       options: [
         { id: "a", text: "Error: Math.max no acepta arrays", isCorrect: false },
         { id: "b", text: "[3, 7, 1, 9, 2]", isCorrect: false },
@@ -1454,7 +1454,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3,
       xpReward: 30,
       order: 11,
-      prompt: "Que es un closure en JavaScript?",
+      prompt: "¿Que es un closure en JavaScript?",
       options: [
         { id: "a", text: "Una funcion que se ejecuta inmediatamente", isCorrect: false },
         { id: "b", text: "Una funcion que recuerda las variables de su scope de creacion", isCorrect: true },
@@ -1501,7 +1501,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 13,
-      prompt: "Que parte es OBLIGATORIA en una funcion recursiva para evitar un ciclo infinito?",
+      prompt: "¿Que parte es OBLIGATORIA en una funcion recursiva para evitar un ciclo infinito?",
       options: [
         { id: "a", text: "Un parametro tipo string", isCorrect: false },
         { id: "b", text: "Un caso base que detenga la recursion", isCorrect: true },
@@ -1537,7 +1537,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2,
       xpReward: 20,
       order: 15,
-      prompt: "Que es un metodo en JavaScript?",
+      prompt: "¿Que es un metodo en JavaScript?",
       options: [
         { id: "a", text: "Un tipo especial de variable", isCorrect: false },
         { id: "b", text: "Una funcion que es propiedad de un objeto", isCorrect: true },
@@ -1555,7 +1555,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3,
       xpReward: 30,
       order: 16,
-      prompt: "Por que NO es buena idea usar arrow functions como metodos de un objeto?",
+      prompt: "¿Por que NO es buena idea usar arrow functions como metodos de un objeto?",
       options: [
         { id: "a", text: "Porque son mas lentas que las funciones normales", isCorrect: false },
         { id: "b", text: "Porque las arrow functions no tienen su propio 'this' y no pueden acceder a las propiedades del objeto", isCorrect: true },

@@ -229,7 +229,7 @@ Existe otra propiedad que dibuja una linea alrededor de un elemento: \`outline\`
 | Puede ser diferente en cada lado | Si | No |
 | Se puede desplazar con offset | No | Si (outline-offset) |
 
-### Por que importa?
+### ¿Por que importa?
 
 El \`outline\` **no ocupa espacio** en el layout. No mueve otros elementos ni cambia las dimensiones de la caja:
 
@@ -272,7 +272,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 10,
       order: 1,
       prompt:
-        "Cuales son las 4 capas del Box Model, desde el centro hacia afuera?",
+        "¿Cuales son las 4 capas del Box Model, desde el centro hacia afuera?",
       options: [
         { id: "a", text: "content, padding, border, margin", isCorrect: true },
         { id: "b", text: "margin, border, padding, content", isCorrect: false },
@@ -291,7 +291,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 2,
       prompt:
-        "Un elemento tiene width: 200px, padding: 15px, border: 5px solid black, y usa box-sizing: content-box. Cual es su ancho visible (sin contar margin)?",
+        "Un elemento tiene width: 200px, padding: 15px, border: 5px solid black, y usa box-sizing: content-box. ¿Cual es su ancho visible (sin contar margin)?",
       options: [
         { id: "a", text: "200px", isCorrect: false },
         { id: "b", text: "230px", isCorrect: false },
@@ -447,7 +447,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 8,
       prompt:
-        "Cual es la principal diferencia entre outline y border respecto al Box Model?",
+        "¿Cual es la principal diferencia entre outline y border respecto al Box Model?",
       options: [
         { id: "a", text: "El outline solo puede ser de color negro", isCorrect: false },
         { id: "b", text: "El outline no forma parte del Box Model y no afecta las dimensiones", isCorrect: true },

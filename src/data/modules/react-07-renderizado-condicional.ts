@@ -348,7 +348,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual es la forma correcta de mostrar un elemento solo si una condicion es verdadera en JSX?",
+      prompt: "¿Cual es la forma correcta de mostrar un elemento solo si una condicion es verdadera en JSX?",
       options: [
         { id: "a", text: "{if (condicion) <p>Texto</p>}", isCorrect: false },
         { id: "b", text: "{condicion && <p>Texto</p>}", isCorrect: true },
@@ -366,7 +366,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cuando es mejor usar el operador ternario en vez de && para renderizado condicional?",
+      prompt: "¿Cuando es mejor usar el operador ternario en vez de && para renderizado condicional?",
       options: [
         { id: "a", text: "Cuando necesitas mostrar una cosa u otra alternativa", isCorrect: true },
         { id: "b", text: "Cuando solo quieres mostrar algo o nada", isCorrect: false },
@@ -376,7 +376,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "a" },
       hint: "El ternario tiene dos ramas: una para verdadero y otra para falso.",
       explanation:
-        "El operador ternario (condicion ? A : B) es ideal cuando necesitas mostrar un elemento u otro alternativo. El operador && es mejor cuando quieres mostrar algo o nada.",
+        "¿El operador ternario (condicion ? A : B) es ideal cuando necesitas mostrar un elemento u otro alternativo. El operador && es mejor cuando quieres mostrar algo o nada.",
     },
     {
       id: "react07-ej-03",
@@ -394,7 +394,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "?" },
       hint: "Es el operador que tiene tres partes: condicion, valor si verdadero, valor si falso.",
       explanation:
-        "El operador ternario (?) permite elegir entre dos opciones: {condicion ? elementoSiTrue : elementoSiFalse}. Es la forma mas usada de renderizado condicional con dos alternativas.",
+        "¿El operador ternario (?) permite elegir entre dos opciones: {condicion ? elementoSiTrue : elementoSiFalse}. Es la forma mas usada de renderizado condicional con dos alternativas.",
     },
     {
       id: "react07-ej-04",
@@ -402,7 +402,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que problema tiene este codigo? {count && <p>Items: {count}</p>}",
+      prompt: "¿Que problema tiene este codigo? {count && <p>Items: {count}</p>}",
       options: [
         { id: "a", text: "No tiene ningun problema", isCorrect: false },
         { id: "b", text: "Si count es 0, se muestra '0' en pantalla en vez de nada", isCorrect: true },
@@ -428,7 +428,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["null"],
       },
       validation: { type: "exact", answer: "null" },
-      hint: "Que valor retornas cuando un componente no debe renderizar nada?",
+      hint: "¿Que valor retornas cuando un componente no debe renderizar nada?",
       explanation:
         "Retornar null indica a React que este componente no debe renderizar nada. Es util en retornos tempranos cuando no hay datos para mostrar.",
     },
@@ -470,12 +470,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Cual es la forma correcta de aplicar una clase CSS condicional en JSX?",
+      prompt: "¿Cual es la forma correcta de aplicar una clase CSS condicional en JSX?",
       options: [
         { id: "a", text: "className={activo ? \"btn activo\" : \"btn\"}", isCorrect: true },
         { id: "b", text: "class={activo && \"activo\"}", isCorrect: false },
         { id: "c", text: "className={if (activo) \"btn activo\"}", isCorrect: false },
-        { id: "d", text: "style.className = activo ? \"activo\" : \"\"", isCorrect: false },
+        { id: "d", text: "¿style.className = activo ? \"activo\" : \"\"", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
       hint: "Usa className con una expresion ternaria o template literal.",

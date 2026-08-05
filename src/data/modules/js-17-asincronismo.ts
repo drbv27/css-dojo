@@ -260,7 +260,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cuantos hilos de ejecucion tiene JavaScript?",
+      prompt: "¿Cuantos hilos de ejecucion tiene JavaScript?",
       options: [
         { id: "a", text: "Multiples hilos", isCorrect: false },
         { id: "b", text: "Un solo hilo (single-threaded)", isCorrect: true },
@@ -277,7 +277,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cuales son los tres estados de una Promise?",
+      prompt: "¿Cuales son los tres estados de una Promise?",
       options: [
         { id: "a", text: "open, closed, error", isCorrect: false },
         { id: "b", text: "pending, fulfilled, rejected", isCorrect: true },
@@ -311,7 +311,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que metodo de Promise se usa para manejar errores?",
+      prompt: "¿Que metodo de Promise se usa para manejar errores?",
       options: [
         { id: "a", text: ".error()", isCorrect: false },
         { id: "b", text: ".catch()", isCorrect: true },
@@ -328,7 +328,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que hace Promise.all()?",
+      prompt: "¿Que hace Promise.all()?",
       options: [
         { id: "a", text: "Ejecuta Promises una despues de otra", isCorrect: false },
         { id: "b", text: "Ejecuta multiples Promises en paralelo y espera a todas", isCorrect: true },
@@ -345,7 +345,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Que sucede si usas await fuera de una funcion async?",
+      prompt: "¿Que sucede si usas await fuera de una funcion async?",
       options: [
         { id: "a", text: "Funciona normalmente", isCorrect: false },
         { id: "b", text: "Error de sintaxis", isCorrect: true },

@@ -168,7 +168,7 @@ useQuery({
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que hook de TanStack Query se usa para LEER datos del servidor?",
+      prompt: "¿Que hook de TanStack Query se usa para LEER datos del servidor?",
       options: [
         { id: "a", text: "useMutation", isCorrect: false },
         { id: "b", text: "useQuery", isCorrect: true },
@@ -185,7 +185,7 @@ useQuery({
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Para que sirve queryKey en useQuery?",
+      prompt: "¿Para que sirve queryKey en useQuery?",
       options: [
         { id: "a", text: "Para encriptar los datos", isCorrect: false },
         { id: "b", text: "Para identificar y cachear la query de forma unica", isCorrect: true },
@@ -202,7 +202,7 @@ useQuery({
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Despues de crear un usuario con useMutation, como actualizas la lista?",
+      prompt: "¿Despues de crear un usuario con useMutation, como actualizas la lista?",
       options: [
         { id: "a", text: "window.location.reload()", isCorrect: false },
         { id: "b", text: "queryClient.invalidateQueries()", isCorrect: true },

@@ -264,7 +264,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que meta tag es esencial para que un sitio se vea correctamente en moviles?",
+      prompt: "¿Que meta tag es esencial para que un sitio se vea correctamente en moviles?",
       options: [
         { id: "a", text: '<meta name="mobile">',  isCorrect: false },
         { id: "b", text: '<meta name="viewport">',  isCorrect: true },
@@ -282,7 +282,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que meta tag controla el texto que aparece en los resultados de Google?",
+      prompt: "¿Que meta tag controla el texto que aparece en los resultados de Google?",
       options: [
         { id: "a", text: '<meta name="title">',  isCorrect: false },
         { id: "b", text: '<meta name="google-text">',  isCorrect: false },
@@ -318,7 +318,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que valor de meta robots evita que Google indexe una pagina?",
+      prompt: "¿Que valor de meta robots evita que Google indexe una pagina?",
       options: [
         { id: "a", text: 'content="noindex"',  isCorrect: true },
         { id: "b", text: 'content="hidden"',  isCorrect: false },
@@ -368,7 +368,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Para que sirve la etiqueta <link rel='canonical'>?",
+      prompt: "¿Para que sirve la etiqueta <link rel='canonical'>?",
       options: [
         { id: "a", text: "Para definir el estilo principal de la pagina", isCorrect: false },
         { id: "b", text: "Para indicar la URL preferida y evitar contenido duplicado", isCorrect: true },
@@ -386,7 +386,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Que formato se usa para escribir datos estructurados (Schema.org) recomendado por Google?",
+      prompt: "¿Que formato se usa para escribir datos estructurados (Schema.org) recomendado por Google?",
       options: [
         { id: "a", text: "XML", isCorrect: false },
         { id: "b", text: "JSON-LD", isCorrect: true },

@@ -298,7 +298,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 10,
       order: 1,
       prompt:
-        "Para que fue disenada originalmente la propiedad float?",
+        "¿Para que fue disenada originalmente la propiedad float?",
       options: [
         { id: "a", text: "Para crear layouts de multiples columnas", isCorrect: false },
         { id: "b", text: "Para envolver texto alrededor de imagenes", isCorrect: true },
@@ -397,7 +397,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 20,
       order: 4,
       prompt:
-        "Cual es la diferencia principal entre display: none y visibility: hidden?",
+        "¿Cual es la diferencia principal entre display: none y visibility: hidden?",
       options: [
         { id: "a", text: "No hay diferencia, ambos ocultan el elemento", isCorrect: false },
         { id: "b", text: "display: none quita el espacio; visibility: hidden conserva el espacio", isCorrect: true },
@@ -485,7 +485,7 @@ Son las versiones en linea de flex y grid. El contenedor se comporta como inline
       xpReward: 10,
       order: 8,
       prompt:
-        "Que propiedad se usa hoy en dia en lugar de float para crear layouts de columnas?",
+        "¿Que propiedad se usa hoy en dia en lugar de float para crear layouts de columnas?",
       options: [
         { id: "a", text: "position: absolute", isCorrect: false },
         { id: "b", text: "display: inline", isCorrect: false },

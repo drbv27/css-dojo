@@ -15,7 +15,7 @@ export const tailwindModule: ModuleData = {
       title: "Introduccion a Tailwind CSS",
       content: `## Introduccion a Tailwind CSS
 
-### Que es Tailwind CSS?
+### ¿Que es Tailwind CSS?
 
 **Tailwind CSS** es un framework CSS **utility-first** (utilidades primero). En lugar de componentes predefinidos como Bootstrap, Tailwind proporciona cientos de clases utilitarias de bajo nivel que se combinan directamente en el HTML.
 
@@ -521,7 +521,7 @@ Los prefijos se pueden combinar:
       xpReward: 10,
       order: 1,
       prompt:
-        "Cual es el enfoque principal de Tailwind CSS?",
+        "¿Cual es el enfoque principal de Tailwind CSS?",
       options: [
         { id: "a", text: "Componentes predefinidos como Bootstrap", isCorrect: false },
         { id: "b", text: "Utility-first: clases utilitarias de bajo nivel", isCorrect: true },
@@ -559,7 +559,7 @@ Los prefijos se pueden combinar:
       xpReward: 10,
       order: 3,
       prompt:
-        "En Tailwind, que hace la clase 'flex justify-between items-center'?",
+        "¿En Tailwind, que hace la clase 'flex justify-between items-center'?",
       options: [
         { id: "a", text: "Crea un grid con 3 columnas centradas", isCorrect: false },
         { id: "b", text: "Crea un flexbox con elementos separados en el eje principal y centrados en el cruzado", isCorrect: true },
@@ -665,7 +665,7 @@ Los prefijos se pueden combinar:
       xpReward: 30,
       order: 7,
       prompt:
-        "Como se aplica un estilo de hover al padre que afecte a un hijo en Tailwind?",
+        "¿Como se aplica un estilo de hover al padre que afecte a un hijo en Tailwind?",
       options: [
         { id: "a", text: "Usando 'parent-hover:' en el hijo", isCorrect: false },
         { id: "b", text: "Usando 'group' en el padre y 'group-hover:' en el hijo", isCorrect: true },

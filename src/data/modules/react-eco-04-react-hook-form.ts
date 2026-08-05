@@ -151,7 +151,7 @@ function RegistroForm() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que funcion de React Hook Form conecta un input al formulario?",
+      prompt: "¿Que funcion de React Hook Form conecta un input al formulario?",
       options: [
         { id: "a", text: "connect()", isCorrect: false },
         { id: "b", text: "register()", isCorrect: true },
@@ -168,7 +168,7 @@ function RegistroForm() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Que ventaja tiene React Hook Form sobre manejar formularios con useState?",
+      prompt: "¿Que ventaja tiene React Hook Form sobre manejar formularios con useState?",
       options: [
         { id: "a", text: "Usa menos memoria", isCorrect: false },
         { id: "b", text: "No necesita JavaScript", isCorrect: false },
@@ -185,7 +185,7 @@ function RegistroForm() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Que hace z.infer<typeof schema> con Zod?",
+      prompt: "¿Que hace z.infer<typeof schema> con Zod?",
       options: [
         { id: "a", text: "Valida los datos", isCorrect: false },
         { id: "b", text: "Genera automaticamente el tipo TypeScript del schema", isCorrect: true },

@@ -12,7 +12,7 @@ export const jsDomSeleccionModule: ModuleData = {
   lessons: [
     {
       id: "js11-leccion-01",
-      title: "Que es el DOM?",
+      title: "¿Que es el DOM?",
       content: `## El DOM (Document Object Model)
 
 El **DOM** es la representacion en forma de arbol de un documento HTML. JavaScript puede leer y modificar este arbol.
@@ -41,7 +41,7 @@ document.head          // elemento <head>
 document.documentElement // elemento <html>
 \`\`\`
 
-### Por que es importante?
+### ¿Por que es importante?
 
 Sin el DOM, JavaScript no podria:
 - Cambiar el contenido de la pagina
@@ -193,7 +193,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que metodo selecciona un elemento por su atributo id?",
+      prompt: "¿Que metodo selecciona un elemento por su atributo id?",
       options: [
         { id: "a", text: "document.querySelector()", isCorrect: false },
         { id: "b", text: "document.getElementById()", isCorrect: true },
@@ -210,7 +210,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que metodo es recomendado para seleccionar elementos en codigo moderno?",
+      prompt: "¿Que metodo es recomendado para seleccionar elementos en codigo moderno?",
       options: [
         { id: "a", text: "getElementsByTagName()", isCorrect: false },
         { id: "b", text: "getElementsByClassName()", isCorrect: false },
@@ -244,7 +244,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que devuelve querySelectorAll() si no encuentra ningun elemento?",
+      prompt: "¿Que devuelve querySelectorAll() si no encuentra ningun elemento?",
       options: [
         { id: "a", text: "null", isCorrect: false },
         { id: "b", text: "undefined", isCorrect: false },
@@ -261,7 +261,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que propiedad accede al elemento padre de un nodo?",
+      prompt: "¿Que propiedad accede al elemento padre de un nodo?",
       options: [
         { id: "a", text: "parentElement", isCorrect: true },
         { id: "b", text: "parent", isCorrect: false },
@@ -278,7 +278,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: 'Cual es la diferencia entre querySelector("#id") y getElementById("id")?',
+      prompt: '¿Cual es la diferencia entre querySelector("#id") y getElementById("id")?',
       options: [
         { id: "a", text: "querySelector es mas rapido", isCorrect: false },
         { id: "b", text: "getElementById no acepta selectores CSS, querySelector si", isCorrect: true },

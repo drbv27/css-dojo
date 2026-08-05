@@ -302,7 +302,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 10,
       order: 1,
       prompt:
-        "Que pseudo-clase se activa cuando el usuario pasa el cursor sobre un elemento?",
+        "¿Que pseudo-clase se activa cuando el usuario pasa el cursor sobre un elemento?",
       options: [
         { id: "a", text: ":active", isCorrect: false },
         { id: "b", text: ":focus", isCorrect: false },
@@ -340,7 +340,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 20,
       order: 3,
       prompt:
-        "Cual es la diferencia entre li:first-child y li:first-of-type?",
+        "¿Cual es la diferencia entre li:first-child y li:first-of-type?",
       options: [
         {
           id: "a",
@@ -455,7 +455,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 30,
       order: 7,
       prompt:
-        "Que selecciona el selector li:not(:last-child)?",
+        "¿Que selecciona el selector li:not(:last-child)?",
       options: [
         { id: "a", text: "Solo el ultimo <li>", isCorrect: false },
         {
@@ -503,7 +503,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 15,
       order: 9,
       prompt:
-        "Escribis .tarjeta:has(img) { border-color: red; }. A que elemento se le aplica el borde rojo?",
+        "Escribis .tarjeta:has(img) { border-color: red; }. ¿A que elemento se le aplica el borde rojo?",
       options: [
         { id: "a", text: "A la imagen que esta dentro de la tarjeta", isCorrect: false },
         { id: "b", text: "A la tarjeta que contiene una imagen", isCorrect: true },

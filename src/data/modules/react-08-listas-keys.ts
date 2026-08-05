@@ -31,7 +31,7 @@ function ListaFrutas() {
 }
 \`\`\`
 
-### Como funciona?
+### ¿Como funciona?
 
 1. \`map()\` recorre cada elemento del array
 2. Para cada elemento, retorna un fragmento de JSX
@@ -126,11 +126,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react08-leccion-02",
       title: "La prop key en profundidad",
-      content: `## Por que son importantes las keys?
+      content: `## ¿Por que son importantes las keys?
 
 Las **keys** ayudan a React a **identificar que elementos cambiaron** (se agregaron, eliminaron o reordenaron). Sin keys, React no puede optimizar las actualizaciones de listas.
 
-### Que pasa sin keys?
+### ¿Que pasa sin keys?
 
 Sin keys (o con keys incorrectas), React:
 - Puede recrear todos los elementos de la lista
@@ -382,7 +382,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que metodo de JavaScript se usa para renderizar listas en React?",
+      prompt: "¿Que metodo de JavaScript se usa para renderizar listas en React?",
       options: [
         { id: "a", text: "forEach()", isCorrect: false },
         { id: "b", text: "map()", isCorrect: true },
@@ -418,7 +418,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Para que sirve la prop 'key' en listas de React?",
+      prompt: "¿Para que sirve la prop 'key' en listas de React?",
       options: [
         { id: "a", text: "Para dar estilo a cada elemento", isCorrect: false },
         { id: "b", text: "Para identificar de forma unica cada elemento y optimizar actualizaciones", isCorrect: true },
@@ -436,7 +436,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Cuando es SEGURO usar el index como key?",
+      prompt: "¿Cuando es SEGURO usar el index como key?",
       options: [
         { id: "a", text: "Siempre, es la forma recomendada", isCorrect: false },
         { id: "b", text: "Nunca, siempre causa problemas", isCorrect: false },
@@ -504,7 +504,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Por que se debe crear una copia del array con [...array] antes de usar sort()?",
+      prompt: "¿Por que se debe crear una copia del array con [...array] antes de usar sort()?",
       options: [
         { id: "a", text: "Porque sort() no funciona en arrays de React", isCorrect: false },
         { id: "b", text: "Porque sort() muta el array original, violando la inmutabilidad del estado", isCorrect: true },

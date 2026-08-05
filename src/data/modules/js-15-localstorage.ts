@@ -225,7 +225,7 @@ nota.addEventListener("input", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que metodo se usa para guardar un dato en localStorage?",
+      prompt: "¿Que metodo se usa para guardar un dato en localStorage?",
       options: [
         { id: "a", text: "localStorage.save()", isCorrect: false },
         { id: "b", text: "localStorage.setItem()", isCorrect: true },
@@ -242,7 +242,7 @@ nota.addEventListener("input", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que tipo de datos acepta localStorage?",
+      prompt: "¿Que tipo de datos acepta localStorage?",
       options: [
         { id: "a", text: "Cualquier tipo", isCorrect: false },
         { id: "b", text: "Solo strings", isCorrect: true },
@@ -276,7 +276,7 @@ nota.addEventListener("input", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que diferencia hay entre localStorage y sessionStorage?",
+      prompt: "¿Que diferencia hay entre localStorage y sessionStorage?",
       options: [
         { id: "a", text: "localStorage es mas grande", isCorrect: false },
         { id: "b", text: "sessionStorage persiste al cerrar la pestana, localStorage no", isCorrect: false },
@@ -293,7 +293,7 @@ nota.addEventListener("input", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Que metodo convierte un string JSON de vuelta a un objeto?",
+      prompt: "¿Que metodo convierte un string JSON de vuelta a un objeto?",
       options: [
         { id: "a", text: "JSON.parse()", isCorrect: true },
         { id: "b", text: "JSON.toObject()", isCorrect: false },
@@ -310,7 +310,7 @@ nota.addEventListener("input", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Por que es importante usar try/catch al leer de localStorage?",
+      prompt: "¿Por que es importante usar try/catch al leer de localStorage?",
       options: [
         { id: "a", text: "Porque localStorage puede estar lleno", isCorrect: false },
         { id: "b", text: "Porque JSON.parse puede fallar con datos corruptos", isCorrect: true },

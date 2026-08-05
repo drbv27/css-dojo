@@ -47,7 +47,7 @@ App
 }
 \`\`\`
 
-### Por que useReducer?
+### ¿Por que useReducer?
 - Multiples acciones (agregar, eliminar, editar, toggle, filtrar)
 - Estado complejo con sub-valores
 - Logica predecible y testeable
@@ -682,7 +682,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Por que useReducer es mejor que useState para un Task Manager?",
+      prompt: "¿Por que useReducer es mejor que useState para un Task Manager?",
       options: [
         { id: "a", text: "Es mas rapido que useState", isCorrect: false },
         { id: "b", text: "Tiene multiples acciones y estado complejo con sub-valores", isCorrect: true },
@@ -716,7 +716,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Como se inicializa useReducer leyendo de localStorage?",
+      prompt: "¿Como se inicializa useReducer leyendo de localStorage?",
       options: [
         { id: "a", text: "Con un useEffect que lea localStorage", isCorrect: false },
         { id: "b", text: "Pasando una funcion inicializadora como tercer argumento de useReducer", isCorrect: true },
@@ -756,7 +756,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Cual es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
+      prompt: "¿Cual es la ventaja de usar funciones puras para filtrar y ordenar tareas?",
       options: [
         { id: "a", text: "Son mas rapidas que los metodos de array", isCorrect: false },
         { id: "b", text: "Son faciles de testear y reutilizar sin depender de React", isCorrect: true },

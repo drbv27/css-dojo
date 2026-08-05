@@ -121,7 +121,7 @@ Para una **medicion fija** dentro de un rango conocido: bateria, espacio en disc
       difficulty: 2,
       xpReward: 15,
       order: 1,
-      prompt: "Quieres mostrar el nivel de bateria de un dispositivo (una cantidad fija en un rango). Que elemento usas?",
+      prompt: "Quieres mostrar el nivel de bateria de un dispositivo (una cantidad fija en un rango). ¿Que elemento usas?",
       options: [
         { id: "a", text: "<meter> — es una medida dentro de un rango conocido", isCorrect: true },
         { id: "b", text: "<progress> — porque siempre se usa para barras", isCorrect: false },

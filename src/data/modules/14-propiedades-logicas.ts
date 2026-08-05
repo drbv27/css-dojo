@@ -12,8 +12,8 @@ export const propiedadesLogicasModule: ModuleData = {
   lessons: [
     {
       id: "14-leccion-01",
-      title: "Por que propiedades logicas?",
-      content: `## Por que propiedades logicas?
+      title: "¿Por que propiedades logicas?",
+      content: `## ¿Por que propiedades logicas?
 
 Las propiedades tradicionales de CSS como \`width\`, \`height\`, \`margin-left\`, \`padding-top\`, etc., son **fisicas**: se refieren a direcciones fijas (arriba, abajo, izquierda, derecha).
 
@@ -301,7 +301,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 10,
       order: 1,
       prompt:
-        "Cual es la propiedad logica equivalente a 'width' en CSS?",
+        "¿Cual es la propiedad logica equivalente a 'width' en CSS?",
       options: [
         { id: "a", text: "block-size", isCorrect: false },
         { id: "b", text: "inline-size", isCorrect: true },
@@ -388,7 +388,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 4,
       prompt:
-        "En un documento con writing-mode: vertical-rl, que dimension controla inline-size?",
+        "¿En un documento con writing-mode: vertical-rl, que dimension controla inline-size?",
       options: [
         { id: "a", text: "El ancho (horizontal)", isCorrect: false },
         { id: "b", text: "El alto (vertical)", isCorrect: true },
@@ -502,7 +502,7 @@ Controla la orientacion de los caracteres en texto vertical:
       xpReward: 20,
       order: 8,
       prompt:
-        "Cual es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",
+        "¿Cual es la ventaja principal de usar margin-inline: auto sobre margin-left: auto; margin-right: auto?",
       options: [
         { id: "a", text: "Es mas rapido de renderizar por el navegador", isCorrect: false },
         { id: "b", text: "Es un shorthand mas conciso que se adapta automaticamente a idiomas RTL", isCorrect: true },

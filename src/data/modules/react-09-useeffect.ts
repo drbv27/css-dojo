@@ -30,7 +30,7 @@ useEffect(() => {
 }, [dependencias]);
 \`\`\`
 
-### Cuando se ejecuta useEffect?
+### ¿Cuando se ejecuta useEffect?
 
 1. **Sin array de dependencias** — se ejecuta en cada render
 2. **Array vacio \`[]\`** — solo al montar el componente
@@ -189,7 +189,7 @@ useEffect(() => {
 }, []);
 \`\`\`
 
-### Cuando se ejecuta el cleanup?
+### ¿Cuando se ejecuta el cleanup?
 1. **Antes** de re-ejecutar el efecto (si las dependencias cambian)
 2. Cuando el componente se **desmonta**
 
@@ -365,7 +365,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cuando se ejecuta un useEffect con array de dependencias vacio []?",
+      prompt: "¿Cuando se ejecuta un useEffect con array de dependencias vacio []?",
       options: [
         { id: "a", text: "En cada render del componente", isCorrect: false },
         { id: "b", text: "Solo cuando el componente se monta (primer render)", isCorrect: true },
@@ -382,7 +382,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Que causa un loop infinito en useEffect?",
+      prompt: "¿Que causa un loop infinito en useEffect?",
       options: [
         { id: "a", text: "Usar async/await dentro del efecto", isCorrect: false },
         { id: "b", text: "Modificar una variable de estado que esta en las dependencias", isCorrect: true },
@@ -416,7 +416,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Clasifica cada caso: debe usar useEffect o un event handler?",
+      prompt: "¿Clasifica cada caso: debe usar useEffect o un event handler?",
       dragItems: [
         { id: "d1", content: "Actualizar titulo del documento", correctZone: "useEffect" },
         { id: "d2", content: "Enviar formulario al servidor", correctZone: "eventHandler" },
@@ -456,7 +456,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Cuando se ejecuta la funcion de cleanup de useEffect?",
+      prompt: "¿Cuando se ejecuta la funcion de cleanup de useEffect?",
       options: [
         { id: "a", text: "Solo al montar el componente", isCorrect: false },
         { id: "b", text: "Antes de cada re-ejecucion del efecto y al desmontar", isCorrect: true },
@@ -473,7 +473,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Cual de estos NO es un buen uso de useEffect?",
+      prompt: "¿Cual de estos NO es un buen uso de useEffect?",
       options: [
         { id: "a", text: "Sincronizar el titulo del documento con el estado", isCorrect: false },
         { id: "b", text: "Calcular un valor derivado del estado para mostrarlo", isCorrect: true },

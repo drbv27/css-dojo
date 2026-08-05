@@ -12,11 +12,11 @@ export const reactEcoShadcnModule: ModuleData = {
     {
       id: "reco03-leccion-01",
       title: "Introduccion a Shadcn/ui",
-      content: `## Que es Shadcn/ui?
+      content: `## ¿Que es Shadcn/ui?
 
 Shadcn/ui **no es una libreria** que instalas. Es una coleccion de componentes que **copias a tu proyecto** y personalizas libremente.
 
-### Por que Shadcn?
+### ¿Por que Shadcn?
 
 - Los componentes son **tuyos** — viven en tu codigo
 - Basado en **Radix UI** (accesibilidad) + **Tailwind CSS** (estilos)
@@ -168,7 +168,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que diferencia a Shadcn/ui de otras librerias de componentes como MUI?",
+      prompt: "¿Que diferencia a Shadcn/ui de otras librerias de componentes como MUI?",
       options: [
         { id: "a", text: "Es mas rapido", isCorrect: false },
         { id: "b", text: "Los componentes se copian a tu proyecto y son tuyos", isCorrect: true },
@@ -185,7 +185,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Que hace la funcion cn() de Shadcn?",
+      prompt: "¿Que hace la funcion cn() de Shadcn?",
       options: [
         { id: "a", text: "Crea nuevos componentes", isCorrect: false },
         { id: "b", text: "Combina clases de Tailwind resolviendo conflictos", isCorrect: true },
@@ -202,7 +202,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Sobre que libreria de accesibilidad esta construido Shadcn/ui?",
+      prompt: "¿Sobre que libreria de accesibilidad esta construido Shadcn/ui?",
       options: [
         { id: "a", text: "Headless UI", isCorrect: false },
         { id: "b", text: "Radix UI", isCorrect: true },

@@ -277,7 +277,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que atributo de <form> define a donde se envian los datos?",
+      prompt: "¿Que atributo de <form> define a donde se envian los datos?",
       options: [
         { id: "a", text: "method", isCorrect: false },
         { id: "b", text: "action", isCorrect: true },
@@ -295,7 +295,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual metodo HTTP es mas seguro para enviar contrasenas?",
+      prompt: "¿Cual metodo HTTP es mas seguro para enviar contrasenas?",
       options: [
         { id: "a", text: "GET", isCorrect: false },
         { id: "b", text: "POST", isCorrect: true },
@@ -409,7 +409,7 @@ Un formulario tipico incluye campos, validacion basica y botones de accion:
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Que sucede si un <button> dentro de un <form> no tiene atributo type?",
+      prompt: "¿Que sucede si un <button> dentro de un <form> no tiene atributo type?",
       options: [
         { id: "a", text: "No hace nada al hacer clic", isCorrect: false },
         { id: "b", text: "Actua como type='button'", isCorrect: false },

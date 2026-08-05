@@ -107,7 +107,7 @@ No hay una regla universal, pero si una guia que ahorra dolor: **nombra por func
 | Mal | Bien | Por que |
 |---|---|---|
 | \`.texto-azul\` | \`.enlace-contacto\` | El dia que sea verde, el nombre miente |
-| \`.grande\` | \`.titulo-seccion\` | "Grande" respecto de que? |
+| \`.grande\` | \`.titulo-seccion\` | ¿"Grande" respecto de que? |
 | \`.div2\` | \`.tarjeta-experiencia\` | No dice nada |
 
 > **Y no borres la semantica.** Las clases se agregan a las etiquetas semanticas, no las reemplazan. \`<section class="perfil">\` sigue siendo una \`section\` para un lector de pantalla.`,
@@ -283,7 +283,7 @@ body
       xpReward: 15,
       order: 5,
       prompt:
-        "En el paso anterior le quitaste el subrayado a los enlaces del contacto con text-decoration: none. Que problema de accesibilidad introduce eso, y cual es la forma correcta de resolverlo?",
+        "En el paso anterior le quitaste el subrayado a los enlaces del contacto con text-decoration: none. ¿Que problema de accesibilidad introduce eso, y cual es la forma correcta de resolverlo?",
       options: [
         {
           id: "a",

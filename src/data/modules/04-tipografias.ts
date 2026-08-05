@@ -117,7 +117,7 @@ Relativa al tamano de fuente del **elemento padre**:
 | \`em\` | Elemento padre | \`1.5em\` | Depende del padre |
 | \`%\` | Elemento padre | \`120%\` | Depende del padre |
 
-### Cual usar?
+### ¿Cual usar?
 
 - **rem** es la unidad **recomendada actualmente** para la mayoria de los casos
 - **px** es util cuando necesitas un tamano exacto e inmutable
@@ -203,7 +203,7 @@ strong { font-weight: bold; } /* Equivale a 700 */
 
 La distincion mas importante en tipografia es entre fuentes **serif** y **sans-serif**.
 
-### Que es un serif?
+### ¿Que es un serif?
 
 Un **serif** (o remate) es un pequeno trazo decorativo al final de las lineas principales de una letra. La palabra "sans" viene del frances y significa "sin".
 
@@ -237,7 +237,7 @@ Cada caracter ocupa el **mismo ancho**. Esenciales para mostrar codigo.
 
 **Ejemplos:** Courier New, Consolas, Fira Code
 
-### Cuando usar cada una?
+### ¿Cuando usar cada una?
 
 | Contexto | Recomendacion |
 |----------|--------------|
@@ -320,7 +320,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 10,
       order: 1,
       prompt:
-        "Que unidad se recomienda actualmente para definir font-size en la mayoria de los casos?",
+        "¿Que unidad se recomienda actualmente para definir font-size en la mayoria de los casos?",
       options: [
         { id: "a", text: "px", isCorrect: false },
         { id: "b", text: "rem", isCorrect: true },
@@ -417,7 +417,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 20,
       order: 5,
       prompt:
-        "Si el tamano base del documento es 16px (valor por defecto), cuanto es 2rem en pixeles?",
+        "Si el tamano base del documento es 16px (valor por defecto), ¿cuanto es 2rem en pixeles?",
       options: [
         { id: "a", text: "24px", isCorrect: false },
         { id: "b", text: "32px", isCorrect: true },
@@ -479,7 +479,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       difficulty: 1 ,
       xpReward: 10,
       order: 8,
-      prompt: "Que propiedad CSS convierte el texto a cursiva?",
+      prompt: "¿Que propiedad CSS convierte el texto a cursiva?",
       options: [
         { id: "a", text: "font-style", isCorrect: true },
         { id: "b", text: "font-weight", isCorrect: false },
@@ -498,7 +498,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 15,
       order: 9,
       prompt:
-        "Un div de 300px de ancho está dentro de una página de 1000px. Le aplicás text-align: center. Qué pasa?",
+        "Un div de 300px de ancho está dentro de una página de 1000px. Le aplicás text-align: center. ¿Qué pasa?",
       options: [
         {
           id: "a",

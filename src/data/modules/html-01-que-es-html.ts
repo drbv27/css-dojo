@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const htmlQueEsModule: ModuleData = {
   slug: "html-01-que-es-html",
-  title: "Que es HTML?",
+  title: "¿Que es HTML?",
   description:
     "Descubre que es HTML, su historia, como los navegadores renderizan paginas y la estructura basica de un documento HTML.",
   order: 1,
@@ -12,14 +12,14 @@ export const htmlQueEsModule: ModuleData = {
   lessons: [
     {
       id: "html-01-leccion-01",
-      title: "Que es HTML?",
-      content: `## Que es HTML?
+      title: "¿Que es HTML?",
+      content: `## ¿Que es HTML?
 
 **HTML** significa **HyperText Markup Language** (Lenguaje de Marcado de Hipertexto). Es el lenguaje estandar que se utiliza para **crear y estructurar** el contenido de las paginas web.
 
 HTML no es un lenguaje de programacion: es un **lenguaje de marcado**. Esto significa que usa **etiquetas** para indicar al navegador como mostrar el contenido.
 
-### Para que sirve HTML?
+### ¿Para que sirve HTML?
 
 - Definir la **estructura** de una pagina web
 - Organizar el **contenido** (texto, imagenes, videos, enlaces)
@@ -134,7 +134,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que significa HTML?",
+      prompt: "¿Que significa HTML?",
       options: [
         { id: "a", text: "HyperText Markup Language", isCorrect: true },
         { id: "b", text: "High Tech Modern Language", isCorrect: false },
@@ -152,7 +152,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Quien creo HTML y en que ano?",
+      prompt: "¿Quien creo HTML y en que ano?",
       options: [
         { id: "a", text: "Steve Jobs en 1995", isCorrect: false },
         { id: "b", text: "Tim Berners-Lee en 1991", isCorrect: true },
@@ -245,7 +245,7 @@ Contiene **todo el contenido visible** de la pagina: texto, imagenes, enlaces, f
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Que sucede si omites la declaracion <!DOCTYPE html> en tu documento?",
+      prompt: "¿Que sucede si omites la declaracion <!DOCTYPE html> en tu documento?",
       options: [
         { id: "a", text: "La pagina no se muestra en absoluto", isCorrect: false },
         { id: "b", text: "El navegador puede entrar en 'modo quirks' y comportarse de forma impredecible", isCorrect: true },

@@ -280,7 +280,7 @@ button:focus {
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que atributo global crea un identificador unico para un elemento HTML?",
+      prompt: "¿Que atributo global crea un identificador unico para un elemento HTML?",
       options: [
         { id: "a", text: "class", isCorrect: false },
         { id: "b", text: "name", isCorrect: false },
@@ -298,7 +298,7 @@ button:focus {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Cual es la diferencia principal entre id y class?",
+      prompt: "¿Cual es la diferencia principal entre id y class?",
       options: [
         { id: "a", text: "id puede repetirse, class no", isCorrect: false },
         { id: "b", text: "id es unico por pagina, class puede repetirse", isCorrect: true },
@@ -334,7 +334,7 @@ button:focus {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Que atributo hace que el contenido de un elemento sea editable por el usuario?",
+      prompt: "¿Que atributo hace que el contenido de un elemento sea editable por el usuario?",
       options: [
         { id: "a", text: "editable", isCorrect: false },
         { id: "b", text: "contenteditable", isCorrect: true },
@@ -385,7 +385,7 @@ button:focus {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: 'Que valor de tabindex hace que un elemento sea enfocable solo por JavaScript pero NO con la tecla Tab?',
+      prompt: '¿Que valor de tabindex hace que un elemento sea enfocable solo por JavaScript pero NO con la tecla Tab?',
       options: [
         { id: "a", text: 'tabindex="0"', isCorrect: false },
         { id: "b", text: 'tabindex="1"', isCorrect: false },

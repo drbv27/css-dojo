@@ -12,8 +12,8 @@ export const reactPropsModule: ModuleData = {
   lessons: [
     {
       id: "react04-leccion-01",
-      title: "Que son las props?",
-      content: `## Que son las props?
+      title: "¿Que son las props?",
+      content: `## ¿Que son las props?
 
 **Props** (abreviatura de "properties") son la forma de **pasar datos de un componente padre a un componente hijo**. Son como los argumentos de una funcion.
 
@@ -321,7 +321,7 @@ function Perfil({ usuario }) {
 
 Layout y Sidebar **solo pasan la prop sin usarla**. Esto es prop drilling.
 
-### Por que es un problema?
+### ¿Por que es un problema?
 
 - Hace el codigo **dificil de mantener**
 - Los componentes intermedios se acoplan a datos que no necesitan
@@ -393,7 +393,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Que son las props en React?",
+      prompt: "¿Que son las props en React?",
       options: [
         { id: "a", text: "Variables globales de la aplicacion", isCorrect: false },
         { id: "b", text: "Datos que un componente padre pasa a un componente hijo", isCorrect: true },
@@ -429,7 +429,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Como se pasa un numero como prop en JSX?",
+      prompt: "¿Como se pasa un numero como prop en JSX?",
       options: [
         { id: "a", text: "<Comp edad=\"25\" />", isCorrect: false },
         { id: "b", text: "<Comp edad={25} />", isCorrect: true },
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Puede un componente hijo modificar las props que recibe?",
+      prompt: "¿Puede un componente hijo modificar las props que recibe?",
       options: [
         { id: "a", text: "Si, las props son mutables", isCorrect: false },
         { id: "b", text: "No, las props son de solo lectura", isCorrect: true },
@@ -517,7 +517,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Que es el prop drilling?",
+      prompt: "¿Que es el prop drilling?",
       options: [
         { id: "a", text: "Un patron para validar props automaticamente", isCorrect: false },
         { id: "b", text: "Pasar props a traves de muchos niveles de componentes intermedios que no las usan", isCorrect: true },

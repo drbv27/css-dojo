@@ -178,7 +178,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "Cual es la funcion principal de la etiqueta <head> en un documento HTML?",
+      prompt: "¿Cual es la funcion principal de la etiqueta <head> en un documento HTML?",
       options: [
         { id: "a", text: "Mostrar el encabezado de la pagina", isCorrect: false },
         { id: "b", text: "Contener los metadatos y configuracion del documento", isCorrect: true },
@@ -214,7 +214,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Para que sirve el atributo lang en la etiqueta <html>?",
+      prompt: "¿Para que sirve el atributo lang en la etiqueta <html>?",
       options: [
         { id: "a", text: "Cambiar el idioma de la interfaz del navegador", isCorrect: false },
         { id: "b", text: "Traducir automaticamente el contenido", isCorrect: false },
@@ -306,7 +306,7 @@ La indentacion no afecta como se muestra la pagina, pero hace que el codigo sea 
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Cual es la sintaxis correcta para escribir un comentario en HTML?",
+      prompt: "¿Cual es la sintaxis correcta para escribir un comentario en HTML?",
       options: [
         { id: "a", text: "// Esto es un comentario", isCorrect: false },
         { id: "b", text: "/* Esto es un comentario */", isCorrect: false },
