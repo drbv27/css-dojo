@@ -221,5 +221,43 @@ const useUsers = create<UsersStore>((set) => ({
       hint: "Context requiere Provider, Zustand tiene selectores y persist built-in.",
       explanation: "Context necesita envolver componentes en Provider. Zustand ofrece selectores y persistencia sin boilerplate.",
     },
+    {
+      id: "reco02-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Este store incrementa el contador a partir del valor anterior. Completá el argumento que recibe la función para leer el estado actual:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "const useContador = create((set) => ({\n  count: 0,\n  incrementar: () => set((",
+        cssSuffix: ") => ({ count: state.count + 1 })),\n}));",
+        blanks: ["state"],
+      },
+      validation: { type: "exact", answer: "state" },
+      hint: "El nombre que usa el cuerpo de la función justo después: state.count.",
+      explanation:
+        "Pasarle una función a set en lugar de un objeto es lo que garantiza leer el valor MÁS RECIENTE. Con set({ count: count + 1 }) estarías usando el valor capturado al renderizar, y dos incrementos seguidos podrían contar uno solo. Es el mismo motivo por el que en React se usa setCount(c => c + 1).",
+    },
+    {
+      id: "reco02-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Este componente solo usa el contador, y no quiere re-renderizarse cuando cambia otra parte del store. Completá el selector:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "const count = useContador((state) => state.",
+        cssSuffix: ");",
+        blanks: ["count"],
+      },
+      validation: { type: "exact", answer: "count" },
+      hint: "Se pide exactamente el campo que se necesita, nada más.",
+      explanation:
+        "El selector es lo que hace que Zustand re-renderice solo cuando ESE campo cambia. Si en lugar de eso escribís const store = useContador(), el componente se suscribe a todo el store y se vuelve a renderizar con cualquier cambio, incluso de campos que no usa. En un store chico no se nota; en uno grande es la diferencia entre una app fluida y una que salta.",
+    },
   ],
 };

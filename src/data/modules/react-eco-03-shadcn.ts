@@ -237,5 +237,43 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       hint: "Dialog = modal, Card = contenedor, outline = solo borde.",
       explanation: "Button outline muestra solo borde, Dialog es un modal, Card agrupa contenido con estructura.",
     },
+    {
+      id: "reco03-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Shadcn no se instala como dependencia: copia el código del componente a tu proyecto. Completá el comando para traer el botón:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "npx shadcn@latest ",
+        cssSuffix: " button",
+        blanks: ["add"],
+      },
+      validation: { type: "exact", answer: "add" },
+      hint: "El subcomando que agrega un componente al proyecto. Tres letras.",
+      explanation:
+        "El comando copia el archivo del componente dentro de tu repo, y ahí queda: es tuyo, lo editás como cualquier otro archivo. Esa es la diferencia central con una librería de componentes instalada por npm, donde para cambiar un detalle dependés de las props que el autor decidió exponer. La contra es que no hay actualizaciones automáticas.",
+    },
+    {
+      id: "reco03-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "La utilidad cn() combina clsx con twMerge. Completá la llamada para que la clase que viene por props pueda sobrescribir la clase base:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: 'function Boton({ className }) {\n  return <button className={',
+        cssSuffix: '("px-4 py-2", className)} />;\n}',
+        blanks: ["cn"],
+      },
+      validation: { type: "exact", answer: "cn" },
+      hint: "Dos letras. Es el helper que resuelve los conflictos entre clases de Tailwind.",
+      explanation:
+        "Sin cn(), pasar className='px-8' dejaría las dos clases en el atributo y ganaría la que Tailwind haya puesto después en su hoja, no la que pediste. cn() resuelve el conflicto por familia de propiedad y deja solo px-8, que es lo que hace que un componente sea realmente configurable desde afuera.",
+    },
   ],
 };

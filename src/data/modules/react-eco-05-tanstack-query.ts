@@ -237,5 +237,43 @@ useQuery({
       hint: "Query = leer, Mutation = modificar, QueryClient = gestionar cache.",
       explanation: "useQuery lee datos, useMutation los modifica, useQueryClient da acceso al cache.",
     },
+    {
+      id: "reco05-ej-05",
+      type: "code-completion",
+      difficulty: 2,
+      xpReward: 20,
+      order: 5,
+      prompt:
+        "Esta query trae un usuario por id. Completá la opción que identifica a esta consulta en el cache:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "useQuery({\n  ",
+        cssSuffix: ': ["usuario", id],\n  queryFn: () => traerUsuario(id),\n});',
+        blanks: ["queryKey"],
+      },
+      validation: { type: "exact", answer: "queryKey" },
+      hint: "La clave con la que se guarda y se recupera del cache. Incluye el id para que cada usuario tenga su entrada.",
+      explanation:
+        "La queryKey es la identidad de la consulta: dos componentes con la misma clave comparten una sola petición y un solo dato en cache. Incluir el id es lo que evita el bug clásico de mostrar el usuario anterior al navegar, porque con una clave fija los datos del 7 y del 42 competirían por la misma entrada.",
+    },
+    {
+      id: "reco05-ej-06",
+      type: "code-completion",
+      difficulty: 3,
+      xpReward: 25,
+      order: 6,
+      prompt:
+        "Después de crear un usuario, la lista en pantalla quedó vieja. Completá el método que marca esa query como desactualizada para que se vuelva a pedir:",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "useMutation({\n  mutationFn: crearUsuario,\n  onSuccess: () => {\n    queryClient.",
+        cssSuffix: '({ queryKey: ["usuarios"] });\n  },\n});',
+        blanks: ["invalidateQueries"],
+      },
+      validation: { type: "exact", answer: "invalidateQueries" },
+      hint: "Invalida el cache de esa clave. No borra: marca como viejo y vuelve a pedir si alguien lo está usando.",
+      explanation:
+        "invalidateQueries no borra el dato, lo marca como desactualizado: quien lo esté mostrando sigue viendo algo mientras llega la versión nueva, en lugar de un estado de carga vacío. Es el cierre del ciclo que hace innecesario un estado global de listas -- el cache es la fuente de verdad, y la mutación solo avisa qué quedó viejo.",
+    },
   ],
 };
