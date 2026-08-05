@@ -5,9 +5,11 @@ export const htmlProyectoCVModule: ModuleData = {
   title: "Proyecto: Tu hoja de vida en HTML",
   description:
     "Ejercicio integrador de cierre del track de HTML: construye una hoja de vida (CV) completa, semantica, accesible y valida. Es el esqueleto que despues vestiras con CSS.",
-  order: 16,
+  // Closes the track, so it renders after every content module. The slug keeps
+  // its original "16" because it is a live URL and progress records key on it.
+  order: 17,
   dojo: "html",
-  category: "html-advanced",
+  category: "html-projects",
   icon: "file-code",
   lessons: [
     {
