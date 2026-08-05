@@ -778,5 +778,80 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       explanation:
         "En el patrón 7-1, la carpeta 'abstracts/' (o 'utils/') contiene variables, mixins, funciones y placeholders. Son herramientas abstractas que no generan CSS directamente sino que se usan desde otros archivos.",
     },
+    {
+      id: "22-ej-09",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 9,
+      prompt:
+        "Este Sass usa @extend. Escribí el CSS compilado:\n\n.btn {\n  padding: 10px 20px;\n  border: none;\n}\n\n.btn-guardar {\n  @extend .btn;\n  background-color: seagreen;\n  color: white;\n}\n\nAtención: @extend NO copia las declaraciones. Agrupa los selectores que las comparten.",
+      codeTemplate: {
+        html: `<button class="btn-guardar">Guardar</button>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".btn, .btn-guardar {\n  padding: 10px 20px;\n  border: none;\n}\n.btn-guardar {\n  background-color: seagreen;\n  color: white;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "El padding y el border quedan en UNA regla con los dos selectores separados por coma. Lo propio de .btn-guardar va en una segunda regla.",
+      explanation:
+        "Esta es la diferencia que importa entre @extend y un mixin. El mixin copia sus declaraciones en cada lugar donde se incluye; @extend agrega el selector a la regla que ya existe, así que las declaraciones aparecen UNA sola vez. Con veinte botones, el mixin produce veinte copias del padding y @extend produce una lista de veinte selectores. Por eso @extend genera menos CSS, y también por eso es más difícil de seguir: el orden de la cascada cambia según dónde estaba la regla original.",
+    },
+    {
+      id: "22-ej-10",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Este Sass recorre un mapa con @each. Escribí el CSS que genera:\n\n$colores: (\"exito\": seagreen, \"error\": crimson);\n\n@each $nombre, $color in $colores {\n  .alerta-#{$nombre} {\n    border: 2px solid $color;\n    color: $color;\n  }\n}\n\nEl bucle produce una regla por cada par del mapa.",
+      codeTemplate: {
+        html: `<p class="alerta-exito">Guardado correctamente</p>\n<p class="alerta-error">No se pudo guardar</p>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".alerta-exito {\n  border: 2px solid seagreen;\n  color: seagreen;\n}\n.alerta-error {\n  border: 2px solid crimson;\n  color: crimson;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Dos pares en el mapa dan dos reglas. La interpolación #{$nombre} se reemplaza por la clave, así que .alerta-#{$nombre} produce .alerta-exito y .alerta-error.",
+      explanation:
+        "Seis líneas de Sass generaron dos reglas completas, y con diez colores en el mapa habrían generado diez sin tocar el bucle. La interpolación #{} es lo que permite construir el NOMBRE del selector: fuera de ella, $nombre solo serviría como valor. Ese es el uso donde un preprocesador todavía gana contra CSS nativo, que puede tener variables pero no puede generar selectores.",
+    },
+    {
+      id: "22-ej-11",
+      type: "visual-match",
+      difficulty: 3,
+      xpReward: 25,
+      order: 11,
+      prompt:
+        "El objetivo lo produce este @for al compilar. Reproducilo escribiendo el CSS plano:\n\n@for $i from 1 through 3 {\n  .m-#{$i} {\n    margin: #{$i * 8}px;\n    background-color: #eef2f7;\n  }\n}\n\nCon 'through', el último valor SI se incluye.",
+      codeTemplate: {
+        html: `<div class="m-1">margin 8px</div>\n<div class="m-2">margin 16px</div>\n<div class="m-3">margin 24px</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".m-1 {\n  margin: 8px;\n  background-color: #eef2f7;\n}\n.m-2 {\n  margin: 16px;\n  background-color: #eef2f7;\n}\n.m-3 {\n  margin: 24px;\n  background-color: #eef2f7;\n}",
+      validation: {
+        // Graded by parsing `targetCSS` into selector -> declarations, not by
+        // searching the submission for loose words. See src/lib/cssRules.ts.
+        type: "css-rules",
+      },
+      hint: "Tres reglas, porque 'through' incluye el 3. El margen es $i por 8: 8px, 16px y 24px.",
+      explanation:
+        "Así se generan las clases de utilidad que usan frameworks como Tailwind o Bootstrap: un bucle produce la escala completa. Fijate que background-color se repite en las tres reglas, porque está dentro del bucle -- el CSS compilado no comparte nada entre iteraciones. Y el detalle que se paga caro: 'through' llega al 3, mientras que 'to' habría parado en el 2.",
+    },
   ],
 };
