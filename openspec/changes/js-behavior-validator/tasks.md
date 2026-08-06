@@ -68,14 +68,19 @@ PR removes it cleanly.
 - [x] 2.4 Timeout path: on expiry report `timeout` and bump the `LivePreview`
       `key` to discard the frame. Verify a second submission afterwards is
       gradeable — the exercise must not need a page reload.
-- [ ] 2.5 A JS mode for `LiveEditorExercise`: today it branches CSS vs HTML on
+- [x] 2.5 A JS mode for `LiveEditorExercise`: today it branches CSS vs HTML on
       `targetCSS` and `cssPrefix`. Add the third mode explicitly rather than by
       another negation, and show per-case results with the case `label` when
       present.
-- [ ] 2.6 Wire `js-behavior` into `ExerciseRenderer` and confirm score flows
+- [x] 2.6 Wire `js-behavior` into `ExerciseRenderer` and confirm score flows
       through the existing progress and XP path with no new branch.
-- [ ] 2.7 E2E spec: correct submission scores 100; syntax error surfaces the
-      engine message; `while (true)` times out and the exercise stays usable.
+- [~] 2.7 PARTIAL. Covered without a browser or through the worker directly:
+      `jsRunner.test.ts` (deadline, terminate, nonce filtering, never rejects)
+      and `e2e/js-behavior-worker.spec.ts` (harness in a real worker,
+      `new Function` inside it, a loop terminated without freezing the page).
+      NOT covered: a run through the real exercise page, which needs auth and a
+      database. Deferred to slice 3, where real content makes it worth the
+      setup.
 - [x] 2.8 E2E assertion that a message actually crosses the sandbox boundary from
       `allow-scripts` without `allow-same-origin`. The design rests on this, so it
       gets its own test rather than a comment.
