@@ -72,6 +72,21 @@ describe("validarCasos", () => {
     expect(razones.every((r) => typeof r === "string" && r.length > 0)).toBe(true);
   });
 
+  it("acepta un objeto literal como argumento", () => {
+    // Encontrado escribiendo contenido real: la regla original prohibia toda
+    // llave, asi que `totalCarrito([{ precio: 10 }])` quedaba invalido. Un
+    // objeto como argumento es UNA expresion y es de lo mas comun.
+    expect(validarCasos([{ call: "totalCarrito([{ precio: 10, cantidad: 2 }])", expect: 20 }])).toEqual([]);
+  });
+
+  it("sigue rechazando un statement, que no es una expresion", () => {
+    // Las llaves ya no alcanzan para distinguirlo, asi que se mira la palabra
+    // inicial. Un statement dentro de `return [...]` es un error de sintaxis.
+    for (const call of ["if (x) { y }", "for (;;) {}", "return 1", "const a = 1"]) {
+      expect(validarCasos([{ call, expect: 1 }]).length).toBeGreaterThan(0);
+    }
+  });
+
   it("exige `expect` explicito", () => {
     // Sin la clave no se distingue de `undefined`, y un caso sin expectativa no
     // puede fallar nunca: seria un ejercicio que siempre aprueba.
@@ -265,6 +280,22 @@ describe("el ciclo completo, ejecutando el harness", () => {
       expect(outcome.cases[0]).toEqual({ kind: "pass" });
       expect(outcome.cases[1].kind).toBe("runtime-error");
     }
+  });
+
+  it("devolver undefined es un resultado, no un fallo de serializacion", () => {
+    // Encontrado escribiendo contenido real: `ultimo([])` devolviendo undefined
+    // es la respuesta CORRECTA. JSON.stringify(undefined) da undefined, asi que
+    // sin un estado propio se confundia con algo incomparable y ningun caso
+    // podia esperarlo.
+    const cases: JsBehaviorCase[] = [{ call: "ultimo([])", expect: undefined }];
+    const { puntaje } = calificar("function ultimo(l) { return l[l.length - 1]; }", cases);
+    expect(puntaje.score).toBe(100);
+  });
+
+  it("undefined no aprueba un caso que espera otra cosa", () => {
+    const cases: JsBehaviorCase[] = [{ call: "ultimo([])", expect: null }];
+    const { puntaje } = calificar("function ultimo(l) { return l[l.length - 1]; }", cases);
+    expect(puntaje.score).toBe(0);
   });
 
   it("un valor no serializable se reporta como tal, sin romper el run", () => {

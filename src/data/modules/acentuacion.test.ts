@@ -115,6 +115,11 @@ function sinCodigo(texto: string): string {
   // mascara: sin ella `titulo` reporta 169 casos, todos selectores legitimos.
   // El punto final de una oracion no matchea, porque le sigue un espacio.
   tapar(/(?<![\w])[.#$][A-Za-z_][\w-]*/g);
+  // Un identificador PEGADO a un parentesis de apertura es una llamada, o sea
+  // codigo: `ultimo([1, 2])` en un enunciado es el nombre de la funcion que el
+  // alumno tiene que escribir, y acentuarlo la volveria irreproducible. Se exige
+  // que no haya espacio, para no tapar prosa como "la funcion (que devuelve...)".
+  tapar(/\b[A-Za-z_]\w*\(/g);
   return out;
 }
 

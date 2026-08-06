@@ -34,8 +34,9 @@ describe("tipos de ejercicio por modulo", () => {
     }).map((m) => `${m.dojo}/${m.slug}`);
 
     // Baja este numero cuando agregues live-editor o visual-match, y nunca lo
-    // subas. Los dos modulos de Sass salieron de esta lista.
-    expect(sinEscribir.length).toBeLessThanOrEqual(63);
+    // subas. Los dos modulos de Sass salieron de esta lista, y despues tres del
+    // track de JS al llegar la correccion por comportamiento.
+    expect(sinEscribir.length).toBeLessThanOrEqual(60);
   });
 
   it("ningun modulo se aprueba sin producir nada", () => {

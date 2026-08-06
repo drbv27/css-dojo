@@ -317,5 +317,36 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       hint: "Primero duplica (2,4,6), luego filtra los mayores a 3.",
       explanation: "map duplica: [2,4,6]. Luego filter mantiene > 3: [4,6].",
     },
+    {
+      id: "js09-ej-08",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 8,
+      prompt:
+        "Escribí `totalCarrito(items)` que reciba un array de objetos { precio, cantidad } y devuelva el total.\n\n  totalCarrito([{precio: 10, cantidad: 2}])                          → 20\n  totalCarrito([{precio: 5, cantidad: 1}, {precio: 3, cantidad: 4}]) → 17\n  totalCarrito([])                                                   → 0",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function totalCarrito(items) {\n  // tu código\n}",
+        cssSuffix: "",
+      },
+      referenceSolution:
+        "function totalCarrito(items) {\n  return items.reduce((acc, i) => acc + i.precio * i.cantidad, 0);\n}",
+      validation: {
+        type: "js-behavior",
+        cases: [
+          { call: "totalCarrito([{ precio: 10, cantidad: 2 }])", expect: 20, label: "un item" },
+          {
+            call: "totalCarrito([{ precio: 5, cantidad: 1 }, { precio: 3, cantidad: 4 }])",
+            expect: 17,
+            label: "dos items",
+          },
+          { call: "totalCarrito([])", expect: 0, label: "carrito vacío da 0, no undefined" },
+        ],
+      },
+      hint: "reduce necesita su valor inicial. Sin el 0 al final, un array vacío no devuelve 0.",
+      explanation:
+        "El caso del carrito vacío es el que enseña: `reduce` sin valor inicial sobre un array vacío LANZA un error, no devuelve 0. Ese segundo argumento no es opcional en la práctica, y es la causa del clásico 'Reduce of empty array with no initial value' en producción.",
+    },
   ],
 };
