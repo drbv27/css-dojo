@@ -14,30 +14,30 @@ is the current baseline), `npm run build`, `npm run test:run`, `npm run test:e2e
 
 No component touched, no content touched. Independently mergeable.
 
-- [ ] 1.1 Add `js-behavior` to `ValidationType` in `src/types/index.ts`, plus
+- [x] 1.1 Add `js-behavior` to `ValidationType` in `src/types/index.ts`, plus
       `JsBehaviorCase`, `JsCaseOutcome`, `JsRunOutcome` and a `referenceSolution`
       field on the exercise type. Keep the run-level union so a syntax error
       cannot carry per-case results.
-- [ ] 1.2 `src/lib/jsBehavior.ts`: `validarCasos(cases)` — rejects an empty list, a
+- [x] 1.2 `src/lib/jsBehavior.ts`: `validarCasos(cases)` — rejects an empty list, a
       `call` that is not a single expression, a missing `expect`, and a
       non-serializable `expect`. Returns the offending index and reason, not a
       boolean.
-- [ ] 1.3 `construirHarness(cases, nonce)` — returns the script source. Wraps the
+- [x] 1.3 `construirHarness(cases, nonce)` — returns the script source. Wraps the
       submission so a syntax error is caught and reported as run-level, evaluates
       each `call` in order, serializes each observed value, and posts one
       nonce-tagged message.
-- [ ] 1.4 `interpretarMensaje(raw, nonce)` — returns a `JsRunOutcome` for a
+- [x] 1.4 `interpretarMensaje(raw, nonce)` — returns a `JsRunOutcome` for a
       matching nonce, `null` for a mismatch or a malformed payload. Must not throw
       on hostile input.
-- [ ] 1.5 `sonIguales(a, b)` — deep structural equality, no type coercion, handles
+- [x] 1.5 `sonIguales(a, b)` — deep structural equality, no type coercion, handles
       nested arrays and objects, treats `"3"` and `3` as different.
-- [ ] 1.6 `puntuar(outcomes)` — `{ score, correct, fallidos }` with
+- [x] 1.6 `puntuar(outcomes)` — `{ score, correct, fallidos }` with
       `Math.round(passed / total * 100)`, matching how `cssRules.ts` awards
       partial credit.
-- [ ] 1.7 `src/lib/jsBehavior.test.ts` covering every branch above, including the
+- [x] 1.7 `src/lib/jsBehavior.test.ts` covering every branch above, including the
       unserializable path and the mismatched nonce. Write the malformed-input
       cases first; they are the ones that matter.
-- [ ] 1.8 Run all five gates.
+- [x] 1.8 Run all five gates.
 
 **Done when:** the engine is fully unit-tested with no consumer, and reverting the
 PR removes it cleanly.
