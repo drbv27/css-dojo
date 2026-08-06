@@ -8,17 +8,6 @@ interface LivePreviewProps {
   html: string;
   css: string;
   js?: string;
-  /**
-   * Grading harness for a js-behavior exercise. Omitted for every other
-   * exercise and for every lesson preview, and `previewDoc.test.ts` pins the
-   * document byte for byte in that case -- 28 modules depend on it.
-   */
-  harness?: string;
-  /**
-   * Bumping this discards the frame and whatever is running inside it. The
-   * timeout path uses it: a blocking loop cannot be interrupted, only abandoned.
-   */
-  resetSignal?: number;
   className?: string;
 }
 
@@ -26,8 +15,6 @@ export default function LivePreview({
   html,
   css,
   js = "",
-  harness,
-  resetSignal = 0,
   className = "",
 }: LivePreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -51,9 +38,8 @@ export default function LivePreview({
         html: debouncedHtml,
         css: debouncedCss,
         js: debouncedJs,
-        harness,
       }),
-    [debouncedHtml, debouncedCss, debouncedJs, harness]
+    [debouncedHtml, debouncedCss, debouncedJs]
   );
 
   return (
@@ -73,7 +59,7 @@ export default function LivePreview({
         </button>
       </div>
       <iframe
-        key={`${key}-${resetSignal}`}
+        key={key}
         ref={iframeRef}
         srcDoc={srcdoc}
         sandbox="allow-scripts"

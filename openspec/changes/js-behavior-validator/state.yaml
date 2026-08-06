@@ -53,13 +53,27 @@ phases:
       - AST matching with acorn — grades shape not correctness; new dependency.
       - regex/includes on the submission — the exact defect PR #5 removed.
       - Server-side execution now — closes inspectability but is a bigger change.
-      - Web Worker — terminable but has no DOM, which the js track needs.
+      - >
+        Web Worker — REJECTED AT PROPOSE TIME, then SELECTED after task 2.8. The
+        proposal dismissed it over the missing DOM without weighing that an
+        iframe cannot survive a runaway loop. Measurement reversed the decision.
     accepted_constraints:
       - >
         Grading stays client-side, so expected values are inspectable and a
         student can hardcode a return. Closing it requires server-side execution,
         which is also the standing ESTADO.md debt item.
-      - A runaway loop is abandoned via timeout and frame remount, never killed.
+      - >
+        SUPERSEDED by task 2.8: this said a runaway loop is abandoned via timeout
+        and frame remount. False — a srcdoc iframe shares its thread, so the loop
+        froze the page and the deadline with it. In the Web Worker the loop is
+        genuinely terminated and the page never stops responding.
+      - >
+        NEW, accepted: a worker has no DOM, so `js-dom` exercises cannot be graded
+        this way and stay on code-completion. Functions, arrays, objects, strings,
+        async and patterns are unaffected.
+      - >
+        NEW, asserted by e2e: `new Function` must work inside the worker. A CSP
+        without unsafe-eval would break this in production and nowhere else.
       - Async submissions are deadline-bound.
   spec:
     status: done
@@ -92,10 +106,13 @@ phases:
       - Comparison happens in the PARENT, not the harness, so the semantics live in the unit-tested pure module instead of inside injected script.
       - Nonce, not origin — the opaque origin makes event.origin the string "null", so an origin check would enforce nothing while looking like a security control.
       - Run-level union type makes "syntax error with per-case results" unrepresentable.
-    to_verify_in_slice_2: >
-      That a postMessage from this exact sandbox configuration reaches the parent
-      at all. The whole design rests on it, so task 2.8 asserts it with a real
-      test rather than a comment.
+    verified_in_slice_2: >
+      CONFIRMED that a postMessage crosses the sandbox with origin "null".
+      REFUTED that the parent can survive a runaway loop: a srcdoc iframe shares
+      its thread, so `while (true)` froze the whole page including the deadline.
+      The executor moved to a Web Worker. See the CORRECTION section appended to
+      design.md; the sections above it that name the iframe as executor are
+      superseded.
     estimated_changed_lines: 760
     per_slice_lines: [260, 300, 200]
     budget_risk: low
