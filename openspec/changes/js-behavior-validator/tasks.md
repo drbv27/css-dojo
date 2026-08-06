@@ -46,6 +46,10 @@ PR removes it cleanly.
 
 ## Phase 2 — Integration (PR 2/3, ~300 lines)
 
+> Task 2.8 was pulled FORWARD, before the UI, because it carried the design's
+> load-bearing assumption. It refuted part of it: the executor is now a Web
+> Worker, not the preview iframe. Tasks 2.3 and 2.4 were rewritten accordingly.
+>
 > Split in two after 2.4. Tasks 2.1-2.4 are the plumbing and are inert: nothing
 > imports the hook, and the golden guard proves the preview document is
 > unchanged. Tasks 2.5-2.8 are the UI and the end-to-end proof, which need the
@@ -72,7 +76,7 @@ PR removes it cleanly.
       through the existing progress and XP path with no new branch.
 - [ ] 2.7 E2E spec: correct submission scores 100; syntax error surfaces the
       engine message; `while (true)` times out and the exercise stays usable.
-- [ ] 2.8 E2E assertion that a message actually crosses the sandbox boundary from
+- [x] 2.8 E2E assertion that a message actually crosses the sandbox boundary from
       `allow-scripts` without `allow-same-origin`. The design rests on this, so it
       gets its own test rather than a comment.
 - [ ] 2.9 Run all five gates.

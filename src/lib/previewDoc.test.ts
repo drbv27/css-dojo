@@ -28,7 +28,7 @@ const ESPERADO_SIN_HARNESS = `<!DOCTYPE html>
 </html>`;
 
 describe("construirSrcDoc", () => {
-  it("sin harness produce EXACTAMENTE el documento de antes", () => {
+  it("produce EXACTAMENTE el documento de antes", () => {
     const doc = construirSrcDoc({
       html: '<div class="caja">hola</div>',
       css: ".caja { color: red; }",
@@ -42,30 +42,4 @@ describe("construirSrcDoc", () => {
     expect(doc).not.toContain("<script>");
   });
 
-  it("sin harness no hay rastro del harness", () => {
-    const doc = construirSrcDoc({ html: "<p>a</p>", css: "", js: "var a = 1;" });
-    expect(doc.match(/<script>/g)).toHaveLength(1);
-    expect(doc).not.toContain("js-behavior");
-  });
-
-  it("con harness lo emite en su PROPIA etiqueta script", () => {
-    // Compartir etiqueta con el codigo del alumno haria que un error de sintaxis
-    // impida ejecutar el harness, y el fallo llegaria como timeout en lugar de
-    // como error de sintaxis.
-    const doc = construirSrcDoc({
-      html: "<p>a</p>",
-      css: "",
-      js: "var a = 1;",
-      harness: "/*H*/",
-    });
-    expect(doc.match(/<script>/g)).toHaveLength(2);
-    expect(doc).toContain("<script>var a = 1;</script>");
-    expect(doc).toContain("<script>/*H*/</script>");
-  });
-
-  it("el harness corre incluso sin js del alumno", () => {
-    const doc = construirSrcDoc({ html: "<p>a</p>", css: "", harness: "/*H*/" });
-    expect(doc).toContain("<script>/*H*/</script>");
-    expect(doc.match(/<script>/g)).toHaveLength(1);
-  });
 });

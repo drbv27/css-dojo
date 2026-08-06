@@ -165,3 +165,49 @@ which is exactly what catches cases authored wrongly.
 Each slice is under the 400-line review budget in `config.yaml`, so chained PRs
 are not required. Slice 1 is inert until slice 2 consumes it, and slice 3 is inert
 without slice 2 — so the natural merge order is also the natural revert order.
+
+
+---
+
+## CORRECTION after task 2.8 — the executor is a Web Worker, not the iframe
+
+Everything above that describes the preview iframe as the executor is
+**superseded**. Task 2.8 measured the boundary and refuted it.
+
+**What was confirmed.** A message posted from `sandbox="allow-scripts"` without
+`allow-same-origin` does reach the parent, and `event.origin` arrives as the
+string `"null"` — so the nonce protocol was right and an origin check would have
+enforced nothing.
+
+**What was refuted.** A `while (true)` in the iframe **blocks the parent page**. A
+srcdoc iframe shares its thread with the page in Chromium, so the loop froze
+React, the deadline and the tab. Measured with a heartbeat counter in the parent:
+it ticks before the frame is injected and `page.evaluate` never returns after.
+
+So the accepted constraint "a runaway loop is abandoned via timeout and frame
+remount" was **false**. The parent cannot abandon anything, because the parent is
+frozen too. And an infinite loop is not an edge case in a beginners' JavaScript
+course.
+
+**The pivot.** The executor is a Web Worker: its own thread, so the page stays
+responsive, and `terminate()` genuinely kills a spinning one.
+
+| Layer | Status |
+|---|---|
+| `validarCasos`, `sonIguales`, `puntuar`, `interpretarMensaje` | unchanged — they were transport-agnostic |
+| `construirHarness` | `parent.postMessage` became `self.postMessage`; the `new Function` scoping reason is unchanged |
+| Transport | new `src/lib/jsRunner.ts`: Blob worker, deadline, `terminate()` |
+| `useJsBehavior` | owns React state only; transport moved out |
+| `previewDoc.ts` / `LivePreview` | harness and resetSignal REMOVED. The iframe's only job is showing the student their own result |
+
+Keeping slice 1 as a pure library with no consumer is what made this cost one
+afternoon instead of a rewrite.
+
+**New accepted cost:** a worker has no DOM, so DOM-manipulation exercises
+(`js-dom`) cannot be graded this way and stay on `code-completion`. Functions,
+arrays, objects, strings, async and patterns — the majority, and where writing
+code matters most — are unaffected.
+
+**New environment requirement, now asserted:** `new Function` must work inside the
+worker. A CSP without `unsafe-eval` would break the whole approach in production
+and nowhere else, so `e2e/js-behavior-worker.spec.ts` pins it.

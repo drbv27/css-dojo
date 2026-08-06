@@ -4,9 +4,14 @@ import type { JsBehaviorCase, JsCaseOutcome, JsRunOutcome } from "@/types";
  * Behavioral grading for JavaScript exercises.
  *
  * Grades what the submission DOES, not how it is written. The submission runs in
- * the preview iframe (sandbox="allow-scripts", no allow-same-origin) and reports
- * one observation per declared case; this module builds that harness and
- * interprets what comes back.
+ * a Web Worker and reports one observation per declared case; this module builds
+ * that harness and interprets what comes back.
+ *
+ * It runs in a WORKER and not in the preview iframe, and that was measured, not
+ * assumed. A srcdoc iframe shares its thread with the page, so `while (true)` in
+ * a submission froze React, the deadline and the whole tab -- see
+ * e2e/js-behavior-worker.spec.ts. A worker has its own thread and `terminate()`
+ * genuinely kills a spinning one.
  *
  * Everything here is pure and browser-free on purpose. The comparison in
  * particular lives HERE rather than inside the injected script, so it is
@@ -16,11 +21,12 @@ import type { JsBehaviorCase, JsCaseOutcome, JsRunOutcome } from "@/types";
  * - It does not stop a student from reading `expect` in the module data and
  *   hardcoding a return. Expectations are client-side data, the same limitation
  *   `targetCSS` already has. Closing it needs server-side execution.
- * - It does not detect an infinite loop. A blocking loop means no message ever
- *   arrives, so only the parent's deadline can notice.
+ * - It does not detect an infinite loop by itself. A blocking loop means no
+ *   message ever arrives, so the caller's deadline is what notices -- and then
+ *   `terminate()` actually stops it, which is the whole reason for the worker.
  */
 
-/** Wire format posted by the harness. Never trust its shape: it crosses a boundary. */
+/** Wire format posted by the harness. Never trust its shape: it crosses a thread boundary. */
 export interface MensajeCrudo {
   fuente: "js-behavior";
   nonce: string;
@@ -115,7 +121,7 @@ function esSerializable(valor: unknown): boolean {
  * Builds the script that runs inside the iframe.
  *
  * The submission is embedded as DATA and evaluated inside a single
- * `new Function`, rather than injected as a sibling script.
+ * `new Function`, rather than being loaded as separate code.
  *
  * That is not a stylistic choice. In a classic script, a top-level `function`
  * declaration becomes a global and would be reachable, but a top-level `const`
@@ -144,7 +150,7 @@ export function construirHarness(
   var CODIGO = ${JSON.stringify(codigo)};
 
   function avisar(resultado) {
-    parent.postMessage({ fuente: "js-behavior", nonce: NONCE, resultado: resultado }, "*");
+    self.postMessage({ fuente: "js-behavior", nonce: NONCE, resultado: resultado });
   }
 
   var corridas;

@@ -3,35 +3,22 @@
  *
  * Extracted from LivePreview so it can be asserted directly. 28 modules depend
  * on this output for their previews, and `previewDoc.test.ts` pins it byte for
- * byte: without a harness the result must be exactly what it was before
- * behavioral grading existed.
+ * byte -- written out as a literal, so it still fails if someone tidies the
+ * template later.
+ *
+ * It carries NO grading harness. Grading briefly ran here and was moved to a Web
+ * Worker after measuring that a `while (true)` in a submission froze the whole
+ * tab: a srcdoc iframe shares its thread with the page. The iframe's only job is
+ * showing the student their own result.
  */
 
 export interface DocumentoPreview {
   html: string;
   css: string;
   js?: string;
-  /**
-   * Grading harness. When absent the document is unchanged from the original.
-   * See the note below about why it gets its OWN script tag.
-   */
-  harness?: string;
 }
 
-export function construirSrcDoc({
-  html,
-  css,
-  js = "",
-  harness,
-}: DocumentoPreview): string {
-  // The harness goes in a SEPARATE script tag, not appended to the student's.
-  //
-  // A script tag containing a syntax error never executes, so a harness sharing
-  // that tag would die with it -- and a syntax error would surface as a TIMEOUT
-  // instead of as a syntax error, which is the one thing the student most needs
-  // told. Separate tags parse independently, so the harness always runs and can
-  // report the SyntaxError itself: it evaluates the submission through
-  // `new Function`, which throws at construction time and is catchable.
+export function construirSrcDoc({ html, css, js = "" }: DocumentoPreview): string {
   return `<!DOCTYPE html>
 <html>
 <head>
@@ -44,7 +31,7 @@ export function construirSrcDoc({
 </head>
 <body>
   ${html}
-  ${js ? `<script>${js}<\/script>` : ""}${harness ? `\n  <script>${harness}<\/script>` : ""}
+  ${js ? `<script>${js}<\/script>` : ""}
 </body>
 </html>`;
 }

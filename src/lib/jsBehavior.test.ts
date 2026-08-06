@@ -13,10 +13,11 @@ import {
  * The harness is a string of source, so it would be easy to "test" it by
  * matching substrings. That proves nothing about whether it works.
  *
- * Instead these tests EXECUTE it. The harness body reads `parent` as a free
- * variable, so wrapping it in a function with a `parent` parameter shadows the
+ * Instead these tests EXECUTE it. The harness body reads `self` as a free
+ * variable, so wrapping it in a function with a `self` parameter shadows the
  * global and lets the test capture what it posts. That exercises the real path:
- * submission -> harness -> message -> interpretarMensaje -> puntuar.
+ * submission -> harness -> message -> interpretarMensaje -> puntuar, without
+ * needing a worker.
  */
 function ejecutarHarness(
   codigo: string,
@@ -25,7 +26,7 @@ function ejecutarHarness(
 ): MensajeCrudo[] {
   const capturados: MensajeCrudo[] = [];
   const fuente = construirHarness(codigo, cases, nonce);
-  const correr = new Function("parent", fuente) as (p: {
+  const correr = new Function("self", fuente) as (s: {
     postMessage: (m: MensajeCrudo) => void;
   }) => void;
   correr({ postMessage: (m) => capturados.push(m) });
