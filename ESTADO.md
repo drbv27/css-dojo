@@ -1,6 +1,13 @@
 # Estado del proyecto
 
-Punto de retomada. Última actualización: 2026-08-05, `main` @ `fa1ecca`, todo deployado.
+Punto de retomada. Última actualización: 2026-08-06, `main` @ `8743d8a`.
+
+> **Ojo al retomar:** los PRs #28 y #29 están abiertos y **completos**, con los
+> cinco gates verdes localmente. Lo único que falta es que corra el CI: GitHub
+> tuvo un incidente declarado de Actions ("Major Outage", 6 de agosto) y seis
+> corridas quedaron canceladas sin ejecutar un solo paso. **#28 tiene que
+> mergearse ANTES que #29** — el contenido de #29 depende del componente de #28,
+> y al revés los ejercicios se corregirían con score 0 siempre.
 
 > Este archivo existe para que una sesión nueva no tenga que redescubrir nada. Si
 > hacés cambios grandes, actualizalo o borralo — un documento desactualizado es
@@ -10,7 +17,7 @@ Punto de retomada. Última actualización: 2026-08-05, `main` @ `fa1ecca`, todo 
 
 ## Cómo continuar en un chat nuevo
 
-La memoria del proyecto vive en **Engram** (37+ observaciones, scope `css-dojo`).
+La memoria del proyecto vive en **Engram** (45+ observaciones, scope `css-dojo`).
 Se carga sola al arrancar la sesión, pero conviene pedirla explícitamente.
 
 Ojo con la búsqueda: por defecto exige que **todos** los términos coincidan. Si
@@ -21,7 +28,7 @@ espejados en Engram por `topic_key`.
 
 ---
 
-## Qué se hizo (18 PRs, todos mergeados y deployados)
+## Qué se hizo (27 PRs mergeados y deployados, 2 esperando CI)
 
 | Cambio | Qué resolvió |
 |---|---|
@@ -36,6 +43,11 @@ espejados en Engram por `topic_key`.
 | CSS moderno (PR #12, #13, #14) | Las 8 técnicas ausentes, distribuidas en el módulo que le corresponde a cada una. Ver abajo. |
 | PR #15 | Actualización de este archivo hasta el #14. |
 | Ortografía (PR #16, #17, #18) | **503 preguntas sin abrir y ~3.460 palabras sin tilde ni ñ, en 101 módulos de los seis tracks.** Ver abajo. |
+| PR #19 | Actualización de este archivo tras la ortografía. |
+| PR #20 | **Los módulos de Sass enseñaban un preprocesador sin mostrar nunca el CSS compilado.** 16 ejercicios entre los dos, ninguno de escribir. Sin compilador en el proyecto, se invirtió: el enunciado muestra el Sass y el alumno escribe el CSS que produce. |
+| PR #21, #22, #23 | **13 módulos se aprobaban sin producir nada** — solo quiz y arrastrar. Ahora ninguno: js/ts, react-eco y nextjs tienen `code-completion`. El test pasó de medir a prohibir. |
+| PR #24 | Planificación SDD completa de `js-behavior-validator`. |
+| PR #25, #26, #27 | El validador de JavaScript: motor, plomería, y el pivote a Web Worker. Ver abajo. |
 
 Tres bugs que veían los usuarios y ya no: el loop infinito contra el endpoint de
 OTP en el reset de contraseña, el rango de 0 XP que veían todos en el nav móvil,
@@ -106,6 +118,51 @@ dice `'Hola! Como estas?'`). Se le muestran al alumno y la tilde sería correcta
 pero viven en `codeExample`, y un invariante que dice "el código no se toca" no
 vale nada con excepciones. Es un pase aparte si se quiere hacer.
 
+### El validador de JavaScript: por qué es un Web Worker
+
+Los tracks de JS, React, react-eco y Next.js no tenían **ningún** ejercicio de
+escribir código, porque la corrección no tenía forma de verificar JavaScript.
+Solo dos validadores son estructurales: `css-rules` y `html-structure`.
+
+Se descartó el AST: **verifica la forma del código, no si funciona**, que es el
+mismo defecto que el PR #5 sacó. Y ningún parser sirve en el navegador — el único
+que hay es `typescript`, ~7MB.
+
+El enfoque es **correr el código** contra casos declarados y puntuar
+`pasados/total`:
+
+```ts
+validation: { type: "js-behavior", cases: [{ call: "sumar(1, 2)", expect: 3 }] }
+referenceSolution: "function sumar(a, b) { return a + b; }"
+```
+
+**Empezó en el iframe de la vista previa y ese diseño era equivocado.** Un iframe
+`srcdoc` **comparte hilo con su página**, así que un `while (true)` del alumno
+congelaba React, el deadline y la pestaña entera. Medido con un contador en el
+padre: tickea antes de inyectar el marco y después `page.evaluate` no vuelve. La
+restricción "el bucle se abandona con timeout" era falsa: el padre también está
+congelado.
+
+Por eso el ejecutor es un **Web Worker**: hilo propio, la página nunca se
+bloquea, y `terminate()` mata de verdad. **No lo muevas de vuelta al iframe.**
+
+Dos cosas que NO hay que "simplificar", las dos con comentario en el código:
+
+- **El harness embebe el código del alumno** y lo evalúa con `new Function` en su
+  propio cuerpo. Un `const` en el tope de un script no es global, así que con el
+  código cargado aparte, `const sumar = ...` daría "sumar is not defined" mientras
+  funciona perfecto en la vista previa.
+- **La comparación vive en el padre**, no en el harness, para que las semánticas
+  estén en el módulo con tests y no dentro de un string de código inyectado.
+
+**Costo aceptado:** un worker no tiene DOM, así que los ejercicios de manipular
+el DOM (`js-dom`) no se pueden corregir así y siguen con `code-completion`.
+
+**Límite que sigue abierto:** la corrección es del lado del cliente, así que los
+valores esperados viajan al navegador y un alumno decidido puede leerlos y
+hardcodear. Cerrarlo requiere ejecución en el servidor — que además cierra la
+deuda vieja de corrección inspeccionable. Es **el** follow-up.
+
 ---
 
 ## Cosas que te van a morder si no las sabés
@@ -161,8 +218,8 @@ pushear. No hay config de deploy en el repo. Live en https://www.devdojo.pro
 npm run typecheck    # tsc --noEmit
 npm run lint         # eslint . -- debe dar 0 errores (50 warnings es el baseline)
 npm run build
-npm run test:run     # 125 tests
-npm run test:e2e     # Playwright, chromium
+npm run test:run     # 160 tests
+npm run test:e2e     # Playwright chromium, 5 tests
 ```
 
 Los cinco corren en CI en cada push a `main` y cada PR.
@@ -197,6 +254,19 @@ Estos son los que impiden que la deuda vuelva:
   sobre prosa con el código enmascarado, porque en JS y React el `?` es un
   operador (ternario, `?.`, `??`) y contarlo como pregunta pide abrir algo que no
   lo es.
+- `src/data/modules/validacion-js.test.ts` — **corre** cada solución de
+  referencia contra sus propios casos. No las compara consigo mismas: eso es
+  tautológico y no puede detectar una expectativa que nadie puede satisfacer, que
+  es exactamente cómo pasó un `targetCSS` mal formado con el que el CSS correcto
+  sacaba 33%. Trae además tres fixtures que prueban que su evaluador distingue
+  bien de mal, porque sin ellos los loops pasarían vacíos.
+- `src/lib/jsBehavior.test.ts` y `src/lib/jsRunner.test.ts` — el motor y el
+  transporte. Los del harness lo **ejecutan** con un `self` falso en vez de
+  matchear su fuente.
+- `e2e/js-behavior-worker.spec.ts` — lo que ningún test unitario puede probar: que
+  el harness corre en un worker real, que `new Function` funciona adentro (una CSP
+  sin `unsafe-eval` rompería todo esto **solo en producción**), y que un bucle
+  infinito no congela la página y `terminate()` lo mata.
 - `src/data/modules/acentuacion.test.ts` — palabras inequívocas acentuadas,
   separadas en agudas (solo singular) y con flexión; prohíbe los plurales
   `-ciónes`; y exige las tres reglas de contexto que el patrón sintáctico
@@ -213,19 +283,25 @@ Estos son los que impiden que la deuda vuelva:
 
 ## Pendiente, en orden de valor
 
-1. **La plantilla uniforme.** Los módulos originales tienen exactamente 3-4
+1. **La plantilla uniforme.** Quedan **60 módulos** sin ningún ejercicio de
+   escribir, medidos con umbral en `tipos-ejercicio.test.ts` (baja cuando agregás,
+   nunca sube). Los de Sass y tres de JS ya salieron de esa lista. Los módulos originales tienen exactamente 3-4
    lecciones y 8 ejercicios. Flexbox y "qué es CSS" con el mismo peso. Los módulos
    de Sass (21-22) no tienen `live-editor` ni `visual-match` — justo donde hace
    falta ver el CSS compilado. Los seis módulos tocados por CSS moderno ya rompieron
    la uniformidad, así que el precedente existe.
-2. **Deuda técnica.** 35 `@typescript-eslint/no-explicit-any` como warnings.
+2. **Ejecución en el servidor.** Cierra dos cosas de una: que los valores
+   esperados de `js-behavior` sean inspeccionables, y la deuda vieja de que toda la
+   corrección es del lado del cliente. Necesita sandbox en Node con límites de
+   tiempo y memoria, endpoint, y decidir qué pasa si el servidor no responde.
+3. **Deuda técnica.** 35 `@typescript-eslint/no-explicit-any` como warnings.
    `globals.css:15-18` declara `--color-css-purple` y `--color-ts-blue` dos veces
    cada uno. La corrección de ejercicios es del lado del cliente, así que un alumno
    determinado puede inspeccionarla — cerrarlo implica validación en el servidor.
-3. **Referencias hacia adelante en lecciones**: quedan 24, medidas y con umbral en
+4. **Referencias hacia adelante en lecciones**: quedan 24, medidas y con umbral en
    el test. Dominadas por `display: flex` en ejemplos previos al módulo 15. Es
    tolerable: un ejemplo de CSS no puede escribirse sin propiedades.
-4. **Agregar ejercicios baja el porcentaje de progreso** de quien ya tenía el
+5. **Agregar ejercicios baja el porcentaje de progreso** de quien ya tenía el
    módulo completo. Pasó con los seis módulos de CSS moderno. No se perdió nada,
    pero si molesta hay que decidirlo a nivel producto, no de código.
 
@@ -243,6 +319,11 @@ Estos son los que impiden que la deuda vuelva:
   Era cierto solo para HTML. `react-19-proyecto-taskmanager` y
   `react-20-proyecto-ecommerce` ya estaban bajo `react-projects`, que ya cerraba el
   track. Verificado módulo por módulo. No lo rehagas.
+- **El ejecutor de JavaScript NO vuelve al iframe.** Se midió: un iframe `srcdoc`
+  comparte hilo con la página y un `while (true)` la congela entera, deadline
+  incluido. El Web Worker es la decisión, con el costo de no tener DOM.
+- **No agregar un parser de JavaScript.** Se evaluó el AST y se descartó: verifica
+  la forma del código, no si funciona, y ningún parser sirve en el navegador.
 - **CSS moderno se distribuyó, no se agrupó.** No crear un módulo "CSS moderno":
   se evaluó y se descartó, porque deja el track enseñando CSS viejo con un apéndice
   colgado al final.
