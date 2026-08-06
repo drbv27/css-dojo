@@ -88,26 +88,26 @@ and the 28 existing `js:` previews are proven unchanged.
 
 ## Phase 3 — Content and guard (PR 3/3, ~200 lines)
 
-- [ ] 3.1 **First, write the data guard.** In a new
+- [x] 3.1 **First, write the data guard.** In a new
       `src/data/modules/validacion-js.test.ts`: every `js-behavior` exercise has a
       `referenceSolution`; every case is well-formed per `validarCasos`; and every
       reference solution scores 100 against its own cases. The last assertion must
       evaluate the solution against the cases — never compare the cases to
       themselves, which is the tautology that let a malformed `targetCSS` through.
-- [ ] 3.2 Prove the guard non-vacuous before writing content: author one exercise
+- [x] 3.2 Prove the guard non-vacuous before writing content: author one exercise
       with a deliberately wrong case and confirm the guard names it. **Commit
       before probing** — undoing a probe with `git checkout --` has cost
       uncommitted work twice in this project.
-- [ ] 3.3 Add `js-behavior` exercises to the `js` track. Each carries its
+- [x] 3.3 Add `js-behavior` exercises to the `js` track. Each carries its
       `referenceSolution`. Target the misconception, not syntax recall, matching
       the exercises added in PRs #21–#23.
-- [ ] 3.4 Lower the `sinEscribir` threshold in `tipos-ejercicio.test.ts` from 63
+- [x] 3.4 Lower the `sinEscribir` threshold in `tipos-ejercicio.test.ts` from 63
       by the number of modules that gained a writing exercise. Never raise it.
-- [ ] 3.5 Confirm the new exercises pass every existing data guard —
+- [x] 3.5 Confirm the new exercises pass every existing data guard —
       `acentuacion`, `signos-interrogacion`, `orden-lecciones`, `tipos-ejercicio`.
       They run automatically; the point is to read the failures rather than
       assume there are none.
-- [ ] 3.6 Run all five gates.
+- [x] 3.6 Run all five gates.
 - [ ] 3.7 Update `ESTADO.md`: what shipped, the accepted constraints, and that
       server-side execution is now the single follow-up that closes both the
       inspectability limit and the standing client-side-grading debt item.

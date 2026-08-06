@@ -38,6 +38,13 @@ export interface MensajeCrudo {
 /** What the harness saw for one case, already reduced to transportable data. */
 export type Observacion =
   | { estado: "valor"; json: string }
+  /**
+   * `undefined` es un retorno LEGITIMO -- `ultimo([])` devolviendo undefined es
+   * la respuesta correcta, no un error. JSON.stringify(undefined) devuelve
+   * undefined, asi que sin este estado propio se confundia con algo que no se
+   * puede serializar y ningun caso podia esperarlo.
+   */
+  | { estado: "indefinido" }
   | { estado: "no-definido"; identifier: string }
   | { estado: "error"; message: string }
   | { estado: "no-serializable" };
@@ -73,13 +80,22 @@ export function validarCasos(cases: unknown): CasoInvalido[] {
 
     if (typeof call !== "string" || call.trim() === "") {
       problemas.push({ indice, razon: "`call` debe ser una expresion no vacia" });
-    } else if (/[;{}]/.test(call)) {
-      problemas.push({
-        indice,
-        razon: "`call` debe ser UNA expresion: sin `;`, `{` ni `}`",
-      });
-    } else if (!parentesisBalanceados(call)) {
+    } else if (call.includes(";")) {
+      // El `;` si parte la expresion, porque estas se embeben en un `return [...]`.
+      problemas.push({ indice, razon: "`call` debe ser UNA expresion: sin `;`" });
+    } else if (!balanceado(call, "(", ")")) {
       problemas.push({ indice, razon: "`call` tiene parentesis sin cerrar" });
+    } else if (!balanceado(call, "{", "}")) {
+      // Las llaves NO se prohiben: `f([{ a: 1 }])` es una sola expresion y un
+      // argumento objeto es de lo mas comun. Solo se exige que cierren.
+      problemas.push({ indice, razon: "`call` tiene llaves sin cerrar" });
+    } else if (!balanceado(call, "[", "]")) {
+      problemas.push({ indice, razon: "`call` tiene corchetes sin cerrar" });
+    } else if (/^\s*(if|for|while|switch|return|const|let|var|function|class|throw)\b/.test(call)) {
+      // Un statement no es una expresion y romperia el `return [...]`. Se detecta
+      // por la palabra inicial en lugar de por las llaves, para no rechazar un
+      // objeto literal pasado como argumento.
+      problemas.push({ indice, razon: "`call` debe ser una expresion, no un statement" });
     }
 
     // `undefined` no se distingue de "falta la clave" al serializar, asi que se
@@ -94,11 +110,11 @@ export function validarCasos(cases: unknown): CasoInvalido[] {
   return problemas;
 }
 
-function parentesisBalanceados(texto: string): boolean {
+function balanceado(texto: string, abre: string, cierra: string): boolean {
   let abiertos = 0;
   for (const c of texto) {
-    if (c === "(") abiertos++;
-    else if (c === ")") {
+    if (c === abre) abiertos++;
+    else if (c === cierra) {
       abiertos--;
       if (abiertos < 0) return false;
     }
@@ -172,6 +188,9 @@ export function construirHarness(
       }
       return { estado: "error", message: r.mensaje };
     }
+    if (r.valor === undefined) {
+      return { estado: "indefinido" };
+    }
     try {
       var json = JSON.stringify(r.valor);
       if (json === undefined || typeof r.valor === "function") {
@@ -241,6 +260,10 @@ function interpretarObservacion(obs: unknown, esperado: unknown): JsCaseOutcome 
       return { kind: "not-defined", identifier: typeof o.identifier === "string" ? o.identifier : "" };
     case "error":
       return { kind: "runtime-error", message: typeof o.message === "string" ? o.message : "" };
+    case "indefinido":
+      return sonIguales(undefined, esperado)
+        ? { kind: "pass" }
+        : { kind: "fail", observed: undefined };
     case "no-serializable":
       return { kind: "unserializable" };
     case "valor": {
