@@ -46,17 +46,22 @@ PR removes it cleanly.
 
 ## Phase 2 — Integration (PR 2/3, ~300 lines)
 
-- [ ] 2.1 **First, write the regression guard.** A test asserting the
+> Split in two after 2.4. Tasks 2.1-2.4 are the plumbing and are inert: nothing
+> imports the hook, and the golden guard proves the preview document is
+> unchanged. Tasks 2.5-2.8 are the UI and the end-to-end proof, which need the
+> exercise components and a browser.
+
+- [x] 2.1 **First, write the regression guard.** A test asserting the
       `LivePreview` srcdoc is byte-identical to today's output when no cases are
       present. This runs before any change to the component, so it fails for the
       right reason if the conditional injection is wrong.
-- [ ] 2.2 `LivePreview.tsx`: accept optional `harness` and append it inside the
+- [x] 2.2 `LivePreview.tsx`: accept optional `harness` and append it inside the
       existing `<script>` block only when provided. Do not restructure the srcdoc
       template; the guard in 2.1 exists to prove it did not change.
-- [ ] 2.3 `src/hooks/useJsBehavior.ts`: generate the nonce, attach the `message`
+- [x] 2.3 `src/hooks/useJsBehavior.ts`: generate the nonce, attach the `message`
       listener, arm the deadline, clear both on unmount, return
       `{ estado, resultado, ejecutar }`.
-- [ ] 2.4 Timeout path: on expiry report `timeout` and bump the `LivePreview`
+- [x] 2.4 Timeout path: on expiry report `timeout` and bump the `LivePreview`
       `key` to discard the frame. Verify a second submission afterwards is
       gradeable — the exercise must not need a page reload.
 - [ ] 2.5 A JS mode for `LiveEditorExercise`: today it branches CSS vs HTML on

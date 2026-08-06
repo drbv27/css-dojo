@@ -2,11 +2,23 @@
 
 import { useRef, useEffect, useState, useMemo } from "react";
 import { RefreshCw } from "lucide-react";
+import { construirSrcDoc } from "@/lib/previewDoc";
 
 interface LivePreviewProps {
   html: string;
   css: string;
   js?: string;
+  /**
+   * Grading harness for a js-behavior exercise. Omitted for every other
+   * exercise and for every lesson preview, and `previewDoc.test.ts` pins the
+   * document byte for byte in that case -- 28 modules depend on it.
+   */
+  harness?: string;
+  /**
+   * Bumping this discards the frame and whatever is running inside it. The
+   * timeout path uses it: a blocking loop cannot be interrupted, only abandoned.
+   */
+  resetSignal?: number;
   className?: string;
 }
 
@@ -14,6 +26,8 @@ export default function LivePreview({
   html,
   css,
   js = "",
+  harness,
+  resetSignal = 0,
   className = "",
 }: LivePreviewProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -33,22 +47,13 @@ export default function LivePreview({
 
   const srcdoc = useMemo(
     () =>
-      `<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body { margin: 0; padding: 16px; font-family: system-ui, sans-serif; background: white; }
-    ${debouncedCss}
-  </style>
-</head>
-<body>
-  ${debouncedHtml}
-  ${debouncedJs ? `<script>${debouncedJs}<\/script>` : ""}
-</body>
-</html>`,
-    [debouncedHtml, debouncedCss, debouncedJs]
+      construirSrcDoc({
+        html: debouncedHtml,
+        css: debouncedCss,
+        js: debouncedJs,
+        harness,
+      }),
+    [debouncedHtml, debouncedCss, debouncedJs, harness]
   );
 
   return (
@@ -68,7 +73,7 @@ export default function LivePreview({
         </button>
       </div>
       <iframe
-        key={key}
+        key={`${key}-${resetSignal}`}
         ref={iframeRef}
         srcDoc={srcdoc}
         sandbox="allow-scripts"
