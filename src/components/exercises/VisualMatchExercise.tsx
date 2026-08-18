@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Eye, Code2 } from "lucide-react";
 import type { Exercise } from "@/types";
-import CSSEditor from "@/components/editor/CSSEditor";
+import TabCodeEditor from "@/components/editor/TabCodeEditor";
 import LivePreview from "@/components/editor/LivePreview";
 import HintButton from "./HintButton";
 
@@ -70,12 +70,24 @@ export default function VisualMatchExercise({
             </span>
           </div>
 
-          {/* Student editor */}
-          <CSSEditor
-            value={css}
-            onChange={setCss}
+          {/* Student editor.
+              The HTML tab is not decoration: grading requires the exact selector
+              (see src/lib/cssRules.ts), and this exercise only ever showed the
+              markup RENDERED. A student looking at a blue card had no way to know
+              the element was `<div class="tarjeta">`, so the selector had to be
+              guessed -- 15 of the 20 visual-match exercises never name it in the
+              prompt. Read-only, so the target markup stays fixed. */}
+          <TabCodeEditor
+            html={html}
+            css={css}
+            onCSSChange={setCss}
+            showHTML={true}
+            showCSS={true}
+            showJS={false}
+            readOnlyHTML={true}
+            readOnlyCSS={submitted}
             height="200px"
-            readOnly={submitted}
+            activeTab="css"
           />
 
           {/* Student preview */}

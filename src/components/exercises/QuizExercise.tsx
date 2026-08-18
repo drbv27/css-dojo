@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X } from "lucide-react";
 import type { Exercise } from "@/types";
+import { useAuth } from "@/hooks/useAuth";
+import { mezclarDeterminista, semillaDeEjercicio } from "@/lib/shuffle";
 import HintButton from "./HintButton";
 
 interface QuizExerciseProps {
@@ -14,8 +16,21 @@ interface QuizExerciseProps {
 export default function QuizExercise({ exercise, onSubmit }: QuizExerciseProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const { user, loading } = useAuth();
 
-  const options = exercise.options ?? [];
+  /**
+   * The authored order is not shown. It carried a heavy positional bias -- the
+   * correct answer sat in the second slot in 69% of the curriculum's quizzes --
+   * so a student could pass most of them by always picking B. Each student gets
+   * their own stable order instead: different from their classmates', identical
+   * every time they revisit this exercise. Grading is unaffected because it
+   * compares `option.id`, and the A/B/C/D badge is drawn from the position.
+   */
+  const options = useMemo(
+    () =>
+      mezclarDeterminista(exercise.options ?? [], semillaDeEjercicio(user?.id, exercise.id)),
+    [exercise.options, exercise.id, user?.id]
+  );
 
   const correctId = options.find((o) => o.isCorrect)?.id ?? "";
   const isCorrect = submitted && selectedId === correctId;
@@ -55,7 +70,18 @@ export default function QuizExercise({ exercise, onSubmit }: QuizExerciseProps) 
         {exercise.prompt}
       </div>
 
-      {/* Options Grid */}
+      {/* Options Grid. Held back until the user is known: the seed depends on it,
+          so rendering earlier would show one order and then reshuffle it. */}
+      {loading ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-hidden="true">
+          {Array.from({ length: options.length || 4 }).map((_, i) => (
+            <div
+              key={i}
+              className="rounded-xl border-2 border-editor-border bg-editor-surface h-[72px] animate-pulse"
+            />
+          ))}
+        </div>
+      ) : (
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {options.map((option, idx) => (
           <motion.button
@@ -110,6 +136,7 @@ export default function QuizExercise({ exercise, onSubmit }: QuizExerciseProps) 
           </motion.button>
         ))}
       </div>
+      )}
 
       {/* Correct animation */}
       <AnimatePresence>
