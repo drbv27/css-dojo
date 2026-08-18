@@ -68,7 +68,30 @@ export default function TabCodeEditor({
     js: onJSChange,
   };
 
+  /**
+   * The change handler is scoped to its tab by REMOUNTING the editor per tab
+   * (see `key` below), not by trusting this render's closure.
+   *
+   * Why it matters: when the tab being switched TO is read-only,
+   * @monaco-editor/react takes its `editor.setValue(value)` path, and `setValue`
+   * fires `onDidChangeModelContent` synchronously -- from inside the wrapper's
+   * `[value]` effect, which is declared BEFORE the effect that disposes and
+   * re-subscribes `onChange`. With one long-lived editor, the event announcing
+   * "the HTML was loaded" reached the listener registered for the PREVIOUS tab
+   * and wrote the HTML into the CSS state: switching to HTML and back left the
+   * markup in the CSS editor, and Verificar sent it to the grader as the
+   * student's CSS.
+   *
+   * A keyed remount removes the race instead of racing back: the old
+   * subscription is disposed at unmount, and the fresh editor skips the `[value]`
+   * effect on its first run, so no cross-tab event exists to misroute. It costs
+   * one editor recreation per tab click, which is cheap once the Monaco loader
+   * is warm, and `saveViewState` restores the scroll position.
+   */
   const handleChange = (value: string) => {
+    // Belt and braces: a read-only tab never writes back, because any change on
+    // it comes from us loading its content, never from the student typing.
+    if (readOnlyMap[currentTab]) return;
     onChangeMap[currentTab]?.(value);
   };
 
@@ -111,8 +134,9 @@ export default function TabCodeEditor({
         })}
       </div>
 
-      {/* Editor */}
+      {/* Editor. `key` is load-bearing -- see the note on handleChange. */}
       <CSSEditor
+        key={currentTab}
         value={valueMap[currentTab]}
         onChange={handleChange}
         height={height}
