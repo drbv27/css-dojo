@@ -5,6 +5,8 @@ import { use, useState, useEffect } from "react";
 import { ALL_MODULES } from "@/data/modules";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
+import { isProjectModule } from "@/lib/projects";
+import ProjectSubmission from "@/components/modules/ProjectSubmission";
 import type { ExerciseType } from "@/types";
 
 const exerciseTypeLabels: Record<ExerciseType, { label: string; icon: string; color: string }> = {
@@ -164,6 +166,9 @@ export default function ModuleDetailPage({
           </p>
         )}
       </div>
+
+      {/* Entrega del proyecto (solo modulos-proyecto, para alumnos) */}
+      {isProjectModule(slug) && !isTeacher && <ProjectSubmission slug={slug} />}
 
       {/* Tabs */}
       <div className="flex gap-1 p-1 bg-editor-surface rounded-lg w-fit">

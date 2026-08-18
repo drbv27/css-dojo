@@ -11,6 +11,7 @@ import {
   User,
   GraduationCap,
   Megaphone,
+  Inbox,
   Braces,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
@@ -26,6 +27,7 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   User,
   GraduationCap,
   Megaphone,
+  Inbox,
 };
 
 function NavLink({ item, isActive }: { item: NavItem; isActive: boolean }) {

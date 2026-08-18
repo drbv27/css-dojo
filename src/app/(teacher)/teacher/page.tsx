@@ -110,6 +110,12 @@ export default function TeacherDashboardPage() {
           </div>
           <div className="flex items-center gap-3">
             <Link
+              href="/teacher/entregas"
+              className="px-4 py-2 text-sm font-medium bg-neon-green/10 border border-neon-green/20 rounded-lg text-neon-green hover:bg-neon-green/20 transition-colors"
+            >
+              Entregas
+            </Link>
+            <Link
               href="/teacher/open-code"
               className="px-4 py-2 text-sm font-medium bg-neon-pink/10 border border-neon-pink/20 rounded-lg text-neon-pink hover:bg-neon-pink/20 transition-colors"
             >
