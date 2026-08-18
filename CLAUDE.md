@@ -11,9 +11,24 @@ npm run dev       # Start Next.js dev server
 # Build & lint
 npm run build
 npm run lint
+
+# Tests
+npm test          # Vitest in watch mode
+npm run test:run  # Vitest once (use this in CI or before a commit)
+npm run test:e2e  # Playwright end-to-end
 ```
 
-No test suite is configured.
+There IS a test suite: 17 Vitest files (`src/**/*.test.ts[x]`) plus Playwright specs
+in `e2e/`. Two kinds worth knowing about, because they guard different things:
+
+- **Unit tests** over the graders and helpers -- `src/lib/cssRules.test.ts`,
+  `htmlStructure`, `jsBehavior`, `xp`, `shuffle`.
+- **Curriculum tests** that read the static content in `src/data/modules/` and
+  assert things the content itself can get wrong: lesson/module ordering,
+  exercise types, no accented characters. `src/lib/shuffle.test.ts` also runs
+  over the real curriculum to check that no answer position ends up
+  concentrating the correct answers. Adding or reordering modules can fail
+  these, and that is the point.
 
 ## Environment Variables
 
