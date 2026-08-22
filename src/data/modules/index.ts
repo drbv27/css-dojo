@@ -26,6 +26,7 @@ import { propiedadesBasicasModule } from "./03-propiedades-basicas";
 import { tipografiasModule } from "./04-tipografias";
 import { dimensionesModule } from "./05-dimensiones";
 import { mathFunctionsModule } from "./26-math-functions";
+import { advancedTextModule } from "./27-advanced-text";
 import { selectoresDescendientesModule } from "./06-selectores-descendientes";
 import { pseudoClasesModule } from "./07-pseudo-clases";
 import { pseudoElementosModule } from "./08-pseudo-elementos";
@@ -128,7 +129,7 @@ export const ALL_MODULES: ModuleData[] = [
   //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
   unidadesCSSModule, dimensionesModule, mathFunctionsModule, tipografiasModule,
-  selectoresDescendientesModule,
+  advancedTextModule, selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, especificidadModule, floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
   shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,
