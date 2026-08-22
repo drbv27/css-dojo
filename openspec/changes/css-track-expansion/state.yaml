@@ -343,6 +343,41 @@ phases:
         merge -> redeploy on Coolify -> enable the new slug per cohort in
         /teacher/modulos. NEVER enable before redeploy. Until enabled, the module
         shows as a greyed locked card to every cohort (this is visible, not hidden).
+    slice_2_renumber:
+      status: done
+      branch: feat/css-renumeracion
+      merged: true
+      gates: "173 tests, tsc, lint 0 errores, build -- los cuatro verdes"
+      changed_lines: 154
+      changed_paths: 11
+      bounded_review:
+        lineage: review-a7b1b8bcd83cff67
+        risk: medium
+        lenses: ["review-reliability"]
+        findings: "NINGUNO"
+        inspection: "completed, 11 de 11 rutas"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow (con --base-ref origin/main)"
+      ledger_measurements:
+        before: 23
+        after: 23
+        ceiling: 23
+        note: >
+          Neto cero. Sale `propiedades-logicas` de la ventana de `display:flex`
+          (14 -> 16) y entra `shadows-gradients-filters` con `transition:` x5
+          (19 -> 17, ahora un modulo antes de transiciones). El ensanche del
+          regex no cambio el conteo.
+      guard_probado: >
+        El guard reescrito MUERDE, verificado a proposito: intercambiar flexbox y
+        css-grid dentro de `css-layout` hace fallar tres aserciones. El guard que
+        reemplaza pasaba ese mismo cambio en verde -- los 170 tests daban identico
+        antes y despues de mover los 8 numeros del slice 2.
+      hallazgos_del_slice_1_cerrados: >
+        2.6 y 2.7 hechas. El revisor confirmo por su cuenta que el regex
+        corregido es un SUPERCONJUNTO ESTRICTO del anterior: `\bwidth\b` sigue
+        matcheando `min-width` porque el guion no es caracter de palabra, asi que
+        no se perdio ninguna forma detectada antes, y ademas entra la sintaxis de
+        rango. Verificado tambien a mano, caso por caso, incluyendo que
+        prefers-reduced-motion, prefers-color-scheme y print siguen afuera.
   verify:
     status: pending
   archive:

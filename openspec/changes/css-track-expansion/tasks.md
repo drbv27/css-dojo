@@ -151,11 +151,11 @@ las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
 
 ## Phase 2 — Slice 2: renumber (PR 2/7, ~180–240 lines)
 
-- [ ] 2.1 Renumber `order:` in the 25 `src/data/modules/[01-25]-*.ts` files to
+- [x] 2.1 Renumber `order:` in the 25 `src/data/modules/[01-25]-*.ts` files to
       the **final relative sequence** (design D2): 1 que-es-css … 20
       media-queries … 25 proyecto-cv-css, per the list in `design.md` §D2.
       Every module changes at most one line.
-- [ ] 2.2 **GUARD REWRITE (fails loudly if wrong)**
+- [x] 2.2 **GUARD REWRITE (fails loudly if wrong)**
       `src/data/modules/orden-curriculum-css.test.ts`: full rewrite per
       spec `css-track-sections` Req. 5 —
       (a) `ORDEN_CATEGORIAS` now imports `DOJO_CATEGORY_ORDER.css` instead of
@@ -169,16 +169,16 @@ las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
       (Scenario 5.3);
       (d) correct the docstring's `IMPORTANT:` paragraph to match the fixed
       `index.ts:156` comment from task 1.9.
-- [ ] 2.3 Measure the forward-reference ledger's true `casos.length` (design
+- [x] 2.3 Measure the forward-reference ledger's true `casos.length` (design
       D4, open question) before this slice's edits, using the same file's
       `@media`/`transition:` pattern search. Record the before value.
-- [ ] 2.4 Re-measure `casos.length` after 2.1–2.2. If it rose above the
+- [x] 2.4 Re-measure `casos.length` after 2.1–2.2. If it rose above the
       pre-slice value, remove the newly-counted forward references from
       `18-transiciones-animaciones.ts` / `19-variables-css.ts` content —
       never raise the `toBeLessThanOrEqual(24)` ceiling (design D4 decision).
-- [ ] 2.5 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
+- [x] 2.5 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build` all green.
-- [ ] 2.6 **HALLAZGO DE LA REVISION DEL SLICE 1 (WARNING, deterministic,
+- [x] 2.6 **HALLAZGO DE LA REVISION DEL SLICE 1 (WARNING, deterministic,
       introduced).** El `MEDIA_RESPONSIVE` que el slice 1 introdujo en
       `orden-curriculum-css.test.ts` exige `min-width`/`max-width`/
       `min-height`/`max-height`/`orientation`, y NO matchea la sintaxis de rango
@@ -191,7 +191,7 @@ las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
       del guion Y cubre el rango, sin volver a contar `prefers-reduced-motion`,
       `prefers-color-scheme` ni `print`. Queda mas fuerte que la version del
       slice 1 y que la original. Volver a medir el ledger despues.
-- [ ] 2.7 **HALLAZGO DE LA REVISION DEL SLICE 1 (SUGGESTION).** El requisito 2
+- [x] 2.7 **HALLAZGO DE LA REVISION DEL SLICE 1 (SUGGESTION).** El requisito 2
       de `css-track-sections` -- los nueve colores distintos entre si -- no
       tiene ninguna asercion ejecutable: vive en un comentario de
       `moduleCategories.ts`. Agregar el test a `categorias-panel.test.ts`:
@@ -203,6 +203,31 @@ las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
 
 **Done when:** the 25-module CSS track shows the final relative order and the
 rewritten guard is strictly stronger than the one it replaced.
+
+**Resultado del slice 2 (medido, no estimado).** Verde en los cuatro gates, 173
+tests. 11 rutas, 154 lineas. Revision acotada aprobada SIN HALLAZGOS: linaje
+`review-a7b1b8bcd83cff67`, riesgo medium, lente R3 Reliability, inspeccion
+completa de las 11 rutas, recibo acuñado, compuertas pre-commit/pre-push/pre-pr
+en allow.
+
+- **El guard pasa de contar a ordenar, y esta PROBADO que muerde.** Intercambiar
+  flexbox y css-grid DENTRO de `css-layout` hace fallar tres aserciones. El guard
+  que reemplaza pasaba ese mismo cambio en verde: los 170 tests daban identico
+  antes y despues de mover los 8 numeros. Esa ceguera es como se colaron las dos
+  inversiones originales.
+- **Ledger: 23 antes, 23 despues.** Neto cero, con dos movimientos que se
+  cancelan: sale `propiedades-logicas` de la ventana de `display:flex` (14 -> 16)
+  y entra `shadows-gradients-filters` con `transition:` x5 (19 -> 17, ahora un
+  modulo antes de transiciones). Un salto de uno es anticipacion normal.
+- **Los dos hallazgos del slice 1 quedaron cerrados.** El revisor confirmo por su
+  cuenta que el regex corregido es un SUPERCONJUNTO ESTRICTO del anterior:
+  `\bwidth\b` sigue matcheando `min-width` porque el guion no es caracter de
+  palabra, asi que no se perdio ninguna forma que antes se detectaba, y ademas
+  entra la sintaxis de rango. Verificado tambien a mano, caso por caso.
+- **El revisor reviso la zona muerta temporal antes de que nadie preguntara** y
+  concluyo que no hay riesgo: los tests nuevos referencian `ORDEN_CATEGORIAS`
+  desde callbacks que corren despues de que el `describe` termina.
+
 
 ---
 
