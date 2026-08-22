@@ -298,17 +298,54 @@ completa de las 22 rutas, recibo acuñado, tres compuertas en allow.
 
 ## Phase 3b — advanced-text, slot 9 (PR 4/7, ~650–790 lines)
 
-- [ ] 3b.1 Create `src/data/modules/27-advanced-text.ts` per spec Req. 7 row
+- [x] 3b.1 Create `src/data/modules/27-advanced-text.ts` per spec Req. 7 row
       "Advanced text": full `text-decoration` (line/style/color/thickness),
       `text-transform`, `letter-spacing`, `word-spacing`, `text-indent`,
       `white-space`, `text-overflow: ellipsis` (with the
       `white-space`+`overflow`+`text-overflow` combination demonstrated
       together), `text-shadow`. `category: "css-texto"`.
-- [ ] 3b.2 Shift `order:` +1 for the 18 modules at slot ≥9 in the current
+- [x] 3b.2 Shift `order:` +1 for the 18 modules at slot ≥9 in the current
       sequence, landing advanced-text at `order: 9`.
-- [ ] 3b.3 Register in `src/data/modules/index.ts`.
-- [ ] 3b.4 Verify: same 6 commands as 3a.4.
+- [x] 3b.3 Register in `src/data/modules/index.ts`.
+- [x] 3b.4 Verify: same 6 commands as 3a.4.
 - [ ] 3b.5 Rollout: same as 3a.5, slug `advanced-text`.
+
+**Resultado del slice 3b (medido, no estimado).** Verde en los CINCO gates: 173
+tests, `tsc --noEmit`, lint 0 errores, build y los 5 E2E. 21 rutas, 493 lineas.
+Revision acotada aprobada **SIN HALLAZGOS**: linaje `review-ada5775b076e2cb4`,
+riesgo medium, lente R3 Reliability, inspeccion completa de las 21 rutas.
+
+- **La leccion 03 es el centro y por eso se llama "tres propiedades o ninguna".**
+  `text-overflow: ellipsis` sola no hace nada: hacen falta `white-space: nowrap`,
+  `overflow: hidden` y `text-overflow: ellipsis` juntas. La leccion las explica
+  como una cadena en orden y dice que pasa si falta cada una. La combinacion
+  aparece 12 veces en el archivo, que es el criterio de aceptacion del requisito 7.
+- **Ledger 23 -> 23.** El modulo no aporta ningun caso.
+- **`text-align`, `line-height` y `font-family` SI se usan, y es correcto.** El
+  ledger los apunta a `tipografias`, que queda en el slot 8, y este modulo esta en
+  el 9. Desde el 9 ya no son referencias adelantadas, y un modulo de texto los
+  necesita. Y `text-shadow` tampoco cuenta: el patron es `\bbox-shadow`, otra palabra.
+- **Los commits van partidos a proposito.** Primero el archivo del modulo sin
+  registrar -- verde e invisible, porque ningun guard lo ve si no esta en
+  ALL_MODULES -- y despues la mecanica de insercion. Sirve para leer el contenido
+  aparte de los shifts, y deja disponible la opcion de revisar solo la mecanica en
+  los slices que vienen. El instructor eligio revisar el candidato completo.
+- **El revisor hizo dos chequeos que no se le pidieron y que valen:** verifico que
+  `box-model` y `unidades-css`, ausentes del manifiesto, no quedaran con un `order`
+  en colision; y escaneo el archivo por backticks sin escapar y por interpolaciones
+  accidentales de template literal.
+
+**DEFECTO ABIERTO DEL GUARD DE ACENTUACION, encontrado escribiendo este modulo.**
+`acentuacion.test.ts` rechazo la frase "un ancho que limite". Ese `limite` es el
+VERBO EN SUBJUNTIVO y va correctamente SIN tilde; el sustantivo `limite` es el que
+la lleva. El test tiene esa palabra en su lista de "inequivocas por diccionario" y
+no es inequivoca, que es exactamente la clase de caso que su propio docstring
+excluye a proposito con `esta` y `solo`. El mismo falso positivo pega con
+`habilite`, `deposite` y `milite` -- y `habilite` aparece seguido hablando de
+habilitar modulos por cohorte. La frase se reformulo para no ampliar el alcance de
+3b; el arreglo (sacar la palabra, o exigirla solo tras articulo) esta pendiente de
+decision del instructor.
+
 
 ---
 

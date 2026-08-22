@@ -431,6 +431,67 @@ phases:
         Si el contenido se entiende y si el nivel le sirve a la cohorte. Los tests
         prueban que parsea, que puntua 100, que tiene tildes y que no adelanta
         conceptos. No prueban que se entienda. Eso lo lee el instructor.
+    slice_3b_advanced_text:
+      status: done
+      branch: feat/css-advanced-text
+      merged: true
+      gates: "173 tests, tsc, lint 0 errores, build, 5 E2E -- los CINCO verdes"
+      changed_lines: 493
+      changed_paths: 21
+      rollout_pendiente: >
+        AGREGA EL SLUG `advanced-text`. merge -> redeploy en Coolify -> habilitar
+        por cohorte en /teacher/modulos. Hasta habilitarlo se ve como tarjeta gris
+        con candado para todas las cohortes.
+      bounded_review:
+        lineage: review-ada5775b076e2cb4
+        risk: medium
+        lenses: ["review-reliability"]
+        inspection: "completed, 21 de 21 rutas"
+        findings: "NINGUNO"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow"
+      ledger_measurements:
+        before: 23
+        after: 23
+        ceiling: 23
+        aporte_del_modulo_nuevo: 0
+      dato_util_para_3c_a_3e: >
+        `text-align`, `line-height` y `font-family` dejan de ser referencias
+        adelantadas para cualquier modulo en slot >= 9, porque el ledger los apunta
+        a `tipografias`, que queda fijo en el 8. Y `text-shadow` NUNCA cuenta: el
+        patron del ledger es `\bbox-shadow`, que es otra palabra.
+      commits_partidos: >
+        El slice va en dos commits a proposito: primero el archivo del modulo SIN
+        registrar (verde e invisible, ningun guard lo ve si no esta en ALL_MODULES)
+        y despues la mecanica de insercion (18 shifts + index.ts + SECUENCIA, 41
+        lineas). Eso deja disponible la opcion de revisar solo la mecanica en 3c-3e.
+        En 3b el instructor eligio revisar el candidato COMPLETO.
+      confirmado_por_el_revisor: >
+        Los 18 desplazamientos uno por uno; `order` 9..27 contiguos sin huecos ni
+        duplicados; index.ts y la SECUENCIA sincronizados; 4 lecciones con ids y
+        ordenes unicos y 8 ejercicios idem; cada validacion consistente con su tipo.
+        Ademas, sin que se le pidiera: que `box-model` y `unidades-css`, ausentes
+        del manifiesto, no quedaran con un `order` en colision; y un escaneo del
+        archivo por backticks sin escapar e interpolaciones accidentales.
+
+  defecto_abierto_del_guard_de_acentuacion:
+    archivo: src/data/modules/acentuacion.test.ts
+    hallado_en: "slice 3b, escribiendo 27-advanced-text.ts"
+    problema: >
+      El test rechaza `limite` siempre, exigiendo `limite` con tilde. Pero `limite`
+      sin tilde es el VERBO EN SUBJUNTIVO ("un ancho que limite") y esta bien
+      escrito asi; el sustantivo es el que lleva tilde. La palabra esta en la lista
+      CON_FLEXION, que el archivo describe como "inequivocas por diccionario", y no
+      lo es. Es la misma clase de caso dependiente de contexto que el propio
+      docstring excluye a proposito con `esta` y `solo`.
+    alcance: >
+      Mismo falso positivo con `habilite`, `deposite`, `milite` y cualquier otro
+      subjuntivo homografo. `habilite` importa en particular: aparece seguido al
+      hablar de habilitar modulos por cohorte.
+    estado: >
+      NO se toco. La frase de 3b se reformulo para no ampliar el alcance del slice.
+      Reportado al instructor, pendiente de su decision. Opciones: sacar la palabra
+      de la lista, o exigir la tilde solo cuando viene precedida de articulo
+      (`el limite`, `un limite`, `su limite`).
   verify:
     status: pending
   archive:
