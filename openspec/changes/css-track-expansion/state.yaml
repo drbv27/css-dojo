@@ -1,27 +1,28 @@
 change: css-track-expansion
 created: 2026-08-21
-artifact_store: openspec
+artifact_store: hybrid
 
 session_preflight:
   execution_mode: auto
-  artifact_store: openspec
+  artifact_store: hybrid
   delivery_strategy: ask-on-risk
   review_budget_lines: 800
   chain_strategy: stacked-to-main
   note: >
-    CORRECTED AFTER THE FACT. During planning the orchestrator believed Engram
-    was down and told every phase so. That was wrong: what dropped was this
-    session's MCP tool bridge (`plugin:engram:engram` disconnected, so
-    `mem_save`/`mem_search` were not callable). Engram itself never stopped —
-    `engram serve` was running the whole time, the CLI at ~/.local/bin/engram
-    v1.20.0 was available, and `engram save ... --project css-dojo` works fine.
-    Two consequences worth knowing: (1) the phases persisted to files only, so
-    the OpenSpec artifacts are complete and authoritative; (2) the preflight menu
-    offered only file/inline-safe stores, so `hybrid` — used by the three earlier
-    changes in this repo — was never on the table. The planning summary was
-    written to Engram afterwards through the CLI (observation #260, project
-    css-dojo), so this change IS searchable there despite the store being
-    `openspec`.
+    The store was RAISED to `hybrid` after planning, at the instructor's request.
+    History worth keeping, because it changed a decision: during planning the
+    orchestrator believed Engram was down and told every phase so. That was
+    wrong. What dropped was this session's MCP tool bridge
+    (`plugin:engram:engram` disconnected, so `mem_save`/`mem_search` were not
+    callable). Engram itself never stopped: `engram serve` was running the whole
+    time, the CLI at ~/.local/bin/engram v1.20.0 was available, and it supports
+    `--topic` for canonical topic keys. The consequence of that false premise was
+    real — the preflight menu offered only file/inline-safe stores, so `hybrid`
+    (used by the three earlier changes in this repo) was never on the table, and
+    the instructor caught it. The four phase artifacts were written to Engram
+    afterwards through the CLI under their canonical topic keys, so both backends
+    now hold this change. LESSON: if the Engram MCP bridge drops, use the CLI —
+    do not declare Engram down.
 
 product_input:
   source: /home/diegobonilla/proyectos/cssGame/plan-mejoras-css.md
@@ -50,6 +51,8 @@ product_input:
 phases:
   propose:
     status: done
+    engram_topic_key: sdd/css-track-expansion/proposal
+    engram_observation: 262
     artifact: openspec/changes/css-track-expansion/proposal.md
     orchestrator_verified:
       - >
@@ -81,6 +84,8 @@ phases:
         new slug is invisible per cohort until a teacher enables it.
   spec:
     status: done
+    engram_topic_key: sdd/css-track-expansion/spec
+    engram_observation: 263
     artifacts:
       - openspec/changes/css-track-expansion/specs/css-track-sections/spec.md
       - openspec/changes/css-track-expansion/specs/css-track-content/spec.md
@@ -114,6 +119,8 @@ phases:
         because each had exactly one coherent answer.
   design:
     status: done
+    engram_topic_key: sdd/css-track-expansion/design
+    engram_observation: 264
     artifact: openspec/changes/css-track-expansion/design.md
     decisions:
       - >
@@ -166,6 +173,8 @@ phases:
       (tasks 2.3/2.4). MEASURE BEFORE AND AFTER slice 2.
   tasks:
     status: done
+    engram_topic_key: sdd/css-track-expansion/tasks
+    engram_observation: 265
     artifact: openspec/changes/css-track-expansion/tasks.md
     summary: 40 tasks across 7 slices (1 sections, 1 renumber, 5 content modules).
     review_workload_forecast:
@@ -219,6 +228,8 @@ phases:
     status: pending
   archive:
     status: pending
+
+engram_summary_observation: 260   # "SDD css-track-expansion: planificacion completa" (decision)
 
 next_recommended: apply
 
