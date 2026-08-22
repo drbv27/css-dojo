@@ -233,24 +233,66 @@ en allow.
 
 ## Phase 3a — math-functions, slot 7 (PR 3/7, ~650–790 lines)
 
-- [ ] 3a.1 Create `src/data/modules/26-math-functions.ts` following the
+- [x] 3a.1 Create `src/data/modules/26-math-functions.ts` following the
       "Authoring a CSS module" template in this file's Appendix and spec
       `css-track-content` Req. 7 row "Math functions": `calc()`, `min()`,
       `max()`, `clamp()`, at least one example mixing two units in one
       expression (e.g. `calc(100% - 2rem)`), `category: "css-caja"`,
       `dojo: "css"`.
-- [ ] 3a.2 Shift `order:` +1 for the 19 modules currently at slot ≥7 in the
+- [x] 3a.2 Shift `order:` +1 for the 19 modules currently at slot ≥7 in the
       slice-2 sequence (tipografias through proyecto-cv-css), so
       math-functions lands at `order: 7`.
-- [ ] 3a.3 Register the module in `src/data/modules/index.ts`: import and
+- [x] 3a.3 Register the module in `src/data/modules/index.ts`: import and
       insert in the CSS block at the position matching its `order`.
-- [ ] 3a.4 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
+- [x] 3a.4 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build`, `npm run test:e2e` all green. Confirm
       `tipos-ejercicio.test.ts`'s "sin escribir" count did not exceed 63.
 - [ ] 3a.5 Rollout: after merge and manual Coolify redeploy, enable
       `math-functions` per cohort in `/teacher/modulos` (design D7 — no
       `ModuleSettings` doc means blocked; do not skip this step and do not
       attempt it before redeploy).
+
+**Resultado del slice 3a (medido, no estimado).** Verde en los CINCO gates: 173
+tests, `tsc --noEmit`, lint 0 errores, build y los 5 E2E. 22 rutas, 498 lineas
+contra un forecast de 650-790. Revision acotada aprobada: linaje
+`review-d92af024c0c35633`, riesgo medium, lente R3 Reliability, inspeccion
+completa de las 22 rutas, recibo acuñado, tres compuertas en allow.
+
+- **Un solo hallazgo, SUGGESTION, y contestado con numeros.** El revisor dijo que
+  los tres `targetCSS` con funciones multi-argumento (`clamp(1.5rem, 6vw, 3rem)`,
+  `min(760px, 100% - 3rem)`) no tienen asercion DENTRO del candidato. Tenia razon
+  sobre el alcance. Pero el camino de parseo SI esta cubierto por un guard que no
+  cambia y que por eso el revisor no podia ver: `validacion-curriculum.test.ts`
+  corre `compararReglas` sobre el curriculum real y exige que la respuesta propia
+  de cada ejercicio puntue 100. Medido aparte con el grader real:
+
+  | variante | ej-03 | ej-06 | ej-07 |
+  |---|---|---|---|
+  | identico | 100 | 100 | 100 |
+  | sin espacio tras comas | 100 | 100 | 100 |
+  | espacios extra tras comas | 100 | 100 | 100 |
+  | mayusculas | 100 | 100 | 100 |
+  | reglas en orden inverso | 100 | 100 | 100 |
+  | sin espacios en el guion | 67 | 100 | 75 |
+
+  O sea: robusto a toda variacion legitima y estricto solo donde CSS es estricto.
+  `calc(100%-4rem)` es CSS INVALIDO, asi que 67 y 75 son el resultado correcto, no
+  un defecto. ej-06 da 100 porque `clamp()` lleva solo comas, sin operador.
+- **La trampa de los espacios se ENSEÑA.** Leccion 01 tiene su propio bloque y el
+  hint de ej-03 la nombra, para que nadie quede mal calificado por algo invisible.
+- **Ledger 23 -> 23.** El modulo nuevo no aporta NINGUN caso. Busqueda literal:
+  cero apariciones de `line-height`, `font-family`, `text-align`, `@media`,
+  `display:flex`, `display:grid`, `var(--`, `transition:`, `box-shadow` y
+  `linear-gradient`. Las tres primeras importan porque `tipografias` se fue al 8.
+- **Cobertura del requisito 7:** calc() x31, min() x34, max() x12, clamp() x26, y
+  la expresion de unidades mezcladas `calc(100% - 4rem)` x7.
+- **`sin escribir` sigue en 63**, sin subir, porque el modulo trae 2 live-editor y
+  1 visual-match. OJO: ese techo tampoco tiene margen, asi que cada modulo de
+  3b-3e DEBE traer al menos uno de esos dos tipos.
+- **Lo que la revision NO cubre y es del instructor:** si el contenido se entiende
+  y si el nivel le sirve a la cohorte. Los tests prueban que parsea, que puntua
+  100, que tiene tildes y que no adelanta conceptos. No prueban que se entienda.
+
 
 ---
 

@@ -378,6 +378,59 @@ phases:
         no se perdio ninguna forma detectada antes, y ademas entra la sintaxis de
         rango. Verificado tambien a mano, caso por caso, incluyendo que
         prefers-reduced-motion, prefers-color-scheme y print siguen afuera.
+    slice_3a_math_functions:
+      status: done
+      branch: feat/css-math-functions
+      merged: true
+      gates: "173 tests, tsc, lint 0 errores, build, 5 E2E -- los CINCO verdes"
+      changed_lines: 498
+      changed_paths: 22
+      forecast_was: "650-790"
+      rollout_pendiente: >
+        ESTE SLICE AGREGA EL SLUG `math-functions`. Secuencia obligatoria:
+        merge -> redeploy manual en Coolify -> habilitar por cohorte en
+        /teacher/modulos. Habilitar antes del redeploy es IMPOSIBLE, el panel solo
+        puede togglear slugs presentes en el ALL_MODULES desplegado. Hasta que se
+        habilite se ve como TARJETA GRIS CON CANDADO para todas las cohortes.
+      bounded_review:
+        lineage: review-d92af024c0c35633
+        risk: medium
+        lenses: ["review-reliability"]
+        inspection: "completed, 22 de 22 rutas"
+        findings: "1 SUGGESTION, ningun blocker"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow"
+      hallazgo_y_respuesta: >
+        SUGGESTION: los tres `targetCSS` con funciones multi-argumento no tienen
+        asercion DENTRO del candidato. Tenia razon sobre el alcance. El camino de
+        parseo SI esta cubierto por `validacion-curriculum.test.ts`, que no cambia
+        y por eso el revisor no podia verlo. Medido con el grader real: 100 en
+        identico, sin espacio tras comas, espacios extra, mayusculas y orden
+        inverso de reglas. 67/100/75 solo al sacar los espacios del guion, que es
+        CSS INVALIDO -- resultado correcto, no defecto.
+      confirmado_por_el_revisor: >
+        Los 19 desplazamientos uno por uno; `order` 7..26 contiguos sin huecos ni
+        duplicados; `index.ts` y la SECUENCIA sincronizados; ids y ordenes de
+        lecciones (26-leccion-01..04) y ejercicios (26-ej-01..08) unicos; cada
+        respuesta de quiz coincide con su opcion `isCorrect`; el mapa del drag-drop
+        coincide con cada `correctZone` y cada `dropZone` declarada; y la prosa de
+        las lecciones no ensena nada falso sobre el comportamiento observable.
+      ledger_measurements:
+        before: 23
+        after: 23
+        ceiling: 23
+        aporte_del_modulo_nuevo: 0
+      techos_sin_margen: >
+        DOS techos estan exactamente en su valor y no tienen ni un caso de margen:
+        el ledger en 23, y el `sinEscribir` de tipos-ejercicio en 63. Consecuencia
+        para 3b-3e: cada modulo nuevo DEBE traer al menos un live-editor o
+        visual-match, y NO puede usar `line-height`, `font-family`, `text-align`,
+        `@media` con width, `display:flex`, `display:grid`, `var(--`,
+        `transition:`, `box-shadow` ni `linear-gradient`, porque todos se ensenan
+        despues y cada aparicion suma un caso al ledger.
+      no_cubierto_por_la_revision: >
+        Si el contenido se entiende y si el nivel le sirve a la cohorte. Los tests
+        prueban que parsea, que puntua 100, que tiene tildes y que no adelanta
+        conceptos. No prueban que se entienda. Eso lo lee el instructor.
   verify:
     status: pending
   archive:
