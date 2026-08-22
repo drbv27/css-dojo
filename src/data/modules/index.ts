@@ -122,7 +122,9 @@ export const ALL_MODULES: ModuleData[] = [
   htmlFormulariosAvanzadosModule, htmlSemanticaModule, htmlAtributosModule,
   htmlAccesibilidadModule, htmlMetaSeoModule, htmlMediaAvanzadoModule, htmlBuenasPracticasModule,
   htmlProyectoCVModule, htmlInteractivosModule,
-  // CSS  (el orden de este array ES el orden del track: nada ordena por el campo `order`)
+  // CSS  (el orden del track lo fija el campo `order`: este array se ordena por el
+  //       al final del archivo. El orden de abajo es documental, y tiene que
+  //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
   unidadesCSSModule, tipografiasModule, dimensionesModule, selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, especificidadModule, posicionamientoModule,

@@ -32,6 +32,20 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
   "html-advanced": { label: "HTML Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red", accent: "border-neon-red/40", hoverBorder: "hover:border-neon-red/40", hoverBg: "hover:bg-neon-red/[0.04]", hoverTitle: "group-hover:text-neon-red" },
   "html-projects": { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
 
+  // CSS sections. Requirement 2 of the css-track-sections spec: each one
+  // needs a `color` distinct from the other eight, so a student can tell
+  // two sections apart at a glance. The six generic categories below could
+  // not -- intro, intermediate and frameworks all rendered css-purple.
+  "css-fundamentos": { label: "Fundamentos", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
+  "css-caja": { label: "La caja y las medidas", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange", accent: "border-neon-orange/40", hoverBorder: "hover:border-neon-orange/40", hoverBg: "hover:bg-neon-orange/[0.04]", hoverTitle: "group-hover:text-neon-orange" },
+  "css-texto": { label: "Texto", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
+  "css-selectores": { label: "Selectores", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
+  "css-layout": { label: "Layout", color: "text-neon-teal", badge: "bg-neon-teal/10 text-neon-teal", accent: "border-neon-teal/40", hoverBorder: "hover:border-neon-teal/40", hoverBg: "hover:bg-neon-teal/[0.04]", hoverTitle: "group-hover:text-neon-teal" },
+  "css-visual": { label: "Efectos visuales", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink", accent: "border-neon-pink/40", hoverBorder: "hover:border-neon-pink/40", hoverBg: "hover:bg-neon-pink/[0.04]", hoverTitle: "group-hover:text-neon-pink" },
+  "css-responsive": { label: "Responsive", color: "text-ts-blue", badge: "bg-ts-blue/10 text-ts-blue", accent: "border-ts-blue/40", hoverBorder: "hover:border-ts-blue/40", hoverBg: "hover:bg-ts-blue/[0.04]", hoverTitle: "group-hover:text-ts-blue" },
+  "css-herramientas": { label: "Herramientas", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
+  "css-proyecto": { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
+
   intro: { label: "Introduccion", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
   intermediate: { label: "Intermedio", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
   advanced: { label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
@@ -70,7 +84,27 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
  */
 export const DOJO_CATEGORY_ORDER: Record<DojoType, ModuleCategory[]> = {
   html: ["html-fundamentals", "html-intermediate", "html-advanced", "html-projects"],
-  css: ["intro", "intermediate", "advanced", "preprocessors", "frameworks", "project"],
+  // The nine css-* sections come first and the six generic categories trail
+  // behind them while the 25 modules are still being migrated. Both renderers
+  // skip a category with no modules, so neither list changes on screen until a
+  // module actually carries a css-* category.
+  css: [
+    "css-fundamentos",
+    "css-caja",
+    "css-texto",
+    "css-selectores",
+    "css-layout",
+    "css-visual",
+    "css-responsive",
+    "css-herramientas",
+    "css-proyecto",
+    "intro",
+    "intermediate",
+    "advanced",
+    "preprocessors",
+    "frameworks",
+    "project",
+  ],
   js: [
     "js-fundamentals",
     "js-intermediate",
