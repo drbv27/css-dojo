@@ -60,6 +60,30 @@ describe("category coverage of the module panels", () => {
     expect(missing).toEqual([]);
   });
 
+  /**
+   * Requirement 2 of the css-track-sections spec, which until now lived only in
+   * a comment: the nine CSS sections must be visually distinguishable. The
+   * bounded review of slice 1 flagged that nothing asserted it, and a comment is
+   * not a guard -- the six categories these replaced had `intro`, `intermediate`
+   * and `frameworks` all rendering `css-purple`, which is exactly how a section
+   * list stops being readable.
+   *
+   * Scoped to `css` on purpose: colours legitimately repeat ACROSS dojos (every
+   * capstone is green), so a global uniqueness check would be wrong.
+   */
+  it("gives every CSS section a colour none of the others use", () => {
+    const colores = DOJO_CATEGORY_ORDER.css.map((key) => ({
+      key,
+      color: CATEGORY_META[key].color,
+    }));
+
+    const repetidos = colores.filter(
+      ({ key, color }) => colores.some((otro) => otro.key !== key && otro.color === color)
+    );
+
+    expect(repetidos.map(({ key, color }) => `${key}: ${color}`)).toEqual([]);
+  });
+
   it("never lists the same category under two dojos", () => {
     const seen = new Map<ModuleCategory, DojoType>();
     const collisions: string[] = [];
