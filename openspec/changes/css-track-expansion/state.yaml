@@ -271,6 +271,51 @@ phases:
           destinos de flexbox/css-grid, asi que el conteo solo puede bajar:
           `propiedades-logicas` sale de la ventana de `display:flex`. Estimado
           22. Volver a medir en 2.3/2.4 igual, con el numero real.
+      bounded_review:
+        lineage: review-7f5c406f85e93bc9
+        risk: medium
+        lenses: ["review-reliability"]
+        correction_budget: 107
+        receipt: "sha256:402f9334479b4e79db931757154aa81cc9400acab800ce82ea4d20719fe73d03"
+        gates: "pre-commit allow, pre-push allow (con --base-ref origin/main), pre-pr allow"
+        inspection: "completed, 31 de 31 rutas"
+        findings: >
+          Dos, ninguno bloqueante, agendados como tareas 2.6 y 2.7.
+          WARNING (deterministic, introduced): el patron MEDIA_RESPONSIVE no
+          matchea la sintaxis de rango moderna `@media (width >= 48rem)`, que el
+          patron viejo si agarraba. Es un bug real que introduje: el guard quedo
+          mas debil en ese eje. Hoy no hay casos, el ledger mide cero @media.
+          SUGGESTION: el requisito 2 (nueve colores distintos) no tiene asercion
+          ejecutable, vive en un comentario.
+        confirmed_by_reviewer: >
+          El revisor recomputo la secuencia completa de `order` desde los 25
+          parches y confirmo 1..25 contiguo sin huecos ni duplicados; que el
+          array de index.ts concuerda elemento por elemento; que el indice de
+          categoria es monotono no decreciente sobre esa secuencia y que
+          proyecto-cv-css cierra; que los nueve colores son distintos entre si; y
+          que el cambio de tipos-ejercicio.test.ts es ESTRICTAMENTE MAS FUERTE
+          que el filtro por categoria que reemplazo.
+        lecciones_de_proceso: >
+          Se gastaron dos corridas de revisor por errores del orquestador, no del
+          provider. (1) Se le paso al revisor una receta de git en lugar de la
+          evidencia: el rol de revisor de claude-code NO tiene herramientas y
+          solo admite la evidencia que viene en el prompt. (2) Se reuso un handle
+          `repository-context` del candidato anterior. EL COMANDO CORRECTO es
+          `gentle-ai review lens-context --repository-context <handle>
+          --lens <lente> --delivery provider_command`, que emite el prompt
+          completo y canonico, y el handle CADUCA con el candidato: si cambia el
+          candidato hay que sacar el nuevo de la transicion `collect`.
+          Aparte, `review status` NO acepta `--committed-only` (si `--base-ref`),
+          y `review validate --gate=pre-push` necesita `--base-ref origin/main`
+          cuando la rama no tiene upstream configurado.
+        limite_de_capacidad: >
+          El contexto del revisor acepta 32 rutas como maximo y el slice 1
+          original tenia 33. El provider congela el candidato ANTES de validar
+          esa capacidad, asi que el primer linaje (review-c329f7b19492b56e)
+          quedo abierto e inservible. Se resolvio separando los artefactos SDD
+          del codigo: 31 rutas de codigo entran. Este techo SOLO muerde en el
+          slice 1, que es el unico que toca los 25 archivos de modulo -- el
+          slice 2 son 27 rutas y los 3a-3e menos.
       pending_before_pr: >
         No se hizo push ni PR: el instructor decide cuando. Falta tambien el
         rollout, que en este slice es solo redeploy (no hay slug nuevo, asi que

@@ -178,6 +178,28 @@ las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
       never raise the `toBeLessThanOrEqual(24)` ceiling (design D4 decision).
 - [ ] 2.5 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build` all green.
+- [ ] 2.6 **HALLAZGO DE LA REVISION DEL SLICE 1 (WARNING, deterministic,
+      introduced).** El `MEDIA_RESPONSIVE` que el slice 1 introdujo en
+      `orden-curriculum-css.test.ts` exige `min-width`/`max-width`/
+      `min-height`/`max-height`/`orientation`, y NO matchea la sintaxis de rango
+      moderna: `@media (width >= 48rem)` ni `@media (400px <= width <= 700px)`.
+      Las dos son responsive por la definicion del propio comentario, y el
+      patron viejo `/@media/` si las agarraba: el guard quedo mas preciso en un
+      eje y mas debil en otro. Hoy no hay ningun caso (el ledger mide cero
+      `@media`), asi que es un hueco prospectivo. Arreglo: la alternacion pasa a
+      `width|height|orientation`, que subsume `min-`/`max-` por el `\b` despues
+      del guion Y cubre el rango, sin volver a contar `prefers-reduced-motion`,
+      `prefers-color-scheme` ni `print`. Queda mas fuerte que la version del
+      slice 1 y que la original. Volver a medir el ledger despues.
+- [ ] 2.7 **HALLAZGO DE LA REVISION DEL SLICE 1 (SUGGESTION).** El requisito 2
+      de `css-track-sections` -- los nueve colores distintos entre si -- no
+      tiene ninguna asercion ejecutable: vive en un comentario de
+      `moduleCategories.ts`. Agregar el test a `categorias-panel.test.ts`:
+      comparar los `color` de las nueve entradas `css-*` de a pares y exigir que
+      ninguno se repita. (El revisor no podia ver `globals.css`, que esta fuera
+      del candidato; los diez tokens de color SI existen ahi, verificado con
+      shell. El hueco es la falta de test, no un color inventado.)
+
 
 **Done when:** the 25-module CSS track shows the final relative order and the
 rewritten guard is strictly stronger than the one it replaced.
