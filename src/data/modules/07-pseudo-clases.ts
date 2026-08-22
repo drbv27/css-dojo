@@ -5,7 +5,7 @@ export const pseudoClasesModule: ModuleData = {
   title: "Pseudo-clases CSS",
   description:
     "Aprende a usar pseudo-clases para aplicar estilos según el estado (:hover, :focus), la posición (:first-child, :nth-child) y las relaciones (:not) de los elementos.",
-  order: 10,
+  order: 11,
   dojo: "css" as const,
   category: "css-selectores",
   icon: "MousePointer",
