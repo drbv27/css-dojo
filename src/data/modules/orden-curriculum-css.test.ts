@@ -99,7 +99,7 @@ describe("orden del track CSS", () => {
    */
   const SECUENCIA = [
     "que-es-css", "selectores", "propiedades-basicas",
-    "box-model", "unidades-css", "dimensiones",
+    "box-model", "unidades-css", "dimensiones", "math-functions",
     "tipografias",
     "selectores-descendientes", "pseudo-clases", "pseudo-elementos", "especificidad",
     "float-display", "posicionamiento", "flexbox", "css-grid", "propiedades-logicas",
