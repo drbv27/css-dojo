@@ -1,0 +1,243 @@
+change: css-track-expansion
+created: 2026-08-21
+artifact_store: openspec
+
+session_preflight:
+  execution_mode: auto
+  artifact_store: openspec
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  chain_strategy: stacked-to-main
+  note: >
+    Engram was UNAVAILABLE for the whole planning session: the MCP server
+    disconnected mid-session, so `mem_save`/`mem_search` were not callable. The
+    store is therefore `openspec` (files only), not the `hybrid` used by the
+    three earlier changes in this repo. No phase reported a memory failure as a
+    phase failure, per instruction. If you look for this change in Engram and
+    find nothing, that is why.
+
+product_input:
+  source: /home/diegobonilla/proyectos/cssGame/plan-mejoras-css.md
+  origin: >
+    Written by the orchestrator after reviewing the complete W3Schools CSS
+    sidebar (~75 topic groups, ~250 pages) against our own track, then reviewed
+    and steered by the instructor. It is the source of intent for this change.
+  measured_baseline:
+    css_modules: 25
+    css_exercises: 220
+    css_properties_taught: 78
+  instructor_decisions:
+    - Grow by ADDING modules and GROUPING them (not by deepening the existing 25).
+    - Start with Fase 0 (regroup) and Fase 1 (the five most-missed modules).
+    - Sticky as a full step in class 9 (unrelated to this change; recorded for context).
+  anti_plagiarism_constraint: >
+    What was taken from W3Schools is the topic INVENTORY, which is fact. No text,
+    no examples, no literal ordering. Every example must be authored by us, and
+    preferably grounded in the running product (Ana Martinez's CV). This is
+    carried as a requirement in css-track-content/spec.md, not as a note.
+  rejected_by_policy: >
+    W3Schools' recipe collection (tooltips, modals, sprites, pagination,
+    dropdowns, galleries) is out of scope BY POLICY, not by oversight: it teaches
+    pasting, not concepts. If any of it earns a place it enters as a `reto`.
+
+phases:
+  propose:
+    status: done
+    artifact: openspec/changes/css-track-expansion/proposal.md
+    orchestrator_verified:
+      - >
+        CORRECTED A FALSE PREMISE THE ORCHESTRATOR HAD PUT IN THE PLAN:
+        `src/data/modules/index.ts` ends with `.sort((a, b) => a.order - b.order)`,
+        so the app DOES sort by `order`. TWO stale comments claim the opposite —
+        `index.ts:125` ("el orden de este array ES el orden del track: nada
+        ordena por el campo `order`") and the docstring of
+        `orden-curriculum-css.test.ts`. Both must be fixed by this change: a
+        wrong comment about ordering is how this trap gets re-set.
+      - >
+        `validation.type: "includes"` is FORBIDDEN for CSS exercises by
+        `validacion-curriculum.test.ts` (the token `row` matched inside `arrow`
+        and `browser`). New CSS exercises use css-rules, html-structure, quiz or
+        drag-drop.
+      - >
+        `acentuacion.test.ts` REQUIRES correct Spanish accents; it fails on a
+        missing tilde or `ñ`. css-dojo/CLAUDE.md said "no accented characters"
+        and was wrong — the orchestrator had written that line itself and has
+        corrected it. Note the opposite rule applies to the wdevch2/ class
+        materials, which are deliberately ASCII.
+      - >
+        `src/lib/cssRules.ts` `normalizarSelectores` only lowercases and
+        collapses whitespace, so selector keys are literal:
+        `[href^="https"]` and `[href^='https']` are DIFFERENT keys. Authoring
+        trap for the attribute-selectors module; the spec pins one quote style.
+      - >
+        `src/lib/models/ModuleSettings.ts` — no document means blocked, so every
+        new slug is invisible per cohort until a teacher enables it.
+  spec:
+    status: done
+    artifacts:
+      - openspec/changes/css-track-expansion/specs/css-track-sections/spec.md
+      - openspec/changes/css-track-expansion/specs/css-track-content/spec.md
+    orchestrator_verified:
+      - >
+        The six generic categories (intro, intermediate, advanced,
+        preprocessors, frameworks, project) are used by EXACTLY the 25 CSS
+        module files and no other track — checked category by category. Removing
+        them from `ModuleCategory` cannot break HTML, JS, React or Next.
+      - >
+        `categorias-panel.test.ts:84-88` declares
+        `CLOSING_CATEGORY: Partial<Record<DojoType, ModuleCategory>>` with the
+        literal `css: "project"`. Removing that category BREAKS TYPECHECK there.
+        The proposal had called this file "unchanged" and was wrong.
+      - >
+        `tipos-ejercicio.test.ts:38` asserts `sinEscribir.length <= 63`, so every
+        new module must ship at least one live-editor or visual-match exercise or
+        the suite regresses.
+    resolved_by_orchestrator:
+      - >
+        SECTION ORDER: `css-caja` goes BEFORE `css-texto`. The plan's table had
+        it the other way. Not a free choice: `orden-curriculum-css.test.ts` pins
+        `box-model` before `unidades-css`, and that pedagogical decision was
+        already made (unidades-css uses padding/margin as its examples 45 times).
+        The plan file was corrected.
+      - >
+        INTRA-SECTION ORDER: inside `css-caja` it is box-model -> unidades-css ->
+        dimensiones -> math-functions. Same reason: the guard
+        `unidades-css viene antes de tipografias y dimensiones` pins it. The plan
+        file was corrected. Neither of these was escalated to the instructor
+        because each had exactly one coherent answer.
+  design:
+    status: done
+    artifact: openspec/changes/css-track-expansion/design.md
+    decisions:
+      - >
+        Category migration in three individually-green commits: widen the union
+        and append the css-* to DOJO_CATEGORY_ORDER.css -> flip the 25 category
+        lines and the guards -> delete the six generic members, with typecheck as
+        the proof nothing still references them.
+      - >
+        Renumbering happens TWICE (a relative 25-module sequence in slice 2, the
+        final 1..30 in slice 3e). Appending the new modules at 26..30 and
+        renumbering later is not merely ugly, it is RED: `categorias-panel.test.ts:98`
+        asserts the capstone outranks every content module, so proyecto-cv-css at
+        25 with math-functions at 26 fails.
+      - >
+        The guard rewrite replaces the module-count pin AND the slug ledger with
+        one pinned 30-slug SECUENCIA asserted three ways — strictly stronger than
+        what it replaces. Deriving the sequence from `order` itself was rejected
+        as tautological.
+      - Authoring template is DOCUMENTATION; the six existing guards are already the enforcement layer.
+    orchestrator_verified:
+      - >
+        Both renderers skip empty categories —
+        `(app)/modulos/page.tsx:80` and `(teacher)/teacher/modulos/page.tsx:378`
+        both do `if (catModules.length === 0) return null;`. This is what makes a
+        staged category migration invisible on screen at every intermediate
+        commit, and therefore safely deployable half-done.
+      - >
+        A blocked module renders as a VISIBLE greyed locked card
+        (`opacity-50 cursor-not-allowed`, `(app)/modulos/page.tsx:98-103`), it is
+        NOT hidden. The spec's Scenario 8.1 said "MUST NOT appear" and is wrong.
+        Real consequence: five locked cards become visible to every cohort at
+        deploy, before enabling. This is a rollout decision, not a surprise.
+      - >
+        A THIRD guard breaks on removing the generic categories, beyond the two
+        already known: `tipos-ejercicio.test.ts:58` reads
+        `m.category === "preprocessors"` and then asserts
+        `expect(preprocesadores.length).toBeGreaterThan(0)` — removing the member
+        is a TS2367 no-overlap error AND turns the assert into `0 > 0`. The fix
+        pins the two Sass SLUGS, deliberately not `css-herramientas`: that
+        category also holds Bootstrap and Tailwind, so mapping to it would pass
+        the test while silently changing what the test means.
+      - "`var(--` appears nowhere in 16-css-grid.ts, so the hard-failing exercise ledger test is safe across the renumbering."
+    open_risk_carried_to_apply: >
+      HIGH — the forward-reference ledger moves. media-queries shifts 17 -> 25
+      and transiciones-animaciones 18 -> 23, and both ledger tests key off
+      `posicionDe(...)`, so existing content gets re-classified (@media in
+      18/19, `transition:` in 20, typography properties in 05). Estimated +2 to
+      +4 against a ceiling whose current true value is bounded, not pinned. The
+      design phase had no shell, so `sdd-apply` owns this measurement
+      (tasks 2.3/2.4). MEASURE BEFORE AND AFTER slice 2.
+  tasks:
+    status: done
+    artifact: openspec/changes/css-track-expansion/tasks.md
+    summary: 40 tasks across 7 slices (1 sections, 1 renumber, 5 content modules).
+    review_workload_forecast:
+      estimated_changed_lines: "~3500-4300"
+      per_slice_lines:
+        slice_1_sections: "~110-140"
+        slice_2_renumber_and_guard: "~180-240"
+        slice_3a_to_3e_each_module: "~650-790"
+      budget_risk: high
+      chained_prs_recommended: true
+      decision_needed_before_apply: true
+    guard_outcome: >
+      Review Workload Guard TRIGGERED. ~3500-4300 lines against an 800-line
+      budget, chained PRs required rather than optional. Under
+      delivery_strategy `ask-on-risk` the orchestrator stopped and asked the
+      instructor, who chose `stacked-to-main`: the 7 PRs merge to main in
+      sequence. Rationale recorded from the instructor's workflow — each slice
+      merges, gets redeployed, and its module is enabled per cohort, and slice 1
+      changes nothing on screen so main is safe from the first merge.
+    guard_rewrite_tasks:
+      - "Task 1.6 — categorias-panel.test.ts CLOSING_CATEGORY.css -> \"css-proyecto\""
+      - "Task 1.7 — tipos-ejercicio.test.ts:58 slug-pinned Sass check, NOT category-based"
+      - "Tasks 1.8 + 2.2 — orden-curriculum-css.test.ts: interim name swap, then full rewrite"
+
+  apply:
+    status: ready
+    forward_to_apply:
+      delivery_strategy: ask-on-risk
+      chain_strategy: stacked-to-main
+      pr_boundary: one-pr-per-slice
+      size_exception: not-required
+      review_budget_lines: 800
+      strict_tdd: false
+      test_command: "npm run test:run"
+      gates: ["npm run test:run", "npx tsc --noEmit", "npm run lint", "npm run build"]
+      merge_order: >
+        1 sections -> 2 renumber+guard -> 3a math-functions (clamp) ->
+        3b advanced-text -> 3c attribute-selectors -> 3d lists-and-tables ->
+        3e transforms. Merge order equals revert order.
+      note: >
+        Start with slice 1: it is the cheapest, changes nothing on screen, and
+        its three guard fixes are what make every later slice possible. Slice 2
+        is a hard dependency for all of 3a-3e — a mistake there blocks every
+        subsequent PR. Each of 3a-3e sits at 650-790 lines against an 800 budget,
+        so any scope creep inside a single module file breaches it.
+      rollout_per_content_slice: >
+        merge -> redeploy on Coolify -> enable the new slug per cohort in
+        /teacher/modulos. NEVER enable before redeploy. Until enabled, the module
+        shows as a greyed locked card to every cohort (this is visible, not hidden).
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+next_recommended: apply
+
+deferred_work:
+  - "Fase 2 — web typography (Google Fonts, @font-face), overflow, inheritance (inherit/initial/unset/revert), images and media (object-fit, clip-path)."
+  - "Fase 3 — responsive images and video, visual accessibility, debugging with DevTools. The last two are our differentiator; W3Schools treats them as an appendix."
+  - >
+    Fase 4 — interleaved challenges (one small graded challenge after each
+    lesson instead of a block at the end). This is the ONE thing worth copying
+    from W3Schools, and the only item that improves the 25 EXISTING modules
+    without writing new content. It needs a schema change: the `Exercise`
+    interface in src/types/index.ts has NO link to lessons (only `order`), so it
+    needs an optional field such as `afterLesson`, plus renderer support.
+    Backwards compatible: without the field, everything behaves as today.
+
+open_questions_not_decided:
+  - >
+    37 modules may be too many for one cohort. Distinguishing REQUIRED modules
+    from optional deepening has no representation in the data model today. The
+    instructor flagged it as an open question; no phase invented an answer, and
+    none should.
+  - >
+    How much of this reaches the in-flight Cohorte 2 (whose CSS block is classes
+    6-14) versus the next one. The new modules are self-study and reinforcement,
+    not new class sessions.
+  - >
+    File numbering already drifts from track order (11-box-model.ts carries
+    order: 4). This change leaves the filenames alone deliberately; renaming
+    files is a separate, mechanical change to do in one go with the guard green.
