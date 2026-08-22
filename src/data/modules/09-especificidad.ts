@@ -7,7 +7,7 @@ export const especificidadModule: ModuleData = {
     "Entiende como CSS decide que estilos aplicar cuando hay conflictos. Aprende a calcular la especificidad y a usar la cascada a tu favor.",
   order: 11,
   dojo: "css" as const,
-  category: "intermediate",
+  category: "css-selectores",
   icon: "Scale",
   lessons: [
     {

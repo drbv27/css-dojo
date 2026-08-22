@@ -55,8 +55,13 @@ describe("tipos de ejercicio por modulo", () => {
     // El punto pedagogico del track: Sass no agrega nada al navegador, todo se
     // aplana al compilar. Si no hay un ejercicio donde el alumno escriba ese
     // CSS, el preprocesador queda como magia.
-    const preprocesadores = ALL_MODULES.filter((m) => m.category === "preprocessors");
-    expect(preprocesadores.length).toBeGreaterThan(0);
+    // Fijado por SLUG y no por categoria: los dos modulos de Sass viven en
+    // `css-herramientas`, que tambien tiene Bootstrap y Tailwind. Filtrar por esa
+    // categoria pasaria el test cambiando en silencio lo que el test significa:
+    // un framework no es un preprocesador y no compila nada.
+    const SASS = ["sass-fundamentos", "sass-avanzado"];
+    const preprocesadores = ALL_MODULES.filter((m) => SASS.includes(m.slug));
+    expect(preprocesadores.map((m) => m.slug).sort()).toEqual([...SASS].sort());
 
     const sinCompilado = preprocesadores
       .filter((m) => {

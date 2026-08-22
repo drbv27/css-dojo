@@ -84,11 +84,18 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
  */
 export const DOJO_CATEGORY_ORDER: Record<DojoType, ModuleCategory[]> = {
   html: ["html-fundamentals", "html-intermediate", "html-advanced", "html-projects"],
-  // The nine css-* sections come first and the six generic categories trail
-  // behind them while the 25 modules are still being migrated. Both renderers
-  // skip a category with no modules, so neither list changes on screen until a
-  // module actually carries a css-* category.
+  // The six generic categories are now empty -- every CSS module carries a
+  // css-* section -- and both renderers skip a category with no modules, so
+  // they render nothing. They trail at the FRONT so `css-proyecto` closes the
+  // list, which is what `categorias-panel.test.ts` reads. They leave the union
+  // in the next commit, with the typecheck as the proof nothing needs them.
   css: [
+    "intro",
+    "intermediate",
+    "advanced",
+    "preprocessors",
+    "frameworks",
+    "project",
     "css-fundamentos",
     "css-caja",
     "css-texto",
@@ -98,12 +105,6 @@ export const DOJO_CATEGORY_ORDER: Record<DojoType, ModuleCategory[]> = {
     "css-responsive",
     "css-herramientas",
     "css-proyecto",
-    "intro",
-    "intermediate",
-    "advanced",
-    "preprocessors",
-    "frameworks",
-    "project",
   ],
   js: [
     "js-fundamentals",

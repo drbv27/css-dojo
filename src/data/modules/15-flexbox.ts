@@ -7,7 +7,7 @@ export const flexboxModule: ModuleData = {
     "Domina Flexbox, el sistema de layout unidimensional más utilizado en CSS moderno: flex-direction, justify-content, align-items, flex-wrap, gap y más.",
   order: 15,
   dojo: "css" as const,
-  category: "advanced",
+  category: "css-layout",
   icon: "Columns",
   lessons: [
     {

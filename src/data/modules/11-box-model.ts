@@ -7,7 +7,7 @@ export const boxModelModule: ModuleData = {
     "Comprende cómo funciona el Box Model de CSS: content, padding, border y margin, y como box-sizing cambia el calculo de dimensiones.",
   order: 4,
   dojo: "css" as const,
-  category: "intro",
+  category: "css-caja",
   icon: "Box",
   lessons: [
     {
