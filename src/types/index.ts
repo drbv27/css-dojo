@@ -15,11 +15,13 @@ export type ModuleCategory =
   | "html-fundamentals"
   | "html-intermediate"
   | "html-advanced"
-  // Closes the HTML track, after html-advanced. Mirrors "project" for CSS and
-  // "react-projects"/"js-projects": a capstone renders last, never mid-list.
+  // Closes the HTML track, after html-advanced. Mirrors "css-proyecto",
+  // "react-projects" and "js-projects": a capstone renders last, never mid-list.
   | "html-projects"
-  // CSS track sections. They replace the six generic categories below, which
-  // leave the union as soon as no module references them.
+  // CSS track sections. They replaced six generic categories (intro,
+  // intermediate, advanced, preprocessors, frameworks, project) that were used
+  // by the CSS track alone and told a student nothing about what a section
+  // taught -- three of them even rendered the same colour.
   | "css-fundamentos"
   | "css-caja"
   | "css-texto"
@@ -31,14 +33,6 @@ export type ModuleCategory =
   // Closes the CSS track, after css-herramientas. A capstone integrates
   // everything before it, so it renders last, never mid-list.
   | "css-proyecto"
-  | "intro"
-  | "intermediate"
-  | "advanced"
-  | "preprocessors"
-  | "frameworks"
-  // Cierre de un track. Se renderiza DESPUES de frameworks, porque un proyecto
-  // integrador usa todo lo anterior.
-  | "project"
   | "js-fundamentals"
   | "js-intermediate"
   | "js-advanced"

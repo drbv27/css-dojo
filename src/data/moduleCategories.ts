@@ -6,8 +6,8 @@ import type { DojoType, ModuleCategory } from "@/types";
  * (`/teacher/modulos`) render from this, so a category can never be visible in
  * one place and missing from the other.
  *
- * Why this file exists: the `project` category was added for the CSS capstone
- * and wired into the student listing only. The teacher panel filtered modules
+ * Why this file exists: a `project` category (since replaced by `css-proyecto`)
+ * was added for the CSS capstone and wired into the student listing only. The teacher panel filtered modules
  * by its own hardcoded category list, so the capstone rendered for students but
  * had no toggle in the panel — it could not be enabled or disabled per cohort.
  * `categorias-panel.test.ts` now fails if any module's category is unreachable.
@@ -32,10 +32,10 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
   "html-advanced": { label: "HTML Avanzado", color: "text-neon-red", badge: "bg-neon-red/10 text-neon-red", accent: "border-neon-red/40", hoverBorder: "hover:border-neon-red/40", hoverBg: "hover:bg-neon-red/[0.04]", hoverTitle: "group-hover:text-neon-red" },
   "html-projects": { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
 
-  // CSS sections. Requirement 2 of the css-track-sections spec: each one
-  // needs a `color` distinct from the other eight, so a student can tell
-  // two sections apart at a glance. The six generic categories below could
-  // not -- intro, intermediate and frameworks all rendered css-purple.
+  // CSS sections. Requirement 2 of the css-track-sections spec: each one needs
+  // a `color` distinct from the other eight, so a student can tell two sections
+  // apart at a glance. The six generic categories these replaced could not --
+  // intro, intermediate and frameworks all rendered css-purple.
   "css-fundamentos": { label: "Fundamentos", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
   "css-caja": { label: "La caja y las medidas", color: "text-neon-orange", badge: "bg-neon-orange/10 text-neon-orange", accent: "border-neon-orange/40", hoverBorder: "hover:border-neon-orange/40", hoverBg: "hover:bg-neon-orange/[0.04]", hoverTitle: "group-hover:text-neon-orange" },
   "css-texto": { label: "Texto", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
@@ -45,13 +45,6 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
   "css-responsive": { label: "Responsive", color: "text-ts-blue", badge: "bg-ts-blue/10 text-ts-blue", accent: "border-ts-blue/40", hoverBorder: "hover:border-ts-blue/40", hoverBg: "hover:bg-ts-blue/[0.04]", hoverTitle: "group-hover:text-ts-blue" },
   "css-herramientas": { label: "Herramientas", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
   "css-proyecto": { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
-
-  intro: { label: "Introduccion", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  intermediate: { label: "Intermedio", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  advanced: { label: "Avanzado", color: "text-neon-purple", badge: "bg-neon-purple/10 text-neon-purple", accent: "border-neon-purple/40", hoverBorder: "hover:border-neon-purple/40", hoverBg: "hover:bg-neon-purple/[0.04]", hoverTitle: "group-hover:text-neon-purple" },
-  preprocessors: { label: "Preprocesadores", color: "text-neon-pink", badge: "bg-neon-pink/10 text-neon-pink", accent: "border-neon-pink/40", hoverBorder: "hover:border-neon-pink/40", hoverBg: "hover:bg-neon-pink/[0.04]", hoverTitle: "group-hover:text-neon-pink" },
-  frameworks: { label: "Frameworks CSS", color: "text-css-purple", badge: "bg-css-purple/10 text-css-purple", accent: "border-css-purple/40", hoverBorder: "hover:border-css-purple/40", hoverBg: "hover:bg-css-purple/[0.04]", hoverTitle: "group-hover:text-css-purple" },
-  project: { label: "Proyecto final", color: "text-neon-green", badge: "bg-neon-green/10 text-neon-green", accent: "border-neon-green/40", hoverBorder: "hover:border-neon-green/40", hoverBg: "hover:bg-neon-green/[0.04]", hoverTitle: "group-hover:text-neon-green" },
 
   "js-fundamentals": { label: "Fundamentos", color: "text-neon-yellow", badge: "bg-neon-yellow/10 text-neon-yellow", accent: "border-neon-yellow/40", hoverBorder: "hover:border-neon-yellow/40", hoverBg: "hover:bg-neon-yellow/[0.04]", hoverTitle: "group-hover:text-neon-yellow" },
   "js-intermediate": { label: "Intermedio", color: "text-neon-blue", badge: "bg-neon-blue/10 text-neon-blue", accent: "border-neon-blue/40", hoverBorder: "hover:border-neon-blue/40", hoverBg: "hover:bg-neon-blue/[0.04]", hoverTitle: "group-hover:text-neon-blue" },
@@ -84,18 +77,7 @@ export const CATEGORY_META: Record<ModuleCategory, CategoryMeta> = {
  */
 export const DOJO_CATEGORY_ORDER: Record<DojoType, ModuleCategory[]> = {
   html: ["html-fundamentals", "html-intermediate", "html-advanced", "html-projects"],
-  // The six generic categories are now empty -- every CSS module carries a
-  // css-* section -- and both renderers skip a category with no modules, so
-  // they render nothing. They trail at the FRONT so `css-proyecto` closes the
-  // list, which is what `categorias-panel.test.ts` reads. They leave the union
-  // in the next commit, with the typecheck as the proof nothing needs them.
   css: [
-    "intro",
-    "intermediate",
-    "advanced",
-    "preprocessors",
-    "frameworks",
-    "project",
     "css-fundamentos",
     "css-caja",
     "css-texto",
