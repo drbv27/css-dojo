@@ -25,6 +25,7 @@ import { selectoresModule } from "./02-selectores";
 import { propiedadesBasicasModule } from "./03-propiedades-basicas";
 import { tipografiasModule } from "./04-tipografias";
 import { dimensionesModule } from "./05-dimensiones";
+import { mathFunctionsModule } from "./26-math-functions";
 import { selectoresDescendientesModule } from "./06-selectores-descendientes";
 import { pseudoClasesModule } from "./07-pseudo-clases";
 import { pseudoElementosModule } from "./08-pseudo-elementos";
@@ -126,7 +127,8 @@ export const ALL_MODULES: ModuleData[] = [
   //       al final del archivo. El orden de abajo es documental, y tiene que
   //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
-  unidadesCSSModule, dimensionesModule, tipografiasModule, selectoresDescendientesModule,
+  unidadesCSSModule, dimensionesModule, mathFunctionsModule, tipografiasModule,
+  selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, especificidadModule, floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
   shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,

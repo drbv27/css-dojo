@@ -5,7 +5,7 @@ export const selectoresDescendientesModule: ModuleData = {
   title: "Selectores descendientes y combinadores",
   description:
     "Domina los selectores descendientes, hijos directos (>), hermanos adyacentes (+) y hermanos generales (~) para crear reglas CSS más precisas.",
-  order: 8,
+  order: 9,
   dojo: "css" as const,
   category: "css-selectores",
   icon: "GitBranch",
