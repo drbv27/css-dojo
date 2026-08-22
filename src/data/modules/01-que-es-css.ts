@@ -7,7 +7,7 @@ export const queEsCSSModule: ModuleData = {
     "Descubre que es CSS, cómo funciona y las distintas formas de agregar estilos a tus documentos HTML.",
   order: 1,
   dojo: "css" as const,
-  category: "intro",
+  category: "css-fundamentos",
   icon: "Paintbrush",
   lessons: [
     {

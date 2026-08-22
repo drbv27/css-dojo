@@ -14,11 +14,15 @@ import { ALL_MODULES } from "@/data/modules";
  *
  * Both are resolved by putting `box-model` at 4 and `unidades-css` at 5.
  *
- * IMPORTANT: nothing in the app sorts by the `order` field. The sequence a
- * student walks is the ARRAY ORDER in index.ts; `order` is only rendered as a
- * label (`#04`). So both have to agree, and the first test below is what keeps
- * them honest -- changing one without the other silently desynchronises the
- * numbering from the real path.
+ * IMPORTANT: the app DOES sort by the `order` field -- `index.ts` ends in
+ * `.sort((a, b) => a.order - b.order)`. So `order` is what a student actually
+ * walks, and the array order in `index.ts` is documental. Both have to agree
+ * anyway, and the tests below are what keep them honest: changing one without
+ * the other leaves a comment or a listing lying about the real path.
+ *
+ * This paragraph used to say the exact opposite. It was wrong, and it is the
+ * kind of wrong that re-sets the trap: a plan written from it would append a
+ * module at the end and assume the number was only a label.
  */
 const cssModules = ALL_MODULES.filter((m) => m.dojo === "css");
 
@@ -36,6 +40,26 @@ describe("orden del track CSS", () => {
     const ordenes = cssModules.map((m) => m.order).sort((a, b) => a - b);
     expect(ordenes).toEqual(Array.from({ length: cssModules.length }, (_, i) => i + 1));
   });
+
+  /**
+   * Una media query RESPONSIVE -- la que pregunta por el tamano del viewport --
+   * es una referencia adelantada al modulo `media-queries`. Una media feature de
+   * accesibilidad o de tema NO lo es: `prefers-reduced-motion` se ensena dentro
+   * de animaciones y `prefers-color-scheme` dentro de variables, que es
+   * exactamente donde corresponde, porque el concepto de esos modulos no es el
+   * breakpoint. `print` tampoco.
+   *
+   * El patron viejo era `/@media/` a secas y no distinguia. Contaba deuda que no
+   * existe, y "arreglarla" habria significado borrar la accesibilidad de
+   * `transiciones-animaciones` y el dark mode de `variables-css`, que son los
+   * mejores ejemplos que tienen esos dos modulos. La condicion tiene que estar
+   * antes de la llave de apertura, que es donde vive.
+   *
+   * Los dos tests de abajo comparten esta definicion a proposito: si uno cuenta
+   * un `@media` como deuda y el otro no, el proximo que lea el archivo no sabe
+   * cual de los dos miente.
+   */
+  const MEDIA_RESPONSIVE = String.raw`@media[^{]*\b(?:min-width|max-width|min-height|max-height|orientation)\b`;
 
   /**
    * Fails loudly on a slug typo instead of returning 0 and making a
@@ -76,12 +100,15 @@ describe("orden del track CSS", () => {
    * the old sequence.
    */
   const ORDEN_CATEGORIAS = [
-    "intro",
-    "intermediate",
-    "advanced",
-    "preprocessors",
-    "frameworks",
-    "project",
+    "css-fundamentos",
+    "css-caja",
+    "css-texto",
+    "css-selectores",
+    "css-layout",
+    "css-visual",
+    "css-responsive",
+    "css-herramientas",
+    "css-proyecto",
   ] as const;
 
   it("la categoria no contradice el orden: el track se lee igual en pantalla que en el array", () => {
@@ -107,8 +134,8 @@ describe("orden del track CSS", () => {
     // Como `advanced` quedaba entre shadows y sass. Un cierre integrador tiene
     // que venir despues de todo lo que integra.
     const proyecto = cssModules.find((m) => m.slug === "proyecto-cv-css")!;
-    expect(proyecto.category).toBe("project");
-    expect(ORDEN_CATEGORIAS.indexOf(proyecto.category as "project")).toBe(
+    expect(proyecto.category).toBe("css-proyecto");
+    expect(ORDEN_CATEGORIAS.indexOf(proyecto.category as "css-proyecto")).toBe(
       ORDEN_CATEGORIAS.length - 1
     );
   });
@@ -195,7 +222,7 @@ describe("orden del track CSS", () => {
     const TECNICAS: Array<[RegExp, string]> = [
       [/display:\s*flex|\bflex-direction\b|\bjustify-content\b|\balign-items\b/i, "flexbox"],
       [/display:\s*grid|\bgrid-template\b|\bgrid-column\b/i, "css-grid"],
-      [/@media/i, "media-queries"],
+      [new RegExp(MEDIA_RESPONSIVE, "i"), "media-queries"],
       [/\btransition\s*:|@keyframes/i, "transiciones-animaciones"],
       [/\bvar\(--/i, "variables-css"],
       [/\bbox-shadow\s*:|linear-gradient\(/i, "shadows-gradients-filters"],
@@ -246,7 +273,7 @@ describe("orden del track CSS", () => {
       [/display:\s*flex/g, "display:flex", "flexbox"],
       [/\bjustify-content\s*:/g, "justify-content:", "flexbox"],
       [/display:\s*grid/g, "display:grid", "css-grid"],
-      [/@media/g, "@media", "media-queries"],
+      [new RegExp(MEDIA_RESPONSIVE, "g"), "@media responsive", "media-queries"],
       [/\btransition\s*:/g, "transition:", "transiciones-animaciones"],
     ];
 
@@ -265,6 +292,13 @@ describe("orden del track CSS", () => {
 
     // Umbral, no cero: baja este numero cuando arregles contenido, y nunca lo
     // subas. Si sube, alguien introdujo una referencia hacia adelante nueva.
-    expect(casos.length).toBeLessThanOrEqual(24);
+    //
+    // 24 -> 23. El valor real medido con shell era EXACTAMENTE 24, o sea que el
+    // techo no tenia ni un caso de margen: cualquier renumeracion lo rompia. Al
+    // agrupar en secciones css-* la posicion de `media-queries` y de
+    // `tipografias` se movio y el conteo subio a 26; afinar el patron de @media
+    // a las media queries responsive lo dejo en 23, que es el numero de abajo.
+    // Un techo flojo por la cantidad exacta de una regresion no es un techo.
+    expect(casos.length).toBeLessThanOrEqual(23);
   });
 });

@@ -122,14 +122,16 @@ export const ALL_MODULES: ModuleData[] = [
   htmlFormulariosAvanzadosModule, htmlSemanticaModule, htmlAtributosModule,
   htmlAccesibilidadModule, htmlMetaSeoModule, htmlMediaAvanzadoModule, htmlBuenasPracticasModule,
   htmlProyectoCVModule, htmlInteractivosModule,
-  // CSS  (el orden de este array ES el orden del track: nada ordena por el campo `order`)
+  // CSS  (el orden del track lo fija el campo `order`: este array se ordena por el
+  //       al final del archivo. El orden de abajo es documental, y tiene que
+  //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
-  unidadesCSSModule, tipografiasModule, dimensionesModule, selectoresDescendientesModule,
+  unidadesCSSModule, dimensionesModule, tipografiasModule, selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, especificidadModule, posicionamientoModule,
   floatDisplayModule, propiedadesLogicasModule, flexboxModule, cssGridModule,
-  mediaQueriesModule, transicionesAnimacionesModule, variablesCSSModule, shadowsGradientsFiltersModule,
-  sassFundamentosModule, sassAvanzadoModule, bootstrapModule, tailwindModule,
-  proyectoCvCssModule,
+  transicionesAnimacionesModule, variablesCSSModule, shadowsGradientsFiltersModule,
+  mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
+  tailwindModule, proyectoCvCssModule,
   // JS
   jsQueEsModule, jsVariablesTiposModule, jsOperadoresModule, jsStringsModule,
   jsCondicionalesModule, jsCiclosModule, jsFuncionesModule, jsArraysModule,

@@ -7,7 +7,7 @@ export const bootstrapModule: ModuleData = {
     "Aprende el framework CSS más popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseño responsivo con Bootstrap 5.",
   order: 23,
   dojo: "css" as const,
-  category: "frameworks",
+  category: "css-herramientas",
   icon: "layout",
   lessons: [
     {

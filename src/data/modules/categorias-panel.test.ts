@@ -82,7 +82,7 @@ describe("category coverage of the module panels", () => {
    * no business overruling.
    */
   const CLOSING_CATEGORY: Partial<Record<DojoType, ModuleCategory>> = {
-    css: "project",
+    css: "css-proyecto",
     html: "html-projects",
     react: "react-projects",
   };

@@ -7,7 +7,7 @@ export const propiedadesLogicasModule: ModuleData = {
     "Aprende las propiedades lógicas de CSS que se adaptan automáticamente a diferentes modos de escritura e idiomas, reemplazando width/height por inline-size/block-size.",
   order: 14,
   dojo: "css" as const,
-  category: "intermediate",
+  category: "css-layout",
   icon: "ArrowLeftRight",
   lessons: [
     {
