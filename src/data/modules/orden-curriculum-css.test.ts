@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ALL_MODULES } from "@/data/modules";
+import { DOJO_CATEGORY_ORDER } from "@/data/moduleCategories";
+import type { ModuleCategory } from "@/types";
 
 /**
  * Guards the TEACHING ORDER of the CSS track.
@@ -55,11 +57,19 @@ describe("orden del track CSS", () => {
    * mejores ejemplos que tienen esos dos modulos. La condicion tiene que estar
    * antes de la llave de apertura, que es donde vive.
    *
+   * Pregunta por `width` y `height` PELADOS, no por `min-width`/`max-width`. Dos
+   * razones: el `\b` despues del guion los subsume igual, y ademas cubre la
+   * sintaxis de rango moderna -- `@media (width >= 48rem)` y
+   * `@media (400px <= width <= 700px)` -- que una alternacion de
+   * `min-`/`max-` deja pasar. Ese hueco lo encontro la revision acotada del
+   * slice 1 sobre la primera version de este patron: hacerlo mas preciso en un
+   * eje lo habia hecho mas debil en otro.
+   *
    * Los dos tests de abajo comparten esta definicion a proposito: si uno cuenta
    * un `@media` como deuda y el otro no, el proximo que lea el archivo no sabe
    * cual de los dos miente.
    */
-  const MEDIA_RESPONSIVE = String.raw`@media[^{]*\b(?:min-width|max-width|min-height|max-height|orientation)\b`;
+  const MEDIA_RESPONSIVE = String.raw`@media[^{]*\b(?:width|height|orientation)\b`;
 
   /**
    * Fails loudly on a slug typo instead of returning 0 and making a
@@ -73,46 +83,74 @@ describe("orden del track CSS", () => {
     return i + 1;
   };
 
-  it("los slugs que estos tests referencian existen", () => {
-    const referenciados = [
-      "que-es-css", "selectores", "propiedades-basicas", "box-model", "unidades-css",
-      "tipografias", "dimensiones", "selectores-descendientes", "pseudo-clases",
-      "pseudo-elementos", "especificidad", "posicionamiento", "float-display",
-      "propiedades-logicas", "flexbox", "css-grid", "media-queries",
-      "transiciones-animaciones", "variables-css", "shadows-gradients-filters",
-      "sass-fundamentos", "sass-avanzado", "bootstrap-5", "tailwind-css",
-      "proyecto-cv-css",
-    ];
-    const faltan = referenciados.filter((s) => !cssModules.some((m) => m.slug === s));
-    expect(faltan).toEqual([]);
-    expect(referenciados.length).toBe(cssModules.length);
+  /**
+   * EL ORDEN DE ENSENANZA, ESCRITO A MANO Y A PROPOSITO.
+   *
+   * Reemplaza a un ledger de slugs sueltos que solo exigia `length ===
+   * cssModules.length`: ese contaba, no ordenaba. Un modulo agregado en el lugar
+   * equivocado pasaba, y un reordenamiento DENTRO de una seccion pasaba tambien,
+   * porque el walk agrupado deriva el orden intra-seccion del array. Asi se
+   * colaron las dos inversiones que este archivo existe para atrapar.
+   *
+   * Escrita a mano y NO derivada de `order` ni de las categorias: derivarla
+   * seria tautologico -- pasaria con cualquier renumeracion internamente
+   * coherente, que es justo el modo de falla que hay que atrapar. El precio es
+   * que agregar un modulo obliga a editar esta lista, y ese precio es el punto.
+   */
+  const SECUENCIA = [
+    "que-es-css", "selectores", "propiedades-basicas",
+    "box-model", "unidades-css", "dimensiones",
+    "tipografias",
+    "selectores-descendientes", "pseudo-clases", "pseudo-elementos", "especificidad",
+    "float-display", "posicionamiento", "flexbox", "css-grid", "propiedades-logicas",
+    "shadows-gradients-filters", "transiciones-animaciones", "variables-css",
+    "media-queries",
+    "sass-fundamentos", "sass-avanzado", "bootstrap-5", "tailwind-css",
+    "proyecto-cv-css",
+  ];
+
+  it("la secuencia de ensenanza es exactamente la fijada", () => {
+    // Falla por LARGO si alguien agrego o borro un modulo, y por ELEMENTO si lo
+    // puso en otro lugar. El ledger viejo solo atrapaba lo primero.
+    expect(cssModules.map((m) => m.slug)).toEqual(SECUENCIA);
+  });
+
+  it("cada order es su posicion en la secuencia fijada", () => {
+    const mal = SECUENCIA
+      .map((slug, i) => ({ slug, esperado: i + 1, real: cssModules.find((m) => m.slug === slug)?.order }))
+      .filter((x) => x.real !== x.esperado);
+    expect(mal).toEqual([]);
+  });
+
+  it("agrupar por seccion reproduce la misma secuencia", () => {
+    // La tercera forma, y la que cierra el agujero: el alumno no camina el
+    // array, camina las secciones. Si agrupar por categoria da otro recorrido,
+    // el numero de la tarjeta y el lugar donde aparece dicen cosas distintas.
+    const porSeccion = ORDEN_CATEGORIAS.flatMap((c) =>
+      cssModules.filter((m) => m.category === c).map((m) => m.slug)
+    );
+    expect(porSeccion).toEqual(SECUENCIA);
   });
 
   /**
    * The test that was missing, and the reason a reorder can look done and not be.
    *
-   * The modules page renders group by group -- intro, intermediate, advanced,
-   * preprocessors, frameworks, project -- and only orders by array position
-   * INSIDE each group. So moving a module up the array without moving its
-   * `category` changes nothing on screen: box-model sat at position 4 while still
-   * marked `intermediate`, so the student kept seeing typography and dimensions
-   * before it. Every ordering assertion in this file passed while the UI showed
-   * the old sequence.
+   * Both listings render group by group and only order by array position INSIDE
+   * each group. So moving a module up the array without moving its `category`
+   * changes nothing on screen: box-model sat at position 4 while still marked
+   * `intermediate`, so the student kept seeing typography and dimensions before
+   * it. Every ordering assertion in this file passed while the UI showed the old
+   * sequence.
+   *
+   * DERIVED, not hardcoded. This used to be a parallel copy of
+   * `DOJO_CATEGORY_ORDER.css`, so a section change meant editing two files and
+   * whoever edited one of them got a green suite and a wrong track. Reading the
+   * real thing means the section order can only be wrong in one place.
    */
-  const ORDEN_CATEGORIAS = [
-    "css-fundamentos",
-    "css-caja",
-    "css-texto",
-    "css-selectores",
-    "css-layout",
-    "css-visual",
-    "css-responsive",
-    "css-herramientas",
-    "css-proyecto",
-  ] as const;
+  const ORDEN_CATEGORIAS = DOJO_CATEGORY_ORDER.css;
 
   it("la categoria no contradice el orden: el track se lee igual en pantalla que en el array", () => {
-    const rango = (c: string) => ORDEN_CATEGORIAS.indexOf(c as (typeof ORDEN_CATEGORIAS)[number]);
+    const rango = (c: string) => ORDEN_CATEGORIAS.indexOf(c as ModuleCategory);
 
     const desconocidas = cssModules.filter((m) => rango(m.category) === -1);
     expect(desconocidas.map((m) => `${m.slug} (${m.category})`)).toEqual([]);
@@ -135,9 +173,7 @@ describe("orden del track CSS", () => {
     // que venir despues de todo lo que integra.
     const proyecto = cssModules.find((m) => m.slug === "proyecto-cv-css")!;
     expect(proyecto.category).toBe("css-proyecto");
-    expect(ORDEN_CATEGORIAS.indexOf(proyecto.category as "css-proyecto")).toBe(
-      ORDEN_CATEGORIAS.length - 1
-    );
+    expect(ORDEN_CATEGORIAS.indexOf(proyecto.category)).toBe(ORDEN_CATEGORIAS.length - 1);
   });
 
   it("box-model viene antes de dimensiones", () => {

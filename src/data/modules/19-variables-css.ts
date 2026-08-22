@@ -5,7 +5,7 @@ export const variablesCSSModule: ModuleData = {
   title: "Variables CSS (Custom Properties)",
   description:
     "Organiza y reutiliza valores en tu CSS con custom properties: declaración, uso, scope, valores de respaldo y temas dinámicos.",
-  order: 18,
+  order: 19,
   dojo: "css" as const,
   category: "css-visual",
   icon: "Variable",

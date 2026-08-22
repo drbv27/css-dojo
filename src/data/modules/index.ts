@@ -127,9 +127,9 @@ export const ALL_MODULES: ModuleData[] = [
   //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
   unidadesCSSModule, dimensionesModule, tipografiasModule, selectoresDescendientesModule,
-  pseudoClasesModule, pseudoElementosModule, especificidadModule, posicionamientoModule,
-  floatDisplayModule, propiedadesLogicasModule, flexboxModule, cssGridModule,
-  transicionesAnimacionesModule, variablesCSSModule, shadowsGradientsFiltersModule,
+  pseudoClasesModule, pseudoElementosModule, especificidadModule, floatDisplayModule,
+  posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
+  shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,
   mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
   tailwindModule, proyectoCvCssModule,
   // JS
