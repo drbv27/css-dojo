@@ -200,7 +200,126 @@ phases:
       - "Tasks 1.8 + 2.2 — orden-curriculum-css.test.ts: interim name swap, then full rewrite"
 
   apply:
-    status: ready
+    status: in_progress
+    slice_1_sections:
+      status: done
+      branch: feat/css-secciones
+      merged: false
+      commits:
+        - "paso A: agregar los 9 miembros css-*, CATEGORY_META y el orden (additive)"
+        - "paso B: voltear las 25 categorias, los 3 guards, los 6 order y el ledger"
+        - "paso C: borrar las 6 genericas, con `tsc --noEmit` como prueba"
+      gates: "npm run test:run (18 archivos / 170 tests), npx tsc --noEmit, npm run lint (0 errores / 49 warnings preexistentes), npm run build -- los cuatro verdes"
+      changed_lines: 213
+      forecast_was: "110-140"
+      measured_by_apply:
+        - >
+          EL SLICE 1 SI TOCA `order`, contra design.md D6 ("touches no order").
+          El test `la categoria no contradice el orden` arma el walk agrupando
+          por ORDEN_CATEGORIAS y compara la POSICION contra el campo `order`.
+          Con las secciones css-* y los numeros viejos daba 6 inconsistencias.
+          La categoria y el `order` son UN solo hecho, no dos: no existe un
+          slice 1 verde que no los mueva. Se movieron los 6 minimos
+          (dimensiones 6, tipografias 7, transiciones 17, variables 18,
+          shadows 19, media-queries 20), que son los valores finales de D2, asi
+          que no hay trabajo tirado.
+        - >
+          Estime 9 inconsistencias antes de medir y eran 6. El orden
+          INTRA-seccion lo deriva el test del ARRAY (ya ordenado por `order`),
+          no de la tabla de la spec Req 3, y por eso `css-layout` paso intacto.
+          La tarea 2.1 todavia tiene que reordenar `css-layout` y `css-visual`
+          para que coincidan con Req 3.
+        - >
+          EL TECHO DEL LEDGER NO ESTABA "ACOTADO PERO NO FIJADO": ERA EXACTO.
+          Valor real en main medido con shell = 24, contra
+          `toBeLessThanOrEqual(24)`. Cero margen. El riesgo alto que D4 dejaba
+          para el apply era peor de lo que estimaba: cualquier renumeracion lo
+          rompia.
+        - >
+          Con los 6 `order` movidos el ledger dio 26. Neto: sale 1 caso
+          (media-queries/`transition:`, porque media-queries se va a 20) y
+          entran 3: `@media` en 18-transiciones-animaciones (x2), `@media` en
+          19-variables-css (x1) y `text-align:` en 05-dimensiones (x1).
+        - >
+          EL PATRON `@media` DEL LEDGER ERA DEMASIADO GRUESO y eso invalidaba
+          la decision de D4. Los dos casos nuevos de @media son
+          `prefers-reduced-motion` (accesibilidad, dentro de animaciones) y
+          `prefers-color-scheme: dark` (tema, dentro de variables): no son
+          referencias adelantadas al modulo responsive, se ensenan donde estan.
+          Borrarlos, como mandaba D4 al pie de la letra, habria quitado los dos
+          mejores ejemplos de esos modulos.
+      instructor_decision: >
+        Consultada, no inventada. Se afina el patron a
+        `@media[^{]*\b(min-width|max-width|min-height|max-height|orientation)\b`,
+        con UNA sola definicion compartida por los dos tests que miran @media
+        (el que MIDE y el que FALLA), para que no puedan decir cosas distintas.
+        Ledger medido despues: 23, y CERO casos de @media, o sea que ningun
+        modulo usa una media query responsive antes de tiempo. El techo baja de
+        24 a 23: un techo flojo por la cantidad exacta de una regresion no es un
+        techo. Rechazadas: borrar contenido (D4 literal), borrar solo el
+        text-align (quedaba en 25, rojo) y subir el techo (el comentario del
+        propio test dice que nunca se sube).
+      ledger_measurements:
+        main_baseline: 24
+        after_6_order_moves: 26
+        after_pattern_refinement: 23
+        ceiling_before: 24
+        ceiling_after: 23
+        note: >
+          El slice 2 mueve mas `order` (float-display 12, posicionamiento 13,
+          flexbox 14, css-grid 15, propiedades-logicas 16). Eso ACERCA los
+          destinos de flexbox/css-grid, asi que el conteo solo puede bajar:
+          `propiedades-logicas` sale de la ventana de `display:flex`. Estimado
+          22. Volver a medir en 2.3/2.4 igual, con el numero real.
+      bounded_review:
+        lineage: review-7f5c406f85e93bc9
+        risk: medium
+        lenses: ["review-reliability"]
+        correction_budget: 107
+        receipt: "sha256:402f9334479b4e79db931757154aa81cc9400acab800ce82ea4d20719fe73d03"
+        gates: "pre-commit allow, pre-push allow (con --base-ref origin/main), pre-pr allow"
+        inspection: "completed, 31 de 31 rutas"
+        findings: >
+          Dos, ninguno bloqueante, agendados como tareas 2.6 y 2.7.
+          WARNING (deterministic, introduced): el patron MEDIA_RESPONSIVE no
+          matchea la sintaxis de rango moderna `@media (width >= 48rem)`, que el
+          patron viejo si agarraba. Es un bug real que introduje: el guard quedo
+          mas debil en ese eje. Hoy no hay casos, el ledger mide cero @media.
+          SUGGESTION: el requisito 2 (nueve colores distintos) no tiene asercion
+          ejecutable, vive en un comentario.
+        confirmed_by_reviewer: >
+          El revisor recomputo la secuencia completa de `order` desde los 25
+          parches y confirmo 1..25 contiguo sin huecos ni duplicados; que el
+          array de index.ts concuerda elemento por elemento; que el indice de
+          categoria es monotono no decreciente sobre esa secuencia y que
+          proyecto-cv-css cierra; que los nueve colores son distintos entre si; y
+          que el cambio de tipos-ejercicio.test.ts es ESTRICTAMENTE MAS FUERTE
+          que el filtro por categoria que reemplazo.
+        lecciones_de_proceso: >
+          Se gastaron dos corridas de revisor por errores del orquestador, no del
+          provider. (1) Se le paso al revisor una receta de git en lugar de la
+          evidencia: el rol de revisor de claude-code NO tiene herramientas y
+          solo admite la evidencia que viene en el prompt. (2) Se reuso un handle
+          `repository-context` del candidato anterior. EL COMANDO CORRECTO es
+          `gentle-ai review lens-context --repository-context <handle>
+          --lens <lente> --delivery provider_command`, que emite el prompt
+          completo y canonico, y el handle CADUCA con el candidato: si cambia el
+          candidato hay que sacar el nuevo de la transicion `collect`.
+          Aparte, `review status` NO acepta `--committed-only` (si `--base-ref`),
+          y `review validate --gate=pre-push` necesita `--base-ref origin/main`
+          cuando la rama no tiene upstream configurado.
+        limite_de_capacidad: >
+          El contexto del revisor acepta 32 rutas como maximo y el slice 1
+          original tenia 33. El provider congela el candidato ANTES de validar
+          esa capacidad, asi que el primer linaje (review-c329f7b19492b56e)
+          quedo abierto e inservible. Se resolvio separando los artefactos SDD
+          del codigo: 31 rutas de codigo entran. Este techo SOLO muerde en el
+          slice 1, que es el unico que toca los 25 archivos de modulo -- el
+          slice 2 son 27 rutas y los 3a-3e menos.
+      pending_before_pr: >
+        No se hizo push ni PR: el instructor decide cuando. Falta tambien el
+        rollout, que en este slice es solo redeploy (no hay slug nuevo, asi que
+        no hay nada que habilitar por cohorte).
     forward_to_apply:
       delivery_strategy: ask-on-risk
       chain_strategy: stacked-to-main
@@ -231,7 +350,7 @@ phases:
 
 engram_summary_observation: 260   # "SDD css-track-expansion: planificacion completa" (decision)
 
-next_recommended: apply
+next_recommended: apply   # slice 1 hecho y sin mergear; sigue el slice 2 (renumeracion + guard rewrite)
 
 deferred_work:
   - "Fase 2 — web typography (Google Fonts, @font-face), overflow, inheritance (inherit/initial/unset/revert), images and media (object-fit, clip-path)."

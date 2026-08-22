@@ -27,9 +27,12 @@ Chain strategy: pending
 400-line budget risk: High
 ```
 
-Slice 1 lands first: cheapest (~110–140 lines), touches no `order`, and both
-renderers already skip empty categories, so it ships with zero on-screen
-change. Slice 2 lands second: it freezes the final relative sequence and the
+Slice 1 lands first: cheapest, and both renderers already skip empty
+categories, so the six generic sections vanish without a hole. It does NOT ship
+with zero on-screen change and it does NOT leave `order` alone -- see the
+measured result at the end of Phase 1. The category grouping and the `order`
+numbers are one fact: the guard compares the grouped walk position against
+`order`, so flipping one without the other is red. Slice 2 lands second: it freezes the final relative sequence and the
 rewritten guard, so every module PR after it lands against a test that
 already knows the shape it must satisfy. 3a–3e follow in ascending slot order
 (7, 9, 13, 20, 22) — math-functions first because `clamp()` is the
@@ -39,7 +42,7 @@ highest-value gap named in the proposal.
 
 | Unit | Goal | Likely PR | Focused test command | Runtime harness | Rollback boundary |
 |------|------|-----------|----------------------|-----------------|-------------------|
-| 1 sections | 9 `css-*` categories replace 6 generic, zero UI change | PR 1 | `npx vitest run src/data/modules/categorias-panel.test.ts src/data/modules/tipos-ejercicio.test.ts` | N/A — no route/runtime change, data+type only | `git revert`: restores 6 categories + 2 test lines |
+| 1 sections | 9 `css-*` categories replace 6 generic, + the 6 `order` moves the guard forces | PR 1 | `npx vitest run src/data/modules/categorias-panel.test.ts src/data/modules/tipos-ejercicio.test.ts` | N/A — no route/runtime change, data+type only | `git revert`: restores 6 categories + 2 test lines |
 | 2 renumber | Final 25-module relative order + guard rewrite | PR 2 | `npx vitest run src/data/modules/orden-curriculum-css.test.ts` | N/A — no route/runtime change | `git revert`: restores 25 `order` numbers + 1 test file |
 | 3a math-functions | New module at slot 7 | PR 3 | `npx vitest run src/data/modules/` | `npm run test:e2e -- --grep "modulos"` | delete `26-math-functions.ts`, revert `order` shifts + `index.ts` import |
 | 3b advanced-text | New module at slot 9 | PR 4 | same as 3a | same as 3a | delete `27-advanced-text.ts`, revert shifts |
@@ -51,54 +54,98 @@ highest-value gap named in the proposal.
 
 ## Phase 1 — Slice 1: sections (PR 1/7, ~110–140 lines)
 
-- [ ] 1.1 `src/types/index.ts`: add 9 members to `ModuleCategory` —
+- [x] 1.1 `src/types/index.ts`: add 9 members to `ModuleCategory` —
       `css-fundamentos`, `css-caja`, `css-texto`, `css-selectores`,
       `css-layout`, `css-visual`, `css-responsive`, `css-herramientas`,
       `css-proyecto` (spec `css-track-sections` Req. 1). Do not add
       `css-oficio`.
-- [ ] 1.2 `src/data/moduleCategories.ts`: add 9 `CATEGORY_META` entries, each
+- [x] 1.2 `src/data/moduleCategories.ts`: add 9 `CATEGORY_META` entries, each
       with a `color` distinct from the other 8 (Req. 2, Scenario 2.1).
-- [ ] 1.3 `src/data/moduleCategories.ts`: set
+- [x] 1.3 `src/data/moduleCategories.ts`: set
       `DOJO_CATEGORY_ORDER.css = [...9 css-* in Req. 3 order, ...6 existing
       generic]` — additive only, so typecheck and `categorias-panel.test.ts`
       stay green with zero UI change (both renderers skip
       `catModules.length === 0`).
-- [ ] 1.4 Flip the `category:` line in each of the 25 files under
+- [x] 1.4 Flip the `category:` line in each of the 25 files under
       `src/data/modules/[01-25]-*.ts` to its `css-*` value per spec Req. 3's
       table (e.g. `box-model` → `css-caja`, `proyecto-cv-css` →
       `css-proyecto`).
-- [ ] 1.5 `src/data/moduleCategories.ts`: delete the 6 generic members
+- [x] 1.5 `src/data/moduleCategories.ts`: delete the 6 generic members
       (`intro`, `intermediate`, `advanced`, `preprocessors`, `frameworks`,
       `project`) from `DOJO_CATEGORY_ORDER.css` and `CATEGORY_META`; delete
       them from `ModuleCategory` in `src/types/index.ts`. `npx tsc --noEmit`
       is the proof nothing else references them (Req. 1, Scenario 1.2).
-- [ ] 1.6 **GUARD REWRITE (fails loudly if wrong)**
+- [x] 1.6 **GUARD REWRITE (fails loudly if wrong)**
       `src/data/modules/categorias-panel.test.ts`: change
       `CLOSING_CATEGORY.css` from `"project"` to `"css-proyecto"` — the one
       line the proposal wrongly called "Unchanged" (spec Req. 6, Scenario
       6.1). Touch nothing else in the file.
-- [ ] 1.7 **GUARD REWRITE (fails loudly if wrong)**
+- [x] 1.7 **GUARD REWRITE (fails loudly if wrong)**
       `src/data/modules/tipos-ejercicio.test.ts:58`: replace
       `m.category === "preprocessors"` with a slug-pinned check for
       `sass-fundamentos` and `sass-avanzado` only (NOT `css-herramientas`,
       which also holds Bootstrap/Tailwind). Prevents
       `expect(preprocesadores.length).toBeGreaterThan(0)` from silently
       becoming `0 > 0`.
-- [ ] 1.8 **GUARD REWRITE (interim, superseded by 2.2)**
+- [x] 1.8 **GUARD REWRITE (interim, superseded by 2.2)**
       `src/data/modules/orden-curriculum-css.test.ts`: minimally swap the
       hardcoded `ORDEN_CATEGORIAS` list from the 6 generic names to the 9
       `css-*` names, just enough to stay green after 1.4–1.5. Do not derive
       it from `DOJO_CATEGORY_ORDER` yet — that is task 2.2.
-- [ ] 1.9 `src/data/modules/index.ts:125`: fix the stale comment ("nada
+- [x] 1.9 `src/data/modules/index.ts:125`: fix the stale comment ("nada
       ordena por el campo `order`") — line 156 ends in
       `.sort((a, b) => a.order - b.order)`, so the array literal order is
       documentary only.
-- [ ] 1.10 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
+- [x] 1.10 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build` all green. Manually check `/modulos` and
       `/teacher/modulos` show identical CSS listings to before this slice.
 
 **Done when:** 9 `css-*` categories exist, 6 generic ones are gone, and the
-on-screen CSS listing is unchanged.
+listing shows the same 25 modules grouped into the 9 sections, each in its own
+colour, numbered 1..25 with no gaps.
+
+**Resultado del slice 1 (medido, no estimado).** Verde en los cuatro gates.
+213 lineas cambiadas contra un forecast de 110-140. Tres desviaciones, todas
+con evidencia de shell:
+
+1. **El slice 1 SI toca `order`, contra design.md D6.** El test
+   `la categoria no contradice el orden` arma el walk agrupando por
+   `ORDEN_CATEGORIAS` y compara la POSICION contra el campo `order`. Con las
+   secciones nuevas y los numeros viejos daba 6 inconsistencias, asi que las
+   categorias y los `order` son un solo hecho, no dos. Se movieron los 6
+   minimos: dimensiones 7 -> 6, tipografias 6 -> 7, transiciones 18 -> 17,
+   variables 19 -> 18, shadows 20 -> 19, media-queries 17 -> 20. Son los mismos
+   valores de la secuencia final de D2, asi que no hay trabajo tirado y la
+   tarea 2.1 queda con menos por hacer.
+   (El orden INTRA-seccion lo deriva el test del array, no de la tabla de la
+   spec Req 3, y por eso `css-layout` paso sin tocar nada. La tarea 2.1 todavia
+   debe reordenar `css-layout` y `css-visual` para que coincidan con Req 3.)
+
+2. **El techo del ledger no estaba "acotado pero no fijado": era exacto.** El
+   valor real en main medido con shell es EXACTAMENTE 24, contra un techo de
+   `toBeLessThanOrEqual(24)`. Cero margen. Las tareas 2.3 y 2.4 asumian holgura
+   y no habia.
+
+3. **El ledger subio a 26 y se resolvio afinando el patron, no borrando
+   contenido.** Los 6 `order` movidos dejaron el conteo en 26: sale 1 caso
+   (media-queries/`transition:`) y entran 3 -- `@media` en
+   transiciones-animaciones (x2), `@media` en variables-css (x1) y
+   `text-align:` en dimensiones (x1). Los dos primeros son
+   `prefers-reduced-motion` y `prefers-color-scheme: dark`, que NO son
+   referencias adelantadas al modulo responsive: son accesibilidad y tema, se
+   ensenan donde estan. El patron era `/@media/` a secas. Ahora exige
+   min/max-width/height u orientation, con UNA definicion compartida por los
+   dos tests que miran `@media`. Ledger medido despues: **23**, con cero casos
+   de `@media`, o sea que ningun modulo usa una media query responsive antes de
+   tiempo. El techo baja de 24 a 23.
+   Decision del instructor (consultada, no inventada): afinar el patron. La
+   alternativa de D4 -- borrar las referencias -- habria quitado la
+   accesibilidad de `transiciones-animaciones` y el dark mode de
+   `variables-css`, que son los mejores ejemplos de esos dos modulos.
+
+Commits: paso A (agregar), paso B (voltear + guards + ledger), paso C (borrar
+las genericas, con `tsc` como prueba). Cada uno verde por su cuenta.
+
 
 ---
 
@@ -131,6 +178,28 @@ on-screen CSS listing is unchanged.
       never raise the `toBeLessThanOrEqual(24)` ceiling (design D4 decision).
 - [ ] 2.5 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build` all green.
+- [ ] 2.6 **HALLAZGO DE LA REVISION DEL SLICE 1 (WARNING, deterministic,
+      introduced).** El `MEDIA_RESPONSIVE` que el slice 1 introdujo en
+      `orden-curriculum-css.test.ts` exige `min-width`/`max-width`/
+      `min-height`/`max-height`/`orientation`, y NO matchea la sintaxis de rango
+      moderna: `@media (width >= 48rem)` ni `@media (400px <= width <= 700px)`.
+      Las dos son responsive por la definicion del propio comentario, y el
+      patron viejo `/@media/` si las agarraba: el guard quedo mas preciso en un
+      eje y mas debil en otro. Hoy no hay ningun caso (el ledger mide cero
+      `@media`), asi que es un hueco prospectivo. Arreglo: la alternacion pasa a
+      `width|height|orientation`, que subsume `min-`/`max-` por el `\b` despues
+      del guion Y cubre el rango, sin volver a contar `prefers-reduced-motion`,
+      `prefers-color-scheme` ni `print`. Queda mas fuerte que la version del
+      slice 1 y que la original. Volver a medir el ledger despues.
+- [ ] 2.7 **HALLAZGO DE LA REVISION DEL SLICE 1 (SUGGESTION).** El requisito 2
+      de `css-track-sections` -- los nueve colores distintos entre si -- no
+      tiene ninguna asercion ejecutable: vive en un comentario de
+      `moduleCategories.ts`. Agregar el test a `categorias-panel.test.ts`:
+      comparar los `color` de las nueve entradas `css-*` de a pares y exigir que
+      ninguno se repita. (El revisor no podia ver `globals.css`, que esta fuera
+      del candidato; los diez tokens de color SI existen ahi, verificado con
+      shell. El hueco es la falta de test, no un color inventado.)
+
 
 **Done when:** the 25-module CSS track shows the final relative order and the
 rewritten guard is strictly stronger than the one it replaced.
