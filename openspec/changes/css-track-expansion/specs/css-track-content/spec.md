@@ -155,16 +155,40 @@ module, or not at all.
 ## ADDED Requirement 8 — Delivery: new modules ship blocked by default
 
 `ModuleSettings` has no document for a new slug means blocked
-(`src/lib/models/ModuleSettings.ts`). The five new slugs SHALL be invisible
-to every cohort until a teacher enables them in `/teacher/modulos`.
+(`src/lib/models/ModuleSettings.ts`). The five new slugs SHALL be
+unreachable for every cohort until a teacher enables them in
+`/teacher/modulos`.
 
-### Scenario 8.1 — Invisible until enabled
+**Amended after implementation.** This requirement first said the new slugs
+"SHALL be invisible" and Scenario 8.1 said the module "MUST NOT appear".
+Both were wrong about shipped behaviour: `src/app/(app)/modulos/page.tsx`
+renders a blocked module as a greyed, non-clickable locked card when
+`!isEnabled && !isTeacher`, so every cohort sees a locked card from the
+moment a slice deploys. `design.md` §D7 recorded that correction during
+design and flagged it as product-visible and owned by the instructor's
+decision, but the requirement text itself was never redlined. The text below
+now describes what actually ships. Blocked still means unreachable; it never
+meant hidden.
+
+### Scenario 8.1 — Locked, not hidden, until enabled
 
 - **Given** a cohort with no `ModuleSettings` document for
   `math-functions`
 - **When** that cohort's student views `/modulos`
-- **Then** the module MUST NOT appear, until a teacher creates an
-  `enabled: true` document for that `(cohort, slug)` pair
+- **Then** the module MUST appear as a greyed, non-clickable locked card,
+  and MUST NOT be openable, until a teacher creates an `enabled: true`
+  document for that `(cohort, slug)` pair
+- **And** a teacher viewing the same page MUST see the module as a normal,
+  openable card, because the lock is gated on `!isTeacher`
+
+### Scenario 8.2 — Coverage gap, stated on purpose
+
+- **Given** that no test in the repository asserts either the locked-card
+  behaviour or its absence
+- **When** someone changes the blocked-module branch in
+  `src/app/(app)/modulos/page.tsx`
+- **Then** nothing fails, so this requirement is documentation and not a
+  guard, and closing that gap is out of scope for this change
 
 ---
 

@@ -685,13 +685,65 @@ phases:
         clase, que hacia fallar un intento correcto. Con el alcance angosto se
         publicaba.
   verify:
-    status: pending
+    status: done
+    engram_topic_key: sdd/css-track-expansion/verify-report
+    engram_observation: 282
+    resultado: "PASS WITH WARNINGS"
+    gates_reverificados_por_el_verifier: >
+      Los cinco corridos de nuevo por el verificador, no heredados: 173 tests,
+      tsc limpio, lint 0 errores / 49 warnings preexistentes, build, 5 E2E.
+    mediciones_re_derivadas: >
+      El verificador NO acepto las mediciones del orquestador: re-implemento la
+      logica exacta del ledger y del filtro de sinEscribir en scripts propios
+      contra los datos vivos, y obtuvo 23 y 63. Tambien re-derivo la secuencia
+      1..30 leyendo los 30 archivos de modulo por shell en lugar del test, y
+      confirmo por su cuenta que el 3e desplaza OCHO modulos y no nueve.
+    requirement_4_confirmada: >
+      30 modulos, order 1..30 exacto, cero huecos, cero duplicados de order y de
+      slug, y agrupar por DOJO_CATEGORY_ORDER.css reproduce el mismo recorrido.
+      Es la unica que solo se podia cerrar en el ultimo slice, y cerro limpia: no
+      habia deuda torcida de los seis slices anteriores.
+    hallazgo_critical_y_su_arreglo:
+      que_paso: >
+        El Requirement 8 de css-track-content decia que un modulo bloqueado
+        "SHALL be invisible" y el Scenario 8.1 decia "MUST NOT appear". Las dos
+        afirmaciones eran FALSAS sobre el comportamiento que se despliega:
+        src/app/(app)/modulos/page.tsx renderiza el modulo bloqueado como tarjeta
+        gris no clickeable cuando `!isEnabled && !isTeacher`.
+      por_que_importaba: >
+        design.md D7 YA tenia la correccion escrita desde la fase de diseno, pero
+        el texto de la spec nunca se redlineo. Y archive fusiona las delta specs
+        dentro de las specs principales, asi que archivar sin corregir promovia
+        esa afirmacion falsa a la spec durable del proyecto, donde sobrevive al
+        cambio que la genero.
+      arreglo: >
+        Enmendado el Requirement 8 y el Scenario 8.1 para describir el
+        comportamiento real, con una nota que dice explicitamente que el texto se
+        corrigio despues de implementar y por que. Agregado el Scenario 8.2, que
+        deja escrita la brecha de cobertura: NINGUN test cubre ni la tarjeta con
+        candado ni su ausencia. Verificado por el orquestador con busqueda propia:
+        cero tests mencionan enabledSlugs, cursor-not-allowed o isTeacher, y los
+        dos E2E son el harness del worker y la landing. Cerrar esa brecha queda
+        fuera de alcance de este cambio.
+    deuda_de_comentario_encontrada_y_no_arreglada: >
+      src/data/modules/index.ts:130-132. El comentario esta mal escrito ("este
+      array se ordena por el / al final del archivo", falta el sustantivo) Y dice
+      algo falso: afirma que el orden de declaracion "tiene que coincidir" y que
+      orden-curriculum-css.test.ts falla si se desincronizan. NO falla: el test
+      lee el array ya ordenado, no el literal. Esto agrava la deuda aceptada del
+      WARNING del 3e, porque el literal ahora contradice al comentario de tres
+      lineas mas arriba. Es un archivo .ts, asi que tocarlo dispara revision
+      completa con consentimiento; va junto con el renombre de archivos.
   archive:
     status: pending
+    bloqueado_por: >
+      La tarea 3e.5, que es del instructor y no la puede cerrar ningun agente:
+      pushear main, redeploy manual en Coolify, y habilitar el slug `transforms`
+      por cohorte en /teacher/modulos. En ese orden, que no se puede invertir.
 
 engram_summary_observation: 260   # "SDD css-track-expansion: planificacion completa" (decision)
 
-next_recommended: verify   # los 7 slices hechos y mergeados; main cd3db52 sin pushear
+next_recommended: archive   # verify done (PASS WITH WARNINGS); bloqueado por la tarea 3e.5 del instructor
 
 deferred_work:
   - "Fase 2 — web typography (Google Fonts, @font-face), overflow, inheritance (inherit/initial/unset/revert), images and media (object-fit, clip-path)."
