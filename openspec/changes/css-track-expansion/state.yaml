@@ -674,7 +674,7 @@ phases:
         - "attribute-selectors: revisado, aprobado"
         - "advanced-text: revisado, aprobado"
         - "lists-and-tables: revisado, aprobado"
-        - "transforms: desplegado y habilitado; contenido NO revisado todavia por el instructor"
+        - "transforms: desplegado, habilitado y contenido APROBADO por el instructor (2026-08-23, despues de archivar)"
       baselines_finales:
         ledger: "23, techo 23, CERO margen"
         sin_escribir: "63, techo 63, CERO margen"
@@ -780,6 +780,15 @@ phases:
       - openspec/specs/css-track-sections/spec.md   # 6 requisitos
       - openspec/specs/css-track-content/spec.md    # 8 requisitos
     delta_markers_resueltos: true
+    addendum_post_archive: >
+      2026-08-23, despues de cerrar el archive. El instructor reviso y aprobo el
+      contenido de `transforms`, que al archivar figuraba como no revisado. Con eso
+      los CINCO modulos nuevos quedan con contenido aprobado.
+      Y el defecto de `normalizarSelectores` que este cambio dejo anotado se
+      arreglo en su propio cambio inmediatamente despues, con lo cual el
+      Requirement 3 de la spec principal quedo enmendado: el grader ahora
+      normaliza el estilo de comilla y fijar comilla doble al escribir dejo de ser
+      un workaround para pasar a ser una convencion.
     deuda_de_indentacion_del_propio_state_yaml: >
       PREEXISTENTE, no de este cierre, y a proposito no se arregla aca. Las claves
       `defecto_abierto_del_guard_de_acentuacion` (476) y
