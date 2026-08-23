@@ -5,17 +5,23 @@ context: |
   Tailwind CSS v4. Package manager: npm.
   Architecture: Route groups (app)/(auth)/(teacher)/api; custom JWT auth in src/lib/auth.ts
   (dev-dojo-token cookie), NOT NextAuth despite next-auth being a listed dependency.
-  Content: static TypeScript modules in src/data/modules/ — 101 modules across SIX
-  tracks: css, html, js, react, react-eco, nextjs. Per-dojo category order and
+  Content: static TypeScript modules in src/data/modules/ — 106 modules across SIX
+  tracks: css, html, js, react, react-eco, nextjs (count as of 2026-08-23; the CSS
+  track went 25 -> 30 in the css-track-expansion change). Per-dojo category order and
   presentation live in src/data/moduleCategories.ts and BOTH the student listing
   and the teacher panel read from it; a module whose category is not listed there
   renders NOWHERE and raises no error.
-  Testing (as of 2026-08-04, after the automated-gates change merged to main):
+  Testing (gates added by the automated-gates change, 2026-08-04):
   FIVE working gates — `npm run typecheck` (tsc --noEmit), `npm run lint`
-  (eslint . against a flat eslint.config.mjs; exits 0 with 0 errors and 50
-  warnings), `npm run build`, `npm run test:run` (Vitest + jsdom, 128 tests as of
-  2026-08-05), and `npm run test:e2e` (Playwright chromium, one landing smoke
-  test). All five run in CI on every push to main and every PR via
+  (eslint . against a flat eslint.config.mjs; 0 errors and 49 pre-existing
+  warnings as of 2026-08-23), `npm run build`, `npm run test:run` (Vitest + jsdom,
+  180 tests as of 2026-08-23), and `npm run test:e2e` (Playwright chromium, one
+  landing smoke test plus four worker-harness tests).
+  DO NOT TRUST THESE COUNTS, MEASURE THEM. They are snapshots and they drift:
+  before 2026-08-23 this block still said 128 tests, 50 warnings and 101 modules,
+  all three wrong. `npm run test:run` prints the test count and `npm run lint`
+  prints the warning count; read them instead of quoting this paragraph.
+  All five run in CI on every push to main and every PR via
   .github/workflows/ci.yml, verified green on a real runner.
   Deploy: Coolify + Nixpacks on a VPS, MANUAL redeploy from the UI after push.
   Production builds and serves on NODE 22 (NIXPACKS_NODE_VERSION); CI is pinned
@@ -46,7 +52,10 @@ context: |
   start from this existing sandbox rather than adding a parser.
   DATA GUARDS that will fail a careless content change: validacion-curriculum,
   validacion-html, orden-curriculum-css (forward-reference ledger with a
-  never-raise threshold of 24), categorias-panel, orden-lecciones,
+  never-raise threshold; it is 23 as of 2026-08-23 and sits EXACTLY at its
+  measured value, so a new CSS module has zero margin and must contribute ZERO
+  new forward references — read the literal in the test, never this line),
+  categorias-panel, orden-lecciones,
   signos-interrogacion, acentuacion, tipos-ejercicio (asserts NO module can be
   passed without producing something).
 

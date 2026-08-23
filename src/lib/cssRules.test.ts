@@ -62,6 +62,67 @@ describe("parseCssRules", () => {
   });
 });
 
+describe("selectores de atributo: comillas equivalentes", () => {
+  /**
+   * Medido antes del arreglo: un alumno que respondia `[href^='https']` contra un
+   * target `[href^="https"]` puntuaba 0%, y `[href^=https]` tambien. Las dos
+   * formas son CSS valido. Afectaba tres ejercicios, todos de attribute-selectors.
+   */
+  it("las tres formas de escribir el mismo valor son UNA sola clave", () => {
+    const dobles = parseCssRules('a[href^="https"] { color: teal; }');
+    const simples = parseCssRules("a[href^='https'] { color: teal; }");
+    const desnudo = parseCssRules("a[href^=https] { color: teal; }");
+    expect([...simples.keys()]).toEqual([...dobles.keys()]);
+    expect([...desnudo.keys()]).toEqual([...dobles.keys()]);
+  });
+
+  it("puntua 100 cuando el alumno cambia el estilo de comilla", () => {
+    const target = 'a[href^="https"] { color: teal; }';
+    expect(compararReglas(target, "a[href^='https'] { color: teal; }").score).toBe(100);
+    expect(compararReglas(target, "a[href^=https] { color: teal; }").score).toBe(100);
+  });
+
+  it("los espacios dentro del corchete no crean otra clave", () => {
+    const target = 'a[href^="https"] { color: teal; }';
+    expect(compararReglas(target, 'a[ href ^= "https" ] { color: teal; }').score).toBe(100);
+  });
+
+  /**
+   * Esta es la mitad que NO se relaja, y es a proposito. `mailto:` sin comillas no
+   * es un identificador CSS valido -- los dos puntos no van ahi -- asi que el
+   * navegador no lo matchea. Aprobarlo le ensenaria al alumno que funciona.
+   */
+  it("un valor sin comillas que NO es identificador valido sigue fallando", () => {
+    const target = 'a[href^="mailto:"] { color: teal; }';
+    expect(compararReglas(target, "a[href^=mailto:] { color: teal; }").score).toBe(0);
+    const pdf = 'a[href$=".pdf"] { color: teal; }';
+    expect(compararReglas(pdf, "a[href$=.pdf] { color: teal; }").score).toBe(0);
+  });
+
+  it("la bandera de insensibilidad sigue distinguiendo, porque cambia el significado", () => {
+    const conBandera = 'a[href^="https" i] { color: teal; }';
+    const sinBandera = 'a[href^="https"] { color: teal; }';
+    expect(compararReglas(sinBandera, conBandera).score).toBe(0);
+    // Y entre si, las dos comillas con bandera siguen siendo la misma clave.
+    expect(compararReglas(conBandera, "a[href^='https' i] { color: teal; }").score).toBe(100);
+  });
+
+  it("un atributo sin valor no se toca", () => {
+    const r = parseCssRules("input[required] { border-color: red; }");
+    expect([...r.keys()]).toEqual(["input[required]"]);
+    expect(compararReglas("input[required] { border-color: red; }", "input[ required ] { border-color: red; }").score).toBe(100);
+  });
+
+  it("los cinco operadores sobreviven la normalizacion", () => {
+    for (const op of ["=", "^=", "$=", "*=", "|="]) {
+      const target = `a[data-x${op}"v"] { color: teal; }`;
+      expect(compararReglas(target, `a[data-x${op}'v'] { color: teal; }`).score).toBe(100);
+    }
+    // Y no se confunden entre si.
+    expect(compararReglas('a[data-x^="v"] { color: teal; }', 'a[data-x$="v"] { color: teal; }').score).toBe(0);
+  });
+});
+
 describe("compararReglas", () => {
   const esperado = "h1 { color: red; }\np { color: blue; }";
 
