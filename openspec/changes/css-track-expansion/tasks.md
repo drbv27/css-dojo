@@ -247,7 +247,7 @@ en allow.
 - [x] 3a.4 Verify: `npm run test:run`, `npx tsc --noEmit`, `npm run lint`,
       `npm run build`, `npm run test:e2e` all green. Confirm
       `tipos-ejercicio.test.ts`'s "sin escribir" count did not exceed 63.
-- [ ] 3a.5 Rollout: after merge and manual Coolify redeploy, enable
+- [x] 3a.5 Rollout: after merge and manual Coolify redeploy, enable
       `math-functions` per cohort in `/teacher/modulos` (design D7 — no
       `ModuleSettings` doc means blocked; do not skip this step and do not
       attempt it before redeploy).
@@ -308,7 +308,7 @@ completa de las 22 rutas, recibo acuñado, tres compuertas en allow.
       sequence, landing advanced-text at `order: 9`.
 - [x] 3b.3 Register in `src/data/modules/index.ts`.
 - [x] 3b.4 Verify: same 6 commands as 3a.4.
-- [ ] 3b.5 Rollout: same as 3a.5, slug `advanced-text`.
+- [x] 3b.5 Rollout: same as 3a.5, slug `advanced-text`.
 
 **Resultado del slice 3b (medido, no estimado).** Verde en los CINCO gates: 173
 tests, `tsc --noEmit`, lint 0 errores, build y los 5 E2E. 21 rutas, 493 lineas.
@@ -364,7 +364,7 @@ decision del instructor.
       `especificidad`).
 - [x] 3c.3 Register in `src/data/modules/index.ts`.
 - [x] 3c.4 Verify: same 6 commands as 3a.4.
-- [ ] 3c.5 Rollout: same as 3a.5, slug `attribute-selectors`.
+- [x] 3c.5 Rollout: same as 3a.5, slug `attribute-selectors`.
 
 **Resultado del slice 3c (medido, no estimado).** Verde en los CINCO gates, 173
 tests. 18 rutas, 540 lineas. Revision acotada aprobada: linaje
@@ -460,13 +460,26 @@ cumplen 29-ej-04, 29-ej-06 y 29-ej-08. `sinEscribir` sigue en 63.
 
 ## Phase 3e — transforms, slot 22 (PR 7/7, ~650–790 lines)
 
+**Corregido al arrancar 3e:** la tarea 3e.2 decia 9 modulos y son **8**. Contados
+sobre el arbol real con 29 modulos: transiciones-animaciones 22 -> 23,
+variables-css 23 -> 24, media-queries 24 -> 25, sass-fundamentos 25 -> 26,
+sass-avanzado 26 -> 27, bootstrap-5 27 -> 28, tailwind-css 28 -> 29 y
+proyecto-cv-css 29 -> 30. El forecast del diseno se escribio contra 25 modulos y
+esa cuenta quedo vieja tras cuatro inserciones.
+
+**Estado del rollout al cerrar este chat.** El instructor confirmo redeploy y
+habilitacion por cohorte de `math-functions`, `advanced-text` y
+`attribute-selectors` -- este ultimo en AMBAS cohortes. Queda pendiente el de
+`lists-and-tables`, que esta mergeado y pusheado pero sin desplegar.
+
+
 - [ ] 3e.1 Create `src/data/modules/30-transforms.ts` per spec Req. 7 row
       "Transforms": `translate`, `rotate`, `scale`, `skew`,
       `transform-origin`, combining transforms, a look at
       `perspective`/`rotateY`, and an explicit statement of why
       transform/opacity are cheap to animate — `transiciones-animaciones`
       builds on this claim. `category: "css-visual"`.
-- [ ] 3e.2 Shift `order:` +1 for the 9 modules at slot ≥22, landing transforms
+- [ ] 3e.2 Shift `order:` +1 for the 8 modules at slot ≥22, landing transforms
       at `order: 22` (before `transiciones-animaciones`).
 - [ ] 3e.3 Register in `src/data/modules/index.ts`.
 - [ ] 3e.4 Verify: same 6 commands as 3a.4. This is the final slice — also

@@ -585,6 +585,36 @@ phases:
         Desde el slot 20, `display: grid`, `display: flex`, `text-align` y
         `line-height` dejan de ser referencias adelantadas, porque flexbox (17),
         css-grid (18) y tipografias (8) quedan antes. Util para 3e (slot 22).
+    estado_al_cerrar_el_chat_de_apply:
+      fecha: 2026-08-23
+      main: 115a333
+      pusheado: true
+      track_css: "29 modulos, 1..29 sin huecos ni duplicados"
+      slices_hechos: [1, 2, "3a", "3b", "3c", "3d"]
+      slices_pendientes: ["3e"]
+      rollout_confirmado_por_el_instructor:
+        - "math-functions: redeploy + habilitado por cohorte"
+        - "advanced-text: redeploy + habilitado por cohorte"
+        - "attribute-selectors: redeploy + habilitado en AMBAS cohortes"
+      rollout_pendiente:
+        - "lists-and-tables: mergeado y pusheado, SIN desplegar y SIN habilitar"
+      contenido_validado_por_el_instructor:
+        - "math-functions: revisado, aprobado ('esta muy bien')"
+        - "attribute-selectors: revisado, aprobado"
+        - "advanced-text: NO revisado todavia"
+        - "lists-and-tables: NO revisado todavia"
+      baselines_medidos_que_3e_debe_respetar:
+        ledger: "23, techo 23, CERO margen"
+        sin_escribir: "63, techo 63, CERO margen"
+      linajes_de_revision:
+        aprobados: 6
+        abandonado: "review-c329f7b19492b56e (el candidato de 33 rutas que excedia el limite de 32 del contexto del revisor; quedo abierto e inservible, no se toco)"
+      decision_de_revision_fijada: >
+        Revisar el CANDIDATO COMPLETO, no solo el commit mecanico. El orquestador
+        habia argumentado dos veces lo contrario y el slice 3d lo refuto: el
+        revisor encontro un enunciado que pedia un selector sin el punto de la
+        clase, que hacia fallar un intento correcto. Con el alcance angosto se
+        publicaba.
   verify:
     status: pending
   archive:
