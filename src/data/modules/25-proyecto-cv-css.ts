@@ -17,7 +17,7 @@ export const proyectoCvCssModule: ModuleData = {
   title: "Proyecto: Estiliza tu CV con CSS",
   description:
     "Toma el CV que escribiste en HTML y convertilo en una página presentable: clases, tipografía, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
-  order: 29,
+  order: 30,
   dojo: "css" as const,
   category: "css-proyecto",
   icon: "FileUser",

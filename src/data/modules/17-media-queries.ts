@@ -5,7 +5,7 @@ export const mediaQueriesModule: ModuleData = {
   title: "Media Queries y Diseño Responsivo",
   description:
     "Aprende a crear sitios web que se adaptan a cualquier dispositivo usando media queries, breakpoints y el enfoque mobile-first.",
-  order: 24,
+  order: 25,
   dojo: "css" as const,
   category: "css-responsive",
   icon: "Smartphone",
