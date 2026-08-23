@@ -5,7 +5,7 @@ export const tailwindModule: ModuleData = {
   title: "Tailwind CSS",
   description:
     "Domina el framework utility-first más moderno: construye interfaces completas usando clases utilitarias, responsive design, estados interactivos y dark mode con Tailwind CSS.",
-  order: 28,
+  order: 29,
   dojo: "css" as const,
   category: "css-herramientas",
   icon: "wind",
