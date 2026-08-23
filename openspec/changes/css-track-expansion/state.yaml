@@ -492,6 +492,65 @@ phases:
       Reportado al instructor, pendiente de su decision. Opciones: sacar la palabra
       de la lista, o exigir la tilde solo cuando viene precedida de articulo
       (`el limite`, `un limite`, `su limite`).
+    slice_3c_attribute_selectors:
+      status: done
+      branch: feat/css-attribute-selectors
+      merged: true
+      gates: "173 tests, tsc, lint 0 errores, build, 5 E2E -- los CINCO verdes"
+      changed_lines: 540
+      changed_paths: 18
+      rollout_pendiente: >
+        AGREGA EL SLUG `attribute-selectors`. merge -> redeploy -> habilitar por
+        cohorte en /teacher/modulos.
+      bounded_review:
+        lineage: review-1a6d5cb250fd6cd7
+        risk: medium
+        inspection: "completed, 18 de 18 rutas"
+        findings: "1 WARNING (icon) + 1 SUGGESTION (cobertura), ninguno bloqueante"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow"
+      ledger_measurements: { before: 23, after: 23, ceiling: 23, aporte_del_modulo_nuevo: 0 }
+      hallazgo_icon: >
+        El revisor acerto en el HECHO y erro en la CONSECUENCIA, y las dos quedaron
+        verificadas. `SquareBrackets` NO es export de lucide-react. Pero el campo
+        `icon` de un modulo NO SE RENDERIZA en ninguna parte: ICON_MAP esta indexado
+        por `NavItem.icon` y el `typeInfo.icon` del detalle de modulo es el icono del
+        TIPO DE EJERCICIO. Ni /modulos ni /teacher/modulos leen `module.icon`.
+        Corrobora el diseno D5. Y 56 modulos ya llevan tokens invalidos, la mayoria
+        kebab-case, sin romper nada. Corregido a `Brackets` en commit propio.
+      desviacion_declarada_escenario_3_1: >
+        La leccion 01 contiene comilla simple y valor sin comillas, en el bloque que
+        muestra las tres formas lado a lado. Es el bloque que ENSENA la trampa, asi
+        que esconderlo iria contra el proposito del requisito. Cada linea lleva
+        comentario inline. Todos los targetCSS usan comilla doble sin excepcion.
+
+  defecto_abierto_del_grader_de_selectores:
+    archivo: src/lib/cssRules.ts
+    funcion: normalizarSelectores
+    hallado_en: "slice 3c, midiendo con el grader antes de escribir el modulo"
+    medicion: >
+      Sobre un target de dos reglas con selectores de atributo:
+      comilla doble 100, comilla simple 0, sin comillas 0. CERO, no 50, porque las
+      dos reglas fallan a la vez.
+    problema: >
+      `[href^=https]` sin comillas ES CSS VALIDO -- las comillas son opcionales
+      cuando el valor es un identificador. Y `[href^='https']` con comilla simple
+      tambien. El grader puntua en 0 codigo correcto, porque normalizarSelectores
+      solo baja a minusculas y colapsa espacios: no normaliza el estilo de comilla.
+    alcance_medido: >
+      Exactamente 3 ejercicios en todo el repositorio, y los tres son los que agrega
+      el slice 3c (28-ej-05, 28-ej-07, 28-ej-08). NADA en produccion esta afectado:
+      ni math-functions ni advanced-text tienen valores entre comillas en un selector.
+    por_que_no_se_arreglo_aca: >
+      normalizarSelectores respalda TODO ejercicio css-rules de TODOS los tracks.
+      Tocarla en medio de la cadena moveria los baselines medidos (ledger 23,
+      sinEscribir 63) de los que 3d y 3e todavia dependen, y el arreglo necesita su
+      propio test que fije las tres formas como equivalentes.
+    arreglo_propuesto: >
+      Normalizar el estilo de comilla Y la forma sin comillas dentro del corchete,
+      mas un test que pine las tres formas como equivalentes. Cuando eso entre, el
+      requisito 3 de la spec (fijar comilla doble) queda innecesario hacia adelante,
+      aunque se mantiene como spec congelada de este cambio.
+    estado: "pendiente, despues de archivar css-track-expansion"
   verify:
     status: pending
   archive:

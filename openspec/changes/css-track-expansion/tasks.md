@@ -351,7 +351,7 @@ decision del instructor.
 
 ## Phase 3c — attribute-selectors, slot 13 (PR 5/7, ~650–790 lines)
 
-- [ ] 3c.1 Create `src/data/modules/28-attribute-selectors.ts` per spec Req. 7
+- [x] 3c.1 Create `src/data/modules/28-attribute-selectors.ts` per spec Req. 7
       row "Attribute selectors" and Req. 3: `[attr=]`, `^=`, `$=`, `*=`,
       `|=`, the case-insensitive ` i` flag. `category: "css-selectores"`.
       Every attribute selector in `targetCSS`/lesson code uses **double
@@ -359,12 +359,54 @@ decision del instructor.
       normalize quote style (Req. 3, Scenario 3.1). Where the exercise's
       purpose is choosing the right operator rather than writing a selector,
       prefer `quiz`/`drag-drop` over `css-rules` (Scenario 3.2).
-- [ ] 3c.2 Shift `order:` +1 for the 15 modules at slot ≥13, landing
+- [x] 3c.2 Shift `order:` +1 for the 15 modules at slot ≥13, landing
       attribute-selectors at `order: 13` (after `pseudo-elementos`, before
       `especificidad`).
-- [ ] 3c.3 Register in `src/data/modules/index.ts`.
-- [ ] 3c.4 Verify: same 6 commands as 3a.4.
+- [x] 3c.3 Register in `src/data/modules/index.ts`.
+- [x] 3c.4 Verify: same 6 commands as 3a.4.
 - [ ] 3c.5 Rollout: same as 3a.5, slug `attribute-selectors`.
+
+**Resultado del slice 3c (medido, no estimado).** Verde en los CINCO gates, 173
+tests. 18 rutas, 540 lineas. Revision acotada aprobada: linaje
+`review-1a6d5cb250fd6cd7`, riesgo medium, inspeccion completa de las 18 rutas,
+dos hallazgos, ninguno bloqueante.
+
+**EL DEFECTO DEL GRADER, medido ANTES de escribir una linea.** `compararReglas`
+sobre un target con selectores de atributo:
+
+| Lo que escribe el alumno | Puntaje |
+|---|---|
+| `a[href^="https"]` comilla doble | 100 |
+| `a[href^='https']` comilla simple | **0** |
+| `a[href^=https]` sin comillas | **0** |
+
+CERO, no 50. Y la forma sin comillas **es CSS valido**: las comillas son
+opcionales cuando el valor es un identificador. El corrector puntua en 0 codigo
+correcto. Alcance medido: exactamente 3 ejercicios en todo el repo, los tres de
+este slice. Nada en produccion afectado. Va como cambio APARTE sobre
+`normalizarSelectores`, no dentro de este slice, porque esa funcion respalda todo
+ejercicio css-rules de todos los tracks y tocarla en medio de la cadena moveria
+los baselines medidos (ledger 23, sinEscribir 63) de los que 3d y 3e dependen.
+
+**Los dos hallazgos del revisor:**
+- WARNING `icon: "SquareBrackets"`: acerto en el HECHO y erro en la CONSECUENCIA,
+  y las dos quedaron verificadas. El token no existe en lucide-react. Pero el
+  campo `icon` de un modulo NO SE RENDERIZA: `ICON_MAP` va sobre `NavItem.icon` y
+  el `typeInfo.icon` del detalle es el icono del tipo de ejercicio. 56 modulos ya
+  llevan tokens invalidos sin romper nada, que solo es posible porque el campo no
+  se lee. Corregido a `Brackets` en un commit propio, por prolijidad.
+- SUGGESTION sobre la cobertura de los tres `targetCSS`: el camino de parseo SI
+  esta cubierto por `validacion-curriculum.test.ts`, fuera del candidato. Medido:
+  los tres puntuan 100.
+
+**Desviacion declarada del escenario 3.1:** la leccion 01 contiene comilla simple
+y valor sin comillas, en el bloque que muestra las tres formas lado a lado, que es
+el que ENSENA la trampa. Cada linea lleva comentario inline para que un
+copiar-pegar se lleve la advertencia. Todos los `targetCSS` usan comilla doble.
+
+**Ledger 23 -> 23.** Cobertura del requisito 7: `[required]` x9, `^=` x26, `$=`
+x15, `*=` x8, `|=` x7, bandera ` i` x3. `sinEscribir` sigue en 63.
+
 
 ---
 
