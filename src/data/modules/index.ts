@@ -28,6 +28,7 @@ import { dimensionesModule } from "./05-dimensiones";
 import { mathFunctionsModule } from "./26-math-functions";
 import { advancedTextModule } from "./27-advanced-text";
 import { attributeSelectorsModule } from "./28-attribute-selectors";
+import { listsAndTablesModule } from "./29-lists-and-tables";
 import { selectoresDescendientesModule } from "./06-selectores-descendientes";
 import { pseudoClasesModule } from "./07-pseudo-clases";
 import { pseudoElementosModule } from "./08-pseudo-elementos";
@@ -134,7 +135,7 @@ export const ALL_MODULES: ModuleData[] = [
   pseudoClasesModule, pseudoElementosModule, attributeSelectorsModule, especificidadModule,
   floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
-  shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,
+  listsAndTablesModule, shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,
   mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
   tailwindModule, proyectoCvCssModule,
   // JS
