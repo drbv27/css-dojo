@@ -5,7 +5,7 @@ export const posicionamientoModule: ModuleData = {
   title: "Posicionamiento CSS",
   description:
     "Aprende a controlar la posición de los elementos con position: static, relative, absolute, fixed y sticky, junto con z-index.",
-  order: 15,
+  order: 16,
   dojo: "css" as const,
   category: "css-layout",
   icon: "Move",
