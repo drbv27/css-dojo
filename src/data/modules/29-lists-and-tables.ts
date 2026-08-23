@@ -390,7 +390,7 @@ Y para el móvil, el envoltorio con \`overflow-x: auto\` más un \`min-width\` e
       xpReward: 20,
       order: 4,
       prompt:
-        "Construí una tabla estilada desde cero. Escribí la clase 'datos' con border-collapse: collapse y width: 100%; y una regla para 'datos th, .datos td' con border: 1px solid #ccc y padding: 10px.",
+        "Construí una tabla estilada desde cero. Escribí la clase 'datos' con border-collapse: collapse y width: 100%; y una regla para '.datos th, .datos td' con border: 1px solid #ccc y padding: 10px.",
       codeTemplate: {
         html: `<table class="datos">\n  <thead>\n    <tr><th>Tecnologia</th><th>Anios</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>CSS moderno</td><td>3</td></tr>\n  </tbody>\n</table>`,
         cssPrefix: "",
