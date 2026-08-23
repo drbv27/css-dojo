@@ -8,7 +8,7 @@ export const attributeSelectorsModule: ModuleData = {
   order: 13,
   dojo: "css" as const,
   category: "css-selectores",
-  icon: "SquareBrackets",
+  icon: "Brackets",
   lessons: [
     {
       id: "28-leccion-01",
