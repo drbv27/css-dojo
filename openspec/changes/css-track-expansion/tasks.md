@@ -412,17 +412,49 @@ x15, `*=` x8, `|=` x7, bandera ` i` x3. `sinEscribir` sigue en 63.
 
 ## Phase 3d — lists-and-tables, slot 20 (PR 6/7, ~650–790 lines)
 
-- [ ] 3d.1 Create `src/data/modules/29-lists-and-tables.ts` per spec Req. 7
+- [x] 3d.1 Create `src/data/modules/29-lists-and-tables.ts` per spec Req. 7
       row "Lists and tables": `list-style-type`/`position`/`image`,
       `::marker`, `border-collapse`, `border-spacing`, column widths, a
       horizontal-scroll technique for a table on mobile. `category:
       "css-visual"`. At least one exercise builds a styled table or list
       from scratch (`live-editor` or `visual-match`).
-- [ ] 3d.2 Shift `order:` +1 for the 10 modules at slot ≥20, landing
+- [x] 3d.2 Shift `order:` +1 for the 10 modules at slot ≥20, landing
       lists-and-tables at `order: 20` (first in `css-visual`).
-- [ ] 3d.3 Register in `src/data/modules/index.ts`.
-- [ ] 3d.4 Verify: same 6 commands as 3a.4.
+- [x] 3d.3 Register in `src/data/modules/index.ts`.
+- [x] 3d.4 Verify: same 6 commands as 3a.4.
 - [ ] 3d.5 Rollout: same as 3a.5, slug `lists-and-tables`.
+
+**Resultado del slice 3d (medido, no estimado).** Verde en los CINCO gates, 173
+tests. 12 rutas, 531 lineas. Revision acotada aprobada: linaje
+`review-b7c14679638d2d80`, inspeccion completa de las 12 rutas, **un hallazgo que
+era un defecto real y le pegaba al alumno**.
+
+**EL HALLAZGO, aceptado completo.** El enunciado de `29-ej-04` decia *"una regla
+para `'datos th, .datos td'`"*: al PRIMER selector le faltaba el punto de la clase.
+Un alumno que copia el enunciado literal escribe `datos th`, que apunta a una
+etiqueta `<datos>` inexistente, y su intento correcto se califica mal por una razon
+que no puede ver ni depurar. Determinista, introducido por este slice. Corregido en
+un commit propio ANTES del push, asi que el enunciado roto nunca llego a una
+cohorte desplegada. Y se barrio el repo entero buscando el mismo error en todo
+ejercicio `css-rules`: **cero casos mas**, era instancia unica y no una clase.
+
+**NOTA DE PROCESO, porque cambio un juicio y conviene que quede.** El orquestador
+habia argumentado DOS VECES por revisar solo el commit mecanico (~41 lineas) en
+lugar del candidato completo, sobre la evidencia de que cuatro revisiones
+anteriores no habian encontrado nada en el contenido de un modulo. El instructor
+eligio el candidato completo las cuatro veces. Este hallazgo es el contraejemplo
+exacto: con el alcance angosto, el defecto se publicaba. El argumento estaba mal.
+
+**Ledger 23 -> 23.** Y por primera vez en la cadena, desde el slot 20
+`display: grid`, `display: flex`, `text-align` y `line-height` habrian sido gratis,
+porque flexbox (17), css-grid (18) y tipografias (8) quedan antes. No hicieron
+falta: el scroll horizontal es `overflow-x: auto` mas `min-width`.
+
+**Cobertura del requisito 7:** list-style-type x4, list-style-position x3,
+list-style-image x3, `::marker` x14, border-collapse x15, border-spacing x12,
+table-layout x5, overflow-x: auto x9, min-width x13. El criterio de aceptacion lo
+cumplen 29-ej-04, 29-ej-06 y 29-ej-08. `sinEscribir` sigue en 63.
+
 
 ---
 

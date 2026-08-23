@@ -551,6 +551,40 @@ phases:
       requisito 3 de la spec (fijar comilla doble) queda innecesario hacia adelante,
       aunque se mantiene como spec congelada de este cambio.
     estado: "pendiente, despues de archivar css-track-expansion"
+    slice_3d_lists_and_tables:
+      status: done
+      branch: feat/css-lists-and-tables
+      merged: true
+      gates: "173 tests, tsc, lint 0 errores, build, 5 E2E -- los CINCO verdes"
+      changed_lines: 531
+      changed_paths: 12
+      rollout_pendiente: >
+        AGREGA EL SLUG `lists-and-tables`. merge -> redeploy -> habilitar por cohorte.
+      bounded_review:
+        lineage: review-b7c14679638d2d80
+        risk: medium
+        inspection: "completed, 12 de 12 rutas"
+        findings: "1 WARNING deterministico, un defecto REAL que le pegaba al alumno"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow"
+      ledger_measurements: { before: 23, after: 23, ceiling: 23, aporte_del_modulo_nuevo: 0 }
+      hallazgo_aceptado_completo: >
+        El enunciado de 29-ej-04 decia "una regla para 'datos th, .datos td'": al
+        PRIMER selector le faltaba el punto de la clase. Un alumno que copia el
+        enunciado literal escribe `datos th`, que apunta a una etiqueta <datos>
+        inexistente, y su intento correcto se califica mal por una razon que no
+        puede ver. Corregido antes del push. Barrido del repo entero buscando el
+        mismo error en todo ejercicio css-rules: CERO casos mas.
+      leccion_de_proceso: >
+        CAMBIA UN JUICIO Y QUEDA ESCRITO. El orquestador habia argumentado DOS VECES
+        por revisar solo el commit mecanico en lugar del candidato completo, sobre
+        la evidencia de que cuatro revisiones no habian encontrado nada en el
+        contenido de un modulo. El instructor eligio completo las cuatro veces. Este
+        hallazgo es el contraejemplo: con el alcance angosto se publicaba. Para los
+        slices que queden, revisar el candidato COMPLETO.
+      libertad_nueva_del_ledger: >
+        Desde el slot 20, `display: grid`, `display: flex`, `text-align` y
+        `line-height` dejan de ser referencias adelantadas, porque flexbox (17),
+        css-grid (18) y tipografias (8) quedan antes. Util para 3e (slot 22).
   verify:
     status: pending
   archive:
