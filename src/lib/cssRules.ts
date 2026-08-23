@@ -25,13 +25,63 @@ function quitarComentarios(css: string): string {
 }
 
 /**
+ * A CSS identifier, which is what an UNQUOTED attribute value has to be.
+ * `https` and `text` qualify; `mailto:` and `.pdf` do not.
+ *
+ * ASCII only, on purpose. CSS allows non-ASCII in an identifier, but a bare
+ * (unquoted) accented attribute value never appears in this curriculum, and the
+ * cost of being wrong here is one exercise grading strictly rather than
+ * accepting something invalid.
+ */
+const IDENTIFICADOR = /^-?[a-z_][a-z0-9_-]*$/;
+
+/**
+ * `[ href ^= 'https' ]` -> `[href^="https"]`.
+ *
+ * Why this exists: the value of an attribute selector may be a string in either
+ * quote style OR a bare identifier, and the three forms mean the same thing.
+ * Keying them separately scored valid CSS as zero. Measured before the fix: a
+ * student answering `[href^='https']` against a `[href^="https"]` target got 0%,
+ * and so did `[href^=https]`. Three exercises graded that way, all in
+ * `attribute-selectors`.
+ *
+ * A bare value that is NOT a valid identifier is deliberately left alone, so it
+ * stays a distinct key and keeps failing. `[href^=mailto:]` is not valid CSS --
+ * a colon cannot appear in an unquoted identifier -- and telling a student that
+ * invalid CSS is correct is worse than rejecting valid CSS.
+ *
+ * The case-sensitivity flag survives, because `[a="b" i]` and `[a="b"]` really
+ * are different selectors.
+ */
+function normalizarAtributos(selector: string): string {
+  return selector.replace(/\[([^\]]*)\]/g, (bloque, interior: string) => {
+    const solo = interior.trim();
+    const m = solo.match(
+      /^([\w-]+)\s*([~|^$*]?=)\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))\s*([is])?$/
+    );
+    // No value (`[required]`), or a shape this minimal parser does not model.
+    if (!m) return /^[\w-]+$/.test(solo) ? `[${solo}]` : bloque;
+
+    const [, atributo, operador, dobles, simples, desnudo, bandera] = m;
+    let valor: string;
+    if (dobles !== undefined) valor = dobles;
+    else if (simples !== undefined) valor = simples;
+    else if (IDENTIFICADOR.test(desnudo)) valor = desnudo;
+    else return bloque; // invalid unquoted value: keep it distinct, keep it failing
+
+    return `[${atributo}${operador}"${valor}"${bandera ? ` ${bandera}` : ""}]`;
+  });
+}
+
+/**
  * `H1 , .Caja` -> ["h1", ".caja"]. Whitespace inside a compound selector is
- * collapsed to one space so `.a   >   .b` and `.a > .b` are the same key.
+ * collapsed to one space so `.a   >   .b` and `.a > .b` are the same key, and
+ * attribute selectors are canonicalized so equivalent quoting is one key.
  */
 function normalizarSelectores(prelude: string): string[] {
   return prelude
     .split(",")
-    .map((s) => s.trim().toLowerCase().replace(/\s+/g, " "))
+    .map((s) => normalizarAtributos(s.trim().toLowerCase().replace(/\s+/g, " ")))
     .filter(Boolean);
 }
 

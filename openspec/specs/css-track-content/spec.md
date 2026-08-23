@@ -63,25 +63,51 @@ used, per `validacion-curriculum.test.ts`.
 
 ## Requirement 3 — Attribute-selector quoting is disambiguated
 
-`normalizarSelectores` (`src/lib/cssRules.ts`) lowercases and collapses
-whitespace only; it does NOT normalize quote style, so
-`[href^="https"]` and `[href^='https']` are different selector keys.
+**Amended: the grader now does this, so authoring no longer has to.** This
+requirement used to state that `normalizarSelectores` (`src/lib/cssRules.ts`)
+"does NOT normalize quote style", and required every authored attribute selector
+to use double quotes as a workaround. That statement was true when written and is
+now false: `normalizarSelectores` canonicalizes attribute selectors, so
+`[href^="https"]`, `[href^='https']`, `[href^=https]` and `[ href ^= "https" ]`
+are ONE selector key. Measured before that fix: a student answering with single
+quotes scored 0% on two exercises and 33% on a third.
 
-### Scenario 3.1 — One quote style, consistently
+The canonical form is double-quoted, unspaced, with the case-sensitivity flag
+preserved: `[attr^="value" i]`.
 
-- **Given** the attribute-selectors module's `css-rules` exercises
-- **When** `targetCSS` and any lesson code example use attribute selectors
-- **Then** every occurrence MUST use double quotes (`[href^="https"]`), never
-  single quotes, so a student's differently-quoted-but-equivalent answer is
-  not silently marked wrong
+One thing the grader deliberately does NOT relax: an unquoted value that is not a
+valid CSS identifier stays a distinct key and keeps failing. `[href^=mailto:]`
+and `[href$=.pdf]` are not valid CSS, and accepting them would teach a student
+that they work.
 
-### Scenario 3.2 — Syntax recognition falls back to quiz/drag-drop
+### Scenario 3.1 — Equivalent quoting scores the same
+
+- **Given** a `css-rules` exercise whose `targetCSS` uses an attribute selector
+- **When** a student answers with the other quote style, with no quotes around a
+  valid identifier, or with spaces inside the brackets
+- **Then** the score MUST be identical to the double-quoted form, because those
+  forms are the same selector in CSS
+
+### Scenario 3.2 — Invalid unquoted values still fail
+
+- **Given** a `targetCSS` whose attribute value is not a valid CSS identifier,
+  such as `mailto:` or `.pdf`
+- **When** a student writes it unquoted
+- **Then** the score MUST be 0, because the browser would not match it either
+
+### Scenario 3.3 — Authoring style is now a convention, not a workaround
+
+- **Given** a new attribute selector written anywhere in the curriculum
+- **Then** it SHOULD still use double quotes for consistency, but a differently
+  quoted authored value MUST NOT change how any student answer grades
+
+### Scenario 3.4 — Syntax recognition may still use quiz/drag-drop
 
 - **Given** an exercise whose PURPOSE is choosing the right operator
   (`^=`/`$=`/`*=`/`|=`) rather than writing a selector from scratch
 - **When** the exercise type is chosen
-- **Then** it MAY use `quiz` or `drag-drop` instead of `css-rules`, avoiding
-  the quoting trap entirely
+- **Then** it MAY use `quiz` or `drag-drop` instead of `css-rules`, because
+  recognizing an operator and producing a rule are different skills
 
 ---
 
