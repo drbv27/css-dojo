@@ -654,8 +654,8 @@ phases:
         de menos un costo antes de una decision es un error propio, no un detalle.
     estado_al_cerrar_el_slice_3e:
       fecha: 2026-08-23
-      main: cd3db52
-      pusheado: false
+      main: 79c8222
+      pusheado: true
       track_css: "30 modulos, 1..30 sin huecos ni duplicados"
       slices_hechos: [1, 2, "3a", "3b", "3c", "3d", "3e"]
       slices_pendientes: []
@@ -664,20 +664,56 @@ phases:
         - "advanced-text: redeploy + habilitado por cohorte"
         - "attribute-selectors: redeploy + habilitado en AMBAS cohortes"
         - "lists-and-tables: redeploy + habilitado por cohorte"
-      rollout_pendiente:
-        - "transforms: mergeado a main, SIN pushear, SIN desplegar y SIN habilitar"
+        - "transforms: redeploy + habilitado por cohorte"
+      rollout_pendiente: []
+      rollout_completo: >
+        Los CINCO modulos nuevos desplegados y habilitados por cohorte. Las 42
+        tareas cerradas, incluida la 3e.5.
       contenido_validado_por_el_instructor:
         - "math-functions: revisado, aprobado ('esta muy bien')"
         - "attribute-selectors: revisado, aprobado"
         - "advanced-text: revisado, aprobado"
         - "lists-and-tables: revisado, aprobado"
-        - "transforms: NO revisado todavia"
+        - "transforms: desplegado y habilitado; contenido NO revisado todavia por el instructor"
       baselines_finales:
         ledger: "23, techo 23, CERO margen"
         sin_escribir: "63, techo 63, CERO margen"
       linajes_de_revision:
-        aprobados: 7
-        abandonado: "review-c329f7b19492b56e (el candidato de 33 rutas que excedia el limite de 32 del contexto del revisor; quedo abierto e inservible, no se toco)"
+        # ENUMERADOS, no contados. Un contador que se incrementa a mano deriva:
+        # la primera version de este bloque decia "aprobados: 8" al lado de una
+        # prosa que narraba DOS linajes nuevos, y el revisor lo leyo -- con razon --
+        # como un off-by-one. El 8 era correcto, porque el 7 anterior ya incluia el
+        # linaje de codigo, pero un numero que hay que mantener a mano es el mismo
+        # defecto que el "umbral 24" viejo de openspec/config.yaml. Aca va la lista.
+        aprobados_por_slice:
+          slice_1_sections: review-7f5c406f85e93bc9
+          slice_2_renumber: review-a7b1b8bcd83cff67
+          slice_3a_math_functions: review-d92af024c0c35633
+          slice_3b_advanced_text: review-ada5775b076e2cb4
+          slice_3c_attribute_selectors: review-1a6d5cb250fd6cd7
+          slice_3d_lists_and_tables: review-b7c14679638d2d80
+          slice_3e_transforms_codigo: review-bd3b06c13ad3ca4e
+          slice_3e_transforms_docs: review-4c7cd4f691ca91eb
+        aprobados_total: 8   # = el largo de aprobados_por_slice, derivable, no asertado
+        abandonados:
+          - "review-c329f7b19492b56e -- slice 1. El candidato tenia 33 rutas y el contexto del revisor admite 32 como maximo. Hubo que partirlo; este quedo abierto e inservible."
+          - "review-2eb278b949a304d0 -- archive, primer intento. La carpeta se movio con git mv y el diff de la revision presento 4689 lineas y un prompt de 282 KB, imposible de relayar con fidelidad. Ver por_que_la_carpeta_NO_se_reubico."
+          - "review-7a1c6228556cf987 -- archive, segundo intento. Se abandono al encontrar que las specs principales conservaban el encabezado de delta; el candidato se corrigio antes de capturar ningun resultado, asi que el estado nativo devolvio fresh_target_ready sin pedir recuperacion."
+        abandonados_total: 3
+        leccion_de_los_abandonados: >
+          Los tres se abandonaron ANTES de capturar un resultado, y eso es lo que
+          los hizo baratos: sin resultado capturado no hay recibo, y sin recibo
+          cambiar el candidato devuelve `fresh_target_ready` en lugar de exigir
+          `external.authorize_recovery` con autorizacion de mantenedor. El momento
+          de decidir si algo se arregla es antes de
+          `finalize --captured-evidence`, no despues.
+        el_linaje_del_cierre_mismo: >
+          El candidato de archive tiene su propio linaje, que no figura arriba
+          porque al escribir estas lineas todavia no tenia recibo: se emite al
+          cerrar este mismo commit. Queda en el historial de
+          .git/gentle-ai/review-transactions/v2/. Este bloque enumera los linajes
+          de los SLICES, que estan cerrados y completos, justamente para no tener
+          que reescribirlo cada vez que el cierre se revisa a si mismo.
       decision_de_revision_fijada: >
         Revisar el CANDIDATO COMPLETO, no solo el commit mecanico. El orquestador
         habia argumentado dos veces lo contrario y el slice 3d lo refuto: el
@@ -735,15 +771,78 @@ phases:
       lineas mas arriba. Es un archivo .ts, asi que tocarlo dispara revision
       completa con consentimiento; va junto con el renombre de archivos.
   archive:
-    status: pending
-    bloqueado_por: >
-      La tarea 3e.5, que es del instructor y no la puede cerrar ningun agente:
-      pushear main, redeploy manual en Coolify, y habilitar el slug `transforms`
-      por cohorte en /teacher/modulos. En ese orden, que no se puede invertir.
+    status: done
+    date: 2026-08-23
+    desbloqueado: >
+      La tarea 3e.5 quedo cerrada: el instructor confirmo el push, el redeploy en
+      Coolify y la habilitacion del slug `transforms` por cohorte. 42/42 tareas.
+    specs_fusionadas:
+      - openspec/specs/css-track-sections/spec.md   # 6 requisitos
+      - openspec/specs/css-track-content/spec.md    # 8 requisitos
+    delta_markers_resueltos: true
+    deuda_de_indentacion_del_propio_state_yaml: >
+      PREEXISTENTE, no de este cierre, y a proposito no se arregla aca. Las claves
+      `defecto_abierto_del_guard_de_acentuacion` (476) y
+      `defecto_abierto_del_grader_de_selectores` (526) quedaron con indentacion de
+      DOS espacios, o sea hermanas de `apply` en lugar de hijas. Consecuencia: para
+      un parser YAML, `slice_3c`, `slice_3d`, `slice_3e` y
+      `estado_al_cerrar_el_slice_3e` cuelgan de
+      `phases.defecto_abierto_del_grader_de_selectores`, no de `phases.apply`.
+      Verificado con git que ya estaba asi en 65390f9, antes de este chat: lo
+      introdujeron los slices 3b/3c.
+      No rompe nada: el dispatcher nativo lee el archivo, el YAML es valido, y un
+      humano lo lee igual. Arreglarlo es re-indentar unas 300 lineas, y un commit
+      de cierre es el peor lugar para eso. Si alguien escribe un script que navegue
+      este archivo por ruta de claves, ESTA es la trampa que va a encontrar.
+    encabezados_de_delta_tambien_resueltos: >
+      Resolver los marcadores `## ADDED Requirement` NO alcanza. Las dos specs
+      principales quedaron con el encabramiento de DOCUMENTO todavia en modo
+      delta: se titulaban `# Spec Delta:`, declaraban `Phase: spec`, se marcaban
+      `(new)` y se estampaban como pertenecientes al cambio `css-track-expansion`,
+      que a esa altura ya estaba cerrado. Una spec principal que se presenta como
+      delta de un cambio cerrado es el mismo defecto que el Requirement 8 corregido
+      en este cierre: un documento que miente sobre si mismo.
+      Corregido antes de emitir el recibo. Los encabezados ahora dicen `# Spec:`,
+      nombran la capacidad y citan el cambio que la establecio con su fecha de
+      archivo. Los CUERPOS de los requisitos no se reescribieron a proposito: dicen
+      "the five new modules" y eso ahora se lee como historico, pero las
+      restricciones que fijan NO son historicas -- vinculan a todo modulo CSS
+      futuro. En `css-track-content` se agrego una nota de orientacion que dice
+      exactamente eso, en lugar de reescribir seis requisitos y arriesgar cambiarles
+      el sentido.
+      LECCION: al fusionar delta a spec principal, revisar el encabezado del
+      documento y no solo los marcadores de requisito.
+    primer_archive_del_repo: >
+      No existia `openspec/specs/`. Este cierre la crea, asi que establece la
+      convencion de spec principal para el proyecto. Los otros tres cambios de
+      `openspec/changes/` no se tocaron: `automated-gates` sigue esperando su
+      archive desde agosto, y `js-behavior-validator` y `loader-moderno-dojo`
+      siguen en vuelo.
+    por_que_la_carpeta_NO_se_reubico: >
+      DECISION DEL INSTRUCTOR, con motivo tecnico medido. El primer intento movio
+      la carpeta a `openspec/changes/archive/2026-08-23-css-track-expansion/` con
+      `git mv`. Git detecto los renombres (R100/R097/R098), pero el motor de diff
+      de la revision acotada NO aplica deteccion de renombres -- usa pathspecs
+      literales y hunks deterministas -- asi que presento cada archivo movido como
+      borrado mas creado: 14 rutas, 4689 lineas, y un prompt de revisor de 282 KB
+      y 4850 lineas.
+      Para el camino de claude-code la unica entrega posible es `provider_command`,
+      o sea que el orquestador relaya el prompt verbatim; no puede apuntar al
+      revisor a un archivo externo. Transcribir 4850 lineas de diff con fidelidad
+      exacta no es realista, y un prompt corrupto hace que el revisor inspeccione
+      algo que no es el candidato y devuelva limpio sobre evidencia falsa: el modo
+      de falla que el contrato llama irrecuperable.
+      Entonces el cambio queda archivado EN SU LUGAR: `archive.status: done` y las
+      specs principales creadas, sin reubicar la carpeta. El linaje
+      `review-2eb278b949a304d0` quedo abandonado por esto.
+      LECCION PARA EL PROXIMO ARCHIVE: reubicar carpetas grandes y revisar de
+      forma acotada son incompatibles por este camino. O se archiva en el lugar, o
+      la reubicacion se hace en un candidato propio con la revision deshabilitada
+      a conciencia.
 
 engram_summary_observation: 260   # "SDD css-track-expansion: planificacion completa" (decision)
 
-next_recommended: archive   # verify done (PASS WITH WARNINGS); bloqueado por la tarea 3e.5 del instructor
+next_recommended: none   # ciclo cerrado: archive done, specs principales creadas, cambio archivado en su lugar
 
 deferred_work:
   - "Fase 2 — web typography (Google Fonts, @font-face), overflow, inheritance (inherit/initial/unset/revert), images and media (object-fit, clip-path)."

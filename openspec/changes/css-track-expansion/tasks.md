@@ -467,11 +467,10 @@ sass-avanzado 26 -> 27, bootstrap-5 27 -> 28, tailwind-css 28 -> 29 y
 proyecto-cv-css 29 -> 30. El forecast del diseno se escribio contra 25 modulos y
 esa cuenta quedo vieja tras cuatro inserciones.
 
-**Estado del rollout.** El instructor confirmo redeploy y habilitacion por
-cohorte de `math-functions`, `advanced-text`, `attribute-selectors` -- este en
-AMBAS cohortes -- y `lists-and-tables`, y aprobo el contenido de los cuatro.
-Queda pendiente solo el de `transforms`: mergeado a main (cd3db52) y todavia sin
-pushear, sin desplegar y sin habilitar.
+**Estado del rollout: COMPLETO.** El instructor confirmo redeploy y habilitacion
+por cohorte de los CINCO modulos nuevos: `math-functions`, `advanced-text`,
+`attribute-selectors` -- este en AMBAS cohortes --, `lists-and-tables` y
+`transforms`. Aprobo el contenido de los cuatro primeros. Las 42 tareas cerradas.
 
 **Resultado del slice 3e.** Los cinco gates verdes. Ledger 23 -> 23 y sinEscribir
 63 -> 63, los dos techos quietos, con aporte CERO del modulo nuevo. Revision
@@ -496,7 +495,7 @@ linaje aprobado.
       confirm `orden-curriculum-css.test.ts`'s `SECUENCIA` now holds all 30
       slugs and `order` runs 1..30 with no gaps (spec `css-track-sections`
       Req. 4, Scenarios 4.1–4.4).
-- [ ] 3e.5 Rollout: same as 3a.5, slug `transforms`.
+- [x] 3e.5 Rollout: same as 3a.5, slug `transforms`.
 
 ---
 
