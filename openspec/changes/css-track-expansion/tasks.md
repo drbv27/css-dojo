@@ -422,7 +422,7 @@ x15, `*=` x8, `|=` x7, bandera ` i` x3. `sinEscribir` sigue en 63.
       lists-and-tables at `order: 20` (first in `css-visual`).
 - [x] 3d.3 Register in `src/data/modules/index.ts`.
 - [x] 3d.4 Verify: same 6 commands as 3a.4.
-- [ ] 3d.5 Rollout: same as 3a.5, slug `lists-and-tables`.
+- [x] 3d.5 Rollout: same as 3a.5, slug `lists-and-tables`.
 
 **Resultado del slice 3d (medido, no estimado).** Verde en los CINCO gates, 173
 tests. 12 rutas, 531 lineas. Revision acotada aprobada: linaje
@@ -467,22 +467,32 @@ sass-avanzado 26 -> 27, bootstrap-5 27 -> 28, tailwind-css 28 -> 29 y
 proyecto-cv-css 29 -> 30. El forecast del diseno se escribio contra 25 modulos y
 esa cuenta quedo vieja tras cuatro inserciones.
 
-**Estado del rollout al cerrar este chat.** El instructor confirmo redeploy y
-habilitacion por cohorte de `math-functions`, `advanced-text` y
-`attribute-selectors` -- este ultimo en AMBAS cohortes. Queda pendiente el de
-`lists-and-tables`, que esta mergeado y pusheado pero sin desplegar.
+**Estado del rollout.** El instructor confirmo redeploy y habilitacion por
+cohorte de `math-functions`, `advanced-text`, `attribute-selectors` -- este en
+AMBAS cohortes -- y `lists-and-tables`, y aprobo el contenido de los cuatro.
+Queda pendiente solo el de `transforms`: mergeado a main (cd3db52) y todavia sin
+pushear, sin desplegar y sin habilitar.
+
+**Resultado del slice 3e.** Los cinco gates verdes. Ledger 23 -> 23 y sinEscribir
+63 -> 63, los dos techos quietos, con aporte CERO del modulo nuevo. Revision
+acotada review-bd3b06c13ad3ca4e: un WARNING inferencial sobre el orden de
+`transformsModule` dentro del literal de ALL_MODULES, cero blockers, y los tres
+gates de entrega en allow. Ese WARNING queda como deuda aceptada a pedido del
+instructor: no tiene efecto de comportamiento por el `.sort()` final del literal,
+y corregirlo despues del recibo exigia autorizacion de mantenedor para reabrir un
+linaje aprobado.
 
 
-- [ ] 3e.1 Create `src/data/modules/30-transforms.ts` per spec Req. 7 row
+- [x] 3e.1 Create `src/data/modules/30-transforms.ts` per spec Req. 7 row
       "Transforms": `translate`, `rotate`, `scale`, `skew`,
       `transform-origin`, combining transforms, a look at
       `perspective`/`rotateY`, and an explicit statement of why
       transform/opacity are cheap to animate — `transiciones-animaciones`
       builds on this claim. `category: "css-visual"`.
-- [ ] 3e.2 Shift `order:` +1 for the 8 modules at slot ≥22, landing transforms
+- [x] 3e.2 Shift `order:` +1 for the 8 modules at slot ≥22, landing transforms
       at `order: 22` (before `transiciones-animaciones`).
-- [ ] 3e.3 Register in `src/data/modules/index.ts`.
-- [ ] 3e.4 Verify: same 6 commands as 3a.4. This is the final slice — also
+- [x] 3e.3 Register in `src/data/modules/index.ts`.
+- [x] 3e.4 Verify: same 6 commands as 3a.4. This is the final slice — also
       confirm `orden-curriculum-css.test.ts`'s `SECUENCIA` now holds all 30
       slugs and `order` runs 1..30 with no gaps (spec `css-track-sections`
       Req. 4, Scenarios 4.1–4.4).

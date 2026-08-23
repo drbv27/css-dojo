@@ -200,7 +200,7 @@ phases:
       - "Tasks 1.8 + 2.2 — orden-curriculum-css.test.ts: interim name swap, then full rewrite"
 
   apply:
-    status: in_progress
+    status: done
     slice_1_sections:
       status: done
       branch: feat/css-secciones
@@ -585,29 +585,98 @@ phases:
         Desde el slot 20, `display: grid`, `display: flex`, `text-align` y
         `line-height` dejan de ser referencias adelantadas, porque flexbox (17),
         css-grid (18) y tipografias (8) quedan antes. Util para 3e (slot 22).
-    estado_al_cerrar_el_chat_de_apply:
+    slice_3e_transforms:
+      status: done
+      branch: feat/css-transforms
+      merged: true
+      merge_commit: cd3db52
+      gates: "173 tests, tsc, lint 0 errores, build, 5 E2E -- los CINCO verdes"
+      changed_lines: 539
+      changed_paths: 11
+      rollout_pendiente: >
+        AGREGA EL SLUG `transforms`. merge -> redeploy -> habilitar por cohorte.
+      desplazamientos: >
+        OCHO modulos, no nueve. La tarea decia 9 porque el forecast del diseno se
+        escribio contra 25 modulos y quedo viejo tras cuatro inserciones.
+        transiciones-animaciones 22->23, variables-css 23->24, media-queries
+        24->25, sass-fundamentos 25->26, sass-avanzado 26->27, bootstrap-5 27->28,
+        tailwind-css 28->29, proyecto-cv-css 29->30.
+      bounded_review:
+        lineage: review-bd3b06c13ad3ca4e
+        risk: medium
+        lens: review-reliability
+        inspection: "completed, 11 de 11 rutas"
+        findings: "1 WARNING inferencial, cero blockers"
+        gates: "pre-commit allow, pre-pr allow, pre-push allow"
+      ledger_measurements: { before: 23, after: 23, ceiling: 23, aporte_del_modulo_nuevo: 0 }
+      sin_escribir_measurements: { before: 63, after: 63, ceiling: 63 }
+      por_que_el_aporte_tenia_que_ser_cero: >
+        El ledger NO tenia aire. `shadows-gradients-filters` (21) ya gastaba un
+        caso apuntando a `transiciones-animaciones`, y al mover ese destino de 22
+        a 23 el caso SIGUE contando, porque shadows sigue estando antes. O sea que
+        los 23 quedaron intactos por si solos y el modulo nuevo tenia que aportar
+        cero exacto, no "poco".
+      prohibidos_medidos_en_el_slot_22: >
+        Las cuatro que el ledger cobra desde el slot 22 son `transition:`,
+        `@container`, `@supports` y `@media` con width/height/orientation. Las
+        cuatro apuntan a destinos posteriores (transiciones 23, media-queries 25).
+        `var(--` y `@keyframes` NO estan en el ledger: solo aparecen en el guard de
+        ejercicios, que tolera saltos de hasta 3 modulos, asi que a 22 salian
+        gratis. Se evitaron igual, por honestidad pedagogica.
+      el_guard_del_slice_2_tiene_dientes: >
+        Medido, no asumido: quitando a mano la entrada "transforms" del array
+        SECUENCIA fallan las TRES formas a la vez -- secuencia exacta, order igual
+        a indice mas uno, y agrupar por seccion. No solo el largo. La reescritura
+        del slice 2 se cobro su valor justo en el ultimo slice, que es el primero
+        que cierra 1..30.
+      deuda_conocida_y_aceptada: >
+        El WARNING de la revision: en el literal de ALL_MODULES `transformsModule`
+        quedo antes de `shadowsGradientsFiltersModule`, o sea order 22 antes de
+        order 21. Medido: el bloque CSS del literal tenia CERO roturas de
+        monotonia y esta es la unica; js y react estan en 0, html tiene una
+        preexistente. SIN efecto de comportamiento, porque el literal termina en
+        `.sort((a, b) => a.order - b.order)`. Se arreglo, se midio en cero, y se
+        REVIRTIO a pedido del instructor: corregirlo despues del recibo exigia
+        reabrir un linaje aprobado con autorizacion de mantenedor, que es
+        maquinaria desproporcionada para mover un identificador. Va junto con el
+        renombre de archivos, que es la misma clase de desalineacion.
+      leccion_de_proceso: >
+        DOS ERRORES DEL ORQUESTADOR, los dos corregidos antes del recibo.
+        Primero: un `git add -A` metio al commit seis archivos ajenos
+        (.claude/skills/interface-design/, duplicado del .agents/ ya trackeado, y
+        un .gitattributes con `* text=auto eol=lf` que puede renormalizar finales
+        de linea de todo el repo). Se reescribio el commit y el candidato volvio a
+        11 rutas; los dos ajenos quedaron sin trackear, intactos.
+        Segundo: al preguntar si arreglar el WARNING, se cotizo el costo como
+        "otro consentimiento y otra corrida del revisor". Era mas caro: con el
+        recibo ya emitido, cambiar el candidato pide `external.authorize_recovery`
+        con disposicion `scope_changed`, o sea autorizacion de MANTENEDOR. Cotizar
+        de menos un costo antes de una decision es un error propio, no un detalle.
+    estado_al_cerrar_el_slice_3e:
       fecha: 2026-08-23
-      main: 115a333
-      pusheado: true
-      track_css: "29 modulos, 1..29 sin huecos ni duplicados"
-      slices_hechos: [1, 2, "3a", "3b", "3c", "3d"]
-      slices_pendientes: ["3e"]
+      main: cd3db52
+      pusheado: false
+      track_css: "30 modulos, 1..30 sin huecos ni duplicados"
+      slices_hechos: [1, 2, "3a", "3b", "3c", "3d", "3e"]
+      slices_pendientes: []
       rollout_confirmado_por_el_instructor:
         - "math-functions: redeploy + habilitado por cohorte"
         - "advanced-text: redeploy + habilitado por cohorte"
         - "attribute-selectors: redeploy + habilitado en AMBAS cohortes"
+        - "lists-and-tables: redeploy + habilitado por cohorte"
       rollout_pendiente:
-        - "lists-and-tables: mergeado y pusheado, SIN desplegar y SIN habilitar"
+        - "transforms: mergeado a main, SIN pushear, SIN desplegar y SIN habilitar"
       contenido_validado_por_el_instructor:
         - "math-functions: revisado, aprobado ('esta muy bien')"
         - "attribute-selectors: revisado, aprobado"
-        - "advanced-text: NO revisado todavia"
-        - "lists-and-tables: NO revisado todavia"
-      baselines_medidos_que_3e_debe_respetar:
+        - "advanced-text: revisado, aprobado"
+        - "lists-and-tables: revisado, aprobado"
+        - "transforms: NO revisado todavia"
+      baselines_finales:
         ledger: "23, techo 23, CERO margen"
         sin_escribir: "63, techo 63, CERO margen"
       linajes_de_revision:
-        aprobados: 6
+        aprobados: 7
         abandonado: "review-c329f7b19492b56e (el candidato de 33 rutas que excedia el limite de 32 del contexto del revisor; quedo abierto e inservible, no se toco)"
       decision_de_revision_fijada: >
         Revisar el CANDIDATO COMPLETO, no solo el commit mecanico. El orquestador
@@ -622,7 +691,7 @@ phases:
 
 engram_summary_observation: 260   # "SDD css-track-expansion: planificacion completa" (decision)
 
-next_recommended: apply   # slice 1 hecho y sin mergear; sigue el slice 2 (renumeracion + guard rewrite)
+next_recommended: verify   # los 7 slices hechos y mergeados; main cd3db52 sin pushear
 
 deferred_work:
   - "Fase 2 — web typography (Google Fonts, @font-face), overflow, inheritance (inherit/initial/unset/revert), images and media (object-fit, clip-path)."
