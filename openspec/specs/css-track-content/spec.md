@@ -101,6 +101,22 @@ that they work.
 - **Then** it SHOULD still use double quotes for consistency, but a differently
   quoted authored value MUST NOT change how any student answer grades
 
+### Scenario 3.3b — The attribute VALUE is case-sensitive, the name is not
+
+- **Given** a `css-rules` exercise whose `targetCSS` uses an attribute selector
+- **When** a student writes the attribute NAME in a different case
+  (`[HREF^="https"]`), or a tag name, pseudo-class or pseudo-element in a
+  different case
+- **Then** the score MUST be unchanged, because HTML and CSS ignore case there
+- **And** when the student changes the case of the attribute VALUE
+  (`[href^="HTTPS"]`), of a CLASS name (`.Caja`) or of an ID (`#Menu`), the score
+  MUST drop, because those are case-sensitive in HTML and the browser would not
+  match them either
+- **And** this deliberately treats HTML's legacy case-insensitive attributes
+  (`type`, `rel`, `method`, `lang` and others) as case-sensitive: erring toward
+  strict leaves a narrow false negative instead of a false positive that teaches
+  something untrue, and keeping that list by hand is the kind of data that drifts
+
 ### Scenario 3.4 — Syntax recognition may still use quiz/drag-drop
 
 - **Given** an exercise whose PURPOSE is choosing the right operator
