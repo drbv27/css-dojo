@@ -33,7 +33,158 @@ function quitarComentarios(css: string): string {
  * cost of being wrong here is one exercise grading strictly rather than
  * accepting something invalid.
  */
-const IDENTIFICADOR = /^-?[a-z_][a-z0-9_-]*$/;
+const IDENTIFICADOR = /^-?[a-z_][a-z0-9_-]*$/i;
+
+/**
+ * Baja a minusculas SOLO lo que en CSS es case-insensible, y deja intacto lo que
+ * no lo es.
+ *
+ * Antes se bajaba el selector entero con un `.toLowerCase()`, y eso plegaba tres
+ * cosas que en CSS SI distinguen mayusculas. Medido con el grader:
+ *
+ *   `.Caja`          puntuaba 100 contra `.caja`     y no deberia
+ *   `#Menu`          puntuaba 100 contra `#menu`     y no deberia
+ *   `[href^="HTTPS"]` puntuaba 100 contra `"https"`  y no deberia
+ *
+ * En HTML el valor de los atributos `class` e `id` es case-sensible, y el valor
+ * dentro de un selector de atributo tambien lo es salvo que se pida la bandera
+ * `i`. Un alumno que escribia `.Caja` contra un `class="caja"` aprobaba con CSS
+ * que el navegador NO matchea.
+ *
+ * Se sigue bajando, porque ahi CSS/HTML si ignoran la caja: nombres de etiqueta
+ * (`DIV`), pseudo-clases y pseudo-elementos (`:HOVER`, `::BEFORE`) y el NOMBRE
+ * del atributo (`[HREF]`).
+ *
+ * EL PRECIO, dicho de frente: HTML define un puñado de atributos legados cuyo
+ * valor SI se matchea sin distinguir caja (`type`, `rel`, `method`, `lang`,
+ * `target`, `media` y unos cuantos mas). Esta funcion los trata como sensibles,
+ * asi que `[type="TEXT"]` deja de matchear `[type="text"]`. Se acepta a
+ * conciencia: mantener esa lista a mano es exactamente la clase de dato que
+ * deriva, y errar hacia ESTRICTO deja un falso negativo angosto en lugar de un
+ * falso positivo que ensena mal. Medido: cero ejercicios del repo usan una
+ * mayuscula en un valor de atributo, asi que hoy no afecta a ninguno.
+ */
+function normalizarCaja(selector: string): string {
+  let out = "";
+  let i = 0;
+  while (i < selector.length) {
+    const ch = selector[i];
+
+    // El identificador de una clase o de un id conserva su caja.
+    if (ch === "." || ch === "#") {
+      const ident = selector.slice(i + 1).match(/^[-\w]+/);
+      if (ident) {
+        out += ch + ident[0];
+        i += 1 + ident[0].length;
+        continue;
+      }
+    }
+
+    // Dentro de un corchete: el nombre del atributo y la bandera bajan, el valor no.
+    if (ch === "[") {
+      const fin = finDelCorchete(selector, i);
+      if (fin === -1) {
+        // Corchete sin cerrar: entrada malformada. Se deja el resto INTACTO en
+        // lugar de bajarlo, porque plegar lo que no se pudo parsear cambiaba en
+        // silencio la caja de las clases y los ids que venian despues, y eso
+        // contradecia justo la garantia de esta funcion. Medido antes de este
+        // arreglo: `[data-x #Menu` quedaba como `[data-x #menu`.
+        out += selector.slice(i);
+        break;
+      }
+      out += cajaDeAtributo(selector.slice(i, fin + 1));
+      i = fin + 1;
+      continue;
+    }
+
+    out += ch.toLowerCase();
+    i++;
+  }
+  return out;
+}
+
+/**
+ * Indice del `]` que CIERRA el corchete abierto en `desde`, saltando los que
+ * viven dentro de comillas. Devuelve -1 si no hay cierre.
+ *
+ * Un `indexOf("]")` pelado no sirve: `[data-ids="a]b"]` es CSS valido y su primer
+ * `]` esta ADENTRO del string. Cortar ahi partia el bloque al medio y el resto
+ * caia en la rama que baja caracter por caracter, plegando en silencio la caja de
+ * lo que venia despues. Medido antes de este arreglo: `[data-ids="a]B"]` quedaba
+ * como `[data-ids="a]b"]`.
+ *
+ * Y respeta la barra de escape, porque una comilla escapada NO cierra el string.
+ * Sin eso, `[data-x="a\"b"] #Menu` perdia el hilo del escaneo y terminaba
+ * plegando el `#Menu`.
+ */
+function finDelCorchete(selector: string, desde: number): number {
+  let comilla: string | null = null;
+  for (let i = desde + 1; i < selector.length; i++) {
+    const ch = selector[i];
+    // Una barra invertida escapa al caracter siguiente, incluida la comilla que
+    // cerraria el string. `[data-x="a\"b"]` es CSS valido y su comilla del medio
+    // NO cierra nada. Sin esto, el escaneo perdia el hilo y devolvia -1.
+    if (comilla && ch === "\\") {
+      i++;
+      continue;
+    }
+    if (comilla) {
+      if (ch === comilla) comilla = null;
+      continue;
+    }
+    if (ch === '"' || ch === "'") comilla = ch;
+    else if (ch === "]") return i;
+  }
+  return -1;
+}
+
+/**
+ * `[HREF^="HTTPS" I]` -> `[href^="HTTPS" i]`: baja el nombre del atributo y la
+ * bandera, y no toca el valor.
+ *
+ * Se hace por ESTRUCTURA y no con una sola regex que modele el corchete entero, y
+ * esa decision salio de la revision. La version anterior era todo-o-nada: si el
+ * patron no matcheaba el bloque completo, `replace` devolvia el texto intacto y el
+ * NOMBRE del atributo se escapaba del plegado en silencio. Medido, dos formas que
+ * caian en ese agujero:
+ *
+ *   `[DATA-X="a\"b"]`  la comilla escapada rompia la alternativa "[^"]*",
+ *                      asi que el nombre quedaba en MAYUSCULA y puntuaba 0
+ *                      contra `[data-x="a\"b"]`, cuando el nombre NO distingue caja
+ *   `[XML|Lang]`       el `|` de namespace no entra en `[\w-]+`, mismo agujero
+ *
+ * Perseguir esas formas de una en una era la respuesta equivocada: el problema no
+ * era el patron, era que un patron que no matchea NO PLIEGA NADA. Ahora el nombre
+ * se ubica como "todo lo que hay antes del primer `=`, menos el operador", sin
+ * intentar entender el valor. Cualquier forma que no se modele sigue plegando el
+ * nombre, que es la parte que siempre es case-insensible en HTML.
+ */
+function cajaDeAtributo(bloque: string): string {
+  const interior = bloque.slice(1, -1);
+
+  // El primer `=` marca el operador. Antes de el va el nombre, con el prefijo de
+  // namespace incluido si lo hay: en `[xml|lang]` el `|` es parte del nombre, y en
+  // `[a|=b]` es parte del operador. Los distingue estar pegado al `=`.
+  const igual = interior.indexOf("=");
+  if (igual === -1) {
+    // Sin operador: todo el interior es el nombre. `[required]`, `[xml|lang]`.
+    return `[${interior.toLowerCase()}]`;
+  }
+
+  const previo = interior[igual - 1] ?? "";
+  const corte = "~|^$*".includes(previo) ? igual - 1 : igual;
+  const nombre = interior.slice(0, corte);
+  const resto = interior.slice(corte); // operador + valor + posible bandera
+
+  // La bandera va SEPARADA por espacio. Exigirlo es lo que evita comerse la ultima
+  // letra de un valor sin comillas terminado en i/s.
+  const conBandera = resto.match(/^([\s\S]*?)(\s+[isIS])(\s*)$/);
+  if (conBandera) {
+    const [, cuerpo, bandera, cola] = conBandera;
+    return `[${nombre.toLowerCase()}${cuerpo}${bandera.toLowerCase()}${cola}]`;
+  }
+  return `[${nombre.toLowerCase()}${resto}]`;
+}
 
 /**
  * `[ href ^= 'https' ]` -> `[href^="https"]`.
@@ -54,7 +205,30 @@ const IDENTIFICADOR = /^-?[a-z_][a-z0-9_-]*$/;
  * are different selectors.
  */
 function normalizarAtributos(selector: string): string {
-  return selector.replace(/\[([^\]]*)\]/g, (bloque, interior: string) => {
+  // Se recorre a mano en lugar de con un `replace(/\[([^\]]*)\]/g)` porque ese
+  // patron tambien cortaba en el primer `]`, aunque estuviera entre comillas.
+  let out = "";
+  let i = 0;
+  while (i < selector.length) {
+    if (selector[i] !== "[") {
+      out += selector[i];
+      i++;
+      continue;
+    }
+    const fin = finDelCorchete(selector, i);
+    if (fin === -1) {
+      out += selector.slice(i);
+      break;
+    }
+    out += unCorchete(selector.slice(i, fin + 1));
+    i = fin + 1;
+  }
+  return out;
+}
+
+/** Canonicaliza UN solo `[...]`. Ver `normalizarAtributos`. */
+function unCorchete(bloque: string): string {
+  return bloque.replace(/^\[([\s\S]*)\]$/, (_b, interior: string) => {
     const solo = interior.trim();
     const m = solo.match(
       /^([\w-]+)\s*([~|^$*]?=)\s*(?:"([^"]*)"|'([^']*)'|([^\s"']+))\s*([is])?$/
@@ -74,14 +248,15 @@ function normalizarAtributos(selector: string): string {
 }
 
 /**
- * `H1 , .Caja` -> ["h1", ".caja"]. Whitespace inside a compound selector is
- * collapsed to one space so `.a   >   .b` and `.a > .b` are the same key, and
- * attribute selectors are canonicalized so equivalent quoting is one key.
+ * `H1 , .Caja` -> ["h1", ".Caja"]. Whitespace inside a compound selector is
+ * collapsed to one space so `.a   >   .b` and `.a > .b` are the same key, the
+ * case is folded only where CSS folds it (ver `normalizarCaja`), y los selectores
+ * de atributo se canonicalizan para que las comillas equivalentes sean una clave.
  */
 function normalizarSelectores(prelude: string): string[] {
   return prelude
     .split(",")
-    .map((s) => normalizarAtributos(s.trim().toLowerCase().replace(/\s+/g, " ")))
+    .map((s) => normalizarAtributos(normalizarCaja(s.trim().replace(/\s+/g, " "))))
     .filter(Boolean);
 }
 
