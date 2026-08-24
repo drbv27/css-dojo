@@ -37,12 +37,15 @@ promoted was re-measured against the repository rather than carried over.
 
 2. **`Requirement: Removal of Dead Loading State`.** Its scenario read "WHEN
    searching `src/` for `loaded` or `setLoaded`, THEN zero declarations and zero
-   call sites MUST remain". A text search over `src/` returns 9 hits across 7
-   files (re-measured 2026-08-24) — comment prose, drei's own `loaded` store
-   field in a test fixture, an unrelated prop, and the test asserting this very
-   requirement. The requirement is true; the scenario as phrased invites a
-   falsification that does not apply. Restated against the store's properties,
-   with the measured count in `History:`.
+   call sites MUST remain". A text search over `src/` returns 12 hits
+   across 7 files for `\b(loaded|setLoaded)\b`, or 9 for `loaded` alone, or 7
+   if you count files instead of occurrences (all re-measured 2026-08-24) —
+   comment prose, drei's own `loaded` store field in a test fixture, an
+   unrelated prop, and the test asserting this very requirement. The requirement
+   is true; the scenario as phrased invited a falsification that does not apply.
+   Restated against the store's properties, and the `History:` note now carries
+   the exact command beside the number — three different right answers to
+   three different questions is precisely how a cited count goes wrong.
 
 3. **The `~9 .glb files` count and the "if available" hedge.** Re-measured:
    `/models/ninja/` holds exactly 9 `.glb` files, but only `ninja.glb` is
@@ -111,9 +114,21 @@ Added at archive:
 
 ## Not done here
 
-**Not pushed.** The branch exists locally at `2e002ce` plus the archive commit.
-Pushing is the user's call and was raised with them; a peer session's
-recommendation does not substitute for that.
+**Pushed as a branch, not merged.** `fix/loader-espera-carga-real` is on
+`origin` at `77253a3`. No pull request is open and nothing has been pushed to
+`main`.
+
+`.github/workflows/ci.yml` triggers on `push` to `main` and on `pull_request`
+only, so this branch push ran no CI. Every gate reported in `verify-report.md`
+was run locally. Remote validation happens when a PR is opened.
+
+`origin/main` moved to `3f33a34` while this change was in progress (a one-file
+edit to `openspec/changes/css-track-expansion/state.yaml` from a parallel
+session). That commit is not an ancestor of this branch, so a direct push to
+`main` would be non-fast-forward. There is no content conflict: the two commits
+share zero files. Bringing `main` in is a one-command merge, deliberately left
+for whoever opens the PR, and the gates must be re-run afterwards — green gates
+on a tree you are not shipping prove nothing.
 
 Two adjacent items were also left alone on purpose: `.claude/` and
 `.gitattributes` remain untracked (the `.gitattributes` is measured inert — it

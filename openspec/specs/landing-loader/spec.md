@@ -230,11 +230,20 @@ and nothing MUST call either. The loader's lifecycle MUST be driven solely by
 - THEN it MUST have neither a `loaded` property nor a `setLoaded` property
 
 History: `useLanding.ts` itself contains zero occurrences of the identifier.
-Re-measured 2026-08-24, `src/` contains 9 textual occurrences of `loaded` across
-7 files -- prose in comments, drei's own `loaded` store field in a test fixture,
-an unrelated prop, and the test that asserts this requirement. This scenario is
-therefore stated against the store's properties, not against a text search,
-because a text search does not falsify it.
+A text search over `src/` does return hits, and the number depends entirely on
+what you ask for -- which is why the command is written next to the count.
+Re-measured 2026-08-24:
+
+    rg -o -N '\b(loaded|setLoaded)\b' src/ --glob '*.ts' --glob '*.tsx' | wc -l
+    -> 12   (9 x `loaded`, 3 x `setLoaded`, across 7 files)
+
+All 12 are comment prose, drei's own `loaded` store field in a test fixture, an
+unrelated prop, and the three references inside the test that asserts this very
+requirement. Narrowing the pattern to `loaded` alone returns 9; counting files
+instead of occurrences returns 7. None of the three numbers is wrong, and none of
+them is the requirement -- which is exactly why this scenario is stated against
+the store's properties rather than against a text search. A search cannot
+falsify it.
 
 ### Requirement: Landing Loader Is the Landing's Only Loading Overlay
 
