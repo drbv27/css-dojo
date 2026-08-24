@@ -126,17 +126,23 @@ export const ALL_MODULES: ModuleData[] = [
   htmlImagenesModule, htmlListasModule, htmlTablasModule, htmlFormulariosModule,
   htmlFormulariosAvanzadosModule, htmlSemanticaModule, htmlAtributosModule,
   htmlAccesibilidadModule, htmlMetaSeoModule, htmlMediaAvanzadoModule, htmlBuenasPracticasModule,
-  htmlProyectoCVModule, htmlInteractivosModule,
-  // CSS  (el orden del track lo fija el campo `order`: este array se ordena por el
-  //       al final del archivo. El orden de abajo es documental, y tiene que
-  //       coincidir -- `orden-curriculum-css.test.ts` falla si se desincronizan.)
+  htmlInteractivosModule, htmlProyectoCVModule,
+  // CSS. El orden real del track lo fija el campo `order` de cada modulo: el
+  // `.sort((a, b) => a.order - b.order)` del final de este archivo reordena todo,
+  // asi que el orden en que se listan aca abajo NO tiene ningun efecto.
+  //
+  // Es documental, para el que lee. Y ojo con lo que decia este comentario antes:
+  // afirmaba que `orden-curriculum-css.test.ts` falla si el orden de declaracion
+  // se desincroniza del campo `order`. NO falla. Ese guard compara la secuencia
+  // del array YA ORDENADO, no este literal. Mantenelo en orden por prolijidad,
+  // sabiendo que nada te avisa si se te va.
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
   unidadesCSSModule, dimensionesModule, mathFunctionsModule, tipografiasModule,
   advancedTextModule, selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, attributeSelectorsModule, especificidadModule,
   floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
-  listsAndTablesModule, transformsModule, shadowsGradientsFiltersModule, transicionesAnimacionesModule, variablesCSSModule,
+  listsAndTablesModule, shadowsGradientsFiltersModule, transformsModule, transicionesAnimacionesModule, variablesCSSModule,
   mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
   tailwindModule, proyectoCvCssModule,
   // JS
