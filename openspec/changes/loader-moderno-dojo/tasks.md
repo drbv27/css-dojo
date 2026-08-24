@@ -102,7 +102,7 @@ positive control caught it and the assertion was tightened.
 - [x] 5.2 Determinate tracking — automated. Mesh and clips staggered so `progress` climbs in real steps; the arc's `stroke-dashoffset` is asserted against the caption's own percentage, monotonicity across samples, and no stall hint while advancing.
 - [x] 5.3 8s hint — automated. Hint absent at 7 s, present at 9.5 s with the matching live-region text, no error yet; releasing the held request retracts the hint on the next advance.
 - [x] 5.4 20s escape — automated. Error state absent at 19 s, present at 22 s with `neon-red` stroke, hint withdrawn, caption hidden, escape button focused; clicking it renders `LandingEstatica` with no canvas.
-- [x] 5.5 404 asset — automated for both an immediate and a 3.5 s-late 404, served via `page.route` so no tracked file is renamed. Asserts the loader's error state, the escape action, that the canvas unmounts, and that Next's runtime-error screen never takes over. **Still manual:** the `npm run build && npm start` re-run design.md asks for. Absence of a `pageerror` is deliberately not asserted — measured in dev, React surfaces the caught error to `window` even though the boundary handled it, so its absence says nothing about the boundary.
+- [x] 5.5 404 asset — automated for both an immediate and a 3.5 s-late 404, served via `page.route` so no tracked file is renamed. Asserts the loader's error state, the escape action, that the canvas unmounts, and that Next's runtime-error screen never takes over. The `npm run build && npm start` re-run design.md asks for is DONE, not manual: the whole suite was run a second time with `CI=1`, which switches `playwright.config.ts` to `npm start`, and all 16 specs passed against the production build. Absence of a `pageerror` is deliberately not asserted — measured in dev, React surfaces the caught error to `window` even though the boundary handled it, so its absence says nothing about the boundary.
 - [x] 5.6 Reduced motion mid-load — automated via `emulateMedia`. Pulse present while motion is allowed, gone after the flip, overlay and arc still tracking. Plus 5.6b: reduced motion at mount lands on `LandingEstatica` with no loader. **This closes the reduced-motion gap `automated-gates` recorded as open against `Manual Behavior Preservation for Hooks Refactors`, whose toolset could not emulate the preference.**
 - [x] 5.7 Screen reader — automated (DOM half). A `MutationObserver` records every distinct live-region value; asserts it starts at `Preparando el dojo…`, ends at `Dojo listo.`, never exceeds the six possible milestone strings, and that the `<svg>` carries `aria-hidden`. Actual Orca/NVDA speech stays manual.
 - [x] 5.8 Keyboard — automated. Focus is blurred first so `Tab` has to reach the escape button on its own, then `Enter` activates it and the static landing renders.
@@ -116,10 +116,7 @@ positive control caught it and the assertion was tightened.
   one, and this environment rasterises through SwiftShader, so a screenshot
   baseline would encode software-renderer output rather than what a visitor
   sees.
-- **5.5, production re-run** — design.md asks for this step under
-  `npm run build && npm start` because the dev overlay changes boundary
-  reporting. CI already runs `npm start`, so the spec exercises production mode
-  there; a local dev run does not.
+  (5.5's production re-run is NOT in this list: it was performed. See 5.5 above.)
 - **5.7, screen-reader half** — that Orca or NVDA actually speak these strings.
   The specs prove the text, the roles and the milestone cadence, not the speech.
 

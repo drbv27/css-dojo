@@ -100,7 +100,23 @@ phases:
         `sr-only` used by task 3.9 is a Tailwind v4 built-in utility, not a
         project token — correctly not declared in globals.css.
   apply:
-    status: ready
+    status: done
+    branch: fix/loader-espera-carga-real
+    branched_from: main@5ea1891
+    commits:
+      - sha: 5a829c8
+        subject: "feat(landing): redesign Loader as an accessible enso gate state machine"
+      - sha: 58fa841
+        subject: "refactor(landing): read reduced-motion via useSyncExternalStore"
+      - sha: 6ea56c7
+        subject: "fix(landing): hide the progress caption in the loader error state"
+      - sha: 2e002ce
+        subject: "fix(landing): el loader espera la carga real, no un timer de 2.5s"
+        note: >
+          Phase 5 plus two production defects found while measuring it. See
+          verify-report.md. Phases 1-4 had already landed on main in the three
+          commits above; this block said `ready` while that code was live, which
+          is the stale record the handoff prompt warned about.
     forward_to_apply:
       delivery_strategy: ask-on-risk
       chain_strategy: not-needed
@@ -118,11 +134,78 @@ phases:
         additionally be re-run under `npm run build && npm start` — the dev-mode
         error overlay masks error-boundary behavior.
   verify:
-    status: pending
+    status: done
+    date: 2026-08-24
+    artifact: openspec/changes/loader-moderno-dojo/verify-report.md
+    verdict: pass
+    gates:
+      typecheck: pass
+      lint: pass                # `eslint .`, 0 errors / 49 warnings, none in this change
+      test_run: pass            # 203 tests, 18 files
+      build: pass
+      e2e_dev: pass             # 16 specs
+      e2e_production: pass      # 16 specs under `npm start` (CI=1)
+    note: >
+      The `forward_to_apply.note` above is OBSOLETE and was left in place rather
+      than rewritten, because it records what was believed at plan time. It
+      claims no test suite exists and that `npm run lint` is broken since it
+      runs `next lint`. Both were true before `automated-gates` shipped and are
+      false now: `lint` is `eslint .` and exits 0, and the unit suite runs 203
+      tests. Its last sentence -- that task 5.5 must be re-run under
+      `npm run build && npm start` -- was honoured by execution, not carried
+      forward as manual residue.
+    defects_found_here:
+      - >
+        Overlay dismissed on the 2500 ms ARRANQUE_MS cold-start guard instead of
+        on the load, because a module-scope useGLTF.preload fired itemStart
+        before drei's useProgress store installed onStart. Made tasks 5.3 and
+        5.4 unreachable, not merely untested. Fixed in Personaje.tsx.
+      - >
+        A load error arriving after the manager's queue drained was swallowed:
+        the completion effect raced the error gate and latched `terminado`.
+        Measured -- a 404 at 3500 ms left the visitor on a bare nav. Fixed in
+        Loader.tsx.
+    positive_control: >
+      Each fix reverted individually and the suite re-run. Without the
+      Personaje.tsx fix, specs 5.1/5.3/5.4/5.5-late fail; without the Loader.tsx
+      guard, 5.5-late fails while 5.5-immediate still passes. The control caught
+      a weak assertion in this change's own 5.1, which the broken build also
+      satisfied; it was tightened and now fails red.
   archive:
-    status: pending
+    status: done
+    date: 2026-08-24
+    artifact: openspec/changes/loader-moderno-dojo/archive-report.md
+    promoted_specs:
+      - openspec/specs/landing-loader/spec.md
+    folder_relocated: false
+    promotion_note: >
+      Three requirements were split rather than copied. `Scope Boundary` became
+      `Landing Loader Is the Landing's Only Loading Overlay`: its one-time file
+      list, read as a standing invariant, would have FORBIDDEN the Personaje.tsx
+      fix that makes this capability work. The dead-field scenario was restated
+      against the store's properties, because a text search over `src/` returns
+      9 hits (re-measured) and would falsify a true requirement. The `~9 .glb`
+      count and the "if drei's error signal is available" hedge were re-measured
+      and resolved. One requirement was ADDED at promotion -- `Dismissal Gated
+      on Real Load Completion` -- because the delta had no way to describe a
+      defect its own QA phase had not yet found.
+    neighbouring_gaps:
+      closed:
+        - >
+          reduced-motion branch of the landing render-mode scenario, open since
+          automated-gates' archive. openspec/specs/automated-verification-gates
+          updated: four open follow-ups became three, named individually.
+      left_open:
+        - >
+          GameEngine script, five unevidenced steps including the ~1.8s success
+          overlay. Same pattern, different component; folding it in would widen
+          scope without a measurement to justify it.
+    not_done:
+      - >
+        NOT PUSHED. The branch is local. Raised with the user; a peer session's
+        recommendation does not substitute for their decision.
 
-next_recommended: apply
+next_recommended: none   # ciclo cerrado 2026-08-24; falta solo el push, que es del usuario
 
 notes:
   - No test suite exists in this project; strict_tdd is false. Verification for
