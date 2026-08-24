@@ -1,5 +1,29 @@
 import type { ModuleData } from "@/types";
 
+// Los archivos del track CSS llevan el numero de su campo `order`, y esa
+// alineacion se hizo el 2026-08-24 renombrando 27 de los 30 archivos. El orden
+// real lo sigue fijando `order` mas el `.sort()` del final de este archivo: el
+// nombre del archivo no tiene efecto en runtime, solo orienta a quien abre la
+// carpeta.
+//
+// Los ids de leccion y ejercicio NO se renumeraron, a proposito. Llevan el
+// prefijo que tenia el archivo ANTES del renombre, asi que `22-transforms.ts`
+// contiene ids `30-leccion-01`. Parece un olvido y no lo es:
+//
+//   `exerciseId` es clave de persistencia. `src/lib/models/Progress.ts` lo
+//   guarda como String y lo indexa junto a userId y moduleId
+//   (`{ userId: 1, moduleId: 1, exerciseId: 1 }`). Renumerar los ids
+//   huerfanaria el progreso ya guardado de cada alumno en los 27 modulos
+//   renombrados: sus ejercicios completados dejarian de matchear y volverian a
+//   aparecer sin hacer. Son 381 ids con prefijo numerico.
+//
+//   Ademas hay tests que los referencian por string literal, por ejemplo
+//   `validacion-curriculum.test.ts` con "23-ej-05".
+//
+// Un id es una identidad, no una posicion. Si algun dia hay que renumerarlos,
+// necesita una migracion de la coleccion Progress en el mismo movimiento, no un
+// renombre.
+
 // HTML modules
 import { htmlQueEsModule } from "./html-01-que-es-html";
 import { htmlEstructuraModule } from "./html-02-estructura-basica";
@@ -23,33 +47,33 @@ import { htmlInteractivosModule } from "./html-17-elementos-interactivos";
 import { queEsCSSModule } from "./01-que-es-css";
 import { selectoresModule } from "./02-selectores";
 import { propiedadesBasicasModule } from "./03-propiedades-basicas";
-import { tipografiasModule } from "./04-tipografias";
-import { dimensionesModule } from "./05-dimensiones";
-import { mathFunctionsModule } from "./26-math-functions";
-import { advancedTextModule } from "./27-advanced-text";
-import { attributeSelectorsModule } from "./28-attribute-selectors";
-import { listsAndTablesModule } from "./29-lists-and-tables";
-import { transformsModule } from "./30-transforms";
-import { selectoresDescendientesModule } from "./06-selectores-descendientes";
-import { pseudoClasesModule } from "./07-pseudo-clases";
-import { pseudoElementosModule } from "./08-pseudo-elementos";
-import { especificidadModule } from "./09-especificidad";
-import { unidadesCSSModule } from "./10-unidades-css";
-import { boxModelModule } from "./11-box-model";
-import { posicionamientoModule } from "./12-posicionamiento";
-import { floatDisplayModule } from "./13-float-display";
-import { propiedadesLogicasModule } from "./14-propiedades-logicas";
-import { flexboxModule } from "./15-flexbox";
-import { cssGridModule } from "./16-css-grid";
-import { mediaQueriesModule } from "./17-media-queries";
-import { transicionesAnimacionesModule } from "./18-transiciones-animaciones";
-import { variablesCSSModule } from "./19-variables-css";
-import { shadowsGradientsFiltersModule } from "./20-shadows-gradients-filters";
-import { sassFundamentosModule } from "./21-sass-fundamentos";
-import { sassAvanzadoModule } from "./22-sass-avanzado";
-import { bootstrapModule } from "./23-bootstrap";
-import { tailwindModule } from "./24-tailwind";
-import { proyectoCvCssModule } from "./25-proyecto-cv-css";
+import { tipografiasModule } from "./08-tipografias";
+import { dimensionesModule } from "./06-dimensiones";
+import { mathFunctionsModule } from "./07-math-functions";
+import { advancedTextModule } from "./09-advanced-text";
+import { attributeSelectorsModule } from "./13-attribute-selectors";
+import { listsAndTablesModule } from "./20-lists-and-tables";
+import { transformsModule } from "./22-transforms";
+import { selectoresDescendientesModule } from "./10-selectores-descendientes";
+import { pseudoClasesModule } from "./11-pseudo-clases";
+import { pseudoElementosModule } from "./12-pseudo-elementos";
+import { especificidadModule } from "./14-especificidad";
+import { unidadesCSSModule } from "./05-unidades-css";
+import { boxModelModule } from "./04-box-model";
+import { posicionamientoModule } from "./16-posicionamiento";
+import { floatDisplayModule } from "./15-float-display";
+import { propiedadesLogicasModule } from "./19-propiedades-logicas";
+import { flexboxModule } from "./17-flexbox";
+import { cssGridModule } from "./18-css-grid";
+import { mediaQueriesModule } from "./25-media-queries";
+import { transicionesAnimacionesModule } from "./23-transiciones-animaciones";
+import { variablesCSSModule } from "./24-variables-css";
+import { shadowsGradientsFiltersModule } from "./21-shadows-gradients-filters";
+import { sassFundamentosModule } from "./26-sass-fundamentos";
+import { sassAvanzadoModule } from "./27-sass-avanzado";
+import { bootstrapModule } from "./28-bootstrap";
+import { tailwindModule } from "./29-tailwind";
+import { proyectoCvCssModule } from "./30-proyecto-cv-css";
 
 // JS modules
 import { jsQueEsModule } from "./js-01-que-es-javascript";
