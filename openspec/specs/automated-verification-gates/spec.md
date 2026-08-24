@@ -170,8 +170,16 @@ idempotent re-entry, correct behavior on a level with non-empty `initialCSS`),
 the landing render-mode scenario (3D canvas rendered, zero hydration-mismatch
 warnings), and rank display driven by `getRank`. Not exercised: the leaderboard
 filter and its offline empty state, the mobile drawer close-on-navigation paths,
-exercise-page completion, and the reduced-motion branch of the landing scenario.
-Those four remain open follow-ups against this requirement.
+and exercise-page completion. Those three remain open follow-ups against this
+requirement.
+
+The fourth follow-up recorded at that archive -- the reduced-motion branch of the
+landing scenario, which `automated-gates`' tool set could not emulate -- is now
+CLOSED. `loader-moderno-dojo` Phase 5 covers it in `e2e/landing-loader.spec.ts`
+via Playwright's `emulateMedia({ reducedMotion: "reduce" })`, in both directions:
+the preference set before mount lands on `LandingEstatica` with no loader at all,
+and flipped mid-load it removes the pulse while the overlay and its arc keep
+tracking progress. Both run in CI.
 
 The CSS game scenario is confirmed on its progress-and-XP half only, and the
 distinction matters because the same refactor touched both. The success overlay's

@@ -59,19 +59,78 @@ Must land before/alongside Phase 3's error-state work — the error path is unve
 - [x] 4.3 **NEW — a unit test tier now exists.** Run `npm run test:run`; the existing 18 tests MUST still pass, plus the loader's own tests written RED-first (see 4.4). Run `npm run test:e2e`; the landing smoke test MUST still pass. — Verified: `npm run test:run` → 35/35 passing (18 pre-existing `xp.test.ts` + 17 new). `npm run test:e2e` → 1/1 passing.
 - [x] 4.4 **RED-first tests for this change.** Per the settled decision, the jsdom-testable `landing-loader` scenarios are written test-first HERE, not in `automated-gates`. Vitest + jsdom + `@testing-library/react` are installed and configured (`vitest.config.mts`). Drive the loader through drei's `useProgress` zustand store with `useProgress.setState({ ... })` — no WebGL needed, and `errors` lives in the same store so the error state is reachable too. Of the 15 spec scenarios: 13 are jsdom-testable (10 plain, 2 needing a `HTMLCanvasElement.prototype.getContext` stub plus an `./Escena` module mock, 1 with a framer-motion timing caveat), 1 is E2E-only (a real `.glb` 404 through a real `Canvas`), and 1 is a `git diff` check rather than a runtime test. — Done: `src/components/landing/Loader.test.tsx` (13 tests, confirmed RED against the pre-change 21-line `Loader.tsx`, now GREEN), `src/components/landing/Landing3D.test.tsx` (2 tests covering the canvas-stub+`./Escena`-mock scenarios: "`/landing-preview` inherits automatically" and "Escape reaches the static landing"), `src/components/landing/useLanding.test.ts` (2 tests for the dead-field removal). The "404 through a real `Canvas`" scenario stays E2E-only (not added here — see Deviations/Risks); the "Out-of-scope files untouched" scenario was verified via `git diff --stat` against `LoadingSpinner.tsx`/`ApprovalGate.tsx` (zero changes), not a runtime test, per its own classification.
 
-## Phase 5: Manual QA Procedure (design.md §Manual QA, run at `/landing-preview`, ≥768px viewport, WebGL browser)
+## Phase 5: QA (design.md §Manual QA, at `/landing-preview`, ≥768px viewport, WebGL browser)
 
-**NOT performed by this apply — no browser available in this environment.** Handoff to a human or a browser-automation pass. Step 5.5 specifically MUST be re-run under `npm run build && npm start` (not `npm run dev`), because the dev-mode error overlay masks error-boundary behavior.
+**Automated as `e2e/landing-loader.spec.ts` (11 specs, all green).** These were
+written as a manual procedure because the planning session had no browser. This
+environment has Playwright 1.62.1 with a Chromium that exposes WebGL2 through
+SwiftShader, so `debeUsar3D()` returns true and the `Loader` does mount — the
+premise behind "manual only" no longer holds. Two slices stay genuinely manual
+and are listed at the end.
 
-- [ ] 5.1 Happy path: `npm run dev`, load page — overlay on `bg-editor-bg`, clockwise arc, caption `Preparando el dojo… N %`, ring closes, ~600ms hold, fade, canvas visible with no blank frame.
-- [ ] 5.2 Determinate tracking: Network throttle 400 kb/s — arc matches caption monotonically; no stall hint while advancing.
-- [ ] 5.3 8s hint: throttle 20 kb/s — hint appears ~8s after freeze, no button; restore throttling — hint clears on next advance.
-- [ ] 5.4 20s escape (stall, no error): throttle 1 kb/s, wait ~20s — ring turns `neon-red`, escape button focused; click it — `LandingEstatica` renders, overlay gone, console clean.
-- [ ] 5.5 404 asset: rename `public/models/ninja/ninja.glb`, hard-reload — boundary catches the throw, `neon-red` error state with escape action, not Next's error page, not an eternal overlay. **Re-run this exact step under `npm run build && npm start`** — the dev-mode error overlay masks boundary behavior. Restore the file after.
-- [ ] 5.6 Reduced motion mid-load: toggle DevTools emulate `prefers-reduced-motion: reduce` while overlay is on screen — pulse stops, arc still tracks, exit fade collapses. Separately confirm reduced-motion-at-mount lands directly on `LandingEstatica` with no loader.
-- [ ] 5.7 Screen reader (Orca/NVDA): announcements at start, ~25/50/75/100, completion, failure — never every percent; `<svg>` not announced.
-- [ ] 5.8 Keyboard: in the error state, Tab reaches the escape button with a visible focus ring; Enter activates it.
-- [ ] 5.9 Dismissal latch: after a successful load, scroll the whole landing — overlay never reappears.
+**Two production defects were found while measuring these scenarios, and fixed
+before the specs were written** — otherwise the specs would have encoded the
+broken behaviour as coverage:
+
+1. `src/components/landing/Personaje.tsx` — `useGLTF.preload(MESH_URL)` runs at
+   module scope, and `Landing3D` imports `./Escena` (line 4) before `./Loader`
+   (line 9). The preload therefore fired `DefaultLoadingManager.itemStart`
+   before `Loader`'s import of `useProgress` created drei's zustand store, which
+   is what installs `onStart`. With the mesh as the only top-level item, three
+   never re-emits that `onStart` while it is pending, so `useProgress().active`
+   stayed false for the whole load and the overlay always dismissed on the
+   2.5 s `ARRANQUE_MS` cold-start timer instead of on the load. Measured: an
+   asset that never arrived still dismissed the overlay at 4156 ms. Fix: touch
+   `useProgress.getState()` before the preload. The preload is kept — measured
+   `active: true` at 315 ms, earlier than with the preload removed (415 ms).
+2. `src/components/landing/Loader.tsx` — a failed item ends the manager's queue
+   just like a successful one, so `onLoad` clears `active` on error too. The
+   completion effect raced the error gate, and winning latched `terminado`,
+   which then suppressed the error UI permanently. Measured: a 404 landing
+   3.5 s into the load left the visitor on a bare nav — no scene, no message,
+   no escape action. Fix: `if (escenaFallo || errors.length > 0) return;` before
+   the completion branch.
+
+Every timing spec asserts both sides of its threshold (absent before, present
+after), and each fix was reverted individually to confirm the specs go red:
+without fix 1, specs 5.1 / 5.3 / 5.4 / 5.5-late fail; without fix 2, 5.5-late
+fails while 5.5-immediate still passes. An earlier 5.1 asserted only
+"dismissed later than 1500 ms", which the broken build satisfied too — the
+positive control caught it and the assertion was tightened.
+
+- [x] 5.1 Happy path — automated (behavioural half). Overlay on the live region, caption `Preparando el dojo… N %`, ring open at full circumference, mesh held past `ARRANQUE_MS`, overlay still present at 4.2 s, dismissal after the asset arrives, canvas visible. Visual half stays manual (see below).
+- [x] 5.2 Determinate tracking — automated. Mesh and clips staggered so `progress` climbs in real steps; the arc's `stroke-dashoffset` is asserted against the caption's own percentage, monotonicity across samples, and no stall hint while advancing.
+- [x] 5.3 8s hint — automated. Hint absent at 7 s, present at 9.5 s with the matching live-region text, no error yet; releasing the held request retracts the hint on the next advance.
+- [x] 5.4 20s escape — automated. Error state absent at 19 s, present at 22 s with `neon-red` stroke, hint withdrawn, caption hidden, escape button focused; clicking it renders `LandingEstatica` with no canvas.
+- [x] 5.5 404 asset — automated for both an immediate and a 3.5 s-late 404, served via `page.route` so no tracked file is renamed. Asserts the loader's error state, the escape action, that the canvas unmounts, and that Next's runtime-error screen never takes over. **Still manual:** the `npm run build && npm start` re-run design.md asks for. Absence of a `pageerror` is deliberately not asserted — measured in dev, React surfaces the caught error to `window` even though the boundary handled it, so its absence says nothing about the boundary.
+- [x] 5.6 Reduced motion mid-load — automated via `emulateMedia`. Pulse present while motion is allowed, gone after the flip, overlay and arc still tracking. Plus 5.6b: reduced motion at mount lands on `LandingEstatica` with no loader. **This closes the reduced-motion gap `automated-gates` recorded as open against `Manual Behavior Preservation for Hooks Refactors`, whose toolset could not emulate the preference.**
+- [x] 5.7 Screen reader — automated (DOM half). A `MutationObserver` records every distinct live-region value; asserts it starts at `Preparando el dojo…`, ends at `Dojo listo.`, never exceeds the six possible milestone strings, and that the `<svg>` carries `aria-hidden`. Actual Orca/NVDA speech stays manual.
+- [x] 5.8 Keyboard — automated. Focus is blurred first so `Tab` has to reach the escape button on its own, then `Enter` activates it and the static landing renders.
+- [x] 5.9 Dismissal latch — automated. After a clean load the live region is gone, and it stays gone across five scroll positions.
+
+### Deliberately not automated
+
+- **5.1, visual half** — arc drawn clockwise from 12 o'clock, the blue→purple
+  gradient, and "no blank frame between fade-out and first canvas paint". These
+  are pixels. A DOM assertion cannot tell a correct gradient from an inverted
+  one, and this environment rasterises through SwiftShader, so a screenshot
+  baseline would encode software-renderer output rather than what a visitor
+  sees.
+- **5.5, production re-run** — design.md asks for this step under
+  `npm run build && npm start` because the dev overlay changes boundary
+  reporting. CI already runs `npm start`, so the spec exercises production mode
+  there; a local dev run does not.
+- **5.7, screen-reader half** — that Orca or NVDA actually speak these strings.
+  The specs prove the text, the roles and the milestone cadence, not the speech.
+
+### Not closed here
+
+The other `automated-gates` QA gap — five of nine steps of the GameEngine script
+without evidence, including the ~1.8 s success overlay — is left as recorded.
+It is the same "rewritten timer nobody measured" pattern this phase just found
+in the loader, so it is worth its own pass, but it is a different component and
+folding it in here would widen this change's scope without a measurement to
+justify it.
 
 ## Out of Scope (do not touch)
 
