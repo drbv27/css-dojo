@@ -38,9 +38,20 @@ use existing design tokens only.
 
 #### Scenario: Ring and caption render from the same value
 
-- GIVEN the overlay is visible mid-load
-- WHEN the caption prints a percentage
+- GIVEN the overlay is visible mid-load at a percentage that is neither 0 nor 100
+- WHEN the caption prints that percentage
 - THEN the ring's `stroke-dashoffset` MUST equal `circumference × (1 − pct/100)` for that same percentage, so the two can never disagree
+
+The percentage bound is load-bearing, not decoration: at 0 every plausible offset
+formula agrees, so a check that only ever observes 0 cannot fail and proves
+nothing.
+
+Note: `progress` is NOT globally monotonic and MUST NOT be required to be. drei
+derives it from the last completed batch — `saveLastTotalLoaded` is assigned
+inside `onProgress` when `loaded === total` — so each new batch restarts the
+percentage at 0. In this scene the mesh completes at 100 and the 8 animation
+clips then begin from 0, because `PersonajeReal` suspends on the mesh before
+requesting them.
 
 #### Scenario: No new tokens introduced
 
