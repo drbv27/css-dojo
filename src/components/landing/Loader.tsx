@@ -94,11 +94,19 @@ export default function Loader({ escenaFallo = false, onOmitirEscena }: LoaderPr
   useEffect(() => {
     if (fase !== "cargando") return;
     if (active) huboActividad.current = true;
+    // A failed item ends the manager's queue exactly like a successful one, so
+    // `active` drops to false on error too. Without this guard the completion
+    // timer races the error gate below, and when it wins it latches
+    // `terminado`, which then suppresses the error UI for good. Measured: a 404
+    // arriving 3.5 s into the load left the visitor on a bare nav — no scene,
+    // no message, no escape action. `errors` is written by drei's `onError`
+    // before `onLoad` clears `active`, so it is already populated here.
+    if (escenaFallo || errors.length > 0) return;
     if (!active && huboActividad.current) {
       const t = setTimeout(() => setFase("completo"), 0);
       return () => clearTimeout(t);
     }
-  }, [active, fase]);
+  }, [active, fase, escenaFallo, errors]);
 
   // Stall / escape timers, anchored to the LAST genuine advance — both are
   // re-armed by the `progress` dependency, so a slow-but-advancing load

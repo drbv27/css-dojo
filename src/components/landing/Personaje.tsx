@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, useProgress } from "@react-three/drei";
 import * as THREE from "three";
 import { SECCIONES } from "./useLanding";
 
@@ -161,6 +161,15 @@ export default function Personaje({ activeSection }: { activeSection: number }) 
   if (MESH_DISPONIBLE) return <PersonajeReal activeSection={activeSection} />;
   return <PersonajePlaceholder color={color} />;
 }
+
+// Touch drei's progress store BEFORE preloading. Creating that store is what
+// installs `DefaultLoadingManager.onStart`, and `Landing3D` imports `./Escena`
+// (which reaches this module) before `./Loader` (the only other importer of
+// `useProgress`). Without this line the preload below fires `itemStart` into a
+// manager nobody is listening to yet, and because the mesh is the only
+// top-level item, three never re-emits that `onStart` while it is pending —
+// `useProgress().active` then stays false for the entire load.
+useProgress.getState();
 
 // Precargar el mesh real solo cuando exista.
 if (MESH_DISPONIBLE) useGLTF.preload(MESH_URL);
