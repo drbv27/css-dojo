@@ -300,5 +300,31 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       hint: "push/pop trabajan al final, shift/unshift al inicio.",
       explanation: "push() y pop() operan al final del array. shift() y unshift() operan al inicio.",
     },
+    {
+      id: "js08-ej-07",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 25,
+      order: 7,
+      prompt:
+        "Escribí `ultimo(lista)` que devuelva el último elemento de un array, o `undefined` si está vacío.\n\n  ultimo([1, 2, 3])   → 3\n  ultimo([\"a\"])       → \"a\"\n  ultimo([])          → undefined",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function ultimo(lista) {\n  // tu código\n}",
+        cssSuffix: "",
+      },
+      referenceSolution: "function ultimo(lista) { return lista[lista.length - 1]; }",
+      validation: {
+        type: "js-behavior",
+        cases: [
+          { call: "ultimo([1, 2, 3])", expect: 3, label: "el último de [1, 2, 3]" },
+          { call: 'ultimo(["a"])', expect: "a", label: "con un solo elemento" },
+          { call: "ultimo([])", expect: undefined, label: "el array vacío da undefined" },
+        ],
+      },
+      hint: "El último índice es length - 1. Y fijate qué pasa con eso cuando length es 0.",
+      explanation:
+        "Con el array vacío, `lista[-1]` da undefined y eso es justo lo que se espera: no hay que agregar un if. Lo que sí rompe es `lista[lista.length]`, que se pasa por uno — el error más viejo de trabajar con índices.",
+    },
   ],
 };

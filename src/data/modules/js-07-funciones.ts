@@ -1567,5 +1567,59 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       explanation:
         "Las arrow functions heredan 'this' del contexto exterior, por lo que dentro de un método arrow, 'this' NO apunta al objeto. Por eso se usan funciones tradicionales o sintaxis corta ES6 para métodos.",
     },
+    {
+      id: "js07-ej-17",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 25,
+      order: 17,
+      prompt:
+        "Escribí una función `sumar` que reciba dos números y devuelva su suma.\n\nSe corre de verdad contra estos casos:\n  sumar(2, 3)   → 5\n  sumar(-1, 1)  → 0\n  sumar(0, 0)   → 0",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function sumar(a, b) {\n  // tu código\n}",
+        cssSuffix: "",
+      },
+      referenceSolution: "function sumar(a, b) { return a + b; }",
+      validation: {
+        type: "js-behavior",
+        cases: [
+          { call: "sumar(2, 3)", expect: 5, label: "sumar(2, 3) devuelve 5" },
+          { call: "sumar(-1, 1)", expect: 0, label: "sumar(-1, 1) devuelve 0" },
+          { call: "sumar(0, 0)", expect: 0, label: "sumar(0, 0) devuelve 0" },
+        ],
+      },
+      hint: "Te falta el return. Una función sin return devuelve undefined, aunque adentro hayas hecho la cuenta.",
+      explanation:
+        "Este ejercicio no mira cómo escribiste la función: la ejecuta. Da lo mismo `function`, arrow o expresión — lo que se evalúa es lo que devuelve. Y el caso con el cero no está de adorno: es el que atrapa a quien escribe `if (a + b) return a + b;`, porque 0 es falsy y ese if no entra.",
+    },
+    {
+      id: "js07-ej-18",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 30,
+      order: 18,
+      prompt:
+        "Escribí `contarVocales(texto)` que devuelva cuántas vocales tiene el texto, sin distinguir mayúsculas.\n\n  contarVocales(\"hola\")       → 2\n  contarVocales(\"AEIOU\")      → 5\n  contarVocales(\"\")           → 0\n  contarVocales(\"xyz\")        → 0",
+      codeTemplate: {
+        html: "",
+        cssPrefix: "function contarVocales(texto) {\n  // tu código\n}",
+        cssSuffix: "",
+      },
+      referenceSolution:
+        "function contarVocales(texto) {\n  let n = 0;\n  for (const c of texto.toLowerCase()) {\n    if ('aeiou'.includes(c)) n++;\n  }\n  return n;\n}",
+      validation: {
+        type: "js-behavior",
+        cases: [
+          { call: 'contarVocales("hola")', expect: 2, label: '"hola" tiene 2' },
+          { call: 'contarVocales("AEIOU")', expect: 5, label: '"AEIOU" tiene 5, en mayúscula' },
+          { call: 'contarVocales("")', expect: 0, label: 'el texto vacío tiene 0' },
+          { call: 'contarVocales("xyz")', expect: 0, label: 'sin vocales, 0' },
+        ],
+      },
+      hint: "Pasá el texto a minúsculas una sola vez antes de recorrerlo, y así no tenés que preguntar por diez letras distintas.",
+      explanation:
+        "Los cuatro casos cubren cosas distintas a propósito: el normal, las mayúsculas, el texto vacío y el que no tiene ninguna. Los últimos dos son los que suelen romperse — un contador que arranca en 1, o un `for` que asume que siempre hay al menos un caracter.",
+    },
   ],
 };
