@@ -473,7 +473,7 @@ phases:
         del manifiesto, no quedaran con un `order` en colision; y un escaneo del
         archivo por backticks sin escapar e interpolaciones accidentales.
 
-  defecto_abierto_del_guard_de_acentuacion:
+  defecto_CERRADO_del_guard_de_acentuacion:
     archivo: src/data/modules/acentuacion.test.ts
     hallado_en: "slice 3b, escribiendo 27-advanced-text.ts"
     problema: >
@@ -488,10 +488,26 @@ phases:
       subjuntivo homografo. `habilite` importa en particular: aparece seguido al
       hablar de habilitar modulos por cohorte.
     estado: >
-      NO se toco. La frase de 3b se reformulo para no ampliar el alcance del slice.
-      Reportado al instructor, pendiente de su decision. Opciones: sacar la palabra
-      de la lista, o exigir la tilde solo cuando viene precedida de articulo
-      (`el limite`, `un limite`, `su limite`).
+      CERRADO. Arreglado en el commit `30215c2` "fix(tests): el guard de acentuacion
+      deja de rechazar formas verbales validas". Este bloque decia "NO se toco,
+      pendiente de decision del instructor" y quedo escrito asi despues de que el
+      arreglo entrara: registro obsoleto, no trabajo pendiente.
+    como_se_resolvio: >
+      No se saco la palabra de la lista ni se exigio articulo. Se agrego el conjunto
+      `AMBIGUAS_CON_VERBO` con las palabras que ADEMAS son forma verbal sin tilde,
+      mas una lista corta de palabras precedentes que las vuelven verbo ("que
+      limite", "que no limite", "yo titulo"). El guard sigue exigiendo la tilde en
+      todos los demas contextos.
+    correccion_al_alcance_que_este_bloque_afirmaba: >
+      El campo `alcance` de arriba nombra `habilite`, `deposite` y `milite` como
+      afectadas. MEDIDO, es falso en las dos direcciones: de esas tres, NINGUNA
+      puede disparar el guard porque no contienen la subcadena, y el bloque no
+      nombraba las cuatro que si pueden. El conjunto real es
+      ["limite", "titulo", "numero", "especifico", "pagina"], y esta escrito con su
+      medicion en el docstring de `acentuacion.test.ts`.
+    verificado_el: >
+      2026-08-24. `AMBIGUAS_CON_VERBO` presente en el archivo con las cinco
+      palabras. Los 203 tests del repo pasan.
     slice_3c_attribute_selectors:
       status: done
       branch: feat/css-attribute-selectors
@@ -523,7 +539,7 @@ phases:
         que esconderlo iria contra el proposito del requisito. Cada linea lleva
         comentario inline. Todos los targetCSS usan comilla doble sin excepcion.
 
-  defecto_abierto_del_grader_de_selectores:
+  defecto_CERRADO_del_grader_de_selectores:
     archivo: src/lib/cssRules.ts
     funcion: normalizarSelectores
     hallado_en: "slice 3c, midiendo con el grader antes de escribir el modulo"
@@ -550,7 +566,29 @@ phases:
       mas un test que pine las tres formas como equivalentes. Cuando eso entre, el
       requisito 3 de la spec (fijar comilla doble) queda innecesario hacia adelante,
       aunque se mantiene como spec congelada de este cambio.
-    estado: "pendiente, despues de archivar css-track-expansion"
+    estado: >
+      CERRADO. Arreglado en el commit `e21a7cd` "fix(css): normalizar el estilo de
+      comilla en selectores de atributo", y ajustado despues en `31a6d7c` "fix(css):
+      la caja se pliega solo donde CSS la ignora". `normalizarSelectores` ahora
+      llama a `normalizarAtributos`, que no existia cuando se escribio este bloque.
+    medicion_de_cierre: >
+      2026-08-24, contra el mismo target `[href^="https"] { color: red; }`:
+      comilla doble 100, comilla simple 100, sin comillas 100. Los tres estilos
+      puntuan igual. La medicion original de este bloque -- doble 100, simple 0,
+      sin comillas 0 -- ya no reproduce.
+    lo_que_se_hizo_como_este_bloque_proponia: >
+      El `arreglo_propuesto` de arriba pedia normalizar el estilo de comilla Y la
+      forma sin comillas, mas un test que pine las tres formas como equivalentes.
+      Se hizo exactamente eso; los tests viven en `src/lib/cssRules.test.ts`.
+    deuda_que_SI_sigue_abierta_y_es_deliberada: >
+      Dos cosas quedaron sin arreglar a proposito y estan clavadas en tests, con su
+      razonamiento medido. NO las "arregles" sin volver a medir la exposicion sobre
+      los 77 ejercicios css-rules: (1) el VALOR de una declaracion se pliega entero,
+      asi que `animation-name: Girar` puntua igual que `girar` aunque `@keyframes`
+      SI distingue caja -- ponerlo estricto cambia UN falso positivo real por VARIOS
+      falsos negativos en nombres de funcion CSS; (2) con namespace la comilla no se
+      canonicaliza, `[xml|lang='es']` no matchea `[xml|lang="es"]`, y un selector
+      asi necesita una declaracion `@namespace` que no aparece en ningun ejercicio.
     slice_3d_lists_and_tables:
       status: done
       branch: feat/css-lists-and-tables
@@ -791,12 +829,12 @@ phases:
       un workaround para pasar a ser una convencion.
     deuda_de_indentacion_del_propio_state_yaml: >
       PREEXISTENTE, no de este cierre, y a proposito no se arregla aca. Las claves
-      `defecto_abierto_del_guard_de_acentuacion` (476) y
-      `defecto_abierto_del_grader_de_selectores` (526) quedaron con indentacion de
+      `defecto_CERRADO_del_guard_de_acentuacion` y
+      `defecto_CERRADO_del_grader_de_selectores` quedaron con indentacion de
       DOS espacios, o sea hermanas de `apply` en lugar de hijas. Consecuencia: para
       un parser YAML, `slice_3c`, `slice_3d`, `slice_3e` y
       `estado_al_cerrar_el_slice_3e` cuelgan de
-      `phases.defecto_abierto_del_grader_de_selectores`, no de `phases.apply`.
+      `phases.defecto_CERRADO_del_grader_de_selectores`, no de `phases.apply`.
       Verificado con git que ya estaba asi en 65390f9, antes de este chat: lo
       introdujeron los slices 3b/3c.
       No rompe nada: el dispatcher nativo lee el archivo, el YAML es valido, y un
