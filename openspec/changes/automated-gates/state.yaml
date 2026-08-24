@@ -248,35 +248,6 @@ phases:
       it into that derivation. Line citations also shifted. That change's apply
       MUST rebase on merged slice 1 and re-read the file.
 
-followup_decisions:
-  orphan_memoization_errors: fix
-  orphan_memoization_detail: >
-    User chose to FIX both react-hooks/preserve-manual-memoization errors
-    (~10 lines) rather than downgrade them, so `npm run lint` reaches 0 errors
-    and the gate actually blocks. Locations:
-    src/app/(app)/modulos/[slug]/ejercicio/[exerciseId]/page.tsx:49 and
-    src/components/landing/Personaje.tsx:49. The latter is in the landing
-    directory, consistent with this change already owning Landing3D.tsx:32.
-    Net effect: all 46 errors resolved — 35 downgraded to warn, 11 fixed
-    (8 set-state-in-effect + 1 prefer-const + 2 preserve-manual-memoization).
-  enforcement: github-actions-in-slice-2
-  enforcement_detail: >
-    User chose a minimal GitHub Actions workflow in slice 2 running typecheck,
-    lint, build, and test on push and PR (~30 lines of YAML). Remote confirmed
-    as GitHub (git@github.com-personal:drbv27/css-dojo.git). Rejected: a
-    pre-commit hook (skippable with --no-verify, adds a dependency, does not
-    protect other people's PRs) and doing both.
-  slice_size_note: >
-    GitHub Actions pushes slice 2 to roughly 200-270 lines. Aggregate across
-    both slices is now roughly 300-415, which is exactly why the two-slice split
-    is correct — each slice stays comfortably inside the 400-line budget on its
-    own.
-  security_flag: >
-    One of the 8 set-state-in-effect fixes is at
-    src/app/(auth)/nueva-contrasena/page.tsx:29 — the password-reset page. It is
-    presentation state, not credential handling, but it sits on a
-    security-relevant flow with no test coverage. The reset flow MUST be
-    exercised end to end manually before slice 1 merges.
   tasks:
     status: done
     artifact: openspec/changes/automated-gates/tasks.md
@@ -494,7 +465,8 @@ followup_decisions:
         - Reduced-motion path (prefers-reduced-motion emulation not available in this tool set).
         - Visual fidelity of the ring/board rendering — automation confirms DOM and network, not pixels.
         - Exercise pages, playground, teacher panel, CodeBlock highlighting, leaderboard offline empty-state.
-    not_done:
+    not_done_superseded_by: archive_corrections
+    not_done_as_of_apply:
       - No push, no PR opened (deliberately out of scope).
       - PR body must restate the nueva-contrasena retry-loop behaviour change.
       - >
@@ -505,13 +477,65 @@ followup_decisions:
         and is NEVER automatic, so the orchestrator did not run it. Slice 2 does
         not start through the native flow until the user decides.
   verify:
-    status: pending
+    status: done
+    artifact: openspec/changes/automated-gates/verify-report.md
+    engram_topic_key: sdd/automated-gates/verify-report
+    detail_key: verify_detail
+    note: >
+      This block said `pending` until 2026-08-24 while the top-level `verify:`
+      block said `done`. The two contradicted each other because a YAML
+      indentation defect had detached `tasks`, `apply`, `verify` and `archive`
+      from `phases` -- `followup_decisions:` at column 0 closed the `phases`
+      mapping, so any tool reading `phases.verify` saw nothing at all. The
+      block order was corrected and the real state recorded here.
   archive:
-    status: pending
+    status: done
+    date: 2026-08-24
+    artifact: openspec/changes/automated-gates/archive-report.md
+    engram_topic_key: sdd/automated-gates/archive
+    promoted_specs:
+      - openspec/specs/automated-verification-gates/spec.md
+      - openspec/specs/xp-progression/spec.md
+    folder_relocated: false
+    folder_relocated_why: >
+      Kept in place, same convention as the css-track-expansion closure. The
+      bounded-review diff engine does not detect renames, so relocating the
+      folder turns a small docs candidate into a huge one -- 6 moved files
+      produced 4689 lines and a 282 KB reviewer prompt last time.
 
-next_recommended: archive
+followup_decisions:
+  orphan_memoization_errors: fix
+  orphan_memoization_detail: >
+    User chose to FIX both react-hooks/preserve-manual-memoization errors
+    (~10 lines) rather than downgrade them, so `npm run lint` reaches 0 errors
+    and the gate actually blocks. Locations:
+    src/app/(app)/modulos/[slug]/ejercicio/[exerciseId]/page.tsx:49 and
+    src/components/landing/Personaje.tsx:49. The latter is in the landing
+    directory, consistent with this change already owning Landing3D.tsx:32.
+    Net effect: all 46 errors resolved — 35 downgraded to warn, 11 fixed
+    (8 set-state-in-effect + 1 prefer-const + 2 preserve-manual-memoization).
+  enforcement: github-actions-in-slice-2
+  enforcement_detail: >
+    User chose a minimal GitHub Actions workflow in slice 2 running typecheck,
+    lint, build, and test on push and PR (~30 lines of YAML). Remote confirmed
+    as GitHub (git@github.com-personal:drbv27/css-dojo.git). Rejected: a
+    pre-commit hook (skippable with --no-verify, adds a dependency, does not
+    protect other people's PRs) and doing both.
+  slice_size_note: >
+    GitHub Actions pushes slice 2 to roughly 200-270 lines. Aggregate across
+    both slices is now roughly 300-415, which is exactly why the two-slice split
+    is correct — each slice stays comfortably inside the 400-line budget on its
+    own.
+  security_flag: >
+    One of the 8 set-state-in-effect fixes is at
+    src/app/(auth)/nueva-contrasena/page.tsx:29 — the password-reset page. It is
+    presentation state, not credential handling, but it sits on a
+    security-relevant flow with no test coverage. The reset flow MUST be
+    exercised end to end manually before slice 1 merges.
 
-verify:
+next_recommended: none -- archived 2026-08-24
+
+verify_detail:
   status: done
   artifact: openspec/changes/automated-gates/verify-report.md
   engram_topic_key: sdd/automated-gates/verify-report
@@ -681,12 +705,105 @@ apply_slice_2:
       and the test passed, rendering real "3d" mode. CI uses ubuntu-latest with
       root so --with-deps is expected to work there, but that is UNVERIFIED
       against the real runner.
-  not_done:
+  not_done_superseded_by: archive_corrections
+  not_done_as_of_apply:
     - No push, no PR opened (deliberately out of scope).
     - >
       Task 2.7.5 — open a PR and observe the Actions run end to end. The CI
       workflow has NEVER actually executed. All gates pass locally.
     - PR body must restate the nueva-contrasena retry-loop behaviour change (slice 1).
+
+archive_corrections:
+  measured_on: 2026-08-24
+  why: >
+    Three `not_done` claims written on 2026-08-04 were still presented as current
+    state three weeks later. All three were re-measured at archive time and all
+    three are FALSE. They are preserved above as `not_done_as_of_apply` because
+    they were true when written; this block is what is true now.
+  push_and_pr:
+    claim_was: "No push, no PR opened (deliberately out of scope)."
+    measured: >
+      Both slices shipped. PR #1 `chore(lint): repair the ESLint gate and fix 11
+      blocking errors` from `feat/automated-gates-slice-1`, merged
+      2026-08-04T14:54:50Z. PR #2 `test(ci): add Vitest and Playwright tiers plus
+      GitHub Actions enforcement` from `feat/automated-gates-slice-2`, merged
+      2026-08-04T14:55:21Z.
+    note: >
+      Only 1 of the 7 recorded commit SHAs (862ae42) is reachable from
+      origin/main. The other 6 were rewritten -- verify_detail.history_rewritten
+      documents the 3bd4cec -> f78633b rewrite. The CONTENT landed; the SHAs in
+      this file are stale. Verified by presence in origin/main: eslint.config.mjs,
+      .github/workflows/ci.yml, src/lib/xp.test.ts, playwright.config.ts,
+      vitest.config.mts, and zero occurrences of calculateXP in src/.
+  task_2_7_5_ci_never_ran:
+    claim_was: "Task 2.7.5 -- the CI workflow has NEVER actually executed."
+    measured: >
+      FALSE. 72 recorded runs of ci.yml. The oldest is run 30919993306, a
+      `pull_request` run on branch feat/automated-gates-slice-2 at
+      2026-08-04T14:38:26Z, followed by run 30921450451 on the merge of PR #2 --
+      both `success`. That is precisely what task 2.7.5 asked for. The most
+      recent run at archive time, 32678862160, executed npm ci, typecheck, lint,
+      test:run, test:e2e and build, all green.
+    task_marked: done
+  task_1_3_10_pr_body:
+    claim_was: "PR body must restate the nueva-contrasena retry-loop behaviour change."
+    measured: >
+      Satisfied in PR #1's body (6814 bytes), which mentions `nueva-contrasena`,
+      the retry behaviour, the unbounded loop, and the digit-edit retry.
+    task_marked: done
+  runtime_ledger:
+    claim_was: "RUNTIME LEDGER STILL BLOCKED ... Slice 2 does not start."
+    measured: >
+      Resolved on 2026-08-04. apply_slice_2.ledger records that the user
+      explicitly authorized the reset after slice 1 QA passed, a new attempt
+      acquired with state `proceed`, and slice 2 completed. Attempt 1's
+      `interrupted` record stays in ledger history as the audit trail.
+  gates_re_measured:
+    typecheck: "exit 0"
+    lint: "exit 0 -- 49 problems, 0 errors, 49 warnings (35 no-explicit-any, 9 no-unused-vars, 4 no-img-element, 1 exhaustive-deps)"
+    lint_note: "apply recorded 50 problems; 49 today. The 0-error baseline holds."
+    test_run: "exit 0 -- 203 passed in 18 files; src/lib/xp.test.ts 18/18"
+    landing3d_lint: "0 errors -- the loader-moderno-dojo handoff still holds"
+  still_open:
+    kind: follow-up, not a blocker
+    items:
+      - >
+        Manual QA never performed on four surfaces, listed in
+        phases.apply.qa.not_covered: CodeBlock syntax highlighting (task 1.2.3),
+        mobile drawer close-on-navigation (1.3.6), leaderboard offline empty
+        state (1.3.8), and exercise-page completion plus the reduced-motion
+        landing branch (1.3.9). Recorded against the promoted spec's `Manual
+        Behavior Preservation` requirement, not silently dropped.
+      - >
+        The save-and-log-in-again tail of the password-reset flow (1.3.7) was not
+        exercised. The retry-loop defect that motivated the fix WAS verified with
+        a positive control -- see verify_detail and the promoted spec.
+      - >
+        Task 1.4.5, the GameEngine nine-step script, is PARTIAL. Its recorded
+        reason for being undone -- "apply had no browser" -- is false: apply had
+        one and phases.apply.qa.gameengine holds real evidence. But that evidence
+        covers four of the nine steps -- step 3 in full, and steps 1, 7 and 8 in
+        part -- and leaves five with none. Step 1 counts because the run started
+        on a fresh isolated profile and single_post records the bar moving TO 4%
+        with user xp 0 -> 10, so level 1 and 0% progress are established; its
+        "empty editor" clause is not. The grid level 11 non-empty initialCSS case
+        is extra evidence the script never asked for and is NOT counted toward
+        the nine. The five with no evidence are: step 2 (the ~1.8s success overlay, which is exactly the
+        1800ms timer task 1.4.2 rewrote), step 4 (progress bar and stepper
+        updating before the POST resolves), step 5 ("Ver solucion"), step 6
+        ("Siguiente nivel"), and step 9 (the final-level bonus POST with
+        exerciseId <slug>-bonus). A false reason does not make a task done, so
+        1.4.5 stays open.
+      - >
+        CI action versions are two majors behind (checkout@v5, setup-node@v5) and
+        the workflow pins node-version 22 while local development runs v24.
+        Both were flagged by apply_slice_2.orchestrator_findings and neither was
+        fixed. Not a blocker: 72 green runs.
+    why_not_blocking: >
+      The four unexercised surfaces are UI regressions of lint-driven refactors
+      that have been in production since 2026-08-04, with 72 green CI runs and
+      203 passing tests over them. Holding the archive open for QA nobody is
+      going to run buys nothing; naming the gap in the promoted spec does.
 
 notes:
   - >

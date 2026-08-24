@@ -37,6 +37,7 @@ Est. authored lines: **175-197** (design `D7`, supersedes proposal's 95-145 esti
 - [x] **1.2.1** `src/components/editor/CodeBlock.tsx:100` — delete the dead `let result = escapeHtml(code);` line (Group G). Do not convert to `const`. — *Traces: R3, D "Group G"*
 - [x] **1.2.2** `src/lib/db.ts` and `src/lib/mongodb-client.ts` — remove the unused `eslint-disable` comment in each (comment-only, zero runtime effect).
 - [ ] **1.2.3** Manual QA — Group G: open any module lesson under `/modulos` rendering CSS/HTML/JS code blocks; confirm syntax highlighting (selectors, properties, values, numbers-with-units, comments, tags/attributes) is unchanged. **NOT PERFORMED** — apply had no browser. See handoff in apply-progress / final report.
+      - **At archive (2026-08-24): still open, carried as a follow-up.** Listed in `state.yaml` `phases.apply.qa.not_covered`. CodeBlock highlighting was never exercised.
 
 ### 1.3 Commit 2 — `fix(hooks)`: 5 low-risk components + 2 memoization fixes (independent files — safe to parallelize across sub-tasks 1.3.1-1.3.5)
 
@@ -49,10 +50,14 @@ Est. authored lines: **175-197** (design `D7`, supersedes proposal's 95-145 esti
   - `src/components/landing/Personaje.tsx:49`: seed `emissive` from a module constant `COLOR_INICIAL = SECCIONES[0]?.color ?? "#94E2D5"` instead of closing over reactive `color`; keep `[]` deps genuinely correct.
   - *Traces: R3 (0-errors baseline), D "Group F"*
 - [ ] **1.3.6** Manual QA — Group A: on a ≤1024px viewport, verify drawer closes on nav-item tap, browser back/forward, and backdrop tap for both `MobileMenu` and `MobileNav`; confirm `document.body.style.overflow` clears; confirm the "Profesor" section still lists all three teacher links (teacher role). **NOT PERFORMED** — apply had no browser. See handoff.
+      - **At archive (2026-08-24): still open, carried as a follow-up.** The mobile drawer close-on-navigation paths were never exercised.
 - [ ] **1.3.7** Manual QA — Group D: **full password-reset flow end to end** (mandatory before slice 1 merges) — `/recuperar` → OTP page renders with box 1 focused → wrong code shows inline error and clears input → **Offline**: type 6 digits → exactly one failed request, "Error de conexion", watch 10s for **no request storm** → back online, edit a digit → one new request → correct code → new-password form → mismatched/short passwords rejected without a request → valid save → redirect to `/login` → log in with new password (succeeds) and old password (rejected). *(Requires `MONGODB_URI` + either `RESEND_API_KEY` or a temporary `console.log(otp)` after `forgot-password/route.ts:24`, reverted via `git checkout` before commit — never commit OTP logging.)* — *Traces: R7* **NOT PERFORMED — HARD GATE, blocking merge.** See handoff.
+      - **At archive (2026-08-24): PARTIAL, carried as a follow-up.** The defect this task existed to catch WAS verified, with a positive control: `window.fetch` stubbed to reject `/api/auth/verify-otp`, six digits typed as real keystrokes gave exactly 1 request in 10 seconds and editing one digit gave exactly 1 more. Restoring `main`'s version and repeating the IDENTICAL procedure WEDGED the page — the unbounded loop observed live. NOT exercised: the save-and-log-in-again tail (valid save, redirect to `/login`, new password accepted and old rejected).
 - [ ] **1.3.8** Manual QA — Group E: `/leaderboard` — skeleton on initial load and every filter switch, correct rows per filter, ranks modal shows all ten belts, **Offline** switch → empty state (no stale rows, no infinite skeleton), rapid successive filter clicks → rows settle on the **last** clicked filter. **NOT PERFORMED** — apply had no browser. See handoff.
+      - **At archive (2026-08-24): still open, carried as a follow-up.** The leaderboard offline empty state is named explicitly in `not_covered`.
 - [ ] **1.3.9** Manual QA — Group F: landing `/` on desktop WebGL — ninja renders with the same teal emissive glow, re-tints per section while scrolling, idle/per-section animation clips still play. Exercise page — complete one exercise (XP toast, sidebar XP updates, achievement toast if unlocked), then "Siguiente ejercicio" and complete a second exercise **without reloading** — confirm the POST body reflects the new exercise's `type`/`difficulty` (Network tab). **NOT PERFORMED** — apply had no browser. See handoff.
-- [ ] **1.3.10** **PR body task**: document the `nueva-contrasena` retry-loop behavior change explicitly in the PR description (not only the diff) — state the old unbounded-retry defect, the new one-attempt-per-user-action behavior, and that the user must edit a digit to retry. — *Traces: R7, state.yaml `nueva_contrasena_behaviour_change: accepted`* **Deferred — no PR opened in this apply** (instructions explicitly said do not open a PR). The behaviour change IS documented in commit 2's message body (`fix(hooks)`), satisfying the "not only the diff" requirement for now; restate it in the PR description when one is opened.
+      - **At archive (2026-08-24): PARTIAL, carried as a follow-up.** The landing render-mode half PASSED — `/landing-preview` rendered the 3D canvas at 1225x1260 with zero hydration-mismatch warnings and zero React errors. NOT exercised: the exercise-page half (two exercises completed in one session without reloading, POST body reflecting the second exercise's type/difficulty) and the reduced-motion branch, which the tool set could not emulate.
+- [x] **1.3.10** **PR body task**: document the `nueva-contrasena` retry-loop behavior change explicitly in the PR description. — *Traces: R7* **DONE.** PR #1 (`chore(lint): repair the ESLint gate and fix 11 blocking errors`, merged 2026-08-04T14:54:50Z) carries it in a 6814-byte body covering the unbounded loop, the one-attempt-per-user-action behaviour, and the digit-edit retry. Verified 2026-08-24 with `gh pr view 1`.
 
 ### 1.4 Commit 3 — `refactor(games)`: `GameEngine.tsx` alone, isolated and separately revertable (highest risk — sequential, do not parallelize with 1.3)
 
@@ -61,6 +66,11 @@ Est. authored lines: **175-197** (design `D7`, supersedes proposal's 95-145 esti
 - [x] **1.4.3** Group C (`:107`) — replace the inline `onChange` + persistence effect with a `manejarCss(texto)` handler: calls `setCss(texto)`, and when `!solved && validateCSS(texto, level)` calls one `registrarNivelCompletado(level)` that writes `completedLevels`, `localStorage`, and both `/api/progress` POSTs; delete effect 3 and `successSavedRef`; single-fire is guaranteed by the event path plus a `completedLevels.has(level.id)` guard. **Note**: implemented as a plain closure-scoped helper (reading `completedLevels` from the render closure), not a functional `setCompletedLevels` updater — a functional updater would run its fetch/localStorage side effects inside React's update pass, which Strict Mode intentionally double-invokes.
 - [x] **1.4.4** **Confirmation task (documentation only — do NOT re-investigate)**: record in the commit message or PR body that the pre-solved-on-mount risk (a level whose `initialCSS` already satisfies its `validateFn`) was checked across all 50 levels in `flexbox-levels.ts`/`grid-levels.ts` and none starts pre-solved — using a whitespace-normalized substring-containment check, not a replication of `GameEngine`'s real validator (strong evidence, not formal proof). — *Traces: state.yaml `orchestrator_verified` — residual risk closed*. **Recorded in commit 3's message** (`refactor(games)`).
 - [ ] **1.4.5** **Manual QA — GameEngine, the 9-step script (mandatory, both `/juegos/flexbox` and `/juegos/grid`)**: **NOT PERFORMED** — apply had no browser. Hard gate before merge; see handoff.
+      - **At archive (2026-08-24): PARTIAL, carried as a follow-up.** The record's stated reason was wrong — apply DID have a browser, and browser-automated QA ran in an isolated environment (throwaway `mongo:7` on port 27019, `MONGODB_URI` process-env override verified to win, everything torn down), in dev mode so Strict Mode double-invokes effects. But "apply had no browser" being false does NOT make the nine-step script done, and marking it done would be a claim the QA record cannot support. Measured against `state.yaml` `phases.apply.qa.gameengine`, which holds `single_post`, `no_stale_closure`, `resume_after_reload`, `non_empty_initialcss`, `idempotence` and `final_db_state`:
+        - **Covered, four of the nine** — step 1 in part (the run started on a fresh isolated profile and `single_post` records the progress bar moving TO 4% with `user xp 0 -> 10`, so it did load at level 1 with 0% progress; the step's "empty editor" clause is not stated anywhere in the record), step 3 (exactly one `POST /api/progress` per level, correct body), step 7 in part (reload resumes consistently with the stepper), step 8 in part (re-entering a solved level fires ZERO extra POSTs).
+        - **NOT covered** — step 2, the success overlay at **~1.8s and not instantly**, which is precisely the 1800ms timer task 1.4.2 rewrote and which nothing in the record measures; step 4, progress bar and stepper updating immediately rather than after the POST resolves; step 5, "Ver solucion"; step 6, "Siguiente nivel" advancing and re-enabling input; step 9, the final-level bonus POST with `exerciseId: <slug>-bonus`.
+        - **Extra, outside the script** — grid level 11 with non-empty `initialCSS` pre-filled and NOT pre-marked solved. The nine-step script never asked for this; it is evidence the QA added on its own, so it is listed here and NOT counted toward the nine.
+        - So four of the nine steps have evidence and five do not: 4 + 5 = 9, every step accounted for. An earlier draft of this note counted the grid-level-11 case as the fourth covered step and silently dropped step 1 — the total came out right from the wrong composition, which is the same failure mode as marking this task done because its stated reason was false. The five uncovered steps are recorded against the `Manual Behavior Preservation for Hooks Refactors` requirement in `openspec/specs/automated-verification-gates/spec.md`.
   1. Fresh profile (`localStorage.clear()`): loads at level 1, empty editor, 0% progress.
   2. Typing the solution animates the board, disables input, shows the solution line, and shows the success overlay **~1.8s later** (not instantly).
   3. Network tab: exactly **one** `POST /api/progress` per level (`score: 100`, `difficulty: 1`); sidebar XP increases after `refreshUser`.
@@ -79,6 +89,7 @@ Est. authored lines: **175-197** (design `D7`, supersedes proposal's 95-145 esti
 - [x] **1.5.3** `npx eslint src/components/landing/Landing3D.tsx` reports `0` errors (loader-moderno-dojo handoff check — Landing3D fix ships in 1.4.1/Group B). — *Traces: R4* **Confirmed: 0 errors, 0 warnings.** (An earlier run reported 1 warning for an unused `setOmitirEscena`; the orchestrator then removed that speculative state, so the file is now fully clean.)
 - [x] **1.5.4** `npm run build` exits `0`. **Confirmed: exit 0, full route manifest printed.**
 - [ ] **1.5.5** All manual QA tasks in 1.2.3, 1.3.6-1.3.9, 1.4.5 completed and confirmed passing; 1.3.10's PR-body documentation is present in the draft PR description. **NOT DONE — this apply had no browser and no PR was opened.** See the manual-QA handoff in the apply-progress artifact / final report. **This is a hard gate: slice 1 must not merge until 1.5.5 is satisfied by a human.**
+      - **At archive (2026-08-24): still open by construction.** 1.4.5 and 1.3.10 are now DONE; this task stays open because 1.2.3, 1.3.6, 1.3.8 and the tails of 1.3.7 and 1.3.9 were never exercised. Its "hard gate before merge" wording is historical: slice 1 merged as PR #1 on 2026-08-04 and has been in production since, with 72 green CI runs over it. The gap is recorded against the `Manual Behavior Preservation` requirement in `openspec/specs/automated-verification-gates/spec.md` rather than dropped.
 
 ### 1.6 Review Workload Forecast — Slice 1
 
@@ -167,7 +178,7 @@ Branches off the slice-1 branch (shares `package.json`'s scripts block); retarge
 - [x] **2.7.2** `npx playwright test` exits `0` with the landing smoke test passing (contingent on 2.5.4 succeeding). — *Traces: R1 (e2e gate scenario)* **Confirmed: exit 0, 1/1 passed, rendered real "3d" mode.**
 - [x] **2.7.3** `npx tsc --noEmit` still exits `0` — confirms `src/lib/xp.test.ts` and `e2e/landing.spec.ts` compile under `strict` (both match `tsconfig.json`'s `**/*.ts` include). — *Traces: D3* **Confirmed: exit 0, no output.**
 - [x] **2.7.4** `npm run build` and `npx eslint .` (0 errors) still pass — confirms slice 2 introduced no regression to slice 1's gates. **Confirmed: build exit 0, full route manifest; lint exit 0, 50 problems (0 errors, 50 warnings) — unchanged from slice 1's baseline.**
-- [ ] **2.7.5** Open a PR against `main` (push CI trigger) and confirm the workflow run reports success on all four steps end to end (proves R5's "clean change passes CI" scenario, not just local runs). **NOT DONE — explicitly out of scope for this apply session ("Do NOT push. Do NOT open a pull request."). Requires a human/orchestrator to open the PR and observe the Actions run.**
+- [x] **2.7.5** Open a PR against `main` (push CI trigger) and confirm the workflow run reports success on all four steps end to end (proves R5's "clean change passes CI" scenario, not just local runs). **DONE.** Measured 2026-08-24: `ci.yml` has 72 recorded runs. The oldest is run 30919993306, a `pull_request` run on `feat/automated-gates-slice-2` at 2026-08-04T14:38:26Z, followed by run 30921450451 on the merge of PR #2 — both `success`. The most recent run at archive time (32678862160) executed `npm ci`, `typecheck`, `lint`, `test:run`, `test:e2e` and `build`, all green — five checks, one more than this task demands.
 
 ### 2.8 Review Workload Forecast — Slice 2
 
@@ -232,3 +243,35 @@ All of 2.7.1-2.7.4 pass: `npx tsc --noEmit` exit 0; `npm run lint` exit 0, 50 pr
 - Writing the 13 `landing-loader` jsdom tests or the scenario 4.2 E2E spec — both belong to `loader-moderno-dojo`'s own apply.
 - A `--max-warnings` ratchet — recorded as a follow-up only.
 - Re-investigating the GameEngine pre-solved-level risk — already closed by the orchestrator (1.4.4 only records the finding).
+
+---
+
+## Status at archive — 2026-08-24
+
+44 of 51 tasks done. The seven that stay open are all manual QA, and none of
+them blocks anything any more: slice 1 shipped as PR #1 and slice 2 as PR #2,
+both merged 2026-08-04, with 72 green CI runs and 203 passing tests over that
+code since. Each open task carries an inline note saying exactly what was and
+was not exercised.
+
+Two tasks were marked done at archive time against measured evidence, not
+against the record — the record was stale by three weeks and said both were
+undone:
+
+- **2.7.5** — the record said the CI workflow had NEVER executed. It has run 72
+  times, starting with a `pull_request` run on `feat/automated-gates-slice-2`.
+- **1.3.10** — the record said no PR existed to carry the body. PR #1 carries it.
+
+A third, **1.4.5**, was marked done and then reverted before this archive
+landed. The record's reason for it was false — apply DID have a browser — but
+that only invalidates the reason, not the nine-step script: the QA record covers
+four of its nine steps — step 3 in full, and steps 1, 7 and 8 in part — and
+leaves the other five with no evidence at all. Marking it done would have been a claim
+passing for the wrong reason, so it stays open with every one of the nine steps
+accounted for.
+
+The genuinely unexercised surfaces — the four UI surfaces plus the five
+uncovered steps of 1.4.5 — are recorded as coverage gaps against the `Manual
+Behavior Preservation for Hooks Refactors` requirement in
+`openspec/specs/automated-verification-gates/spec.md`, where a future change
+touching those components will meet them, rather than being dropped here.
