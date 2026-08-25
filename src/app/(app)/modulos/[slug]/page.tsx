@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { use, useState, useEffect } from "react";
+import { use, useRef, useState, useEffect } from "react";
 import { ALL_MODULES } from "@/data/modules";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
@@ -30,12 +30,31 @@ export default function ModuleDetailPage({
   const [moduleDisabled, setModuleDisabled] = useState(false);
   const [checkingEnabled, setCheckingEnabled] = useState(true);
 
+  // Un modulo por sesion de pagina: React monta este efecto dos veces en
+  // desarrollo (StrictMode), y sin este latch cada apertura contaria dos
+  // visitas en dev y una en produccion, o sea un numero que significa distinto
+  // segun donde se mida.
+  const vistaRegistrada = useRef<string | null>(null);
+
   useEffect(() => {
     fetch("/api/modules/enabled")
       .then((res) => res.json())
       .then((data) => {
-        if (data.enabledSlugs && !data.enabledSlugs.includes(slug)) {
+        const visible = !data.enabledSlugs || data.enabledSlugs.includes(slug);
+        if (!visible) {
           setModuleDisabled(true);
+        } else if (vistaRegistrada.current !== slug) {
+          vistaRegistrada.current = slug;
+          // Instrumentacion: registra que se ABRIO el modulo, aunque no se
+          // resuelva ningun ejercicio. `Progress` solo se escribe al enviar, y
+          // sin esto "lo salteo" y "nunca lo abrio" son indistinguibles.
+          // Deliberadamente sin await y con el error tragado: es telemetria y
+          // no puede degradar la pagina si falla.
+          fetch("/api/module-views", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ moduleId: slug }),
+          }).catch(() => {});
         }
         setCheckingEnabled(false);
       })
