@@ -217,7 +217,39 @@ Son útiles para elementos que deben adaptarse a la orientación:
 }
 \`\`\`
 
-> **Atención:** En dispositivos móviles, \`100vh\` puede incluir el espacio de la barra de direcciones, causando barras de scroll inesperadas. CSS moderno ofrece \`dvh\` (dynamic viewport height) para resolver esto.`,
+### El problema de \`100vh\` en el celular
+
+En una computadora, \`100vh\` es exactamente la altura de la ventana y no hay más que decir. En un celular hay un problema real: la barra de direcciones del navegador **aparece y desaparece** mientras el usuario hace scroll.
+
+\`vh\` mide contra el viewport **grande**: la ventana como si la barra estuviera oculta. Entonces, mientras la barra está visible, un bloque con \`height: 100vh\` es más alto que el espacio disponible, y su parte de abajo queda tapada. Es el motivo por el que tantos sitios tienen un botón que no se puede tocar en el celular y se ve perfecto en la computadora.
+
+### Las tres unidades dinámicas
+
+CSS resolvió esto agregando tres variantes. Se escriben igual que \`vh\`, con una letra adelante:
+
+| Unidad | Mide contra | Cuándo conviene |
+|---|---|---|
+| \`lvh\` | El viewport **grande** (barra oculta) | Lo mismo que hace \`vh\` hoy |
+| \`svh\` | El viewport **chico** (barra visible) | Cuando nada puede quedar tapado, nunca |
+| \`dvh\` | El viewport **actual**, y cambia solo | Un bloque a pantalla completa |
+
+Las tres existen también para el ancho: \`svw\`, \`lvw\` y \`dvw\`. Se usan mucho menos, porque la barra de direcciones cambia la altura y no el ancho.
+
+\`\`\`css
+/* Antes: en el celular, la parte de abajo queda tapada */
+.portada {
+  height: 100vh;
+}
+
+/* Ahora: la altura sigue a la ventana real, con barra o sin ella */
+.portada {
+  height: 100dvh;
+}
+\`\`\`
+
+**\`dvh\` es el que vas a querer casi siempre**, porque se ajusta solo cuando la barra aparece o se va. Usá \`svh\` cuando prefieras que el bloque sea siempre el más chico y nunca se mueva: \`dvh\` se actualiza mientras el usuario scrollea, y ese movimiento a veces se nota.
+
+> **Atención:** \`100vh\` sigue siendo válido y no está roto en la computadora. El problema aparece solo donde hay una barra que se mueve, así que la costumbre útil es escribir \`dvh\` en cualquier bloque a pantalla completa.`,
       codeExample: {
         html: `<div class="seccion-hero">\n  <h1>Titulo Responsivo</h1>\n  <p>Esta seccion ocupa toda la ventana</p>\n</div>\n<div class="caja-vmin">Cuadrado con vmin</div>`,
         css: `.seccion-hero {\n  width: 100%;\n  height: 50vh;\n  background: linear-gradient(135deg, steelblue, #2c3e50);\n  color: white;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n}\n\n.seccion-hero h1 {\n  font-size: clamp(20px, 4vw, 48px);\n}\n\n.seccion-hero p {\n  font-size: clamp(14px, 2vw, 20px);\n  opacity: 0.8;\n}\n\n.caja-vmin {\n  width: 30vmin;\n  height: 30vmin;\n  background: tomato;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin: 16px;\n  border-radius: 8px;\n}`,
@@ -492,6 +524,60 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       hint: "Tres unidades en un solo ejercicio: vh para el alto y el padding vertical, % para el padding horizontal, y clamp() con rem y vw en el título. El padding acepta dos valores: primero vertical, después horizontal.",
       explanation:
         "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahi es donde entra el box-sizing: border-box del modulo anterior.",
+    },
+    {
+      id: "10-ej-09",
+      type: "quiz",
+      difficulty: 2 ,
+      xpReward: 20,
+      order: 9,
+      prompt:
+        "Una portada con `height: 100vh` se ve perfecta en la computadora, pero en el celular el botón de abajo queda tapado por la barra de direcciones. ¿Por qué pasa?",
+      options: [
+        {
+          id: "a",
+          text: "Porque `vh` mide contra el viewport grande, o sea la ventana como si la barra estuviera oculta",
+          isCorrect: true,
+        },
+        {
+          id: "b",
+          text: "Porque `vh` no funciona en celulares y hay que usar porcentajes",
+          isCorrect: false,
+        },
+        {
+          id: "c",
+          text: "Porque 100vh siempre da más de 100% y desborda en cualquier pantalla",
+          isCorrect: false,
+        },
+        {
+          id: "d",
+          text: "Porque el celular tiene menos píxeles y el cálculo se redondea mal",
+          isCorrect: false,
+        },
+      ],
+      validation: { type: "exact", answer: "a" },
+      hint: "La barra de direcciones aparece y desaparece con el scroll. Pensá contra cuál de los dos tamaños mide `vh`: el de la ventana con la barra visible, o el de la ventana sin ella.",
+      explanation:
+        "`vh` mide contra el viewport GRANDE: la ventana como si la barra de direcciones estuviera oculta. Mientras la barra está visible, el espacio real es menor, así que un bloque de 100vh es más alto de lo que entra y su parte de abajo queda tapada.\n\nNo está roto ni le pasa solo al celular por ser celular: le pasa a cualquier navegador con una barra que se mueve. En la computadora no hay barra que aparezca y desaparezca, y por eso ahí se ve bien. Esa es exactamente la razón por la que existen `svh`, `lvh` y `dvh`.",
+    },
+    {
+      id: "10-ej-10",
+      type: "code-completion",
+      difficulty: 2 ,
+      xpReward: 25,
+      order: 10,
+      prompt:
+        "Esta portada debe ocupar la ventana entera y ajustarse sola cuando la barra de direcciones del celular aparece o se va. Completá la unidad:",
+      codeTemplate: {
+        html: `<section class="portada">\n  <h1>Mi portafolio</h1>\n  <a class="cta" href="#proyectos">Ver proyectos</a>\n</section>`,
+        cssPrefix: ".portada {\n  height: 100",
+        cssSuffix: ";\n  background: steelblue;\n  color: white;\n  padding: 8vh 5%;\n}",
+        blanks: ["dvh"],
+      },
+      validation: { type: "exact", answer: "dvh" },
+      hint: "Son tres letras y termina en `vh`. Querés la que sigue al viewport ACTUAL, no la que siempre mide el grande ni la que siempre mide el chico.",
+      explanation:
+        "`dvh` es el viewport dinámico: mide contra la ventana tal como está en este momento y se actualiza sola cuando la barra aparece o se va. Por eso el botón nunca queda tapado.\n\nLas otras dos existen para cuando no querés ese ajuste. `lvh` mide siempre contra el viewport grande -- es lo que hace `vh` hoy, y por eso `lvh` no arregla nada. `svh` mide siempre contra el chico: el bloque queda un poco más bajo, pero no se mueve nunca, y a veces eso es preferible porque `dvh` se recalcula mientras el usuario scrollea y el salto se nota.\n\nRegla práctica: `dvh` para casi todo lo que va a pantalla completa, `svh` cuando la estabilidad importe más que aprovechar cada píxel.",
     },
   ],
 };
