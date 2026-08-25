@@ -17,39 +17,27 @@ notice until a student asks why their certificate disappeared.
 
 ### It already happened to a named student, and this is the measurement
 
-Measured against production on 2026-08-25, read-only. The top student of cohort 2
-(245 completed exercises, more than anyone else in it) had `unidades-css` at
-**8 of 8**. Commit `6822485` took the module to 10. He now reads **8 of 10**, and
-the two exercises he is missing are `10-ej-09` and `10-ej-10` — precisely the two
-that commit added.
+Measured against production on 2026-08-25, read-only. The strongest student of
+cohort 2 (245 completed exercises, more than anyone else in it) had
+`unidades-css` at **8 of 8**. Commit `6822485` took the module to 10. He now
+reads **8 of 10**, and the two exercises he lacks are `10-ej-09` and `10-ej-10` —
+precisely the two that commit added.
 
-The eleven required modules enabled for cohort 2 summed **95** exercises before
-that commit and sum **97** after it. He has 95.
+He did nothing, and a module he had finished stopped being finished.
 
-> **He was eligible for the CSS certificate the day before yesterday, and stopped
-> being eligible yesterday, without doing anything.**
+**Correction to an earlier version of this paragraph.** It claimed he "was
+eligible for the certificate the day before yesterday and stopped being eligible
+yesterday". That was true only under the cohort-scoped rule, which has since been
+removed as wrong. Under the corrected rule he was never eligible — eight required
+modules have not been taught to him yet. The claim overstated the case and is
+retracted.
 
-No certificate had been issued yet, so nothing was damaged. That is luck, not
-design: the same commit landing a week later would have invalidated a real
-credential. This is the scenario the snapshot exists for, observed in production
-before the feature shipped.
-
-**It is also an input to the Phase 5 decision.** Under automatic issuance he
-would have held his certificate already and the commit would have been harmless.
-Under instructor action, nobody acted, and he silently fell out of eligibility
-with no screen anywhere reporting it.
-
-So the `Certificate` document stores **what it certified**:
-
-- the track,
-- the cohort,
-- the list of required module slugs that were enabled for that cohort at award
-  time,
-- the exercise count per module at award time,
-- the award date.
-
-Recomputation is for *eligibility*, never for *validity*. An awarded certificate
-is read from its own record.
+What survives, and is the actual point: **the required path of CSS moved from 166
+exercises to 168 in an ordinary content commit.** Every student not yet awarded
+had their bar raised, correctly and invisibly. The mini-challenge rollout will do
+this on purpose and repeatedly. Had a certificate already been issued against 166,
+a live-recomputing reader would have turned it false that morning. That is the
+snapshot's whole job, and it is now an observed hazard rather than an argument.
 
 ## Where the classification lives
 
@@ -88,8 +76,9 @@ list of tracks.
 A student is eligible for the certificate of track `T` when:
 
 1. `T` is certifiable — every module of `T` declares `nivel`.
-2. Let `R` = the modules of `T` with `nivel: "obligatorio"` **that are enabled for
-   that student's cohort**.
+2. Let `R` = **every** module of `T` with `nivel: "obligatorio"`. Not
+   intersected with the cohort's enabled set — see the next section for why that
+   intersection was there and why it is gone.
 3. `R` is not empty.
 4. For every module in `R`, the student has a `Progress` document with
    `completed: true` for **every** exercise of that module.
@@ -98,33 +87,66 @@ Note what is deliberately absent: no percentage threshold, no score minimum
 beyond what `completed` already encodes. `completed` is set when `score >= 70`,
 which is the existing bar and is not re-litigated here.
 
-### Why "enabled for that cohort" and not "all required modules"
+### The rule was scoped to the cohort at first, and that was wrong
 
-Measured: 0 of 35 students have progress in all 19 required CSS modules; the best
-nine reach 17 of 19. The two they miss are `tailwind-css` (29) and
-`proyecto-cv-css` (30) — one because their course ended first, the other because
-it had no `ModuleSettings` document and was invisible.
+The original design intersected the required set with what the student's cohort
+had enabled, justified by a measurement: "0 of 35 students have progress in all
+19 required CSS modules; the best nine reach 17 of 19, missing only
+`tailwind-css` and `proyecto-cv-css`".
 
-A student cannot complete what was never shown. Tying eligibility to the cohort's
-enabled set is not leniency: it is the only definition that is *true*.
+**The measurement was correct and the population was wrong.** No cohort-2 student
+can reach 17 of 19 — eight of the nineteen have never been enabled for them, and
+all fourteen sit at zero in all eight (measured 2026-08-25). Those nine are
+cohort 1: a cohort whose course **ended** with two required modules never opened,
+and which the instructor has declared out of scope.
 
-## What this inherits from the visibility model, and the trap in it
+So the scoped rule solved a problem belonging to a cohort nobody is certifying,
+and bought a far worse one for the cohort that matters: **it certified people
+mid-course.** Under it, the strongest student of cohort 2 qualified for a CSS
+completion certificate having completed 11 of the 19 required modules and never
+having seen `flexbox`, `css-grid` or `media-queries`. That is not a certificate;
+it is a progress report with a seal on it.
+
+"A student cannot complete what was never shown them" is true. Its honest
+consequence is that **they have not finished yet** — not that the requirement
+shrinks to whatever is open this week. Cohort 1 ending without two modules means
+cohort 1 does not certify, and that is the correct answer for a cohort that did
+not finish the course.
+
+**The corrected rule:** every `"obligatorio"` module of the track, full stop.
+
+The enabled set is still read, but only to report **why** a module is missing:
+`aunNoHabilitados` separates "this student is behind" from "the course has not
+got there". The instructor needs that distinction; the certificate must not.
+
+## What this inherits from the visibility model
 
 After the cohort migration a module is visible **only if a `ModuleSettings`
 document with `enabled: true` exists** for that cohort; the default is blocked
 (`src/app/api/modules/enabled/route.ts`, extracted to
 `src/lib/moduleVisibility.ts`).
 
-That has a consequence this design must state out loud:
+Certificates read that rule through `slugsHabilitadosParaCohorte(cohort)`,
+extracted from `slugsVisiblesPara` so there is one copy and not two. But they
+read it **for reporting only**.
 
-> **Enabling a required module for a cohort changes that cohort's certificate
-> requirements.** Opening a new required module mid-course means students who
-> were at 100 % are no longer at 100 %.
+This document used to say the opposite, and it is worth keeping the corrected
+claim visible:
 
-That is correct behaviour — the requirements genuinely grew — but it must be
-visible to the instructor rather than discovered by a confused student. Hence the
-`tasks.md` item for surfacing eligibility, and the snapshot for anything already
-awarded.
+> ~~Enabling a required module for a cohort changes that cohort's certificate
+> requirements. Opening a new required module mid-course means students who were
+> at 100 % are no longer at 100 %. That is correct behaviour.~~
+
+It is not correct behaviour; it is the symptom of the wrong rule. A student's
+requirements should not move because of a teacher's calendar. Under the
+corrected rule, opening a module changes nobody's verdict — it only changes the
+reason shown for a gap that was already there.
+
+What genuinely does change the requirements is the **curriculum**: adding a
+required module, reclassifying one into `"obligatorio"`, or adding exercises to
+an existing required module. Those are decisions about what the course *is*, and
+they should move the bar for anyone not yet awarded. The snapshot is what
+protects everyone already awarded.
 
 ## Data model
 

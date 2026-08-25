@@ -54,40 +54,54 @@ No certificate MUST be awarded for a track that is not certifiable.
 - WHEN certifiability is evaluated
 - THEN the track MUST report certifiable
 
-### Requirement: Eligibility Is Scoped to the Student's Cohort
+### Requirement: Eligibility Requires Every Required Module of the Track
 
 A student MUST be eligible for the certificate of a track when, and only when:
-the track is certifiable; the set of that track's `"obligatorio"` modules
-**enabled for that student's cohort** is not empty; and the student has a
-`Progress` document with `completed: true` for **every exercise** of **every**
-module in that set.
+the track is certifiable; the set of that track's `"obligatorio"` modules is not
+empty; and the student has a `Progress` document with `completed: true` for
+**every exercise** of **every** module in that set.
 
-Eligibility MUST NOT be computed against the track's required modules globally.
+Eligibility MUST NOT be reduced to the modules currently enabled for the
+student's cohort. A required module that a cohort has not been given yet MUST
+still be demanded of them: they have not finished the course, they have not
+reached the end of it.
 
-#### Scenario: A required module not enabled for the cohort is not demanded
+The enabled set MUST still be reported, so that a missing module can be
+attributed to the calendar rather than to the student. That report MUST be
+informational only and MUST NOT change the verdict.
 
-- GIVEN a track with required modules, one of which has no `ModuleSettings` document enabled for the student's cohort
+#### Scenario: A required module not yet enabled is still demanded
+
+- GIVEN a student who has completed every exercise of every required module their cohort has been given
+- AND at least one required module of the track has not been enabled for that cohort
 - WHEN eligibility is evaluated
-- THEN that module MUST NOT be required of that student
-- AND the student MUST be eligible if every other enabled required module is fully completed
+- THEN the student MUST NOT be eligible
+- AND the un-enabled module MUST be reported as not yet available, distinct from a module the student simply has not finished
 
 #### Scenario: One missing exercise blocks the certificate
 
-- GIVEN a student who has completed every exercise of every enabled required module except one
+- GIVEN a student who has completed every exercise of every required module except one
 - WHEN eligibility is evaluated
 - THEN the student MUST NOT be eligible
 
-#### Scenario: A cohort with no required module enabled is not eligible
+#### Scenario: A track with no required module is not eligible
 
-- GIVEN a student whose cohort has zero required modules enabled for the track
+- GIVEN a certifiable track whose every module is `"profundizacion"`
 - WHEN eligibility is evaluated
 - THEN the student MUST NOT be eligible, rather than trivially eligible over an empty set
 
 #### Scenario: Optional modules are never demanded
 
-- GIVEN a student who completed every enabled required module and no optional one
+- GIVEN a student who completed every required module and no optional one
 - WHEN eligibility is evaluated
 - THEN the student MUST be eligible
+
+#### Scenario: Enabling a module changes nothing about the verdict
+
+- GIVEN a student with an incomplete required module
+- WHEN that module is enabled for their cohort
+- THEN their eligibility MUST be unchanged
+- AND only the reason reported for the gap MUST change
 
 ### Requirement: An Awarded Certificate Is a Frozen Snapshot
 
@@ -116,18 +130,26 @@ be recomputed from live curriculum or progress data.
 - WHEN an award is attempted again for the same track
 - THEN no duplicate document MUST be created
 
-### Requirement: Enabling a Required Module Changes the Requirements
+### Requirement: The Curriculum Defines the Requirements, Not the Cohort Calendar
 
-Enabling a `"obligatorio"` module for a cohort MUST change the certificate
-requirements of every student in that cohort who has not yet been awarded.
+Adding a `"obligatorio"` module to a track, or reclassifying a module INTO
+`"obligatorio"`, MUST change the certificate requirements of every student not
+yet awarded. Adding exercises to an existing required module MUST do the same.
 
-This MUST be observable to the instructor before it surprises a student: a
-student who was eligible and is no longer eligible MUST be reported as such, not
-silently dropped.
+Enabling or disabling a module for a cohort MUST NOT change any student's
+eligibility verdict.
 
-#### Scenario: Opening a new required module mid-course
+An already-awarded certificate MUST be unaffected by any of these.
 
-- GIVEN a student eligible for a track's certificate and not yet awarded
-- WHEN a further required module of that track is enabled for their cohort
-- THEN the student MUST become not eligible until that module is fully completed
+#### Scenario: A required module grows mid-course
+
+- GIVEN a student who has completed every exercise of a required module
+- WHEN exercises are added to that module
+- THEN that student MUST NOT be eligible until the new exercises are completed
 - AND an already-awarded certificate MUST be unaffected
+
+#### Scenario: Opening a module mid-course does not move anyone's verdict
+
+- GIVEN a student who is not eligible because a required module is unfinished
+- WHEN a further required module of that track is enabled for their cohort
+- THEN their verdict MUST be unchanged, because that module was already demanded

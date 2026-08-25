@@ -119,24 +119,41 @@ describe("esElegible contra la base", () => {
     expect(consultas).toHaveLength(0);
   });
 
-  it("se mide contra lo habilitado en la cohorte DEL ALUMNO, no contra el track entero", async () => {
+  it("se mide contra TODO el track, no contra lo que la cohorte tenga habilitado", async () => {
+    // Under the old rule this student was eligible with a single module done.
+    // The requirement is the whole track; the enabled set only explains the gap.
     db.habilitados = ["box-model"];
     db.progreso = [completo("box-model", "b1"), completo("box-model", "b2")];
 
     const r = await esElegible("alumno", "css");
 
-    expect(r.elegible).toBe(true);
-    if (!r.elegible) return;
-    expect(r.modulos).toEqual(["box-model"]);
+    expect(r.elegible).toBe(false);
+    if (r.elegible) throw new Error("no puede certificar con un modulo de dos");
+    if (r.motivo !== "faltan-ejercicios") throw new Error(r.motivo);
+    expect(r.modulos).toEqual(["box-model", "flexbox"]);
+    expect(r.faltantes).toEqual({ flexbox: ["f1"] });
+    expect(r.aunNoHabilitados).toEqual(["flexbox"]);
   });
 
-  it("una cohorte sin nada habilitado no es elegible", async () => {
+  it("una cohorte sin nada habilitado no es elegible, y todo el hueco es del calendario", async () => {
     db.habilitados = [];
 
     const r = await esElegible("alumno", "css");
 
     expect(r.elegible).toBe(false);
-    if (r.elegible) return;
-    expect(r.motivo).toBe("sin-obligatorios-habilitados");
+    if (r.elegible) throw new Error("esperaba NO elegible");
+    if (r.motivo !== "faltan-ejercicios") throw new Error(r.motivo);
+    expect(r.aunNoHabilitados).toEqual(["box-model", "flexbox"]);
+  });
+
+  it("la consulta pide TODOS los obligatorios, incluso los que la cohorte no abrio", async () => {
+    db.habilitados = ["box-model"];
+
+    await esElegible("alumno", "css");
+
+    expect((consultas[0].moduleId as { $in: string[] }).$in).toEqual([
+      "box-model",
+      "flexbox",
+    ]);
   });
 });

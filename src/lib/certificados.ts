@@ -102,7 +102,7 @@ export type Elegibilidad =
       ejerciciosPorModulo: Record<string, number>;
     }
   | { elegible: false; motivo: "track-no-certificable"; detalle: Certificabilidad }
-  | { elegible: false; motivo: "sin-obligatorios-habilitados"; cohort: number }
+  | { elegible: false; motivo: "sin-obligatorios"; cohort: number }
   | { elegible: false; motivo: "sin-ejercicios-exigidos"; cohort: number; modulos: string[] }
   | {
       elegible: false;
@@ -111,32 +111,56 @@ export type Elegibilidad =
       modulos: string[];
       /** Exercise ids still missing, per module. Only modules with gaps appear. */
       faltantes: Record<string, string[]>;
+      /**
+       * Of the modules with gaps, the ones this cohort HAS NOT BEEN GIVEN yet.
+       *
+       * Informational, never a gate. It separates "this student is behind" from
+       * "the course has not got there", which is the difference between chasing
+       * a student and waiting for the calendar. The teacher view needs it; the
+       * certificate must not.
+       */
+      aunNoHabilitados: string[];
     };
 
 /**
- * The required modules of a track FOR ONE COHORT: the `"obligatorio"` modules
- * of the track that are enabled for that cohort, in curriculum order.
+ * The required modules of a track: EVERY `"obligatorio"` module of it, in
+ * curriculum order. Not intersected with anything.
  *
- * The cohort scope is the whole point, and it came out of a measurement: with a
- * global rule, 0 of 35 students qualify, and the best nine reach 17 of 19. The
- * two they miss are `tailwind-css` and `proyecto-cv-css` — one because their
- * course ended first, the other because it had no `ModuleSettings` document at
- * all and was therefore invisible.
+ * ## This used to be scoped to the cohort's enabled set, and that was wrong
  *
- * A student cannot complete what was never shown them. A rule that certifies
- * nobody is broken, not strict.
+ * The scoped version was justified by a measurement — "0 of 35 students
+ * qualify under a global rule; the best nine reach 17 of 19, missing only
+ * `tailwind-css` and `proyecto-cv-css`". The measurement was real. It was taken
+ * over the WRONG POPULATION.
+ *
+ * Those nine are necessarily cohort 1: no cohort-2 student can reach 17 of 19,
+ * because eight of the nineteen have never been enabled for them (measured
+ * 2026-08-25, all of them sit at 0 in all eight). And cohort 1 is explicitly out
+ * of scope — it was an experiment and its course ENDED with those two modules
+ * never opened.
+ *
+ * So the scoped rule solved a problem belonging to a cohort nobody is
+ * certifying, and created a much worse one for the cohort that matters: it
+ * certified people MID-COURSE. Under it, the strongest student of cohort 2
+ * qualified for a CSS completion certificate having never seen `flexbox`,
+ * `css-grid` or `media-queries`. That is not a certificate, it is a progress
+ * report with a seal on it.
+ *
+ * "A student cannot complete what was never shown them" is true, and the honest
+ * consequence is that they are NOT YET FINISHED — not that the requirement
+ * shrinks to whatever is open this week. Cohort 1 ending without two modules
+ * means cohort 1 does not certify. That is the correct answer for a cohort that
+ * did not finish the course.
+ *
+ * The enabled set is still read, but only to REPORT why a module is missing.
+ * See `aunNoHabilitados`.
  */
-export function modulosExigidosDe(
+export function modulosObligatoriosDe(
   modulos: readonly ModuloClasificable[],
   dojo: DojoType,
-  habilitados: readonly string[],
 ): string[] {
-  const habilitadosSet = new Set(habilitados);
   return modulos
-    .filter(
-      (m) =>
-        m.dojo === dojo && m.nivel === "obligatorio" && habilitadosSet.has(m.slug),
-    )
+    .filter((m) => m.dojo === dojo && m.nivel === "obligatorio")
     .map((m) => m.slug);
 }
 
@@ -161,13 +185,15 @@ export function elegibilidadDe(
     return { elegible: false, motivo: "track-no-certificable", detalle: cert };
   }
 
-  const exigidos = modulosExigidosDe(modulos, dojo, habilitados);
+  const exigidos = modulosObligatoriosDe(modulos, dojo);
 
-  // NOT trivially eligible over an empty set. A cohort with nothing required
-  // enabled has not finished the track; it has not started it.
+  // NOT trivially eligible over an empty set. A track whose every module is
+  // optional has no minimum path, so there is nothing to certify completing.
   if (exigidos.length === 0) {
-    return { elegible: false, motivo: "sin-obligatorios-habilitados", cohort };
+    return { elegible: false, motivo: "sin-obligatorios", cohort };
   }
+
+  const habilitadosSet = new Set(habilitados);
 
   const porSlug = new Map(modulos.map((m) => [m.slug, m]));
   const faltantes: Record<string, string[]> = {};
@@ -196,6 +222,8 @@ export function elegibilidadDe(
       cohort,
       modulos: exigidos,
       faltantes,
+      // Reported, never subtracted from the requirement.
+      aunNoHabilitados: Object.keys(faltantes).filter((s) => !habilitadosSet.has(s)),
     };
   }
 
@@ -224,8 +252,10 @@ export async function esElegible(
   }
 
   const cohort = await cohorteDe(userId);
+  // Read for REPORTING only. Eligibility demands every required module of the
+  // track; what the cohort has open explains a gap, it never excuses one.
   const habilitados = await slugsHabilitadosParaCohorte(cohort);
-  const exigidos = modulosExigidosDe(ALL_MODULES, dojo, habilitados);
+  const exigidos = modulosObligatoriosDe(ALL_MODULES, dojo);
 
   const docs = await Progress.find({
     userId,
