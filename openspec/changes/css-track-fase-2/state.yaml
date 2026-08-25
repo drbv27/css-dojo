@@ -1,0 +1,119 @@
+change: css-track-fase-2
+created: 2026-08-25
+artifact_store: hybrid
+
+# LEER ESTO ANTES QUE NADA.
+#
+# Este cambio esta PARQUEADO POR FALTA DE DATO, que no es lo mismo que abierto
+# ni que hecho. Las fases 1 a 4 estan completas y mergeadas. La fase 5 NO se
+# puede empezar hasta que `ModuleView` acumule datos de la cohorte 2.
+#
+# Si abris este archivo y pensas "hay que medir Progress en produccion": YA SE
+# MIDIO, el 2026-08-25, y esta en hallazgos.md con los comandos al lado de cada
+# numero. No lo vuelvas a medir desde cero; confirmalo si queres, pero arranca
+# de ahi.
+#
+# El prompt de traspaso en /home/diegobonilla/proyectos/cssGame/
+# prompt-fase2-track-css.md es ANTERIOR a esta medicion y dice "el primer
+# trabajo es medir Progress". Ese texto ya esta cumplido. Este registro manda.
+
+resumen_de_una_linea: >
+  Fases 1-4 hechas y mergeadas. Fase 5 bloqueada esperando datos de ModuleView
+  de la cohorte 2, aproximadamente 2-3 semanas desde el 2026-08-25.
+
+phases:
+  medicion:
+    status: done
+    date: 2026-08-25
+    artifact: openspec/changes/css-track-fase-2/hallazgos.md
+    resultado: >
+      La clasificacion 19/11 NO se puede validar con los datos de hoy. Los
+      cuatro modulos opcionales en cero fueron agregados el 2026-08-22 y 23; la
+      unica cohorte que termino paro el 2026-08-12. Los modulos que serian la
+      evidencia son mas nuevos que la cohorte.
+    hallazgo_que_cambia_el_problema: >
+      El track CSS NO tiene curva de abandono. Cohorte 1 pone 12 alumnos en el
+      modulo 1 y se queda plana en 9-11 hasta el 28. Se pierde gente en la
+      ENTRADA, no en el camino: 21 inscriptos, 15 con algun progreso, 12 llegan
+      a CSS, 9 sostienen hasta el final. Un camino mas corto no habria ayudado a
+      esos nueve, y los que nunca arrancaron no lo ven. Ojo: la cohorte 1
+      termino ANTES de la expansion a 30 modulos, asi que la pared que la
+      clasificacion resuelve todavia no existio para nadie.
+
+  instrumentacion:
+    status: done
+    pr: 33
+    merge_commit: b12ed8f
+    artefactos:
+      - src/lib/models/ModuleView.ts
+      - src/app/api/module-views/route.ts
+      - src/lib/moduleVisibility.ts
+      - src/lib/moduleVisibility.test.ts
+    note: >
+      `Progress` se escribe solo al ENVIAR un ejercicio, asi que "lo salteo" y
+      "nunca lo abrio" eran indistinguibles. Esto es lo que desbloquea la fase 5.
+      De paso, la regla de visibilidad salio de un handler de ruta a una funcion
+      testeable: no tenia NINGUNA cobertura y ahora tiene 6 tests.
+
+  contenido_dvh:
+    status: done
+    pr: 34
+    merge_commit: 6a2af5d
+    note: >
+      `unidades-css` (5) ensenaba el problema de `100vh` en mobile, nombraba
+      `dvh` en una linea y no lo practicaba. Techos medidos antes y despues:
+      ledger 23 -> 23 (techo 23), sinEscribir 60 -> 60 (techo 60).
+
+  investigacion_tailwind:
+    status: done
+    resultado: sin-trabajo-de-contenido
+    note: >
+      `tailwind-css` (29) tiene cero pero nadie lo saltea: los 9 alumnos que
+      llegaron a `bootstrap-5` (28) pararon entre el 2026-07-03 y el 07-12, ocho
+      en nueve dias. Es una cohorte terminando junta, no una decision sobre
+      Tailwind.
+
+  decision_del_campo:
+    status: blocked
+    bloqueado_por: datos-de-moduleview
+    desbloquea_aproximadamente: 2026-09-15
+    note: >
+      NO implementar el campo de obligatoriedad en `ModuleData` antes de la
+      tarea 5.2. Escribirlo hoy codifica una hipotesis sin validar en el modelo
+      de datos. La opcion elegida (campo en ModuleData, con default en vez de
+      requerido) sigue siendo igual de barata dentro de un mes, y para entonces
+      se decide con evidencia.
+
+decidido_y_cerrado_no_reabrir:
+  clasificacion: >
+    19 obligatorios / 11 opcionales, decidido con el instructor el 2026-08-24.
+    Esta en design.md con el criterio de cuatro reglas y las TRES desviaciones
+    deliberadas (tailwind-css obligatorio, pseudo-elementos obligatorio,
+    math-functions opcional dejando un hueco visual a proposito).
+  donde_vive: >
+    En `ModuleData`, no en `ModuleSettings`. El nivel es dato del curriculum,
+    igual para todas las cohortes. `ModuleSettings` sigue binario.
+
+escrituras_en_produccion:
+  fecha: 2026-08-25
+  autorizacion: explicita del instructor, pedida y concedida en el chat
+  cambios:
+    - >
+      `proyecto-cv-css` (30) habilitado para la cohorte 1. No tenia doc, y
+      despues de migrar el default es BLOQUEADO: la cohorte que hizo los 28
+      modulos no podia ver su proyecto final.
+    - >
+      `proyecto-cv-css` (30) deshabilitado para la cohorte 2, que va por el
+      modulo 10 y no ve del 15 al 29. Cero documentos de progreso en ese modulo
+      en ambas cohortes, asi que no se interrumpio trabajo de nadie.
+  verificacion: antes y despues, con conteo total de docs (141 -> 142) y control
+    de que ninguna otra cohorte se movio.
+
+trampa_operativa_para_la_proxima_cohorte: >
+  Despues de migrar, un modulo es visible SOLO si existe un doc ModuleSettings
+  con enabled=true para esa cohorte. Sin doc no se ve. O sea que TODO modulo
+  nuevo nace invisible para todas las cohortes. Ahi se perdieron los cuatro
+  modulos de la Fase 1 y el proyecto final del track. Al abrir la cohorte 3, hay
+  que revisar la lista completa, no solo los modulos nuevos.
+
+next_recommended: none   # esperar datos; ver phases.decision_del_campo
