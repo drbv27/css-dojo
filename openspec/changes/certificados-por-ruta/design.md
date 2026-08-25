@@ -15,6 +15,30 @@ If eligibility were a live query, the morning such a commit lands every issued
 certificate silently becomes a claim its holder no longer satisfies. Nobody would
 notice until a student asks why their certificate disappeared.
 
+### It already happened to a named student, and this is the measurement
+
+Measured against production on 2026-08-25, read-only. The top student of cohort 2
+(245 completed exercises, more than anyone else in it) had `unidades-css` at
+**8 of 8**. Commit `6822485` took the module to 10. He now reads **8 of 10**, and
+the two exercises he is missing are `10-ej-09` and `10-ej-10` — precisely the two
+that commit added.
+
+The eleven required modules enabled for cohort 2 summed **95** exercises before
+that commit and sum **97** after it. He has 95.
+
+> **He was eligible for the CSS certificate the day before yesterday, and stopped
+> being eligible yesterday, without doing anything.**
+
+No certificate had been issued yet, so nothing was damaged. That is luck, not
+design: the same commit landing a week later would have invalidated a real
+credential. This is the scenario the snapshot exists for, observed in production
+before the feature shipped.
+
+**It is also an input to the Phase 5 decision.** Under automatic issuance he
+would have held his certificate already and the commit would have been harmless.
+Under instructor action, nobody acted, and he silently fell out of eligibility
+with no screen anywhere reporting it.
+
 So the `Certificate` document stores **what it certified**:
 
 - the track,

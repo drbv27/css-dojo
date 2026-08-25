@@ -39,6 +39,8 @@ infrastructure that can land safely on `main` with no visible change.
   - Certifiability confirmed against production data: `css` yes with 19 required; `html` 17, `js` 29, `react` 20, `react-eco` 5, `nextjs` 5 unclassified — the 76 measured in Phase 1.
   - **Cohort 2 is demanded 11 of the 19 required CSS modules — 97 exercises**, not 19 and 168. The eight not yet enabled are `float-display`, `posicionamiento`, `flexbox`, `css-grid`, `variables-css`, `media-queries`, `tailwind-css`, `proyecto-cv-css`. That gap IS the cohort-scoped rule doing its job.
   - **Population correction:** cohort 2 has **14** students with `role: "student"`. The "0 of 35" in `design.md` was measured over a different population (all students, both cohorts). Both numbers are zero; they are not the same measurement, and the 35 should not be quoted as a cohort-2 figure.
+  - **Verified when the instructor challenged the finding, and it turned out to be bigger than reported.** The student is cohort 2 beyond doubt: created 2026-07-29, progress spanning 2026-07-30 to 2026-08-25, and **zero** progress in all eight required modules the cohort has not been given. Populations are clean — 21 students in cohort 1, 14 in cohort 2, nobody mixed.
+  - **The two exercises he lacks are `10-ej-09` and `10-ej-10`, the exact two that commit `6822485` added to `unidades-css` yesterday.** He had the module at 8/8. The eleven enabled required modules summed 95 exercises before that commit and 97 after. He has 95. **He was eligible the day before yesterday and stopped being eligible yesterday, having done nothing.** The snapshot rationale is no longer an argument; it is an observation with a name on it, made before a single certificate existed.
   - **This is now a Phase 5 input, not a curiosity:** one student is 2 exercises from the CSS certificate under today's enabled set. The first time a further required module is enabled for cohort 2, that student goes from 2-away to far away — the exact scenario the spec calls "Opening a new required module mid-course", about to happen to a named person before any teacher view exists to show it.
 
 ## Phase 4: The frozen certificate
@@ -55,6 +57,7 @@ infrastructure that can land safely on `main` with no visible change.
 ## Phase 5: Surfacing — BLOCKED on a product decision
 
 - [ ] 5.1 **DECISION REQUIRED, and it blocks this phase only:** is a certificate awarded **automatically** on reaching 100 %, or by an **instructor action**? The model supports both; the endpoint cannot be written until it is chosen.
+  - **Evidence for the decision, measured 2026-08-25.** Under **automatic** issuance the top student of cohort 2 would already hold his CSS certificate, and yesterday's content commit would have been harmless — the snapshot protects an awarded certificate. Under **instructor action**, nobody acted, and he silently dropped out of eligibility with no screen reporting it to anyone. The data does not make the decision, but it prices it.
 - [ ] 5.2 A teacher view of who is eligible per track, and — per the spec — who *was* eligible and no longer is because a required module was opened. The instructor must see that before a student does.
 - [ ] 5.3 The student's own view of their certificate.
 
