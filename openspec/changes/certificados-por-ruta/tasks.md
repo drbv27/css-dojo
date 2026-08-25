@@ -23,11 +23,17 @@ infrastructure that can land safely on `main` with no visible change.
 
 ## Phase 3: Eligibility
 
-- [ ] 3.1 `modulosExigidos(dojo, cohort)`: the track's `"obligatorio"` modules **enabled for that cohort**, reusing `@/lib/moduleVisibility` — not a second copy of the visibility rule.
-- [ ] 3.2 `esElegible(userId, dojo)`: certifiable, non-empty required set, and a `completed: true` `Progress` document for **every exercise** of **every** required module.
-- [ ] 3.3 Tests for the four scenarios that decide the feature: a required module not enabled for the cohort is not demanded; one missing exercise blocks; an empty required set is **not** trivially eligible; optional modules are never demanded.
-- [ ] 3.4 **Positive control:** remove a single `Progress` document from a fixture that was eligible and confirm eligibility flips. If it does not, the test was reading something other than exercise completion.
-- [ ] 3.5 Measure against production, read-only, before trusting any of it: how many cohort-2 students are eligible today, and for which tracks. Expected today: **zero**, because cohort 2 is around module 10. A non-zero answer means the rule is wrong, not that the students are fast.
+- [x] 3.1 `modulosExigidos(dojo, cohort)`: the track's `"obligatorio"` modules **enabled for that cohort**, reusing `@/lib/moduleVisibility` — not a second copy of the visibility rule.
+  - Reuse required an extraction: `slugsVisiblesPara` is session-shaped and returns **every** module to a teacher, so a certificate computed from it would demand modules the cohort never saw. Extracted `slugsHabilitadosParaCohorte(cohort)` and `cohorteDe(userId)`, and the migrated branch of `slugsVisiblesPara` now calls the first one. Same rule, one copy.
+  - Pre-migration returns empty, so nobody is awarded before the cohort migration. Fails safe on purpose.
+- [x] 3.2 `esElegible(userId, dojo)`: certifiable, non-empty required set, and a `completed: true` `Progress` document for **every exercise** of **every** required module.
+  - It is a **set-cover check, not a count**. `completados.size >= exercises.length` would let stale rows from a renamed exercise pay for one never done.
+  - The eligible branch returns `modulos` + `ejerciciosPorModulo` — that IS the snapshot Phase 4 freezes. Computing it once removes the window where an award writes a different requirement than the one it just verified.
+  - **Second vacuity case, added:** if every demanded module happened to carry zero exercises, "completed every exercise" is true for a student who did nothing. `sin-ejercicios-exigidos` rejects it, same shape as `track-vacio`.
+- [x] 3.3 Tests for the four scenarios that decide the feature: a required module not enabled for the cohort is not demanded; one missing exercise blocks; an empty required set is **not** trivially eligible; optional modules are never demanded.
+  - Plus a second file for the **database half** (`certificados-esElegible.test.ts`): it asserts the query itself — `completed: true`, and only the demanded modules — because that is where this kind of feature actually breaks.
+- [x] 3.4 **Positive control:** remove a single `Progress` document from a fixture that was eligible and confirm eligibility flips. If it does not, the test was reading something other than exercise completion.
+- [ ] 3.5 **BLOCKED on the instructor** — reading `.env.local` and connecting to the live database was denied by this session's permissions, and a peer agent cannot authorize it. Everything else in Phases 3 and 4 is done and does not depend on it. Measure against production, read-only, before trusting any of it: how many cohort-2 students are eligible today, and for which tracks. Expected today: **zero**, because cohort 2 is around module 10. A non-zero answer means the rule is wrong, not that the students are fast.
 
 ## Phase 4: The frozen certificate
 
