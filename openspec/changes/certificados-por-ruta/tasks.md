@@ -14,9 +14,12 @@ infrastructure that can land safely on `main` with no visible change.
 
 ## Phase 2: Certifiability, the safety gate
 
-- [ ] 2.1 `esCertificable(dojo)` in `src/lib/certificados.ts`: true only when **every** module of the track declares `nivel`. Returns the count of unclassified modules when false.
-- [ ] 2.2 Tests, both directions: `css` certifiable; `js`, `react`, `html`, `react-eco`, `nextjs` **not** certifiable, each reporting its own count.
-- [ ] 2.3 **Positive control:** declare `nivel` on one non-CSS module in a fixture and confirm the count drops by exactly one, and that the track is still not certifiable. A gate that cannot move is a gate that is not being read.
+- [x] 2.1 `esCertificable(dojo)` in `src/lib/certificados.ts`: true only when **every** module of the track declares `nivel`. Returns the count of unclassified modules when false.
+  - Returns a **discriminated union**, not `{certificable, sinClasificar}`, so "certifiable, and also 7 modules are unclassified" is not representable. Same reason `JsRunOutcome` is a union.
+  - **Added case not in the plan: `track-vacio`.** "Every module declares a level" is **vacuously true over zero modules**, so a `DojoType` that ships before its content would be certifiable *and* trivially completable at once. The gate rejects an empty track explicitly.
+  - Split into a pure `certificabilidadDe(modulos, dojo)` plus `esCertificable(dojo)` bound to `ALL_MODULES`. The real curriculum cannot express a partially classified track, which is exactly the state task 2.3 has to exercise.
+- [x] 2.2 Tests, both directions: `css` certifiable; `js`, `react`, `html`, `react-eco`, `nextjs` **not** certifiable, each reporting its own count.
+- [x] 2.3 **Positive control:** declare `nivel` on one non-CSS module in a fixture and confirm the count drops by exactly one, and that the track is still not certifiable. A gate that cannot move is a gate that is not being read.
 
 ## Phase 3: Eligibility
 
