@@ -1,4 +1,6 @@
+import { randomBytes } from "node:crypto";
 import { ALL_MODULES } from "@/data/modules";
+import Certificate from "@/lib/models/Certificate";
 import Progress from "@/lib/models/Progress";
 import { cohorteDe, slugsHabilitadosParaCohorte } from "@/lib/moduleVisibility";
 import type { DojoType, ModuleData } from "@/types";
@@ -241,4 +243,119 @@ export async function esElegible(
   }
 
   return elegibilidadDe(ALL_MODULES, dojo, cohort, habilitados, completados);
+}
+
+// ==================== Otorgamiento y lectura ====================
+
+/** What a certificate says, read from its own record. */
+export interface CertificadoLeido {
+  dojo: DojoType;
+  cohort: number;
+  modulos: string[];
+  ejerciciosPorModulo: Record<string, number>;
+  otorgadoEn: Date;
+  codigo: string;
+}
+
+export type Otorgamiento =
+  | { otorgado: true; nuevo: boolean; certificado: CertificadoLeido }
+  | { otorgado: false; motivo: "no-elegible"; detalle: Elegibilidad };
+
+/**
+ * Mongoose gives back a `Map` from a hydrated document and a plain object from
+ * `.lean()`. Normalising here keeps that difference out of every caller.
+ */
+function aConteo(v: unknown): Record<string, number> {
+  if (v instanceof Map) return Object.fromEntries(v) as Record<string, number>;
+  return { ...(v as Record<string, number>) };
+}
+
+function aLeido(doc: {
+  dojo: string;
+  cohort: number;
+  modulos: string[];
+  ejerciciosPorModulo: unknown;
+  otorgadoEn: Date;
+  codigo: string;
+}): CertificadoLeido {
+  return {
+    dojo: doc.dojo as DojoType,
+    cohort: doc.cohort,
+    modulos: [...doc.modulos],
+    ejerciciosPorModulo: aConteo(doc.ejerciciosPorModulo),
+    otorgadoEn: doc.otorgadoEn,
+    codigo: doc.codigo,
+  };
+}
+
+/**
+ * Reads an AWARDED certificate from its own record.
+ *
+ * THE WHOLE POINT OF THIS FUNCTION IS WHAT IT DOES NOT DO: it never consults
+ * `ALL_MODULES`, never consults `Progress`, and never calls `esElegible`. A
+ * certificate is a claim about a past state, and re-deriving it from today's
+ * curriculum would silently rewrite what a student was told they earned.
+ */
+export async function leerCertificado(
+  userId: string,
+  dojo: DojoType,
+): Promise<CertificadoLeido | null> {
+  const doc = await Certificate.findOne({ userId, dojo }).lean();
+  return doc ? aLeido(doc) : null;
+}
+
+/**
+ * A stable, human-quotable identifier. Ambiguous characters are left out so a
+ * code read off a screen and typed back in does not turn `0` into `O`.
+ */
+export function generarCodigo(dojo: DojoType, cohort: number): string {
+  const alfabeto = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = randomBytes(8);
+  const cuerpo = Array.from(bytes, (b) => alfabeto[b % alfabeto.length]).join("");
+  return `${dojo.toUpperCase()}-C${cohort}-${cuerpo}`;
+}
+
+/**
+ * Awards the certificate of a track, FREEZING what it demanded.
+ *
+ * Two things this deliberately does not do:
+ *
+ * 1. It does not recompute the snapshot. The module list and the per-module
+ *    exercise counts come from the very eligibility check that just passed, so
+ *    there is no window in which the award records a different requirement
+ *    than the one it verified.
+ *
+ * 2. **It does not update an existing certificate.** `design.md` said a second
+ *    award "is an update of the record"; that contradicts the snapshot rule it
+ *    states three paragraphs earlier — an update is exactly how a frozen
+ *    document silently changes. The existing record is returned untouched, with
+ *    `nuevo: false`. The spec scenario ("no duplicate document MUST be
+ *    created") is satisfied either way; only this reading also satisfies
+ *    "reclassifying a module later leaves the certificate unchanged".
+ */
+export async function otorgar(
+  userId: string,
+  dojo: DojoType,
+): Promise<Otorgamiento> {
+  const yaTiene = await leerCertificado(userId, dojo);
+  if (yaTiene) {
+    return { otorgado: true, nuevo: false, certificado: yaTiene };
+  }
+
+  const elegibilidad = await esElegible(userId, dojo);
+  if (!elegibilidad.elegible) {
+    return { otorgado: false, motivo: "no-elegible", detalle: elegibilidad };
+  }
+
+  const certificado: CertificadoLeido = {
+    dojo,
+    cohort: elegibilidad.cohort,
+    modulos: elegibilidad.modulos,
+    ejerciciosPorModulo: elegibilidad.ejerciciosPorModulo,
+    otorgadoEn: new Date(),
+    codigo: generarCodigo(dojo, elegibilidad.cohort),
+  };
+
+  await Certificate.create({ userId, ...certificado });
+  return { otorgado: true, nuevo: true, certificado };
 }

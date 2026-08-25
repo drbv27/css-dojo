@@ -118,8 +118,19 @@ interface ICertificate {
 }
 ```
 
-Unique index on `{userId, dojo}`: one certificate per student per track. A second
-award for the same track is an update of the record, never a duplicate.
+Unique index on `{userId, dojo}`: one certificate per student per track.
+
+**Corrected during implementation.** This paragraph used to say a second award
+"is an update of the record, never a duplicate". The second half is right and the
+first half contradicts the snapshot rule three sections above: an update is
+exactly how a frozen document silently changes. If a student re-triggers an award
+after `unidades-css` grew from 8 exercises to 10, an update rewrites their
+certificate from the path they walked to the one that exists now.
+
+So a second award **returns the existing record untouched**, with `nuevo: false`.
+The spec scenario ("no duplicate document MUST be created") is satisfied by both
+readings; only this one also satisfies "reclassifying a module later leaves the
+certificate unchanged".
 
 `codigo` exists from version one even though public verification is out of scope,
 because retrofitting a stable identifier onto documents already handed out is

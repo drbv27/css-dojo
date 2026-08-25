@@ -37,10 +37,14 @@ infrastructure that can land safely on `main` with no visible change.
 
 ## Phase 4: The frozen certificate
 
-- [ ] 4.1 `Certificate` model — `{userId, dojo, cohort, modulos, ejerciciosPorModulo, otorgadoEn, codigo}`, unique index `{userId, dojo}`.
-- [ ] 4.2 `otorgar(userId, dojo)`: verifies eligibility, then **freezes** the module list and the per-module exercise counts into the document. Never recomputed afterwards.
-- [ ] 4.3 Tests for the snapshot, which are the whole point of the model: adding exercises to a demanded module later leaves the certificate unchanged; reclassifying a demanded module later leaves it unchanged; a second award creates no duplicate.
-- [ ] 4.4 **Positive control:** make the reader recompute from live data instead of the record, and confirm the two snapshot tests turn red. A snapshot test that passes against a live query is testing nothing.
+- [x] 4.1 `Certificate` model — `{userId, dojo, cohort, modulos, ejerciciosPorModulo, otorgadoEn, codigo}`, unique index `{userId, dojo}`.
+- [x] 4.2 `otorgar(userId, dojo)`: verifies eligibility, then **freezes** the module list and the per-module exercise counts into the document. Never recomputed afterwards.
+  - The snapshot comes from the eligibility result itself, not from a second read of `ALL_MODULES`, so there is no window where the award records a different requirement than the one it just verified.
+  - **Contradiction in `design.md`, resolved and corrected there:** it said a second award "is an update of the record". An update is exactly how a frozen document silently changes. A second award now returns the existing record **untouched** with `nuevo: false`.
+  - Added `leerCertificado(userId, dojo)`, which task 4.4 needs to exist in order to be broken: it never touches `ALL_MODULES`, `Progress` or `esElegible`.
+- [x] 4.3 Tests for the snapshot, which are the whole point of the model: adding exercises to a demanded module later leaves the certificate unchanged; reclassifying a demanded module later leaves it unchanged; a second award creates no duplicate.
+- [x] 4.4 **Positive control:** make the reader recompute from live data instead of the record, and confirm the two snapshot tests turn red. A snapshot test that passes against a live query is testing nothing.
+  - Run: **five** tests turn red, both named ones among them — adding exercises, reclassifying, disabling a module for the cohort, deleting the student's progress, and a second award after the module grew.
 
 ## Phase 5: Surfacing — BLOCKED on a product decision
 
