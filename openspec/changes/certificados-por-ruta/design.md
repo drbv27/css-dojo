@@ -4,11 +4,16 @@
 
 A certificate must never be recomputed from live data after it is awarded.
 
-The reason is concrete and already scheduled: the mini-challenge pattern will add
-exercises to required modules. If eligibility is a live query, then the morning
-those land, every issued certificate silently becomes a claim its holder no
-longer satisfies. Nobody would notice until a student asks why their certificate
-disappeared.
+The reason is concrete, already scheduled, and **it already happened once**: on
+2026-08-25, commit `6822485` added two exercises to `unidades-css` (order 5) to
+teach `dvh`/`svh`/`lvh` instead of merely naming them. `unidades-css` is a
+required module, so the required CSS path went from 166 exercises to **168** in a
+single ordinary content commit — before a single certificate existed. The
+mini-challenge pattern will do the same thing on purpose and repeatedly.
+
+If eligibility were a live query, the morning such a commit lands every issued
+certificate silently becomes a claim its holder no longer satisfies. Nobody would
+notice until a student asks why their certificate disappeared.
 
 So the `Certificate` document stores **what it certified**:
 
@@ -24,7 +29,7 @@ is read from its own record.
 
 ## Where the classification lives
 
-`nivel` goes on **`ModuleData`** (`src/types/index.ts:201`), as already decided:
+`nivel` goes on **`ModuleData`** (`src/types/index.ts`), as already decided:
 the level is curriculum data, identical for every cohort. `ModuleSettings` is not
 touched and stays binary `{cohort, slug, enabled}`.
 
@@ -42,9 +47,17 @@ The gate makes the absence safe:
 > `nivel`. Otherwise the track reports itself as not certifiable, and gives the
 > count of modules still missing a classification.
 
-Measured today: `css` 30 (classified), `js` 29, `react` 20, `html` 17, `nextjs` 5
-— **71 modules unclassified**. Under this design that is not a bug to rush; it is
-four tracks that correctly refuse to certify.
+Measured 2026-08-25, and this corrects an earlier count in this document: the
+repo has **six** tracks and **106** modules. `css` 30 (classified), `js` 29,
+`react` 20, `html` 17, `react-eco` 5, `nextjs` 5 — **76 modules unclassified**.
+Under this design that is not a bug to rush; it is **five** tracks that correctly
+refuse to certify.
+
+`react-eco` ("Ecosistema React") was missing from the first enumeration here and
+is a live track in `DojoSwitcher` with `estado: "disponible"`. The gate handles it
+with no change — an unclassified track refuses to certify — which is the point of
+writing the rule over *every module of the track* rather than over a hardcoded
+list of tracks.
 
 ## Eligibility, stated precisely
 

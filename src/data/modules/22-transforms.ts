@@ -7,6 +7,7 @@ export const transformsModule: ModuleData = {
     "Mové, girá, agrandá e inclina cajas sin tocar el layout: las funciones de transform, el punto de origen, el orden en que se combinan y un vistazo a la tercera dimensión.",
   order: 22,
   dojo: "css" as const,
+  nivel: "profundizacion",
   category: "css-visual",
   icon: "Move3d",
   lessons: [

@@ -5,16 +5,17 @@ infrastructure that can land safely on `main` with no visible change.
 
 ## Phase 1: The classification, as a credential contract
 
-- [ ] 1.1 Add `nivel?: "obligatorio" | "profundizacion"` to `ModuleData` in `src/types/index.ts`. **Optional in the type**, and absence means *not classified* — never `"obligatorio"`.
-- [ ] 1.2 Declare `nivel: "profundizacion"` on the **11 optional CSS modules** and `nivel: "obligatorio"` on the **19 required** ones. All 30 CSS modules declare it, because the track has to be **fully** classified to be certifiable at all.
-- [ ] 1.3 **Do NOT touch the other 71 modules** (`js` 29, `react` 20, `html` 17, `nextjs` 5). Those four tracks stay unclassified on purpose, and Phase 2's gate is what makes that safe.
-- [ ] 1.4 Curriculum test: exactly 30 CSS modules declare `nivel`, of which exactly **19 are `obligatorio`** and **11 are `profundizacion`**, enumerated by slug — not by count alone. A count that matches with the wrong composition is not a match.
-- [ ] 1.5 Curriculum test: no module outside `css` declares `nivel` yet. This one is a **tripwire**: when someone classifies a second track, this test fails and forces them to update it deliberately.
+- [x] 1.1 Add `nivel?: "obligatorio" | "profundizacion"` to `ModuleData` in `src/types/index.ts`. **Optional in the type**, and absence means *not classified* — never `"obligatorio"`.
+- [x] 1.2 Declare `nivel: "profundizacion"` on the **11 optional CSS modules** and `nivel: "obligatorio"` on the **19 required** ones. All 30 CSS modules declare it, because the track has to be **fully** classified to be certifiable at all.
+- [x] 1.3 **Do NOT touch the other 76 modules** (`js` 29, `react` 20, `html` 17, `react-eco` 5, `nextjs` 5). Those **five** tracks stay unclassified on purpose, and Phase 2's gate is what makes that safe.
+  - **Measured, and it corrects the plan:** the repo has **six** tracks and **106** modules, not five and 101. `react-eco` ("Ecosistema React", `estado: "disponible"` in `DojoSwitcher`) was missing from every enumeration in this change. The gate covers it correctly — five unclassified modules means it refuses to certify — so this is a wrong count, not a wrong rule. `nivel-curriculum.test.ts` now pins the set of tracks so a seventh cannot appear and certify by omission.
+- [x] 1.4 Curriculum test: exactly 30 CSS modules declare `nivel`, of which exactly **19 are `obligatorio`** and **11 are `profundizacion`**, enumerated by slug — not by count alone. A count that matches with the wrong composition is not a match.
+- [x] 1.5 Curriculum test: no module outside `css` declares `nivel` yet. This one is a **tripwire**: when someone classifies a second track, this test fails and forces them to update it deliberately.
 
 ## Phase 2: Certifiability, the safety gate
 
 - [ ] 2.1 `esCertificable(dojo)` in `src/lib/certificados.ts`: true only when **every** module of the track declares `nivel`. Returns the count of unclassified modules when false.
-- [ ] 2.2 Tests, both directions: `css` certifiable; `js`, `react`, `html`, `nextjs` **not** certifiable, each reporting its own count.
+- [ ] 2.2 Tests, both directions: `css` certifiable; `js`, `react`, `html`, `react-eco`, `nextjs` **not** certifiable, each reporting its own count.
 - [ ] 2.3 **Positive control:** declare `nivel` on one non-CSS module in a fixture and confirm the count drops by exactly one, and that the track is still not certifiable. A gate that cannot move is a gate that is not being read.
 
 ## Phase 3: Eligibility
@@ -52,5 +53,5 @@ explicitly not to, before Phase 5 issues anything.
 
 Reconciling cohort 1 (instructor decision: it was an experiment, its students
 have largely stopped logging in, and the snapshot design is what will let them be
-awarded honestly later) · classifying the other four tracks · public verification
+awarded honestly later) · classifying the other five unclassified tracks · public verification
 pages, PDF rendering, LinkedIn.

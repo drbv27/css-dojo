@@ -7,6 +7,7 @@ export const attributeSelectorsModule: ModuleData = {
     "Seleccioná elementos por lo que llevan escrito en sus atributos: el tipo de un campo, el destino de un enlace, la extensión de un archivo. La puerta de entrada a los formularios.",
   order: 13,
   dojo: "css" as const,
+  nivel: "profundizacion",
   category: "css-selectores",
   icon: "Brackets",
   lessons: [

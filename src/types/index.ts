@@ -198,6 +198,14 @@ export interface Exercise {
 
 export type DojoType = "html" | "css" | "js" | "react" | "react-eco" | "nextjs";
 
+/**
+ * Curriculum level of a module, used by the certificate feature.
+ *
+ * "obligatorio" modules form the minimum path of a track; "profundizacion"
+ * modules are never demanded for a certificate.
+ */
+export type ModuleNivel = "obligatorio" | "profundizacion";
+
 export interface ModuleData {
   slug: string;
   title: string;
@@ -206,6 +214,16 @@ export interface ModuleData {
   category: ModuleCategory;
   icon: string;
   dojo: DojoType;
+  /**
+   * OPTIONAL ON PURPOSE, and its absence means "not classified" — NEVER
+   * "obligatorio". A silent default would let an unclassified module become
+   * part of a credential's minimum path without anyone deciding it.
+   *
+   * The safety comes from the gate in `@/lib/certificados`: a track certifies
+   * only when EVERY one of its modules declares this field. Today only `css`
+   * does; the other five tracks correctly refuse to certify.
+   */
+  nivel?: ModuleNivel;
   lessons: Lesson[];
   exercises: Exercise[];
 }

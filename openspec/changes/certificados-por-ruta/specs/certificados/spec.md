@@ -3,7 +3,7 @@
 ## Purpose
 
 Award and record a **certificate of completion per track** (`css`, `html`, `js`,
-`react`, `nextjs`), earned by completing every exercise of that track's required
+`react`, `react-eco`, `nextjs` — the six values of `DojoType`), earned by completing every exercise of that track's required
 modules as enabled for the student's cohort. Every requirement below is `ADDED`.
 
 **Track relevance**: this capability is **per track by construction** — the track

@@ -7,6 +7,7 @@ export const selectoresModule: ModuleData = {
     "Aprende a seleccionar elementos HTML con selectores de tipo, clase e ID para aplicarles estilos.",
   order: 2,
   dojo: "css" as const,
+  nivel: "obligatorio",
   category: "css-fundamentos",
   icon: "MousePointerClick",
   lessons: [
