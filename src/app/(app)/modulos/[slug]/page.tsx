@@ -251,7 +251,7 @@ export default function ModuleDetailPage({
               {/* Los retos de ESTA leccion, para practicar el concepto mientras
                   todavia esta fresco en vez de encontrarse ocho al final. */}
               {retos.length > 0 && (
-                <ul className="ml-4 pl-4 border-l border-editor-border space-y-2">
+                <ul className="ml-8 pl-5 border-l-2 border-editor-muted/40 space-y-1.5">
                   {retos.map((reto: Exercise) => {
                     const typeInfo =
                       exerciseTypeLabels[reto.type] ?? exerciseTypeLabels.quiz;
@@ -262,8 +262,8 @@ export default function ModuleDetailPage({
                       <li key={reto.id}>
                         <Link
                           href={`/modulos/${slug}/ejercicio/${reto.id}`}
-                          className={`flex items-center gap-3 p-3 bg-editor-bg border rounded-lg hover:border-editor-muted/50 transition-all group ${
-                            hecho ? "border-neon-green/30" : "border-editor-border"
+                          className={`flex items-center gap-3 py-2 px-3 bg-editor-bg/60 border rounded-lg hover:border-editor-muted/50 hover:bg-editor-bg transition-all group ${
+                            hecho ? "border-neon-green/30" : "border-editor-border/60"
                           }`}
                         >
                           <span
@@ -273,6 +273,9 @@ export default function ModuleDetailPage({
                           </span>
                           <span className="flex-1 min-w-0 text-xs text-editor-muted group-hover:text-editor-text transition-colors truncate">
                             {reto.prompt}
+                          </span>
+                          <span className="text-[10px] font-mono text-editor-muted shrink-0">
+                            +{reto.xpReward} XP
                           </span>
                           {hecho && (
                             <svg
