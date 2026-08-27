@@ -25,7 +25,10 @@ phases:
     status: done
     artifact: openspec/changes/mini-retos-integradores/proposal.md
   spec:
-    status: pending
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/specs/mini-retos/spec.md
+    requisitos: 7
+    escenarios: 11
   design:
     status: pending
   tasks:
@@ -51,6 +54,13 @@ decidido_por_el_instructor:
   - >
     Cuenta para el certificado, como cualquier ejercicio de un obligatorio.
     Sube el camino minimo de 168 a 187 ejercicios.
+  - >
+    COMPONENTE NUEVO, no un live-editor mas: instrucciones numeradas visibles al
+    costado del editor, y una correccion que dice CUAL de los pasos falta, no
+    solo que la respuesta esta mal.
+  - >
+    Los cinturones quedan FUERA de este cambio y van como cambio propio. Ver
+    defecto_encontrado_QUE_NO_ES_DE_ESTE_CAMBIO.
 
 el_error_que_origino_este_cambio: >
   Un intento anterior leyo la seccion 5 del plan -la tabla de esfuerzo, que dice
@@ -61,12 +71,37 @@ el_error_que_origino_este_cambio: >
   LA REGLA: un resumen o una tabla de esfuerzo NO es la definicion de un
   feature. Citar el parrafo que define el QUE, no el que estima el COSTO.
 
-riesgo_a_resolver_en_design: >
-  El salto de XP es del 34%: los 19 obligatorios valen 3330 XP hoy y pasarian a
-  4470. Los cinturones estan en 0/150/400/800/1500/2500/4000/6000/8500/11000, o
-  sea que hay alumnos que suben de cinturon por trabajo que no hicieron y el
-  leaderboard se reordena la manana que entre. El design tiene que decir si se
-  rebalancean los umbrales o se acepta la inflacion. No se puede descubrir por
-  un alumno al que le cambio el rango de un dia para el otro.
+correccion_de_un_riesgo_MAL_MEDIDO: >
+  Una version anterior de este registro decia que el cambio sube de cinturon a
+  alumnos "por trabajo que no hicieron", con un salto de XP del 34%. LAS DOS
+  MITADES ESTABAN MAL.
+  Agregar ejercicios no le da XP a nadie retroactivamente: el XP de un alumno es
+  la suma de lo que completo, y un ejercicio nuevo vale 0 hasta que lo hace.
+  NADIE cambia de cinturon y el leaderboard no se mueve. Y el 34% era contra el
+  camino obligatorio de CSS; contra el curriculum entero son +7.7%
+  (14750 -> 15890 XP sobre 106 modulos).
+  La consecuencia real de este cambio en XP es que sube el techo, nada mas.
 
-next_recommended: spec
+defecto_encontrado_QUE_NO_ES_DE_ESTE_CAMBIO: >
+  Los umbrales de cinturon son numeros absolutos, asi que cada vez que crece el
+  curso se abaratan SOLOS. Medido: Gran Maestro pide 11000 de los 14750
+  disponibles, o sea el 74.6% del curriculum entero de seis tracks, y estos 19
+  retos solos lo bajan a 69.2%. Las Fases 1-3 de plan-mejoras-css.md lo bajarian
+  otra vez sin que nadie lo decida.
+  El arreglo durable seria anclar cada cinturon a una FRACCION del XP disponible
+  en vez de a un numero fijo. Trae su propio peligro: un umbral recalculado
+  puede BAJAR de cinturon a un alumno el dia que entra contenido, asi que el
+  rango tendria que no retroceder nunca.
+  Toca los seis tracks y a todos los alumnos existentes. FUERA DE ALCANCE aca
+  por decision de Diego el 2026-08-27; va como cambio propio.
+
+hallazgo_que_abarata_el_componente: >
+  `compararReglas` en src/lib/cssRules.ts YA devuelve
+  { correct, score, faltantes: string[] }, con `faltantes` en formato
+  "selector { declaracion }". O sea que el grader YA sabe que falta y ya da
+  credito parcial. Lo que no existe es AGRUPAR eso en pasos numerados.
+  El componente no necesita motor de correccion nuevo: necesita declarar los
+  pasos y mapear cada uno a sus reglas esperadas, corriendo el comparador que ya
+  esta. Eso cambia el tamano del trabajo.
+
+next_recommended: design

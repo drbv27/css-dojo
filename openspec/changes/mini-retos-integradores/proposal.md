@@ -89,18 +89,34 @@ required modules top out at 30. So the rule yields **60 XP** almost everywhere
 
 ## Risks
 
-### The XP jump is bigger than it looks — 34 %
+### ~~The XP jump is bigger than it looks — 34 %~~ CORRECTED, and it was wrong
 
-Measured: the 19 required modules are worth **3 330 XP** today. Nineteen
-challenges add **1 140**, taking them to **4 470**.
+An earlier version of this section claimed the change would move students up
+belts "for work they have not done", off a measured 34 % rise.
 
-Belt thresholds are 0 / 150 / 400 / 800 / 1 500 / 2 500 / 4 000 / 6 000 / 8 500
-/ 11 000. A 34 % rise on the CSS path moves students up belts for work they have
-not done, and reorders the leaderboard the morning it ships.
+**Both halves were wrong.**
 
-This does not block the change, but the design must state whether the belts get
-rebalanced or the inflation is accepted. **It must not be discovered by a student
-whose rank changed overnight.**
+Adding exercises grants nobody XP retroactively — a student's XP is the sum of
+what they completed, and a new exercise is worth 0 until it is done. **No
+student changes belt. The leaderboard does not move.** And the 34 % was measured
+against the required CSS path alone; against the whole curriculum the 19
+challenges are **+7.7 %** (14 750 → 15 890 XP across 106 modules).
+
+The XP consequence of this change is therefore: the ceiling rises, nothing else.
+
+**A real defect surfaced while measuring it, and it is NOT this change's to
+fix.** Belt thresholds are absolute numbers, so every content addition makes them
+relatively cheaper on its own. Measured today: Gran Maestro asks 11 000 of the
+14 750 available — **74.6 % of the entire six-track curriculum** — and these 19
+challenges alone drop it to 69.2 %. Phases 1-3 of `plan-mejoras-css.md` (12 more
+modules) would drop it again, with nobody deciding it.
+
+Pegging belts to a fraction of available XP instead of a fixed number would fix
+that durably, and it carries its own hazard — a recomputed threshold can move a
+student DOWN a belt when content lands, so a rank would have to never regress.
+
+That touches all six tracks and every existing student. **Out of scope here, by
+instructor decision 2026-08-27; it gets its own change.**
 
 ### `css-rules` has to carry a multi-step task
 
