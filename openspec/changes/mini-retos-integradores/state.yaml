@@ -1,0 +1,72 @@
+change: mini-retos-integradores
+created: 2026-08-27
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  note: >
+    Recolectado el 2026-08-27. Interactivo a proposito: este cambio entero se
+    trata de DEFINIR que es un mini-reto, y ya se construyo lo equivocado una
+    vez por no validar la definicion (PR #38, cerrada sin mergear).
+
+resumen_de_una_linea: >
+  UN reto integrador nuevo por modulo en los 19 obligatorios de CSS: multi-paso,
+  autocorregido, que convive con los ejercicios que ya existen y muestra la
+  solucion de referencia SOLO al completarlo.
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/exploracion.md
+  propose:
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/proposal.md
+  spec:
+    status: pending
+  design:
+    status: pending
+  tasks:
+    status: pending
+  apply:
+    status: pending
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+decidido_por_el_instructor:
+  - UN reto integrador por MODULO, no uno por leccion.
+  - >
+    Convive con los ejercicios que ya existen. NO se toca ninguno: hay 5349
+    ejercicios completados en produccion y renumerar o reescribir invalidaria
+    trabajo real de alumnos.
+  - >
+    La solucion se muestra SOLO al completar el reto. Es la desviacion
+    deliberada de W3Schools, que la deja visible desde que carga la pagina.
+  - Arranca por los 19 obligatorios; los 11 opcionales van despues, aparte.
+  - XP = el doble del mas alto del modulo. Medido: da 60 en 17 de los 19.
+  - >
+    Cuenta para el certificado, como cualquier ejercicio de un obligatorio.
+    Sube el camino minimo de 168 a 187 ejercicios.
+
+el_error_que_origino_este_cambio: >
+  Un intento anterior leyo la seccion 5 del plan -la tabla de esfuerzo, que dice
+  "intercalar" y "0 modulos nuevos"- y la trato como la definicion. La
+  definicion esta en la seccion 2: "un desafio chico y autocorregido despues de
+  cada leccion". Se construyo una redistribucion de los ejercicios existentes en
+  vez de contenido nuevo. PR #38, cerrada sin mergear.
+  LA REGLA: un resumen o una tabla de esfuerzo NO es la definicion de un
+  feature. Citar el parrafo que define el QUE, no el que estima el COSTO.
+
+riesgo_a_resolver_en_design: >
+  El salto de XP es del 34%: los 19 obligatorios valen 3330 XP hoy y pasarian a
+  4470. Los cinturones estan en 0/150/400/800/1500/2500/4000/6000/8500/11000, o
+  sea que hay alumnos que suben de cinturon por trabajo que no hicieron y el
+  leaderboard se reordena la manana que entre. El design tiene que decir si se
+  rebalancean los umbrales o se acepta la inflacion. No se puede descubrir por
+  un alumno al que le cambio el rango de un dia para el otro.
+
+next_recommended: spec
