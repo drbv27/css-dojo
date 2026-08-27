@@ -1,0 +1,99 @@
+change: certificados-por-ruta
+created: 2026-08-25
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: auto
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  note: >
+    Presupuesto de 800 y no 400 porque el cambio toca tipos, datos de 30 modulos
+    de CSS, una libreria nueva, un modelo de Mongo y sus tests. Con 400 se frena
+    en cada fase sin que eso agregue seguridad.
+
+resumen_de_una_linea: >
+  Certificado de finalizacion POR RUTA, ganado completando el 100% de los
+  ejercicios de los modulos obligatorios HABILITADOS PARA SU COHORTE. Planificado
+  entero; no se emite nada hasta la fase 5.
+
+phases:
+  explore:
+    status: done
+    note: >
+      La exploracion fue medicion directa contra produccion (solo lectura) el
+      2026-08-25. Los numeros estan en proposal.md y design.md con su origen.
+  propose:
+    status: done
+    artifact: openspec/changes/certificados-por-ruta/proposal.md
+  spec:
+    status: done
+    artifact: openspec/changes/certificados-por-ruta/specs/certificados/spec.md
+    requisitos: 5
+    escenarios: 12
+  design:
+    status: done
+    artifact: openspec/changes/certificados-por-ruta/design.md
+  tasks:
+    status: done
+    artifact: openspec/changes/certificados-por-ruta/tasks.md
+    abiertas: 20
+  apply:
+    status: ready
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+el_numero_que_definio_la_regla: >
+  Con "100% de los ejercicios de los 19 obligatorios de CSS", medido sobre los 35
+  alumnos: CERO calificarian. Los mejores nueve llegan a 134 ejercicios y 17 de
+  19 modulos. Los dos que faltan son tailwind-css (29) y proyecto-cv-css (30), y
+  no es por falta de esfuerzo: la cohorte 1 dejo de trabajar entre el 3 y el 12
+  de julio porque se acabo el curso, y proyecto-cv-css NO TENIA doc de
+  ModuleSettings, o sea que era invisible hasta que se habilito el 2026-08-25.
+  Una regla que no certifica a nadie -incluidos los nueve que hicieron todo lo
+  que les pusieron adelante- no es estricta: esta rota. De ahi sale la regla
+  elegida: los obligatorios HABILITADOS PARA SU COHORTE.
+
+decidido_por_el_instructor:
+  - >
+    La cohorte 1 queda FUERA DE ALCANCE. Fue un experimento y sus alumnos
+    practicamente no vuelven a entrar. Se reconcilia despues, y el diseno de
+    snapshot es lo que va a permitir otorgarles algo honesto.
+  - >
+    La cohorte 2 es el ESTANDAR de aca en adelante, y es la cohorte para la que
+    esta pensado este cambio.
+  - >
+    Los certificados son POR RUTA (css, html, js, react, nextjs), no del curso
+    entero.
+  - >
+    No se emite ningun certificado hasta que todo el flujo exista. Pero es el
+    destino, y todo se planifica apuntando ahi.
+  - >
+    La regla es la opcion 1 de las tres presentadas: 100% de los ejercicios de
+    los obligatorios habilitados para su cohorte.
+
+la_consecuencia_que_nadie_habia_costeado: >
+  Certificados POR RUTA implica que la clasificacion obligatorio/opcional hace
+  falta en LOS CINCO tracks, no solo CSS. Medido: 101 modulos -- css 30, js 29,
+  react 20, html 17, nextjs 5 -- y solo CSS tiene la clasificacion decidida. La
+  salida NO es apurar los otros cuatro: es que la ausencia de `nivel` sea una
+  COMPUERTA. Un track solo certifica si TODOS sus modulos declaran nivel; los
+  otros cuatro se niegan a certificar, que es el comportamiento correcto para una
+  credencial. CSS certifica primero porque es el unico con la decision tomada.
+
+dependencia_conocida: >
+  Los mini-retos de plan-mejoras-css.md (leccion -> challenge -> leccion ->
+  challenge) VAN A AGREGAR ejercicios a modulos obligatorios. Un alumno que hoy
+  esta al 100% baja del 100% el dia que eso entra. Por eso el certificado es un
+  SNAPSHOT y no una consulta viva. No bloquea este cambio, pero conviene que los
+  mini-retos entren -o se descarten explicitamente- ANTES de emitir el primer
+  certificado, o quedan dos poblaciones con definiciones distintas.
+
+decision_abierta_que_bloquea_solo_la_fase_5: >
+  El certificado se otorga AUTOMATICAMENTE al llegar al 100%, o por una ACCION
+  DEL PROFESOR? El modelo soporta las dos y no elige. Es decision de producto y
+  no bloquea las fases 1 a 4.
+
+next_recommended: apply

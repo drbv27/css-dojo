@@ -7,6 +7,7 @@ export const floatDisplayModule: ModuleData = {
     "Domina float para envolver contenido alrededor de elementos y display para controlar cómo se comportan los elementos en el layout.",
   order: 15,
   dojo: "css" as const,
+  nivel: "obligatorio",
   category: "css-layout",
   icon: "LayoutList",
   lessons: [

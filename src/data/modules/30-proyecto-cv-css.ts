@@ -19,6 +19,7 @@ export const proyectoCvCssModule: ModuleData = {
     "Toma el CV que escribiste en HTML y convertilo en una página presentable: clases, tipografía, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
   order: 30,
   dojo: "css" as const,
+  nivel: "obligatorio",
   category: "css-proyecto",
   icon: "FileUser",
   lessons: [

@@ -42,12 +42,37 @@ export async function slugsVisiblesPara(
     };
   }
 
-  const user = await User.findById(sesion.id).select("cohort").lean();
-  const cohort = user?.cohort ?? 1;
+  const cohort = await cohorteDe(sesion.id);
+  return { enabledSlugs: await slugsHabilitadosParaCohorte(cohort), cohort };
+}
+
+/**
+ * La cohorte de un alumno, con el mismo default que usa la visibilidad: sin
+ * cohorte declarada cae en la 1, en vez de quedarse sin nada.
+ */
+export async function cohorteDe(userId: string): Promise<number> {
+  const user = await User.findById(userId).select("cohort").lean();
+  return user?.cohort ?? 1;
+}
+
+/**
+ * La regla de visibilidad POST-MIGRACION, aislada de la sesion.
+ *
+ * La extrajo el feature de certificados, que necesita "que ve la cohorte N" y
+ * no "que ve este usuario": `slugsVisiblesPara` le devuelve TODOS los modulos a
+ * un profesor, y un certificado calculado con esa lista exigiria modulos que la
+ * cohorte nunca vio. Es la misma regla, no una copia -- la rama migrada de
+ * `slugsVisiblesPara` llama aca.
+ *
+ * OJO con el pre-migracion: esta funcion implementa solo el modelo por
+ * cohortes. Antes de migrar no hay documentos con `cohort`, asi que devuelve
+ * vacio, y un conjunto de obligatorios vacio NO otorga certificado. Falla del
+ * lado seguro a proposito.
+ *
+ * Devuelve en orden de curriculum, no en orden de los ajustes.
+ */
+export async function slugsHabilitadosParaCohorte(cohort: number): Promise<string[]> {
   const settings = await ModuleSettings.find({ cohort, enabled: true }).lean();
   const enabledSet = new Set(settings.map((s) => s.slug));
-  return {
-    enabledSlugs: ALL_MODULES.filter((m) => enabledSet.has(m.slug)).map((m) => m.slug),
-    cohort,
-  };
+  return ALL_MODULES.filter((m) => enabledSet.has(m.slug)).map((m) => m.slug);
 }

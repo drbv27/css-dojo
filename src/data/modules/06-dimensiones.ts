@@ -7,6 +7,7 @@ export const dimensionesModule: ModuleData = {
     "Controla el tamaño de los elementos y el espacio que los rodea con width, height, padding y margin.",
   order: 6,
   dojo: "css" as const,
+  nivel: "obligatorio",
   category: "css-caja",
   icon: "Ruler",
   lessons: [
