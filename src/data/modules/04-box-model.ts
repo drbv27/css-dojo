@@ -268,6 +268,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
   exercises: [
     {
       id: "11-ej-01",
+      afterLesson: "11-leccion-01",
       type: "quiz",
       difficulty: 1 ,
       xpReward: 10,
@@ -287,6 +288,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-02",
+      afterLesson: "11-leccion-02",
       type: "quiz",
       difficulty: 2 ,
       xpReward: 20,
@@ -306,6 +308,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-03",
+      afterLesson: "11-leccion-02",
       type: "code-completion",
       difficulty: 1 ,
       xpReward: 10,
@@ -325,6 +328,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-04",
+      afterLesson: "11-leccion-01",
       type: "drag-drop",
       difficulty: 2 ,
       xpReward: 20,
@@ -374,6 +378,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-05",
+      afterLesson: "11-leccion-03",
       type: "live-editor",
       difficulty: 2 ,
       xpReward: 20,
@@ -399,6 +404,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-06",
+      afterLesson: "11-leccion-03",
       type: "visual-match",
       difficulty: 3 ,
       xpReward: 30,
@@ -424,6 +430,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-07",
+      afterLesson: "11-leccion-02",
       type: "code-completion",
       difficulty: 2 ,
       xpReward: 20,
@@ -443,6 +450,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
     },
     {
       id: "11-ej-08",
+      afterLesson: "11-leccion-04",
       type: "quiz",
       difficulty: 2 ,
       xpReward: 20,

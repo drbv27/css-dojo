@@ -6,8 +6,9 @@ import { ALL_MODULES } from "@/data/modules";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
 import { isProjectModule } from "@/lib/projects";
+import { intercalarModulo } from "@/lib/intercalado";
 import ProjectSubmission from "@/components/modules/ProjectSubmission";
-import type { ExerciseType } from "@/types";
+import type { Exercise, ExerciseType } from "@/types";
 
 const exerciseTypeLabels: Record<ExerciseType, { label: string; icon: string; color: string }> = {
   quiz: { label: "Quiz", icon: "?", color: "text-neon-blue bg-neon-blue/10" },
@@ -126,6 +127,11 @@ export default function ModuleDetailPage({
 
   const lessons = [...mod.lessons].sort((a, b) => a.order - b.order);
   const exercises = [...mod.exercises].sort((a, b) => a.order - b.order);
+  // Lesson -> challenge -> lesson -> challenge, when the module declares it.
+  // A module with no `afterLesson` anywhere yields empty `retos` on every
+  // block, so this renders exactly as it always has. The exercise tab keeps
+  // listing every exercise either way: anchoring one never hides it.
+  const { bloques } = intercalarModulo(lessons, exercises);
   const modProgress = getModuleProgress(mod.slug, exercises.length);
   const progressPercent = modProgress.percentage;
 
@@ -216,31 +222,76 @@ export default function ModuleDetailPage({
       {/* Tab content */}
       {activeTab === "lecciones" ? (
         <div className="space-y-2">
-          {lessons.map((lesson, i) => (
-            <Link
-              key={lesson.id}
-              href={`/modulos/${slug}/leccion/${lesson.id}`}
-              className="flex items-center gap-4 p-4 bg-editor-surface border border-editor-border rounded-xl hover:border-editor-muted/50 transition-all group"
-            >
-              {/* Step number */}
-              <div
-                className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium shrink-0 bg-editor-bg text-editor-muted"
+          {bloques.map(({ leccion: lesson, retos }, i) => (
+            <div key={lesson.id} className="space-y-2">
+              <Link
+                href={`/modulos/${slug}/leccion/${lesson.id}`}
+                className="flex items-center gap-4 p-4 bg-editor-surface border border-editor-border rounded-xl hover:border-editor-muted/50 transition-all group"
               >
-                {i + 1}
-              </div>
+                {/* Step number */}
+                <div
+                  className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium shrink-0 bg-editor-bg text-editor-muted"
+                >
+                  {i + 1}
+                </div>
 
-              {/* Content */}
-              <div className="flex-1 min-w-0">
-                <h3 className="text-sm font-medium text-editor-text group-hover:text-neon-blue transition-colors">
-                  {lesson.title}
-                </h3>
-              </div>
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-medium text-editor-text group-hover:text-neon-blue transition-colors">
+                    {lesson.title}
+                  </h3>
+                </div>
 
-              {/* Arrow */}
-              <svg className="w-4 h-4 text-editor-muted group-hover:text-neon-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+                {/* Arrow */}
+                <svg className="w-4 h-4 text-editor-muted group-hover:text-neon-blue transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+
+              {/* Los retos de ESTA leccion, para practicar el concepto mientras
+                  todavia esta fresco en vez de encontrarse ocho al final. */}
+              {retos.length > 0 && (
+                <ul className="ml-4 pl-4 border-l border-editor-border space-y-2">
+                  {retos.map((reto: Exercise) => {
+                    const typeInfo =
+                      exerciseTypeLabels[reto.type] ?? exerciseTypeLabels.quiz;
+                    const ep = exerciseProgressMap.get(reto.id);
+                    const hecho = Boolean(ep?.completed);
+
+                    return (
+                      <li key={reto.id}>
+                        <Link
+                          href={`/modulos/${slug}/ejercicio/${reto.id}`}
+                          className={`flex items-center gap-3 p-3 bg-editor-bg border rounded-lg hover:border-editor-muted/50 transition-all group ${
+                            hecho ? "border-neon-green/30" : "border-editor-border"
+                          }`}
+                        >
+                          <span
+                            className={`w-6 h-6 rounded-md ${typeInfo.color} flex items-center justify-center text-[10px] font-mono font-bold shrink-0`}
+                          >
+                            {typeInfo.icon}
+                          </span>
+                          <span className="flex-1 min-w-0 text-xs text-editor-muted group-hover:text-editor-text transition-colors truncate">
+                            {reto.prompt}
+                          </span>
+                          {hecho && (
+                            <svg
+                              className="w-4 h-4 text-neon-green shrink-0"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              aria-label="Completado"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                            </svg>
+                          )}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           ))}
         </div>
       ) : (

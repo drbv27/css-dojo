@@ -192,6 +192,23 @@ export interface Exercise {
   referenceSolution?: string;
   hint?: string;
   explanation?: string;
+  /**
+   * Id of the lesson this exercise is a challenge FOR, within the same module.
+   *
+   * OPTIONAL AND BACKWARD-COMPATIBLE. Without it a module renders exactly as it
+   * always has: every lesson in one list, every exercise in another. With it,
+   * the lesson list interleaves — lesson, its challenges, next lesson — which
+   * is the whole point: practising a concept while it is still warm instead of
+   * meeting eight exercises at the end.
+   *
+   * The exercise list keeps showing EVERY exercise regardless, so anchoring one
+   * never hides it.
+   *
+   * A value that names no lesson of this module is a DANGLING anchor. It is
+   * caught by a curriculum guard, and at runtime the exercise falls back to
+   * un-anchored rather than disappearing — see `@/lib/intercalado`.
+   */
+  afterLesson?: string;
 }
 
 // ==================== Module ====================
