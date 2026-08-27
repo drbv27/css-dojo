@@ -14,8 +14,8 @@ session_preflight:
 
 resumen_de_una_linea: >
   Certificado de finalizacion POR RUTA, ganado completando el 100% de los
-  ejercicios de los modulos obligatorios HABILITADOS PARA SU COHORTE. Planificado
-  entero; no se emite nada hasta la fase 5.
+  ejercicios de TODOS los modulos obligatorios del track. Fases 1 a 4 aplicadas
+  y mergeadas en main (PR #36, 4951582); no se emite nada hasta la fase 5.
 
 phases:
   explore:
@@ -39,13 +39,37 @@ phases:
     artifact: openspec/changes/certificados-por-ruta/tasks.md
     abiertas: 20
   apply:
-    status: ready
+    status: done
+    note: >
+      Fases 1 a 4 aplicadas y mergeadas en main el 2026-08-27 (PR #36, merge
+      4951582), en cinco commits. La fase 5 esta decidida y AGENDADA PARA EL
+      FINAL por decision del instructor: primero los mini-retos, despues abrir
+      los 8 obligatorios que faltan para la cohorte 2, despues la fase 5.
   verify:
-    status: pending
+    status: done
+    note: >
+      Verificado SOBRE EL ARBOL MERGEADO, no sobre la rama: 279 tests en 26
+      archivos, typecheck limpio, build ok, CI verde en el PR (verify 3m).
+      Los 5 requisitos de la spec delta estan implementados y testeados.
+      20 controles positivos corridos, los 20 en rojo.
   archive:
     status: pending
+    note: >
+      NO se archiva todavia, a proposito. La fase 5 esta abierta, decidida y
+      agendada; archivar cierra el cambio y se lleva ese plan al archivo.
+      Se archiva cuando la fase 5 aterrice. La alternativa, si hiciera falta
+      cerrar antes, es partir la fase 5 en un cambio propio contra la spec ya
+      promovida -- pero eso lo decide el instructor, no el proceso.
 
-el_numero_que_definio_la_regla: >
+el_numero_que_definio_la_regla_Y_POR_QUE_ESTABA_MAL: >
+  OJO: este parrafo justifica una regla QUE YA NO EXISTE. Se conserva porque el
+  error de razonamiento vale mas que el numero. La medicion era correcta y la
+  POBLACION era la equivocada: los "mejores nueve" son de COHORTE 1, que esta
+  fuera de alcance. Ningun alumno de cohorte 2 puede llegar a 17 de 19, porque
+  ocho de los diecinueve nunca se les habilitaron. La regla acotada a la cohorte
+  resolvia el problema de una cohorte que nadie va a certificar, y a cambio
+  certificaba a mitad de curso. La rechazo el instructor el 2026-08-27.
+  El texto original, para que se pueda auditar el razonamiento:
   Con "100% de los ejercicios de los 19 obligatorios de CSS", medido sobre los 35
   alumnos: CERO calificarian. Los mejores nueve llegan a 134 ejercicios y 17 de
   19 modulos. Los dos que faltan son tailwind-css (29) y proyecto-cv-css (30), y
@@ -65,25 +89,49 @@ decidido_por_el_instructor:
     La cohorte 2 es el ESTANDAR de aca en adelante, y es la cohorte para la que
     esta pensado este cambio.
   - >
-    Los certificados son POR RUTA (css, html, js, react, nextjs), no del curso
-    entero.
+    Los certificados son POR RUTA -- css, html, js, react, react-eco, nextjs:
+    los SEIS valores de DojoType. La lista original decia cinco y se olvidaba
+    react-eco.
   - >
     No se emite ningun certificado hasta que todo el flujo exista. Pero es el
     destino, y todo se planifica apuntando ahi.
   - >
-    La regla es la opcion 1 de las tres presentadas: 100% de los ejercicios de
-    los obligatorios habilitados para su cohorte.
+    CORREGIDO EL 2026-08-27, y reemplaza la opcion 1 que se habia elegido: el
+    certificado exige el 100% de los ejercicios de TODOS los obligatorios del
+    track, no de los habilitados para la cohorte. Que el instructor los vaya
+    habilitando de a poco no achica el requisito: significa que la cohorte
+    todavia no termino el curso. Lo habilitado se sigue leyendo, pero solo para
+    reportar por que falta un modulo (aunNoHabilitados).
+  - >
+    DECIDIDO EL 2026-08-27: el certificado se otorga por ACCION DEL PROFESOR, no
+    automaticamente al llegar al 100%. Consecuencia registrada en design.md: la
+    vista del profesor (5.2) pasa a ser PRERREQUISITO del endpoint de
+    otorgamiento, porque con accion manual el alumno queda protegido por el
+    snapshot recien cuando alguien hace clic.
+  - >
+    DECIDIDO EL 2026-08-27: los mini-retos van ANTES del primer certificado.
+    Primero la infraestructura, los certificados al final.
 
 la_consecuencia_que_nadie_habia_costeado: >
   Certificados POR RUTA implica que la clasificacion obligatorio/opcional hace
-  falta en LOS CINCO tracks, no solo CSS. Medido: 101 modulos -- css 30, js 29,
-  react 20, html 17, nextjs 5 -- y solo CSS tiene la clasificacion decidida. La
-  salida NO es apurar los otros cuatro: es que la ausencia de `nivel` sea una
+  falta en LOS SEIS tracks, no solo CSS. Medido el 2026-08-27 contra ALL_MODULES:
+  106 modulos -- css 30, js 29, react 20, html 17, react-eco 5, nextjs 5 -- y
+  solo CSS tiene la clasificacion decidida, o sea 76 sin clasificar. Este
+  parrafo decia CINCO tracks y 101 modulos: se olvidaba react-eco, que es un
+  track vivo en el DojoSwitcher.
+  La salida NO es apurar los otros cinco: es que la ausencia de `nivel` sea una
   COMPUERTA. Un track solo certifica si TODOS sus modulos declaran nivel; los
-  otros cuatro se niegan a certificar, que es el comportamiento correcto para una
+  otros cinco se niegan a certificar, que es el comportamiento correcto para una
   credencial. CSS certifica primero porque es el unico con la decision tomada.
+  Y la compuerta sobrevivio al error de conteo sin cambiar una linea, porque la
+  regla esta escrita sobre "todos los modulos del track" y no sobre una lista
+  fija de tracks. Esa es la leccion que hay que conservar.
 
-dependencia_conocida: >
+dependencia_conocida_YA_RESUELTA: >
+  DECIDIDO EL 2026-08-27: los mini-retos entran ANTES del primer certificado.
+  Ademas dejo de ser hipotetica: el commit 6822485 ya le agrego dos ejercicios a
+  `unidades-css`, que es obligatorio, y movio el camino minimo de CSS de 166 a
+  168 ejercicios en un commit de contenido cualquiera. El texto original:
   Los mini-retos de plan-mejoras-css.md (leccion -> challenge -> leccion ->
   challenge) VAN A AGREGAR ejercicios a modulos obligatorios. Un alumno que hoy
   esta al 100% baja del 100% el dia que eso entra. Por eso el certificado es un
@@ -91,9 +139,18 @@ dependencia_conocida: >
   mini-retos entren -o se descarten explicitamente- ANTES de emitir el primer
   certificado, o quedan dos poblaciones con definiciones distintas.
 
-decision_abierta_que_bloquea_solo_la_fase_5: >
-  El certificado se otorga AUTOMATICAMENTE al llegar al 100%, o por una ACCION
-  DEL PROFESOR? El modelo soporta las dos y no elige. Es decision de producto y
-  no bloquea las fases 1 a 4.
+decision_que_bloqueaba_la_fase_5_YA_TOMADA: >
+  RESUELTA EL 2026-08-27: por ACCION DEL PROFESOR. La fase 5 deja de estar
+  bloqueada y pasa a estar agendada para el final.
 
-next_recommended: apply
+orden_de_lo_que_viene:
+  - mini-retos de plan-mejoras-css.md
+  - habilitar para cohorte 2 los 8 obligatorios de CSS que faltan (float-display,
+    posicionamiento, flexbox, css-grid, variables-css, media-queries,
+    tailwind-css, proyecto-cv-css)
+  - fase 5.2 -- vista del profesor (PRERREQUISITO del endpoint)
+  - fase 5.1 -- endpoint de otorgamiento, teacher-only
+  - fase 5.3 -- vista del alumno
+  - primer certificado
+
+next_recommended: fase 5.2 cuando el instructor lo pida; nada esta en curso
