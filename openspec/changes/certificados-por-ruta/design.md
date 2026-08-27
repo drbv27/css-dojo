@@ -184,9 +184,16 @@ exactly the kind of migration this change is written to avoid.
 
 ## What is NOT decided here
 
-- **Issuance trigger.** Automatic on reaching 100 %, or an instructor action.
-  This design supports both and does not choose; it is a product decision and it
-  is listed in `tasks.md` as blocking the award endpoint, not the model.
+- ~~**Issuance trigger.**~~ **DECIDED 2026-08-25: an instructor action.** Not
+  automatic on reaching 100 %. The model already supported both, so nothing in
+  Phases 1–4 changes.
+
+  The consequence worth stating out loud: with automatic issuance, a student is
+  protected by the snapshot the instant they qualify. With an instructor action,
+  they are protected only once someone clicks — and in between, a growing
+  required module can pull them back below 100 % with nobody watching. **That
+  makes the teacher view of Phase 5.2 a prerequisite of the award endpoint, not a
+  companion to it.**
 - **Revocation.** Not modelled. A certificate awarded is awarded.
 - **Cohort 1.** Out of scope by instructor decision. When it is reconciled, the
   snapshot design is what makes it possible to award them honestly for what they

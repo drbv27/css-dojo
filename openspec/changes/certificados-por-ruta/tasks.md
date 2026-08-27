@@ -55,22 +55,35 @@ infrastructure that can land safely on `main` with no visible change.
 - [x] 4.4 **Positive control:** make the reader recompute from live data instead of the record, and confirm the two snapshot tests turn red. A snapshot test that passes against a live query is testing nothing.
   - Run: **five** tests turn red, both named ones among them — adding exercises, reclassifying, disabling a module for the cohort, deleting the student's progress, and a second award after the module grew.
 
-## Phase 5: Surfacing — BLOCKED on a product decision
+## Phase 5: Surfacing — DECIDED, and deliberately scheduled LAST
 
-- [ ] 5.1 **DECISION REQUIRED, and it blocks this phase only:** is a certificate awarded **automatically** on reaching 100 %, or by an **instructor action**? The model supports both; the endpoint cannot be written until it is chosen.
-  - **Evidence for the decision, measured 2026-08-25.** Under **automatic** issuance the top student of cohort 2 would already hold his CSS certificate, and yesterday's content commit would have been harmless — the snapshot protects an awarded certificate. Under **instructor action**, nobody acted, and he silently dropped out of eligibility with no screen reporting it to anyone. The data does not make the decision, but it prices it.
-- [ ] 5.2 A teacher view of who is eligible per track, and — per the spec — who *was* eligible and no longer is because a required module was opened. The instructor must see that before a student does.
-- [ ] 5.3 The student's own view of their certificate.
+> **No longer blocked. Instructor decisions, 2026-08-25:**
+>
+> 1. **A certificate is awarded by an INSTRUCTOR ACTION**, never automatically on
+>    reaching 100 %.
+> 2. **The mini-challenges land BEFORE the first certificate is issued.** There is
+>    no time pressure: infrastructure first, certificates last.
 
-## Sequencing note: the mini-challenges
+- [x] 5.1 **DECIDED: instructor action.** The endpoint is an explicit award, not a trigger fired by progress.
+  - **What this buys.** No student is awarded by a background rule nobody watched. The instructor sees the list, decides, and acts — which matches how the course actually ends.
+  - **What this costs, and 5.2 is the mitigation.** Nobody is watching eligibility for you. A student can reach 100 % and sit there unnoticed, and can silently fall back below it when a required module grows. Under automatic issuance the snapshot would have protected them the moment they qualified; under instructor action the protection only starts when you click. **So the teacher view is not a nicety here — it is the only thing that makes this choice safe.**
+  - `otorgar(userId, dojo)` already implements exactly this shape: it verifies eligibility and freezes, and it is called by nobody. It needs an authenticated teacher-only endpoint on top, nothing more.
+- [ ] 5.2 A teacher view of who is eligible per track, and who is close. Ship this **before or with** the award endpoint, never after — see the cost noted in 5.1.
+  - `esElegible` already returns everything it needs: the required list, the missing exercise ids per module, and `aunNoHabilitados`, which separates "this student is behind" from "the course has not got there".
+- [ ] 5.3 The student's own view of their certificate. Reads `leerCertificado`, which never recomputes.
+
+## Sequencing — DECIDED
 
 `plan-mejoras-css.md` Phase 4 (lesson → challenge → lesson → challenge) **adds
-exercises to required modules**. That is exactly what Phase 4's snapshot exists
-to survive, so it does not block this change.
+exercises to required modules**.
 
-But issuing the **first** certificates in the middle of that rollout produces two
-populations with different definitions. Cleaner: land the challenges, or decide
-explicitly not to, before Phase 5 issues anything.
+**Instructor decision 2026-08-25: the mini-challenges land first, and the first
+certificate is issued after them.** That avoids two populations certified against
+different definitions of the same track, and it means the snapshot is protecting
+against future content changes rather than one already in flight.
+
+Concretely, the order is: mini-challenges → all 19 required CSS modules enabled
+for cohort 2 → Phase 5 → first award. Nothing in Phases 1–4 waits on any of it.
 
 ## Explicitly out of scope
 
