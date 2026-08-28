@@ -295,28 +295,28 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
     },
     {
       /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
-      id: "01-ej-reto",
+            id: "01-ej-reto",
       type: "live-editor",
       difficulty: 3,
       xpReward: 40,
       order: 7,
       prompt:
-        "Reto integrador. Escribi tres reglas completas, cada una con su selector y sus declaraciones. Fijate que una regla puede llevar más de una declaración: eso es lo que la hace una regla y no un dato suelto.",
+        "Reto integrador. Tres reglas que se APOYAN una en otra: el paso 3 solo tiene sentido si entendiste que la regla del paso 2 ya alcanzó al párrafo de la intro.",
       retoPasos: [
         {
           instruccion:
-            "Dale al h1 el color #2c3e50 y un tamaño de fuente de 32px. Una sola regla, dos declaraciones.",
+            "Dale al h1 el color #2c3e50 y un tamaño de fuente de 32px. Una sola regla con dos declaraciones adentro de las mismas llaves.",
           esperado: "h1 { color: #2c3e50; font-size: 32px; }",
         },
         {
           instruccion:
-            "Dale a la clase .intro el color #7f8c8d y un tamaño de 18px.",
-          esperado: ".intro { color: #7f8c8d; font-size: 18px; }",
+            "Con un selector de tipo, dale a TODOS los parrafos el color #7f8c8d y un interlineado de 1.6. Fijate que alcanza a los dos, tambien al que tiene clase.",
+          esperado: "p { color: #7f8c8d; line-height: 1.6; }",
         },
         {
           instruccion:
-            "Dale a todos los parrafos un interlineado de 1.6. Ojo: el selector de tipo alcanza a los dos parrafos, tambien al que ya tiene clase.",
-          esperado: "p { line-height: 1.6; }",
+            "Ahora dale a .intro un tamaño de 18px y el color #2c3e50. El párrafo de la intro va a quedar con el interlineado que le puso el paso 2 Y con el color que le pone este: las reglas se suman, y cuando chocan gana la más específica.",
+          esperado: ".intro { font-size: 18px; color: #2c3e50; }",
         },
       ],
       codeTemplate: {
@@ -329,10 +329,10 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         type: "css-rules",
       },
       referenceSolution:
-        "h1 {\n  color: #2c3e50;\n  font-size: 32px;\n}\n\n.intro {\n  color: #7f8c8d;\n  font-size: 18px;\n}\n\np {\n  line-height: 1.6;\n}",
-      hint: "Una regla es `selector { propiedad: valor; }`. Podes poner varias declaraciones adentro de las mismas llaves, separadas por punto y coma.",
+        "h1 {\n  color: #2c3e50;\n  font-size: 32px;\n}\n\np {\n  color: #7f8c8d;\n  line-height: 1.6;\n}\n\n.intro {\n  font-size: 18px;\n  color: #2c3e50;\n}",
+      hint: "Una regla es `selector { propiedad: valor; }`. El paso 3 no reemplaza al paso 2: el párrafo de la intro se queda con el interlineado y cambia solo el color.",
       explanation:
-        "Las tres reglas juntas muestran la anatomia completa: un selector, las llaves, y adentro una o más declaraciones de `propiedad: valor`. El paso 3 además deja ver que un selector de tipo alcanza a TODOS los elementos de ese tipo, incluido el que ya tenia clase: los estilos se suman, no se reemplazan.",
+        "Las tres reglas muestran la anatomia completa y, sobre todo, que los estilos SE SUMAN. El párrafo de la intro recibe el interlineado del selector de tipo y el color del selector de clase al mismo tiempo. Cuando dos reglas piden lo mismo -aca el color- gana la más específica, y por eso `.intro` le gana a `p`.",
     },
   ],
 };

@@ -612,6 +612,11 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
             "Separa su contenido del borde con 24px de padding, y separalo de sus vecinos con 16px de margin.",
           esperado: ".panel { padding: 24px; margin: 16px; }",
         },
+        {
+          instruccion:
+            "Dale una proporcion de 16/9 con aspect-ratio. Es la unica forma de fijar la relacion entre ancho y alto sin calcular ninguno de los dos.",
+          esperado: ".panel { aspect-ratio: 16 / 9; }",
+        },
       ],
       codeTemplate: {
         html: `<div class="panel">\n  <p>Un panel que respeta sus límites.</p>\n</div>`,
@@ -623,10 +628,10 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         type: "css-rules",
       },
       referenceSolution:
-        ".panel {\n  width: 100%;\n  max-width: 600px;\n  min-height: 120px;\n  padding: 24px;\n  margin: 16px;\n}",
+        ".panel {\n  width: 100%;\n  max-width: 600px;\n  min-height: 120px;\n  padding: 24px;\n  margin: 16px;\n  aspect-ratio: 16 / 9;\n}",
       hint: "`width: 100%` y `max-width` no se pelean: el ancho manda mientras haya lugar, y el máximo lo frena cuando se pasa.",
       explanation:
-        "`width` dice cuanto quiere medir el elemento; `max-width` y `min-height` dicen hasta donde se le permite. Los límites son lo que convierte un ancho fijo en un diseño que aguanta pantallas distintas. Y el padding y el margin siguen siendo lo de siempre: uno adentro de la caja, el otro afuera.",
+        "`width` dice cuanto quiere medir el elemento; `max-width` y `min-height` dicen hasta donde se le permite. Los límites son lo que convierte un ancho fijo en un diseño que aguanta pantallas distintas. El padding y el margin siguen siendo lo de siempre: uno adentro de la caja, el otro afuera. Y `aspect-ratio` es el que ata el alto al ancho, asi que la caja mantiene su forma sin que haya que calcular el alto a mano.",
     },
   ],
 };
