@@ -4,6 +4,9 @@ import dbConnect from "@/lib/db";
 import Progress from "@/lib/models/Progress";
 import User from "@/lib/models/User";
 import { ALL_MODULES } from "@/data/modules";
+import { calificar } from "@/lib/calificar";
+import { parserHtmlServidor } from "@/lib/parserHtmlServidor";
+import GradeMismatch from "@/lib/models/GradeMismatch";
 
 export async function GET() {
   const session = await getSession();
@@ -25,14 +28,42 @@ export async function POST(request: Request) {
   await dbConnect();
   const body = await request.json();
   const moduleId = body.moduleId ?? body.moduleSlug;
-  const { exerciseId, exerciseType, score, userAnswer } = body;
+  const { exerciseId, exerciseType, userAnswer } = body;
 
-  // Find the exercise definition to get the REAL max xpReward
+  // `body.score` NO se desestructura junto al resto a proposito: no decide
+  // nada. Se lee una sola vez, mas abajo, y solo para compararlo con el que
+  // calcula el servidor y registrar la discrepancia.
+  const scoreCliente = typeof body.score === "number" ? body.score : null;
+
   const mod = ALL_MODULES.find((m) => m.slug === moduleId);
   const exercise = mod?.exercises.find((e) => e.id === exerciseId);
-  const maxXP = exercise?.xpReward ?? 10;
 
-  const isCompleted = score >= 70;
+  // Un par que el curriculum no declara no puede corregirse, asi que tampoco
+  // puede completarse. Antes se escribia un Progress igual, con el score que
+  // viniera en el body.
+  if (!exercise) {
+    return NextResponse.json(
+      { error: "Ejercicio no encontrado" },
+      { status: 400 }
+    );
+  }
+
+  const maxXP = exercise.xpReward;
+
+  // EL SERVIDOR CORRIGE. Hasta este cambio la linea era
+  // `const isCompleted = score >= 70` con el score del navegador, y un `fetch`
+  // desde la consola completaba cualquier ejercicio -- lo que desde que existen
+  // los certificados significaba otorgarse la credencial entera.
+  //
+  // `calificar` es el MISMO modulo que usa el componente del ejercicio, no una
+  // segunda implementacion: un corrector de servidor mas estricto rechazaria en
+  // silencio a alumnos que resolvieron bien.
+  const calificacion = calificar(exercise, userAnswer, parserHtmlServidor);
+
+  // Un corrector que no pudo corregir no otorga nada. Nunca un 500 en la cara
+  // del alumno a mitad del ejercicio.
+  const score = calificacion.calificable ? calificacion.score : 0;
+  const isCompleted = calificacion.calificable && score >= 70;
   const xpToAward = isCompleted ? maxXP : 0;
 
   // Check if already completed BEFORE updating
@@ -61,6 +92,24 @@ export async function POST(request: Request) {
     },
     { upsert: true, new: true }
   );
+
+  // La discrepancia se registra DESPUES de persistir, para que un fallo
+  // escribiendo el registro no le pierda el progreso al alumno.
+  if (scoreCliente !== null && scoreCliente !== score) {
+    try {
+      await GradeMismatch.create({
+        userId: session.id,
+        moduleId,
+        exerciseId,
+        scoreCliente,
+        scoreServidor: score,
+        ...(calificacion.calificable ? {} : { motivo: calificacion.motivo }),
+        cuando: new Date(),
+      });
+    } catch {
+      // Registrar es diagnostico, no parte del contrato con el alumno.
+    }
+  }
 
   let userXP = 0;
   let userStreak = 0;
