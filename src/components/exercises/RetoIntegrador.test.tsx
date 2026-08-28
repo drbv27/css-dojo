@@ -12,12 +12,35 @@ import type { Exercise } from "@/types";
  */
 
 vi.mock("@/components/editor/CSSEditor", () => ({
-  default: ({ value, language, readOnly }: { value: string; language?: string; readOnly?: boolean }) => (
-    <textarea readOnly data-testid={`editor-${language ?? "css"}`} data-readonly={String(!!readOnly)} value={value} />
+  // El mock CABLEA onChange: sin eso no se puede probar que lo que el alumno
+  // escribe llegue al preview y a la correccion.
+  default: ({
+    value,
+    onChange,
+    language,
+    readOnly,
+  }: {
+    value: string;
+    onChange?: (v: string) => void;
+    language?: string;
+    readOnly?: boolean;
+  }) => (
+    <textarea
+      data-testid={`editor-${language ?? "css"}`}
+      data-readonly={String(!!readOnly)}
+      value={value}
+      readOnly={!!readOnly}
+      onChange={(e) => onChange?.(e.target.value)}
+    />
   ),
 }));
+// El mock EXPONE lo que recibe: un preview que ignora sus props no puede
+// probar que se le pase lo correcto, y ese fue exactamente el segundo bug del
+// reto de Tailwind -- renderizaba la plantilla en vez del trabajo del alumno.
 vi.mock("@/components/editor/LivePreview", () => ({
-  default: () => <div data-testid="preview" />,
+  default: ({ html, css }: { html: string; css?: string }) => (
+    <div data-testid="preview" data-html={html} data-css={css ?? ""} />
+  ),
 }));
 
 // Sin esto los renders se acumulan entre tests y `getByText` encuentra dos.
@@ -122,5 +145,87 @@ describe("RetoIntegrador: la pestaña de HTML", () => {
     fireEvent.click(screen.getByRole("tab", { name: /vista previa/i }));
 
     expect(screen.getByTestId("preview")).toBeTruthy();
+  });
+});
+
+/**
+ * Un reto de ESTRUCTURA: el alumno escribe HTML con clases utilitarias, no CSS.
+ *
+ * Estos tests no existian y por eso el bug llego a la pantalla: el editor
+ * quedaba en modo CSS -Monaco subrayaba en rojo el HTML valido- y la vista
+ * previa mostraba la plantilla original en vez del trabajo del alumno.
+ */
+const retoHtml: Exercise = {
+  ...reto,
+  id: "reto-html",
+  validation: { type: "html-structure" },
+  retoPasos: [
+    { instruccion: "Agregale `flex` al div", esperado: ".tarjeta.flex" },
+    { instruccion: "Agregale `p-6` al div", esperado: ".tarjeta.p-6" },
+  ],
+  referenceSolution: '<div class="tarjeta flex p-6"></div>',
+};
+
+describe("RetoIntegrador: un reto que se escribe en HTML", () => {
+  it("el editor esta en modo HTML, no CSS", () => {
+    render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+    expect(screen.getByTestId("editor-html")).toBeTruthy();
+    expect(screen.queryByTestId("editor-css")).toBeNull();
+  });
+
+  it("el editor arranca con la plantilla de HTML, no con el cssPrefix", () => {
+    render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+    const editor = screen.getByTestId("editor-html") as HTMLTextAreaElement;
+    expect(editor.value).toContain("class='tarjeta'");
+  });
+
+  it("el editor NO es de solo lectura: es donde se trabaja", () => {
+    render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+    expect(screen.getByTestId("editor-html").getAttribute("data-readonly")).toBe("false");
+  });
+
+  it("no ofrece la pestaña HTML, porque el alumno YA esta editando el HTML", () => {
+    render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+    expect(screen.queryByRole("tab", { name: /^html$/i })).toBeNull();
+    expect(screen.getByRole("tab", { name: /vista previa/i })).toBeTruthy();
+  });
+
+  it("un reto de CSS SI ofrece las dos pestañas", () => {
+    // El control del caso contrario: si esto tambien fallara, el test de arriba
+    // no estaria probando la distincion.
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+    expect(screen.getByRole("tab", { name: /^html$/i })).toBeTruthy();
+  });
+});
+
+describe("RetoIntegrador: que recibe la vista previa", () => {
+  it("en un reto de HTML, el preview renderiza lo que ESCRIBE el alumno", () => {
+    render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+
+    const p = screen.getByTestId("preview");
+    // Arranca con la plantilla en el editor, asi que el preview la muestra --
+    // pero como `html`, no como plantilla fija: lo que importa es que el CSS
+    // vaya vacio y el HTML salga del editor.
+    expect(p.getAttribute("data-html")).toContain("tarjeta");
+    expect(p.getAttribute("data-css")).toBe("");
+  });
+
+  it("en un reto de CSS, el preview usa la plantilla y el CSS del alumno", () => {
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+
+    const p = screen.getByTestId("preview");
+    expect(p.getAttribute("data-html")).toContain("tarjeta");
+    expect(p.getAttribute("data-css")).toBe("");
+  });
+
+  it("lo que el alumno escribe LLEGA al preview", () => {
+    // El control que faltaba: sin esto, un preview cableado a la plantilla
+    // pasaba los tests igual.
+    const { container } = render(<RetoIntegrador exercise={retoHtml} onSubmit={() => {}} />);
+    const editor = screen.getByTestId("editor-html");
+    fireEvent.change(editor, { target: { value: '<div class="tarjeta flex p-6">X</div>' } });
+
+    expect(screen.getByTestId("preview").getAttribute("data-html")).toContain("flex p-6");
+    expect(container).toBeTruthy();
   });
 });
