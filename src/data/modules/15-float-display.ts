@@ -498,5 +498,51 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       explanation:
         "Flexbox (display: flex) y CSS Grid (display: grid) son las técnicas modernas para crear layouts. Flexbox es ideal para layouts unidimensionales (fila o columna) y Grid para bidimensionales (filas y columnas a la vez). Float debe reservarse para envolver texto alrededor de elementos.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "13-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Un articulo con una foto flotando, y el contenedor que tiene que contenerla. El paso 3 resuelve el problema clasico del float, y el paso 4 muestra por que hoy casi no se usa.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con `.foto`, flotala a la izquierda y dale 120px de ancho con 12px de margen derecho.",
+          esperado: ".foto { float: left; width: 120px; margin-right: 12px; }",
+        },
+        {
+          instruccion:
+            "Con `.pie`, usa clear both para que el pie no se suba al costado de la foto.",
+          esperado: ".pie { clear: both; }",
+        },
+        {
+          instruccion:
+            "El problema clasico: el `.articulo` colapsa su alto porque su unico contenido alto esta flotado. Dale overflow hidden para que lo contenga.",
+          esperado: ".articulo { overflow: hidden; }",
+        },
+        {
+          instruccion:
+            "Ahora con `.articulo` cambia a display flex y dale un gap de 12px. Mira la vista previa: con flex el float deja de hacer falta.",
+          esperado: ".articulo { display: flex; gap: 12px; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<article class=\"articulo\">\n  <img class=\"foto\" src=\"#\" alt=\"foto\">\n  <p>El texto rodea a la imagen flotada.</p>\n</article>\n<footer class=\"pie\">Este pie NO debe subirse al costado.</footer>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".foto {\n  float: left;\n  width: 120px;\n  margin-right: 12px;\n}\n\n.pie {\n  clear: both;\n}\n\n.articulo {\n  overflow: hidden;\n  display: flex;\n  gap: 12px;\n}",
+      hint: "Un contenedor cuyos hijos estan todos flotados mide cero de alto. `overflow: hidden` lo obliga a contenerlos, y es el arreglo de siempre.",
+      explanation:
+        "Los pasos 1 a 3 son el mundo del float: flotar, limpiar y después arreglar el colapso que el float provoca. El paso 4 muestra por que hoy casi no se usa: con `display: flex` el contenedor contiene a sus hijos sin trucos y el clear deja de hacer falta. Saber float sigue importando para leer código viejo.",
+    },
   ],
 };

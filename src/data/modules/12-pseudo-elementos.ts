@@ -483,5 +483,51 @@ Crear triangulos, circulos y otras formas:
       explanation:
         "Se combina el estilo base del párrafo con el pseudo-elemento ::first-letter para crear una capitular. La primera letra se muestra grande (2.5em), en color steelblue y negrita, mientras el resto del texto mantiene sus estilos normales.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "08-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Los pseudo-elementos crean contenido que NO está en el HTML. Abri la pestaña HTML: nada de lo que vas a agregar existe ahi.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con `.editorial p::first-letter`, agrandale la primera letra a 48px y ponele float left con un margen derecho de 8px.",
+          esperado: ".editorial p::first-letter { font-size: 48px; float: left; margin-right: 8px; }",
+        },
+        {
+          instruccion:
+            "Con `.editorial p::first-line`, ponele a la primera linea font-weight 600.",
+          esperado: ".editorial p::first-line { font-weight: 600; }",
+        },
+        {
+          instruccion:
+            "Con `.titulo::after`, agrega una barra decorativa: content vacio, display block, 60px de ancho, 4px de alto y fondo #e74c3c.",
+          esperado: ".titulo::after { content: \"\"; display: block; width: 60px; height: 4px; background-color: #e74c3c; }",
+        },
+        {
+          instruccion:
+            "Con `.titulo::before`, agrega un guion largo como content y dale color #bdc3c7.",
+          esperado: ".titulo::before { content: \"— \"; color: #bdc3c7; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<article class=\"editorial\">\n  <h2 class=\"titulo\">Un titulo con adorno</h2>\n  <p>La primera letra de este parrafo va a crecer, y la primera linea va a cambiar de peso sin que el HTML tenga ni un span.</p>\n</article>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".editorial p::first-letter {\n  font-size: 48px;\n  float: left;\n  margin-right: 8px;\n}\n\n.editorial p::first-line {\n  font-weight: 600;\n}\n\n.titulo::after {\n  content: \"\";\n  display: block;\n  width: 60px;\n  height: 4px;\n  background-color: #e74c3c;\n}\n\n.titulo::before {\n  content: \"— \";\n  color: #bdc3c7;\n}",
+      hint: "`::before` y `::after` NO se ven sin la propiedad `content`, aunque tengan tamaño y color. Es el requisito que más se olvida.",
+      explanation:
+        "Los cuatro crean o alcanzan cosas que el HTML no declara. `::first-letter` y `::first-line` toman pedazos de texto que ningun elemento envuelve, y `::before` y `::after` inventan contenido nuevo. Por eso la pestaña HTML no cambia y la vista previa si: los pseudo-elementos viven solo en el CSS.",
+    },
   ],
 };

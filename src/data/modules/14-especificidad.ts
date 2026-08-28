@@ -702,5 +702,51 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las √
       explanation:
         "Con :where(.contenido) h2 el selector pasa de 0-1-1 a 0-0-1, porque :where() no aporta especificidad. Ahora .destacado, que pesa 0-1-0, le gana sin necesidad de !important. Es la forma de decir 'esto es un valor por defecto, pisalo cuando quieras'.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "09-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 12,
+      prompt:
+        "Reto integrador. Tres reglas peleando por el mismo texto, y vos decidiendo quien gana con especificidad en vez de con !important.",
+      retoPasos: [
+        {
+          instruccion:
+            "Arranca con lo mas debil: con el selector de tipo `h2`, dale color #95a5a6. Especificidad (0,0,1).",
+          esperado: "h2 { color: #95a5a6; }",
+        },
+        {
+          instruccion:
+            "Con `.contenido .titulo`, dale color #3498db. Dos clases dan (0,2,0), que le gana al tipo.",
+          esperado: ".contenido .titulo { color: #3498db; }",
+        },
+        {
+          instruccion:
+            "Con `#principal .titulo`, dale color #e74c3c. Un id mas una clase dan (1,1,0), y el id le gana a cualquier cantidad de clases.",
+          esperado: "#principal .titulo { color: #e74c3c; }",
+        },
+        {
+          instruccion:
+            "Ahora el truco: con `:where(#principal) .titulo`, dale un font-size de 28px. `:where()` aporta CERO especificidad, asi que ese selector pesa (0,1,0) aunque tenga un id adentro.",
+          esperado: ":where(#principal) .titulo { font-size: 28px; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<main id=\"principal\">\n  <section class=\"contenido\">\n    <h2 class=\"titulo\">Quien gana esta pelea</h2>\n  </section>\n</main>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        "h2 {\n  color: #95a5a6;\n}\n\n.contenido .titulo {\n  color: #3498db;\n}\n\n#principal .titulo {\n  color: #e74c3c;\n}\n\n:where(#principal) .titulo {\n  font-size: 28px;\n}",
+      hint: "La especificidad se cuenta como (ids, clases, tipos) y se compara de izquierda a derecha. Un solo id le gana a diez clases.",
+      explanation:
+        "El texto termina en #e74c3c porque (1,1,0) le gana a (0,2,0) y a (0,0,1). El paso 4 es el que sorprende: `:where()` envuelve un id y aun asi aporta cero, asi que sirve para escribir selectores amplios sin dejar una bomba de especificidad para el que venga despu√©s. Esa es la alternativa a `!important`, que no se toca en ningun paso a proposito.",
+    },
   ],
 };

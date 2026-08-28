@@ -25,6 +25,13 @@ const MODULOS_CON_RETO = [
   "unidades-css",
   "dimensiones",
   "tipografias",
+  // Tanda C, 2026-08-28: los obligatorios 10 a 16.
+  "selectores-descendientes",
+  "pseudo-clases",
+  "pseudo-elementos",
+  "especificidad",
+  "float-display",
+  "posicionamiento",
 ];
 
 describe("retos integradores", () => {
