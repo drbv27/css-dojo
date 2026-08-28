@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { ALL_MODULES } from "@/data/modules";
-import { calificar, esSoloCliente } from "@/lib/calificar";
+import { calificar, esSoloCliente, cssEsperadoDe, esRetoIntegrador } from "@/lib/calificar";
 import type { Exercise } from "@/types";
 
 /**
@@ -25,6 +25,8 @@ const TODOS = ALL_MODULES.flatMap((m) =>
 
 /** The submission that SHOULD score 100 for this exercise. */
 function respuestaCorrecta(e: Exercise): unknown {
+  // Un reto no declara `targetCSS`: su CSS esperado se deriva de sus pasos.
+  if (esRetoIntegrador(e)) return cssEsperadoDe(e);
   if (e.type === "drag-drop") {
     return Object.fromEntries((e.dragItems ?? []).map((i) => [i.id, i.correctZone]));
   }
@@ -58,9 +60,9 @@ function respuestaEquivocada(e: Exercise): unknown {
 }
 
 describe("el calificador, sobre el curriculum real", () => {
-  it("cubre los 789 ejercicios que hay hoy", () => {
+  it("cubre los 790 ejercicios que hay hoy", () => {
     // Pins the denominator. Every count below is meaningless without it.
-    expect(TODOS.length).toBe(789);
+    expect(TODOS.length).toBe(790);
   });
 
   it("POSITIVO: la respuesta correcta de cada ejercicio saca 100", () => {

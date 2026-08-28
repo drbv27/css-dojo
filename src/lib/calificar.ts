@@ -1,6 +1,6 @@
 import { compararReglas } from "@/lib/cssRules";
 import { compararEstructura } from "@/lib/htmlStructure";
-import type { Exercise } from "@/types";
+import type { Exercise, RetoPaso } from "@/types";
 
 /**
  * THE grading rule. One copy, used by the exercise UI and by the API.
@@ -26,6 +26,16 @@ import type { Exercise } from "@/types";
  */
 export type Calificacion =
   | { calificable: true; correct: boolean; score: number }
+  /**
+   * Un reto integrador. Trae el veredicto POR PASO ademas del global, porque
+   * decirle "esta mal" a quien hizo tres de cuatro no le sirve de nada.
+   */
+  | {
+      calificable: true;
+      correct: boolean;
+      score: number;
+      pasos: { instruccion: string; cumplido: boolean }[];
+    }
   /** Runs the student's JavaScript in a Worker; there is no server equivalent. */
   | { calificable: false; motivo: "solo-cliente"; tipo: string }
   /** The answer arrived in a shape this exercise cannot be graded against. */
@@ -51,6 +61,52 @@ const noCalificable = (score: number): Calificacion => ({
 });
 
 /**
+ * El CSS esperado de un reto: sus pasos, unidos.
+ *
+ * UN RETO NO DECLARA `targetCSS`. Se deriva de aca, y por eso el preview y la
+ * correccion no pueden discrepar: los dos leen lo mismo.
+ */
+export function cssEsperadoDe(ejercicio: Exercise): string {
+  if (esRetoIntegrador(ejercicio)) {
+    return ejercicio.retoPasos!.map((p) => p.esperado).join("\n");
+  }
+  return ejercicio.targetCSS ?? "";
+}
+
+/** Si este ejercicio es el reto integrador de su modulo. */
+export function esRetoIntegrador(ejercicio: Exercise): boolean {
+  return (ejercicio.retoPasos?.length ?? 0) > 0;
+}
+
+/**
+ * Califica un reto: paso por paso, con `compararReglas` una vez por paso.
+ *
+ * CIEN O CERO, NUNCA UNA FRACCION. Decision del instructor del 2026-08-28.
+ *
+ * La ruta completa un ejercicio con `score >= 70`. En un reto de cuatro pasos,
+ * tres de cuatro son 75: COMPLETARIA con un paso entero salteado, en el
+ * ejercicio cuyo punto es hacer las partes JUNTAS y que cuenta para el
+ * certificado. Tres cuartos de una integracion no son una integracion.
+ *
+ * El detalle por paso igual le llega al alumno en `pasos`, asi que no se pierde
+ * nada en la interfaz: lo unico que deja de pasar es que el score mienta sobre
+ * una integracion a medias.
+ *
+ * OJO: esta regla es SOLO del reto. Los otros 788 ejercicios siguen con el
+ * credito parcial de siempre -- 56 de los 77 `css-rules` completan hoy con una
+ * declaracion faltante, y cambiar eso es otra decision y otro cambio.
+ */
+function calificarReto(pasos: readonly RetoPaso[], respuesta: unknown): Calificacion {
+  const enviado = String(respuesta);
+  const detalle = pasos.map((p) => ({
+    instruccion: p.instruccion,
+    cumplido: compararReglas(p.esperado, enviado).correct,
+  }));
+  const todos = detalle.every((d) => d.cumplido);
+  return { calificable: true, correct: todos, score: todos ? 100 : 0, pasos: detalle };
+}
+
+/**
  * Grades a submission.
  *
  * DISPATCHES ON THE EXERCISE, NOT ON `validation.type` ALONE, and that is not a
@@ -70,6 +126,11 @@ export function calificar(
   respuesta: unknown,
   parseHtml?: ParserHtml,
 ): Calificacion {
+  // Un reto integrador se califica por sus pasos, antes que nada mas.
+  if (esRetoIntegrador(ejercicio)) {
+    return calificarReto(ejercicio.retoPasos!, respuesta);
+  }
+
   // FIRST, and before any look at `validation`. See the note above.
   if (ejercicio.type === "drag-drop") {
     return calificarDragDrop(ejercicio, respuesta);
@@ -137,7 +198,7 @@ export function calificar(
       // preview shows. `answer` is only an override.
       const esperado = v.answer
         ? (Array.isArray(v.answer) ? v.answer : [v.answer]).join("\n")
-        : (ejercicio.targetCSS ?? "");
+        : cssEsperadoDe(ejercicio);
       if (!esperado.trim()) return { calificable: false, motivo: "sin-expectativa", tipo: v.type };
       const { correct, score } = compararReglas(esperado, String(respuesta));
       return { calificable: true, correct, score };

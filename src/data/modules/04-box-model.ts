@@ -460,5 +460,60 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       explanation:
         "El outline NO forma parte del Box Model: no ocupa espacio, no afecta las dimensiones del elemento ni mueve a otros elementos. El border si forma parte del Box Model y suma al tamaño total del elemento.",
     },
+    {
+      /**
+       * EL RETO INTEGRADOR del modulo. Cierra `box-model` haciendo que el
+       * alumno use en UNA sola tarea las cuatro cosas que las cuatro lecciones
+       * ensenaron por separado: las capas, `border-box`, la interaccion de
+       * width con padding y border, y outline como lo que NO ocupa espacio.
+       *
+       * No declara `targetCSS`: se deriva de `retoPasos` con `cssEsperadoDe`.
+       */
+      id: "11-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Arma la tarjeta cumpliendo los cuatro pasos. Ojo con el paso 3: el ancho VISIBLE tiene que seguir siendo 300px después de agregar el padding y el borde.",
+      retoPasos: [
+        {
+          instruccion:
+            "Hace que .tarjeta calcule su ancho incluyendo padding y borde, en vez de sumarlos por fuera.",
+          esperado: ".tarjeta { box-sizing: border-box; }",
+        },
+        {
+          instruccion:
+            "Dale a .tarjeta un ancho de 300px, 20px de padding y un borde de 4px solid #333.",
+          esperado:
+            ".tarjeta { width: 300px; padding: 20px; border: 4px solid #333; }",
+        },
+        {
+          instruccion:
+            "Separa la tarjeta de lo que la rodea con 16px de margin. El margin es la única de las cuatro capas que queda AFUERA de la caja.",
+          esperado: ".tarjeta { margin: 16px; }",
+        },
+        {
+          instruccion:
+            "Marca la tarjeta con un outline de 2px dashed crimson. A diferencia del borde, el outline no ocupa espacio y no mueve nada.",
+          esperado: ".tarjeta { outline: 2px dashed crimson; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<div class="tarjeta">Una tarjeta que mide 300px de ancho, se vea como se vea.</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        // Se corrige paso por paso contra `retoPasos`. Ver src/lib/calificar.ts.
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".tarjeta {\n  box-sizing: border-box;\n  width: 300px;\n  padding: 20px;\n  border: 4px solid #333;\n  margin: 16px;\n  outline: 2px dashed crimson;\n}",
+      hint: "El paso 1 es el que hace posible el paso 2: sin `border-box`, 300px de ancho más 20px de padding y 4px de borde de cada lado dan 348px visibles.",
+      explanation:
+        "Con `box-sizing: border-box` el ancho declarado ya incluye padding y borde, así que la tarjeta mide 300px visibles y no 348px. El margin queda afuera de esa cuenta porque no es parte de la caja: separa la caja de sus vecinas. Y el outline no ocupa espacio en absoluto, por eso se puede agregar sin recalcular nada.",
+    },
   ],
 };

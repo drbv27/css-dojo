@@ -57,7 +57,10 @@ phases:
       pr_encadenados: si
       chain_strategy: stacked-to-main   # cacheado de la sesion
   apply:
-    status: pending
+    status: partial
+    note: >
+      Rebanada A aplicada: maquinaria completa mas el reto piloto en box-model.
+      Faltan las tandas B, C y D -- los 18 retos de contenido restantes.
   verify:
     status: pending
   archive:
@@ -143,4 +146,4 @@ LA_DECISION_QUE_EL_DISENIO_LEVANTA_Y_NO_RESUELVE: >
   788. Es una pregunta de producto con 56 ejercicios detras y va en su propio
   cambio. NO se cuela aca.
 
-next_recommended: apply   # rebanada A
+next_recommended: apply   # tandas B, C, D (contenido)
