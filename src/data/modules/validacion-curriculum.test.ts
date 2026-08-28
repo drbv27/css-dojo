@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { compararReglas, parseCssRules } from "@/lib/cssRules";
+import { cssEsperadoDe } from "@/lib/calificar";
 import { compararEstructura } from "@/lib/htmlStructure";
 import { ALL_MODULES } from "@/data/modules";
 
@@ -70,7 +71,7 @@ describe("curriculum CSS: integridad de la validacion", () => {
 
   it("todo ejercicio css-rules tiene un targetCSS que parsea", () => {
     const malos = conCssRules.filter(
-      (e) => !e.ex.targetCSS || parseCssRules(e.ex.targetCSS).size === 0
+      (e) => !cssEsperadoDe(e.ex) || parseCssRules(cssEsperadoDe(e.ex)).size === 0
     );
     expect(malos.map((m) => `${m.mod}/${m.id}`)).toEqual([]);
   });
@@ -91,7 +92,7 @@ describe("curriculum CSS: integridad de la validacion", () => {
   it("ningun targetCSS tiene una declaracion con un nombre de propiedad tragado", () => {
     const sospechosas: string[] = [];
     for (const e of conCssRules) {
-      for (const [selector, decls] of parseCssRules(e.ex.targetCSS!)) {
+      for (const [selector, decls] of parseCssRules(cssEsperadoDe(e.ex))) {
         for (const decl of decls) {
           const limpia = decl.replace(/"[^"]*"|'[^']*'|url\([^)]*\)/g, "");
           if ((limpia.match(/:/g)?.length ?? 0) > 1) {
@@ -105,7 +106,7 @@ describe("curriculum CSS: integridad de la validacion", () => {
 
   it("la respuesta correcta de cada ejercicio puntua 100%", () => {
     const malos = conCssRules.filter(
-      (e) => !compararReglas(e.ex.targetCSS!, e.ex.targetCSS!).correct
+      (e) => !compararReglas(cssEsperadoDe(e.ex), cssEsperadoDe(e.ex)).correct
     );
     expect(malos.map((m) => `${m.mod}/${m.id}`)).toEqual([]);
   });
@@ -113,7 +114,7 @@ describe("curriculum CSS: integridad de la validacion", () => {
   it("ningun ejercicio css-rules se aprueba escribiendo la respuesta como prosa", () => {
     const rotos: string[] = [];
     for (const e of conCssRules) {
-      const target = e.ex.targetCSS!;
+      const target = cssEsperadoDe(e.ex);
       const palabras = target.replace(/[{};:]/g, " ").replace(/\s+/g, " ").trim();
       const trampas = [palabras, `/* ${target} */`, `no se css ${palabras}`];
       if (trampas.some((t) => compararReglas(target, t).correct)) {
@@ -125,7 +126,7 @@ describe("curriculum CSS: integridad de la validacion", () => {
 
   it("intercambiar los cuerpos de dos reglas no aprueba", () => {
     const rotos = conCssRules.filter((e) => {
-      const reglas = [...e.ex.targetCSS!.matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(
+      const reglas = [...cssEsperadoDe(e.ex).matchAll(/([^{}]+)\{([^{}]*)\}/g)].map(
         (m) => [m[1].trim(), m[2]] as [string, string]
       );
       if (reglas.length < 2) return false;

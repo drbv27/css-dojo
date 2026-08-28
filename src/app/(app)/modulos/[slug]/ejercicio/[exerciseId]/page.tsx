@@ -6,6 +6,7 @@ import { ALL_MODULES } from "@/data/modules";
 import ExerciseRenderer from "@/components/exercises/ExerciseRenderer";
 import AchievementToast from "@/components/gamification/AchievementToast";
 import { useAuth } from "@/hooks/useAuth";
+import { useProgress } from "@/hooks/useProgress";
 
 export default function ExercisePage({
   params,
@@ -18,6 +19,7 @@ export default function ExercisePage({
   const [moduleDisabled, setModuleDisabled] = useState(false);
   const [checkingEnabled, setCheckingEnabled] = useState(true);
   const { user, refreshUser } = useAuth();
+  const { progress } = useProgress();
   const isTeacher = user?.role === "teacher";
 
   useEffect(() => {
@@ -186,7 +188,17 @@ export default function ExercisePage({
 
       {/* Exercise renderer */}
       <div className="bg-editor-surface border border-editor-border rounded-xl overflow-hidden p-6">
-        <ExerciseRenderer exercise={exercise} onComplete={handleComplete} />
+        <ExerciseRenderer
+          exercise={exercise}
+          onComplete={handleComplete}
+          // La unica llave de la solucion de referencia del reto integrador.
+          // Se lee del progreso REAL del alumno, no de si acaba de acertar en
+          // esta sesion: recargar la pagina no la abre, y diez intentos
+          // fallidos tampoco.
+          yaCompletado={progress.some(
+            (p) => p.moduleId === slug && p.exerciseId === exerciseId && p.completed
+          )}
+        />
       </div>
 
       {/* Navigation */}

@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import type { Exercise } from "@/types";
-import { calificar } from "@/lib/calificar";
+import { calificar, esRetoIntegrador } from "@/lib/calificar";
 import QuizExercise from "./QuizExercise";
 import CodeCompletionExercise from "./CodeCompletionExercise";
 import LiveEditorExercise from "./LiveEditorExercise";
@@ -10,9 +10,15 @@ import VisualMatchExercise from "./VisualMatchExercise";
 import DragDropExercise from "./DragDropExercise";
 import ExerciseResult from "./ExerciseResult";
 import JsBehaviorExercise from "./JsBehaviorExercise";
+import RetoIntegrador from "./RetoIntegrador";
 
 interface ExerciseRendererProps {
   exercise: Exercise;
+  /**
+   * Si este alumno YA completo este ejercicio. Hoy solo la usa el reto
+   * integrador, que es el unico que esconde algo hasta completarlo.
+   */
+  yaCompletado?: boolean;
   onComplete: (result: {
     correct: boolean;
     score: number;
@@ -24,6 +30,7 @@ interface ExerciseRendererProps {
 export default function ExerciseRenderer({
   exercise,
   onComplete,
+  yaCompletado = false,
 }: ExerciseRendererProps) {
   const [result, setResult] = useState<{
     correct: boolean;
@@ -95,6 +102,21 @@ export default function ExerciseRenderer({
   );
 
   const renderExercise = () => {
+    // El reto integrador va ANTES del switch por tipo, igual que se califica
+    // antes de mirar `validation`: es un `live-editor` pero no declara
+    // `targetCSS`, asi que `LiveEditorExercise` lo tomaria por un ejercicio de
+    // HTML y le mostraria el editor equivocado.
+    if (esRetoIntegrador(exercise)) {
+      return (
+        <RetoIntegrador
+          exercise={exercise}
+          onSubmit={handleSubmit}
+          submitted={result !== null}
+          yaCompletado={yaCompletado}
+        />
+      );
+    }
+
     switch (exercise.type) {
       case "quiz":
         return <QuizExercise exercise={exercise} onSubmit={handleSubmit} />;

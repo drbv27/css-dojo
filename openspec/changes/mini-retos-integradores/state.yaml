@@ -30,26 +30,37 @@ phases:
     requisitos: 7
     escenarios: 11
   design:
-    status: blocked
-    bloqueado_por: revalidacion-en-servidor
-    note: >
-      PARADO EL 2026-08-28, antes de escribir una linea de design. La spec exige
-      que el referenceSolution "no este presente en lo que la pagina entrega al
-      cliente", y eso HOY NO SE PUEDE: la pagina del ejercicio es "use client" e
-      importa ALL_MODULES entero. Medido en el bundle compilado
-      (.next/static/chunks/04xlc4ayw5o2e.js): 154 `isCorrect`, 80 `targetCSS` y
-      los `referenceSolution` que ya existen. TODAS las respuestas del curso ya
-      viajan al navegador.
-      Cualquier llave sobre la solucion seria de UI, no un limite real, hasta
-      que exista un lado servidor donde decidirla. Eso es lo que trae el cambio
-      `revalidacion-en-servidor`.
-      Cuando ese cambio aterrice hay que revisar el requisito "The Reference
-      Solution Is Revealed Only After Completion" de la spec: se escribio sin
-      saber esto.
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/design.md
+  desbloqueado_el: 2026-08-28
+  nota_del_desbloqueo: >
+    `revalidacion-en-servidor` esta mergeado (PR #39, #40, #41), asi que el
+    servidor ya decide la completitud y existe un lado servidor donde apoyar la
+    llave de la solucion.
+    PERO el requisito de la solucion SE REESCRIBIO, porque estaba mal escrito:
+    exigia que el referenceSolution "no este presente en lo que la pagina
+    entrega al cliente", y eso no es alcanzable -- la pagina del ejercicio es
+    "use client" e importa ALL_MODULES, asi que el curriculum entero viaja al
+    navegador (154 `isCorrect` y 80 `targetCSS` medidos en el bundle).
+    Ahora dice lo que si se puede sostener: es una llave EN LA INTERFAZ, no un
+    limite, y la spec lo dice en vez de insinuar lo contrario. Sacar el
+    curriculum del bundle seria su propio cambio, y el caso ya es debil: lo que
+    importaba -mandar una completitud que no se gano- lo cerro
+    `revalidacion-en-servidor`.
   tasks:
-    status: pending
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/tasks.md
+    forecast:
+      lineas_estimadas_total: 1400
+      rebanada_A_maquinaria_y_piloto: 600
+      rebanadas_B_C_D_contenido: 270
+      pr_encadenados: si
+      chain_strategy: stacked-to-main   # cacheado de la sesion
   apply:
-    status: pending
+    status: partial
+    note: >
+      Rebanada A aplicada: maquinaria completa mas el reto piloto en box-model.
+      Faltan las tandas B, C y D -- los 18 retos de contenido restantes.
   verify:
     status: pending
   archive:
@@ -119,4 +130,20 @@ hallazgo_que_abarata_el_componente: >
   pasos y mapear cada uno a sus reglas esperadas, corriendo el comparador que ya
   esta. Eso cambia el tamano del trabajo.
 
-next_recommended: none   # bloqueado; ver phases.design.bloqueado_por
+LA_DECISION_QUE_EL_DISENIO_LEVANTA_Y_NO_RESUELVE: >
+  La ruta completa un ejercicio con `score >= 70`. En un reto de cuatro pasos,
+  tres de cuatro son 75: COMPLETA con un paso entero salteado, en el ejercicio
+  cuyo punto es hacer las partes juntas, y que cuenta para el certificado.
+  Y no es nuevo. Medido el 2026-08-28 sobre los 77 ejercicios `css-rules` del
+  curriculum: 56 DE 77 YA COMPLETAN con una declaracion faltante. El de 17
+  declaraciones completa con cinco menos. "El credito parcial completa" es la
+  regla vigente de la plataforma, y nadie la eligio: salio de un umbral fijo de
+  70 chocando con un score proporcional.
+  Recomendacion: el reto exige TODOS sus pasos -- `calificar` devuelve 100 o 0
+  para un reto, nunca una fraccion. El detalle por paso igual le llega al alumno
+  por el feedback, asi que no se pierde nada en la interfaz.
+  LO QUE QUEDA PARA DIEGO: si la regla del 70 tiene que cambiar para los otros
+  788. Es una pregunta de producto con 56 ejercicios detras y va en su propio
+  cambio. NO se cuela aca.
+
+next_recommended: apply   # tandas B, C, D (contenido)

@@ -192,6 +192,29 @@ export interface Exercise {
   referenceSolution?: string;
   hint?: string;
   explanation?: string;
+  /**
+   * Los pasos de un RETO INTEGRADOR: el ejercicio que cierra un modulo haciendo
+   * que el alumno use varios de sus conceptos en una sola tarea.
+   *
+   * OPCIONAL, y su ausencia significa "un ejercicio comun" -- nunca "un reto de
+   * cero pasos". Un guard exige al menos dos: con uno solo es un ejercicio
+   * comun con una insignia puesta.
+   *
+   * UN RETO NO ESCRIBE `targetCSS` A MANO. Se deriva juntando los `esperado`
+   * con `cssEsperadoDe`. Declarar los dos serian dos fuentes de verdad del
+   * mismo hecho, y derivan: alguien edita un paso, el preview sigue mostrando
+   * el target viejo, y el ejercicio corrige contra algo que al alumno nunca se
+   * le mostro.
+   */
+  retoPasos?: RetoPaso[];
+}
+
+/** Un paso de un reto integrador: que se pide, y el CSS que lo prueba. */
+export interface RetoPaso {
+  /** Lo que lee el alumno, numerado, al lado del editor. */
+  instruccion: string;
+  /** El CSS que satisface ESTE paso y solo este. */
+  esperado: string;
 }
 
 // ==================== Module ====================
