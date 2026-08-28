@@ -30,7 +30,22 @@ phases:
     requisitos: 7
     escenarios: 11
   design:
-    status: pending
+    status: blocked
+    bloqueado_por: revalidacion-en-servidor
+    note: >
+      PARADO EL 2026-08-28, antes de escribir una linea de design. La spec exige
+      que el referenceSolution "no este presente en lo que la pagina entrega al
+      cliente", y eso HOY NO SE PUEDE: la pagina del ejercicio es "use client" e
+      importa ALL_MODULES entero. Medido en el bundle compilado
+      (.next/static/chunks/04xlc4ayw5o2e.js): 154 `isCorrect`, 80 `targetCSS` y
+      los `referenceSolution` que ya existen. TODAS las respuestas del curso ya
+      viajan al navegador.
+      Cualquier llave sobre la solucion seria de UI, no un limite real, hasta
+      que exista un lado servidor donde decidirla. Eso es lo que trae el cambio
+      `revalidacion-en-servidor`.
+      Cuando ese cambio aterrice hay que revisar el requisito "The Reference
+      Solution Is Revealed Only After Completion" de la spec: se escribio sin
+      saber esto.
   tasks:
     status: pending
   apply:
@@ -104,4 +119,4 @@ hallazgo_que_abarata_el_componente: >
   pasos y mapear cada uno a sus reglas esperadas, corriendo el comparador que ya
   esta. Eso cambia el tamano del trabajo.
 
-next_recommended: design
+next_recommended: none   # bloqueado; ver phases.design.bloqueado_por
