@@ -1,0 +1,122 @@
+change: mini-retos-integradores
+created: 2026-08-27
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  note: >
+    Recolectado el 2026-08-27. Interactivo a proposito: este cambio entero se
+    trata de DEFINIR que es un mini-reto, y ya se construyo lo equivocado una
+    vez por no validar la definicion (PR #38, cerrada sin mergear).
+
+resumen_de_una_linea: >
+  UN reto integrador nuevo por modulo en los 19 obligatorios de CSS: multi-paso,
+  autocorregido, que convive con los ejercicios que ya existen y muestra la
+  solucion de referencia SOLO al completarlo.
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/exploracion.md
+  propose:
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/proposal.md
+  spec:
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/specs/mini-retos/spec.md
+    requisitos: 7
+    escenarios: 11
+  design:
+    status: blocked
+    bloqueado_por: revalidacion-en-servidor
+    note: >
+      PARADO EL 2026-08-28, antes de escribir una linea de design. La spec exige
+      que el referenceSolution "no este presente en lo que la pagina entrega al
+      cliente", y eso HOY NO SE PUEDE: la pagina del ejercicio es "use client" e
+      importa ALL_MODULES entero. Medido en el bundle compilado
+      (.next/static/chunks/04xlc4ayw5o2e.js): 154 `isCorrect`, 80 `targetCSS` y
+      los `referenceSolution` que ya existen. TODAS las respuestas del curso ya
+      viajan al navegador.
+      Cualquier llave sobre la solucion seria de UI, no un limite real, hasta
+      que exista un lado servidor donde decidirla. Eso es lo que trae el cambio
+      `revalidacion-en-servidor`.
+      Cuando ese cambio aterrice hay que revisar el requisito "The Reference
+      Solution Is Revealed Only After Completion" de la spec: se escribio sin
+      saber esto.
+  tasks:
+    status: pending
+  apply:
+    status: pending
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+decidido_por_el_instructor:
+  - UN reto integrador por MODULO, no uno por leccion.
+  - >
+    Convive con los ejercicios que ya existen. NO se toca ninguno: hay 5349
+    ejercicios completados en produccion y renumerar o reescribir invalidaria
+    trabajo real de alumnos.
+  - >
+    La solucion se muestra SOLO al completar el reto. Es la desviacion
+    deliberada de W3Schools, que la deja visible desde que carga la pagina.
+  - Arranca por los 19 obligatorios; los 11 opcionales van despues, aparte.
+  - XP = el doble del mas alto del modulo. Medido: da 60 en 17 de los 19.
+  - >
+    Cuenta para el certificado, como cualquier ejercicio de un obligatorio.
+    Sube el camino minimo de 168 a 187 ejercicios.
+  - >
+    COMPONENTE NUEVO, no un live-editor mas: instrucciones numeradas visibles al
+    costado del editor, y una correccion que dice CUAL de los pasos falta, no
+    solo que la respuesta esta mal.
+  - >
+    Los cinturones quedan FUERA de este cambio y van como cambio propio. Ver
+    defecto_encontrado_QUE_NO_ES_DE_ESTE_CAMBIO.
+
+el_error_que_origino_este_cambio: >
+  Un intento anterior leyo la seccion 5 del plan -la tabla de esfuerzo, que dice
+  "intercalar" y "0 modulos nuevos"- y la trato como la definicion. La
+  definicion esta en la seccion 2: "un desafio chico y autocorregido despues de
+  cada leccion". Se construyo una redistribucion de los ejercicios existentes en
+  vez de contenido nuevo. PR #38, cerrada sin mergear.
+  LA REGLA: un resumen o una tabla de esfuerzo NO es la definicion de un
+  feature. Citar el parrafo que define el QUE, no el que estima el COSTO.
+
+correccion_de_un_riesgo_MAL_MEDIDO: >
+  Una version anterior de este registro decia que el cambio sube de cinturon a
+  alumnos "por trabajo que no hicieron", con un salto de XP del 34%. LAS DOS
+  MITADES ESTABAN MAL.
+  Agregar ejercicios no le da XP a nadie retroactivamente: el XP de un alumno es
+  la suma de lo que completo, y un ejercicio nuevo vale 0 hasta que lo hace.
+  NADIE cambia de cinturon y el leaderboard no se mueve. Y el 34% era contra el
+  camino obligatorio de CSS; contra el curriculum entero son +7.7%
+  (14750 -> 15890 XP sobre 106 modulos).
+  La consecuencia real de este cambio en XP es que sube el techo, nada mas.
+
+defecto_encontrado_QUE_NO_ES_DE_ESTE_CAMBIO: >
+  Los umbrales de cinturon son numeros absolutos, asi que cada vez que crece el
+  curso se abaratan SOLOS. Medido: Gran Maestro pide 11000 de los 14750
+  disponibles, o sea el 74.6% del curriculum entero de seis tracks, y estos 19
+  retos solos lo bajan a 69.2%. Las Fases 1-3 de plan-mejoras-css.md lo bajarian
+  otra vez sin que nadie lo decida.
+  El arreglo durable seria anclar cada cinturon a una FRACCION del XP disponible
+  en vez de a un numero fijo. Trae su propio peligro: un umbral recalculado
+  puede BAJAR de cinturon a un alumno el dia que entra contenido, asi que el
+  rango tendria que no retroceder nunca.
+  Toca los seis tracks y a todos los alumnos existentes. FUERA DE ALCANCE aca
+  por decision de Diego el 2026-08-27; va como cambio propio.
+
+hallazgo_que_abarata_el_componente: >
+  `compararReglas` en src/lib/cssRules.ts YA devuelve
+  { correct, score, faltantes: string[] }, con `faltantes` en formato
+  "selector { declaracion }". O sea que el grader YA sabe que falta y ya da
+  credito parcial. Lo que no existe es AGRUPAR eso en pasos numerados.
+  El componente no necesita motor de correccion nuevo: necesita declarar los
+  pasos y mapear cada uno a sus reglas esperadas, corriendo el comparador que ya
+  esta. Eso cambia el tamano del trabajo.
+
+next_recommended: none   # bloqueado; ver phases.design.bloqueado_por

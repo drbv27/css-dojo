@@ -1,0 +1,101 @@
+change: revalidacion-en-servidor
+created: 2026-08-28
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  note: Cacheado de la sesion del 2026-08-27; no se vuelve a preguntar.
+
+resumen_de_una_linea: >
+  Corregir la respuesta del alumno EN EL SERVIDOR antes de escribir Progress, en
+  vez de creerle el score que manda el navegador. 785 de 789 ejercicios.
+
+por_que_es_urgente: >
+  `POST /api/progress` hace `const isCompleted = score >= 70` con el score que
+  viene en el body, y no hay UN SOLO corrector llamado en todo src/app/api/. Un
+  `fetch` desde la consola de un alumno logueado completa cualquier ejercicio.
+  Hasta el 2026-08-27 el dano era XP y un cinturon. Desde que aterrizo
+  `certificados-por-ruta`, la elegibilidad se define sobre
+  `Progress.completed === true`: un alumno puede otorgarse el certificado entero
+  desde la consola. Es una credencial que firma Diego.
+
+lo_que_este_cambio_NO_arregla: >
+  Todas las respuestas del curso YA estan en el navegador. Medido en
+  .next/static/chunks/04xlc4ayw5o2e.js: 154 `isCorrect`, 80 `targetCSS` y los
+  `referenceSolution` que ya existen, porque la pagina del ejercicio es
+  "use client" e importa ALL_MODULES entero.
+  Este cambio no cierra eso y no debe pretenderlo. Cierra otra cosa y mas
+  importante: MANDAR UNA COMPLETITUD QUE NO SE GANO. Leer la respuesta sigue
+  exigiendo pegarla y que te corrijan.
+
+phases:
+  explore:
+    status: done
+    artifact: openspec/changes/revalidacion-en-servidor/exploracion.md
+  propose:
+    status: done
+    artifact: openspec/changes/revalidacion-en-servidor/proposal.md
+  spec:
+    status: pending
+  design:
+    status: pending
+  tasks:
+    status: pending
+  apply:
+    status: pending
+  verify:
+    status: pending
+  archive:
+    status: pending
+
+cobertura_medida:
+  total_ejercicios: 789
+  exact: 674
+  css_rules: 77
+  html_structure: 24
+  includes_ordered: 6
+  regex: 4
+  js_behavior: 4
+  revalidados_despues_del_cambio: 785
+
+decidido_por_el_instructor:
+  - >
+    Los 4 de `js-behavior` siguen corrigiendose en el cliente, MARCADOS COMO
+    TALES en el codigo y en el doc. Corren el JS del alumno en un Worker y no
+    hay equivalente server-side sin meter un sandbox de ejecucion en el backend.
+    El track js no declara nivel, asi que no certifica: hoy no tocan ninguna
+    credencial. SI ALGUN DIA SE CLASIFICA EL TRACK JS, esto pasa a ser un
+    bloqueante de esa clasificacion, y va en ese cambio, no en este.
+  - >
+    `jsdom` se promueve de devDependency a dependency. Ya esta instalado
+    (^30.0.1) y ya lo usan los tests. Sube html-structure a server-graded, y el
+    track html SI va a certificar cuando se lo clasifique.
+  - >
+    Los 5349 Progress completados bajo la regla vieja se DEJAN COMO ESTAN.
+    Recorregirlos seria una escritura masiva contra la base viva, y un bug del
+    recorrector borraria trabajo legitimo de alumnos: mucho peor que dejar pasar
+    una trampa improbable.
+  - >
+    Cuando el score del cliente y el del servidor no coincidan, MANDA EL
+    SERVIDOR y la discrepancia se registra. El motivo de registrar no es solo la
+    trampa: un patron de discrepancia amplio y parejo es evidencia de que el
+    corrector esta mal, no los alumnos. Sin el registro, una regresion del
+    corrector se ve identica a una ola de trampas, y lo primero que haria
+    cualquiera es acusar a los alumnos.
+
+riesgo_principal: >
+  Un corrector de servidor MAS ESTRICTO que el del cliente rechaza en silencio a
+  alumnos honestos, y se lee como error del alumno. `compararReglas` es la misma
+  funcion en los dos lados, asi que css-rules esta cubierto. El peligro esta en
+  `exact`: son 674 ejercicios, y cualquier normalizacion que haga el cliente y
+  no haga el servidor se convierte en un rechazo falso.
+  LA SPEC TIENE QUE EXIGIR un guard de datos que corra la respuesta correcta
+  registrada de CADA UNO de los 789 contra el corrector del servidor y saque
+  100. Misma forma que el guard de referenceSolution que ya lleva js-behavior.
+
+bloquea_a: mini-retos-integradores
+
+next_recommended: spec
