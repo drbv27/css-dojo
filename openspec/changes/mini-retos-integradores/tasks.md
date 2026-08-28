@@ -41,12 +41,29 @@ place. The other 18 required modules are untouched and unaffected.
 
 ## Slices B, C, D — the remaining 18 challenges
 
+**Done 2026-08-28.** 19 of 19. Three things came out of the rollout that the plan
+did not anticipate:
+
+- **`tailwind-css` cannot be graded with `css-rules`.** Its exercises use
+  `html-structure` because the student writes HTML with utility classes, not
+  CSS. `calificarReto` now picks the comparator from the exercise's own
+  `validation.type`. That is mechanism inside a slice planned as pure content.
+- **A challenge's steps must all hold at the same time.** `css-grid` had step 1
+  set `grid-template-columns: repeat(3, 1fr)` and step 4 overwrite it with
+  `auto-fit`; the reference solution scored 0 and the positive guard named it.
+  Not a rule anyone had written down.
+- **The component assumed every challenge is written in CSS.** The Tailwind
+  challenge opened with the editor in CSS mode — Monaco underlining valid HTML
+  in red — and the preview rendering the template instead of the student's work.
+  Found by the instructor on screen, not by any test: none covered a
+  structure-graded challenge.
+
 Six modules each, in curriculum order. Each slice is content plus the guard
 count, no mechanism.
 
-- [ ] B `que-es-css` · `selectores` · `propiedades-basicas` · `unidades-css` · `dimensiones` · `tipografias`
-- [ ] C `selectores-descendientes` · `pseudo-clases` · `pseudo-elementos` · `especificidad` · `float-display` · `posicionamiento`
-- [ ] D `flexbox` · `css-grid` · `variables-css` · `media-queries` · `tailwind-css` · `proyecto-cv-css`
+- [x] B `que-es-css` · `selectores` · `propiedades-basicas` · `unidades-css` · `dimensiones` · `tipografias`
+- [x] C `selectores-descendientes` · `pseudo-clases` · `pseudo-elementos` · `especificidad` · `float-display` · `posicionamiento`
+- [x] D `flexbox` · `css-grid` · `variables-css` · `media-queries` · `tailwind-css` · `proyecto-cv-css`
 
 Each slice MUST update the enumerated list of modules carrying a challenge, so
 a batch cannot land unrecorded.
