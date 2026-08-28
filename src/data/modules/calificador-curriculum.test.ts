@@ -60,9 +60,9 @@ function respuestaEquivocada(e: Exercise): unknown {
 }
 
 describe("el calificador, sobre el curriculum real", () => {
-  it("cubre los 790 ejercicios que hay hoy", () => {
+  it("cubre los 796 ejercicios que hay hoy", () => {
     // Pins the denominator. Every count below is meaningless without it.
-    expect(TODOS.length).toBe(790);
+    expect(TODOS.length).toBe(796);
   });
 
   it("POSITIVO: la respuesta correcta de cada ejercicio saca 100", () => {

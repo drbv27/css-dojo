@@ -293,5 +293,46 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       explanation:
         "Los estilos en línea (inline) se consideran un anti-patrón porque mezclan contenido con presentación, no se pueden reutilizar, tienen una especificidad muy alta y hacen que el código sea difícil de mantener.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "01-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 40,
+      order: 7,
+      prompt:
+        "Reto integrador. Escribi tres reglas completas, cada una con su selector y sus declaraciones. Fijate que una regla puede llevar más de una declaración: eso es lo que la hace una regla y no un dato suelto.",
+      retoPasos: [
+        {
+          instruccion:
+            "Dale al h1 el color #2c3e50 y un tamaño de fuente de 32px. Una sola regla, dos declaraciones.",
+          esperado: "h1 { color: #2c3e50; font-size: 32px; }",
+        },
+        {
+          instruccion:
+            "Dale a la clase .intro el color #7f8c8d y un tamaño de 18px.",
+          esperado: ".intro { color: #7f8c8d; font-size: 18px; }",
+        },
+        {
+          instruccion:
+            "Dale a todos los parrafos un interlineado de 1.6. Ojo: el selector de tipo alcanza a los dos parrafos, tambien al que ya tiene clase.",
+          esperado: "p { line-height: 1.6; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<h1>Mi primera hoja de estilos</h1>\n<p class="intro">CSS le da forma al HTML.</p>\n<p>Un parrafo cualquiera.</p>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        "h1 {\n  color: #2c3e50;\n  font-size: 32px;\n}\n\n.intro {\n  color: #7f8c8d;\n  font-size: 18px;\n}\n\np {\n  line-height: 1.6;\n}",
+      hint: "Una regla es `selector { propiedad: valor; }`. Podes poner varias declaraciones adentro de las mismas llaves, separadas por punto y coma.",
+      explanation:
+        "Las tres reglas juntas muestran la anatomia completa: un selector, las llaves, y adentro una o más declaraciones de `propiedad: valor`. El paso 3 además deja ver que un selector de tipo alcanza a TODOS los elementos de ese tipo, incluido el que ya tenia clase: los estilos se suman, no se reemplazan.",
+    },
   ],
 };

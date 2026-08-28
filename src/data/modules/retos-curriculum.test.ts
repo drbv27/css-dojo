@@ -15,7 +15,16 @@ const RETOS = ALL_MODULES.flatMap((m) =>
 );
 
 /** El registro del rollout. Una tanda no puede entrar sin quedar anotada. */
-const MODULOS_CON_RETO = ["box-model"];
+const MODULOS_CON_RETO = [
+  "box-model",
+  // Tanda B, 2026-08-28: los primeros seis obligatorios del track.
+  "que-es-css",
+  "selectores",
+  "propiedades-basicas",
+  "unidades-css",
+  "dimensiones",
+  "tipografias",
+];
 
 describe("retos integradores", () => {
   it("los modulos con reto son exactamente los esperados", () => {

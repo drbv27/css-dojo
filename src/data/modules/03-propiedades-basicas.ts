@@ -379,5 +379,51 @@ Redondea las esquinas de un elemento:
       explanation:
         "CSS reconoce aproximadamente 140 nombres de colores estándar. Algunos ejemplos inusuales: 'papayawhip', 'rebeccapurple', 'lemonchiffon' y 'midnightblue'.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "03-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Arma una tarjeta de aviso usando las tres familias de propiedades del modulo: color de texto, fondo y borde.",
+      retoPasos: [
+        {
+          instruccion:
+            "Dale a .aviso el color de texto #856404.",
+          esperado: ".aviso { color: #856404; }",
+        },
+        {
+          instruccion:
+            "Dale a .aviso un fondo #fff3cd.",
+          esperado: ".aviso { background-color: #fff3cd; }",
+        },
+        {
+          instruccion:
+            "Dale a .aviso un borde de 1px solid #ffeaa7 y esquinas redondeadas de 8px.",
+          esperado: ".aviso { border: 1px solid #ffeaa7; border-radius: 8px; }",
+        },
+        {
+          instruccion:
+            "Separa el contenido del borde con 16px de padding.",
+          esperado: ".aviso { padding: 16px; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<div class="aviso">\n  <strong>Atencion</strong>\n  <p>Revisa los datos antes de continuar.</p>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".aviso {\n  color: #856404;\n  background-color: #fff3cd;\n  border: 1px solid #ffeaa7;\n  border-radius: 8px;\n  padding: 16px;\n}",
+      hint: "`border` es un atajo que junta ancho, estilo y color en una sola declaración. Sin el estilo (`solid`) el borde no se ve, aunque tenga ancho y color.",
+      explanation:
+        "Las tres familias trabajan juntas: `color` pinta el texto, `background-color` pinta la caja detras, y `border` la delimita. El `padding` es lo que evita que el texto quede pegado al borde, y `border-radius` suaviza las esquinas sin cambiar nada más.",
+    },
   ],
 };

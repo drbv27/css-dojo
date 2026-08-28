@@ -582,5 +582,51 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       explanation:
         "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiara, el alto acompana y la proporción se mantiene.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "05-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 11,
+      prompt:
+        "Reto integrador. Una caja que se adapta pero no se desborda: los límites y la proporción son lo que la mantienen usable en cualquier pantalla.",
+      retoPasos: [
+        {
+          instruccion:
+            "Dale a .panel un ancho de 100% para que acompañe a su contenedor.",
+          esperado: ".panel { width: 100%; }",
+        },
+        {
+          instruccion:
+            "Ponele un techo de 600px con max-width, para que en una pantalla grande no se estire sin control.",
+          esperado: ".panel { max-width: 600px; }",
+        },
+        {
+          instruccion:
+            "Ponele un piso de 120px con min-height, para que no colapse cuando tiene poco contenido.",
+          esperado: ".panel { min-height: 120px; }",
+        },
+        {
+          instruccion:
+            "Separa su contenido del borde con 24px de padding, y separalo de sus vecinos con 16px de margin.",
+          esperado: ".panel { padding: 24px; margin: 16px; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<div class="panel">\n  <p>Un panel que respeta sus límites.</p>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".panel {\n  width: 100%;\n  max-width: 600px;\n  min-height: 120px;\n  padding: 24px;\n  margin: 16px;\n}",
+      hint: "`width: 100%` y `max-width` no se pelean: el ancho manda mientras haya lugar, y el máximo lo frena cuando se pasa.",
+      explanation:
+        "`width` dice cuanto quiere medir el elemento; `max-width` y `min-height` dicen hasta donde se le permite. Los límites son lo que convierte un ancho fijo en un diseño que aguanta pantallas distintas. Y el padding y el margin siguen siendo lo de siempre: uno adentro de la caja, el otro afuera.",
+    },
   ],
 };
