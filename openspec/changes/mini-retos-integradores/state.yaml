@@ -48,7 +48,14 @@ phases:
     importaba -mandar una completitud que no se gano- lo cerro
     `revalidacion-en-servidor`.
   tasks:
-    status: pending
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/tasks.md
+    forecast:
+      lineas_estimadas_total: 1400
+      rebanada_A_maquinaria_y_piloto: 600
+      rebanadas_B_C_D_contenido: 270
+      pr_encadenados: si
+      chain_strategy: stacked-to-main   # cacheado de la sesion
   apply:
     status: pending
   verify:
@@ -136,4 +143,4 @@ LA_DECISION_QUE_EL_DISENIO_LEVANTA_Y_NO_RESUELVE: >
   788. Es una pregunta de producto con 56 ejercicios detras y va en su propio
   cambio. NO se cuela aca.
 
-next_recommended: tasks
+next_recommended: apply   # rebanada A
