@@ -68,6 +68,10 @@ const noCalificable = (score: number): Calificacion => ({
  */
 export function cssEsperadoDe(ejercicio: Exercise): string {
   if (esRetoIntegrador(ejercicio)) {
+    // Un reto corregido por estructura no produce CSS: sus pasos son
+    // expectativas de DOM. Devolver "" evita que un guard de css-rules las lea
+    // como si fueran reglas y falle sobre algo que nunca lo fue.
+    if (ejercicio.validation.type === "html-structure") return "";
     return ejercicio.retoPasos!.map((p) => p.esperado).join("\n");
   }
   return ejercicio.targetCSS ?? "";
@@ -96,11 +100,25 @@ export function esRetoIntegrador(ejercicio: Exercise): boolean {
  * credito parcial de siempre -- 56 de los 77 `css-rules` completan hoy con una
  * declaracion faltante, y cambiar eso es otra decision y otro cambio.
  */
-function calificarReto(pasos: readonly RetoPaso[], respuesta: unknown): Calificacion {
+function calificarReto(
+  ejercicio: Exercise,
+  respuesta: unknown,
+  parseHtml?: ParserHtml,
+): Calificacion {
+  const pasos = ejercicio.retoPasos!;
   const enviado = String(respuesta);
+
+  // Con QUE se corrige cada paso lo dice el ejercicio, igual que para cualquier
+  // otro: `css-rules` compara reglas CSS y `html-structure` compara el DOM.
+  // Los modulos de frameworks -Tailwind, Bootstrap- se corrigen por estructura
+  // porque ahi el alumno escribe HTML con clases utilitarias, no CSS.
+  const porEstructura = ejercicio.validation.type === "html-structure";
+
   const detalle = pasos.map((p) => ({
     instruccion: p.instruccion,
-    cumplido: compararReglas(p.esperado, enviado).correct,
+    cumplido: porEstructura
+      ? compararEstructura([p.esperado], enviado, parseHtml).correct
+      : compararReglas(p.esperado, enviado).correct,
   }));
   const todos = detalle.every((d) => d.cumplido);
   return { calificable: true, correct: todos, score: todos ? 100 : 0, pasos: detalle };
@@ -128,7 +146,7 @@ export function calificar(
 ): Calificacion {
   // Un reto integrador se califica por sus pasos, antes que nada mas.
   if (esRetoIntegrador(ejercicio)) {
-    return calificarReto(ejercicio.retoPasos!, respuesta);
+    return calificarReto(ejercicio, respuesta, parseHtml);
   }
 
   // FIRST, and before any look at `validation`. See the note above.

@@ -690,5 +690,51 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       explanation:
         "El primer bloque aplica subgrid solo si el navegador lo entiende, y como necesita dos declaraciones juntas para tener sentido, envolverlas es lo correcto. El segundo da la alternativa para quien no lo soporta. ¿Preguntar 'entendes esto?' en lugar de 'que navegador sos' es lo que no envejece.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "17-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 12,
+      prompt:
+        "Reto integrador. Mobile-first de verdad: primero lo chico, y después lo que cambia al haber lugar. Nunca al reves.",
+      retoPasos: [
+        {
+          instruccion:
+            "Arranca por lo CHICO: con `.tarjetas`, apila las tarjetas en una columna con display flex y flex-direction column, con un gap de 12px.",
+          esperado: ".tarjetas { display: flex; flex-direction: column; gap: 12px; }",
+        },
+        {
+          instruccion:
+            "Con `.tarjeta`, dale un padding de 16px y un fondo #eef2f7. Esto vale en todos los tamaños, asi que va afuera de cualquier media query.",
+          esperado: ".tarjeta { padding: 16px; background-color: #eef2f7; }",
+        },
+        {
+          instruccion:
+            "Ahora lo que cambia con espacio: adentro de `@media (min-width: 600px)`, hace que `.tarjetas` pase a fila con flex-direction row. `min-width` es lo que hace que esto sea mobile-first.",
+          esperado: "@media (min-width: 600px) { .tarjetas { flex-direction: row; } }",
+        },
+        {
+          instruccion:
+            "Preguntá antes de usar: adentro de `@supports (display: grid)`, dale a `.tarjetas` display grid con tres columnas iguales. Si el navegador no soporta grid, se queda con el flex de los pasos anteriores.",
+          esperado: "@supports (display: grid) { .tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); } }",
+        },
+      ],
+      codeTemplate: {
+        html: "<div class=\"tarjetas\">\n  <div class=\"tarjeta\">Una</div>\n  <div class=\"tarjeta\">Dos</div>\n  <div class=\"tarjeta\">Tres</div>\n</div>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".tarjetas {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.tarjeta {\n  padding: 16px;\n  background-color: #eef2f7;\n}\n\n@media (min-width: 600px) {\n  .tarjetas {\n    flex-direction: row;\n  }\n}\n\n@supports (display: grid) {\n  .tarjetas {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n  }\n}",
+      hint: "Mobile-first significa que el CSS de base es el de pantalla chica y las media queries AGREGAN, con `min-width`. Al reves -empezar grande y restar con `max-width`- se llama desktop-first y obliga a deshacer estilos.",
+      explanation:
+        "El orden de los pasos ES la leccion. Los pasos 1 y 2 son la base, la que ve cualquier dispositivo. El 3 agrega lo que solo tiene sentido con ancho. Y el 4 muestra `@supports`, que pregunta si una propiedad existe antes de usarla: la diferencia con una media query es que una pregunta por el TAMAÑO y la otra por la CAPACIDAD.",
+    },
   ],
 };

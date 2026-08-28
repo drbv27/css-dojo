@@ -446,5 +446,51 @@ Detecta automáticamente la preferencia del sistema operativo:
       explanation:
         "Las variables CSS se heredan de padres a hijos. Una variable declarada en .sección sobreescribe la de :root para todos los descendientes de .sección. El <p> hereda el valor 'red' de su ancestro más cercano que define --color.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "19-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Un sistema de tema en cuatro pasos: declarar, usar, sobreescribir y protegerse. El paso 4 es el que evita que todo se rompa si falta una variable.",
+      retoPasos: [
+        {
+          instruccion:
+            "Declara las variables en `:root`: --fondo con #ffffff, --texto con #1a1a2e y --acento con #3498db.",
+          esperado: ":root { --fondo: #ffffff; --texto: #1a1a2e; --acento: #3498db; }",
+        },
+        {
+          instruccion:
+            "Con `.pagina`, usa las variables con var(): background-color con --fondo, color con --texto y un padding de 20px.",
+          esperado: ".pagina { background-color: var(--fondo); color: var(--texto); padding: 20px; }",
+        },
+        {
+          instruccion:
+            "Con `.tema-oscuro`, sobreescribi --fondo con #1a1a2e y --texto con #e0e0e0. No repetis ni una propiedad: solo cambias los valores y todo lo que las usa se actualiza.",
+          esperado: ".tema-oscuro { --fondo: #1a1a2e; --texto: #e0e0e0; }",
+        },
+        {
+          instruccion:
+            "Con `.boton`, usa var con VALOR DE RESPALDO: background-color con var(--acento, #666) y color white. Si algun dia --acento desaparece, el boton sigue viendose en vez de quedar transparente.",
+          esperado: ".boton { background-color: var(--acento, #666); color: white; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<div class=\"pagina\">\n  <h2>Tema claro por defecto</h2>\n  <button class=\"boton\">Accion</button>\n</div>\n<div class=\"pagina tema-oscuro\">\n  <h2>El mismo marcado, otro tema</h2>\n  <button class=\"boton\">Accion</button>\n</div>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ":root {\n  --fondo: #ffffff;\n  --texto: #1a1a2e;\n  --acento: #3498db;\n}\n\n.pagina {\n  background-color: var(--fondo);\n  color: var(--texto);\n  padding: 20px;\n}\n\n.tema-oscuro {\n  --fondo: #1a1a2e;\n  --texto: #e0e0e0;\n}\n\n.boton {\n  background-color: var(--acento, #666);\n  color: white;\n}",
+      hint: "Las variables se heredan, asi que redeclararlas en `.tema-oscuro` alcanza a todo lo que este adentro sin tocar ninguna regla de color.",
+      explanation:
+        "El paso 3 es el que muestra para que sirven de verdad: dos bloques con el mismo marcado y el mismo CSS de presentacion terminan con temas distintos, solo porque uno redeclara dos variables. Y el paso 4 es la red: `var(--acento, #666)` sigue funcionando el dia que alguien renombre la variable, que es exactamente cuando un tema se rompe en silencio.",
+    },
   ],
 };

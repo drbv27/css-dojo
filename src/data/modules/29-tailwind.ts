@@ -697,5 +697,52 @@ Los prefijos se pueden combinar:
       explanation:
         "El prefijo dark: en Tailwind aplica estilos cuando el modo oscuro está activo. Se puede activar por clase (agregando 'dark' al html) o por preferencia del sistema (prefers-color-scheme). Ejemplo: dark:bg-gray-900 aplica fondo oscuro solo en dark mode.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "24-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Aca no escribis CSS: escribis HTML con clases utilitarias, que es todo el punto de Tailwind. Arma la tarjeta agregando las clases que pide cada paso.",
+      retoPasos: [
+        {
+          instruccion:
+            "LAYOUT: al div de la tarjeta agregale las clases `flex`, `flex-col` y `gap-3` para apilar su contenido con separacion.",
+          esperado: ".tarjeta.flex.flex-col.gap-3",
+        },
+        {
+          instruccion:
+            "VISUAL: al mismo div agregale `bg-white`, `rounded-xl`, `shadow-lg` y `p-6`.",
+          esperado: ".tarjeta.bg-white.rounded-xl.shadow-lg.p-6",
+        },
+        {
+          instruccion:
+            "TIPOGRAFIA: al h3 agregale `text-xl` y `font-bold`.",
+          esperado: ".tarjeta > h3.text-xl.font-bold",
+        },
+        {
+          instruccion:
+            "ESTADOS Y RESPONSIVE: al boton agregale `bg-blue-600`, `hover:bg-blue-700` y `md:w-auto`. Los prefijos son la forma que tiene Tailwind de expresar un estado o un breakpoint sin salir del HTML.",
+          esperado:
+            '.tarjeta > button[class~="bg-blue-600"][class~="hover:bg-blue-700"][class~="md:w-auto"]',
+        },
+      ],
+      codeTemplate: {
+        html: "<div class=\"tarjeta\">\n  <h3>Titulo</h3>\n  <p>Descripcion breve.</p>\n  <button>Accion</button>\n</div>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "html-structure",
+      },
+      referenceSolution:
+        "<div class=\"tarjeta flex flex-col gap-3 bg-white rounded-xl shadow-lg p-6\">\n  <h3 class=\"text-xl font-bold\">Titulo</h3>\n  <p>Descripcion breve.</p>\n  <button class=\"bg-blue-600 hover:bg-blue-700 md:w-auto\">Accion</button>\n</div>",
+      hint: "Las clases se acumulan en el mismo atributo `class`, separadas por espacio. Los prefijos como `hover:` y `md:` van pegados a la utilidad que modifican.",
+      explanation:
+        "Este reto no tiene CSS y esa es la idea: en Tailwind la decision de estilo vive en el HTML. Los cuatro pasos recorren las cuatro lecciones -layout, visual, tipografía y estados- y el paso 4 muestra lo que hace distinto a Tailwind de una hoja de clases cualquiera: `hover:` y `md:` expresan estado y breakpoint sin escribir ni una media query.",
+    },
   ],
 };

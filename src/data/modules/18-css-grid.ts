@@ -621,5 +621,51 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       explanation:
         "El padre declara tres filas y cada tarjeta abarca las tres con grid-row: span 3. Al declarar grid-template-rows: subgrid, la tarjeta deja de calcular sus propias filas y usa las del padre, así que la fila del título mide lo mismo en las tres y los botones quedan alineados.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "16-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 11,
+      prompt:
+        "Reto integrador. Una galeria que se acomoda sola. El paso 4 es el que hace que sea responsiva sin escribir una sola media query.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con `.galeria`, activa grid con display grid. Sin esto los cuatro articulos siguen apilados.",
+          esperado: ".galeria { display: grid; }",
+        },
+        {
+          instruccion:
+            "Con `.galeria`, separá las celdas con un gap de 12px y dale a las filas un alto mínimo de 100px con grid-auto-rows.",
+          esperado: ".galeria { gap: 12px; grid-auto-rows: 100px; }",
+        },
+        {
+          instruccion:
+            "Con `.destacado`, hace que ocupe dos columnas usando grid-column con span.",
+          esperado: ".destacado { grid-column: span 2; }",
+        },
+        {
+          instruccion:
+            "Ahora lo importante: cambia `.galeria` a columnas responsivas con repeat auto-fit y minmax de 150px a 1fr. Fijate que la galeria se reacomoda sola al cambiar el ancho, sin ninguna media query.",
+          esperado: ".galeria { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }",
+        },
+      ],
+      codeTemplate: {
+        html: "<section class=\"galeria\">\n  <article class=\"item\">Uno</article>\n  <article class=\"item destacado\">Dos</article>\n  <article class=\"item\">Tres</article>\n  <article class=\"item\">Cuatro</article>\n</section>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".galeria {\n  display: grid;\n  gap: 12px;\n  grid-auto-rows: 100px;\n  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\n}\n\n.destacado {\n  grid-column: span 2;\n}",
+      hint: "`auto-fit` decide cuantas columnas entran y `minmax` fija el mínimo que cada una acepta antes de bajar a la fila siguiente. Juntos reemplazan varios breakpoints.",
+      explanation:
+        "El paso 4 reemplaza al 1: donde antes habia tres columnas fijas, ahora hay las que entren. Ese es el punto de la leccion 4 del modulo -grid responsivo sin media queries- y por eso el reto pasa por las columnas fijas primero: para que se vea la diferencia entre decidir vos cuantas columnas hay y dejar que las decida el espacio.",
+    },
   ],
 };

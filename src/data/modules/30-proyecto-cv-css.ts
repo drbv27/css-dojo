@@ -430,5 +430,56 @@ body
       explanation:
         "Terminaste el track de CSS con algo que podes mostrar. Y fijate el orden en que lo escribiste: reset, tipografía, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancas por las sombras, vas a reescribir tres veces.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "25-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 80,
+      order: 11,
+      prompt:
+        "Reto integrador FINAL del track. Maqueta la cabecera de tu CV usando cuatro cosas que aprendiste en modulos distintos: box-sizing, flexbox, variables y una media query. Esto es lo que junta todo el curso.",
+      retoPasos: [
+        {
+          instruccion:
+            "Del modulo de variables: declara en `:root` la variable --cv-acento con el valor #2c3e50.",
+          esperado: ":root { --cv-acento: #2c3e50; }",
+        },
+        {
+          instruccion:
+            "Del modulo de box model: con `.cv-cabecera`, poné box-sizing border-box, 24px de padding y un borde inferior de 3px solid con var(--cv-acento).",
+          esperado: ".cv-cabecera { box-sizing: border-box; padding: 24px; border-bottom: 3px solid var(--cv-acento); }",
+        },
+        {
+          instruccion:
+            "Del modulo de flexbox: con `.cv-cabecera`, apila en columna con display flex y flex-direction column, alinea al centro con align-items y separa con un gap de 16px.",
+          esperado: ".cv-cabecera { display: flex; flex-direction: column; align-items: center; gap: 16px; }",
+        },
+        {
+          instruccion:
+            "Del modulo de dimensiones: con `.cv-foto`, dale 120px de ancho y alto y hacela redonda con border-radius 50%.",
+          esperado: ".cv-foto { width: 120px; height: 120px; border-radius: 50%; }",
+        },
+        {
+          instruccion:
+            "Del modulo de media queries: adentro de `@media (min-width: 600px)`, cambia `.cv-cabecera` a flex-direction row y align-items flex-start, para que en pantalla ancha la foto quede al costado.",
+          esperado: "@media (min-width: 600px) { .cv-cabecera { flex-direction: row; align-items: flex-start; } }",
+        },
+      ],
+      codeTemplate: {
+        html: "<header class=\"cv-cabecera\">\n  <img class=\"cv-foto\" src=\"#\" alt=\"foto\">\n  <div class=\"cv-datos\">\n    <h1>Tu Nombre</h1>\n    <p class=\"cv-rol\">Desarrollador Frontend</p>\n  </div>\n</header>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ":root {\n  --cv-acento: #2c3e50;\n}\n\n.cv-cabecera {\n  box-sizing: border-box;\n  padding: 24px;\n  border-bottom: 3px solid var(--cv-acento);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 16px;\n}\n\n.cv-foto {\n  width: 120px;\n  height: 120px;\n  border-radius: 50%;\n}\n\n@media (min-width: 600px) {\n  .cv-cabecera {\n    flex-direction: row;\n    align-items: flex-start;\n  }\n}",
+      hint: "Cada paso dice de que modulo sale. Si alguno no te sale, volve a ese modulo antes de mirar la pista: este reto es la prueba de que el track entero se sostiene junto.",
+      explanation:
+        "Este es el único reto del track que cruza cinco modulos distintos, y por eso cierra el curso. Un CV real necesita exactamente esto: una variable para el color de marca, box-sizing para que el padding no rompa las medidas, flex para acomodar foto y datos, dimensiones para la foto redonda, y una media query para que en el telefono se apile y en la compu se ponga al costado. Nada de lo que hiciste aca es un ejercicio de practica: es maquetado de verdad.",
+    },
   ],
 };
