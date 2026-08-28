@@ -88,9 +88,20 @@ function sinContenidoReal(doc: Document): boolean {
   return enBody === 0 && enHead === 0 && !doc.doctype;
 }
 
+/**
+ * Parses HTML into a document. Optional so a route handler can pass jsdom's
+ * parser while the browser keeps using its own.
+ *
+ * Passed in rather than assigned onto `globalThis`: an assignment works, and it
+ * makes this module's behaviour depend on something that happened in another
+ * file — which breaks the day a second caller forgets the incantation.
+ */
+export type ParserHtml = (html: string) => Document | null;
+
 export function compararEstructura(
   expectativas: string[],
-  enviado: string
+  enviado: string,
+  parseHtml?: ParserHtml
 ): ResultadoEstructura {
   const parsed = expectativas
     .map(parsearExpectativa)
@@ -100,7 +111,7 @@ export function compararEstructura(
     return { correct: false, score: 0, faltantes: ["(sin expectativas validas)"] };
   }
 
-  const doc = parsearHtml(enviado);
+  const doc = parseHtml ? parseHtml(enviado) : parsearHtml(enviado);
   if (!doc || sinContenidoReal(doc)) {
     return { correct: false, score: 0, faltantes: expectativas };
   }
