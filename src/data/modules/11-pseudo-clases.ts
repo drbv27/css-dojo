@@ -541,5 +541,51 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       explanation:
         "Las tres reglas apuntan al elemento de afuera y usan el contenido como condición. La segunda combina :not() con :has() para expresar 'las que no contienen imagen', algo que antes exigia agregar una clase a mano en el HTML.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "07-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 11,
+      prompt:
+        "Reto integrador. Las cuatro familias de pseudo-clases del modulo: estado, posición, negacion y `:has()`. Cada paso usa una distinta.",
+      retoPasos: [
+        {
+          instruccion:
+            "De ESTADO: con `.lista li:hover`, dale fondo #eef2f7 al item que el mouse este tocando.",
+          esperado: ".lista li:hover { background-color: #eef2f7; }",
+        },
+        {
+          instruccion:
+            "De POSICIÓN: con `.lista li:first-child`, ponele font-weight 700 al primero de la lista.",
+          esperado: ".lista li:first-child { font-weight: 700; }",
+        },
+        {
+          instruccion:
+            "De NEGACION: con `.lista li:not(:last-child)`, dale un borde inferior de 1px solid #ddd a todos MENOS al último. Asi no queda una linea colgando al final.",
+          esperado: ".lista li:not(:last-child) { border-bottom: 1px solid #ddd; }",
+        },
+        {
+          instruccion:
+            "Con `:has()`: dale a `.tarjeta:has(img)` un padding de 16px. Es la unica que mira lo que tiene ADENTRO para decidir, y por eso solo alcanza a una de las dos tarjetas.",
+          esperado: ".tarjeta:has(img) { padding: 16px; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<ul class=\"lista\">\n  <li>Primero</li>\n  <li>Segundo</li>\n  <li>Tercero</li>\n</ul>\n<div class=\"tarjeta\"><img src=\"#\" alt=\"foto\"><p>Con imagen</p></div>\n<div class=\"tarjeta\"><p>Sin imagen</p></div>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".lista li:hover {\n  background-color: #eef2f7;\n}\n\n.lista li:first-child {\n  font-weight: 700;\n}\n\n.lista li:not(:last-child) {\n  border-bottom: 1px solid #ddd;\n}\n\n.tarjeta:has(img) {\n  padding: 16px;\n}",
+      hint: "`:not()` y `:has()` reciben otro selector adentro. El paso 3 se lee como 'todos los li que no sean el último' y el paso 4 como 'las tarjetas que contengan una img'.",
+      explanation:
+        "Las cuatro deciden con informacion distinta. El estado depende de lo que hace el usuario, la posición de donde esta el elemento entre sus hermanos, la negacion invierte otro selector, y `:has()` es la unica que mira hacia ADENTRO. Ese último es el que durante años no existio y obligaba a resolverlo con JavaScript.",
+    },
   ],
 };

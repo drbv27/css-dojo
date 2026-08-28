@@ -485,5 +485,51 @@ div.card {
       explanation:
         "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el párrafo que está inmediatamente después del nav (hermano adyacente).",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "06-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Los cuatro combinadores del modulo sobre el mismo marcado. Fijate que cada uno elige un conjunto DISTINTO de elementos, y esa es toda la diferencia entre ellos.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con el DESCENDIENTE `.menu a`, dale a todos los enlaces del menu el color #2c3e50, incluido el que esta anidado dos niveles adentro.",
+          esperado: ".menu a { color: #2c3e50; }",
+        },
+        {
+          instruccion:
+            "Con el HIJO DIRECTO `.menu > ul`, dale un padding de 12px. Solo alcanza a la lista de primer nivel, no a la anidada.",
+          esperado: ".menu > ul { padding: 12px; }",
+        },
+        {
+          instruccion:
+            "Con el HERMANO ADYACENTE `.menu + .aviso`, dale al parrafo que sigue al menu un fondo #fff3cd. Solo al que va inmediatamente despues.",
+          esperado: ".menu + .aviso { background-color: #fff3cd; }",
+        },
+        {
+          instruccion:
+            "Con el HERMANO GENERAL `.menu ~ p`, dale a TODOS los parrafos hermanos posteriores un color #7f8c8d. Este si alcanza a los dos.",
+          esperado: ".menu ~ p { color: #7f8c8d; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<nav class=\"menu\">\n  <ul>\n    <li><a href=\"#\">Inicio</a></li>\n    <li><a href=\"#\">Blog</a>\n      <ul><li><a href=\"#\">Anidado</a></li></ul>\n    </li>\n  </ul>\n</nav>\n<p class=\"aviso\">Va justo despues del nav.</p>\n<p>Otro parrafo mas lejos.</p>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".menu a {\n  color: #2c3e50;\n}\n\n.menu > ul {\n  padding: 12px;\n}\n\n.menu + .aviso {\n  background-color: #fff3cd;\n}\n\n.menu ~ p {\n  color: #7f8c8d;\n}",
+      hint: "El espacio alcanza a cualquier descendiente por profundo que este; el `>` solo a los hijos directos. El `+` es un solo hermano y el `~` son todos los posteriores.",
+      explanation:
+        "Los cuatro combinadores se distinguen por CUANTO alcanzan. El espacio baja sin límite, el `>` baja un solo nivel, el `+` toma un hermano y el `~` toma todos los hermanos que siguen. Sobre este marcado se ve solo: el paso 1 pinta tres enlaces y el paso 2 un solo `ul`, aunque hay dos.",
+    },
   ],
 };

@@ -26,7 +26,11 @@ const TODOS = ALL_MODULES.flatMap((m) =>
 /** The submission that SHOULD score 100 for this exercise. */
 function respuestaCorrecta(e: Exercise): unknown {
   // Un reto no declara `targetCSS`: su CSS esperado se deriva de sus pasos.
-  if (esRetoIntegrador(e)) return cssEsperadoDe(e);
+  if (esRetoIntegrador(e)) {
+    // Un reto de estructura no produce CSS: su respuesta correcta es el HTML
+    // de su `referenceSolution`.
+    return e.validation.type === "html-structure" ? e.referenceSolution : cssEsperadoDe(e);
+  }
   if (e.type === "drag-drop") {
     return Object.fromEntries((e.dragItems ?? []).map((i) => [i.id, i.correctZone]));
   }
@@ -60,9 +64,9 @@ function respuestaEquivocada(e: Exercise): unknown {
 }
 
 describe("el calificador, sobre el curriculum real", () => {
-  it("cubre los 796 ejercicios que hay hoy", () => {
+  it("cubre los 808 ejercicios que hay hoy", () => {
     // Pins the denominator. Every count below is meaningless without it.
-    expect(TODOS.length).toBe(796);
+    expect(TODOS.length).toBe(808);
   });
 
   it("POSITIVO: la respuesta correcta de cada ejercicio saca 100", () => {

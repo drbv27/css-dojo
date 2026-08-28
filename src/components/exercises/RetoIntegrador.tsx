@@ -51,9 +51,22 @@ export default function RetoIntegrador({
   yaCompletado = false,
 }: RetoIntegradorProps) {
   const pasos = exercise.retoPasos ?? [];
-  const html = exercise.codeTemplate?.html ?? "<div>Preview</div>";
+  const plantilla = exercise.codeTemplate?.html ?? "<div>Preview</div>";
 
-  const [css, setCss] = useState(exercise.codeTemplate?.cssPrefix ?? "");
+  /**
+   * QUE ESCRIBE EL ALUMNO. No siempre es CSS: en los modulos de framework
+   * -Tailwind, Bootstrap- lo que se aprende es el MARCADO con clases
+   * utilitarias, y esos retos se corrigen con `html-structure`.
+   *
+   * Sin esta distincion el editor quedaba en modo CSS y Monaco subrayaba en
+   * rojo el HTML valido que el alumno escribia, mientras la vista previa
+   * mostraba la plantilla original en vez de su trabajo.
+   */
+  const escribeHtml = exercise.validation.type === "html-structure";
+
+  const [codigo, setCodigo] = useState(
+    escribeHtml ? plantilla : (exercise.codeTemplate?.cssPrefix ?? ""),
+  );
   const [verSolucion, setVerSolucion] = useState(false);
   /**
    * Que muestra la columna derecha. Arranca en el preview porque el resultado
@@ -65,7 +78,7 @@ export default function RetoIntegrador({
 
   // Se califica en vivo para pintar el estado de cada paso mientras escribe.
   // El veredicto que cuenta lo da el servidor al enviar; esto es la guia.
-  const calificacion = calificar(exercise, css);
+  const calificacion = calificar(exercise, codigo);
   const detalle =
     calificacion.calificable && "pasos" in calificacion ? calificacion.pasos : [];
 
@@ -131,11 +144,11 @@ export default function RetoIntegrador({
           </ol>
 
           <CSSEditor
-            value={css}
-            onChange={setCss}
+            value={codigo}
+            onChange={setCodigo}
             height="240px"
             readOnly={submitted}
-            language="css"
+            language={escribeHtml ? "html" : "css"}
           />
         </div>
 
@@ -145,10 +158,12 @@ export default function RetoIntegrador({
               "renombra la clase y listo". */}
           <div className="flex items-center gap-1 px-1" role="tablist">
             {(
-              [
-                ["preview", "Vista previa", "bg-neon-green"],
-                ["html", "HTML", "bg-neon-orange"],
-              ] as const
+              escribeHtml
+                ? ([["preview", "Vista previa", "bg-neon-green"]] as const)
+                : ([
+                    ["preview", "Vista previa", "bg-neon-green"],
+                    ["html", "HTML", "bg-neon-orange"],
+                  ] as const)
             ).map(([clave, etiqueta, punto]) => (
               <button
                 key={clave}
@@ -173,10 +188,14 @@ export default function RetoIntegrador({
           </div>
 
           {panel === "preview" ? (
-            <LivePreview html={html} css={css} className="flex-1 min-h-[300px]" />
+            <LivePreview
+              html={escribeHtml ? codigo : plantilla}
+              css={escribeHtml ? "" : codigo}
+              className="flex-1 min-h-[300px]"
+            />
           ) : (
             <CSSEditor
-              value={html}
+              value={plantilla}
               onChange={() => {}}
               height="300px"
               readOnly
@@ -207,7 +226,7 @@ export default function RetoIntegrador({
         {exercise.hint && !submitted && <HintButton hint={exercise.hint} />}
         {!submitted && (
           <button
-            onClick={() => onSubmit(css)}
+            onClick={() => onSubmit(codigo)}
             className="ml-auto px-6 py-2.5 rounded-xl bg-neon-purple text-white font-semibold text-sm hover:bg-neon-purple/90 transition-colors shadow-lg shadow-neon-purple/20"
           >
             Verificar el reto

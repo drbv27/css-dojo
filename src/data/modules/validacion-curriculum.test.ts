@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { compararReglas, parseCssRules } from "@/lib/cssRules";
-import { cssEsperadoDe } from "@/lib/calificar";
+import { cssEsperadoDe, esRetoIntegrador } from "@/lib/calificar";
 import { compararEstructura } from "@/lib/htmlStructure";
 import { ALL_MODULES } from "@/data/modules";
 
@@ -155,6 +155,11 @@ describe("curriculum CSS: integridad de la validacion", () => {
     // selectores son escritos a mano.
     const sinReferencia = ejerciciosCss
       .filter((e) => e.ex.validation.type === "html-structure")
+      // Un RETO INTEGRADOR ya lleva su referencia en `referenceSolution`, y que
+      // saque 100 contra sus propios pasos lo asegura
+      // `retos-curriculum.test.ts`. Repetirla aca serian dos fuentes de verdad
+      // del mismo hecho, que es justo lo que el diseño de los retos evita.
+      .filter((e) => !esRetoIntegrador(e.ex))
       .filter((e) => !REFERENCIAS_HTML_EN_CSS[e.id]);
     expect(sinReferencia.map((e) => `${e.mod}/${e.id}`)).toEqual([]);
   });

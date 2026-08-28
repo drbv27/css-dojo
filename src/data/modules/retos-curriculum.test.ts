@@ -25,6 +25,20 @@ const MODULOS_CON_RETO = [
   "unidades-css",
   "dimensiones",
   "tipografias",
+  // Tanda C, 2026-08-28: los obligatorios 10 a 16.
+  "selectores-descendientes",
+  "pseudo-clases",
+  "pseudo-elementos",
+  "especificidad",
+  "float-display",
+  "posicionamiento",
+  // Tanda D, 2026-08-28: cierra los 19 obligatorios.
+  "flexbox",
+  "css-grid",
+  "variables-css",
+  "media-queries",
+  "tailwind-css",
+  "proyecto-cv-css",
 ];
 
 describe("retos integradores", () => {
@@ -129,15 +143,24 @@ describe("retos integradores", () => {
     // Decirle "esta mal" a quien hizo tres de cuatro no le sirve de nada.
     for (const { modulo, ejercicio } of RETOS) {
       const pasos = ejercicio.retoPasos!;
-      const primero = pasos[0].esperado;
-      const r = calificar(ejercicio, primero);
+      // En un reto de CSS se envia el primer paso y solo ese debe cumplirse. En
+      // uno de estructura los pasos no son enviables por separado -- son
+      // expectativas sobre un mismo documento -- asi que se prueba con la
+      // solucion completa y se exige que se cumplan TODOS.
+      const porEstructura = ejercicio.validation.type === "html-structure";
+      const envio = porEstructura ? ejercicio.referenceSolution! : pasos[0].esperado;
+      const r = calificar(ejercicio, envio);
 
       if (!r.calificable || !("pasos" in r)) {
         throw new Error(`${modulo}/${ejercicio.id}: el reto no devolvio detalle por paso`);
       }
       expect(r.pasos).toHaveLength(pasos.length);
       expect(r.pasos[0].cumplido).toBe(true);
-      expect(r.pasos.slice(1).every((p) => !p.cumplido)).toBe(true);
+      if (porEstructura) {
+        expect(r.pasos.every((p) => p.cumplido)).toBe(true);
+      } else {
+        expect(r.pasos.slice(1).every((p) => !p.cumplido)).toBe(true);
+      }
       // Y la instruccion viaja con el veredicto, para poder mostrarla.
       expect(r.pasos[0].instruccion).toBe(pasos[0].instruccion);
     }
@@ -145,6 +168,7 @@ describe("retos integradores", () => {
 
   it("el CSS esperado se deriva de los pasos, y el preview lee lo mismo", () => {
     for (const { modulo, ejercicio } of RETOS) {
+      if (ejercicio.validation.type === "html-structure") continue;
       const derivado = cssEsperadoDe(ejercicio);
       for (const paso of ejercicio.retoPasos!) {
         if (!derivado.includes(paso.esperado)) {
@@ -177,9 +201,18 @@ describe("retos integradores", () => {
     const mudos: string[] = [];
 
     for (const { modulo, ejercicio } of RETOS) {
+      // Un reto corregido por estructura no declara selectores CSS: sus pasos
+      // son expectativas de DOM y se leen enteras en la instruccion.
+      if (ejercicio.validation.type === "html-structure") return;
+
       const yaVistos = new Set<string>();
       ejercicio.retoPasos!.forEach((paso, i) => {
-        for (const [selector] of parseCssRules(paso.esperado)) {
+        for (const [clave] of parseCssRules(paso.esperado)) {
+          // `parseCssRules` compone las at-rules como
+          // "@media (min-width: 600px) | .tarjetas". Lo que el alumno escribe
+          // como selector es la ultima parte; la at-rule la nombra el enunciado
+          // por su cuenta.
+          const selector = clave.split("|").at(-1)!.trim();
           const estrena = !yaVistos.has(selector);
           yaVistos.add(selector);
           if (estrena && !paso.instruccion.includes(selector)) {

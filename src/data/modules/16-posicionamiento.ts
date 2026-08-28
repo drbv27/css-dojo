@@ -473,5 +473,51 @@ Define una escala organizada para tu proyecto:
       explanation:
         "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este último siempre se mostrara encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "12-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Una tarjeta con un badge encima. El paso 1 parece que no hace nada, y es el que hace posible todo lo demas.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con `.tarjeta`, ponele position relative. No la mueve ni un pixel: lo que hace es convertirla en el punto de referencia de lo que este adentro.",
+          esperado: ".tarjeta { position: relative; }",
+        },
+        {
+          instruccion:
+            "Con `.badge`, ponele position absolute con top 8px y right 8px. Se ubica contra la tarjeta, NO contra la pagina, gracias al paso 1.",
+          esperado: ".badge { position: absolute; top: 8px; right: 8px; }",
+        },
+        {
+          instruccion:
+            "Con `.btn-flotante`, ponele position fixed con bottom 24px y right 24px. Este si se ubica contra la ventana, y no se mueve al hacer scroll.",
+          esperado: ".btn-flotante { position: fixed; bottom: 24px; right: 24px; }",
+        },
+        {
+          instruccion:
+            "Volve a `.badge` y dale un z-index de 10, para asegurar que quede por encima del contenido de la tarjeta.",
+          esperado: ".badge { z-index: 10; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<div class=\"tarjeta\">\n  <span class=\"badge\">Nuevo</span>\n  <p>Una tarjeta con un badge en la esquina.</p>\n</div>\n<button class=\"btn-flotante\">Subir</button>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".tarjeta {\n  position: relative;\n}\n\n.badge {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n  z-index: 10;\n}\n\n.btn-flotante {\n  position: fixed;\n  bottom: 24px;\n  right: 24px;\n}",
+      hint: "Un elemento absolute se ubica contra el ancestro posicionado más cercano. Si ninguno lo esta, se va contra la página entera: por eso el paso 1 no es decorativo.",
+      explanation:
+        "`position: relative` sin desplazamiento no mueve nada, pero crea el contexto contra el cual se ubica el absolute de adentro. Sacale el paso 1 y el badge se va a la esquina de la PÁGINA. `fixed` en cambio siempre se ubica contra la ventana e ignora cualquier ancestro, y el z-index solo funciona sobre elementos posicionados.",
+    },
   ],
 };

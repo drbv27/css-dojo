@@ -555,5 +555,51 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       explanation:
         "Propiedades del contenedor: justify-content (distribución en eje principal), flex-wrap (salto de línea), align-items, gap. Propiedades del item: flex-grow (cuanto crece), flex-shrink, flex-basis, align-self (alineación individual), order (orden visual).",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "15-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. Una barra de navegación completa: contenedor, alineación, separación y un item que se estira. Los cuatro pasos son las cuatro lecciones del modulo.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con `.barra`, activa flexbox con display flex. Sin esto los tres hijos siguen apilados uno debajo del otro.",
+          esperado: ".barra { display: flex; }",
+        },
+        {
+          instruccion:
+            "Con `.barra`, alinea los items verticalmente al centro con align-items y separalos con justify-content space-between.",
+          esperado: ".barra { align-items: center; justify-content: space-between; }",
+        },
+        {
+          instruccion:
+            "Con `.barra`, dale un gap de 16px y permiti que envuelva con flex-wrap wrap, para que en pantalla angosta no se desborde.",
+          esperado: ".barra { gap: 16px; flex-wrap: wrap; }",
+        },
+        {
+          instruccion:
+            "Con `.logo`, dale flex-grow 1 para que se coma el espacio sobrante y empuje los enlaces a la derecha.",
+          esperado: ".logo { flex-grow: 1; }",
+        },
+      ],
+      codeTemplate: {
+        html: "<nav class=\"barra\">\n  <span class=\"logo\">Dojo</span>\n  <a href=\"#\">Modulos</a>\n  <a href=\"#\">Perfil</a>\n</nav>",
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".barra {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.logo {\n  flex-grow: 1;\n}",
+      hint: "`justify-content` reparte sobre el eje principal y `align-items` sobre el cruzado. Con `flex-grow: 1` en el logo, el `space-between` deja de hacer falta: ya no queda espacio para repartir.",
+      explanation:
+        "Los cuatro pasos son las cuatro lecciones. El paso 1 crea el contexto flex -sin el, nada de lo demas existe-. El 2 alinea en los dos ejes. El 3 agrega el respiro y la red de seguridad para pantallas chicas. Y el 4 muestra que `flex-grow` reparte el sobrante entre los hijos, que es otra forma de resolver lo mismo que `space-between`.",
+    },
   ],
 };

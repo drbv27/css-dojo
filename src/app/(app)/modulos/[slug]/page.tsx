@@ -6,6 +6,7 @@ import { ALL_MODULES } from "@/data/modules";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
 import { isProjectModule } from "@/lib/projects";
+import { esRetoIntegrador } from "@/lib/calificar";
 import ProjectSubmission from "@/components/modules/ProjectSubmission";
 import type { ExerciseType } from "@/types";
 
@@ -246,7 +247,14 @@ export default function ModuleDetailPage({
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {exercises.map((exercise) => {
-            const typeInfo = exerciseTypeLabels[exercise.type] ?? exerciseTypeLabels.quiz;
+            // Un reto integrador se anuncia como tal en la lista, no como
+            // "Editor" igual que los otros. Es el que cierra el modulo y vale
+            // el doble de XP: si en la grilla se ve identico al resto, el
+            // alumno no sabe cual es hasta abrirlo.
+            const esReto = esRetoIntegrador(exercise);
+            const typeInfo = esReto
+              ? { label: "Mini reto", icon: "★", color: "text-neon-purple bg-neon-purple/10" }
+              : (exerciseTypeLabels[exercise.type] ?? exerciseTypeLabels.quiz);
             const ep = exerciseProgressMap.get(exercise.id);
             // Status: completed (score >= 70), attempted (has attempts but not completed), pending
             const status = ep?.completed ? "completed" : ep?.attempts ? "attempted" : "pending";
@@ -260,6 +268,8 @@ export default function ModuleDetailPage({
                     ? "border-neon-green/30"
                     : status === "attempted"
                     ? "border-neon-orange/30"
+                    : esReto
+                    ? "border-neon-purple/30"
                     : "border-editor-border"
                 }`}
               >

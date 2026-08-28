@@ -7,6 +7,7 @@ import ExerciseRenderer from "@/components/exercises/ExerciseRenderer";
 import AchievementToast from "@/components/gamification/AchievementToast";
 import { useAuth } from "@/hooks/useAuth";
 import { useProgress } from "@/hooks/useProgress";
+import { esRetoIntegrador } from "@/lib/calificar";
 
 export default function ExercisePage({
   params,
@@ -38,6 +39,12 @@ export default function ExercisePage({
   const exercises = mod ? [...mod.exercises].sort((a, b) => a.order - b.order) : [];
   const exerciseIdx = exercises.findIndex((e) => e.id === exerciseId);
   const exercise = exerciseIdx !== -1 ? exercises[exerciseIdx] : null;
+  /**
+   * Un reto integrador no es "el ejercicio 9". Cierra el modulo, vale el doble
+   * de XP y pide varios conceptos juntos; llamarlo por su numero de orden lo
+   * mete en la misma bolsa que un quiz de una linea.
+   */
+  const esReto = exercise !== null && esRetoIntegrador(exercise);
 
   const moduleTitle = mod?.title ?? slug
     .split("-")
@@ -156,15 +163,23 @@ export default function ExercisePage({
           {moduleTitle}
         </Link>
         <span>/</span>
-        <span className="text-editor-text">Ejercicio {exerciseIdx + 1} de {exercises.length}</span>
+        <span className="text-editor-text">
+          {esReto ? "Mini reto" : `Ejercicio ${exerciseIdx + 1} de ${exercises.length}`}
+        </span>
       </div>
 
       {/* Exercise header */}
       <div className="bg-editor-surface border border-editor-border rounded-xl p-6">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-3">
-            <span className="text-xs px-2 py-1 rounded-full bg-neon-orange/10 text-neon-orange font-medium">
-              Ejercicio {exerciseIdx + 1}
+            <span
+              className={`text-xs px-2 py-1 rounded-full font-medium ${
+                esReto
+                  ? "bg-neon-purple/10 text-neon-purple"
+                  : "bg-neon-orange/10 text-neon-orange"
+              }`}
+            >
+              {esReto ? "Mini reto" : `Ejercicio ${exerciseIdx + 1}`}
             </span>
             {/* Difficulty */}
             <div className="flex gap-0.5">
