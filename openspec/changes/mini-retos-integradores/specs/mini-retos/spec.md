@@ -90,35 +90,57 @@ it is already forbidden for CSS exercises by `validacion-curriculum.test.ts`.
 - WHEN it is graded
 - THEN step one MUST still report satisfied
 
-### Requirement: The Reference Solution Is Revealed Only After Completion
+### Requirement: The Reference Solution Is Not Shown Before Completion
 
-An integrating challenge MUST carry a `referenceSolution`, and it MUST be
-revealed to the student **only once that student has completed the challenge**.
+An integrating challenge MUST carry a `referenceSolution`, and the exercise UI
+MUST NOT show it until that student's `Progress` for the challenge reads
+`completed: true`.
 
-It MUST NOT be reachable before completion by any number of attempts, by
-elapsed time, or by any control on the page.
+It MUST NOT be revealed by any number of attempts, by elapsed time, or by any
+control on the page. A student who is stuck is not abandoned: `hint` and
+`explanation` already render in all eight exercise components and MUST stay
+available throughout.
 
-This is a deliberate departure from the reference site, where the solution sits
-beside the editor from page load and one click reveals the complete answer. A
-student who is stuck is not abandoned: `hint` and `explanation` already render
-in all eight exercise components and MUST stay available throughout.
+This is a deliberate departure from the reference site, where the Solution tab
+sits beside the editor from page load and one click reveals the complete
+answer — measured 2026-08-27.
 
-#### Scenario: An unattempted challenge does not expose its solution
+#### What this requirement deliberately does NOT claim
+
+An earlier version demanded the solution "MUST NOT be present in what the page
+delivers to the client". **That is not achievable and it was written without
+measuring.** The exercise page is `"use client"` and imports `ALL_MODULES`, so
+the whole curriculum ships to the browser: 154 `isCorrect` flags and 80
+`targetCSS` blocks are already in the bundle
+(`.next/static/chunks/04xlc4ayw5o2e.js`, measured 2026-08-28).
+
+So this is a lock in the interface, not a boundary, **and the spec says so
+rather than implying otherwise.** It stops the student who would click; it does
+not stop the one who opens devtools — who could already read the expected answer
+of any of the 789 exercises today.
+
+Making it a real boundary means taking the curriculum out of the client bundle.
+That is its own change, and the case for it is now weak: what actually mattered
+— **claiming a completion you did not earn** — was closed by
+`revalidacion-en-servidor`. Reading the answer still means pasting it and being
+graded on it by the server.
+
+#### Scenario: An unattempted challenge does not show its solution
 
 - GIVEN a student who has never submitted this challenge
-- WHEN the challenge page renders
-- THEN the reference solution MUST NOT be present in what the page delivers to the client
+- WHEN the challenge renders
+- THEN no control MUST offer the reference solution
 
 #### Scenario: Failed attempts do not unlock it
 
 - GIVEN a student who has submitted this challenge ten times without completing it
-- WHEN the challenge page renders
-- THEN the reference solution MUST still not be revealed
+- WHEN the challenge renders
+- THEN the reference solution MUST still not be shown
 
 #### Scenario: Completion reveals it
 
 - GIVEN a student whose `Progress` for this challenge has `completed: true`
-- WHEN the challenge page renders
+- WHEN the challenge renders
 - THEN the reference solution MUST be available to compare against their own answer
 
 ### Requirement: A Challenge Must Be Provably Passable
