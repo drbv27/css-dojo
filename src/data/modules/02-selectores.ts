@@ -376,5 +376,46 @@ Selecciona **todos** los elementos. Útil para resets:
       explanation:
         "Se usan dos selectores de tipo: 'h1 { color: red; }' para el título en rojo y 'p { color: blue; }' para los párrafos en azul.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "02-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 9,
+      prompt:
+        "Reto integrador. La misma página, estilada con las tres clases de selector que viste. Cada paso pide una clase distinta a proposito.",
+      retoPasos: [
+        {
+          instruccion:
+            "Con un selector de TIPO, dale a todos los parrafos el color #555 y un margen de 8px.",
+          esperado: "p { color: #555; margin: 8px; }",
+        },
+        {
+          instruccion:
+            "Con un selector de CLASE, dale a .destacado un fondo #fff3cd. Fijate que alcanza al h2 y al parrafo por igual.",
+          esperado: ".destacado { background-color: #fff3cd; }",
+        },
+        {
+          instruccion:
+            "Con un selector de ID, dale a #cabecera un padding de 16px y un borde de 1px solid #ddd.",
+          esperado: "#cabecera { padding: 16px; border: 1px solid #ddd; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<div id="cabecera">\n  <h2 class="destacado">Titulo destacado</h2>\n  <p class="destacado">Parrafo destacado</p>\n  <p>Parrafo comun</p>\n</div>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        "p {\n  color: #555;\n  margin: 8px;\n}\n\n.destacado {\n  background-color: #fff3cd;\n}\n\n#cabecera {\n  padding: 16px;\n  border: 1px solid #ddd;\n}",
+      hint: "El tipo se escribe tal cual (`p`), la clase con punto (`.destacado`) y el id con numeral (`#cabecera`).",
+      explanation:
+        "Cada selector elige por un criterio distinto: el de tipo por el nombre del elemento, el de clase por un atributo que podes repetir, y el de id por un atributo que es único en la página. Por eso `.destacado` alcanza a dos elementos diferentes y `#cabecera` a uno solo.",
+    },
   ],
 };

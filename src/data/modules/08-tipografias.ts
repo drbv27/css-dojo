@@ -544,5 +544,51 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       explanation:
         "Cada alineación responde a su contenido: los títulos centrados equilibran el bloque, las firmas y fechas a la derecha se leen como un cierre, y el cuerpo a la izquierda es lo que mejor se lee en pantalla.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "04-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 11,
+      prompt:
+        "Reto integrador. Un bloque de texto legible se arma con cuatro decisiones: la familia, el tamaño, el peso y cómo se alinea.",
+      retoPasos: [
+        {
+          instruccion:
+            "Dale a .nota la familia Georgia con serif como respaldo. Siempre se declara una alternativa generica por si la primera no esta.",
+          esperado: ".nota { font-family: Georgia, serif; }",
+        },
+        {
+          instruccion:
+            "Dale a `.nota p` un tamaño de 17px y un interlineado de 1.7. El interlineado es lo que más cambia la legibilidad de un párrafo largo.",
+          esperado: ".nota p { font-size: 17px; line-height: 1.7; }",
+        },
+        {
+          instruccion:
+            "Dale a `.nota h3` un peso de 700 y un estilo italic.",
+          esperado: ".nota h3 { font-weight: 700; font-style: italic; }",
+        },
+        {
+          instruccion:
+            "Justifica `.nota p` con text-align.",
+          esperado: ".nota p { text-align: justify; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<article class="nota">\n  <h3>Un título con carácter</h3>\n  <p>El cuerpo del texto es donde se gana o se pierde la legibilidad.</p>\n</article>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".nota {\n  font-family: Georgia, serif;\n}\n\n.nota p {\n  font-size: 17px;\n  line-height: 1.7;\n  text-align: justify;\n}\n\n.nota h3 {\n  font-weight: 700;\n  font-style: italic;\n}",
+      hint: "La familia se hereda: declarandola en .nota alcanza al h3 y al párrafo sin repetirla.",
+      explanation:
+        "La familia se declara una vez en el contenedor y se hereda hacia adentro, por eso no hace falta repetirla. El tamaño y el interlineado son la pareja que decide si un párrafo se lee comodo: 1.7 de interlineado da aire suficiente. Y el peso y el estilo distinguen al título del cuerpo sin cambiar de familia.",
+    },
   ],
 };

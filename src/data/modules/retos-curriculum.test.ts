@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ALL_MODULES } from "@/data/modules";
 import { calificar, cssEsperadoDe, esRetoIntegrador } from "@/lib/calificar";
+import { parseCssRules } from "@/lib/cssRules";
 
 /**
  * Los retos integradores del curriculum.
@@ -15,7 +16,16 @@ const RETOS = ALL_MODULES.flatMap((m) =>
 );
 
 /** El registro del rollout. Una tanda no puede entrar sin quedar anotada. */
-const MODULOS_CON_RETO = ["box-model"];
+const MODULOS_CON_RETO = [
+  "box-model",
+  // Tanda B, 2026-08-28: los primeros seis obligatorios del track.
+  "que-es-css",
+  "selectores",
+  "propiedades-basicas",
+  "unidades-css",
+  "dimensiones",
+  "tipografias",
+];
 
 describe("retos integradores", () => {
   it("los modulos con reto son exactamente los esperados", () => {
@@ -142,6 +152,46 @@ describe("retos integradores", () => {
         }
       }
     }
+  });
+
+  /**
+   * UN PASO QUE ESTRENA UN SELECTOR TIENE QUE NOMBRARLO.
+   *
+   * Encontrado por Diego probando el reto de `unidades-css` el 2026-08-28. El
+   * paso 4 decia "Dale al h1 un tamaño de 2.5em" y esperaba `.hero h1`. El
+   * escribio `h1 { font-size: 2.5em; }` -- que es exactamente lo que la
+   * instruccion pedia, y que ademas FUNCIONA en el preview -- y el paso quedo
+   * en gris, porque `css-rules` verifica que la declaracion este bajo el
+   * selector correcto.
+   *
+   * Es la misma clase que las pistas acentuadas de `especificidad/09-ej-08`: el
+   * enunciado pide una cosa y el corrector exige otra, y el alumno lee el error
+   * como suyo.
+   *
+   * La regla es solo para el selector que se ESTRENA. Si un paso anterior ya
+   * nombro `.hero`, decir "dale un padding de 2rem" se entiende perfecto porque
+   * el alumno ya esta escribiendo adentro de ese bloque. Exigir que se repita
+   * el selector en cada paso convertiria las instrucciones en un formulario.
+   */
+  it("todo paso que ESTRENA un selector lo nombra en su instruccion", () => {
+    const mudos: string[] = [];
+
+    for (const { modulo, ejercicio } of RETOS) {
+      const yaVistos = new Set<string>();
+      ejercicio.retoPasos!.forEach((paso, i) => {
+        for (const [selector] of parseCssRules(paso.esperado)) {
+          const estrena = !yaVistos.has(selector);
+          yaVistos.add(selector);
+          if (estrena && !paso.instruccion.includes(selector)) {
+            mudos.push(
+              `${modulo}/${ejercicio.id} paso ${i + 1}: estrena "${selector}" y no lo nombra`,
+            );
+          }
+        }
+      });
+    }
+
+    expect(mudos).toEqual([]);
   });
 
   it("un reto vale mas XP que cualquier otro ejercicio de su modulo", () => {

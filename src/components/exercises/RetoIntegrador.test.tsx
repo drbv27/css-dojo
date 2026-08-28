@@ -1,5 +1,5 @@
 import { afterEach, describe, it, expect, vi } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import RetoIntegrador from "./RetoIntegrador";
 import type { Exercise } from "@/types";
 
@@ -12,7 +12,9 @@ import type { Exercise } from "@/types";
  */
 
 vi.mock("@/components/editor/CSSEditor", () => ({
-  default: ({ value }: { value: string }) => <textarea readOnly value={value} />,
+  default: ({ value, language, readOnly }: { value: string; language?: string; readOnly?: boolean }) => (
+    <textarea readOnly data-testid={`editor-${language ?? "css"}`} data-readonly={String(!!readOnly)} value={value} />
+  ),
 }));
 vi.mock("@/components/editor/LivePreview", () => ({
   default: () => <div data-testid="preview" />,
@@ -83,5 +85,42 @@ describe("RetoIntegrador: los pasos", () => {
     const sinPasos = { ...reto, retoPasos: undefined };
     render(<RetoIntegrador exercise={sinPasos} onSubmit={() => {}} />);
     expect(screen.getByText("0 de 0")).toBeTruthy();
+  });
+});
+
+describe("RetoIntegrador: la pestaña de HTML", () => {
+  it("arranca mostrando la vista previa, no el HTML", () => {
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+
+    expect(screen.getByTestId("preview")).toBeTruthy();
+    expect(screen.queryByTestId("editor-html")).toBeNull();
+  });
+
+  it("al elegir HTML se ve el marcado y se esconde el preview", () => {
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+
+    fireEvent.click(screen.getByRole("tab", { name: /html/i }));
+
+    const visor = screen.getByTestId("editor-html");
+    expect((visor as HTMLTextAreaElement).value).toContain("class='tarjeta'");
+    expect(screen.queryByTestId("preview")).toBeNull();
+  });
+
+  it("el HTML es de SOLO LECTURA", () => {
+    // Poder editarlo convertiria "aplicale esto a .tarjeta" en "renombra la
+    // clase y listo".
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+    fireEvent.click(screen.getByRole("tab", { name: /html/i }));
+
+    expect(screen.getByTestId("editor-html").getAttribute("data-readonly")).toBe("true");
+  });
+
+  it("se puede volver a la vista previa", () => {
+    render(<RetoIntegrador exercise={reto} onSubmit={() => {}} />);
+
+    fireEvent.click(screen.getByRole("tab", { name: /html/i }));
+    fireEvent.click(screen.getByRole("tab", { name: /vista previa/i }));
+
+    expect(screen.getByTestId("preview")).toBeTruthy();
   });
 });

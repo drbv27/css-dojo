@@ -580,5 +580,51 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       explanation:
         "`dvh` es el viewport dinámico: mide contra la ventana tal como está en este momento y se actualiza sola cuando la barra aparece o se va. Por eso el botón nunca queda tapado.\n\nLas otras dos existen para cuando no querés ese ajuste. `lvh` mide siempre contra el viewport grande -- es lo que hace `vh` hoy, y por eso `lvh` no arregla nada. `svh` mide siempre contra el chico: el bloque queda un poco más bajo, pero no se mueve nunca, y a veces eso es preferible porque `dvh` se recalcula mientras el usuario scrollea y el salto se nota.\n\nRegla práctica: `dvh` para casi todo lo que va a pantalla completa, `svh` cuando la estabilidad importe más que aprovechar cada píxel.",
     },
+    {
+      /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
+      id: "10-ej-reto",
+      type: "live-editor",
+      difficulty: 3,
+      xpReward: 60,
+      order: 11,
+      prompt:
+        "Reto integrador. Cada paso pide una unidad DISTINTA, y no es capricho: cada una se eligio por lo que hace bien.",
+      retoPasos: [
+        {
+          instruccion:
+            "Dale a .hero una altura de 60vh. Una unidad de viewport es la que sirve cuando queres una fraccion de la PANTALLA.",
+          esperado: ".hero { height: 60vh; }",
+        },
+        {
+          instruccion:
+            "Limita su ancho a 80% del contenedor. El porcentaje es relativo al PADRE.",
+          esperado: ".hero { width: 80%; }",
+        },
+        {
+          instruccion:
+            "Dale un padding de 2rem. `rem` es relativo a la raiz, asi que no se encadena aunque anides elementos.",
+          esperado: ".hero { padding: 2rem; }",
+        },
+        {
+          instruccion:
+            "Ahora al titulo, con el selector descendente `.hero h1`: dale un tamaño de 2.5em. `em` SI es relativo a su propio contexto, y esa es la diferencia con rem.",
+          esperado: ".hero h1 { font-size: 2.5em; }",
+        },
+      ],
+      codeTemplate: {
+        html: `<section class="hero">\n  <h1>Ancho completo</h1>\n  <p>Un texto que se adapta.</p>\n</section>`,
+        cssPrefix: "",
+        cssSuffix: "",
+        blanks: [],
+      },
+      validation: {
+        type: "css-rules",
+      },
+      referenceSolution:
+        ".hero {\n  height: 60vh;\n  width: 80%;\n  padding: 2rem;\n}\n\n.hero h1 {\n  font-size: 2.5em;\n}",
+      hint: "Los cuatro pasos son la respuesta a la leccion 4: `vh` para la pantalla, `%` para el padre, `rem` para la raiz y `em` para el contexto propio.",
+      explanation:
+        "Elegir la unidad es elegir CONTRA QUE se mide. `vh` mide contra la ventana, `%` contra el elemento padre, `rem` contra la raiz del documento y `em` contra el tamaño del propio elemento. Por eso `rem` no se encadena al anidar y `em` si: es la unica diferencia entre las dos, y es la que decide cual usar.",
+    },
   ],
 };
