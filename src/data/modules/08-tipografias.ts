@@ -561,17 +561,17 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
         },
         {
           instruccion:
-            "Dale al cuerpo un tamaño de 17px y un interlineado de 1.7. El interlineado es lo que más cambia la legibilidad de un párrafo largo.",
+            "Dale a `.nota p` un tamaño de 17px y un interlineado de 1.7. El interlineado es lo que más cambia la legibilidad de un párrafo largo.",
           esperado: ".nota p { font-size: 17px; line-height: 1.7; }",
         },
         {
           instruccion:
-            "Dale al h3 un peso de 700 y un estilo italic.",
+            "Dale a `.nota h3` un peso de 700 y un estilo italic.",
           esperado: ".nota h3 { font-weight: 700; font-style: italic; }",
         },
         {
           instruccion:
-            "Justifica el párrafo con text-align.",
+            "Justifica `.nota p` con text-align.",
           esperado: ".nota p { text-align: justify; }",
         },
       ],

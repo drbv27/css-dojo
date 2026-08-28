@@ -607,7 +607,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         },
         {
           instruccion:
-            "Dale al h1 un tamaño de 2.5em. `em` SI es relativo a su propio contexto, y esa es la diferencia con rem.",
+            "Ahora al titulo, con el selector descendente `.hero h1`: dale un tamaño de 2.5em. `em` SI es relativo a su propio contexto, y esa es la diferencia con rem.",
           esperado: ".hero h1 { font-size: 2.5em; }",
         },
       ],
