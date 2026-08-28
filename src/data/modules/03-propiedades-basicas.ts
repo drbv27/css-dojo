@@ -231,7 +231,7 @@ Redondea las esquinas de un elemento:
       validation: { type: "exact", answer: "color" },
       hint: "Es una propiedad de una sola palabra que define el color del texto.",
       explanation:
-        "La propiedad 'color' se usa para definir el color del texto. La regla completa es: .título { color: #FF0000; }",
+        "La propiedad 'color' se usa para definir el color del texto. La regla completa es: .titulo { color: #FF0000; }",
     },
     {
       id: "03-ej-03",

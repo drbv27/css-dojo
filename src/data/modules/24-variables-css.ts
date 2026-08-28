@@ -409,7 +409,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .página (background, color) y .botón (background con --acento, color white).",
+        "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .pagina (background, color) y .boton (background con --acento, color white).",
       codeTemplate: {
         html: `<div class="pagina">\n  <h2>Sistema de temas</h2>\n  <p>Cambiando variables se cambia todo el aspecto.</p>\n  <button class="boton">Accion</button>\n</div>`,
         cssPrefix: "",
@@ -423,7 +423,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .página y .botón.",
+      hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .pagina y .boton.",
       explanation:
         "El sistema de temas funciona declarando variables en :root (tema claro) y sobreescribiendolas en .tema-oscuro. Los estilos usan var() y se adaptan automáticamente al tema activo.",
     },

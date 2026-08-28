@@ -592,7 +592,7 @@ Diferencias clave:
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa el selector padre de Sass para generar '.botón:hover':",
+        "Completa el selector padre de Sass para generar '.boton:hover':",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: ".boton {\n  background: #3498db;\n  color: white;\n\n  ",
@@ -602,7 +602,7 @@ Diferencias clave:
       validation: { type: "exact", answer: "&" },
       hint: "Es un simbolo que referencia al selector padre actual en Sass.",
       explanation:
-        "El simbolo & en Sass referencia al selector padre. Dentro de .botón, &:hover se compila a .botón:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
+        "El simbolo & en Sass referencia al selector padre. Dentro de .boton, &:hover se compila a .boton:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
     },
     {
       id: "21-ej-05",

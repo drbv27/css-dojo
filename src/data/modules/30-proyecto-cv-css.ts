@@ -215,7 +215,7 @@ body
       xpReward: 20,
       order: 2,
       prompt:
-        "Paso 2 - Reset y tipografía. Escribe el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .título-profesional, font-size: 20px, color: #666 y margin-top: 0.",
+        "Paso 2 - Reset y tipografía. Escribe el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .titulo-profesional, font-size: 20px, color: #666 y margin-top: 0.",
       codeTemplate: {
         html: `<header class="encabezado">\n  <h1 class="nombre">Ana Martinez</h1>\n  <p class="titulo-profesional">Desarrolladora Frontend</p>\n</header>`,
         cssPrefix: "",
