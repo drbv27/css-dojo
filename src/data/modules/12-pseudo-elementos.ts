@@ -431,7 +431,7 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa .título::after con content: \"\" (vacío, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
+      hint: "Usa .titulo::after con content: \"\" (vacío, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
       explanation:
         "Se usa ::after con content: \"\" para crear un elemento visual sin texto. display: block hace que ocupe su propia línea. Luego se define el tamaño (width/height) y el color de fondo para crear la línea decorativa.",
     },

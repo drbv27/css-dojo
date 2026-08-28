@@ -348,9 +348,9 @@ Selecciona **todos** los elementos. Útil para resets:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una con selector de clase (.activo) y otra con selector de ID (#título).",
+      hint: "Necesitas dos reglas: una con selector de clase (.activo) y otra con selector de ID (#titulo).",
       explanation:
-        "Se necesitan dos reglas: '.activo { color: green; }' usa un selector de clase, y '#título { font-size: 20px; }' usa un selector de ID.",
+        "Se necesitan dos reglas: '.activo { color: green; }' usa un selector de clase, y '#titulo { font-size: 20px; }' usa un selector de ID.",
     },
     {
       id: "02-ej-08",

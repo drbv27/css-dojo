@@ -636,9 +636,9 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "La regla más fuerte actual tiene especificidad (0,2,0). Para ganarle, usa el ID #sección combinado con las clases existentes.",
+      hint: "La regla más fuerte actual tiene especificidad (0,2,0). Para ganarle, usa el ID #seccion combinado con las clases existentes.",
       explanation:
-        "Las reglas existentes tienen especificidad (0,0,1) y (0,2,0). El selector '#sección .articulo .texto' tiene (1,2,0), que supera a ambas. Al incluir el ID del ancestro, ganamos sin necesidad de !important.",
+        "Las reglas existentes tienen especificidad (0,0,1) y (0,2,0). El selector '#seccion .articulo .texto' tiene (1,2,0), que supera a ambas. Al incluir el ID del ancestro, ganamos sin necesidad de !important.",
     },
     {
       id: "09-ej-09",
