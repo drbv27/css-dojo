@@ -55,6 +55,13 @@ export default function RetoIntegrador({
 
   const [css, setCss] = useState(exercise.codeTemplate?.cssPrefix ?? "");
   const [verSolucion, setVerSolucion] = useState(false);
+  /**
+   * Que muestra la columna derecha. Arranca en el preview porque el resultado
+   * es lo que el alumno mira mientras escribe, pero el HTML esta a un clic:
+   * sin verlo esta aplicando CSS a un marcado que no conoce, y `.hero h1` no
+   * significa nada si nunca vio que hay un h1 adentro de .hero.
+   */
+  const [panel, setPanel] = useState<"preview" | "html">("preview");
 
   // Se califica en vivo para pintar el estado de cada paso mientras escribe.
   // El veredicto que cuenta lo da el servidor al enviar; esto es la guia.
@@ -133,13 +140,49 @@ export default function RetoIntegrador({
         </div>
 
         <div className="flex flex-col gap-2">
-          <div className="flex items-center gap-2 px-1">
-            <span className="w-2 h-2 rounded-full bg-neon-green" />
-            <span className="text-xs font-medium text-editor-muted uppercase tracking-wider">
-              Vista Previa
-            </span>
+          {/* El HTML es de SOLO LECTURA: el reto es escribir el CSS, y poder
+              cambiar el marcado convertiria "aplicale esto a .hero" en
+              "renombra la clase y listo". */}
+          <div className="flex items-center gap-1 px-1" role="tablist">
+            {(
+              [
+                ["preview", "Vista previa", "bg-neon-green"],
+                ["html", "HTML", "bg-neon-orange"],
+              ] as const
+            ).map(([clave, etiqueta, punto]) => (
+              <button
+                key={clave}
+                role="tab"
+                aria-selected={panel === clave}
+                onClick={() => setPanel(clave)}
+                className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-xs font-medium uppercase tracking-wider transition-colors ${
+                  panel === clave
+                    ? "bg-editor-surface text-editor-text"
+                    : "text-editor-muted hover:text-editor-text"
+                }`}
+              >
+                <span className={`w-2 h-2 rounded-full ${panel === clave ? punto : "bg-editor-border"}`} />
+                {etiqueta}
+              </button>
+            ))}
+            {panel === "html" && (
+              <span className="ml-auto text-[10px] font-mono text-editor-muted">
+                solo lectura
+              </span>
+            )}
           </div>
-          <LivePreview html={html} css={css} className="flex-1 min-h-[300px]" />
+
+          {panel === "preview" ? (
+            <LivePreview html={html} css={css} className="flex-1 min-h-[300px]" />
+          ) : (
+            <CSSEditor
+              value={html}
+              onChange={() => {}}
+              height="300px"
+              readOnly
+              language="html"
+            />
+          )}
         </div>
       </motion.div>
 
