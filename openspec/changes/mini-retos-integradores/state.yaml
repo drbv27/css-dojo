@@ -57,12 +57,15 @@ phases:
       pr_encadenados: si
       chain_strategy: stacked-to-main   # cacheado de la sesion
   apply:
-    status: partial
+    status: done
     note: >
-      Rebanada A aplicada: maquinaria completa mas el reto piloto en box-model.
-      Faltan las tandas B, C y D -- los 18 retos de contenido restantes.
+      19 de 19, mergeado en main el 2026-08-28 (PRs #43, #44, #45).
   verify:
-    status: pending
+    status: done
+    note: >
+      Verificado sobre el arbol mergeado: 327 tests, typecheck, build y lint sin
+      warnings nuevos. Y verificado A OJO por Diego en el navegador, que es lo
+      que encontro los tres defectos que ningun test cazo.
   archive:
     status: pending
 
@@ -146,4 +149,33 @@ LA_DECISION_QUE_EL_DISENIO_LEVANTA_Y_NO_RESUELVE: >
   788. Es una pregunta de producto con 56 ejercicios detras y va en su propio
   cambio. NO se cuela aca.
 
-next_recommended: apply   # tandas B, C, D (contenido)
+impacto_medido_al_cerrar:
+  obligatorios_con_reto: 19 de 19
+  camino_minimo_del_certificado: 187 ejercicios (era 168)
+  xp_de_los_obligatorios: 4470 (era 3330)
+  curriculum_entero: 808 ejercicios y 15890 XP (eran 789 y 14750)
+  nota: >
+    Los tres numeros salieron EXACTOS a lo que el proposal habia predicho.
+
+lo_que_encontro_diego_a_ojo_y_ningun_test: >
+  1. El paso 4 de unidades-css decia "dale al h1" y esperaba `.hero h1`. Su
+     respuesta funcionaba en el preview y el corrector la rechazaba. Salio el
+     guard "todo paso que estrena un selector lo nombra".
+  2. Faltaba poder VER el HTML: el alumno estaba aplicando CSS a un marcado que
+     no conocia. Ahora hay una pestaña de solo lectura sobre la vista previa, y
+     el reto de pseudo-elementos la usa para enseñar.
+  3. El reto de Tailwind abria con el editor en modo CSS -Monaco subrayaba HTML
+     valido en rojo- y la vista previa mostraba la plantilla en vez de su
+     trabajo. Ningun test cubria un reto de estructura.
+  Y el titulo decia "Ejercicio 9", que no le daba el peso que un reto merece.
+  Ahora dice "Mini reto" en los tres lugares donde aparece.
+
+la_leccion_mas_incomoda: >
+  Arreglando el punto 3, al revertir el arreglo para verificar que el test lo
+  cazara, EL TEST SIGUIO EN VERDE: el mock de LivePreview era un `<div />` que
+  ignoraba sus props, asi que un preview cableado a la plantilla pasaba igual.
+  UN MOCK QUE IGNORA SUS PROPS ES UN GUARD VACUO CON OTRA ROPA. Es la tercera
+  variante del mismo error en dos dias, despues del cero sin denominador y del
+  guard positivo de los drag-drop.
+
+next_recommended: archive
