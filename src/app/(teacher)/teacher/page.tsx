@@ -110,6 +110,12 @@ export default function TeacherDashboardPage() {
           </div>
           <div className="flex items-center gap-3">
             <Link
+              href="/teacher/certificados"
+              className="px-4 py-2 text-sm font-medium bg-neon-green/10 border border-neon-green/20 rounded-lg text-neon-green hover:bg-neon-green/20 transition-colors"
+            >
+              Certificados
+            </Link>
+            <Link
               href="/teacher/entregas"
               className="px-4 py-2 text-sm font-medium bg-neon-green/10 border border-neon-green/20 rounded-lg text-neon-green hover:bg-neon-green/20 transition-colors"
             >
