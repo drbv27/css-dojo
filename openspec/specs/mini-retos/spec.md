@@ -1,16 +1,25 @@
-# Delta for mini-retos
+# Spec: mini-retos
 
-## Purpose
+Capability: `mini-retos`
 
-One **integrating challenge** per module in the CSS track: a new, multi-step,
-self-graded exercise that closes a module by making the student use several of
-its concepts together in one task.
+Governs the **integrating challenge** -- the exercise that closes a module by
+making the student use several of its concepts together in one multi-step,
+self-graded task, and which shows its reference solution only once completed.
 
-**Track relevance**: `css` only, and within it the **19 required modules**. The
-11 optional CSS modules and the other five tracks are out of scope. Every
-requirement below is `ADDED`.
+Established by change `mini-retos-integradores`, archived 2026-08-29, which
+shipped one challenge in each of the **19 required CSS modules** across PRs #43,
+#44 and #45. Where a requirement below cites a count it is the count measured at
+archive time: 19 of 19 modules covered, the certificate's minimum path at 187
+exercises (was 168), and the whole curriculum at 808 exercises and 15 890 XP.
+Those numbers are historical; the constraints are not -- they bind every future
+challenge, in this track and in any other.
 
-## ADDED Requirements
+**Scope today**: `css` only, and within it the 19 required modules. The 11
+optional CSS modules and the other five tracks carry no challenge until their
+own change adds one, and "carries none" is the correct state for them, not a
+gap.
+
+## Requirements
 
 ### Requirement: A Module Carries At Most One Integrating Challenge
 

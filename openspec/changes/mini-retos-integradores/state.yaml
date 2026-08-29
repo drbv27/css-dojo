@@ -32,21 +32,6 @@ phases:
   design:
     status: done
     artifact: openspec/changes/mini-retos-integradores/design.md
-  desbloqueado_el: 2026-08-28
-  nota_del_desbloqueo: >
-    `revalidacion-en-servidor` esta mergeado (PR #39, #40, #41), asi que el
-    servidor ya decide la completitud y existe un lado servidor donde apoyar la
-    llave de la solucion.
-    PERO el requisito de la solucion SE REESCRIBIO, porque estaba mal escrito:
-    exigia que el referenceSolution "no este presente en lo que la pagina
-    entrega al cliente", y eso no es alcanzable -- la pagina del ejercicio es
-    "use client" e importa ALL_MODULES, asi que el curriculum entero viaja al
-    navegador (154 `isCorrect` y 80 `targetCSS` medidos en el bundle).
-    Ahora dice lo que si se puede sostener: es una llave EN LA INTERFAZ, no un
-    limite, y la spec lo dice en vez de insinuar lo contrario. Sacar el
-    curriculum del bundle seria su propio cambio, y el caso ya es debil: lo que
-    importaba -mandar una completitud que no se gano- lo cerro
-    `revalidacion-en-servidor`.
   tasks:
     status: done
     artifact: openspec/changes/mini-retos-integradores/tasks.md
@@ -67,7 +52,23 @@ phases:
       warnings nuevos. Y verificado A OJO por Diego en el navegador, que es lo
       que encontro los tres defectos que ningun test cazo.
   archive:
-    status: pending
+    status: done
+    artifact: openspec/changes/mini-retos-integradores/archive-report.md
+    fecha: 2026-08-29
+    spec_promovida: openspec/specs/mini-retos/spec.md
+    note: >
+      Archivado EN SU LUGAR: la carpeta no se mueve, porque mover la carpeta
+      rompe la revision acotada -- el diff no detecta el renombre.
+      La spec delta se promovio como capacidad nueva `mini-retos`, con OCHO
+      requisitos y no siete: al promover se encontro que el grader entrega 100 o
+      0 para un reto -- lo levanto el design, lo implemento el codigo, lo prueba
+      el guard A.9- y NINGUN requisito lo decia. Publicar los siete tal cual
+      habria dejado una spec que, junto al `score >= 70` de la plataforma, dice
+      lo contrario de lo que corre. Se agrego primero al delta y despues se
+      promovio, para que los dos archivos digan lo mismo.
+      Control positivo antes de escribirlo: score proporcional -> A.9 en ROJO;
+      `calificar.ts` restaurado identico a main. Medido: 17 de los 19 retos
+      completarian con un paso menos bajo score proporcional.
 
 decidido_por_el_instructor:
   - UN reto integrador por MODULO, no uno por leccion.
@@ -149,6 +150,28 @@ LA_DECISION_QUE_EL_DISENIO_LEVANTA_Y_NO_RESUELVE: >
   788. Es una pregunta de producto con 56 ejercicios detras y va en su propio
   cambio. NO se cuela aca.
 
+
+# NO son fases: vivian DENTRO de `phases:` a la misma indentacion que
+# explore/propose/..., asi que cualquier lector de `phases` los veia como dos
+# fases mas con un string por status. Mismo error estructural que ya costo dias
+# en automated-gates, del otro lado: alla una clave cerraba el mapping, aca dos
+# claves ajenas se colaban adentro. Movidas a nivel raiz el 2026-08-29.
+desbloqueado_el: 2026-08-28
+nota_del_desbloqueo: >
+  `revalidacion-en-servidor` esta mergeado (PR #39, #40, #41), asi que el
+  servidor ya decide la completitud y existe un lado servidor donde apoyar la
+  llave de la solucion.
+  PERO el requisito de la solucion SE REESCRIBIO, porque estaba mal escrito:
+  exigia que el referenceSolution "no este presente en lo que la pagina
+  entrega al cliente", y eso no es alcanzable -- la pagina del ejercicio es
+  "use client" e importa ALL_MODULES, asi que el curriculum entero viaja al
+  navegador (154 `isCorrect` y 80 `targetCSS` medidos en el bundle).
+  Ahora dice lo que si se puede sostener: es una llave EN LA INTERFAZ, no un
+  limite, y la spec lo dice en vez de insinuar lo contrario. Sacar el
+  curriculum del bundle seria su propio cambio, y el caso ya es debil: lo que
+  importaba -mandar una completitud que no se gano- lo cerro
+  `revalidacion-en-servidor`.
+
 impacto_medido_al_cerrar:
   obligatorios_con_reto: 19 de 19
   camino_minimo_del_certificado: 187 ejercicios (era 168)
@@ -178,4 +201,4 @@ la_leccion_mas_incomoda: >
   variante del mismo error en dos dias, despues del cero sin denominador y del
   guard positivo de los drag-drop.
 
-next_recommended: archive
+next_recommended: none   # ciclo cerrado 2026-08-29: archive done, spec promovida, cambio archivado en su lugar
