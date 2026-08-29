@@ -39,17 +39,67 @@ phases:
     status: done
     artifact: openspec/changes/revalidacion-en-servidor/proposal.md
   spec:
-    status: pending
+    status: done
+    fecha: 2026-08-29
+    artifact: openspec/changes/revalidacion-en-servidor/specs/server-grading/spec.md
+    requisitos: 9
+    escenarios: 19
+    note: >
+      ESCRITA DESPUES DEL CODIGO, y el registro lo dice en vez de disimularlo.
+      Cada requisito se derivo leyendo la implementacion mergeada y sus guards,
+      no planificando por delante de ellos, y cada uno nombra donde se hace
+      cumplir para que la afirmacion se pueda chequear.
   design:
-    status: pending
+    status: absorbed-by-apply
+    fecha: 2026-08-29
+    note: >
+      NO se escribe. Las decisiones de disenio ya estan tomadas, mergeadas y
+      documentadas donde importa: el tipo union de `Calificacion` (para que "no
+      pude corregir, y aca va un score" no sea representable), el parser por
+      parametro en vez de sobre un global, y `GradeMismatch` como coleccion
+      propia y no un campo de `Progress`. Cada una lleva su porque en el codigo,
+      y las tres quedaron como requisito en la spec. Escribir un design.md para
+      una decision que ya aterrizo es ficcion con fecha.
   tasks:
-    status: pending
+    status: absorbed-by-apply
+    fecha: 2026-08-29
+    note: >
+      Mismo motivo. El trabajo esta hecho y mergeado en tres PRs; una lista de
+      tareas escrita ahora seria un inventario del pasado disfrazado de plan.
+      La cobertura real esta en verify-report.md, requisito por requisito.
   apply:
-    status: pending
+    status: done
+    note: >
+      Mergeado en main el 2026-08-28 en PRs #39, #40 y #41. Ver
+      archive-report.md para el inventario de lo que aterrizo.
   verify:
-    status: pending
+    status: done
+    fecha: 2026-08-29
+    artifact: openspec/changes/revalidacion-en-servidor/verify-report.md
+    veredicto: pass
+    note: >
+      Verificado SOBRE EL ARBOL MERGEADO (main en 3ef0978, en sync con origin),
+      no sobre una rama. 332 tests en 32 archivos, typecheck limpio, 804 de 808
+      ejercicios corregidos por el servidor.
+      Mapear la spec contra la suite encontro DOS requisitos sin guard: que un
+      fallo escribiendo la discrepancia no le cueste el progreso al alumno, y
+      que un tipo de validacion que nadie implemento no otorgue nada -esta
+      ultima es la rama que el guard de curriculum NO PUEDE alcanzar, porque
+      corre sobre los ejercicios que existen. Los dos guards se escribieron.
+      Cinco controles positivos, los CINCO en rojo. `calificar.ts` y `route.ts`
+      restaurados byte-identicos a main.
   archive:
-    status: pending
+    status: done
+    fecha: 2026-08-29
+    artifact: openspec/changes/revalidacion-en-servidor/archive-report.md
+    spec_promovida: openspec/specs/server-grading/spec.md
+    note: >
+      Archivado EN SU LUGAR: la carpeta no se mueve, porque mover la carpeta
+      rompe la revision acotada -- el diff no detecta el renombre.
+      La compuerta de archive avisa cuando un cambio toca auth, modelos de Mongo
+      o logica de XP. Este toca los tres, y se reviso en vez de eximirse: el
+      requisito "una completitud ya ganada no se revoca nunca" existe justamente
+      para acotar ese radio, y lleva dos guards.
 
 cobertura_medida:
   total_ejercicios: 789
@@ -98,4 +148,15 @@ riesgo_principal: >
 
 bloquea_a: mini-retos-integradores
 
-next_recommended: spec
+la_leccion_que_deja_este_cambio: >
+  El registro estuvo TRES FASES atras del codigo durante un dia entero: spec,
+  design, tasks, apply y verify decian `pending` con la implementacion ya
+  mergeada, y `next_recommended` decia `spec`. La sesion que lo construyo
+  escribio el codigo y nunca volvio al registro.
+  Es la cuarta vez que un registro obsoleto le cuesta tiempo real a este
+  proyecto. LA REGLA: un cambio no esta entregado cuando el codigo mergea --
+  esta entregado cuando el registro dice lo que el codigo hace. Un state.yaml
+  que discrepa de main es PEOR que no tener registro, porque la sesion que viene
+  le cree.
+
+next_recommended: none   # ciclo cerrado 2026-08-29: archive done, spec promovida, cambio archivado en su lugar

@@ -13,6 +13,7 @@ const db = {
   progreso: [] as Record<string, unknown>[],
   usuario: { _id: "u1", xp: 0, streak: 0, lastActivityDate: null as Date | null, save: async () => {} },
   mismatches: [] as Record<string, unknown>[],
+  mismatchFalla: false,
 };
 
 vi.mock("@/lib/auth", () => ({ getSession: async () => ({ id: "u1", role: "student" }) }));
@@ -56,7 +57,15 @@ vi.mock("@/lib/models/User", () => {
 });
 
 vi.mock("@/lib/models/GradeMismatch", () => ({
-  default: { create: async (d: Record<string, unknown>) => { db.mismatches.push(d); return d; } },
+  default: {
+    create: async (d: Record<string, unknown>) => {
+      // Registrar es diagnostico. Este mock puede fallar a proposito para
+      // probar que un fallo aca no le cuesta el progreso al alumno.
+      if (db.mismatchFalla) throw new Error("mongo caido (a proposito)");
+      db.mismatches.push(d);
+      return d;
+    },
+  },
 }));
 
 vi.mock("@/lib/achievements", () => ({
@@ -103,6 +112,7 @@ const progresoDe = (exerciseId: string) =>
 beforeEach(() => {
   db.progreso = [];
   db.mismatches = [];
+  db.mismatchFalla = false;
   db.usuario = { _id: "u1", xp: 0, streak: 0, lastActivityDate: null, save: async () => {} };
 });
 
@@ -254,6 +264,32 @@ describe("POST /api/progress: registro de discrepancias", () => {
       userAnswer: "b",
     });
 
+    expect(db.mismatches).toEqual([]);
+  });
+
+  /**
+   * El registro se escribe DESPUES de persistir el progreso, y su fallo se
+   * traga a proposito. Si se escribiera antes, o si el error se propagara, una
+   * coleccion de diagnostico caida le costaria al alumno un ejercicio que SI
+   * resolvio -- y encima solo a los alumnos cuyo cliente discrepa, que es
+   * exactamente la poblacion sobre la que uno esta tratando de averiguar algo.
+   */
+  it("un fallo escribiendo la discrepancia NO le cuesta el progreso al alumno", async () => {
+    db.mismatchFalla = true;
+
+    // Respuesta CORRECTA y un score del cliente que discrepa: completa, y de
+    // paso dispara el registro.
+    const res = await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-quiz",
+      exerciseType: "quiz",
+      score: 0,
+      userAnswer: "b",
+    });
+
+    expect(res.status).toBe(200);
+    expect(progresoDe("ej-quiz")).toMatchObject({ completed: true, score: 100 });
+    expect(db.usuario.xp).toBe(20);
     expect(db.mismatches).toEqual([]);
   });
 });
