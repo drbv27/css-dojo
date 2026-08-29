@@ -158,7 +158,7 @@ orden_de_lo_que_viene:
     CSS que faltan (float-display, posicionamiento, flexbox, css-grid,
     variables-css, media-queries, tailwind-css, proyecto-cv-css). NO es un
     prerrequisito de nada tecnico: es el calendario del curso.
-  - fase 5.1 -- endpoint de otorgamiento, teacher-only
+  - "[HECHO 2026-08-29] fase 5.1 -- endpoint de otorgamiento, teacher-only"
   - fase 5.3 -- vista del alumno
   - primer certificado
 
@@ -214,4 +214,57 @@ fase_5_2_como_quedo:
       estados (elegible, ya certificado, atrasado, esperando modulos sin abrir),
       mas la rama de una ruta que no certifica.
 
-next_recommended: fase 5.1 -- el endpoint de otorgamiento, ahora que su prerrequisito existe
+fase_5_1_como_quedo:
+  entregado: 2026-08-29
+  superficie:
+    - POST /api/teacher/certificados     # teacher-only, en el mismo route.ts que el GET
+    - boton "Otorgar" en las filas elegibles de la vista 5.2
+  decisiones_del_apply:
+    - >
+      LA ELEGIBILIDAD NO SE RE-DECIDE EN EL CALLER. El profesor dice A QUIEN,
+      nunca SI CORRESPONDE: un pedido que nombra a un alumno no elegible lo
+      rechaza `otorgar`, no el handler y no el boton estando escondido. Una
+      interfaz que esconde el boton es una comodidad, no un chequeo.
+    - >
+      409 y no 400 para un alumno no elegible, y el motivo viaja entero. La
+      peticion esta bien formada; el estado del alumno es el que no la permite.
+      En la practica un rechazo ahi significa que el roster de la pantalla quedo
+      viejo -entro contenido a un obligatorio y el alumno se cayo del 100 %- asi
+      que la vista recarga y lo dice.
+    - >
+      EL BOTON CONFIRMA, y nombra al alumno y la ruta. NO HAY REVOCACION: el
+      disenio la dejo fuera a proposito, asi que un clic en la fila equivocada
+      es permanente y no hay pantalla que lo deshaga. Una confirmacion que solo
+      pregunta "estas seguro?" no ayuda a descubrir que le erraste a la fila.
+    - >
+      NO se hizo "otorgar a todos". Masivo + irreversible + sin revocacion es la
+      combinacion equivocada para una credencial que firma el instructor.
+  defecto_encontrado_A_OJO_y_lo_que_destapo: >
+    El dialogo de confirmacion salia TRANSPARENTE: la tabla se leia a traves de
+    su texto. La causa no era el z-index ni el overlay: `bg-editor-panel` NO
+    EXISTE. No esta declarado en `@theme` de globals.css, asi que Tailwind v4 no
+    genera la utilidad y la clase NO HACE NADA. La invente yo en la 5.2, se usaba
+    cinco veces, y era invisible sobre un fondo ya oscuro hasta que algo necesito
+    ser opaco. Reemplazada por `bg-editor-surface`, que si existe y es la que
+    usan las otras vistas del profesor.
+    TERCERA VEZ que una clase huerfana llega a produccion en este proyecto -las
+    otras dos fueron `.terminal` en las presentaciones-, asi que esta vez se
+    escribio el guard: `src/app/globals-tokens.test.ts` cruza TODA clase de color
+    usada en src contra los tokens declarados, y falla nombrando la clase y el
+    archivo. Lleva un test anti-vacuidad que exige que el guard haya mirado algo,
+    porque un regex roto lo dejaria verde sobre el conjunto vacio.
+  verificacion:
+    tests: 359 en 35 archivos (eran 349 en 34)
+    controles_positivos: 12 mas, todos en rojo (9 del endpoint, 3 del guard de tokens)
+    typecheck: limpio
+    lint: 0 errores, las mismas 50 warnings que main
+    build: ok, /api/teacher/certificados en la tabla de rutas
+    a_ojo: >
+      Otorgado DE VERDAD contra QA: Ana Completa paso de "puede recibirlo" a
+      "ya lo tiene", el titular bajo de 1 a 0, y en la base quedo el certificado
+      CSS-C2-FY93GWSV con 19 modulos congelados.
+      OJO: los screenshots de Chrome se colgaron (CDP timeout) aunque read_page y
+      get_page_text respondian. Se verifico por DOM y por base, que para esto es
+      mejor evidencia que un pixel.
+
+next_recommended: fase 5.3 -- la vista del alumno de su propio certificado (lee `leerCertificado`, nunca recalcula)
