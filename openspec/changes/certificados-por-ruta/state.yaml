@@ -144,13 +144,74 @@ decision_que_bloqueaba_la_fase_5_YA_TOMADA: >
   bloqueada y pasa a estar agendada para el final.
 
 orden_de_lo_que_viene:
-  - mini-retos de plan-mejoras-css.md
-  - habilitar para cohorte 2 los 8 obligatorios de CSS que faltan (float-display,
-    posicionamiento, flexbox, css-grid, variables-css, media-queries,
-    tailwind-css, proyecto-cv-css)
-  - fase 5.2 -- vista del profesor (PRERREQUISITO del endpoint)
+  - "[HECHO 2026-08-28] mini-retos de plan-mejoras-css.md"
+  - >
+    [HECHO 2026-08-29] fase 5.2 -- vista del profesor (PRERREQUISITO del
+    endpoint). Se adelanto a los 8 modulos a pedido del instructor, y es
+    correcto: los 8 condicionan CUANDO se puede otorgar el primer certificado,
+    no si la vista se puede construir. El disenio ya contemplaba ese estado --
+    `aunNoHabilitados` existe justamente para reportarlo -- y la vista es lo que
+    le muestra al instructor cuan lejos esta cada alumno ANTES de decidir cuando
+    abrirlos.
+  - >
+    [DISCRECIONAL DEL INSTRUCTOR] habilitar para cohorte 2 los 8 obligatorios de
+    CSS que faltan (float-display, posicionamiento, flexbox, css-grid,
+    variables-css, media-queries, tailwind-css, proyecto-cv-css). NO es un
+    prerrequisito de nada tecnico: es el calendario del curso.
   - fase 5.1 -- endpoint de otorgamiento, teacher-only
   - fase 5.3 -- vista del alumno
   - primer certificado
 
-next_recommended: fase 5.2 cuando el instructor lo pida; nada esta en curso
+fase_5_2_como_quedo:
+  entregado: 2026-08-29
+  superficie:
+    - src/lib/certificados-panel.ts        # el roster, en lote
+    - src/app/api/teacher/certificados/    # GET, teacher-only
+    - src/app/(teacher)/teacher/certificados/page.tsx
+  solo_lectura: >
+    A proposito. Otorgar es la 5.1 y todavia no existe. La vista tiene que
+    existir ANTES del boton: con otorgamiento manual nadie vigila la
+    elegibilidad por el instructor, y un alumno puede llegar al 100 % y caerse
+    despues sin que nadie lo haya visto.
+  decisiones_del_apply:
+    - >
+      LEE EN LOTE, no una vez por alumno. `esElegible` es la funcion correcta
+      para UN alumno y la equivocada para una lista: son 105 viajes a la base
+      para una pantalla de 35. El panel hace CUATRO lecturas y despues llama a
+      `elegibilidadDe`, LA MISMA funcion pura, no una segunda copia de la regla.
+      Una copia que derivara mostraria un roster que no coincide con lo que el
+      endpoint de otorgamiento va a hacer, y se veria como un otorgamiento que
+      "misteriosamente" se niega. Hay un guard que cuenta las lecturas.
+    - >
+      NO se invento un umbral de "le falta poco". Se ordena por distancia y el
+      instructor decide a quien mirar. La plataforma ya arrastra una regla que
+      nadie eligio -el credito parcial completa a los 70- y un segundo corte
+      inventado escondería alumnos detras de un numero que nadie decidio.
+    - >
+      `aunNoHabilitados` es columna propia. Es la diferencia entre hablar con el
+      alumno y hablar con el calendario.
+  lo_que_encontro_el_navegador_y_ningun_test: >
+    El titular "pueden recibirlo" contaba a los que YA tienen el certificado,
+    asi que prometia trabajo que no existe: el profe abria esperando dos
+    personas a quienes otorgar y encontraba una. El arreglo NO fue tocar el JSX:
+    el numero se movio a `ResumenDelPanel`, en la libreria, porque un numero que
+    decide si alguien abre una pantalla tiene que tener un guard. Derivarlo en
+    la vista lo dejaba fuera de la suite, que es exactamente como se colo.
+  verificacion:
+    tests: 349 en 34 archivos (eran 332 en 32)
+    controles_positivos: 18, todos en rojo
+    dos_tests_nacieron_VACUOS: >
+      Sus controles positivos PASARON, que es la senial. "un opcional no cuenta"
+      le hacia hacer el opcional al alumno, asi que exigirlo por error no movia
+      el numero; y "cada cohorte lee su set" tenia UN solo alumno, cuya cohorte
+      era tambien la primera, asi que heredar la de la primera daba lo mismo.
+      Los dos reescritos, y sus controles ahora si se ponen rojos.
+    typecheck: limpio
+    lint: 0 errores, 50 warnings -- las mismas 50 que ya tiene main
+    build: ok, /teacher/certificados en la tabla de rutas
+    a_ojo: >
+      Verificado en el navegador contra la base de QA sembrada con los cuatro
+      estados (elegible, ya certificado, atrasado, esperando modulos sin abrir),
+      mas la rama de una ruta que no certifica.
+
+next_recommended: fase 5.1 -- el endpoint de otorgamiento, ahora que su prerrequisito existe
