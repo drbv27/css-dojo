@@ -335,6 +335,24 @@ export async function leerCertificado(
 }
 
 /**
+ * Every certificate a student holds, in one read.
+ *
+ * Same promise as `leerCertificado` and for the same reason: it consults the
+ * awarded records and NOTHING else. No `ALL_MODULES`, no `Progress`, no
+ * `esElegible`. The student's own view is built from this, so what they see is
+ * exactly what was frozen the day it was awarded -- even if the curriculum grew
+ * since.
+ *
+ * One query instead of one per track. `leerCertificado` is the right function
+ * for ONE track; over six it would be six round trips to answer one screen.
+ * Both normalise through `aLeido`, so there is one shape, not two.
+ */
+export async function certificadosDe(userId: string): Promise<CertificadoLeido[]> {
+  const docs = await Certificate.find({ userId }).lean();
+  return docs.map(aLeido).sort((a, b) => b.otorgadoEn.getTime() - a.otorgadoEn.getTime());
+}
+
+/**
  * A stable, human-quotable identifier. Ambiguous characters are left out so a
  * code read off a screen and typed back in does not turn `0` into `O`.
  */

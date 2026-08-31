@@ -29,6 +29,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Juegos CSS", href: "/juegos", icon: "Gamepad2" },
   { label: "Playground", href: "/playground", icon: "Code" },
   { label: "Leaderboard", href: "/leaderboard", icon: "Trophy" },
+  { label: "Certificados", href: "/certificados", icon: "Award" },
   { label: "Perfil", href: "/perfil", icon: "User" },
 ];
 

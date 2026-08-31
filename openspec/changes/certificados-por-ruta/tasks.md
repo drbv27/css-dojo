@@ -79,7 +79,11 @@ infrastructure that can land safely on `main` with no visible change.
   - **No invented "close enough" threshold.** Rows sort by distance; who is worth a click is the instructor's call. The platform already carries one rule nobody chose (partial credit completes at 70); a second invented cutoff would hide students behind a number nobody picked.
   - **`aunNoHabilitados` is its own column**, because "this student is behind" is a conversation with the student and "the course has not got there" is a conversation with the calendar.
   - `esElegible` already returns everything it needs: the required list, the missing exercise ids per module, and `aunNoHabilitados`, which separates "this student is behind" from "the course has not got there".
-- [ ] 5.3 The student's own view of their certificate. Reads `leerCertificado`, which never recomputes.
+- [x] 5.3 The student's own view of their certificate. Reads `leerCertificado`, which never recomputes.
+  - **Shipped 2026-08-31.** `/certificados`, `GET /api/certificados`, `certificadosDe()` in `src/lib/certificados.ts`, plus the nav entry.
+  - **The handler takes no request, on purpose.** The user id comes from the session and there is no parameter that could name anyone else. Ignoring a parameter is a decision someone can revert without noticing; not receiving one requires changing the function's signature. A test guards the arity.
+  - **`certificadosDe` reads Certificate and nothing else** — no `ALL_MODULES`, no `Progress`, no `esElegible`. One query for all six tracks, normalised through the same `aLeido` as `leerCertificado`, so there is one shape and not two. A guard counts the reads.
+  - **The empty state is the normal one** and says so: almost nobody holds a certificate yet, so it explains how one is earned instead of showing an error.
 
 ## Sequencing — DECIDED
 

@@ -53,13 +53,22 @@ phases:
       Los 5 requisitos de la spec delta estan implementados y testeados.
       20 controles positivos corridos, los 20 en rojo.
   archive:
-    status: pending
+    status: done
+    fecha: 2026-08-31
+    artifact: openspec/changes/certificados-por-ruta/archive-report.md
+    spec_promovida: openspec/specs/certificados/spec.md
     note: >
-      NO se archiva todavia, a proposito. La fase 5 esta abierta, decidida y
-      agendada; archivar cierra el cambio y se lleva ese plan al archivo.
-      Se archiva cuando la fase 5 aterrice. La alternativa, si hiciera falta
-      cerrar antes, es partir la fase 5 en un cambio propio contra la spec ya
-      promovida -- pero eso lo decide el instructor, no el proceso.
+      Se archiva porque LA FASE 5 ATERRIZO ENTERA: 5.2 y 5.1 el 2026-08-29, 5.3
+      el 2026-08-31. Lo unico que queda en `orden_de_lo_que_viene` es emitir el
+      primer certificado, que es una accion de Diego y no codigo por escribir.
+      Archivado EN SU LUGAR: la carpeta no se mueve, porque mover la carpeta
+      rompe la revision acotada -- el diff no detecta el renombre.
+      La spec delta se promovio con OCHO requisitos y no cinco: los cinco
+      originales cubren el modelo, la compuerta, la elegibilidad, el snapshot y
+      la regla del calendario, pero NINGUNO decia quien puede otorgar ni como se
+      lee. Publicar los cinco tal cual dejaba la spec de una credencial muda
+      sobre lo mas sensible que tiene. Se agregaron primero al delta y despues se
+      promovio, para que los dos archivos digan lo mismo.
 
 el_numero_que_definio_la_regla_Y_POR_QUE_ESTABA_MAL: >
   OJO: este parrafo justifica una regla QUE YA NO EXISTE. Se conserva porque el
@@ -160,7 +169,7 @@ orden_de_lo_que_viene:
     prerrequisito de nada tecnico: es el calendario del curso.
   - "[HECHO 2026-08-29] fase 5.1 -- endpoint de otorgamiento, teacher-only"
   - fase 5.3 -- vista del alumno
-  - primer certificado
+  - "primer certificado -- ACCION DE DIEGO, no queda codigo por escribir"
 
 fase_5_2_como_quedo:
   entregado: 2026-08-29
@@ -267,4 +276,43 @@ fase_5_1_como_quedo:
       get_page_text respondian. Se verifico por DOM y por base, que para esto es
       mejor evidencia que un pixel.
 
-next_recommended: fase 5.3 -- la vista del alumno de su propio certificado (lee `leerCertificado`, nunca recalcula)
+fase_5_3_como_quedo:
+  entregado: 2026-08-31
+  superficie:
+    - GET /api/certificados          # el handler NO recibe request, a proposito
+    - src/app/(app)/certificados/page.tsx
+    - certificadosDe() en src/lib/certificados.ts
+    - entrada en NAV_ITEMS
+  decisiones_del_apply:
+    - >
+      EL HANDLER NO RECIBE EL PEDIDO. `GET()` sin parametros: el userId sale de
+      la sesion y no hay forma de nombrar a otro. Ignorar un parametro es una
+      decision que alguien revierte sin darse cuenta; no recibirlo exige
+      cambiarle la firma a la funcion. Hay un test sobre `GET.length`.
+    - >
+      `certificadosDe` lee Certificate y NADA MAS. Una consulta para las seis
+      rutas, normalizada por el mismo `aLeido` que `leerCertificado`, asi que hay
+      una sola forma del dato y no dos. Un guard cuenta las lecturas y se pone
+      rojo si aparece Progress.
+    - >
+      El estado vacio es el normal -casi nadie tiene certificado todavia- asi que
+      explica como se gana en vez de mostrar un error.
+  defecto_preexistente_que_destapo: >
+    Agregar la entrada al menu descubrio que el mapa de iconos falla EN SILENCIO:
+    los tres componentes hacen `{Icon && <Icon />}`, asi que un icono que no esta
+    en el mapa deja el enlace sin icono y no rompe nada. Medido: al `Sidebar` le
+    faltaban `Gamepad2` y `Settings`, y a `MobileNav` `Settings`. Los tres
+    enlaces venian saliendo sin icono desde siempre y nadie lo noto.
+    Arreglados los tres, y escrito `src/components/layout/nav-iconos.test.ts`,
+    que cruza todo icono de NAV_ITEMS y TEACHER_NAV_ITEMS contra los TRES mapas.
+    El guard encontro el tercero solo, en su primera corrida.
+  verificacion:
+    tests: 373 en 39 archivos (eran 362 en 36)
+    controles_positivos: 9 mas, todos en rojo
+    typecheck_lint_build: limpios
+    a_ojo: >
+      Contra QA, los dos casos: Ana ve su CSS-C2-FY93GWSV con los 19 modulos y
+      187 ejercicios congelados y el detalle desplegable; Elena, sin certificado,
+      ve el estado vacio que explica como se gana.
+
+next_recommended: none   # ciclo cerrado 2026-08-31: fase 5 completa, spec promovida, cambio archivado en su lugar
