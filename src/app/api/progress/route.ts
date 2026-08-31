@@ -4,7 +4,7 @@ import dbConnect from "@/lib/db";
 import Progress from "@/lib/models/Progress";
 import User from "@/lib/models/User";
 import { ALL_MODULES } from "@/data/modules";
-import { calificar } from "@/lib/calificar";
+import { calificar, esSoloCliente } from "@/lib/calificar";
 import { parserHtmlServidor } from "@/lib/parserHtmlServidor";
 import GradeMismatch from "@/lib/models/GradeMismatch";
 
@@ -63,7 +63,37 @@ export async function POST(request: Request) {
   // Un corrector que no pudo corregir no otorga nada. Nunca un 500 en la cara
   // del alumno a mitad del ejercicio.
   const score = calificacion.calificable ? calificacion.score : 0;
-  const isCompleted = calificacion.calificable && score >= 70;
+
+  // LA EXCEPCION, y por que esta atada a `esSoloCliente` y no a otra cosa.
+  //
+  // Los cuatro ejercicios `js-behavior` corren el JS del alumno en un Worker y
+  // no tienen equivalente en el servidor. La decision del instructor fue que
+  // SIGUIERAN corrigiendose en el cliente; la implementacion les aplico la regla
+  // de "no calificable no otorga nada" y los volvio IMPOSIBLES de completar:
+  // medido, `isCompleted` daba false para los cuatro escribiera lo que
+  // escribiera el alumno, y estuvo asi tres dias en produccion.
+  //
+  // Va contra `esSoloCliente` -la lista enumerada que un guard de curriculum ya
+  // fija en exactamente esos cuatro- y NO contra `validation.type` ni contra
+  // nada que venga en el body. Asi la puerta no se ensancha sola: un tipo de
+  // validacion nuevo cae en el default, que no otorga nada, hasta que alguien lo
+  // agregue a la lista a proposito.
+  //
+  // EL PRECIO, dicho: para esos cuatro un alumno puede forjar la completitud
+  // desde la consola. Es el trato que ya se acepto -el track js no declara
+  // `nivel`, asi que no certifica-. SI ALGUN DIA SE CLASIFICA ESE TRACK, esto
+  // pasa a ser un bloqueante de esa clasificacion.
+  const completaEnCliente = !calificacion.calificable && esSoloCliente(exercise);
+
+  // Se completa cuando esta COMPLETO. El umbral viejo era `score >= 70`, y nadie
+  // eligio ese numero para lo que hacia: salia de un corte fijo chocando con un
+  // score proporcional. Medido antes de sacarlo: 63 de los 92 ejercicios
+  // `css-rules` de CSS completaban con una declaracion faltante, y 47 de esos
+  // estan en modulos OBLIGATORIOS, o sea que el certificado se podia ganar
+  // dejando declaraciones sin escribir.
+  const isCompleted = calificacion.calificable
+    ? score === 100
+    : completaEnCliente && scoreCliente === 100;
   const xpToAward = isCompleted ? maxXP : 0;
 
   // Check if already completed BEFORE updating
