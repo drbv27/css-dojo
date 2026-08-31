@@ -17,6 +17,8 @@ import {
   Megaphone,
   Inbox,
   Braces,
+  Award,
+  Settings,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
@@ -33,6 +35,8 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   GraduationCap,
   Megaphone,
   Inbox,
+  Award,
+  Settings,
 };
 
 function MobileNavLink({
