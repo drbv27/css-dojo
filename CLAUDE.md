@@ -18,8 +18,9 @@ npm run test:run  # Vitest once (use this in CI or before a commit)
 npm run test:e2e  # Playwright end-to-end
 ```
 
-There IS a test suite: 26 Vitest files (`src/**/*.test.ts[x]`) plus 3 Playwright specs
-in `e2e/`. Two kinds worth knowing about, because they guard different things:
+There IS a test suite: 40 Vitest files (`src/**/*.test.ts[x]`) plus 3 Playwright specs
+in `e2e/`. Measured 2026-08-31 at `1c9cdb2`; this number goes stale every time
+content lands, so re-measure before quoting it. Two kinds worth knowing about, because they guard different things:
 
 - **Unit tests** over the graders and helpers -- `src/lib/cssRules.test.ts`,
   `htmlStructure`, `jsBehavior`, `xp`, `shuffle`.
@@ -70,11 +71,11 @@ Custom JWT auth (no NextAuth). `src/lib/auth.ts` issues/verifies JWTs stored in 
 
 ### Content Model
 
-All course content lives as **static TypeScript files** in `src/data/modules/`. There are **six** tracks (dojos) and **106** modules, measured 2026-08-27 against `ALL_MODULES`:
+All course content lives as **static TypeScript files** in `src/data/modules/`. There are **six** tracks (dojos) and **110** modules, measured 2026-08-31 against `ALL_MODULES`:
 
 | dojo | modules |
 |---|---|
-| `css` | 30 |
+| `css` | 34 |
 | `js` | 29 (25 `js-*` + 4 `ts-*`) |
 | `react` | 20 |
 | `html` | 17 |
@@ -88,6 +89,16 @@ of a track — never over a hardcoded list of tracks.**
 
 Each file exports a `ModuleData` object containing `lessons` (markdown content + optional code examples) and `exercises`. Exercises have a `type` field — one of `quiz`, `code-completion`, `live-editor`, `visual-match`, `drag-drop` — and a `validation` object used by `ExerciseRenderer` to grade answers client-side.
 
+Modules are grouped into **sections** (`category`), listed per dojo in
+`DOJO_CATEGORY_ORDER`. Two invariants, each with its own guard:
+`categorias-panel.test.ts` checks module -> section (no module has an
+unreachable category), and `secciones-sin-modulos.test.ts` checks the reverse,
+section -> module: **no declared section may hold zero modules.** The CSS track
+stays at **nine** sections — `css-oficio` is never created, see Requirement 7 of
+`openspec/specs/css-track-sections`. `js-async` and `js-dom` are declared and
+empty today; they are named exemptions in that guard, and the guard fails if
+either gets a module or stops being declared.
+
 Module visibility is controlled at runtime via the `ModuleSettings` MongoDB collection, which teachers can toggle via `/teacher/modulos`. The API endpoint `GET /api/modules/enabled` merges static module data with DB-stored enabled/disabled flags.
 
 ### Gamification
@@ -97,11 +108,23 @@ Module visibility is controlled at runtime via the `ModuleSettings` MongoDB coll
 - Achievements are tracked in the `Achievement` MongoDB model and evaluated server-side in `src/lib/achievements.ts`.
 - Progress records are stored per-user per-exercise in the `Progress` MongoDB model.
 
-### Certificates (infrastructure only — nothing is issued yet)
+### Certificates (COMPLETE and deployed — do not rebuild it)
 
-`src/lib/certificados.ts` implements completion certificates **per track**. It is
-merged and tested but **wired to nothing**: no API route, no UI. Three rules to
-know before touching it:
+`src/lib/certificados.ts` implements completion certificates **per track**, and
+the feature is **finished, merged and in production**. This section used to say
+it was "wired to nothing: no API route, no UI"; that was true until 2026-08-27
+and is now **inverted**, which is the worst kind of stale doc — a session that
+believes it will rebuild what already exists. What exists:
+
+- `POST /api/teacher/certificados` — awarding, teacher-only, with confirmation.
+- `GET /api/certificados` — the student's own; the handler takes **no request**,
+  so the `userId` comes from the session and no parameter can name someone else.
+- `/teacher/certificados` — the teacher view. Reads in **batch** (4 queries, not
+  one per student) and calls the SAME `elegibilidadDe` the awarding does.
+- `/certificados` — the student view.
+
+The only thing left is for the instructor to award the first one, which is not
+code. Three rules to know before touching it:
 
 1. **`nivel` on `ModuleData` is optional, and its absence means "not classified"
    — never `"obligatorio"`.** What makes that safe is the gate: a track
