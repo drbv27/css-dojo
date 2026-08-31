@@ -39,7 +39,63 @@ const MODULOS_CON_RETO = [
   "media-queries",
   "tailwind-css",
   "proyecto-cv-css",
+  // Tanda E, css-track-expansion-2, 2026-08-31.
+  "overflow",
+  "tipografia-web",
+  "herencia-valores-globales",
+  "imagenes-y-medios",
+  // Los cuatro anotados
+  // ACA CUANDO SU RETO EXISTE, uno por rebanada. Anotarlos antes hace que la
+  // bitacora afirme algo falso -"estos modulos tienen reto"- y ademas la pone
+  // roja por el motivo equivocado, tapando al invariante de arriba, que es el
+  // que de verdad esta reclamando los cuatro.
 ];
+
+/**
+ * EL INVARIANTE, y por que no alcanza con la bitacora de arriba.
+ *
+ * `openspec/specs/mini-retos` exige que TODO modulo obligatorio de CSS lleve
+ * exactamente un reto. El test "los modulos con reto son exactamente los
+ * esperados" NO lo verifica: compara el conjunto de modulos QUE TIENEN reto
+ * contra una lista de slugs escrita a mano. Es una bitacora de tandas -sirve
+ * para que un rollout quede anotado- y es inutil para lo otro.
+ *
+ * Un obligatorio nuevo al que nadie le escribio el reto simplemente NO APARECE
+ * en ninguno de los dos lados de esa comparacion, asi que la bitacora queda
+ * verde mientras la spec se viola. Medido el 2026-08-31 al planificar la
+ * segunda tanda de modulos.
+ *
+ * Este bloque afirma la propiedad sobre `nivel`, que es donde vive la regla.
+ */
+describe("todo obligatorio de CSS lleva su reto: el invariante", () => {
+  const obligatorios = ALL_MODULES.filter(
+    (m) => m.dojo === "css" && m.nivel === "obligatorio",
+  );
+
+  it("el guard mira algo: hay obligatorios de CSS", () => {
+    // Sin esto, un filtro mal escrito deja el guard verde sobre cero modulos,
+    // que es la misma forma de bug que viene a cazar.
+    expect(obligatorios.length).toBeGreaterThan(15);
+  });
+
+  it("ninguno se quedo sin reto", () => {
+    const sinReto = obligatorios
+      .filter((m) => !m.exercises.some(esRetoIntegrador))
+      .map((m) => `${m.slug} (obligatorio, sin reto integrador)`);
+
+    expect(sinReto).toEqual([]);
+  });
+
+  it("un OPCIONAL sin reto no molesta a nadie", () => {
+    // Los once opcionales no llevan reto a proposito: van en su propio cambio.
+    // Si este test se pusiera rojo, el invariante estaria pidiendo de mas.
+    const opcionalesSinReto = ALL_MODULES.filter(
+      (m) => m.dojo === "css" && m.nivel !== "obligatorio",
+    ).filter((m) => !m.exercises.some(esRetoIntegrador));
+
+    expect(opcionalesSinReto.length).toBeGreaterThan(0);
+  });
+});
 
 describe("retos integradores", () => {
   it("los modulos con reto son exactamente los esperados", () => {

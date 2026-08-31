@@ -5,7 +5,7 @@ export const pseudoElementosModule: ModuleData = {
   title: "Pseudo-elementos CSS",
   description:
     "Aprende a usar pseudo-elementos como ::first-letter, ::first-line, ::before y ::after para estilizar partes específicas del contenido sin modificar el HTML.",
-  order: 12,
+  order: 14,
   dojo: "css" as const,
   nivel: "obligatorio",
   category: "css-selectores",

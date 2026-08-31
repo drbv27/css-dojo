@@ -5,7 +5,7 @@ export const shadowsGradientsFiltersModule: ModuleData = {
   title: "Sombras, Degradados y Filtros",
   description:
     "Domina los efectos visuales de CSS: sombras en cajas y texto, degradados lineales y radiales, y filtros como blur, brightness y grayscale.",
-  order: 21,
+  order: 25,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-visual",

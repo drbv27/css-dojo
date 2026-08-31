@@ -43,6 +43,12 @@ const OBLIGATORIOS_CSS = [
   "media-queries",
   "tailwind-css",
   "proyecto-cv-css",
+  // css-track-expansion-2, 2026-08-31: los cuatro de la Fase 2 del plan.
+  // Obligatorios por el criterio del 2026-08-24, no por preferencia.
+  "overflow",
+  "tipografia-web",
+  "herencia-valores-globales",
+  "imagenes-y-medios",
 ];
 
 const PROFUNDIZACION_CSS = [
@@ -77,15 +83,15 @@ const porDojo = (dojo: DojoType) => ALL_MODULES.filter((m) => m.dojo === dojo);
 const slugs = (ms: { slug: string }[]) => ms.map((m) => m.slug).sort();
 
 describe("nivel del curriculum -- track CSS", () => {
-  it("los 30 modulos de CSS declaran nivel", () => {
+  it("los 34 modulos de CSS declaran nivel", () => {
     const sinNivel = slugs(porDojo("css").filter((m) => m.nivel === undefined));
     // Enumerated, not counted: a failure has to name the module that is
     // missing its level, otherwise the next person re-measures by hand.
     expect(sinNivel).toEqual([]);
-    expect(porDojo("css")).toHaveLength(30);
+    expect(porDojo("css")).toHaveLength(34);
   });
 
-  it("los 19 obligatorios son exactamente estos, por slug", () => {
+  it("los 23 obligatorios son exactamente estos, por slug", () => {
     const encontrados = slugs(porDojo("css").filter((m) => m.nivel === "obligatorio"));
     expect(encontrados).toEqual([...OBLIGATORIOS_CSS].sort());
   });

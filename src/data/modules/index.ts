@@ -50,6 +50,10 @@ import { propiedadesBasicasModule } from "./03-propiedades-basicas";
 import { tipografiasModule } from "./08-tipografias";
 import { dimensionesModule } from "./06-dimensiones";
 import { mathFunctionsModule } from "./07-math-functions";
+import { overflowModule } from "./31-overflow";
+import { tipografiaWebModule } from "./32-tipografia-web";
+import { herenciaValoresGlobalesModule } from "./33-herencia-valores-globales";
+import { imagenesYMediosModule } from "./34-imagenes-y-medios";
 import { advancedTextModule } from "./09-advanced-text";
 import { attributeSelectorsModule } from "./13-attribute-selectors";
 import { listsAndTablesModule } from "./20-lists-and-tables";
@@ -161,12 +165,13 @@ export const ALL_MODULES: ModuleData[] = [
   // del array YA ORDENADO, no este literal. Mantenelo en orden por prolijidad,
   // sabiendo que nada te avisa si se te va.
   queEsCSSModule, selectoresModule, propiedadesBasicasModule, boxModelModule,
-  unidadesCSSModule, dimensionesModule, mathFunctionsModule, tipografiasModule,
-  advancedTextModule, selectoresDescendientesModule,
+  unidadesCSSModule, dimensionesModule, overflowModule, mathFunctionsModule,
+  tipografiasModule, tipografiaWebModule, advancedTextModule, selectoresDescendientesModule,
   pseudoClasesModule, pseudoElementosModule, attributeSelectorsModule, especificidadModule,
+  herenciaValoresGlobalesModule,
   floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
-  listsAndTablesModule, shadowsGradientsFiltersModule, transformsModule, transicionesAnimacionesModule, variablesCSSModule,
+  imagenesYMediosModule, listsAndTablesModule, shadowsGradientsFiltersModule, transformsModule, transicionesAnimacionesModule, variablesCSSModule,
   mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
   tailwindModule, proyectoCvCssModule,
   // JS

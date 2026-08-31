@@ -5,7 +5,7 @@ export const bootstrapModule: ModuleData = {
   title: "Bootstrap 5",
   description:
     "Aprende el framework CSS más popular del mundo: el sistema de grid, componentes predefinidos, clases utilitarias y diseño responsivo con Bootstrap 5.",
-  order: 28,
+  order: 32,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-herramientas",

@@ -5,7 +5,7 @@ export const mathFunctionsModule: ModuleData = {
   title: "Funciones matemáticas",
   description:
     "Deja que el navegador haga la cuenta con calc(), min(), max() y clamp(): medidas que se adaptan sin escribir tres reglas distintas.",
-  order: 7,
+  order: 8,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-caja",

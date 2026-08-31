@@ -5,7 +5,7 @@ export const listsAndTablesModule: ModuleData = {
   title: "Listas y tablas",
   description:
     "Dale forma a las listas y a las tablas: viñetas, numeraciones, bordes que no se duplican, anchos de columna y la tabla que sobrevive en un teléfono.",
-  order: 20,
+  order: 24,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-visual",

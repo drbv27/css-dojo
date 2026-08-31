@@ -14,11 +14,11 @@ import type { DojoType } from "@/types";
  */
 
 describe("certificabilidad sobre el curriculum real", () => {
-  it("CSS certifica, y devuelve sus 19 obligatorios", () => {
+  it("CSS certifica, y devuelve sus 23 obligatorios", () => {
     const r = esCertificable("css");
     expect(r.certificable).toBe(true);
     if (!r.certificable) return;
-    expect(r.obligatorios).toHaveLength(19);
+    expect(r.obligatorios).toHaveLength(23);
     expect(r.obligatorios).toContain("box-model");
     expect(r.obligatorios).toContain("especificidad");
     // Enumerated, not counted: `tailwind-css` and `proyecto-cv-css` are the two
