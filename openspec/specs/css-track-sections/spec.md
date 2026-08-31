@@ -18,8 +18,8 @@ RFC 2119 keywords are used as defined.
 `ModuleCategory` SHALL gain nine dojo-prefixed members for CSS:
 `css-fundamentos`, `css-caja`, `css-texto`, `css-selectores`, `css-layout`,
 `css-visual`, `css-responsive`, `css-herramientas`, `css-proyecto`.
-`css-oficio` MUST NOT be created in this change — it has no member until
-Fase 3. The six generic members (`intro`, `intermediate`, `advanced`,
+`css-oficio` MUST NOT be created — **ever, not merely "in this change"**. See
+Requirement 7. The six generic members (`intro`, `intermediate`, `advanced`,
 `preprocessors`, `frameworks`, `project`) SHALL be removed once no module
 references them; they are used ONLY by the CSS track (verified: no `html`,
 `js`, `react`, `react-eco` or `nextjs` module carries any of these six
@@ -44,6 +44,7 @@ values), so removal MUST NOT affect any other track.
 - **Given** `DOJO_CATEGORY_ORDER.css`
 - **When** its members are listed
 - **Then** `css-oficio` MUST NOT appear, and no module MUST carry it
+- **And** this is permanent, not scoped to one change: see Requirement 7
 
 ---
 
@@ -204,11 +205,67 @@ with no other logic touched.
 
 ---
 
+## Requirement 7 — `css-oficio` is never created; Fase 3 lands in existing sections
+
+**Instructor decision, 2026-08-31.** The original Fase 0 plan named ten `css-*`
+sections. Only nine were created, because `css-oficio` had no member until
+Fase 3. That wording made its absence look **temporary** — a pending task that
+Fase 3 would settle by creating it. It is not: the section SHALL NOT be created
+at all, and Fase 3's three modules SHALL be assigned to sections that already
+exist.
+
+| Fase 3 module | Section | Why there |
+|---|---|---|
+| Responsive images and video | `css-responsive` | Its subject. Also takes that section from 1 module to 2 |
+| Visual accessibility | `css-visual` | Contrast, `:focus-visible` and `prefers-reduced-motion` sit beside shadows, transforms and transitions |
+| Debugging with DevTools | `css-herramientas` | It is a tool, alongside Sass, Bootstrap and Tailwind |
+
+**The measurement behind the decision.** The CSS track already carries two
+one-module sections — `css-responsive` (only `media-queries`) and `css-proyecto`
+(only `proyecto-cv-css`). A section holding one card is a heading, not a
+grouping. Adding a tenth section would have deepened a problem the track already
+has instead of using the capacity the existing nine still hold.
+
+### Scenario 7.1 — Fase 3 adds modules but no section
+
+- **Given** the three Fase 3 modules are added
+- **When** `DOJO_CATEGORY_ORDER.css` is read
+- **Then** it MUST still list exactly the nine sections of Requirement 1
+- **And** `css-oficio` MUST NOT be a member of `ModuleCategory`
+
+### Scenario 7.2 — The enforcing invariant is emptiness, not the name
+
+- **Given** `secciones-sin-modulos.test.ts`
+- **When** any declared section holds zero modules
+- **Then** the suite MUST fail
+
+The guard deliberately does NOT assert the literal string `css-oficio`. A guard
+written against a name goes green the moment someone creates that name with
+content inside, which is the outcome this requirement exists to prevent
+reasoning about — and it says nothing about the eleventh section, or the
+twelfth. What is guarded is the invariant the decision comes from: **a section
+exists when it has something to hold.** The named decision lives here, in the
+spec, because a decision recorded only in a change's `state.yaml` and a
+requirement promoted to a spec can contradict each other, and the code follows
+the spec. That is exactly how four JS exercises stayed impossible to complete
+for three days in production.
+
+### Scenario 7.3 — The known-empty exception cannot rot
+
+- **Given** `secciones-sin-modulos.test.ts` exempts the sections measured empty
+  on 2026-08-31 (`js-async`, `js-dom`, both in the JS track, worked separately)
+- **When** one of them receives its first module, or stops being declared
+- **Then** the suite MUST fail, demanding the exemption be removed
+
+---
+
 ## Non-goals, explicitly
 
-- Fases 2, 3 and 4 of the plan (web typography, overflow, inheritance,
-  images/media, responsive images/video, accessibility, DevTools, and the
-  interleaved-challenge `Exercise` schema change) are OUT of scope.
-- `css-oficio` is not created in this change.
+- Fase 4 of the plan (the interleaved-challenge `Exercise` schema change) is
+  OUT of scope, and was replaced by an instructor decision: one integration
+  challenge per MODULE, not per lesson.
+- `css-oficio` is not created — see Requirement 7. Fase 2 of the plan shipped in
+  `css-track-expansion-2`; Fase 3's three modules are placed by Requirement 7
+  into sections that already exist.
 - Filename renumbering (`01-`…`25-` no longer matching `order`) is known
   cosmetic debt and is NOT addressed here.
