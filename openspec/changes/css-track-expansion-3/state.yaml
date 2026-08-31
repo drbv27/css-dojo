@@ -1,0 +1,85 @@
+change: css-track-expansion-3
+created: 2026-08-31
+artifact_store: hybrid
+
+# LEER ESTO ANTES QUE NADA.
+#
+# Este cambio esta EN PROPUESTA y BLOQUEADO POR UNA DECISION DEL INSTRUCTOR,
+# que no es lo mismo que abierto ni que empezado. No hay una sola linea de
+# contenido escrita, y NO hay que escribirla hasta que la decision este tomada:
+# la clasificacion cambia cuantos ejercicios exige el certificado y si cada
+# modulo lleva mini reto o no.
+#
+# NO ES `css-track-fase-2`. Ese otro cambio valida la clasificacion
+# obligatorio/opcional con datos de ModuleView y espera datos hasta ~2026-09-15.
+# La confusion de nombres ya costo un reporte mal armado el 2026-08-31.
+
+EL_NOMBRE: >
+  Tercera y ultima tanda de contenido del plan. Se nombra por lo que entrega y
+  por su antecesor -`css-track-expansion`, luego `css-track-expansion-2`-, nunca
+  por un numero de fase.
+
+resumen_de_una_linea: >
+  Los tres modulos que faltan del plan -accesibilidad visual, responsive de
+  imagenes y video, depurar con DevTools-, SIN crear ninguna seccion nueva, y el
+  track renumerado de 34 a 37.
+
+phases:
+  explore:
+    status: done
+    fecha: 2026-08-31
+    note: >
+      Medicion directa contra `1c9cdb2`. La vara de los modulos anteriores -4
+      lecciones, 8 ejercicios mas un reto integrador, ~220 XP-, los limites de
+      `order` por seccion, y el criterio de clasificacion del 2026-08-24.
+  propose:
+    status: done
+    fecha: 2026-08-31
+    artifact: openspec/changes/css-track-expansion-3/proposal.md
+  spec:
+    status: blocked
+  design:
+    status: blocked
+  tasks:
+    status: blocked
+  apply:
+    status: blocked
+
+decision_pendiente_del_instructor:
+  pregunta: >
+    Los tres modulos nuevos, los tres OBLIGATORIOS, o alguno queda en
+    `profundizacion`?
+  estado: "SIN RESPONDER al 2026-08-31. Diego tuvo que cortar la sesion."
+  por_que_bloquea: >
+    Cambia el camino minimo del certificado para TODOS los alumnos, incluidos
+    los que ya vienen cursando, y decide si cada modulo lleva mini reto -todo
+    obligatorio lleva uno; los opcionales van aparte, en otro cambio-.
+  lo_que_se_midio_para_proponerlo: >
+    Aplicando el criterio del 2026-08-24, los tres dan obligatorio. El precio
+    dicho- el camino minimo pasa de 223 a ~250 ejercicios y de 23 a 26 modulos.
+  alternativa_viva: >
+    Clasificar cualquiera de los tres como `profundizacion` no cuesta nada
+    estructuralmente. Lo que NO es opcion es dejarlos sin `nivel`- un solo
+    modulo sin clasificar deja al track entero sin certificar, en silencio.
+
+decidido_por_el_instructor:
+  seccion: >
+    NO se crea `css-oficio`. Decision del 2026-08-31, ya mergeada como
+    Requirement 7 de `openspec/specs/css-track-sections` en la PR #56. Los tres
+    modulos van a secciones que ya existen.
+  orden_de_devtools: >
+    DevTools va PRIMERO en `css-herramientas` -order 32-, no ultimo despues de
+    Tailwind. Sus prerequisitos -diagrama del box model, forzar :hover,
+    el estilo tachado de especificidad, modo dispositivo- lo empujan igual al
+    final del CSS nativo, pero entra antes del bloque de frameworks para que
+    todavia le sirva al proyecto final.
+
+fuera_de_alcance:
+  - "Reescalar RANKS en src/lib/constants.ts. Nombrado en la propuesta a proposito: con estos tres modulos Gran Maestro pasa de pedir 65.6% del curriculum a 63.1%, la cuarta vez que se abarata solo. Es una decision sobre el rango de cada alumno que ya existe, no un efecto secundario de agregar contenido."
+  - "Mini retos de los 11 modulos de profundizacion. Decidido que van, cambio propio, sin fecha."
+
+cuando_se_retome:
+  - "1. Responder la decision de arriba. Es lo unico que bloquea."
+  - "2. Escribir los deltas de spec- css-track-content gana los tres modulos, css-track-sections redlinea la secuencia literal de order de 34 a 37, mini-retos no necesita cambio porque su Requirement 10 ya es una invariante sobre `nivel` y no una lista de slugs."
+  - "3. Contar con que rompen por diseno los guards que cuentan- nivel-curriculum, calificador-curriculum, certificados y orden-curriculum-css."
+  - "4. Reportar el numero nuevo de Gran Maestro al cerrar, aunque no se toque, para que la deriva quede visible."
