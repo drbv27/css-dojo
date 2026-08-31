@@ -89,12 +89,35 @@ vi.mock("@/data/modules", () => ({
           id: "ej-drag",
           type: "drag-drop",
           xpReward: 20,
+          // CUATRO items a proposito: con tres bien da 75, que es un parcial
+          // ENTRE 70 y 100. Con dos items el parcial era 50, que tampoco
+          // completa bajo el umbral viejo, y el test no distinguia una regla de
+          // la otra: su control positivo pasaba. Un control que pasa significa
+          // que el test esta roto.
           dragItems: [
             { id: "d1", content: "", correctZone: "z1" },
             { id: "d2", content: "", correctZone: "z2" },
+            { id: "d3", content: "", correctZone: "z1" },
+            { id: "d4", content: "", correctZone: "z2" },
           ],
           dropZones: [{ id: "z1", label: "" }, { id: "z2", label: "" }],
           validation: { type: "exact", answer: { d1: "z1", d2: "z2" } },
+        },
+        {
+          // Uno de los que el SERVIDOR no puede corregir: corre el JS del alumno
+          // en un Worker. `esSoloCliente` los enumera.
+          id: "ej-js",
+          type: "code-completion",
+          xpReward: 20,
+          validation: { type: "js-behavior" },
+        },
+        {
+          // Un tipo que ningun corrector implementa. NO debe heredar la
+          // excepcion del de arriba.
+          id: "ej-desconocido",
+          type: "quiz",
+          xpReward: 20,
+          validation: { type: "telepatia", answer: "lo que sea" },
         },
       ],
     },
@@ -199,7 +222,7 @@ describe("POST /api/progress: corrige el servidor", () => {
       exerciseId: "ej-drag",
       exerciseType: "drag-drop",
       score: 0,
-      userAnswer: { d1: "z1", d2: "z2" },
+      userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z2" },
     });
 
     expect(progresoDe("ej-drag")).toMatchObject({ completed: true, score: 100 });
@@ -311,5 +334,111 @@ describe("POST /api/progress: lo que NO cambia", () => {
     await postear(ok);
 
     expect(db.usuario.xp).toBe(20);
+  });
+});
+
+describe("POST /api/progress: se completa con el 100, no con el 70", () => {
+  it("una respuesta PARCIAL no completa y no da XP", async () => {
+    // EL CAMBIO ENTERO. Antes esto completaba: el umbral era 70 y un ejercicio
+    // de cuatro propiedades se daba por hecho con tres. Medido antes de sacarlo:
+    // 63 de los 92 css-rules de CSS completaban con una declaracion faltante, y
+    // 47 estaban en modulos obligatorios, o sea que el certificado se ganaba
+    // dejando trabajo sin hacer.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-drag",
+      exerciseType: "drag-drop",
+      score: 100,
+      // tres de las cuatro bien: 75. Un parcial que bajo el umbral VIEJO SI
+      // completaba, y bajo la regla nueva no.
+      userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z1" },
+    });
+
+    expect(progresoDe("ej-drag")).toMatchObject({ completed: false, score: 75 });
+    expect(db.usuario.xp).toBe(0);
+  });
+
+  it("pero el score parcial SI se guarda: el alumno tiene que ver cuanto le falta", async () => {
+    // Quitarle la completitud no es quitarle la informacion. Si el score se
+    // guardara en cero, el alumno no sabria si le falta una propiedad o todas.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-drag",
+      exerciseType: "drag-drop",
+      score: 0,
+      userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z1" },
+    });
+
+    expect(progresoDe("ej-drag")).toMatchObject({ score: 75 });
+  });
+
+  it("la respuesta completa si completa", async () => {
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-drag",
+      exerciseType: "drag-drop",
+      score: 0,
+      userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z2" },
+    });
+
+    expect(progresoDe("ej-drag")).toMatchObject({ completed: true, score: 100 });
+    expect(db.usuario.xp).toBe(20);
+  });
+});
+
+describe("POST /api/progress: lo que el servidor no puede corregir", () => {
+  it("un js-behavior SI se completa con el veredicto del cliente", async () => {
+    // ESTABA ROTO EN PRODUCCION. `isCompleted` daba false para los cuatro
+    // js-behavior escribiera lo que escribiera el alumno, porque el servidor no
+    // puede correr su JS y "no calificable" no otorgaba nada. Eran cuatro
+    // ejercicios inalcanzables.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-js",
+      exerciseType: "code-completion",
+      score: 100,
+      userAnswer: "function sumar(a, b) { return a + b; }",
+    });
+
+    expect(progresoDe("ej-js")).toMatchObject({ completed: true });
+  });
+
+  it("con menos de 100 NO completa, aunque sea del cliente", async () => {
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-js",
+      exerciseType: "code-completion",
+      score: 80,
+      userAnswer: "algo a medias",
+    });
+
+    expect(progresoDe("ej-js")).toMatchObject({ completed: false });
+  });
+
+  it("sin score del cliente tampoco completa", async () => {
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-js",
+      exerciseType: "code-completion",
+      userAnswer: "sin score en el body",
+    });
+
+    expect(progresoDe("ej-js")).toMatchObject({ completed: false });
+  });
+
+  it("LA PUERTA NO SE ENSANCHA: un tipo desconocido no hereda la excepcion", async () => {
+    // El caso que decide si la excepcion esta bien atada. `ej-desconocido` es
+    // igual de no-calificable que el js-behavior, pero NO esta en la lista
+    // enumerada. Si esto completara, cualquier validation.type nuevo entraria a
+    // confiar en el cliente sin que nadie lo decidiera.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-desconocido",
+      exerciseType: "quiz",
+      score: 100,
+      userAnswer: "lo que sea",
+    });
+
+    expect(progresoDe("ej-desconocido")).toMatchObject({ completed: false });
   });
 });
