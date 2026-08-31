@@ -442,3 +442,104 @@ describe("POST /api/progress: lo que el servidor no puede corregir", () => {
     expect(progresoDe("ej-desconocido")).toMatchObject({ completed: false });
   });
 });
+
+describe("POST /api/progress: el XP del registro sigue a la completitud", () => {
+  /**
+   * `xpEarned` se escribia `maxXP` FIJO, sin mirar si el ejercicio se habia
+   * completado. El saldo del alumno nunca estuvo mal -- `user.xp` suma
+   * `xpToAward`, que si mira `isCompleted` -- y el leaderboard filtra por
+   * `completed: true`, asi que el defecto era de LECTURA: en
+   * `/teacher/estudiante/[id]` una fila roja que decia "Incompleto" mostraba
+   * "+20 XP" al lado. El dato con el que el profe evalua, mintiendo.
+   *
+   * Ninguno de estos casos tenia un test. Por eso vivio.
+   */
+  it("un intento FALLIDO no guarda XP en el registro", async () => {
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-quiz",
+      exerciseType: "quiz",
+      score: 100,
+      userAnswer: "a",
+    });
+
+    expect(progresoDe("ej-quiz")).toMatchObject({ completed: false, xpEarned: 0 });
+  });
+
+  it("un intento PARCIAL tampoco", async () => {
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-drag",
+      exerciseType: "drag-drop",
+      score: 0,
+      // tres de cuatro: 75. Score real, completitud no.
+      userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z1" },
+    });
+
+    expect(progresoDe("ej-drag")).toMatchObject({ score: 75, completed: false, xpEarned: 0 });
+  });
+
+  it("completar SI guarda el XP", async () => {
+    // El reverso. Sin esto, `xpEarned: 0` fijo pasaria los dos de arriba.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-quiz",
+      exerciseType: "quiz",
+      score: 0,
+      userAnswer: "b",
+    });
+
+    expect(progresoDe("ej-quiz")).toMatchObject({ completed: true, xpEarned: 20 });
+  });
+
+  it("un js-behavior completado por el cliente tambien guarda su XP", async () => {
+    // La rama no calificable escribe por otro camino: `completaEnCliente`.
+    await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-js",
+      exerciseType: "code-completion",
+      score: 100,
+      userAnswer: "function sumar(a, b) { return a + b; }",
+    });
+
+    expect(progresoDe("ej-js")).toMatchObject({ completed: true, xpEarned: 20 });
+  });
+
+  /**
+   * EL CONTROL QUE PRUEBA QUE NO SE ARREGLO DE MAS.
+   *
+   * `xpEarned: isCompleted ? maxXP : 0` -- sin `wasAlreadyCompleted` -- pasa
+   * los cuatro casos de arriba y le BORRA el XP a un ejercicio ya ganado en
+   * cuanto el alumno lo reabre y falla. Igual que `completed`, el XP no se
+   * des-otorga: los dos campos salen del mismo booleano.
+   */
+  it("un fallo POSTERIOR a completar no le borra el XP ya ganado", async () => {
+    const ok = { moduleId: "modulo-demo", exerciseId: "ej-quiz", exerciseType: "quiz", score: 0, userAnswer: "b" };
+    await postear(ok);
+    expect(progresoDe("ej-quiz")).toMatchObject({ completed: true, xpEarned: 20 });
+
+    await postear({ ...ok, userAnswer: "a" });
+
+    expect(progresoDe("ej-quiz")).toMatchObject({ completed: true, xpEarned: 20 });
+    expect(db.usuario.xp).toBe(20);
+  });
+
+  it("NINGUN registro queda con XP y sin completitud, sea cual sea la mezcla", async () => {
+    // La invariante entera sobre una secuencia mixta, en vez de caso por caso:
+    // un fallo, un parcial, un acierto y un reintento fallido.
+    await postear({ moduleId: "modulo-demo", exerciseId: "ej-quiz", exerciseType: "quiz", score: 100, userAnswer: "a" });
+    await postear({ moduleId: "modulo-demo", exerciseId: "ej-drag", exerciseType: "drag-drop", score: 100, userAnswer: { d1: "z1", d2: "z2", d3: "z1", d4: "z1" } });
+    await postear({ moduleId: "modulo-demo", exerciseId: "ej-js", exerciseType: "code-completion", score: 100, userAnswer: "ok" });
+    await postear({ moduleId: "modulo-demo", exerciseId: "ej-js", exerciseType: "code-completion", score: 10, userAnswer: "roto" });
+
+    expect(db.progreso).toHaveLength(3);
+    for (const p of db.progreso) {
+      if (!p.completed) expect(p.xpEarned).toBe(0);
+    }
+
+    // Y el saldo del usuario coincide con lo que dicen los registros, que es lo
+    // que el leaderboard suma.
+    const sumaRegistros = db.progreso.reduce((t, p) => t + (p.xpEarned as number), 0);
+    expect(db.usuario.xp).toBe(sumaRegistros);
+  });
+});

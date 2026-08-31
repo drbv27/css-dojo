@@ -105,15 +105,27 @@ export async function POST(request: Request) {
 
   const wasAlreadyCompleted = existing?.completed === true;
 
+  // `xpEarned` es el XP que este ejercicio le dio al alumno, y tiene que seguir
+  // a `completed` sin excepcion: se escribia `maxXP` fijo, asi que un intento
+  // fallido guardaba el XP entero al lado de un `completed: false`. En
+  // `/teacher/estudiante/[id]` eso se ve como una fila en rojo que dice
+  // "Incompleto" y un "+20 XP" en amarillo al lado: el dato con el que el profe
+  // evalua a un alumno, mintiendo. El XP real del usuario nunca estuvo mal
+  // -`user.xp` suma `xpToAward`, que si mira `isCompleted`-, y el leaderboard
+  // filtra por `completed: true`, asi que el defecto era de lectura, no de
+  // saldo. Los dos campos salen ahora del MISMO booleano para que no puedan
+  // volver a separarse.
+  const quedaCompleto = isCompleted || wasAlreadyCompleted;
+
   // Update progress - keep best score, don't un-complete
   await Progress.findOneAndUpdate(
     { userId: session.id, moduleId, exerciseId },
     {
       $set: {
         exerciseType,
-        completed: isCompleted || wasAlreadyCompleted,
+        completed: quedaCompleto,
         score: wasAlreadyCompleted ? Math.max(existing.score ?? 0, score) : score,
-        xpEarned: maxXP,
+        xpEarned: quedaCompleto ? maxXP : 0,
         userAnswer,
         lastAttemptAt: new Date(),
         ...(isCompleted && !wasAlreadyCompleted ? { completedAt: new Date() } : {}),
@@ -186,7 +198,7 @@ export async function POST(request: Request) {
   }
 
   return NextResponse.json({
-    progress: { completed: isCompleted || wasAlreadyCompleted, score, xpEarned: maxXP },
+    progress: { completed: quedaCompleto, score, xpEarned: quedaCompleto ? maxXP : 0 },
     xpEarned: wasAlreadyCompleted ? 0 : xpToAward,
     userXP,
     userStreak,
