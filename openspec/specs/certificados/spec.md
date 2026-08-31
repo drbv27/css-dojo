@@ -1,15 +1,26 @@
-# Delta for certificados
+# Spec: certificados
 
-## Purpose
+Capability: `certificados`
 
-Award and record a **certificate of completion per track** (`css`, `html`, `js`,
-`react`, `react-eco`, `nextjs` — the six values of `DojoType`), earned by completing every exercise of that track's required
-modules as enabled for the student's cohort. Every requirement below is `ADDED`.
+Governs the **certificate of completion per track**: what a track must satisfy to
+be certifiable at all, what a student must have completed to be eligible, who may
+issue one, what the issued record freezes, and how it is read afterwards.
 
-**Track relevance**: this capability is **per track by construction** — the track
-is the unit being certified.
+**Track-agnostic by construction.** The rules below are written over "every module
+of the track", never over a fixed list of tracks, so a track becomes certifiable
+the day its modules are classified and not before.
 
-## ADDED Requirements
+Established by change `certificados-por-ruta`, archived 2026-08-31. Phases 1-4
+shipped in PR #36 (the model, the gate, eligibility and the frozen snapshot);
+phase 5 shipped in PRs #48, #49 and #50 (the teacher's roster, the award endpoint
+and the student's own view).
+
+Where a requirement cites a count it is the count measured at archive time: of
+the six tracks, **only `css` is fully classified and therefore only `css`
+certifies**; its required path is 19 modules and 187 exercises. Those numbers are
+historical. The constraints are not.
+
+## Requirements
 
 ### Requirement: Curriculum Level on Module Data
 
