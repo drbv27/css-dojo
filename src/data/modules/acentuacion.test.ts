@@ -173,7 +173,15 @@ function palabraAnterior(texto: string, i: number): string {
  * las que estan en posicion de verbo cuando la palabra es ambigua.
  */
 function ocurrenciasQueSonError(prosa: string, mal: string, sufijos: string): number {
-  const re = new RegExp(`\\b${mal}${sufijos}\\b`, "gi");
+  // OJO CON `\\b`: en JavaScript es ASCII, asi que entre una letra comun y una
+  // acentuada HAY frontera de palabra. Sin el lookahead, buscar `funcion`
+  // matchea DENTRO de `funciono` con tilde, que esta perfectamente escrita, y el
+  // guard reclama una tilde que ya esta puesta. Medido el 2026-08-31 escribiendo
+  // el modulo de tipografia web.
+  //
+  // Es la forma de defecto que ya conocemos: un guard que rechaza prosa correcta
+  // no protege la ortografia, empuja a escribirla peor para callarlo.
+  const re = new RegExp(`\\b${mal}${sufijos}\\b(?![a-záéíóúñüA-ZÁÉÍÓÚÑÜ])`, "gi");
   let n = 0;
   for (const hit of prosa.matchAll(re)) {
     if (AMBIGUAS_CON_VERBO.has(mal) && ANTES_LA_VUELVE_VERBO.has(palabraAnterior(prosa, hit.index))) continue;

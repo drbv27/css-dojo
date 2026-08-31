@@ -33,7 +33,12 @@ function cierresDePregunta(prosa: string): number {
     if (prosa[i] !== "?") continue;
     if (prosa[i - 1] === "?") continue;
     const sig = prosa[i + 1];
-    if (sig === undefined || " \n\t\"')<»".includes(sig)) n++;
+    // `*` y `_` estan por el ENFASIS DE MARKDOWN: `**\u00bfEsto cuenta?**` es una
+    // pregunta perfectamente escrita, y sin ellos el cierre no se contaba y el
+    // guard reclamaba una apertura que ya estaba puesta. Medido el 2026-08-31.
+    // Un guard que rechaza prosa correcta no protege la ortografia: empuja a
+    // escribirla peor para callarlo.
+    if (sig === undefined || " \n\t\"')<»*_".includes(sig)) n++;
   }
   return n;
 }
