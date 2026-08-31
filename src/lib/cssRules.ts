@@ -367,6 +367,58 @@ export function parseCssRules(css: string): ReglasCss {
 }
 
 /**
+ * Un valor que es UN COLOR y nada mas: hex, `rgb()/hsl()` o una sola palabra
+ * -un color con nombre, `transparent`, `currentcolor`-.
+ *
+ * `var(...)` queda AFUERA a proposito, aunque casi siempre tenga un color
+ * adentro: una custom property puede contener un degradado, y ahi las dos
+ * propiedades dejan de ser lo mismo. Medido sobre el curriculum: 54 valores son
+ * un color literal, 5 son `var()` y 2 son degradado o url.
+ */
+function esColorSolo(valor: string): boolean {
+  const v = valor.trim();
+  if (!v) return false;
+  // `rgb()` y `hsl()` VAN PRIMERO: el normalizador deja `rgb(10, 20, 30)` con
+  // espacios despues de las comas, asi que el chequeo de "sin espacios" de mas
+  // abajo los descartaria por error. Se midio: daba 0 a un color perfectamente
+  // valido.
+  if (/^(rgb|hsl)a?\([^()]*\)$/.test(v)) return true;
+  if (/\s/.test(v)) return false;                       // multiples valores
+  if (/^#[0-9a-f]{3,8}$/.test(v)) return true;          // hex
+  if (/^[a-z]+$/.test(v)) return true;                  // nombre, transparent, currentcolor
+  return false;                                         // var(), gradient(), url()...
+}
+
+/**
+ * Las OTRAS formas de escribir la MISMA declaracion.
+ *
+ * Hoy hay un solo par: `background: <color>` y `background-color: <color>`.
+ * Con un color solo pintan exactamente igual -el atajo resetea imagen,
+ * posicion y repeticion a sus valores iniciales, que es donde ya estaban- asi
+ * que rechazar una de las dos es marcarle un error a CSS correcto.
+ *
+ * MEDIDO EL 2026-08-31, y por eso existe esto: 49 ejercicios castigaban al
+ * alumno que elegia la otra propiedad. 12 esperaban el atajo y bajaban a
+ * 78-91; 37 esperaban la especifica y bajaban hasta 0, porque los mini retos
+ * son todo o nada. Un alumno que escribia `background: red` donde el ejercicio
+ * queria `background-color: red` sacaba CERO con CSS impecable.
+ *
+ * LA REGLA ES ESTRICTA A PROPOSITO: solo con un color literal. Aceptar de mas
+ * aca es aprobar CSS que no hace lo mismo, y eso es peor que rechazar CSS
+ * valido.
+ */
+function equivalentesDe(declaracion: string): string[] {
+  const i = declaracion.indexOf(":");
+  if (i === -1) return [];
+  const prop = declaracion.slice(0, i).trim();
+  const valor = declaracion.slice(i + 1).trim();
+  if (!esColorSolo(valor)) return [];
+  if (prop === "background") return [`background-color: ${valor}`];
+  if (prop === "background-color") return [`background: ${valor}`];
+  return [];
+}
+
+/**
  * Grades `enviado` against `esperado`, both raw CSS. Score is the share of
  * expected declarations found under their own selector, so partial work earns
  * partial credit exactly as the old validator did.
@@ -386,7 +438,9 @@ export function compararReglas(
     const presentes = env.get(selector);
     for (const d of decls) {
       total++;
-      if (presentes?.has(d)) encontradas++;
+      const hallada =
+        presentes?.has(d) || equivalentesDe(d).some((alt) => presentes?.has(alt));
+      if (hallada) encontradas++;
       else faltantes.push(`${selector} { ${d} }`);
     }
   }
