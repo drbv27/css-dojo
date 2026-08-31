@@ -89,19 +89,29 @@ Modules SHALL be grouped as follows (new modules in **bold**, see
 
 ## Requirement 4 — `order` renumbering invariant
 
-The full CSS track (30 modules) SHALL number `order` 1..30 with no gaps and
+The full CSS track (**34 modules**) SHALL number `order` 1..34 with no gaps and
 no duplicates, ascending in the exact section-then-member sequence of
 Requirement 3. The resulting sequence MUST be:
 
-1 que-es-css, 2 selectores, 3 propiedades-basicas, 4 box-model, 5
-unidades-css, 6 dimensiones, 7 math-functions, 8 tipografias, 9
-advanced-text, 10 selectores-descendientes, 11 pseudo-clases, 12
-pseudo-elementos, 13 attribute-selectors, 14 especificidad, 15
-float-display, 16 posicionamiento, 17 flexbox, 18 css-grid, 19
-propiedades-logicas, 20 lists-and-tables, 21 shadows-gradients-filters, 22
-transforms, 23 transiciones-animaciones, 24 variables-css, 25 media-queries,
-26 sass-fundamentos, 27 sass-avanzado, 28 bootstrap-5, 29 tailwind-css, 30
-proyecto-cv-css.
+1 que-es-css, 2 selectores, 3 propiedades-basicas, 4 box-model,
+5 unidades-css, 6 dimensiones, **7 overflow**, 8 math-functions,
+9 tipografias, **10 tipografia-web**, 11 advanced-text,
+12 selectores-descendientes, 13 pseudo-clases, 14 pseudo-elementos,
+15 attribute-selectors, 16 especificidad, **17 herencia-valores-globales**,
+18 float-display, 19 posicionamiento, 20 flexbox, 21 css-grid,
+22 propiedades-logicas, **23 imagenes-y-medios**, 24 lists-and-tables,
+25 shadows-gradients-filters, 26 transforms, 27 transiciones-animaciones,
+28 variables-css, 29 media-queries, 30 sass-fundamentos, 31 sass-avanzado,
+32 bootstrap-5, 33 tailwind-css, 34 proyecto-cv-css.
+
+The four in bold were inserted by `css-track-expansion-2`. **They are not
+appends.** Sections must stay contiguous in `order` -- the grouping scenario
+below is only true while they are -- so a module added inside a section shifts
+every module after it. Twenty-four existing modules received a one-line `order`
+edit as a direct consequence.
+
+Renumbering is display-only and safe: `Progress` and `ModuleSettings` are keyed
+by **slug**, never by `order`.
 
 This satisfies every pre-existing ordering guard (box-model < unidades-css <
 dimensiones; unidades-css < tipografias; selectores <
@@ -113,7 +123,7 @@ sass-fundamentos; capstone last) plus three new ones this change introduces.
 
 - **Given** `ALL_MODULES` filtered to `dojo === "css"`
 - **When** `order` values are sorted
-- **Then** they MUST equal `[1, 2, ..., 30]` exactly
+- **Then** they MUST equal `[1, 2, ..., 34]` exactly
 
 ### Scenario 4.2 — `order` matches array position, which matches on-screen position
 

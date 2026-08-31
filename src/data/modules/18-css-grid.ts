@@ -5,7 +5,7 @@ export const cssGridModule: ModuleData = {
   title: "CSS Grid",
   description:
     "Domina el sistema de cuadricula bidimensional más poderoso de CSS: filas, columnas, areas y diseños responsivos con Grid.",
-  order: 18,
+  order: 21,
   dojo: "css" as const,
   nivel: "obligatorio",
   category: "css-layout",

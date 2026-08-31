@@ -121,7 +121,7 @@ function Formulario() {
 1. Solo llamar Hooks **en el nivel superior** (no dentro de if, for, o funciones anidadas)
 2. Solo llamar Hooks en **componentes de función** o en **custom hooks**
 
-> **Por que?** React usa el **orden** de las llamadas a Hooks para saber cual es cual. Si el orden cambia entre renderizados, React se confunde.`,
+> **¿Por qué?** React usa el **orden** de las llamadas a Hooks para saber cual es cual. Si el orden cambia entre renderizados, React se confunde.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>

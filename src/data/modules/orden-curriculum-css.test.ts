@@ -98,18 +98,41 @@ describe("orden del track CSS", () => {
    * que agregar un modulo obliga a editar esta lista, y ese precio es el punto.
    */
   const SECUENCIA = [
-    "que-es-css", "selectores", "propiedades-basicas",
-    "box-model", "unidades-css", "dimensiones", "math-functions",
-    "tipografias", "advanced-text",
-    "selectores-descendientes", "pseudo-clases", "pseudo-elementos", "attribute-selectors",
-    "especificidad",
-    "float-display", "posicionamiento", "flexbox", "css-grid", "propiedades-logicas",
-    "lists-and-tables", "shadows-gradients-filters", "transforms", "transiciones-animaciones",
-    "variables-css",
-    "media-queries",
-    "sass-fundamentos", "sass-avanzado", "bootstrap-5", "tailwind-css",
-    "proyecto-cv-css",
-  ];
+  "que-es-css",
+  "selectores",
+  "propiedades-basicas",
+  "box-model",
+  "unidades-css",
+  "dimensiones",
+  "overflow",   // NUEVO, Fase 2 del plan
+  "math-functions",
+  "tipografias",
+  "tipografia-web",   // NUEVO, Fase 2 del plan
+  "advanced-text",
+  "selectores-descendientes",
+  "pseudo-clases",
+  "pseudo-elementos",
+  "attribute-selectors",
+  "especificidad",
+  "herencia-valores-globales",   // NUEVO, Fase 2 del plan
+  "float-display",
+  "posicionamiento",
+  "flexbox",
+  "css-grid",
+  "propiedades-logicas",
+  "imagenes-y-medios",   // NUEVO, Fase 2 del plan
+  "lists-and-tables",
+  "shadows-gradients-filters",
+  "transforms",
+  "transiciones-animaciones",
+  "variables-css",
+  "media-queries",
+  "sass-fundamentos",
+  "sass-avanzado",
+  "bootstrap-5",
+  "tailwind-css",
+  "proyecto-cv-css",
+];
 
   it("la secuencia de ensenanza es exactamente la fijada", () => {
     // Falla por LARGO si alguien agrego o borro un modulo, y por ELEMENTO si lo

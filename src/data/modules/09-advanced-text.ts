@@ -5,7 +5,7 @@ export const advancedTextModule: ModuleData = {
   title: "Texto avanzado",
   description:
     "Todo lo que se le puede hacer a un texto más allá del tamaño y el color: subrayados, mayúsculas, espaciado entre letras, sangría, y el recorte con puntos suspensivos.",
-  order: 9,
+  order: 11,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-texto",

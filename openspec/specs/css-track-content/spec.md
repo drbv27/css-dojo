@@ -188,6 +188,10 @@ module, or not at all.
 | Lists and tables | `css-visual` | 20, first in section | `list-style-type`/`position`/`image`, `::marker`, `border-collapse`, `border-spacing`, column widths, a horizontal-scroll technique for a table on mobile | Content demonstrably covers all six items; at least one exercise produces a styled table or list from scratch |
 | Advanced text | `css-texto` | 9, after `tipografias` | `text-decoration` (line/style/color/thickness), `text-transform`, `letter-spacing`, `word-spacing`, `text-indent`, `white-space`, `text-overflow: ellipsis`, `text-shadow` | Content demonstrably covers all eight properties, including the `white-space`+`overflow`+`text-overflow` combination needed for `ellipsis` to work |
 | Transforms | `css-visual` | 22, before `transiciones-animaciones` | `translate`, `rotate`, `scale`, `skew`, `transform-origin`, combining transforms, `perspective`/`rotateY`, why transform+opacity are cheap to animate | Content demonstrably covers all listed items and explicitly states the transform/opacity performance point, which `transiciones-animaciones` builds on |
+| Overflow | `css-caja` | 7, after `dimensiones` | `visible`/`hidden`/`scroll`/`auto`, `overflow-x` and `-y` independently, an internal scrolling panel, **and that an `overflow` on an ancestor kills a descendant's `position: sticky`** | Content demonstrably covers the four values, both axes, and the sticky interaction. The sticky point MUST be taught as a debugging story -- the student sees a sticky that stopped working and finds the ancestor -- not as a footnote |
+| Web typography | `css-texto` | 10, after `tipografias` | Font stacks and why a fallback is not optional, Google Fonts via `<link>` **and** `@import` with the difference between them, picking weights and what each one costs, `@font-face`, `font-display` and the flash of unstyled text | Content demonstrably covers all six. At least one lesson states the performance cost of loading weights in numbers, not as "it is slower" |
+| Inheritance and global values | `css-selectores` | 17, after `especificidad` | What inherits and what does not, `inherit`, `initial`, `unset`, `revert`, `all: unset`, and why an `<a>` does not take its parent's colour | Content demonstrably covers the four keywords plus `all`. The `<a>` case MUST be answered as the concrete question the student already has, and the module MUST connect explicitly to `especificidad` as the other half of "how the browser decides" |
+| Images and media | `css-visual` | 23, first in section | `object-fit`, `object-position`, `aspect-ratio`, filters on images, `clip-path`, and background image vs `<img>` with when each is right | Content demonstrably covers all six. At least one exercise starts from a **visibly deformed** image and fixes it with `object-fit`, because that is the bug the module exists for |
 
 ### Scenario 7.1 — Coverage is verifiable, not assumed
 
@@ -195,6 +199,73 @@ module, or not at all.
 - **When** its listed properties/functions are searched for in lesson content
   or `targetCSS`
 - **Then** each MUST appear at least once, matching the "Must teach" column
+
+---
+
+## Requirement 9 — A new required module arrives fully classified
+
+A CSS module MUST declare `nivel` in the same change that introduces it. Shipping
+one without it is forbidden, not discouraged.
+
+The certificate gate demands that **every** module of a track declare `nivel`, and
+`css` is the only track that certifies precisely because none is missing. A single
+unclassified module silently takes the whole track out of certification -- the
+student sees no error, the teacher sees no eligible student, and nothing in the
+build objects.
+
+The four modules of `css-track-expansion-2` are **required**, by the instructor's
+criterion of 2026-08-24: a module is required if the next track assumes it, or a
+junior fails a real task without it, or it is a concept rather than a catalogue,
+or it blocks another required module.
+
+### Scenario 9.1 — An unclassified CSS module fails the build
+
+- **Given** a CSS module with no `nivel`
+- **When** the curriculum guards run
+- **Then** they MUST fail and MUST name the module
+
+### Scenario 9.2 — The required path grows by exactly what was added
+
+- **Given** the certificate's minimum path before a batch of required modules
+- **When** they land with their challenges
+- **Then** the minimum path MUST equal the previous total plus the exercises of the new modules
+- **AND** no previously required module's exercise count MUST change
+
+Measured for `css-track-expansion-2`: 187 -> 223 exercises, +36, and the
+nineteen pre-existing required modules still summed 187 unchanged.
+
+---
+
+## Requirement 10 — Every required module carries a challenge, as an invariant
+
+Every CSS module marked `nivel: "obligatorio"` MUST carry exactly one integrating
+challenge. This MUST be asserted **as a property of being required**, not as a
+list of slugs.
+
+`openspec/specs/mini-retos` demands it. The guard that was supposed to enforce it
+compared the set of modules carrying a challenge against a **hardcoded registry**
+-- a roll-out ledger, useful for recording a batch, useless for catching a
+required module that never got one. A twentieth required module would simply not
+appear on either side of the comparison, and the guard would stay green while the
+promoted spec was violated.
+
+The ledger is kept: it still records which batch added what. The invariant is
+asserted separately, over `nivel`.
+
+### Scenario 10.1 — A required module without a challenge fails the build
+
+- **Given** a CSS module with `nivel: "obligatorio"` and no exercise marked as its challenge
+- **When** the curriculum guards run
+- **Then** they MUST fail and MUST name the module
+
+### Scenario 10.2 — An optional module is not forced to have one
+
+- **Given** a CSS module with `nivel: "profundizacion"` and no challenge
+- **When** the curriculum guards run
+- **Then** they MUST pass
+
+The eleven optional modules deliberately carry none. Their challenges are their
+own change.
 
 ---
 

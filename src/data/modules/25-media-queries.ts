@@ -5,7 +5,7 @@ export const mediaQueriesModule: ModuleData = {
   title: "Media Queries y Diseño Responsivo",
   description:
     "Aprende a crear sitios web que se adaptan a cualquier dispositivo usando media queries, breakpoints y el enfoque mobile-first.",
-  order: 25,
+  order: 29,
   dojo: "css" as const,
   nivel: "obligatorio",
   category: "css-responsive",
@@ -356,7 +356,7 @@ Si hay contenedores anidados, por defecto se consulta **el más cercano**. Para 
       title: "@supports: preguntar antes de usar",
       content: `## @supports: preguntar antes de usar
 
-Te queda una pregunta práctica: si CSS suma funciones nuevas todo el tiempo, **cómo las usás sin romper a quien tiene un navegador viejo?**
+Te queda una pregunta práctica: si CSS suma funciones nuevas todo el tiempo, **¿cómo las usás sin romper a quien tiene un navegador viejo?**
 
 ### Lo que pasa por defecto
 
