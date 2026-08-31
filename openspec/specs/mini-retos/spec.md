@@ -27,8 +27,16 @@ A module MUST carry at most one exercise marked as its integrating challenge.
 The mark MUST be part of the exercise, MUST be optional, and its absence MUST
 mean "an ordinary exercise" — never "a challenge".
 
-Each of the 19 required CSS modules MUST carry exactly one. A module outside
-that set MUST carry none until its own change adds it.
+**Every** required CSS module MUST carry exactly one. A module that is not
+required MUST carry none until its own change adds it.
+
+**This sentence used to count instead of stating the rule.** It read "each of
+the 19 required CSS modules", which was true the day it was written and stopped
+being true the moment a twentieth required module was planned -- and the guard
+that should have caught the drift compared against a hardcoded registry of
+slugs, so it would not have noticed either. Changed by `css-track-expansion-2`,
+which took the required set from 19 to 23. That number does not appear here, on
+purpose.
 
 #### Scenario: An unmarked exercise is not a challenge
 

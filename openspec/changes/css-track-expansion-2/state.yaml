@@ -1,0 +1,160 @@
+change: css-track-expansion-2
+created: 2026-08-31
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 800
+  note: >
+    Presupuesto de 800 y no 400: el cambio escribe cuatro modulos de curriculum
+    (~500 lineas cada uno por la vara de la Fase 1), sus cuatro mini retos, y
+    ademas renumera el `order` de casi todo el track. Con 400 se frena en cada
+    tanda sin que eso agregue seguridad.
+
+EL_NOMBRE_Y_POR_QUE_NO_ES_css_track_fase_2: >
+  ESTE CAMBIO NO ES `css-track-fase-2`. Son dos cosas distintas y la confusion
+  ya costo un reporte mal armado el 2026-08-31.
+
+  - `css-track-fase-2` (existe, BLOQUEADO): validar la clasificacion
+    obligatorio/opcional con datos reales de ModuleView. Espera datos hasta
+    ~2026-09-15.
+  - `css-track-expansion-2` (este): los CUATRO MODULOS DE CONTENIDO de la
+    "Fase 2" de `plan-mejoras-css.md`. Es la segunda tanda de
+    `css-track-expansion`, que hizo los cinco de la Fase 1 y esta archivado.
+
+  Se nombra por lo que entrega y por su antecesor, nunca por un numero de fase.
+
+resumen_de_una_linea: >
+  Los cuatro modulos de contenido que faltan del plan -tipografia web, overflow,
+  herencia y valores globales, imagenes y medios- los cuatro OBLIGATORIOS, con
+  su mini reto cada uno, y el track renumerado de 30 a 34.
+
+phases:
+  explore:
+    status: done
+    note: >
+      Medicion directa contra el repo en `d03bf1f`, sin escribir codigo. Los
+      numeros y las restricciones estan en proposal.md con su origen.
+  propose:
+    status: done
+    artifact: openspec/changes/css-track-expansion-2/proposal.md
+  spec:
+    status: done
+    fecha: 2026-08-31
+    artifacts:
+      - openspec/changes/css-track-expansion-2/specs/css-track-content/spec.md
+      - openspec/changes/css-track-expansion-2/specs/css-track-sections/spec.md
+      - openspec/changes/css-track-expansion-2/specs/mini-retos/spec.md
+    note: >
+      TRES deltas, todos contra capacidades que YA existen; no se inventa una
+      capacidad nueva. `css-track-content` gana los cuatro modulos en su
+      Requirement 7 y dos requisitos nuevos (el 9, que un modulo llega
+      clasificado, y el 10, que todo obligatorio lleva reto como INVARIANTE y no
+      como lista de slugs). `css-track-sections` redlinea la secuencia literal de
+      `order`, que pasa de 30 a 34. `mini-retos` cambia "las 19 obligatorias" por
+      "toda obligatoria": el literal era un defecto esperando a pasar.
+  design:
+    status: done
+    artifact: openspec/changes/css-track-expansion-2/design.md
+  tasks:
+    status: done
+    artifact: openspec/changes/css-track-expansion-2/tasks.md
+    abiertas: 33
+    forecast:
+      rebanadas: 6
+      lineas_estimadas: 2400
+      entrega: UN PR con commits encadenados, NO PRs encadenados
+      por_que: >
+        La rebanada 1 escribe el guard del Requirement 10 y lo deja ROJO a
+        proposito hasta la rebanada 5. Un PR intermedio que mergea en rojo es
+        peor que uno grande que mergea en verde.
+  apply:
+    status: done
+    rebanada_1: done
+    rebanada_2: done   # overflow
+    rebanada_3: done   # tipografia-web
+    rebanada_4: done   # herencia-valores-globales
+    rebanada_5: done   # imagenes-y-medios
+    rebanada_6: done   # verificacion; falta solo archivar
+    estado_final: >
+      SUITE ENTERA EN VERDE: 376 tests en 39 archivos, typecheck, eslint y build
+      limpios. El invariante del Requirement 10 se pago solo, una rebanada por
+      vez, hasta quedar verde con los 23 obligatorios.
+      Track: 34 modulos, 23 obligatorios, cero sin clasificar. Camino minimo del
+      certificado 187 -> 223 ejercicios, y NINGUNO de los 19 viejos se movio
+      (Scenario 9.2 verificado). Curriculum: 844 ejercicios y 16780 XP.
+      Cobertura del Requirement 7: 4 de 4 modulos cubren todo lo que la spec
+      exige, medido buscando cada propiedad en lecciones y targetCSS.
+      Verificado A OJO en QA: los 34 renderizan en su seccion correcta y el reto
+      de overflow abre con sus cuatro pasos numerados y su contador.
+    lo_que_cazaron_los_guards_y_yo_no: >
+      El guard de orden pedagogico encontro que mi ejercicio 34-ej-07 usaba
+      `transition`, que se ensena CUATRO MODULOS DESPUES. Sacada; el cambio de
+      color queda instantaneo a proposito y el ejercicio lo dice.
+      Y arreglar el guard de signos destapo DOS defectos preexistentes que
+      estaban ocultos: una pregunta sin abrir en `media-queries`, y un
+      `**Por que?**` en `react-05-estado-usestate` que se compensaba por
+      accidente con un ternario de un bloque de codigo.
+    fecha: 2026-08-31
+    note: >
+      Rebanada 1 cerrada: 24 modulos renumerados, los cuatro esqueletos creados
+      con leccion + quiz + live-editor cada uno, la SECUENCIA del guard de orden
+      pasada a 34, el invariante del Requirement 10 escrito, y cinco guards que
+      contaban redlineados (nivel 30->34 y 19->23, calificador 808->816,
+      certificados 19->23).
+      ESTADO: 375 tests pasan y UNO falla -- el invariante, nombrando a los
+      cuatro modulos sin reto. Es el rojo de diseno, y lo pagan las rebanadas
+      2 a 5.
+      Tres cosas que el diseno NO predijo y quedaron redlineadas en D9, D10 y las
+      tareas 1.10-1.12: los cinco conteos fijos, el ratchet de tipos de ejercicio
+      -un esqueleto solo con quiz empeora el track-, y un FALSO POSITIVO del
+      guard de acentuacion, que en JavaScript veia frontera de palabra entre una
+      letra comun y una acentuada y reclamaba la tilde de `funciono` que ya
+      estaba puesta.
+  verify:
+    status: done
+    fecha: 2026-08-31
+    veredicto: pass
+    note: >
+      376 tests en 39 archivos, typecheck, eslint y build limpios. Cobertura del
+      Requirement 7 medida modulo por modulo: 4 de 4. Scenario 9.2 verificado:
+      los 19 obligatorios viejos siguen sumando 187 sin moverse.
+  archive:
+    status: done
+    fecha: 2026-08-31
+    artifact: openspec/changes/css-track-expansion-2/archive-report.md
+    specs_promovidas:
+      - openspec/specs/css-track-content/spec.md      # Req 7 +4 filas, Req 9 y 10 nuevos
+      - openspec/specs/css-track-sections/spec.md     # secuencia de order 30 -> 34
+      - openspec/specs/mini-retos/spec.md             # "las 19" -> "toda obligatoria"
+    note: >
+      Archivado EN SU LUGAR: la carpeta no se mueve, porque mover la carpeta
+      rompe la revision acotada -- el diff no detecta el renombre.
+      Los tres deltas se promovieron EDITANDO capacidades que ya existian; este
+      cambio no inventa ninguna capacidad nueva.
+
+decidido_por_el_instructor:
+  - >
+    LOS CUATRO SON OBLIGATORIOS. Se aplico el criterio que Diego cerro el
+    2026-08-24 (ver la memoria `fase2-obligatorios-opcionales`) y los cuatro
+    dan obligatorio por al menos una de sus reglas. Diego lo aprobo el
+    2026-08-31.
+  - >
+    LOS CUATRO LLEVAN MINI RETO. La spec promovida `openspec/specs/mini-retos`
+    dice "Each of the 19 required CSS modules MUST carry exactly one". Cuatro
+    obligatorios nuevos sin reto violarian ese requisito en silencio: el guard
+    de retos es un REGISTRO de slugs, no la invariante, asi que no lo cazaria.
+  - >
+    SE HACE AHORA, y la ventana importa. Cada obligatorio nuevo agranda el
+    camino minimo del certificado y tumba del 100 % a quien estuviera cerca.
+    Hoy eso NO le cuesta a nadie: con 8 de los 19 obligatorios todavia cerrados
+    para la cohorte 2, nadie PUEDE estar al 100 % -es una imposibilidad, no una
+    medicion optimista- y la cohorte 1 esta fuera de alcance. Despues de abrir
+    los 8, el mismo cambio si tendria costo.
+
+# OJO: este valor va COMILLADO. Un ": " dentro del texto -aunque sea entre
+# parentesis- hace que YAML lo lea como un segundo mapeo y rompe el archivo
+# entero. Misma familia que el item de lista que arranca con corchete.
+next_recommended: none   # ciclo cerrado 2026-08-31: seis rebanadas, specs promovidas, archivado en su lugar
