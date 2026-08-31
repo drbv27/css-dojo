@@ -371,3 +371,68 @@ describe("compararReglas", () => {
     expect(compararReglas("not css at all", "h1 { color: red }").correct).toBe(false);
   });
 });
+
+describe("background y background-color son la misma declaracion con un color", () => {
+  /**
+   * Lo reporto un alumno el 2026-08-31: escribio `background-color: #f5f5f5`
+   * donde el ejercicio esperaba `background: #f5f5f5` y le dijo "Incorrecto".
+   *
+   * Medido sobre el curriculum: NO era un ejercicio, eran 49. Doce esperaban el
+   * atajo y bajaban a 78-91; treinta y siete esperaban la especifica y bajaban
+   * HASTA 0, porque los mini retos son todo o nada. Un alumno que escribia
+   * `background: red` donde el ejercicio queria `background-color: red` sacaba
+   * cero con CSS impecable.
+   *
+   * Con un color solo las dos pintan igual: el atajo resetea imagen, posicion y
+   * repeticion a sus valores iniciales, que es donde ya estaban.
+   */
+  it("las acepta en las DOS direcciones", () => {
+    expect(compararReglas(".a { background: #f5f5f5; }", ".a { background-color: #f5f5f5; }").score).toBe(100);
+    expect(compararReglas(".a { background-color: #f5f5f5; }", ".a { background: #f5f5f5; }").score).toBe(100);
+  });
+
+  it("vale para hex, nombre, rgb, hsl y transparent", () => {
+    const pares: [string, string][] = [
+      ["steelblue", "steelblue"],
+      ["rgb(10, 20, 30)", "rgb(10, 20, 30)"],
+      ["rgba(0, 0, 0, 0.5)", "rgba(0, 0, 0, 0.5)"],
+      ["hsl(200, 50%, 40%)", "hsl(200, 50%, 40%)"],
+      ["transparent", "transparent"],
+    ];
+    for (const [a, b] of pares) {
+      expect(compararReglas(`.a { background: ${a}; }`, `.a { background-color: ${b}; }`).score).toBe(100);
+    }
+  });
+
+  it("OJO CON rgb(): el normalizador le deja espacios y casi lo descarta", () => {
+    // `rgb(10, 20, 30)` tiene espacios despues de las comas. La primera version
+    // de esta equivalencia chequeaba "sin espacios" ANTES que la forma rgb(), y
+    // le daba 0 a un color perfectamente valido.
+    expect(compararReglas(".a { background: rgb(1, 2, 3); }", ".a { background-color: rgb(1, 2, 3); }").score).toBe(100);
+  });
+
+  it("NO las acepta cuando el valor no es un color solo", () => {
+    // Aca esta el limite, y es lo que separa relajar de romper. Aceptar de mas
+    // seria aprobar CSS que NO hace lo mismo.
+    const invalidos: [string, string][] = [
+      // background-color con un degradado no es CSS valido
+      [".a { background: linear-gradient(red, blue); }", ".a { background-color: linear-gradient(red, blue); }"],
+      // una custom property puede tener un degradado adentro
+      [".a { background: var(--f); }", ".a { background-color: var(--f); }"],
+      // multiples valores: el atajo tambien pone la imagen
+      [".a { background: red url(x.png); }", ".a { background-color: red url(x.png); }"],
+    ];
+    for (const [esperado, enviado] of invalidos) {
+      expect(compararReglas(esperado, enviado).score).toBe(0);
+    }
+  });
+
+  it("un color DISTINTO sigue estando mal", () => {
+    expect(compararReglas(".a { background: red; }", ".a { background-color: blue; }").score).toBe(0);
+  });
+
+  it("la equivalencia no se derrama a otras propiedades", () => {
+    expect(compararReglas(".a { color: red; }", ".a { background-color: red; }").score).toBe(0);
+    expect(compararReglas(".a { border-color: red; }", ".a { border: red; }").score).toBe(0);
+  });
+});
