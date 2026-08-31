@@ -1,0 +1,112 @@
+change: completitud-al-100
+created: 2026-08-31
+artifact_store: hybrid
+
+session_preflight:
+  execution_mode: interactive
+  artifact_store: hybrid
+  delivery_strategy: ask-on-risk
+  review_budget_lines: 400
+  note: >
+    Presupuesto de 400: el cambio de produccion es UNA LINEA y su excepcion. El
+    resto son guards y spec. Si crece mas alla de eso, algo se entendio mal.
+
+resumen_de_una_linea: >
+  Un ejercicio se completa cuando esta COMPLETO, no al 70 %. Y los cuatro
+  `js-behavior`, que hoy son IMPOSIBLES de completar, vuelven a completarse con
+  el veredicto del cliente, acotado a la lista enumerada.
+
+por_que_ahora: >
+  Las dos mitades viven en la MISMA linea -`route.ts:66`- y responden la misma
+  pregunta: que completa un ejercicio. Arreglarlas por separado significa tocar
+  esa linea dos veces y escribir dos veces el mismo guard.
+
+decidido_por_el_instructor:
+  - >
+    UN EJERCICIO SE COMPLETA CON EL 100 %. Decidido el 2026-08-31. Medido: 63 de
+    los 92 ejercicios `css-rules` de CSS completaban con una declaracion
+    faltante, y 47 de esos estan en modulos OBLIGATORIOS. O sea que el
+    certificado -una credencial que firma Diego- se podia ganar dejando hasta 47
+    declaraciones sin escribir.
+  - >
+    EL HISTORICO SE DEJA QUIETO. Los 5349 Progress completados bajo la regla
+    vieja NO se recorrigen. Misma razon que en `revalidacion-en-servidor`: un
+    recorrector masivo que se equivoque borra trabajo real de alumnos, y eso es
+    peor que dejar pasar completitudes viejas mas laxas. La regla rige de aca en
+    adelante.
+
+el_defecto_QUE_ESTE_CAMBIO_TAMBIEN_ARREGLA: >
+  CUATRO EJERCICIOS ESTAN ROTOS EN PRODUCCION Y LOS ROMPIMOS NOSOTROS.
+  `js-funciones/js07-ej-17`, `js07-ej-18`, `js-arrays/js08-ej-07` y
+  `js-metodos-arrays/js09-ej-08` NO SE PUEDEN COMPLETAR, escriba lo que escriba
+  el alumno.
+
+  `isCompleted = calificacion.calificable && score >= 70`. Para `js-behavior` el
+  servidor devuelve `calificable: false` -no puede correr JS sin un sandbox- asi
+  que `isCompleted` es siempre false. Y no hay otro camino: `route.ts` es el
+  unico lugar que escribe `completed`.
+
+  LO INTRODUJO `revalidacion-en-servidor` (PR #41) y lleva tres dias en
+  produccion. Y la causa de fondo es que LA DECISION Y LA SPEC SE CONTRADICEN:
+  Diego decidio "los 4 siguen corrigiendose en el cliente", y la spec promovida
+  dice "un resultado no calificable no otorga nada". El codigo cumplio la spec
+  al pie de la letra y volvio imposibles a los cuatro.
+
+  No toca ninguna credencial -el track js no declara `nivel`, asi que no
+  certifica-, pero cuatro ejercicios son inalcanzables.
+
+phases:
+  explore:
+    status: done
+    note: >
+      Medicion directa contra `e560eb5`. El umbral vive en UN solo lugar
+      (`route.ts:66`) y los cuatro rotos se confirmaron corriendo `calificar`
+      sobre sus propias soluciones de referencia.
+  propose:
+    status: done
+    artifact: openspec/changes/completitud-al-100/proposal.md
+  spec:
+    status: done
+    artifact: openspec/changes/completitud-al-100/specs/server-grading/spec.md
+  design:
+    status: done
+    artifact: openspec/changes/completitud-al-100/design.md
+  tasks:
+    status: done
+    artifact: openspec/changes/completitud-al-100/tasks.md
+  apply:
+    status: done
+    fecha: 2026-08-31
+    note: >
+      El diff de produccion son DOS condiciones en una linea, como decia el
+      disenio. Todo lo demas son guards y spec.
+  verify:
+    status: done
+    fecha: 2026-08-31
+    veredicto: pass
+    note: >
+      389 tests en 39 archivos, typecheck, eslint y build limpios. CINCO
+      controles positivos, y uno de ellos delato un test VACUO propio: el
+      parcial de prueba daba 50, que tampoco completa bajo el umbral viejo, asi
+      que el test no distinguia una regla de la otra. Corregido a 75 y
+      re-controlado en rojo.
+      VERIFICADO DE PUNTA A PUNTA contra la app real en QA, por API: tres de
+      cuatro declaraciones -> completed=false, score=75, XP 0; las cuatro ->
+      completed=true, score=100, XP 20.
+      Medido: 63 de 90 ejercicios dejan de completarse con trabajo a medias, 47
+      de ellos en obligatorios de CSS.
+  archive:
+    status: done
+    fecha: 2026-08-31
+    artifact: openspec/changes/completitud-al-100/archive-report.md
+    spec_promovida: openspec/specs/server-grading/spec.md
+    note: >
+      Archivado EN SU LUGAR. La spec de `server-grading` pasa de 8 a 10
+      requisitos: el de completitud redlineado de umbral a 100, y uno nuevo para
+      la excepcion del veredicto del cliente.
+      LA LECCION QUE DEJA: una decision anotada en un `state.yaml` y un requisito
+      promovido a una spec PUEDEN CONTRADECIRSE, y el codigo sigue a la spec. Asi
+      quedaron cuatro ejercicios imposibles durante tres dias sin que nada se
+      pusiera rojo.
+
+next_recommended: none   # ciclo cerrado 2026-08-31
