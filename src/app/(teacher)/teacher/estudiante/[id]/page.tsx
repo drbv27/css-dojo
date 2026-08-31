@@ -210,8 +210,14 @@ export default function StudentDetailPage({
                     }`}>
                       {ex.completed ? `${ex.score}%` : "Incompleto"}
                     </span>
+                    {/* Se mira `completed` y no solo `xpEarned`: hasta este
+                        arreglo la ruta guardaba el XP entero tambien en los
+                        intentos fallidos, asi que los registros VIEJOS todavia
+                        tienen un `xpEarned` que su `completed: false` desmiente.
+                        El historico no se recorrige -son miles de documentos-,
+                        se lee bien. */}
                     <span className="text-xs font-mono text-neon-yellow w-16 text-right">
-                      {ex.xpEarned > 0 ? `+${ex.xpEarned} XP` : "-"}
+                      {ex.completed && ex.xpEarned > 0 ? `+${ex.xpEarned} XP` : "-"}
                     </span>
                     <span className="text-xs text-editor-muted w-20 text-right">{date}</span>
                   </div>
