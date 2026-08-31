@@ -526,7 +526,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 20,
       order: 10,
       prompt:
-        "Arma el encabezado de una nota. A la clase 'título' dale text-align: center y font-size: 28px. A la clase 'firma' dale text-align: right y font-style: italic. Al párrafo con clase 'cuerpo' dale text-align: left y line-height: 1.6.",
+        "Arma el encabezado de una nota. A la clase `.titulo` dale text-align: center y font-size: 28px. A la clase `.firma` dale text-align: right y font-style: italic. Al párrafo con clase `.cuerpo` dale text-align: left y line-height: 1.6.",
       codeTemplate: {
         html: `<h2 class="titulo">Cronica de un lunes</h2>\n<p class="cuerpo">El texto del cuerpo se lee mejor alineado a la izquierda, porque el ojo encuentra el mismo punto de partida en cada linea.</p>\n<p class="firma">Por Ana Martinez</p>`,
         cssPrefix: "",

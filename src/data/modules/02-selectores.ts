@@ -334,7 +334,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 30,
       order: 7,
       prompt:
-        "Escribe CSS para: 1) Aplicar color verde (green) al elemento con clase 'activo'. 2) Aplicar font-size de 20px al elemento con id 'título'.",
+        "Escribe CSS para: 1) Aplicar color verde (green) al elemento con clase `.activo`. 2) Aplicar font-size de 20px al elemento con id `#titulo`.",
       codeTemplate: {
         html: `<h1 id="titulo">Bienvenido</h1>\n<p class="activo">Elemento activo</p>\n<p>Elemento inactivo</p>`,
         cssPrefix: "",

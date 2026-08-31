@@ -523,7 +523,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 25,
       order: 10,
       prompt:
-        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase 'tarjeta' que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase 'opción' que contengan un input marcado, dales font-weight: bold.",
+        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase `.tarjeta` que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase `.opcion` que contengan un input marcado, dales font-weight: bold.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <img src="https://placehold.co/60x40" alt="Miniatura" />\n  <p>Con imagen</p>\n</div>\n<div class="tarjeta">\n  <p>Sin imagen</p>\n</div>\n<label class="opcion"><input type="checkbox" checked /> Marcada</label>`,
         cssPrefix: "",
