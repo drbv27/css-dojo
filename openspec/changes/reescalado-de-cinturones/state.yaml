@@ -1,0 +1,65 @@
+change: reescalado-de-cinturones
+created: 2026-09-01
+artifact_store: hybrid
+
+resumen_de_una_linea: >
+  Los diez umbrales de RANKS reanclados a hitos del curriculum que se pueden
+  nombrar, y un guard que hace que la proxima tanda de contenido ROMPA un test
+  en vez de abaratar los cinturones en silencio.
+
+phases:
+  explore:
+    status: done
+    fecha: 2026-09-01
+  propose:
+    status: done
+    fecha: 2026-09-01
+    artifact: openspec/changes/reescalado-de-cinturones/proposal.md
+  spec:
+    status: done
+    fecha: 2026-09-01
+    artifacts:
+      - openspec/changes/reescalado-de-cinturones/specs/xp-progression/spec.md
+  apply:
+    status: done
+    fecha: 2026-09-01
+
+decidido_por_el_instructor:
+  bajar_de_cinturon_esta_bien: >
+    Textual- "no hay problema si se bajan de cinturon, no es necesario
+    mantenerselos, ya les dije que eso iba a pasar". No se congela ningun rango
+    ni se hace ninguna migracion de datos- el rango se calcula del XP, que no
+    se toca.
+  la_escala: >
+    Umbrales 0 / 300 / 900 / 1800 / 3200 / 5200 / 7400 / 9600 / 12800 / 15800.
+    Los cinco de arriba caen justo por debajo de un hito nombrable.
+  colchon_no: >
+    Se pregunto explicitamente si dejar colchon para JS y React o corregir mas
+    adelante. Se decidio- corregir mas adelante, PERO que avise. Un colchon
+    fija el techo contra contenido que no existe, lo deja inalcanzable mientras
+    tanto, y si JS o React crecen distinto igual hay que recorregir.
+  porcentual_no: >
+    Tambien se descarto hacer los umbrales un porcentaje del curriculum- una
+    cohorte que solo cursa CSS toca techo en 44.5% para siempre y los
+    cinturones de arriba dejan de ser alcanzables por alguien real.
+
+el_defecto_que_se_encontro_midiendo: >
+  No era que los umbrales estuvieran viejos- era que el TECHO estaba aplanado.
+  Con Gran Maestro en 11000, terminar CSS+HTML+JS (76.6%), eso mas React
+  (93.3%) y el curriculum entero (100%) daban los TRES el mismo cinturon.
+
+defecto_lateral_arreglado: >
+  getXPProgress usaba Math.round, asi que estar a UN XP del proximo cinturon en
+  un tramo de 300 o mas mostraba 100% en la barra sin haber subido. Ya pasaba
+  con la escala vieja en los tramos anchos -2499 sobre 2500-; ningun test lo
+  cazaba porque el unico caso probado era el primer tramo, donde 149 sobre 150
+  redondeaba a 99. Ahora es Math.floor con tope 99 mientras exista siguiente.
+
+controles_positivos:
+  - "A- volver a la escala vieja pone rojo 'la escala no se aplana arriba' y dos anclajes."
+  - "B- inflar 600 XP de un modulo de JS -3.5% de crecimiento- pone roja la banda de deriva, nombrando Gran Maestro. Prueba que reacciona a CONTENIDO, no solo a mover un numero a mano."
+  - "C- agregar un cinturon sin agregarlo a la tabla de porcentajes pone roja la asercion que cubre esa tabla. Sin ella la comparacion seria contra undefined y NaN nunca es mayor que 3."
+
+pendiente_de_diego: >
+  Avisarle a la cohorte. La mayoria baja UNO o DOS cinturones- a 3000 XP se
+  pasa de Morado a Verde, a 5000 de Marron a Azul.

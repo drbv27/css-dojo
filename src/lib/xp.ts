@@ -34,7 +34,11 @@ export function getXPProgress(xp: number): XPProgress {
 
   const earned = xp - current.minXP;
   const needed = next.minXP - current.minXP;
-  const percentage = Math.min(Math.round((earned / needed) * 100), 100);
+  // FLOOR, no round: con round, estar a un XP del proximo cinturon en un tramo
+  // de 300 o mas redondea a 100 y la barra dice que llegaste cuando no. Mientras
+  // exista un cinturon siguiente el porcentaje tiene que ser menor a 100; el 100
+  // se devuelve arriba, en la rama de quien ya no tiene proximo.
+  const percentage = Math.min(Math.floor((earned / needed) * 100), 99);
 
   return {
     current: earned,
