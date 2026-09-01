@@ -54,6 +54,8 @@ import { overflowModule } from "./31-overflow";
 import { tipografiaWebModule } from "./32-tipografia-web";
 import { herenciaValoresGlobalesModule } from "./33-herencia-valores-globales";
 import { imagenesYMediosModule } from "./34-imagenes-y-medios";
+import { accesibilidadVisualModule } from "./35-accesibilidad-visual";
+import { depurarConDevtoolsModule } from "./36-depurar-con-devtools";
 import { advancedTextModule } from "./09-advanced-text";
 import { attributeSelectorsModule } from "./13-attribute-selectors";
 import { listsAndTablesModule } from "./20-lists-and-tables";
@@ -172,7 +174,10 @@ export const ALL_MODULES: ModuleData[] = [
   floatDisplayModule,
   posicionamientoModule, flexboxModule, cssGridModule, propiedadesLogicasModule,
   imagenesYMediosModule, listsAndTablesModule, shadowsGradientsFiltersModule, transformsModule, transicionesAnimacionesModule, variablesCSSModule,
-  mediaQueriesModule, sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
+  accesibilidadVisualModule,
+  mediaQueriesModule,
+  depurarConDevtoolsModule,
+  sassFundamentosModule, sassAvanzadoModule, bootstrapModule,
   tailwindModule, proyectoCvCssModule,
   // JS
   jsQueEsModule, jsVariablesTiposModule, jsOperadoresModule, jsStringsModule,

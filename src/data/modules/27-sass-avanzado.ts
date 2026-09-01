@@ -5,7 +5,7 @@ export const sassAvanzadoModule: ModuleData = {
   title: "Sass Avanzado",
   description:
     "Lleva tu Sass al siguiente nivel con herencia, condicionales, bucles, mapas, listas y patrones de arquitectura profesional como el patrón 7-1 y BEM.",
-  order: 31,
+  order: 33,
   dojo: "css" as const,
   nivel: "profundizacion",
   category: "css-herramientas",

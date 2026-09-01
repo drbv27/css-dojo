@@ -37,32 +37,59 @@ phases:
     fecha: 2026-08-31
     artifact: openspec/changes/css-track-expansion-3/proposal.md
   spec:
-    status: blocked
-  design:
-    status: blocked
-  tasks:
-    status: blocked
+    status: done
+    fecha: 2026-09-01
+    artifacts:
+      - openspec/changes/css-track-expansion-3/specs/css-track-content/spec.md
+      - openspec/changes/css-track-expansion-3/specs/css-track-sections/spec.md
+    note: >
+      DOS deltas, los dos contra capacidades que ya existen. `css-track-content`
+      gana tres filas en su Requirement 7 -dos modulos nuevos y una leccion
+      agregada a uno que ya estaba- y un Requirement 11 nuevo, que pone reglas
+      para agregarle ejercicios a un obligatorio ya desplegado.
+      `css-track-sections` redlinea la secuencia literal de order, de 34 a 36.
+      `mini-retos` NO necesita delta- su Requirement 10 es una invariante sobre
+      `nivel` y este cambio no agrega ningun obligatorio nuevo.
   apply:
-    status: blocked
-
-decision_pendiente_del_instructor:
-  pregunta: >
-    Los tres modulos nuevos, los tres OBLIGATORIOS, o alguno queda en
-    `profundizacion`?
-  estado: "SIN RESPONDER al 2026-08-31. Diego tuvo que cortar la sesion."
-  por_que_bloquea: >
-    Cambia el camino minimo del certificado para TODOS los alumnos, incluidos
-    los que ya vienen cursando, y decide si cada modulo lleva mini reto -todo
-    obligatorio lleva uno; los opcionales van aparte, en otro cambio-.
-  lo_que_se_midio_para_proponerlo: >
-    Aplicando el criterio del 2026-08-24, los tres dan obligatorio. El precio
-    dicho- el camino minimo pasa de 223 a ~250 ejercicios y de 23 a 26 modulos.
-  alternativa_viva: >
-    Clasificar cualquiera de los tres como `profundizacion` no cuesta nada
-    estructuralmente. Lo que NO es opcion es dejarlos sin `nivel`- un solo
-    modulo sin clasificar deja al track entero sin certificar, en silencio.
+    status: done
+    fecha: 2026-09-01
+    note: >
+      Dos modulos escritos -4 lecciones y 8 ejercicios cada uno-, una leccion y
+      dos ejercicios agregados a `imagenes-y-medios`, el track renumerado de 34
+      a 36, y los tres guards que cuentan actualizados.
 
 decidido_por_el_instructor:
+  clasificacion: >
+    UNO obligatorio y DOS de profundizacion, decidido el 2026-09-01 despues de
+    medir el track- `responsive-imagenes-video` OBLIGATORIO,
+    `accesibilidad-visual` y `depurar-con-devtools` PROFUNDIZACION. El camino
+    minimo pasa de 223 a 232 ejercicios y de 23 a 24 modulos obligatorios.
+  por_que_imagenes_es_obligatorio: >
+    No es preferencia pedagogica, es un agujero medido en el camino obligatorio
+    de HOY. El proyecto final -obligatorio- pide meter una foto en un CV -25
+    menciones de "foto", tres <img>- y en TODO el track CSS `max-width- 100%`
+    aparece CERO veces, igual que `object-fit` y `aspect-ratio`. Y `width- 100%`
+    aparece 53 veces, que para una imagen es la herramienta equivocada. El
+    entregable obligatorio depende de algo que el track nunca enseña.
+  por_que_devtools_es_opcional: >
+    No es conocimiento, es un gesto- Diego lo muestra en clase en cinco minutos
+    la primera vez que alguien dice "no me aplica el estilo", y ese momento
+    ensena mas que cuatro lecciones. Ademas envejece- Chrome mueve los paneles.
+    Como opcional queda de referencia para el que quiera profundizar.
+  por_que_accesibilidad_es_opcional: >
+    Se discutio y se midio antes de aceptarlo. La accesibilidad NO esta ausente
+    del camino obligatorio- 32 menciones de "accesib", 46 de `outline`, 19 de
+    `:focus`, 17 de `alt=`. Lo que falta es la capa moderna- `focus-visible`,
+    `prefers-reduced-motion` y `sr-only` estan en cero. Como el piso ya lo ve
+    todo el mundo, el modulo nuevo PROFUNDIZA. No equivale a decir que la
+    accesibilidad es opcional.
+  mini_retos: >
+    Solo `responsive-imagenes-video` lleva reto integrador, porque la invariante
+    es que TODO obligatorio lleva uno. Los otros dos son profundizacion y sus
+    retos entran en el cambio aparte de los opcionales, que ya esta decidido.
+  no_le_saca_nada_a_nadie: >
+    Nadie tiene certificado todavia -no se emitio el primero- y un certificado
+    otorgado es un snapshot congelado. Subir la vara no revoca nada de nadie.
   seccion: >
     NO se crea `css-oficio`. Decision del 2026-08-31, ya mergeada como
     Requirement 7 de `openspec/specs/css-track-sections` en la PR #56. Los tres

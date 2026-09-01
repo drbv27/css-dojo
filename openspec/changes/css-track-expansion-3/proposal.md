@@ -54,28 +54,62 @@ the framework block, so it still serves the capstone.
 (`media-queries`). A section with one card is a heading, not a grouping; this
 takes it to two.
 
-## Classification: all three OBLIGATORIO
+## Classification: ONE obligatorio, TWO profundizacion
 
-Applied against the criterion fixed on 2026-08-24 (obligatorio if it meets at
-least one of: the next track assumes it; without it a junior fails real work; it
-is a concept rather than a catalogue; it blocks another obligatorio).
+**Instructor decision, 2026-09-01**, taken after measuring the track rather than
+from the criterion alone.
 
-| Module | Criterion met | Reading |
+| Module | `nivel` | Why |
 |---|---|---|
-| Accesibilidad visual | 2, 3 | Deleting the focus outline is a real review-blocking defect, not an exam question. Contrast and motion preferences are concepts, not lookups |
-| Responsive de imagenes y video | 1, 2 | An image that overflows on a phone is a failed task. The React track assumes fluid media |
-| Depurar con DevTools | 2, 3 | "The style is not applying" is THE junior blocker — the same reason `especificidad` is obligatorio. It is a skill, not a catalogue |
+| `responsive-imagenes-video` | **obligatorio** | Closes a hole that already exists — see below |
+| `accesibilidad-visual` | `profundizacion` | The floor is already in the required path; this deepens it |
+| `depurar-con-devtools` | `profundizacion` | A gesture, not knowledge; taught live in five minutes |
 
-**This is the cost, stated plainly:** the required path goes from **223 to ~250
-exercises**, and required modules from 23 to 26. That is a real increase in what
-a certificate demands. Classifying any of the three as `profundizacion` instead
-is a live option and costs nothing structurally — the decision is the
-instructor's.
+Required path: **223 → 232 exercises**, required modules 23 → 24.
 
-**Not classifying them is not an option.** The certificate gate requires that
-EVERY module of a track declare `nivel`; one module without it silently leaves
-the whole track uncertifiable, with no error anywhere. They are classified in
-THIS change.
+### Why images is obligatorio, and it is not a preference
+
+Measured against `1c9cdb2`:
+
+| Searched across the whole CSS track | Hits |
+|---|---|
+| `max-width: 100%` | **0** |
+| `object-fit` | **0** |
+| `aspect-ratio` | **0** |
+| `width: 100%` | 53 |
+
+And `proyecto-cv-css` — **which is obligatorio** — has 25 occurrences of "foto"
+and three `<img>`. The required capstone asks the student to put a photo in a CV,
+and the track never taught them to keep it from breaking on a phone. Worse, it
+taught `width: 100%` 53 times, which is the wrong tool for an image.
+
+**This is not adding a requirement. It is closing a hole that ships today.**
+
+### Why the other two are profundizacion
+
+**DevTools** is a gesture, not knowledge. The instructor demonstrates it live in
+five minutes the first time a student says "the style is not applying", and that
+moment teaches more than four lessons. It also ages badly — Chrome moves its
+panels. Optional is where a reference module belongs.
+
+**Visual accessibility** was argued against and then measured. It is NOT absent
+from the required path: 32 occurrences of "accesib", 46 of `outline`, 19 of
+`:focus`, 17 of `alt=`. What is missing is the modern layer — `focus-visible`,
+`prefers-reduced-motion` and `sr-only` are each at **zero**. Because the floor
+is already taught, the new module **deepens** rather than introduces. This is
+not the same as saying accessibility is optional.
+
+### Consequence for challenges
+
+Only `responsive-imagenes-video` gets an integration challenge, because the
+invariant is that every **obligatorio** carries one (`mini-retos` Requirement
+10). The two `profundizacion` modules get theirs in the separate, already-decided
+change covering all 11 optional modules.
+
+### Nothing is revoked
+
+No certificate has been awarded yet, and an awarded certificate is a frozen
+snapshot. Raising the bar takes nothing from anyone.
 
 ## Consequences that must be handled in this change
 

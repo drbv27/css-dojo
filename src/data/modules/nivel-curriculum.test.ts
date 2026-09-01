@@ -60,6 +60,8 @@ const PROFUNDIZACION_CSS = [
   "shadows-gradients-filters",
   "transforms",
   "transiciones-animaciones",
+  "accesibilidad-visual",
+  "depurar-con-devtools",
   "sass-fundamentos",
   "sass-avanzado",
   "bootstrap-5",
@@ -83,12 +85,12 @@ const porDojo = (dojo: DojoType) => ALL_MODULES.filter((m) => m.dojo === dojo);
 const slugs = (ms: { slug: string }[]) => ms.map((m) => m.slug).sort();
 
 describe("nivel del curriculum -- track CSS", () => {
-  it("los 34 modulos de CSS declaran nivel", () => {
+  it("los 36 modulos de CSS declaran nivel", () => {
     const sinNivel = slugs(porDojo("css").filter((m) => m.nivel === undefined));
     // Enumerated, not counted: a failure has to name the module that is
     // missing its level, otherwise the next person re-measures by hand.
     expect(sinNivel).toEqual([]);
-    expect(porDojo("css")).toHaveLength(34);
+    expect(porDojo("css")).toHaveLength(36);
   });
 
   it("los 23 obligatorios son exactamente estos, por slug", () => {
@@ -96,7 +98,7 @@ describe("nivel del curriculum -- track CSS", () => {
     expect(encontrados).toEqual([...OBLIGATORIOS_CSS].sort());
   });
 
-  it("los 11 de profundizacion son exactamente estos, por slug", () => {
+  it("los 13 de profundizacion son exactamente estos, por slug", () => {
     const encontrados = slugs(
       porDojo("css").filter((m) => m.nivel === "profundizacion"),
     );

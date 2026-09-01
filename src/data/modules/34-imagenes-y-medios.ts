@@ -230,6 +230,100 @@ Un \`<img>\` tiene \`alt\`. Un fondo no. Si la imagen dice algo —el producto q
 La prueba rápida: si al describir la página en voz alta nombrarías esa imagen, es contenido y va en \`<img>\`. Si ni la mencionarías, es decoración.`,
       order: 4,
     },
+    {
+      id: "34-leccion-05",
+      order: 5,
+      title: "La imagen fluida, y el video que mantiene su forma",
+      content: `## La regla de una línea
+
+Todo lo anterior ordena la imagen **adentro** de su caja. Falta la pregunta de afuera: ¿qué pasa cuando la pantalla es más angosta que la imagen?
+
+Una \`<img>\` sin CSS se dibuja en su tamaño original. Si la foto mide 1200 píxeles de ancho y el celular tiene 390, la imagen **se desborda** y aparece el scroll horizontal, ese que arruina una página entera y nadie sabe de dónde sale.
+
+La respuesta cabe en una línea:
+
+\`\`\`css
+img {
+  max-width: 100%;
+  height: auto;
+}
+\`\`\`
+
+## Por qué max-width y no width
+
+Es la confusión más común, y vale la pena separarla:
+
+| | Qué hace |
+|---|---|
+| \`width: 100%\` | la imagen mide **siempre** el ancho del contenedor, y si el contenedor es más grande que la foto, **la agranda** y se ve borrosa |
+| \`max-width: 100%\` | pone un **techo**: se achica si hace falta, nunca se estira más allá de su tamaño real |
+
+\`max-width\` no impone una medida, impone un límite. Esa es toda la diferencia, y es la que evita que una foto de 400px se vea pixelada estirada a 900.
+
+El \`height: auto\` va al lado por una razón concreta: si el HTML trae \`height\` en un atributo, al achicarse el ancho el alto se quedaría quieto y la imagen se deformaría. \`auto\` le devuelve la proporción.
+
+## El video que hay que mantener en forma
+
+Un \`<iframe>\` de YouTube tiene el mismo problema, con un agravante: no tiene proporción propia, así que \`height: auto\` no le sirve de nada.
+
+Durante años esto se resolvía con un truco de \`padding-bottom: 56.25%\` que nadie entendía. Hoy no hace falta:
+
+\`\`\`css
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+\`\`\`
+
+Es el mismo \`aspect-ratio\` que ya usaste con las imágenes. El \`16 / 9\` es la proporción del video; para uno vertical sería \`9 / 16\`.
+
+Y acá \`width: 100%\` **sí** es lo correcto, no \`max-width\`: un iframe no tiene un tamaño natural que convenga respetar, querés que ocupe el ancho disponible siempre.
+
+## La regla que conviene escribir una vez
+
+\`\`\`css
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+\`\`\`
+
+Muchos proyectos la ponen al principio de la hoja y se olvidan del problema para siempre. Es una de las pocas reglas globales que casi nunca molesta.`,
+      codeExample: {
+        html: `<div class="marco">
+  <img class="foto" src="https://placehold.co/1200x500" alt="Una foto ancha dentro de un contenedor angosto" />
+  <div class="video">16 / 9, sin importar el ancho</div>
+</div>`,
+        css: `.marco {
+  width: 260px;
+  padding: 12px;
+  background: #1e1e2e;
+  border-radius: 10px;
+}
+
+/* Sin esto, la foto de 1200px se desborda del marco de 260px. */
+.foto {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 12px;
+  background: #313244;
+  color: #a6adc8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  border-radius: 6px;
+}`,
+        editable: true,
+      },
+    },
   ],
   exercises: [
     {
@@ -393,6 +487,46 @@ La prueba rápida: si al describir la página en voz alta nombrarías esa imagen
         "La regla es de significado, no de estilo. Un img tiene alt y un fondo no, así que una imagen que dice algo puesta como fondo simplemente no existe para un lector de pantalla. Y object-fit da el mismo control que cover: el argumento técnico a favor del fondo ya no existe.",
     },
     {
+      id: "34-ej-09",
+      type: "quiz",
+      difficulty: 2,
+      xpReward: 20,
+      order: 9,
+      prompt:
+        "¿Por qué para una imagen fluida se usa max-width: 100% y no width: 100%?",
+      options: [
+        { id: "a", text: "Porque width: 100% no funciona sobre una etiqueta img", isCorrect: false },
+        { id: "b", text: "Porque max-width pone un techo: achica si hace falta, pero nunca agranda la foto más allá de su tamaño real", isCorrect: true },
+        { id: "c", text: "Porque max-width se calcula sobre el viewport y width sobre el contenedor", isCorrect: false },
+        { id: "d", text: "Porque width: 100% desactiva el object-fit", isCorrect: false },
+      ],
+      validation: { type: "exact", answer: "b" },
+      hint: "Pensá qué pasa con una foto de 400px de ancho dentro de un contenedor de 900px, con cada una de las dos propiedades.",
+      explanation:
+        "width: 100% impone una medida: la imagen mide siempre el ancho del contenedor, y si el contenedor es más grande, la estira y se ve borrosa. max-width impone un límite: se achica cuando hace falta y se queda en su tamaño real cuando sobra lugar. Por eso la regla de la imagen fluida usa max-width.",
+    },
+    {
+      id: "34-ej-10",
+      type: "live-editor",
+      difficulty: 2,
+      xpReward: 20,
+      order: 10,
+      prompt:
+        "Que nada se desborde: a .foto dale max-width: 100% y height: auto, y a .video dale width: 100% y aspect-ratio: 16 / 9.",
+      codeTemplate: {
+        html: `<div class="marco"><img class="foto" src="https://placehold.co/1200x500" alt="Foto ancha dentro de un marco angosto" /><div class="video"></div></div>`,
+        cssPrefix: ".marco { width: 260px; padding: 12px; background: #1e1e2e; }\n.video { background: #313244; }",
+        cssSuffix: "",
+        blanks: [],
+      },
+      targetCSS:
+        ".foto {\n  max-width: 100%;\n  height: auto;\n}\n.video {\n  width: 100%;\n  aspect-ratio: 16 / 9;\n}",
+      validation: { type: "css-rules" },
+      hint: "La imagen tiene proporción propia y hay que dejársela respetar. El video no la tiene, así que hay que dársela.",
+      explanation:
+        "Son dos casos que parecen el mismo y no lo son. La imagen necesita un techo -max-width- y height: auto para no deformarse al achicarse. El iframe no tiene tamaño natural, así que querés que ocupe todo el ancho siempre -width: 100%- y que la proporción se la dé aspect-ratio.",
+    },
+    {
       /**
        * EL RETO INTEGRADOR del modulo. Cierra `imagenes-y-medios` haciendo que
        * el alumno arme una galeria real en UNA sola tarea: la caja con su
@@ -405,7 +539,7 @@ La prueba rápida: si al describir la página en voz alta nombrarías esa imagen
       type: "live-editor",
       difficulty: 3,
       xpReward: 60,
-      order: 9,
+      order: 11,
       prompt:
         "Mini reto. Armá la galería cumpliendo los cuatro pasos. Ojo con el paso 2: darle forma a la caja no le da forma a la imagen, hacen falta las dos cosas.",
       retoPasos: [
