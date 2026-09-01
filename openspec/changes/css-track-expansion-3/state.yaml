@@ -1,0 +1,112 @@
+change: css-track-expansion-3
+created: 2026-08-31
+artifact_store: hybrid
+
+# LEER ESTO ANTES QUE NADA.
+#
+# Este cambio esta EN PROPUESTA y BLOQUEADO POR UNA DECISION DEL INSTRUCTOR,
+# que no es lo mismo que abierto ni que empezado. No hay una sola linea de
+# contenido escrita, y NO hay que escribirla hasta que la decision este tomada:
+# la clasificacion cambia cuantos ejercicios exige el certificado y si cada
+# modulo lleva mini reto o no.
+#
+# NO ES `css-track-fase-2`. Ese otro cambio valida la clasificacion
+# obligatorio/opcional con datos de ModuleView y espera datos hasta ~2026-09-15.
+# La confusion de nombres ya costo un reporte mal armado el 2026-08-31.
+
+EL_NOMBRE: >
+  Tercera y ultima tanda de contenido del plan. Se nombra por lo que entrega y
+  por su antecesor -`css-track-expansion`, luego `css-track-expansion-2`-, nunca
+  por un numero de fase.
+
+resumen_de_una_linea: >
+  Los tres modulos que faltan del plan -accesibilidad visual, responsive de
+  imagenes y video, depurar con DevTools-, SIN crear ninguna seccion nueva, y el
+  track renumerado de 34 a 37.
+
+phases:
+  explore:
+    status: done
+    fecha: 2026-08-31
+    note: >
+      Medicion directa contra `1c9cdb2`. La vara de los modulos anteriores -4
+      lecciones, 8 ejercicios mas un reto integrador, ~220 XP-, los limites de
+      `order` por seccion, y el criterio de clasificacion del 2026-08-24.
+  propose:
+    status: done
+    fecha: 2026-08-31
+    artifact: openspec/changes/css-track-expansion-3/proposal.md
+  spec:
+    status: done
+    fecha: 2026-09-01
+    artifacts:
+      - openspec/changes/css-track-expansion-3/specs/css-track-content/spec.md
+      - openspec/changes/css-track-expansion-3/specs/css-track-sections/spec.md
+    note: >
+      DOS deltas, los dos contra capacidades que ya existen. `css-track-content`
+      gana tres filas en su Requirement 7 -dos modulos nuevos y una leccion
+      agregada a uno que ya estaba- y un Requirement 11 nuevo, que pone reglas
+      para agregarle ejercicios a un obligatorio ya desplegado.
+      `css-track-sections` redlinea la secuencia literal de order, de 34 a 36.
+      `mini-retos` NO necesita delta- su Requirement 10 es una invariante sobre
+      `nivel` y este cambio no agrega ningun obligatorio nuevo.
+  apply:
+    status: done
+    fecha: 2026-09-01
+    note: >
+      Dos modulos escritos -4 lecciones y 8 ejercicios cada uno-, una leccion y
+      dos ejercicios agregados a `imagenes-y-medios`, el track renumerado de 34
+      a 36, y los tres guards que cuentan actualizados.
+
+decidido_por_el_instructor:
+  clasificacion: >
+    UNO obligatorio y DOS de profundizacion, decidido el 2026-09-01 despues de
+    medir el track- `responsive-imagenes-video` OBLIGATORIO,
+    `accesibilidad-visual` y `depurar-con-devtools` PROFUNDIZACION. El camino
+    minimo pasa de 223 a 232 ejercicios y de 23 a 24 modulos obligatorios.
+  por_que_imagenes_es_obligatorio: >
+    No es preferencia pedagogica, es un agujero medido en el camino obligatorio
+    de HOY. El proyecto final -obligatorio- pide meter una foto en un CV -25
+    menciones de "foto", tres <img>- y en TODO el track CSS `max-width- 100%`
+    aparece CERO veces, igual que `object-fit` y `aspect-ratio`. Y `width- 100%`
+    aparece 53 veces, que para una imagen es la herramienta equivocada. El
+    entregable obligatorio depende de algo que el track nunca enseña.
+  por_que_devtools_es_opcional: >
+    No es conocimiento, es un gesto- Diego lo muestra en clase en cinco minutos
+    la primera vez que alguien dice "no me aplica el estilo", y ese momento
+    ensena mas que cuatro lecciones. Ademas envejece- Chrome mueve los paneles.
+    Como opcional queda de referencia para el que quiera profundizar.
+  por_que_accesibilidad_es_opcional: >
+    Se discutio y se midio antes de aceptarlo. La accesibilidad NO esta ausente
+    del camino obligatorio- 32 menciones de "accesib", 46 de `outline`, 19 de
+    `:focus`, 17 de `alt=`. Lo que falta es la capa moderna- `focus-visible`,
+    `prefers-reduced-motion` y `sr-only` estan en cero. Como el piso ya lo ve
+    todo el mundo, el modulo nuevo PROFUNDIZA. No equivale a decir que la
+    accesibilidad es opcional.
+  mini_retos: >
+    Solo `responsive-imagenes-video` lleva reto integrador, porque la invariante
+    es que TODO obligatorio lleva uno. Los otros dos son profundizacion y sus
+    retos entran en el cambio aparte de los opcionales, que ya esta decidido.
+  no_le_saca_nada_a_nadie: >
+    Nadie tiene certificado todavia -no se emitio el primero- y un certificado
+    otorgado es un snapshot congelado. Subir la vara no revoca nada de nadie.
+  seccion: >
+    NO se crea `css-oficio`. Decision del 2026-08-31, ya mergeada como
+    Requirement 7 de `openspec/specs/css-track-sections` en la PR #56. Los tres
+    modulos van a secciones que ya existen.
+  orden_de_devtools: >
+    DevTools va PRIMERO en `css-herramientas` -order 32-, no ultimo despues de
+    Tailwind. Sus prerequisitos -diagrama del box model, forzar :hover,
+    el estilo tachado de especificidad, modo dispositivo- lo empujan igual al
+    final del CSS nativo, pero entra antes del bloque de frameworks para que
+    todavia le sirva al proyecto final.
+
+fuera_de_alcance:
+  - "Reescalar RANKS en src/lib/constants.ts. Nombrado en la propuesta a proposito: con estos tres modulos Gran Maestro pasa de pedir 65.6% del curriculum a 63.1%, la cuarta vez que se abarata solo. Es una decision sobre el rango de cada alumno que ya existe, no un efecto secundario de agregar contenido."
+  - "Mini retos de los 11 modulos de profundizacion. Decidido que van, cambio propio, sin fecha."
+
+cuando_se_retome:
+  - "1. Responder la decision de arriba. Es lo unico que bloquea."
+  - "2. Escribir los deltas de spec- css-track-content gana los tres modulos, css-track-sections redlinea la secuencia literal de order de 34 a 37, mini-retos no necesita cambio porque su Requirement 10 ya es una invariante sobre `nivel` y no una lista de slugs."
+  - "3. Contar con que rompen por diseno los guards que cuentan- nivel-curriculum, calificador-curriculum, certificados y orden-curriculum-css."
+  - "4. Reportar el numero nuevo de Gran Maestro al cerrar, aunque no se toque, para que la deriva quede visible."

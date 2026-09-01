@@ -19,7 +19,7 @@ npm run test:e2e  # Playwright end-to-end
 ```
 
 There IS a test suite: 40 Vitest files (`src/**/*.test.ts[x]`) plus 3 Playwright specs
-in `e2e/`. Measured 2026-08-31 at `1c9cdb2`; this number goes stale every time
+in `e2e/`. Measured 2026-09-01; this number goes stale every time
 content lands, so re-measure before quoting it. Two kinds worth knowing about, because they guard different things:
 
 - **Unit tests** over the graders and helpers -- `src/lib/cssRules.test.ts`,
@@ -71,11 +71,11 @@ Custom JWT auth (no NextAuth). `src/lib/auth.ts` issues/verifies JWTs stored in 
 
 ### Content Model
 
-All course content lives as **static TypeScript files** in `src/data/modules/`. There are **six** tracks (dojos) and **110** modules, measured 2026-08-31 against `ALL_MODULES`:
+All course content lives as **static TypeScript files** in `src/data/modules/`. There are **six** tracks (dojos) and **112** modules, measured 2026-09-01 against `ALL_MODULES`:
 
 | dojo | modules |
 |---|---|
-| `css` | 34 |
+| `css` | 36 |
 | `js` | 29 (25 `js-*` + 4 `ts-*`) |
 | `react` | 20 |
 | `html` | 17 |
