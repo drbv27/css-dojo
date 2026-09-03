@@ -407,7 +407,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         "Reproduce el diseño: dos cajas de 50% de ancho lado a lado dentro de un contenedor. Ambas con padding: 15px, border: 2px solid #666 y box-sizing: border-box. La izquierda con background-color: #d4edda y la derecha con background-color: #cce5ff. Usa float: left en ambas.",
       codeTemplate: {
         html: `<div class="contenedor">\n  <div class="mitad izq">Columna izquierda</div>\n  <div class="mitad der">Columna derecha</div>\n</div>`,
-        cssPrefix: "",
+        cssPrefix: ".contenedor {\n  width: 100%;\n  overflow: hidden;\n}\n\n",
         cssSuffix: "",
         blanks: [],
       },

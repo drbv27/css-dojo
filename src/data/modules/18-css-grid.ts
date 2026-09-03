@@ -454,7 +454,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         blanks: [],
       },
       targetCSS:
-        ".layout {\n  display: grid;\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 150px 150px;\n  gap: 15px;\n}\n.celda {\n  background: #3498db;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}",
+        ".layout {\n  display: grid;\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 150px 150px;\n  gap: 15px;\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.
@@ -512,7 +512,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         "Reproduce una galeria responsiva: un contenedor con clase 'galeria' que use Grid con auto-fit, columnas de mínimo 150px y máximo 1fr, filas automáticas de 120px, y gap de 12px.",
       codeTemplate: {
         html: `<div class="galeria">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
-        cssPrefix: "",
+        cssPrefix: ".item {\n  background: #8e44ad;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 8px;\n  font-weight: bold;\n}\n\n",
         cssSuffix: "",
         blanks: [],
       },

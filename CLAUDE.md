@@ -18,7 +18,7 @@ npm run test:run  # Vitest once (use this in CI or before a commit)
 npm run test:e2e  # Playwright end-to-end
 ```
 
-There IS a test suite: 41 Vitest files (`src/**/*.test.ts[x]`) plus 3 Playwright specs
+There IS a test suite: 42 Vitest files (`src/**/*.test.ts[x]`) plus 3 Playwright specs
 in `e2e/`. Measured 2026-09-01; this number goes stale every time
 content lands, so re-measure before quoting it. Two kinds worth knowing about, because they guard different things:
 
