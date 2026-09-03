@@ -419,7 +419,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         blanks: [],
       },
       targetCSS:
-        "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.aparecer {\n  animation: fadeIn 1s ease-out forwards;\n  background: #3498db;\n  color: white;\n  padding: 24px;\n  border-radius: 12px;\n}",
+        "@keyframes fadeIn {\n  from { opacity: 0; }\n  to { opacity: 1; }\n}\n\n.aparecer {\n  animation: fadeIn 1s ease-out forwards;\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.

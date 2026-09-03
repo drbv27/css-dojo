@@ -579,7 +579,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         "Crea un layout responsivo mobile-first: una cuadricula con clase 'grid-responsivo' que tenga 1 columna por defecto, 2 columnas a partir de 500px y 3 columnas a partir de 800px. Usa gap de 16px y display: grid.",
       codeTemplate: {
         html: `<div class="grid-responsivo">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
-        cssPrefix: "",
+        cssPrefix: ".item {\n  background: #8e44ad;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 8px;\n}\n\n",
         cssSuffix: "",
         blanks: [],
       },

@@ -425,7 +425,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         blanks: [],
       },
       targetCSS:
-        ".articulo {\n  overflow: hidden;\n  padding: 15px;\n  background-color: #f9f9f9;\n}\n.foto {\n  float: left;\n  width: 120px;\n  height: 120px;\n  margin: 0 15px 10px 0;\n  background-color: #4682b4;\n}",
+        ".articulo {\n  overflow: hidden;\n}\n.foto {\n  float: left;\n  width: 120px;\n  height: 120px;\n  margin: 0 15px 10px 0;\n  background-color: #4682b4;\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.

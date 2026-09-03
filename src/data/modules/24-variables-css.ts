@@ -365,7 +365,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 5,
       prompt:
-        "Define tres variables en :root: --color-primario (#e74c3c), --color-fondo (#f8f9fa) y --espaciado (16px). Luego crea una clase .caja que use estas variables para background, border-color y padding.",
+        "Define tres variables en :root: --color-primario (#e74c3c), --color-fondo (#f8f9fa) y --espaciado (16px). Luego crea una clase .caja que use estas variables para background, un borde de 2px solido con el color primario, y padding.",
       codeTemplate: {
         html: `<div class="caja">\n  <h3>Caja con variables</h3>\n  <p>Usando custom properties de CSS.</p>\n</div>`,
         cssPrefix: "",
@@ -373,7 +373,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         blanks: [],
       },
       targetCSS:
-        ":root {\n  --color-primario: #e74c3c;\n  --color-fondo: #f8f9fa;\n  --espaciado: 16px;\n}\n\n.caja {\n  background: var(--color-fondo);\n  border: 2px solid var(--color-primario);\n  padding: var(--espaciado);\n  border-radius: 8px;\n}",
+        ":root {\n  --color-primario: #e74c3c;\n  --color-fondo: #f8f9fa;\n  --espaciado: 16px;\n}\n\n.caja {\n  background: var(--color-fondo);\n  border: 2px solid var(--color-primario);\n  padding: var(--espaciado);\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.
@@ -412,7 +412,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .pagina (background, color) y .boton (background con --acento, color white).",
       codeTemplate: {
         html: `<div class="pagina">\n  <h2>Sistema de temas</h2>\n  <p>Cambiando variables se cambia todo el aspecto.</p>\n  <button class="boton">Accion</button>\n</div>`,
-        cssPrefix: "",
+        cssPrefix: ".pagina {\n  padding: 24px;\n  border-radius: 12px;\n}\n\n.boton {\n  border: none;\n  padding: 10px 24px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n\n",
         cssSuffix: "",
         blanks: [],
       },
