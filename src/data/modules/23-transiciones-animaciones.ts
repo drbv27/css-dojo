@@ -455,10 +455,10 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un botón con clase 'btn-animado' que tenga transición suave al hover: fondo de #3498db a #2c3e50, transformación scale(1.05), y box-shadow. Duración de transición: 0.3s ease.",
+        "Crea un botón con clase 'btn-animado' que tenga transición suave al hover: fondo de #3498db a #2c3e50, transformación scale(1.05), y box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2). La transición va sobre background-color, transform y box-shadow, todas 0.3s ease.",
       codeTemplate: {
         html: `<button class="btn-animado">Boton Animado</button>`,
-        cssPrefix: "",
+        cssPrefix: ".btn-animado {\n  color: white;\n  padding: 14px 32px;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  cursor: pointer;\n}\n\n",
         cssSuffix: "",
         blanks: [],
       },
