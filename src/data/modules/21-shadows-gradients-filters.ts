@@ -385,7 +385,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea un efecto de glassmorphism: un contenedor .glass-container con fondo de degradado, y dentro un .glass-card con background rgba(255,255,255,0.15), backdrop-filter: blur(10px), border de 1px solid rgba(255,255,255,0.2), padding de 24px y border-radius de 12px.",
+        "Crea un efecto de glassmorphism: un contenedor .glass-container con background: linear-gradient(135deg, #667eea, #764ba2), y dentro un .glass-card con background rgba(255,255,255,0.15), backdrop-filter: blur(10px), border de 1px solid rgba(255,255,255,0.2), padding de 24px y border-radius de 12px.",
       codeTemplate: {
         html: `<div class="glass-container">\n  <div class="glass-card">\n    <h3>Glassmorphism</h3>\n    <p>Efecto de cristal esmerilado</p>\n  </div>\n</div>`,
         cssPrefix: "",
@@ -393,7 +393,7 @@ Los filtros son excelentes para interacciones:
         blanks: [],
       },
       targetCSS:
-        ".glass-container {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  padding: 40px;\n  border-radius: 12px;\n}\n\n.glass-card {\n  background: rgba(255, 255, 255, 0.15);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  padding: 24px;\n  border-radius: 12px;\n  color: white;\n}",
+        ".glass-container {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n}\n\n.glass-card {\n  background: rgba(255, 255, 255, 0.15);\n  backdrop-filter: blur(10px);\n  border: 1px solid rgba(255, 255, 255, 0.2);\n  padding: 24px;\n  border-radius: 12px;\n}",
       validation: {
         // Graded by parsing `targetCSS` into selector -> declarations, not by
         // searching the submission for loose words. See src/lib/cssRules.ts.
@@ -429,7 +429,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra más fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega transición de 0.3s.",
+        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra más fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega una transición de 0.3s ease sobre transform y box-shadow.",
       codeTemplate: {
         html: `<div class="tarjeta-visual">\n  <h3>Tarjeta con efectos</h3>\n  <p>Hover para ver la animacion de sombra</p>\n</div>`,
         cssPrefix: "",
@@ -454,7 +454,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un elemento con clase 'imagen-filtro' que tenga un fondo de degradado (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamaño: 200px por 150px con border-radius de 12px.",
+        "Crea un elemento con clase 'imagen-filtro' que tenga un fondo linear-gradient(135deg, #e74c3c, #3498db, #2ecc71) (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamaño: 200px por 150px con border-radius de 12px.",
       codeTemplate: {
         html: `<div class="imagen-filtro"></div>`,
         cssPrefix: "",

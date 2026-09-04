@@ -520,7 +520,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 8,
       prompt:
-        "Centra horizontalmente un div con clase 'centrado' de 400px de ancho usando margin auto. Agrega background-color: lightyellow y padding: 20px para visualizarlo.",
+        "Centra horizontalmente un div con clase 'centrado' de 400px de ancho usando margin: 0 auto. Agrega background-color: lightyellow y padding: 20px para visualizarlo.",
       codeTemplate: {
         html: `<div class="centrado">\n  <p>Este contenido debe estar centrado en la pagina.</p>\n</div>`,
         cssPrefix: "",

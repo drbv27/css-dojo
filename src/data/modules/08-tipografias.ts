@@ -393,7 +393,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 20,
       order: 4,
       prompt:
-        "Aplica a todos los párrafos (<p>): fuente Arial, tamaño de 18px, peso 600 y estilo italica.",
+        "Aplica a todos los párrafos (<p>): la pila Arial, sans-serif, tamaño de 18px, peso 600 y estilo italica.",
       codeTemplate: {
         html: `<p>Primer parrafo de prueba.</p>\n<p>Segundo parrafo de prueba.</p>`,
         cssPrefix: "",
@@ -456,7 +456,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 30,
       order: 7,
       prompt:
-        "Reproduce el diseño objetivo: h1 con fuente Georgia, tamaño 36px y negrita (bold). Párrafos con fuente Arial, tamaño 16px y peso normal (400).",
+        "Reproduce el diseño objetivo: h1 con la pila Georgia, serif, tamaño 36px y negrita (bold). Párrafos con la pila Arial, sans-serif, tamaño 16px y peso normal (400).",
       codeTemplate: {
         html: `<h1>Titulo del articulo</h1>\n<p>Este es el primer parrafo del articulo con fuente sans-serif.</p>\n<p>Este es el segundo parrafo.</p>`,
         cssPrefix: "",
