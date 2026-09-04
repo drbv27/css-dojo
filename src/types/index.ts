@@ -258,6 +258,17 @@ export interface Rank {
   minXP: number;
   icon: string;
   color: string;
+  /**
+   * Que HITO del curriculum representa este cinturon, para mostrarlo al lado
+   * de su rango de XP. Solo lo llevan los cinco de arriba, que son los que
+   * estan anclados a algo que se puede nombrar.
+   *
+   * No es texto decorativo: `cinturones-escala.test.ts` verifica que el
+   * cinturon que otorga ese hito, calculado contra el curriculum real, sea
+   * exactamente este. Si el contenido crece y el hito pasa a dar otro
+   * cinturon, el test se pone rojo en vez de dejar la etiqueta mintiendo.
+   */
+  hito?: string;
 }
 
 export interface Achievement {

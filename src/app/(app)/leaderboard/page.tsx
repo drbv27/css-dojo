@@ -60,8 +60,23 @@ function RanksDialog({ open, onClose }: { open: boolean; onClose: () => void }) 
         {/* Ranks list */}
         <div className="px-6 py-4 space-y-3 max-h-[60vh] overflow-y-auto">
           <p className="text-xs text-editor-muted mb-4">
-            Completa ejercicios para ganar XP y subir de rango. Cada cinturon representa tu progreso como desarrollador.
+            Completa ejercicios para ganar XP y subir de rango. Los cinco cinturones de arriba
+            estan anclados a un hito del curriculum, asi que cada uno significa algo concreto.
           </p>
+
+          {/* La escala se reajusto el 2026-09-01 y la mayoria bajo uno o dos
+              cinturones. Sin esta nota, quien bajo lo lee como un bug: la
+              pantalla le muestra un rango distinto al de ayer y nada explica
+              por que. */}
+          <div className="mb-4 rounded-xl border border-neon-yellow/30 bg-neon-yellow/5 p-3">
+            <p className="text-[11px] leading-relaxed text-editor-muted">
+              <span className="font-semibold text-neon-yellow">La escala cambio.</span>{" "}
+              Antes el ultimo cinturon se alcanzaba habiendo hecho tres de los seis
+              dojos, y de ahi no subia mas. Ahora cada cinturon corresponde a un
+              tramo real del curriculum. Si bajaste de cinturon no perdiste nada de
+              XP: se movio la vara, no tu progreso.
+            </p>
+          </div>
           {RANKS.map((rank, i) => {
             const nextRank = RANKS[i + 1];
             const xpRange = nextRank
@@ -74,7 +89,12 @@ function RanksDialog({ open, onClose }: { open: boolean; onClose: () => void }) 
                 className="flex items-center gap-3 p-3 rounded-xl border border-editor-border bg-editor-bg"
               >
                 <LevelBadge rank={rank} size="md" />
-                <span className="ml-auto text-xs font-mono text-editor-muted">{xpRange}</span>
+                <div className="ml-auto flex flex-col items-end gap-0.5">
+                  <span className="text-xs font-mono text-editor-muted">{xpRange}</span>
+                  {rank.hito && (
+                    <span className="text-[10px] text-neon-purple text-right">{rank.hito}</span>
+                  )}
+                </div>
               </div>
             );
           })}

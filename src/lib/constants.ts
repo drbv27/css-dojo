@@ -34,11 +34,11 @@ export const RANKS: Rank[] = [
   { name: "Cinturon Naranja", minXP: 900, icon: "belt-orange", color: "#FB923C" },
   { name: "Cinturon Verde", minXP: 1800, icon: "belt-green", color: "#34D399" },
   { name: "Cinturon Azul", minXP: 3200, icon: "belt-blue", color: "#60A5FA" },
-  { name: "Cinturon Morado", minXP: 5200, icon: "belt-purple", color: "#A78BFA" },
-  { name: "Cinturon Marron", minXP: 7400, icon: "belt-brown", color: "#92400E" },
-  { name: "Cinturon Rojo", minXP: 9600, icon: "belt-red", color: "#EF4444" },
-  { name: "Cinturon Negro", minXP: 12800, icon: "belt-black", color: "#E2E8F0" },
-  { name: "Gran Maestro", minXP: 15800, icon: "belt-master", color: "#FFD700" },
+  { name: "Cinturon Morado", minXP: 5200, icon: "belt-purple", color: "#A78BFA", hito: "el camino obligatorio de CSS" },
+  { name: "Cinturon Marron", minXP: 7400, icon: "belt-brown", color: "#92400E", hito: "CSS entero, opcionales incluidos" },
+  { name: "Cinturon Rojo", minXP: 9600, icon: "belt-red", color: "#EF4444", hito: "CSS + HTML" },
+  { name: "Cinturon Negro", minXP: 12800, icon: "belt-black", color: "#E2E8F0", hito: "CSS + HTML + JS" },
+  { name: "Gran Maestro", minXP: 15800, icon: "belt-master", color: "#FFD700", hito: "CSS + HTML + JS + React" },
 ];
 export const XP_REWARDS: Record<number, number> = {
   1: 10,

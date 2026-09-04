@@ -87,6 +87,23 @@ describe("la escala de cinturones significa algo", () => {
     expect(new Set(obtenidos).size).toBe(ANCLAJES.length);
   });
 
+  it("la etiqueta del hito no puede mentir: la lleva el cinturon que ese hito otorga", () => {
+    // El panel de rangos del leaderboard muestra `rank.hito` al lado del rango
+    // de XP. Si el contenido crece y un hito pasa a otorgar otro cinturon, esa
+    // etiqueta quedaria diciendo algo falso en pantalla, en silencio.
+    const conHito = RANKS.filter((r) => r.hito).map((r) => r.name);
+    const anclados = ANCLAJES.map((a) => a.cinturon);
+
+    // Exactamente los anclados llevan etiqueta: ni uno de mas ni uno de menos.
+    expect(conHito.sort()).toEqual([...anclados].sort());
+
+    // Y cada etiqueta esta en el cinturon que su hito realmente otorga.
+    const desalineados = ANCLAJES.filter(
+      (a) => !RANKS.find((r) => r.name === getRank(a.xp()).name)?.hito,
+    ).map((a) => a.hito);
+    expect(desalineados).toEqual([]);
+  });
+
   it("el maximo alcanzable llega al ultimo cinturon", () => {
     // Un techo que nadie puede tocar es una promesa sobre contenido que no
     // existe. Si esto falla, la escala se fue arriba del curriculum.
