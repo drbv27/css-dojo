@@ -277,7 +277,7 @@ Elegir una fuente es la mitad. La otra mitad es **qué ve el usuario en el segun
       xpReward: 20,
       order: 5,
       prompt:
-        "Dale a la clase 'cuerpo' la pila 'Poppins', 'Segoe UI', sans-serif, con font-size: 17px y line-height: 1.7. Ojo con las comillas: van sólo en los nombres con espacios.",
+        "Dale a la clase 'cuerpo' la pila 'Poppins', 'Segoe UI', sans-serif, con font-size: 17px y line-height: 1.7. Ojo con las comillas: son obligatorias en los nombres con espacios, y opcionales en los de una sola palabra.",
       codeTemplate: {
         html: `<p class="cuerpo">El texto largo de una nota se lee mejor con una linea generosa y una fuente pensada para pantalla.</p>`,
         cssPrefix: "",

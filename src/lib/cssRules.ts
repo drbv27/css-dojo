@@ -261,6 +261,95 @@ function normalizarSelectores(prelude: string): string[] {
 }
 
 /**
+ * `Georgia, "Times New Roman", serif` y `Georgia, Times New Roman, serif` son
+ * la MISMA pila de fuentes, pero antes de este arreglo no puntuaban igual: la
+ * comilla quedaba adentro de la clave de comparacion.
+ *
+ * Lo reporto un alumno de `tipografia-web`: escribio la pila sin comillas,
+ * CSS valido, y el grader le dijo "Incorrecto". Medido con `compararReglas`
+ * sobre los 5 ejercicios del curriculum que comillan un `font-family` en su
+ * target: los 5 fallaban igual sin comillas que con comilla simple --
+ * `32-ej-02` (67), `32-ej-05` (67), `32-ej-06` (75), `32-ej-08` (71),
+ * `32-ej-reto` (80).
+ *
+ * Por eso esto vive ACA, acotado a `font-family`, y no en un strip global de
+ * comillas sobre el valor: `normalizarDeclaracion` descarta la declaracion si
+ * el valor queda vacio, y un strip global se come `content: ""`. Medido: en
+ * `pseudo-elementos` el ejercicio `08-ej-06` pasa de 6 a 5 declaraciones
+ * esperadas y `08-ej-reto` de 11 a 10 -y `08-ej-reto` es mini-reto, todo o
+ * nada, asi que el alumno aprobaria sin escribir `content: ""`- un falso
+ * negativo angosto cambiado por un falso positivo que ensena mal.
+ *
+ * La regla, familia por familia (ya separadas por `, `): se le sacan las
+ * comillas SOLO SI la forma sin comillas es CSS valida -cada palabra separada
+ * por espacio tiene que ser un identificador (`IDENTIFICADOR`), el mismo
+ * criterio que ya usa `unCorchete` para el valor de un selector de atributo-.
+ * Si no es valida sin comillas (`"2toons"`, que arranca con un digito, o una
+ * cadena vacia `""`), se deja EXACTAMENTE como esta: la clave sigue distinta y
+ * sigue fallando. Aceptar CSS invalido es peor que rechazar CSS valido, la
+ * misma decision que ya toman `unCorchete` y `equivalentesDe`.
+ *
+ * SEGUNDA VUELTA, medida sobre el arbol con el arreglo de arriba ya puesto:
+ * una generica o una palabra clave global ENTRE COMILLAS tambien es un
+ * identificador valido -"serif" cumple `IDENTIFICADOR` letra por letra- y la
+ * primera version las desnudaba igual que a "Poppins". Eso esta mal: en CSS
+ * `font-family: serif` (sin comillas) es LA familia generica, pero
+ * `font-family: "serif"` (con comillas) es una familia que se LLAMA "serif",
+ * dos cosas distintas. Lo mismo pasa con las palabras clave globales:
+ * `inherit` sin comillas es la palabra clave, `"inherit"` es un nombre de
+ * fuente literal. Desnudar cualquiera de las dos cambia lo que el CSS hace, y
+ * es EXACTAMENTE el error que la leccion existe para prevenir -el hint de
+ * `32-ej-02` dice "la generica va ultima, siempre sin comillas"-. Por eso
+ * estos dos grupos quedan afuera de la desnudada aunque sean identificadores
+ * validos: comillados, la clave tiene que seguir siendo distinta y seguir
+ * fallando, igual que `"2toons"`.
+ */
+const GENERICAS_Y_PALABRAS_CLAVE = new Set([
+  // Familias genericas (CSS Fonts Module).
+  "serif",
+  "sans-serif",
+  "monospace",
+  "cursive",
+  "fantasy",
+  "system-ui",
+  "ui-serif",
+  "ui-sans-serif",
+  "ui-monospace",
+  "ui-rounded",
+  "math",
+  "emoji",
+  "fangsong",
+  // Palabras clave CSS globales, validas en cualquier propiedad.
+  "inherit",
+  "initial",
+  "unset",
+  "revert",
+  "revert-layer",
+]);
+
+function normalizarFontFamily(valor: string): string {
+  return valor
+    .split(", ")
+    .map((familia) => {
+      const comilla = familia[0];
+      if (
+        (comilla !== '"' && comilla !== "'") ||
+        familia[familia.length - 1] !== comilla ||
+        familia.length < 2
+      ) {
+        return familia; // no viene entre comillas: ya es la forma canonica
+      }
+      const interior = familia.slice(1, -1);
+      if (GENERICAS_Y_PALABRAS_CLAVE.has(interior)) return familia; // ver comentario de arriba
+      const palabras = interior.split(" ");
+      const validaSinComillas =
+        interior.length > 0 && palabras.every((p) => IDENTIFICADOR.test(p));
+      return validaSinComillas ? interior : familia;
+    })
+    .join(", ");
+}
+
+/**
  * `  COLOR :   red ` -> `color: red`. Internal spaces in a value are preserved
  * as single spaces, so `padding: 10px 20px` keeps its two components distinct.
  */
@@ -268,12 +357,13 @@ function normalizarDeclaracion(texto: string): string | null {
   const i = texto.indexOf(":");
   if (i === -1) return null;
   const prop = texto.slice(0, i).trim().toLowerCase();
-  const valor = texto
+  let valor = texto
     .slice(i + 1)
     .trim()
     .toLowerCase()
     .replace(/\s+/g, " ")
     .replace(/\s*,\s*/g, ", ");
+  if (prop === "font-family") valor = normalizarFontFamily(valor);
   if (!prop || !valor) return null;
   return `${prop}: ${valor}`;
 }
