@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { parseCssRules, compararReglas } from "./cssRules";
+import { ALL_MODULES } from "@/data/modules";
+import { cssEsperadoDe } from "@/lib/calificar";
 
 describe("parseCssRules", () => {
   it("parses a rule into selector and declarations", () => {
@@ -434,5 +436,139 @@ describe("background y background-color son la misma declaracion con un color", 
   it("la equivalencia no se derrama a otras propiedades", () => {
     expect(compararReglas(".a { color: red; }", ".a { background-color: red; }").score).toBe(0);
     expect(compararReglas(".a { border-color: red; }", ".a { border: red; }").score).toBe(0);
+  });
+});
+
+describe("font-family comillado no penaliza CSS valido", () => {
+  /**
+   * Lo reporto un alumno de `tipografia-web`: escribio la pila de fuentes sin
+   * comillas o con comilla simple, CSS valido, y el grader le dijo
+   * "Incorrecto". La causa: `normalizarDeclaracion` bajaba el valor a
+   * minusculas y normalizaba comas, pero no las comillas, asi que en
+   * `font-family` la comilla quedaba adentro de la clave de comparacion.
+   *
+   * Medido con `compararReglas` contra los targets reales del curriculum,
+   * ANTES de este arreglo: las cinco `font-family` comilladas del curriculum
+   * fallaban igual sin comillas que con comilla simple -- `32-ej-02` daba 67,
+   * `32-ej-05` daba 67, `32-ej-06` daba 75, `32-ej-08` daba 71 y `32-ej-reto`
+   * daba 80. Las cinco viven en `tipografia-web`.
+   */
+  it("acepta comilla simple y sin comillas contra un target que comilla un nombre con espacios", () => {
+    const target =
+      '.titular { font-family: Georgia, "Times New Roman", serif; font-size: 32px; color: #2c2c2c; }';
+    const variantes = [
+      ".titular { font-family: Georgia, 'Times New Roman', serif; font-size: 32px; color: #2c2c2c; }",
+      ".titular { font-family: Georgia, Times New Roman, serif; font-size: 32px; color: #2c2c2c; }",
+    ];
+    for (const enviado of variantes) {
+      expect(compararReglas(target, enviado).score).toBe(100);
+    }
+  });
+
+  it("acepta la pila que literalmente pide el enunciado de 32-ej-05", () => {
+    const target =
+      '.cuerpo { font-family: "Poppins", "Segoe UI", sans-serif; font-size: 17px; line-height: 1.7; }';
+    const variantes = [
+      // Lo que el enunciado le pide textualmente al alumno: "Poppins", 'Segoe UI', sans-serif.
+      '.cuerpo { font-family: Poppins, "Segoe UI", sans-serif; font-size: 17px; line-height: 1.7; }',
+      ".cuerpo { font-family: 'Poppins', 'Segoe UI', sans-serif; font-size: 17px; line-height: 1.7; }",
+      ".cuerpo { font-family: Poppins, Segoe UI, sans-serif; font-size: 17px; line-height: 1.7; }",
+    ];
+    for (const enviado of variantes) {
+      expect(compararReglas(target, enviado).score).toBe(100);
+    }
+  });
+
+  it("vale tambien para el font-family de adentro de un @font-face", () => {
+    const target = '@font-face { font-family: "MiFuente"; }';
+    expect(compararReglas(target, "@font-face { font-family: MiFuente; }").score).toBe(100);
+  });
+
+  // A partir de aca, los controles de que NO nos pasamos de rosca. Viven en
+  // `it`s separados de los de arriba a proposito: si vivieran en el mismo
+  // test, el segundo assert no probaria nada -- ver `dos_controles_que_fallan_en_tests_distintos`.
+
+  it("NO lo acepta cuando el nombre sin comillas seria CSS invalido", () => {
+    // "2Toons" arranca con un digito: sin comillas no es un identificador
+    // valido, asi que sacarle la comilla seria aprobar CSS que el navegador
+    // no acepta. Tiene que seguir siendo una clave distinta.
+    const target = '.a { font-family: "2Toons", serif; }';
+    expect(compararReglas(target, ".a { font-family: 2Toons, serif; }").score).not.toBe(100);
+  });
+
+  it("una pila de fuentes DISTINTA sigue estando mal", () => {
+    expect(compararReglas(".a { font-family: Georgia, serif; }", ".a { font-family: Arial, serif; }").score).toBe(0);
+  });
+
+  it("la normalizacion no se derrama a otras propiedades", () => {
+    // Solo font-family le saca la comilla a su valor. Cualquier otra
+    // propiedad con un valor entre comillas sigue distinguiendo la comilla.
+    expect(compararReglas('.a { content: "abc"; }', ".a { content: abc; }").score).toBe(0);
+  });
+
+  it('content: "" sigue existiendo como declaracion (no es un strip global de comillas)', () => {
+    const r = parseCssRules('.a::after { content: ""; }');
+    expect([...r.get(".a::after")!]).toEqual(['content: ""']);
+  });
+
+  it("08-ej-06 de pseudo-elementos sigue pidiendo sus 6 declaraciones", () => {
+    const modulo = ALL_MODULES.find((m) => m.slug === "pseudo-elementos")!;
+    const ejercicio = modulo.exercises.find((e) => e.id === "08-ej-06")!;
+    const esperado = parseCssRules(cssEsperadoDe(ejercicio));
+    const totalDeclaraciones = [...esperado.values()].reduce((n, decls) => n + decls.size, 0);
+    expect(totalDeclaraciones).toBe(6);
+  });
+
+  it("NO desnuda una generica ni una palabra clave global comillada -- es el error que el modulo ensena a evitar", () => {
+    // Comillar la generica o la keyword CAMBIA lo que el CSS hace: `serif` es
+    // LA familia generica, `"serif"` es una familia que se llama "serif".
+    // Mismo caso con `inherit` vs `"inherit"`. Las cuatro tienen que seguir
+    // siendo CLAVES DISTINTAS y por lo tanto seguir puntuando por debajo de
+    // 100, aunque "serif"/"inherit" sean identificadores validos por si solos.
+    expect(
+      compararReglas(
+        '.a { font-family: Georgia, "Times New Roman", serif; }',
+        '.a { font-family: Georgia, "Times New Roman", "serif"; }'
+      ).score
+    ).not.toBe(100);
+
+    expect(
+      compararReglas(
+        '.a { font-family: "Poppins", sans-serif; }',
+        '.a { font-family: Poppins, "sans-serif"; }'
+      ).score
+    ).not.toBe(100);
+
+    expect(
+      compararReglas(".a { font-family: monospace; }", '.a { font-family: "monospace"; }').score
+    ).not.toBe(100);
+
+    expect(
+      compararReglas(".a { font-family: inherit; }", '.a { font-family: "inherit"; }').score
+    ).not.toBe(100);
+  });
+
+  it("las 14 declaraciones reales del curriculum siguen aceptando comillar SOLO el nombre de la fuente", () => {
+    // Ancla contra regresion del arreglo de arriba: comillar el nombre de la
+    // fuente (lo que SI hay que aceptar) no se tiene que romper por acotar la
+    // desnudada a genericas/keywords.
+    const tipografias = ALL_MODULES.find((m) => m.slug === "tipografias")!;
+    const target0407 = cssEsperadoDe(tipografias.exercises.find((e) => e.id === "04-ej-07")!);
+    const variante0407 =
+      'h1 {\n  font-family: "Georgia", serif;\n  font-size: 36px;\n  font-weight: bold;\n}\n\np {\n  font-family: "Arial", sans-serif;\n  font-size: 16px;\n  font-weight: 400;\n}';
+    expect(compararReglas(target0407, variante0407).score).toBe(100);
+
+    const herencia = ALL_MODULES.find((m) => m.slug === "herencia-valores-globales")!;
+    const target3307 = cssEsperadoDe(herencia.exercises.find((e) => e.id === "33-ej-07")!);
+    const variante3307 =
+      '.tarjeta {\n  color: #2c2c2c;\n  font-family: "Georgia", serif;\n}\n.tarjeta a {\n  color: inherit;\n  font-family: inherit;\n}';
+    expect(compararReglas(target3307, variante3307).score).toBe(100);
+
+    const tipografiaWeb = ALL_MODULES.find((m) => m.slug === "tipografia-web")!;
+    const target3208 = cssEsperadoDe(tipografiaWeb.exercises.find((e) => e.id === "32-ej-08")!);
+    // El target ya comilla solo el nombre ("Poppins"); la comilla simple es la
+    // misma decision con el otro caracter de comilla.
+    const variante3208 = target3208.replace(/"Poppins"/g, "'Poppins'");
+    expect(compararReglas(target3208, variante3208).score).toBe(100);
   });
 });
