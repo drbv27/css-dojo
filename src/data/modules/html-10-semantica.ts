@@ -290,10 +290,10 @@ No uses \`<nav>\` para cada grupo de enlaces. Reservalo para la **navegación pr
 
 ### Checklist de semántica
 
-- ¿[ ] Usas header, main y footer?
+- ¿[ ] Usás header, main y footer?
 - ¿[ ] Tus artículos son independientes?
 - ¿[ ] Los encabezados siguen jerarquía?
-- ¿[ ] Usas figure para imágenes con leyenda?
+- ¿[ ] Usás figure para imágenes con leyenda?
 - ¿[ ] Evitas div donde hay alternativa semántica?`,
       codeExample: {
         html: `<!-- Pagina bien estructurada -->
@@ -426,7 +426,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa la etiqueta para crear un widget desplegable nativo en HTML:",
+      prompt: "Completá la etiqueta para crear un widget desplegable nativo en HTML:",
       codeTemplate: {
         html: "",
         cssPrefix: "<",
@@ -452,7 +452,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
         { id: "d", text: "article es solo para blogs y section para todo lo demás", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa si el contenido tendría sentido publicado por separado.",
+      hint: "Pensá si el contenido tendría sentido publicado por separado.",
       explanation:
         "Un <article> contiene contenido que tiene sentido por si solo (un post, una noticia). <section> agrupa contenido relacionado tematicamente dentro de la página.",
     },
@@ -501,7 +501,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
           "drag-4": "zone-arriba",
         },
       },
-      hint: "Piensa en la posición típica de cada elemento en un sitio web.",
+      hint: "Pensá en la posición típica de cada elemento en un sitio web.",
       explanation:
         "header y nav suelen ir arriba, main contiene el contenido central, y footer va al final de la página.",
     },

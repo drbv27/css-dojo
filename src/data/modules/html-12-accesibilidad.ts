@@ -36,7 +36,7 @@ Las **Pautas de Accesibilidad para el Contenido Web** (WCAG) se basan en:
 
 Usar etiquetas semánticas es el **primer paso** hacia un sitio accesible. Los lectores de pantalla dependen de la estructura HTML para navegar.
 
-> **Recuerda:** La accesibilidad no es un extra, es una parte fundamental del desarrollo web.`,
+> **Recordá:** La accesibilidad no es un extra, es una parte fundamental del desarrollo web.`,
       codeExample: {
         html: `<!-- Ejemplo: Sitio NO accesible -->
 <div onclick="alert('clic')" style="padding:12px;background:#e17055;color:white;margin-bottom:16px;border-radius:4px;">
@@ -70,7 +70,7 @@ button:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
 
 ### Regla de oro de ARIA
 
-> No uses ARIA si puedes usar HTML semántico. Un \`<button>\` es mejor que \`<div role="button">\`.
+> No uses ARIA si podés usar HTML semántico. Un \`<button>\` es mejor que \`<div role="button">\`.
 
 ### Roles ARIA comunes
 
@@ -174,7 +174,7 @@ Un enlace oculto que permite a usuarios de teclado **saltar al contenido princip
 - Todos los elementos interactivos deben ser **enfocables con Tab**
 - El **orden de foco** debe ser lógico (izquierda a derecha, arriba a abajo)
 - Nunca uses \`outline: none\` sin una alternativa visual
-- Usa \`:focus-visible\` para mostrar indicadores de foco solo con teclado
+- Usá \`:focus-visible\` para mostrar indicadores de foco solo con teclado
 
 ### Contraste de colores
 
@@ -278,7 +278,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el atributo para ocultar un icono decorativo de los lectores de pantalla:",
+      prompt: "Completá el atributo para ocultar un icono decorativo de los lectores de pantalla:",
       codeTemplate: {
         html: "",
         cssPrefix: '<span ',
@@ -300,11 +300,11 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       options: [
         { id: "a", text: "Siempre usar el máximo de atributos ARIA posible", isCorrect: false },
         { id: "b", text: "ARIA solo funciona en formularios", isCorrect: false },
-        { id: "c", text: "No usar ARIA si puedes usar HTML semántico nativo", isCorrect: true },
+        { id: "c", text: "No usar ARIA si podés usar HTML semántico nativo", isCorrect: true },
         { id: "d", text: "Cada elemento debe tener al menos un atributo ARIA", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en que es mejor: un botón real o un div con role='button'.",
+      hint: "Pensá en que es mejor: un botón real o un div con role='button'.",
       explanation:
         'La regla de oro es preferir HTML semántico sobre ARIA. Un <button> nativo ya tiene toda la accesibilidad integrada, mientras que <div role="button"> requiere implementar teclado y foco manualmente.',
     },
@@ -381,7 +381,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       xpReward: 30,
       order: 8,
       prompt:
-        "Haz accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al botón de icono, y conecta el label con el input usando for e id.",
+        "Hacé accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al botón de icono, y conecta el label con el input usando for e id.",
       codeTemplate: {
         html: `<img src="logo.png">\n<button>🔍</button>\n<label>Correo</label>\n<input type="email" id="correo">`,
         cssPrefix: "",

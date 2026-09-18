@@ -4,7 +4,7 @@ export const htmlAtributosModule: ModuleData = {
   slug: "html-atributos-globales",
   title: "Atributos Globales de HTML",
   description:
-    "Aprende sobre los atributos globales que puedes usar en cualquier elemento HTML: id, class, data-*, contenteditable, tabindex y más.",
+    "Aprende sobre los atributos globales que podés usar en cualquier elemento HTML: id, class, data-*, contenteditable, tabindex y más.",
   order: 11,
   category: "html-intermediate",
   icon: "tag",
@@ -306,7 +306,7 @@ button:focus {
         { id: "d", text: "No hay diferencia significativa", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en cuantas veces puedes usar cada uno.",
+      hint: "Pensá en cuantas veces podés usar cada uno.",
       explanation:
         "El atributo id debe ser único en toda la página, mientras que class puede repetirse en múltiples elementos para agruparlos.",
     },
@@ -316,7 +316,7 @@ button:focus {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el atributo para almacenar un precio personalizado en el elemento:",
+      prompt: "Completá el atributo para almacenar un precio personalizado en el elemento:",
       codeTemplate: {
         html: "",
         cssPrefix: '<div ',
@@ -375,7 +375,7 @@ button:focus {
           "drag-5": "zone-datos",
         },
       },
-      hint: "Piensa en para que se usa cada atributo principalmente.",
+      hint: "Pensá en para que se usa cada atributo principalmente.",
       explanation:
         "id y class se usan para identificar y estilizar elementos. lang y tabindex mejoran la accesibilidad. data-* almacena datos personalizados.",
     },
@@ -403,7 +403,7 @@ button:focus {
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa el atributo para ocultar un elemento de la página:",
+      prompt: "Completá el atributo para ocultar un elemento de la página:",
       codeTemplate: {
         html: "",
         cssPrefix: "<p ",

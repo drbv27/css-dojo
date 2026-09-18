@@ -106,7 +106,7 @@ SVG es un formato de **imagen vectorial** que se puede escribir directamente en 
 ### Ventajas del SVG inline
 
 - **Escalable:** sin perdida de calidad a cualquier tamaño
-- **Editable con CSS:** puedes cambiar colores, tamaños con CSS
+- **Editable con CSS:** podés cambiar colores, tamaños con CSS
 - **Animable:** se puede animar con CSS o JavaScript
 - **Liviano:** para iconos y formas simples pesa menos que una imagen
 
@@ -136,7 +136,7 @@ ctx.fillStyle = "#6c5ce7";
 ctx.fillRect(10, 10, 100, 80);
 \`\`\`
 
-> **SVG vs Canvas:** Usa SVG para iconos, logos y gráficos simples. Usa Canvas para gráficos complejos, juegos y visualizaciones con muchos elementos.`,
+> **SVG vs Canvas:** Usá SVG para iconos, logos y gráficos simples. Usá Canvas para gráficos complejos, juegos y visualizaciones con muchos elementos.`,
       codeExample: {
         html: `<h3>SVG Inline - Figuras basicas</h3>
 <svg width="300" height="120" style="background:#f8f9fa;border-radius:8px;">
@@ -327,7 +327,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la etiqueta para crear un circulo SVG con radio 40:",
+      prompt: "Completá la etiqueta para crear un circulo SVG con radio 40:",
       codeTemplate: {
         html: "",
         cssPrefix: '<svg width="100" height="100"><',
@@ -430,7 +430,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea una imagen responsive y perezosa: un <picture> que contenga un <source> con srcset, y dentro un <img> con src, alt y el atributo loading en lazy.",
+        "Creá una imagen responsive y perezosa: un <picture> que contenga un <source> con srcset, y dentro un <img> con src, alt y el atributo loading en lazy.",
       codeTemplate: {
         html: `<!-- Escribe aqui tu <picture> responsive -->`,
         cssPrefix: "",

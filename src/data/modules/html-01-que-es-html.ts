@@ -48,7 +48,7 @@ HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wi
       title: "Cómo funcionan los navegadores",
       content: `## Cómo renderizan los navegadores
 
-Cuando escribes una URL en tu navegador y presionas Enter, ocurre un proceso fascinante:
+Cuando escribís una URL en tu navegador y presionas Enter, ocurre un proceso fascinante:
 
 ### 1. Solicitud al servidor
 El navegador envia una **solicitud HTTP** al servidor donde está alojada la página.
@@ -89,7 +89,7 @@ Cada **etiqueta HTML** se convierte en un **nodo** del árbol DOM. El navegador 
       title: "Estructura básica de un documento HTML",
       content: `## Estructura básica de un documento HTML
 
-Todo documento HTML tiene una estructura fundamental que siempre debes respetar:
+Todo documento HTML tiene una estructura fundamental que siempre debés respetar:
 
 ### 1. DOCTYPE
 La declaración \`<!DOCTYPE html>\` le dice al navegador que estamos usando **HTML5**. Siempre va en la primera línea.
@@ -142,7 +142,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
         { id: "d", text: "HyperText Machine Language", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en 'Lenguaje de Marcado de Hipertexto'.",
+      hint: "Pensá en 'Lenguaje de Marcado de Hipertexto'.",
       explanation:
         "HTML significa HyperText Markup Language, o Lenguaje de Marcado de Hipertexto en español.",
     },
@@ -170,7 +170,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la declaración que le indica al navegador que usamos HTML5:",
+      prompt: "Completá la declaración que le indica al navegador que usamos HTML5:",
       codeTemplate: {
         html: `_____ html>\n<html lang="es">\n  <head>\n    <title>Mi pagina</title>\n  </head>\n  <body>\n    <p>Hola!</p>\n  </body>\n</html>`,
         cssPrefix: "",
@@ -206,7 +206,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4" },
       },
-      hint: "Recuerda: head contiene metadatos, body contiene lo visible.",
+      hint: "Recordá: head contiene metadatos, body contiene lo visible.",
       explanation:
         "DOCTYPE declara la versión, html es la raíz, head contiene metadatos y body el contenido visible.",
     },
@@ -217,7 +217,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
       xpReward: 20,
       order: 5,
       prompt:
-        "Escribe la estructura básica de un documento HTML5 con un título 'Mi Web' en el head y un encabezado h1 que diga 'Bienvenido' en el body.",
+        "Escribí la estructura básica de un documento HTML5 con un título 'Mi Web' en el head y un encabezado h1 que diga 'Bienvenido' en el body.",
       codeTemplate: {
         html: `<!-- Escribe tu codigo HTML aqui -->`,
         cssPrefix: "",
@@ -235,7 +235,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
           "body > h1",
         ],
       },
-      hint: "Recuerda empezar con <!DOCTYPE html> y luego la etiqueta <html> con head y body dentro.",
+      hint: "Recordá empezar con <!DOCTYPE html> y luego la etiqueta <html> con head y body dentro.",
       explanation:
         "Un documento HTML5 básico necesita DOCTYPE, html, head con title, y body con el contenido visible.",
     },

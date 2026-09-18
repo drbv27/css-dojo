@@ -121,7 +121,7 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
       difficulty: 2,
       xpReward: 15,
       order: 1,
-      prompt: "Quieres mostrar el nivel de batería de un dispositivo (una cantidad fija en un rango). ¿Qué elemento usas?",
+      prompt: "Querés mostrar el nivel de batería de un dispositivo (una cantidad fija en un rango). ¿Qué elemento usás?",
       options: [
         { id: "a", text: "<meter> — es una medida dentro de un rango conocido", isCorrect: true },
         { id: "b", text: "<progress> — porque siempre se usa para barras", isCorrect: false },
@@ -140,7 +140,7 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
       xpReward: 15,
       order: 2,
       prompt:
-        "Crea un acordeon con <details>: un <summary> que diga 'Horario de atención' y dentro un <p> con el horario.",
+        "Creá un acordeon con <details>: un <summary> que diga 'Horario de atención' y dentro un <p> con el horario.",
       codeTemplate: { html: `<!-- Tu <details> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         type: "includes-ordered",
@@ -157,7 +157,7 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
       xpReward: 20,
       order: 3,
       prompt:
-        "Crea una barra de <progress> para una subida de archivo que va en el 40% (de un total de 100).",
+        "Creá una barra de <progress> para una subida de archivo que va en el 40% (de un total de 100).",
       codeTemplate: { html: `<!-- Tu <progress> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -180,7 +180,7 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un <meter> que muestre una puntuación de 8 en un rango de 0 a 10.",
+        "Creá un <meter> que muestre una puntuación de 8 en un rango de 0 a 10.",
       codeTemplate: { html: `<!-- Tu <meter> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -228,13 +228,13 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
       xpReward: 20,
       order: 6,
       prompt:
-        "Escribe la estructura de un <dialog> (con el atributo open para verlo) que contenga un <p> y un <button> que diga 'Cerrar'.",
+        "Escribí la estructura de un <dialog> (con el atributo open para verlo) que contenga un <p> y un <button> que diga 'Cerrar'.",
       codeTemplate: { html: `<!-- Tu <dialog> aqui -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         type: "includes-ordered",
         answer: ["<dialog", "open", "<p>", "</p>", "<button", "</button>", "</dialog>"],
       },
-      hint: "Escribe <dialog open> ... </dialog>, y dentro un <p> y un <button>.",
+      hint: "Escribí <dialog open> ... </dialog>, y dentro un <p> y un <button>.",
       explanation:
         "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que verás más adelante.",
     },

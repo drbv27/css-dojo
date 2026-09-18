@@ -129,7 +129,7 @@ Cuando compartes un enlace en redes sociales, las **meta tags de Open Graph** co
 <link rel="canonical" href="https://devdojo.com/cursos/html">
 \`\`\`
 
-> **Tip:** Usa herramientas como "Open Graph Debugger" de Facebook para verificar cómo se ven tus previews.`,
+> **Tip:** Usá herramientas como "Open Graph Debugger" de Facebook para verificar cómo se ven tus previews.`,
       codeExample: {
         html: `<div style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre;overflow-x:auto;margin-bottom:16px;">&lt;!-- Open Graph --&gt;
 &lt;meta property="og:title" content="Dev Dojo"&gt;
@@ -300,7 +300,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la meta tag para definir el título que se muestra al compartir en Facebook:",
+      prompt: "Completá la meta tag para definir el título que se muestra al compartir en Facebook:",
       codeTemplate: {
         html: "",
         cssPrefix: '<meta property="',
@@ -405,7 +405,7 @@ Se escriben en formato **JSON-LD** dentro de una etiqueta script:
       xpReward: 30,
       order: 8,
       prompt:
-        "Completa el <head> para SEO y redes: agrega el title, una meta description, y las etiquetas Open Graph og:title, og:description y og:image (en ese orden).",
+        "Completá el <head> para SEO y redes: agregá el title, una meta description, y las etiquetas Open Graph og:title, og:description y og:image (en ese orden).",
       codeTemplate: {
         html: `<head>\n  <meta charset="UTF-8" />\n  <!-- agrega title, description y Open Graph -->\n</head>`,
         cssPrefix: "",

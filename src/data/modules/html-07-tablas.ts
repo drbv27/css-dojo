@@ -48,7 +48,7 @@ Las tablas en HTML se usan para mostrar **datos tabulares** (información organi
 - \`<th>\` se muestra en **negrita y centrado** por defecto. Representa un encabezado.
 - \`<td>\` se muestra en texto normal. Representa datos.
 
-> **Importante:** Las tablas son para **datos tabulares**, no para diseñar layouts. Usar tablas para diseñar la maquetación de una página es una práctica obsoleta. Usa CSS Grid o Flexbox para layouts.`,
+> **Importante:** Las tablas son para **datos tabulares**, no para diseñar layouts. Usar tablas para diseñar la maquetación de una página es una práctica obsoleta. Usá CSS Grid o Flexbox para layouts.`,
       codeExample: {
         html: `<table>\n  <tr>\n    <th>Producto</th>\n    <th>Precio</th>\n    <th>Stock</th>\n  </tr>\n  <tr>\n    <td>Laptop</td>\n    <td>$999</td>\n    <td>15</td>\n  </tr>\n  <tr>\n    <td>Mouse</td>\n    <td>$25</td>\n    <td>150</td>\n  </tr>\n  <tr>\n    <td>Teclado</td>\n    <td>$75</td>\n    <td>80</td>\n  </tr>\n</table>`,
         css: `table {\n  border-collapse: collapse;\n  width: 100%;\n  font-family: sans-serif;\n}\n\nth, td {\n  border: 1px solid #e2e8f0;\n  padding: 10px 14px;\n  text-align: left;\n}\n\nth {\n  background-color: #2b6cb0;\n  color: white;\n}\n\ntr:nth-child(even) {\n  background-color: #f7fafc;\n}`,
@@ -109,7 +109,7 @@ Proporciona un **título descriptivo** para la tabla. Va justo después de \`<ta
 </table>
 \`\`\`
 
-> **Accesibilidad:** Usa siempre \`<caption>\` para describir el propósito de la tabla. Los lectores de pantalla lo anuncian antes de leer los datos.`,
+> **Accesibilidad:** Usá siempre \`<caption>\` para describir el propósito de la tabla. Los lectores de pantalla lo anuncian antes de leer los datos.`,
       codeExample: {
         html: `<table>\n  <caption>Reporte de ventas - Marzo 2026</caption>\n  <thead>\n    <tr>\n      <th>Producto</th>\n      <th>Unidades</th>\n      <th>Ingreso</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td>Curso HTML</td>\n      <td>120</td>\n      <td>$2,400</td>\n    </tr>\n    <tr>\n      <td>Curso CSS</td>\n      <td>95</td>\n      <td>$1,900</td>\n    </tr>\n    <tr>\n      <td>Curso JS</td>\n      <td>80</td>\n      <td>$2,000</td>\n    </tr>\n  </tbody>\n  <tfoot>\n    <tr>\n      <td>Total</td>\n      <td>295</td>\n      <td>$6,300</td>\n    </tr>\n  </tfoot>\n</table>`,
         css: `table {\n  border-collapse: collapse;\n  width: 100%;\n  font-family: sans-serif;\n}\n\ncaption {\n  font-weight: bold;\n  font-size: 16px;\n  margin-bottom: 8px;\n  color: #2d3748;\n}\n\nth, td {\n  border: 1px solid #e2e8f0;\n  padding: 10px 14px;\n  text-align: left;\n}\n\nthead th {\n  background-color: #2b6cb0;\n  color: white;\n}\n\ntfoot td {\n  background-color: #edf2f7;\n  font-weight: bold;\n}\n\ntbody tr:nth-child(even) {\n  background-color: #f7fafc;\n}`,
@@ -140,7 +140,7 @@ Hace que una celda ocupe **múltiples filas**:
 
 ### Combinando colspan y rowspan
 
-Puedes usar ambos en la misma celda para crear celdas que abarquen varias filas y columnas simultaneamente.
+Podés usar ambos en la misma celda para crear celdas que abarquen varias filas y columnas simultaneamente.
 
 ### \`scope\` — Accesibilidad en tablas
 
@@ -200,7 +200,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la estructura para crear una fila con dos celdas de datos:",
+      prompt: "Completá la estructura para crear una fila con dos celdas de datos:",
       codeTemplate: {
         html: `<table>\n  <_____>\n    <td>Celda 1</td>\n    <td>Celda 2</td>\n  </_____>\n</table>`,
         cssPrefix: "",
@@ -264,7 +264,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una tabla con caption 'Notas del curso', thead con una fila de 3 encabezados (Estudiante, Nota, Estado), y tbody con al menos 2 filas de datos.",
+        "Creá una tabla con caption 'Notas del curso', thead con una fila de 3 encabezados (Estudiante, Nota, Estado), y tbody con al menos 2 filas de datos.",
       codeTemplate: {
         html: `<!-- Crea la tabla completa -->`,
         cssPrefix: "",
@@ -282,7 +282,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
           "table > tbody td",
         ],
       },
-      hint: "Usa table > caption + thead (con tr y th) + tbody (con tr y td).",
+      hint: "Usá table > caption + thead (con tr y th) + tbody (con tr y td).",
       explanation:
         "Una tabla bien estructurada incluye caption para el título, thead para encabezados y tbody para los datos.",
     },
@@ -292,7 +292,7 @@ El atributo \`scope\` en las celdas \`<th>\` indica si el encabezado aplica a un
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el atributo para que esta celda ocupe 3 filas:",
+      prompt: "Completá el atributo para que esta celda ocupe 3 filas:",
       codeTemplate: {
         html: `<table>\n  <tr>\n    <td _____="3">Celda expandida</td>\n    <td>Fila 1</td>\n  </tr>\n  <tr>\n    <td>Fila 2</td>\n  </tr>\n  <tr>\n    <td>Fila 3</td>\n  </tr>\n</table>`,
         cssPrefix: "",

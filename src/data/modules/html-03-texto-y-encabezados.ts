@@ -30,7 +30,7 @@ Los encabezados definen la **jerarquía** del contenido en una página web. HTML
 
 1. **No saltes niveles**: después de un \`<h2>\` usa \`<h3>\`, no \`<h4>\`
 2. **Un solo h1 por página**: es importante para SEO y accesibilidad
-3. **No uses encabezados solo por tamaño**: si quieres texto grande, usa CSS
+3. **No uses encabezados solo por tamaño**: si querés texto grande, usa CSS
 
 > **Para accesibilidad:** Los lectores de pantalla generan un índice de la página basandose en los encabezados. Una jerarquía correcta facilita la navegación.`,
       codeExample: {
@@ -74,7 +74,7 @@ La etiqueta \`<hr>\` inserta una **línea divisoria horizontal**. Se usa para se
 <p>Seccion dos</p>
 \`\`\`
 
-> **Buena práctica:** Evita usar \`<br>\` para crear espacios entre párrafos. Usa múltiples etiquetas \`<p>\` en su lugar.`,
+> **Buena práctica:** Evitá usar \`<br>\` para crear espacios entre párrafos. Usá múltiples etiquetas \`<p>\` en su lugar.`,
       codeExample: {
         html: `<p>HTML es el lenguaje de la web.</p>\n<p>Con el puedes estructurar contenido<br>y crear paginas increibles.</p>\n<hr>\n<p>Esta seccion esta separada por una linea horizontal.</p>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.6;\n}\n\nhr {\n  border: none;\n  border-top: 2px solid #e2e8f0;\n  margin: 16px 0;\n}`,
@@ -121,9 +121,9 @@ Representa texto de **menor importancia**, como notas al pie o texto legal.
 
 - \`<strong>\` significa importancia (no solo negrita)
 - \`<em>\` significa énfasis (no solo cursiva)
-- Usa CSS si solo quieres cambiar la apariencia sin añadir significado
+- Usá CSS si solo querés cambiar la apariencia sin añadir significado
 
-> **Importante:** Evita usar \`<b>\` y \`<i>\` cuando quieres dar significado al texto. Usa \`<strong>\` y \`<em>\` respectivamente.`,
+> **Importante:** Evitá usar \`<b>\` y \`<i>\` cuando querés dar significado al texto. Usá \`<strong>\` y \`<em>\` respectivamente.`,
       codeExample: {
         html: `<p><strong>Importante:</strong> Siempre guarda tu trabajo.</p>\n<p>Debes <em>verificar</em> antes de enviar.</p>\n<p>Tu calificacion: <mark>Excelente</mark></p>\n<p><small>Ultima actualizacion: marzo 2026</small></p>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n  margin: 8px 0;\n}\n\nmark {\n  background-color: #fefcbf;\n  padding: 2px 4px;\n  border-radius: 3px;\n}`,
@@ -224,7 +224,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la etiqueta para crear un encabezado de nivel 2:",
+      prompt: "Completá la etiqueta para crear un encabezado de nivel 2:",
       codeTemplate: {
         html: `<h1>Titulo principal</h1>\n<_____>Seccion secundaria</_____>`,
         cssPrefix: "",
@@ -261,7 +261,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4", d5: "z5" },
       },
-      hint: "Recuerda el significado semántico de cada etiqueta.",
+      hint: "Recordá el significado semántico de cada etiqueta.",
       explanation:
         "Cada etiqueta de formato tiene un significado semántico específico: strong para importancia, em para énfasis, mark para resaltado, small para menor relevancia y blockquote para citas.",
     },
@@ -272,7 +272,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una página con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Artículo', un párrafo con texto que incluya una palabra en negrita usando <strong>, y una línea horizontal <hr> seguida de otro párrafo.",
+        "Creá una página con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Artículo', un párrafo con texto que incluya una palabra en negrita usando <strong>, y una línea horizontal <hr> seguida de otro párrafo.",
       codeTemplate: {
         html: `<!-- Crea la estructura pedida -->`,
         cssPrefix: "",
@@ -291,7 +291,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
           "p >> 2",
         ],
       },
-      hint: "Usa h1, h2, p con strong dentro, hr, y otro p.",
+      hint: "Usá h1, h2, p con strong dentro, hr, y otro p.",
       explanation:
         "La combinación de encabezados, párrafos con formato y líneas horizontales crea una estructura clara y legible.",
     },
@@ -301,7 +301,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el código para mostrar una cita en bloque:",
+      prompt: "Completá el código para mostrar una cita en bloque:",
       codeTemplate: {
         html: `<_____>\n  <p>El conocimiento es poder.</p>\n</_____>`,
         cssPrefix: "",
@@ -338,7 +338,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un bloque de texto preformateado usando <pre> y <code> que muestre el siguiente código HTML como texto: <h1>Hola</h1>. Recuerda usar &lt; y &gt; para las entidades HTML.",
+        "Creá un bloque de texto preformateado usando <pre> y <code> que muestre el siguiente código HTML como texto: <h1>Hola</h1>. Recordá usar &lt; y &gt; para las entidades HTML.",
       codeTemplate: {
         html: `<!-- Muestra codigo HTML como texto preformateado -->`,
         cssPrefix: "",
@@ -354,7 +354,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
           "pre > code :: <h1>",
         ],
       },
-      hint: "Usa <pre><code> y reemplaza < por &lt; y > por &gt;.",
+      hint: "Usá <pre><code> y reemplaza < por &lt; y > por &gt;.",
       explanation:
         "Para mostrar etiquetas HTML como texto, se usan las entidades &lt; y &gt; dentro de <pre><code>.",
     },

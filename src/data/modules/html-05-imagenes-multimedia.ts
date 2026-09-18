@@ -97,7 +97,7 @@ El navegador elige la primera \`<source>\` cuya condición se cumpla. El \`<img>
 </picture>
 \`\`\`
 
-> **Tip:** Usa formatos modernos como WebP o AVIF con \`<picture>\` para mejorar el rendimiento, manteniendo JPG/PNG como respaldo.`,
+> **Tip:** Usá formatos modernos como WebP o AVIF con \`<picture>\` para mejorar el rendimiento, manteniendo JPG/PNG como respaldo.`,
       codeExample: {
         html: `<figure>\n  <img src="https://picsum.photos/400/250" alt="Paisaje aleatorio" width="400" height="250">\n  <figcaption>Figura 1: Un hermoso paisaje de ejemplo.</figcaption>\n</figure>\n\n<picture>\n  <source media="(min-width: 600px)" srcset="https://picsum.photos/400/200">\n  <img src="https://picsum.photos/200/100" alt="Imagen responsiva" width="200" height="100">\n</picture>`,
         css: `figure {\n  margin: 0;\n  padding: 12px;\n  background-color: #f7fafc;\n  border-radius: 8px;\n  display: inline-block;\n}\n\nfigure img {\n  border-radius: 6px;\n  display: block;\n}\n\nfigcaption {\n  font-family: sans-serif;\n  color: #718096;\n  font-size: 13px;\n  margin-top: 8px;\n  text-align: center;\n}\n\npicture img {\n  border-radius: 8px;\n  margin-top: 12px;\n}`,
@@ -150,9 +150,9 @@ Funciona de manera similar a video:
 
 ### Múltiples fuentes
 
-Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múltiples formatos**. El navegador usara el primero que soporte.
+Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, podés ofrecer **múltiples formatos**. El navegador usara el primero que soporte.
 
-> **Importante:** La mayoria de navegadores modernos bloquean el autoplay con sonido. Si necesitas autoplay, añade también el atributo \`muted\`.`,
+> **Importante:** La mayoria de navegadores modernos bloquean el autoplay con sonido. Si necesitás autoplay, añade también el atributo \`muted\`.`,
       codeExample: {
         html: `<h2>Reproductor de video</h2>\n<video controls width="400" poster="https://picsum.photos/400/225">\n  <source src="video.mp4" type="video/mp4">\n  Tu navegador no soporta video HTML5.\n</video>\n\n<h2>Reproductor de audio</h2>\n<audio controls>\n  <source src="audio.mp3" type="audio/mpeg">\n  Tu navegador no soporta audio HTML5.\n</audio>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n  margin-top: 16px;\n}\n\nvideo {\n  border-radius: 8px;\n  display: block;\n}\n\naudio {\n  width: 100%;\n  margin-top: 8px;\n}`,
@@ -186,7 +186,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múlti
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la etiqueta para insertar una imagen:",
+      prompt: "Completá la etiqueta para insertar una imagen:",
       codeTemplate: {
         html: `<_____ src="logo.png" _____="Logo de la empresa" width="200" height="100">`,
         cssPrefix: "",
@@ -241,7 +241,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múlti
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4", d5: "z5" },
       },
-      hint: "Piensa en que hace cada atributo por su nombre en inglés.",
+      hint: "Pensá en que hace cada atributo por su nombre en inglés.",
       explanation:
         "controls muestra los controles, autoplay inicia automáticamente, muted silencia, poster define la imagen previa, y loop repite el video.",
     },
@@ -252,7 +252,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múlti
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea un elemento <figure> que contenga una imagen con src='foto.jpg', alt='Paisaje de montana', width='400' y height='300'. Agrega un <figcaption> que diga 'Vista panoramica de los Andes'.",
+        "Creá un elemento <figure> que contenga una imagen con src='foto.jpg', alt='Paisaje de montana', width='400' y height='300'. Agregá un <figcaption> que diga 'Vista panoramica de los Andes'.",
       codeTemplate: {
         html: `<!-- Crea el figure con imagen y figcaption -->`,
         cssPrefix: "",
@@ -278,7 +278,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múlti
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa la etiqueta de video para que muestre controles y se reproduzca sin sonido:",
+      prompt: "Completá la etiqueta de video para que muestre controles y se reproduzca sin sonido:",
       codeTemplate: {
         html: `<video src="clip.mp4" _____ _____ width="640">\n  Tu navegador no soporta video.\n</video>`,
         cssPrefix: "",
