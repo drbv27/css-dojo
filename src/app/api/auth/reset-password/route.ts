@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
-import { hashPassword } from "@/lib/auth";
+import { hashPassword, getJwtSecretRaw } from "@/lib/auth";
 import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "La contrasena debe tener al menos 6 caracteres" }, { status: 400 });
     }
 
-    const secret = process.env.JWT_SECRET || "css-dojo-secret-key-cambiar-en-produccion";
+    const secret = getJwtSecretRaw();
     let payload: any;
     try {
       payload = jwt.verify(resetToken, secret);

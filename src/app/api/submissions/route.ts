@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSession } from "@/lib/auth";
+import { vetoPorCuentaNoAprobada } from "@/lib/autorizacion";
 import dbConnect from "@/lib/db";
 import Submission from "@/lib/models/Submission";
 import User from "@/lib/models/User";
@@ -36,6 +37,9 @@ const bodySchema = z.object({
 export async function POST(request: Request) {
   const session = await getSession();
   if (!session) return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+
+  const veto = await vetoPorCuentaNoAprobada(session);
+  if (veto) return veto;
 
   const parsed = bodySchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) {

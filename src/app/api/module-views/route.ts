@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
+import { vetoPorCuentaNoAprobada } from "@/lib/autorizacion";
 import dbConnect from "@/lib/db";
 import ModuleView from "@/lib/models/ModuleView";
 import { slugsVisiblesPara } from "@/lib/moduleVisibility";
@@ -26,6 +27,9 @@ export async function POST(request: Request) {
   if (!session) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
+
+  const veto = await vetoPorCuentaNoAprobada(session);
+  if (veto) return veto;
 
   const { moduleId } = await request.json().catch(() => ({ moduleId: undefined }));
   if (typeof moduleId !== "string" || !moduleId) {
