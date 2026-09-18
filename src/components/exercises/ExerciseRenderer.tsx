@@ -123,7 +123,11 @@ export default function ExerciseRenderer({
 
       case "code-completion":
         return (
-          <CodeCompletionExercise exercise={exercise} onSubmit={handleSubmit} />
+          <CodeCompletionExercise
+            exercise={exercise}
+            onSubmit={handleSubmit}
+            aprobado={result?.correct ?? null}
+          />
         );
 
       case "live-editor":

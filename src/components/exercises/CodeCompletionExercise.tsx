@@ -9,11 +9,24 @@ import HintButton from "./HintButton";
 interface CodeCompletionExerciseProps {
   exercise: Exercise;
   onSubmit: (answers: string[]) => void;
+  /**
+   * El veredicto del corrector de verdad, o `null` si todavia no respondio.
+   *
+   * Sin esto, este componente comparaba contra `codeTemplate.blanks` letra por
+   * letra y se convertia en un TERCER validador que no sabe nada del regex de
+   * `validation` ni de las equivalencias de `cssRules`. En `16-ej-02` eso daba
+   * una pantalla que se contradecia sola: el servidor otorgaba 100/100 y +10 XP
+   * mientras el cartel de arriba decia "algunas respuestas son incorrectas" y
+   * le ofrecia al alumno la respuesta "correcta" debajo de su respuesta
+   * correcta.
+   */
+  aprobado?: boolean | null;
 }
 
 export default function CodeCompletionExercise({
   exercise,
   onSubmit,
+  aprobado = null,
 }: CodeCompletionExerciseProps) {
   const template = exercise.codeTemplate;
   const blankCount = template?.blanks?.length ?? 0;
@@ -27,12 +40,21 @@ export default function CodeCompletionExercise({
 
   const blankResults = useMemo(() => {
     if (!submitted) return [];
+    // Si el corrector acepto la respuesta, NINGUN campo puede estar mal: el
+    // veredicto es sobre el conjunto y manda sobre cualquier comparacion local.
+    if (aprobado === true) return answers.map(() => true);
+    // Si no la acepto, la comparacion literal sigue sirviendo para senalar
+    // CUAL campo revisar. Es una pista de ubicacion, no el veredicto.
     return answers.map((answer, i) => {
       const correct = correctAnswers[i];
       if (!correct) return false;
       return answer.trim().toLowerCase() === correct.trim().toLowerCase();
     });
-  }, [submitted, answers, correctAnswers]);
+  }, [submitted, answers, correctAnswers, aprobado]);
+
+  // El cartel dice lo que dijo el corrector. Solo cae en la comparacion local
+  // cuando nadie le paso un veredicto.
+  const todoBien = aprobado ?? blankResults.every(Boolean);
 
   const handleChange = (index: number, value: string) => {
     setAnswers((prev) => {
@@ -192,12 +214,12 @@ export default function CodeCompletionExercise({
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             className={`flex items-center gap-2 px-4 py-3 rounded-xl border text-sm font-medium ${
-              blankResults.every(Boolean)
+              todoBien
                 ? "bg-neon-green/10 border-neon-green/30 text-neon-green"
                 : "bg-neon-red/10 border-neon-red/30 text-neon-red"
             }`}
           >
-            {blankResults.every(Boolean) ? (
+            {todoBien ? (
               <>
                 <Check className="w-5 h-5" />
                 Todas las respuestas son correctas!
