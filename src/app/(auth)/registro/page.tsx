@@ -21,12 +21,12 @@ export default function RegisterPage() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Las contrasenas no coinciden");
+      setError("Las contraseñas no coinciden");
       return;
     }
 
     if (password.length < 6) {
-      setError("La contrasena debe tener al menos 6 caracteres");
+      setError("La contraseña debe tener al menos 6 caracteres");
       return;
     }
 
@@ -107,13 +107,13 @@ export default function RegisterPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-editor-text mb-2">Confirmar contrasena</label>
+              <label className="block text-sm font-medium text-editor-text mb-2">Confirmar contraseña</label>
               <input
                 type="password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className="w-full px-4 py-3 bg-editor-bg border border-editor-border rounded-lg text-editor-text placeholder-editor-muted focus:outline-none focus:border-neon-green transition-colors"
-                placeholder="Repite tu contrasena"
+                placeholder="Repite tu contraseña"
                 required
               />
             </div>
@@ -132,7 +132,7 @@ export default function RegisterPage() {
             <p className="text-editor-muted text-sm">
               Ya tienes cuenta?{" "}
               <Link href="/login" className="text-neon-blue hover:text-neon-blue/80 font-medium transition-colors">
-                Inicia sesion
+                Inicia sesión
               </Link>
             </p>
           </div>

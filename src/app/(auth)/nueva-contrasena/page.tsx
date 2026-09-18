@@ -43,7 +43,7 @@ function ResetPasswordContent() {
         if (ok && data.resetToken) {
           setResetToken(data.resetToken);
         } else {
-          setError(data.message || "Codigo incorrecto");
+          setError(data.message || "Código incorrecto");
           setOtp(Array(6).fill(""));
           inputRefs.current[0]?.focus();
         }
@@ -92,11 +92,11 @@ function ResetPasswordContent() {
     setError("");
 
     if (password !== confirmPassword) {
-      setError("Las contrasenas no coinciden");
+      setError("Las contraseñas no coinciden");
       return;
     }
     if (password.length < 6) {
-      setError("La contrasena debe tener al menos 6 caracteres");
+      setError("La contraseña debe tener al menos 6 caracteres");
       return;
     }
 
@@ -143,9 +143,9 @@ function ResetPasswordContent() {
               </div>
             ) : !resetToken ? (
               <>
-                <h2 className="text-lg font-bold text-editor-text mb-2">Ingresa el codigo</h2>
+                <h2 className="text-lg font-bold text-editor-text mb-2">Ingresa el código</h2>
                 <p className="text-sm text-editor-muted mb-6">
-                  Enviamos un codigo de 6 digitos a <strong className="text-editor-text">{email}</strong>
+                  Enviamos un código de 6 dígitos a <strong className="text-editor-text">{email}</strong>
                 </p>
 
                 {/* OTP inputs */}
@@ -179,7 +179,7 @@ function ResetPasswordContent() {
                 )}
 
                 <p className="text-xs text-editor-muted text-center">
-                  No recibiste el codigo?{" "}
+                  ¿No recibiste el código?{" "}
                   <Link href="/recuperar" className="text-neon-blue hover:text-neon-blue/80 transition-colors">
                     Reenviar
                   </Link>
@@ -187,9 +187,9 @@ function ResetPasswordContent() {
               </>
             ) : (
               <>
-                <h2 className="text-lg font-bold text-editor-text mb-2">Nueva contrasena</h2>
+                <h2 className="text-lg font-bold text-editor-text mb-2">Nueva contraseña</h2>
                 <p className="text-sm text-editor-muted mb-6">
-                  Codigo verificado. Ingresa tu nueva contrasena.
+                  Código verificado. Ingresa tu nueva contraseña.
                 </p>
 
                 <form onSubmit={handleResetPassword} className="space-y-5">
@@ -200,7 +200,7 @@ function ResetPasswordContent() {
                   )}
 
                   <div>
-                    <label className="block text-sm font-medium text-editor-text mb-2">Nueva contrasena</label>
+                    <label className="block text-sm font-medium text-editor-text mb-2">Nueva contraseña</label>
                     <div className="relative">
                       <input
                         type={showPassword ? "text" : "password"}
@@ -218,13 +218,13 @@ function ResetPasswordContent() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-editor-text mb-2">Confirmar contrasena</label>
+                    <label className="block text-sm font-medium text-editor-text mb-2">Confirmar contraseña</label>
                     <input
                       type="password"
                       value={confirmPassword}
                       onChange={(e) => setConfirmPassword(e.target.value)}
                       className="w-full px-4 py-3 bg-editor-bg border border-editor-border rounded-lg text-editor-text placeholder-editor-muted focus:outline-none focus:border-neon-teal transition-colors"
-                      placeholder="Repite tu contrasena"
+                      placeholder="Repite tu contraseña"
                       required
                     />
                   </div>
@@ -235,7 +235,7 @@ function ResetPasswordContent() {
                     className="w-full flex items-center justify-center gap-2 bg-neon-teal text-editor-bg font-medium py-3 px-4 rounded-lg hover:bg-neon-teal/90 transition-colors disabled:opacity-50"
                   >
                     {saving ? <Loader2 className="w-5 h-5 animate-spin" /> : <KeyRound className="w-5 h-5" />}
-                    {saving ? "Guardando..." : "Restablecer contrasena"}
+                    {saving ? "Guardando..." : "Restablecer contraseña"}
                   </button>
                 </form>
               </>
