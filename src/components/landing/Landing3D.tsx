@@ -1,10 +1,9 @@
 "use client";
 
-import { Component, useState, useSyncExternalStore, type ErrorInfo, type ReactNode } from "react";
+import { Component, useEffect, useState, useSyncExternalStore, type ErrorInfo, type ReactNode } from "react";
 import Escena from "./Escena";
 import Secciones from "./Secciones";
 import ScrollManager from "./ScrollManager";
-import LandingEstatica from "./LandingEstatica";
 import NavLanding from "./NavLanding";
 import Loader from "./Loader";
 
@@ -71,17 +70,22 @@ export default function Landing3D({ hasSession }: { hasSession: boolean }) {
   const modo: "cargando" | "3d" | "estatica" =
     escapeManual || capaz3D === false ? "estatica" : capaz3D === null ? "cargando" : "3d";
 
-  if (modo === "cargando") return <div className="fixed inset-0 bg-editor-bg" />;
-  if (modo === "estatica")
-    return (
-      <>
-        <NavLanding hasSession={hasSession} />
-        <LandingEstatica hasSession={hasSession} />
-      </>
-    );
+  // Mientras se decide, y si la respuesta es que no, no se renderiza nada:
+  // la landing estatica del servidor ya esta en pantalla y se queda. Antes
+  // aca habia una cortina opaca que tapaba contenido que todavia no existia.
+  useEffect(() => {
+    const raiz = document.documentElement;
+    if (modo === "3d") raiz.dataset.landing3d = "1";
+    else delete raiz.dataset.landing3d;
+    return () => {
+      delete raiz.dataset.landing3d;
+    };
+  }, [modo]);
+
+  if (modo !== "3d") return null;
 
   return (
-    <>
+    <div className="landing-3d-entra">
       {/* Barra fija: login siempre visible */}
       <NavLanding hasSession={hasSession} />
       <Loader escenaFallo={escenaFallo} onOmitirEscena={() => setEscapeManual(true)} />
@@ -95,6 +99,6 @@ export default function Landing3D({ hasSession }: { hasSession: boolean }) {
       </main>
       {/* Maneja scroll -> escena, auto-scroll e indicador */}
       <ScrollManager />
-    </>
+    </div>
   );
 }

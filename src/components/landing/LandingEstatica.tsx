@@ -77,7 +77,7 @@ export default function LandingEstatica({ hasSession }: { hasSession: boolean })
             <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: sec.color }}>
               Track · {sec.id}
             </span>
-            <h3 className="text-2xl font-bold mt-1 mb-1" style={{ color: sec.color }}>{sec.titulo}</h3>
+            <h2 className="text-2xl font-bold mt-1 mb-1" style={{ color: sec.color }}>{sec.titulo}</h2>
             <p className="text-editor-muted">{sec.subtitulo}</p>
           </motion.div>
         ))}

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
 import LandingClient from "@/components/landing/LandingClient";
+import NavLanding from "@/components/landing/NavLanding";
+import LandingEstatica from "@/components/landing/LandingEstatica";
 
 export const metadata: Metadata = {
   title: "Dev Dojo — Conviértete en un dev de cinturón negro",
@@ -26,5 +28,24 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   // Server Component: lee la sesión para decidir los CTAs (Dashboard vs Login/Registro).
   const hasSession = (await cookies()).has("dev-dojo-token");
-  return <LandingClient hasSession={hasSession} />;
+
+  // La landing estatica se renderiza EN EL SERVIDOR y es la base.
+  //
+  // Antes todo colgaba de un `dynamic(..., { ssr: false })`, y adentro de ese
+  // envoltorio estaban la escena, el nav Y la version estatica. Resultado: el
+  // HTML servido para "/" no traia un solo caracter de texto — ni h1, ni
+  // enlaces, ni secciones. El fallback accesible existia y estaba escondido
+  // del servidor sin querer.
+  //
+  // `ssr: false` es lo que impide renderizar en servidor; `"use client"` no.
+  // Ahora la frontera envuelve solo la escena WebGL.
+  return (
+    <>
+      <div id="landing-base">
+        <NavLanding hasSession={hasSession} />
+        <LandingEstatica hasSession={hasSession} />
+      </div>
+      <LandingClient hasSession={hasSession} />
+    </>
+  );
 }

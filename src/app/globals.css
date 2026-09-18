@@ -72,3 +72,38 @@ code, pre, .font-mono {
   75% { transform: scale(1.03) translateY(-2px); }
   100% { transform: scale(1) translateY(0); }
 }
+
+/* ---------------------------------------------------------------
+   Relevo entre la landing estatica (servidor) y la capa 3D (cliente).
+
+   La estatica se renderiza en el servidor: es lo que ve un crawler y lo que
+   ve el usuario antes de que hidrate el JS. Cuando la capa 3D decide que
+   puede correr, se marca `data-landing3d` en <html> y la base se retira.
+   `display: none` la saca tambien del arbol de accesibilidad, asi que el
+   texto no queda duplicado para un lector de pantalla.
+
+   Si el JS nunca corre, o WebGL no esta, no pasa nada: la base se queda.
+   --------------------------------------------------------------- */
+[data-landing3d="1"] #landing-base {
+  display: none;
+}
+
+.landing-3d-entra {
+  animation: landing-3d-entra 320ms ease-out both;
+}
+
+@keyframes landing-3d-entra {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Quien pidio menos movimiento no necesita el fundido del relevo. */
+@media (prefers-reduced-motion: reduce) {
+  .landing-3d-entra {
+    animation: none;
+  }
+}

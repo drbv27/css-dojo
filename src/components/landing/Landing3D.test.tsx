@@ -55,20 +55,30 @@ describe("Landing3D", () => {
     expect(screen.getByTestId("escena-mock")).toBeTruthy();
   });
 
-  // Scenario: Escape reaches the static landing
-  it("reaches the static landing after the boundary catches a throw and the user escapes", async () => {
+  // Scenario: Escape retires the 3D layer and hands the screen back to the
+  // server-rendered static landing.
+  //
+  // Landing3D ya no renderiza la landing estatica: esa la sirve el servidor
+  // desde app/page.tsx, fuera del boundary `ssr: false`, para que exista en el
+  // HTML inicial. Lo que este componente controla es la marca
+  // `data-landing3d`, que oculta la base mientras la capa 3D esta arriba.
+  // Escapar tiene que retirar la capa Y la marca; si retirara solo la capa, la
+  // pantalla quedaria en negro sobre una base escondida por CSS.
+  it("retires the 3D layer and unhides the server landing when the user escapes", async () => {
     escenaDebeFallar = true;
     const { default: Landing3D } = await import("./Landing3D");
-    render(<Landing3D hasSession={false} />);
+    const { container } = render(<Landing3D hasSession={false} />);
 
     const boton = await screen.findByRole("button", { name: /continuar sin la escena/i });
     expect(screen.queryByTestId("escena-mock")).toBeNull();
+    expect(document.documentElement.dataset.landing3d).toBe("1");
 
     act(() => {
       boton.click();
     });
 
     expect(screen.queryByRole("status")).toBeNull();
-    expect(screen.getByText(/dev de cinturón negro/i)).toBeTruthy();
+    expect(container.innerHTML).toBe("");
+    expect(document.documentElement.dataset.landing3d).toBeUndefined();
   });
 });
