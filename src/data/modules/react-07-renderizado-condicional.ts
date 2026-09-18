@@ -350,7 +350,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       order: 1,
       prompt: "¿Cuál es la forma correcta de mostrar un elemento solo si una condición es verdadera en JSX?",
       options: [
-        { id: "a", text: "{if (condicion) <p>Texto</p>}", isCorrect: false },
+        { id: "a", text: "{if (condición) <p>Texto</p>}", isCorrect: false },
         { id: "b", text: "{condicion && <p>Texto</p>}", isCorrect: true },
         { id: "c", text: "{condicion ? <p>Texto</p>}", isCorrect: false },
         { id: "d", text: "<if condición><p>Texto</p></if>", isCorrect: false },

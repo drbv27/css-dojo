@@ -70,7 +70,7 @@ Se accede a las variables con la función \`var()\`:
 - Pueden contener letras, números, guiones y guiones bajos
 - Convención común: \`--categoria-nombre\` (ejemplo: \`--color-texto\`, \`--tamanio-titulo\`)
 
-> **Ventaja clave:** Si necesitás cambiar un color usado en 50 lugares, solo lo cambiás en la variable. Sin variables, tendrias que buscar y reemplazar en 50 reglas.`,
+> **Ventaja clave:** Si necesitás cambiar un color usado en 50 lugares, solo lo cambiás en la variable. Sin variables, tendrías que buscar y reemplazar en 50 reglas.`,
       codeExample: {
         html: `<div class="tarjeta">\n  <h2 class="tarjeta-titulo">Variables CSS</h2>\n  <p class="tarjeta-texto">Las variables hacen tu CSS mas mantenible y consistente.</p>\n  <button class="tarjeta-btn">Aprender mas</button>\n</div>`,
         css: `:root {\n  --color-primario: #3498db;\n  --color-texto: #2c3e50;\n  --color-fondo: #f8f9fa;\n  --espaciado: 16px;\n  --radio: 12px;\n}\n\n.tarjeta {\n  background: var(--color-fondo);\n  padding: calc(var(--espaciado) * 2);\n  border-radius: var(--radio);\n  border: 1px solid #e0e0e0;\n}\n\n.tarjeta-titulo {\n  color: var(--color-texto);\n  margin-bottom: var(--espaciado);\n}\n\n.tarjeta-texto {\n  color: #666;\n  margin-bottom: var(--espaciado);\n}\n\n.tarjeta-btn {\n  background: var(--color-primario);\n  color: white;\n  border: none;\n  padding: calc(var(--espaciado) * 0.75) calc(var(--espaciado) * 1.5);\n  border-radius: calc(var(--radio) / 2);\n  cursor: pointer;\n  font-size: 1rem;\n}`,
@@ -468,7 +468,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         },
         {
           instruccion:
-            "Con `.tema-oscuro`, sobreescribi --fondo con #1a1a2e y --texto con #e0e0e0. No repetis ni una propiedad: solo cambiás los valores y todo lo que las usa se actualiza.",
+            "Con `.tema-oscuro`, sobreescribi --fondo con #1a1a2e y --texto con #e0e0e0. No repetís ni una propiedad: solo cambiás los valores y todo lo que las usa se actualiza.",
           esperado: ".tema-oscuro { --fondo: #1a1a2e; --texto: #e0e0e0; }",
         },
         {

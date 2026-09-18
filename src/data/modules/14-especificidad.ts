@@ -309,7 +309,7 @@ Perdés. Y tus opciones eran las tres de siempre: subir la especificidad imitand
 \`@layer\` te deja crear **bandas de precedencia explícitas**:
 
 \`\`\`css
-/* Primero declarás el orden. Esta linea es la que decide. */
+/* Primero declaras el orden. Esta linea es la que decide. */
 @layer reset, libreria, componentes, utilidades;
 
 @layer libreria {

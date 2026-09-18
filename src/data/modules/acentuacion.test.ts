@@ -98,6 +98,144 @@ const CON_FLEXION: [string, string][] = [
   ["vacio", "vacío"],
   ["vacia", "vacía"],
   ["alla", "allá"],
+  // Femeninos y plurales que el sufijo `(s|es|a|as|os)` NO alcanza: se lo pega
+  // DETRAS de la palabra, asi que `ultimo` nunca cubre `ultima`.
+  ["ultima", "última"],
+  ["unica", "única"],
+  ["basica", "básica"],
+  ["clasico", "clásico"],
+  ["clasica", "clásica"],
+  ["tipico", "típico"],
+  ["tipica", "típica"],
+  ["generica", "genérica"],
+  ["automatica", "automática"],
+  ["dinamica", "dinámica"],
+  ["estatica", "estática"],
+  ["semantica", "semántica"],
+  ["numerica", "numérica"],
+  ["electronico", "electrónico"],
+  ["electronica", "electrónica"],
+  ["jerarquico", "jerárquico"],
+  // El resto del vocabulario que este curriculum usa de verdad. Salio de medir
+  // la prosa, no de imaginar que palabras podrian aparecer.
+  ["cuadricula", "cuadrícula"],
+  ["caracteristica", "característica"],
+  ["simbolo", "símbolo"],
+  ["ingles", "inglés"],
+  ["frances", "francés"],
+  // `espanol` NO va aca: lo cubre la regla de la ñ, y tenerlo en los dos lados
+  // reporta dos fallas por un solo error.
+  ["enfasis", "énfasis"],
+  ["analisis", "análisis"],
+  ["parentesis", "paréntesis"],
+  ["bateria", "batería"],
+  ["telefono", "teléfono"],
+  ["raton", "ratón"],
+  // `menu` tampoco: `<menu>` es un elemento HTML real y aparece como opcion de
+  // quiz en html-semantica, y `.menu` es una clase corriente. Misma familia que
+  // `areas`: la palabra esta demasiado enredada con el codigo que nombra.
+  ["demas", "demás"],
+  ["detras", "detrás"],
+  ["atras", "atrás"],
+  ["reves", "revés"],
+  ["ahi", "ahí"],
+  ["asi", "así"],
+  ["aqui", "aquí"],
+  ["alli", "allí"],
+  ["dia", "día"],
+  ["todavia", "todavía"],
+  ["habia", "había"],
+  ["estan", "están"],
+  ["sera", "será"],
+  ["seria", "sería"],
+  ["haria", "haría"],
+  ["podria", "podría"],
+  ["deberia", "debería"],
+  ["tendria", "tendría"],
+  ["tendra", "tendrá"],
+  ["cambiara", "cambiará"],
+  ["mostrara", "mostrará"],
+  ["veras", "verás"],
+  ["dinamicamente", "dinámicamente"],
+  ["practicamente", "prácticamente"],
+  ["rapidamente", "rápidamente"],
+  ["explicitamente", "explícitamente"],
+  ["implicitamente", "implícitamente"],
+  ["especificamente", "específicamente"],
+  ["digitos", "dígitos"],
+  ["proximo", "próximo"],
+  // `areas` NO se puede exigir: `\b` trata el guion como frontera, asi que
+  // `grid-template-areas` -- el nombre de la propiedad, que va sin tilde --
+  // matchea `areas` y el guard reclama una tilde que arruinaria el codigo.
+  // El plural en prosa ("las áreas de la cuadrícula") queda sin cubrir a
+  // proposito: es el precio de no romper el nombre de la propiedad.
+];
+
+/**
+ * ## Reglas por TERMINACION, que van ANTES de la lista
+ *
+ * El conjunto de palabras mal escritas no es enumerable: depende del
+ * vocabulario que alguien use manana. El de terminaciones si lo es, y es chico.
+ *
+ * Medido el 2026-09-18: el guard tenia 61 formas y el barrido manual 300, y un
+ * patron de tres letras (`-cion`) encontro 32 errores que NINGUNO de los dos
+ * tenia -- `formacion`, `expansion`, `meditacion`, `leccion`, `negacion`. Por
+ * eso el orden importa: si este guard se arma enumerando, nace con el mismo
+ * agujero que tenia antes, solo que mas grande y mas dificil de ver.
+ *
+ * Cada regla trae abajo su control positivo Y su control negativo, en tests
+ * distintos: uno prueba que caza lo que tiene que cazar, el otro que no se
+ * pasa de rosca. Un solo control no distingue "la regla anda" de "la regla
+ * matchea todo".
+ */
+/**
+ * El `\b` final NO alcanza, y esta es la misma trampa que ya documenta
+ * `ocurrenciasQueSonError` mas abajo: en JavaScript `\b` es ASCII, asi que
+ * entre `n` y `o` HAY frontera de palabra. Sin el lookahead, `-cion\b` matchea
+ * DENTRO de `funciono`, `fusiono`, `Seleccionas` e `inspeccionas` -- todas
+ * perfectamente escritas -- y el guard reclama una tilde que ya esta puesta.
+ *
+ * Medido el 2026-09-18: la primera version de estas reglas dio 10 fallas y las
+ * 10 eran de esta clase. Cero errores reales. Un guard que rechaza prosa
+ * correcta no protege la ortografia: empuja a escribirla peor para callarlo.
+ */
+const NO_SIGUE_LETRA = "(?![a-záéíóúñüA-ZÁÉÍÓÚÑÜ])";
+
+const REGLAS: { nombre: string; patron: RegExp; excepciones: Set<string> }[] = [
+  {
+    // `funcion` -> `función`. El PLURAL pierde la tilde (`funciones`), y el
+    // \b final ya lo deja afuera.
+    nombre: "-cion / -sion en singular llevan tilde",
+    patron: new RegExp("\\b[a-záéíóúñ]{2,}[cs]ion\\b" + NO_SIGUE_LETRA, "gi"),
+    excepciones: new Set(["ion"]),
+  },
+  {
+    // Familias de sufijo donde la `i` SIEMPRE es tonica. No vale una regla
+    // general de `-ia`: `materia`, `historia`, `distancia` y `democracia` van
+    // sin tilde, y exigirsela seria un error peor que la omision.
+    nombre: "-grafia / -logia / -metria / -nomia / -arquia / -goria llevan tilde",
+    patron: new RegExp("\\b[a-záéíóúñ]{2,}(?:grafia|logia|metria|nomia|arquia|goria)\\b" + NO_SIGUE_LETRA, "gi"),
+    excepciones: new Set(),
+  },
+  {
+    // Formas que SOLO existen en voseo, asi que sin tilde estan mal siempre.
+    // Son invisibles para los dos barridos anteriores: no son tuteo, y no
+    // figuran en ningun diccionario armado sobre tuteo. Quedaron cinco vivas
+    // en produccion hasta que aparecieron por terminacion.
+    // OJO con lo que NO esta: `estas` es demostrativo ("estas propiedades") y
+    // `haces`/`sabes`/`puedes` son tuteo valido en castellano, no faltas de
+    // tilde. Esas son cuestion de VOZ, no de ortografia, y no son de este guard.
+    nombre: "formas de voseo sin su tilde",
+    patron: new RegExp("\\b(?:podes|tenes|queres|escribis|decis|elegis|seguis|venis|salis|abris|subis|vivis|medis|pedis|repetis|sentis|dormis|conseguis|preferis)\\b" + NO_SIGUE_LETRA, "gi"),
+    excepciones: new Set(),
+  },
+  {
+    // La `ñ` escrita como `n` o `ni`. Es la falta mas grave de todas porque
+    // sale en pantalla y se lee como otro idioma.
+    nombre: "la ñ escrita como n o ni",
+    patron: new RegExp("\\b(?:espanol|contrasena|tamanio|disenio|pequenio|ensena|compania|manana|nino|extrano|sueno|duenio|anios|anos)\\b" + NO_SIGUE_LETRA, "gi"),
+    excepciones: new Set(),
+  },
 ];
 
 /** Reemplaza el codigo por espacios, conservando las posiciones. */
@@ -263,6 +401,70 @@ describe("palabras que son sustantivo con tilde y verbo sin tilde", () => {
     for (const frase of ["que habilite el modulo", "que deposite el valor", "que milite ahi"]) {
       expect(ocurrenciasQueSonError(frase, "limite", SUF)).toBe(0);
     }
+  });
+});
+
+/** Las palabras de `prosa` que una regla morfologica marca como mal escritas. */
+function faltasPorRegla(prosa: string, regla: (typeof REGLAS)[number]): string[] {
+  return (prosa.match(regla.patron) ?? []).filter((w) => !regla.excepciones.has(w.toLowerCase()));
+}
+
+describe("reglas por terminacion", () => {
+  /**
+   * Control POSITIVO: la regla caza lo que tiene que cazar. Sin esto, una regla
+   * rota devuelve cero y el cero se lee como "esta todo bien".
+   */
+  it("cada regla detecta una palabra que sabemos mal escrita", () => {
+    const casos: [string, string][] = [
+      ["-cion / -sion en singular llevan tilde", "la formacion de la expansion"],
+      ["-grafia / -logia / -metria / -nomia / -arquia / -goria llevan tilde", "la tipografia y la jerarquia"],
+      ["formas de voseo sin su tilde", "si podes, tenes que escribirlo"],
+      ["la ñ escrita como n o ni", "en espanol, el tamanio de la contrasena"],
+    ];
+    for (const [nombre, frase] of casos) {
+      const regla = REGLAS.find((r) => r.nombre === nombre)!;
+      expect(faltasPorRegla(frase, regla).length).toBeGreaterThan(0);
+    }
+  });
+
+  /**
+   * Control NEGATIVO, en un test DISTINTO del positivo a proposito: una regla
+   * que matchea todo tambien pasa el positivo. Hacen falta los dos, y tienen
+   * que poder fallar por separado.
+   */
+  it("ninguna regla marca prosa que ya esta bien escrita", () => {
+    const bienEscrito = [
+      // Plurales en -ciones: la tilde se PIERDE, exigirla seria el error inverso.
+      "las funciones y las declaraciones y las opciones",
+      // -ia atono: nada de esto lleva tilde.
+      "la materia, la historia, la distancia, la importancia, la democracia",
+      // Tuteo valido: es cuestion de voz, no de ortografia.
+      "si puedes y sabes lo que haces",
+      // Demostrativo, sin tilde desde 2010.
+      "estas propiedades y esta regla",
+      // Ya acentuado: la regla no puede volver a reclamarlo.
+      "la formación, la tipografía, el español, podés, tenés",
+    ];
+    for (const frase of bienEscrito) {
+      for (const regla of REGLAS) {
+        expect(faltasPorRegla(frase, regla)).toEqual([]);
+      }
+    }
+  });
+
+  it("ninguna terminacion mal escrita sobrevive en el curriculum", () => {
+    const fallas: string[] = [];
+
+    for (const m of ALL_MODULES) {
+      const prosa = prosaDe(m);
+      for (const regla of REGLAS) {
+        for (const w of faltasPorRegla(prosa, regla)) {
+          fallas.push(`${m.dojo}/${m.slug}: "${w}" (${regla.nombre})`);
+        }
+      }
+    }
+
+    expect(fallas).toEqual([]);
   });
 });
 

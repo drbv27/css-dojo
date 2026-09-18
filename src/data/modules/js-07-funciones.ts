@@ -1011,7 +1011,7 @@ La recursión **siempre se puede reescribir como un ciclo**. La elección depend
 
 > **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usá recursión cuando aporte claridad.
 
-### Número de Fibonacci (otro clasico)
+### Número de Fibonacci (otro clásico)
 
 \`\`\`javascript
 function fibonacci(n) {

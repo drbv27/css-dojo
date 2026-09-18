@@ -28,7 +28,7 @@ Para crear un contenedor grid, usá \`display: grid\`:
 }
 \`\`\`
 
-Todos los hijos directos del contenedor se convierten en **grid items** (elementos de cuadricula).
+Todos los hijos directos del contenedor se convierten en **grid items** (elementos de cuadrícula).
 
 ### Definir columnas y filas
 
@@ -228,7 +228,7 @@ Define un rango de tamaño para columnas o filas:
 
 ### auto-fill y auto-fit
 
-Estas palabras clave dentro de \`repeat()\` crean cuadriculas **responsivas automáticamente**, sin necesidad de media queries:
+Estas palabras clave dentro de \`repeat()\` crean cuadrículas **responsivas automáticamente**, sin necesidad de media queries:
 
 \`\`\`css
 /* auto-fill: crea tantas columnas como quepan */
@@ -267,7 +267,7 @@ Valores de \`grid-auto-flow\`:
 - \`column\`: Nuevos elementos van en columnas
 - \`dense\`: Intenta rellenar huecos en la cuadrícula
 
-> **Patrón estrella:** \`repeat(auto-fit, minmax(250px, 1fr))\` es la solución más elegante para cuadriculas responsivas. Funciona sin media queries y se adapta a cualquier pantalla.`,
+> **Patrón estrella:** \`repeat(auto-fit, minmax(250px, 1fr))\` es la solución más elegante para cuadrículas responsivas. Funciona sin media queries y se adapta a cualquier pantalla.`,
       codeExample: {
         html: `<div class="galeria">\n  <div class="foto">1</div>\n  <div class="foto">2</div>\n  <div class="foto">3</div>\n  <div class="foto">4</div>\n  <div class="foto">5</div>\n  <div class="foto">6</div>\n  <div class="foto">7</div>\n  <div class="foto">8</div>\n</div>`,
         css: `.galeria {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));\n  grid-auto-rows: 100px;\n  gap: 10px;\n}\n.foto {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-radius: 8px;\n}`,
@@ -367,7 +367,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         { id: "d", text: "grid-template: on", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es una propiedad display con un valor específico para cuadriculas.",
+      hint: "Es una propiedad display con un valor específico para cuadrículas.",
       explanation:
         "Para activar CSS Grid se usa 'display: grid' en el contenedor. Todos sus hijos directos se convierten automáticamente en grid items.",
     },

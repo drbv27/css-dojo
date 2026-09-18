@@ -784,7 +784,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "d", text: "use() reemplaza todos los hooks", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Rompe una de las reglas clasicas de los hooks.",
+      hint: "Rompe una de las reglas clásicas de los hooks.",
       explanation: "A diferencia de useContext que solo puede llamarse en el nivel superior, use() puede usarse dentro de if, for y otras estructuras condicionales.",
     },
     {

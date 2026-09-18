@@ -363,7 +363,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Clasifica cada tecnologia según su tipo:",
+      prompt: "Clasifica cada tecnología según su tipo:",
       dragItems: [
         { id: "drag-1", content: "SVG", correctZone: "zone-vectorial" },
         { id: "drag-2", content: "Canvas", correctZone: "zone-raster" },

@@ -384,7 +384,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       },
       hint: "Arial no tiene remates (sans-serif), Georgia tiene remates decorativos (serif), y Courier New tiene caracteres de ancho fijo (monospace).",
       explanation:
-        "Arial es sans-serif (sin remates, moderna). Georgia es serif (con remates decorativos, clasica). Courier New es monospace (cada carácter ocupa el mismo ancho, ideal para código).",
+        "Arial es sans-serif (sin remates, moderna). Georgia es serif (con remates decorativos, clásica). Courier New es monospace (cada carácter ocupa el mismo ancho, ideal para código).",
     },
     {
       id: "04-ej-04",

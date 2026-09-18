@@ -28,7 +28,7 @@ La **accesibilidad web** (a11y) significa crear sitios que todas las personas pu
 Las **Pautas de Accesibilidad para el Contenido Web** (WCAG) se basan en:
 
 1. **Perceptible:** La información debe poder percibirse (no solo visual)
-2. **Operable:** La interfaz debe poder operarse (teclado, no solo raton)
+2. **Operable:** La interfaz debe poder operarse (teclado, no solo ratón)
 3. **Comprensible:** El contenido debe ser fácil de entender
 4. **Robusto:** Debe funcionar con diferentes tecnologias asistivas
 
@@ -286,7 +286,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
         blanks: ["aria-hidden"],
       },
       validation: { type: "exact", answer: "aria-hidden" },
-      hint: "Este atributo ARIA oculta elementos de la tecnologia asistiva.",
+      hint: "Este atributo ARIA oculta elementos de la tecnología asistiva.",
       explanation:
         'aria-hidden="true" oculta un elemento de los lectores de pantalla. Es útil para iconos decorativos que no aportan información.',
     },

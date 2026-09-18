@@ -96,7 +96,7 @@ Para una **medición fija** dentro de un rango conocido: batería, espacio en di
 | Elemento | Cuando usarlo |
 |----------|---------------|
 | \`<progress>\` | Algo **avanza** hacia una meta (descarga, subida, pasos completados) |
-| \`<meter>\` | Una **medida** en un rango conocido (bateria, disco, nota) |
+| \`<meter>\` | Una **medida** en un rango conocido (batería, disco, nota) |
 
 > Regla mental: **progress = progreso** (se mueve hacia el final). **meter = medidor** (una foto fija de una cantidad).`,
       codeExample: {

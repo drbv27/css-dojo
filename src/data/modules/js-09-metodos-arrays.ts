@@ -141,7 +141,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
 \`sort()\` ordena el array **en su lugar** (muta el original):
 
 \`\`\`javascript
-// Para numeros, necesitás una funcion de comparacion
+// Para numeros, necesitas una funcion de comparacion
 const nums = [3, 1, 4, 1, 5];
 nums.sort((a, b) => a - b); // ascendente
 nums.sort((a, b) => b - a); // descendente

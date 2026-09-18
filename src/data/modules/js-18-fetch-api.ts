@@ -283,7 +283,7 @@ document.getElementById("error").addEventListener("click", function() {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Debés verificar response.ok manualmente.",
-      explanation: "fetch solo rechaza la Promise en errores de red (sin conexion). Para errores HTTP (404, 500), debés verificar response.ok.",
+      explanation: "fetch solo rechaza la Promise en errores de red (sin conexión). Para errores HTTP (404, 500), debés verificar response.ok.",
     },
     {
       id: "js18-ej-04",

@@ -491,7 +491,7 @@ sass/
 
 ### BEM + Sass
 
-La metodologia BEM (Block, Element, Modifier) combina perfectamente con el nesting de Sass:
+La metodología BEM (Block, Element, Modifier) combina perfectamente con el nesting de Sass:
 
 \`\`\`scss
 // Bloque
@@ -729,7 +729,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 6,
       prompt:
-        "¿En la metodologia BEM con Sass, cómo se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
+        "¿En la metodología BEM con Sass, cómo se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
       options: [
         { id: "a", text: ".tarjeta { .título { } }", isCorrect: false },
         { id: "b", text: ".tarjeta { &__título { } }", isCorrect: true },

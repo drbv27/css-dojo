@@ -56,7 +56,7 @@ El navegador envia una **solicitud HTTP** al servidor donde está alojada la pá
 ### 2. Respuesta del servidor
 El servidor responde enviando los archivos necesarios: **HTML**, CSS, JavaScript, imágenes, etc.
 
-### 3. Parsing (Analisis)
+### 3. Parsing (Análisis)
 El navegador lee el HTML y construye el **DOM** (Document Object Model), que es una representación en forma de árbol de todos los elementos de la página.
 
 ### 4. Renderizado

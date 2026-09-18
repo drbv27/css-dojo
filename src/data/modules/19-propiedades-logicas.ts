@@ -40,8 +40,8 @@ Si usás propiedades fisicas, tu layout se rompe al cambiar de idioma:
 
 Las propiedades lógicas usan conceptos **relativos al flujo de escritura**:
 
-- **Inline**: la dirección en que fluye el texto (horizontal en espanol)
-- **Block**: la dirección en que se apilan los bloques (vertical en espanol)
+- **Inline**: la dirección en que fluye el texto (horizontal en español)
+- **Block**: la dirección en que se apilan los bloques (vertical en español)
 - **Start**: donde empieza el texto (izquierda en español, derecha en arabe)
 - **End**: donde termina el texto (derecha en español, izquierda en arabe)
 
@@ -312,7 +312,7 @@ Controla la orientación de los caracteres en texto vertical:
       validation: { type: "exact", answer: "b" },
       hint: "En modo de escritura horizontal, el ancho corresponde a la dirección 'inline' (la dirección del texto).",
       explanation:
-        "En modo de escritura horizontal (el por defecto en espanol), 'inline-size' es equivalente a 'width' porque la dirección inline es horizontal. Si el writing-mode fuera vertical, inline-size definiria el alto.",
+        "En modo de escritura horizontal (el por defecto en español), 'inline-size' es equivalente a 'width' porque la dirección inline es horizontal. Si el writing-mode fuera vertical, inline-size definiria el alto.",
     },
     {
       id: "14-ej-02",

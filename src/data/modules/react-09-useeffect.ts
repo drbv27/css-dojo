@@ -215,7 +215,7 @@ useEffect(() => {
 }, [url]);
 \`\`\`
 
-> **Importante:** Siempre limpia lo que crees. Si no, tendras bugs difíciles de encontrar.`,
+> **Importante:** Siempre limpia lo que crees. Si no, tendrás bugs difíciles de encontrar.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>

@@ -196,7 +196,7 @@ Podés escribir padding con 1, 2, 3 o 4 valores:
 
 ### Regla mnemotecnica
 
-Los 4 valores van en **sentido del reloj** empezando por arriba: **T**op, **R**ight, **B**ottom, **L**eft. Recordá: **TR**ou**BL**e (problema en ingles).
+Los 4 valores van en **sentido del reloj** empezando por arriba: **T**op, **R**ight, **B**ottom, **L**eft. Recordá: **TR**ou**BL**e (problema en inglés).
 
 > **Importante:** El padding NUNCA puede ser negativo. Si necesitás valores negativos, usá margin.`,
       codeExample: {
@@ -227,7 +227,7 @@ Funciona igual que padding (1-4 valores, sentido del reloj):
 
 ### Centrar con margin auto
 
-Uno de los trucos más clasicos de CSS. Para centrar un elemento horizontalmente:
+Uno de los trucos más clásicos de CSS. Para centrar un elemento horizontalmente:
 
 \`\`\`css
 .centrado {

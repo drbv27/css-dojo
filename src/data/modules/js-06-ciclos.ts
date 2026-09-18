@@ -42,7 +42,7 @@ for (let i = 10; i > 0; i--) {
 }
 \`\`\`
 
-> **Cuidado:** Si la condición nunca se hace falsa, tendras un **ciclo infinito** que colgara tu navegador.`,
+> **Cuidado:** Si la condición nunca se hace falsa, tendrás un **ciclo infinito** que colgara tu navegador.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',

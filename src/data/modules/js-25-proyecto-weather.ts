@@ -39,7 +39,7 @@ La API devuelve un objeto con:
 2. Hacer la petición con fetch
 3. Procesar la respuesta JSON
 4. Renderizar los datos en el DOM
-5. Manejar errores (ciudad no encontrada, sin conexion)
+5. Manejar errores (ciudad no encontrada, sin conexión)
 
 ### El dato que escribe el usuario no se pega con innerHTML
 
@@ -139,7 +139,7 @@ buscarClima("Madrid");`,
       title: "Pronostico y mejoras visuales",
       content: `## Pronostico extendido
 
-La API de wttr.in también proporciona pronostico para los proximos días:
+La API de wttr.in también proporciona pronostico para los próximos días:
 
 \`\`\`javascript
 const forecast = data.weather; // array de dias

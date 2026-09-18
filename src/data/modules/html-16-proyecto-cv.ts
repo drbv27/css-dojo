@@ -32,7 +32,7 @@ Así que este CV va a verse **plano a propósito** — texto negro sobre fondo b
 ### Por que un CV
 
 Porque es un **documento real** (no un "sitio"): se compone de texto, títulos, listas y una tabla —
-justo lo que HTML hace bien. Y al terminar tendras algo tuyo, listo para reutilizar.
+justo lo que HTML hace bien. Y al terminar tendrás algo tuyo, listo para reutilizar.
 
 ### Lo que va a tener
 

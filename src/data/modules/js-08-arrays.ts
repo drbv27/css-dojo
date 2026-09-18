@@ -307,7 +307,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       xpReward: 25,
       order: 7,
       prompt:
-        "Escribí `ultimo(lista)` que devuelva el último elemento de un array, o `undefined` si está vacío.\n\n  ultimo([1, 2, 3])   → 3\n  ultimo([\"a\"])       → \"a\"\n  ultimo([])          → undefined",
+        "Escribí `ultimo(lista)` que devuelva el último elemento de un array, o `undefined` si está vacío.\n\n  último([1, 2, 3])   → 3\n  último([\"a\"])       → \"a\"\n  último([])          → undefined",
       codeTemplate: {
         html: "",
         cssPrefix: "function ultimo(lista) {\n  // tu código\n}",

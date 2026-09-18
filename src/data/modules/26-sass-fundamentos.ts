@@ -80,7 +80,7 @@ También podés usar herramientas como **Vite**, **Webpack** o **Parcel** que co
 ### CSS generado
 
 \`\`\`scss
-// SCSS que escribís
+// SCSS que escribes
 $color-primario: #3498db;
 
 .boton {

@@ -133,7 +133,7 @@ padre > hijo {
 
 ### Cuando usarlo
 
-- Cuando tenés **estructuras anidadas** (menus con submenus, listas con sublistas)
+- Cuando tenés **estructuras anidadas** (menús con submenus, listas con sublistas)
 - Para evitar que los estilos **se filtren** a elementos más profundos
 - Para crear selectores más **predecibles** y controlados
 
