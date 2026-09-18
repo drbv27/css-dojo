@@ -16,6 +16,7 @@ import {
   Gamepad2,
   Settings,
   Award,
+  Info,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
@@ -23,6 +24,7 @@ import { getRank } from "@/lib/xp";
 import type { NavItem } from "@/types";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Info,
   LayoutDashboard,
   BookOpen,
   Code,
