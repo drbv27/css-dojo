@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     description:
       "Conviértete en un dev de cinturón negro. Domina HTML, CSS, JavaScript y React paso a paso.",
     type: "website",
-    locale: "es_ES",
+    locale: "es_CO",
     siteName: "Dev Dojo",
     // TODO: agregar imagen OG (1200x630) en /public/og-image.png — idealmente un
     // screenshot de la escena 3D. Cuando exista, sumar `images: [...]` aquí y en twitter.
