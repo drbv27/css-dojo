@@ -343,7 +343,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa para eliminar duplicados de un array usando Set:",
+      prompt: "Completá para eliminar duplicados de un array usando Set:",
       codeTemplate: {
         html: "",
         cssPrefix: "const unicos = [...new ",

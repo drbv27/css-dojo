@@ -32,7 +32,7 @@ document
 
 ### El objeto document
 
-\`document\` es el punto de entrada al DOM. Desde el puedes acceder a cualquier elemento:
+\`document\` es el punto de entrada al DOM. Desde el podés acceder a cualquier elemento:
 
 \`\`\`javascript
 document.title         // titulo de la pagina
@@ -95,7 +95,7 @@ const clases = document.getElementsByClassName("item");
 const divs = document.getElementsByTagName("div");
 \`\`\`
 
-> **Recomendación:** Usa \`querySelector\` y \`querySelectorAll\` en código moderno. Son más flexibles y aceptan cualquier selector CSS.`,
+> **Recomendación:** Usá \`querySelector\` y \`querySelectorAll\` en código moderno. Son más flexibles y aceptan cualquier selector CSS.`,
       codeExample: {
         html: '<ul id="lista">\n  <li class="item">Elemento 1</li>\n  <li class="item activo">Elemento 2</li>\n  <li class="item">Elemento 3</li>\n</ul>\n<div id="resultado"></div>',
         css: '.item { padding: 4px 0; color: #cdd6f4; } .activo { color: #a6e3a1; font-weight: bold; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -131,7 +131,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Navegación por el DOM",
       content: `## Navegación por el DOM
 
-Desde cualquier elemento puedes navegar a sus parientes:
+Desde cualquier elemento podés navegar a sus parientes:
 
 ### Nodos padre
 \`\`\`javascript
@@ -159,7 +159,7 @@ const contenedor = document.getElementById("app");
 const btn = contenedor.querySelector("button"); // busca SOLO dentro del contenedor
 \`\`\`
 
-> **Tip:** Usa \`children\` en vez de \`childNodes\` para evitar nodos de texto vacíos.`,
+> **Tip:** Usá \`children\` en vez de \`childNodes\` para evitar nodos de texto vacíos.`,
       codeExample: {
         html: '<div id="contenedor">\n  <h3>Titulo</h3>\n  <p id="parrafo">Texto del parrafo</p>\n  <span>Un span</span>\n</div>\n<div id="resultado"></div>',
         css: '#contenedor { padding: 8px; border: 1px solid #45475a; border-radius: 8px; color: #cdd6f4; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -227,7 +227,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: 'Completa para seleccionar el primer elemento con clase "btn":',
+      prompt: 'Completá para seleccionar el primer elemento con clase "btn":',
       codeTemplate: {
         html: "",
         cssPrefix: "const boton = document.",
@@ -235,7 +235,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["querySelector"],
       },
       validation: { type: "exact", answer: "querySelector" },
-      hint: "Selecciona el primer elemento que coincida con un selector CSS.",
+      hint: "Seleccioná el primer elemento que coincida con un selector CSS.",
       explanation: 'querySelector(".btn") selecciona el primer elemento con la clase btn.',
     },
     {

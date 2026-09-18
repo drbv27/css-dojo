@@ -79,7 +79,7 @@ document.getElementById("parsear").addEventListener("click", function() {
       title: "throw y errores personalizados",
       content: `## throw — Lanzar errores
 
-Puedes lanzar tus propios errores:
+Podés lanzar tus propios errores:
 
 \`\`\`javascript
 function dividir(a, b) {
@@ -183,8 +183,8 @@ console.timeEnd("operacion");  // muestra tiempo
 
 En DevTools (F12):
 1. Abre la pestana **Sources**
-2. Haz click en el número de línea para poner un breakpoint
-3. El código se pausa ahí y puedes inspeccionar variables
+2. Hacé click en el número de línea para poner un breakpoint
+3. El código se pausa ahí y podés inspeccionar variables
 
 ### debugger
 
@@ -288,7 +288,7 @@ function procesar(datos) {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para lanzar un error personalizado:",
+      prompt: "Completá para lanzar un error personalizado:",
       codeTemplate: {
         html: "",
         cssPrefix: "",

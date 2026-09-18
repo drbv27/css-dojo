@@ -354,7 +354,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa para que la clase Perro herede de Animal:",
+      prompt: "Completá para que la clase Perro herede de Animal:",
       codeTemplate: {
         html: "",
         cssPrefix: "class Perro ",

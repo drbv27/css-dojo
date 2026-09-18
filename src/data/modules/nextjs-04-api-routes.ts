@@ -187,7 +187,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Cómo defines un endpoint POST en un Route Handler?",
+      prompt: "¿Cómo definís un endpoint POST en un Route Handler?",
       options: [
         { id: "a", text: "app.post('/api/users', handler)", isCorrect: false },
         { id: "b", text: "export async function POST(request: Request) { ... }", isCorrect: true },
@@ -196,7 +196,7 @@ return NextResponse.json({ error: "No encontrado" }, { status: 404 });
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se exporta una función con el nombre del método HTTP.",
-      explanation: "Exportas funciones nombradas GET, POST, PUT, DELETE. Next.js las asocia al método HTTP correspondiente.",
+      explanation: "Exportás funciones nombradas GET, POST, PUT, DELETE. Next.js las asocia al método HTTP correspondiente.",
     },
     {
       id: "njs04-ej-03",

@@ -113,7 +113,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
 
 ### ¿Cuándo usar cada uno?
 
-| Necesitas... | Server Component | Client Component |
+| Necesitás... | Server Component | Client Component |
 |-------------|-----------------|-----------------|
 | Fetch de datos | Si | No (usa TanStack Query) |
 | Acceso a DB | Si | No |
@@ -121,7 +121,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
 | onClick/onChange | No | Si |
 | localStorage/window | No | Si |
 
-> Piensa en los Server Components como el "backend" de tu UI y los Client Components como las partes interactivas.`,
+> Pensá en los Server Components como el "backend" de tu UI y los Client Components como las partes interactivas.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -146,7 +146,7 @@ return <ClientChart data={data} />; // data se serializa y se envia al cliente
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es lo opuesto a React puro.",
-      explanation: "En App Router todo es Server Component por defecto. Usas 'use client' para opt-in a Client Component.",
+      explanation: "En App Router todo es Server Component por defecto. Usás 'use client' para opt-in a Client Component.",
     },
     {
       id: "njs03-ej-02",

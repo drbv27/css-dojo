@@ -253,7 +253,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para acceder a la propiedad 'edad' usando notación de corchetes:",
+      prompt: "Completá para acceder a la propiedad 'edad' usando notación de corchetes:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const edad = persona[',

@@ -64,7 +64,7 @@ type Animal2 = { nombre: string };
 type Perro2 = Animal2 & { raza: string };
 \`\`\`
 
-> Usa **interface** para objetos y **type** para uniones, tuplas y tipos complejos.`,
+> Usá **interface** para objetos y **type** para uniones, tuplas y tipos complejos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
@@ -231,7 +231,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa el tipo para que acepte string O number:",
+      prompt: "Completá el tipo para que acepte string O number:",
       codeTemplate: {
         html: "",
         cssPrefix: "type ID = string ",

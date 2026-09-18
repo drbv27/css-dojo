@@ -43,7 +43,7 @@ texto.charAt(0) // "J"
 
 ### Inmutabilidad
 
-Los strings son **inmutables**: no puedes cambiar un carácter directamente. Debes crear un nuevo string.
+Los strings son **inmutables**: no podés cambiar un carácter directamente. Debés crear un nuevo string.
 
 > **Nota:** Los índices empiezan en 0, no en 1.`,
       codeExample: {
@@ -83,7 +83,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
 - \`substring(inicio, fin)\` — similar a slice
 - \`split(separador)\` — divide el string en un array
 
-> **Recuerda:** Todos los métodos devuelven un **nuevo string** sin modificar el original.`,
+> **Recordá:** Todos los métodos devuelven un **nuevo string** sin modificar el original.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -111,7 +111,7 @@ Los **template literals** usan backticks y permiten:
 
 ### 1. Interpolación de variables
 
-En lugar de concatenar con +, puedes insertar variables directamente:
+En lugar de concatenar con +, podés insertar variables directamente:
 
 \`\`\`javascript
 const nombre = "Ana";
@@ -132,7 +132,7 @@ Tercera linea\\\`;
 
 ### 3. Expresiones dentro de \${}
 
-Puedes poner cualquier expresión JavaScript:
+Podés poner cualquier expresión JavaScript:
 
 \`\`\`javascript
 \\\`El doble de 5 es \${5 * 2}\\\`
@@ -197,7 +197,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el método para convertir el texto a mayúsculas:",
+      prompt: "Completá el método para convertir el texto a mayúsculas:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const resultado = "hola".to',

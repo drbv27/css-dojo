@@ -84,11 +84,11 @@ const resultado = saludar("Ana");  // imprime "Hola Ana"
 console.log(resultado);             // undefined
 \`\`\`
 
-> **Importante:** \`console.log\` IMPRIME en pantalla. \`return\` DEVUELVE un valor que puedes guardar y usar después. No son lo mismo.
+> **Importante:** \`console.log\` IMPRIME en pantalla. \`return\` DEVUELVE un valor que podés guardar y usar después. No son lo mismo.
 
 ### Argumentos faltantes
 
-Si pasas menos argumentos de los que espera, los faltantes son \`undefined\`:
+Si pasás menos argumentos de los que espera, los faltantes son \`undefined\`:
 
 \`\`\`javascript
 function presentarse(nombre, edad) {
@@ -200,9 +200,9 @@ Con una declaración normal, otro código podría redefinir tu función accident
 
 ### ¿Cuándo usar expresión de funciones?
 
-1. Cuando quieres ser **explícito** sobre el orden de definición (no quieres hoisting).
+1. Cuando querés ser **explícito** sobre el orden de definición (no querés hoisting).
 2. Cuando vas a **pasar la función como argumento** a otra función (callbacks).
-3. Cuando creas funciones **condicionalmente**:
+3. Cuando creás funciones **condicionalmente**:
 
 \`\`\`javascript
 let operacion;
@@ -215,7 +215,7 @@ if (modo === "suma") {
 
 ### Expresión de función nombrada (raro pero útil)
 
-También puedes darle nombre a la función Después de \`function\`:
+También podés darle nombre a la función Después de \`function\`:
 
 \`\`\`javascript
 const factorial = function fact(n) {
@@ -283,7 +283,7 @@ const sumar = (a, b) => {
 
 ### Retorno implícito (una línea)
 
-Si el cuerpo es UNA SOLA EXPRESIÓN, puedes omitir las llaves Y el \`return\`:
+Si el cuerpo es UNA SOLA EXPRESIÓN, podés omitir las llaves Y el \`return\`:
 
 \`\`\`javascript
 // Forma larga
@@ -311,7 +311,7 @@ const sumar = (a, b) => a + b;
 
 ### Múltiples líneas: llaves obligatorias
 
-Cuando hay más de UNA expresión, necesitas llaves Y \`return\` explícito:
+Cuando hay más de UNA expresión, necesitás llaves Y \`return\` explícito:
 
 \`\`\`javascript
 const procesar = texto => {
@@ -323,7 +323,7 @@ const procesar = texto => {
 
 ### Trampa: devolver un objeto literal
 
-Si quieres devolver un objeto directo, **envuelvelo en paréntesis**:
+Si querés devolver un objeto directo, **envuelvelo en paréntesis**:
 
 \`\`\`javascript
 // MAL: las llaves se interpretan como bloque de codigo
@@ -488,9 +488,9 @@ const multiplicar = (a, b) => a * b;
 **Regla pragmatica para principiantes:**
 
 - **Por defecto:** Arrow functions. Son cortas, modernas y son lo que vas a ver en cualquier codebase actual (React, Vue, Node moderno).
-- **Si necesitas hoisting** (poder usar la función antes de declararla): declaración tradicional.
-- **Si trabajas con \`this\` o eres método de un objeto:** declaración o expresión (NO arrow).
-- **Si pasas la función como callback:** arrow function (corta y limpia).
+- **Si necesitás hoisting** (poder usar la función antes de declararla): declaración tradicional.
+- **Si trabajás con \`this\` o sos método de un objeto:** declaración o expresión (NO arrow).
+- **Si pasás la función como callback:** arrow function (corta y limpia).
 
 > **En entrevistas:** te van a preguntar la diferencia entre las 3 formas. Memoricen la tabla.`,
       codeExample: {
@@ -549,7 +549,7 @@ saludar("Ana");     // "Hola Ana!"
 
 ### Detalle importante: solo activa con \`undefined\`
 
-El valor por defecto **solo se usa cuando el parámetro es \`undefined\`** (osea cuando NO se paso). Si pasas \`null\`, \`0\`, \`""\` o \`false\`, usa ESE valor (no el default).
+El valor por defecto **solo se usa cuando el parámetro es \`undefined\`** (osea cuando NO se paso). Si pasás \`null\`, \`0\`, \`""\` o \`false\`, usa ESE valor (no el default).
 
 \`\`\`javascript
 const saludar = (nombre = "amigo") => "Hola " + nombre;
@@ -1009,7 +1009,7 @@ La recursión **siempre se puede reescribir como un ciclo**. La elección depend
 | Problemas matematicos definidos recursivamente (factorial, fibonacci) | Recursión |
 | Cuando importa el rendimiento | Ciclo (es más rápido) |
 
-> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usa recursión cuando aporte claridad.
+> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usá recursión cuando aporte claridad.
 
 ### Número de Fibonacci (otro clasico)
 
@@ -1110,7 +1110,7 @@ const calculadora = {
 };
 \`\`\`
 
-> Las dos hacen exactamente lo mismo. Usa la corta en código moderno.
+> Las dos hacen exactamente lo mismo. Usá la corta en código moderno.
 
 ## La palabra clave \`this\`
 
@@ -1163,7 +1163,7 @@ persona.saludarBien();  // "Hola Ana"
 persona.saludarMal();   // "Hola undefined"
 \`\`\`
 
-> **Regla de oro:** Para definir métodos, usa **función tradicional** o **sintaxis corta ES6**. NO uses arrow functions.
+> **Regla de oro:** Para definir métodos, usá **función tradicional** o **sintaxis corta ES6**. NO uses arrow functions.
 
 ## Métodos que modifican el propio objeto
 
@@ -1188,7 +1188,7 @@ contador.cuenta;         // 0
 
 ## Encadenamiento de métodos
 
-Si un método devuelve \`this\`, puedes encadenar llamadas:
+Si un método devuelve \`this\`, podés encadenar llamadas:
 
 \`\`\`javascript
 const lista = {
@@ -1320,7 +1320,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "El parámetro es opcional, el argumento obligatorio", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en una función: la cosa entre paréntesis al definirla vs al llamarla.",
+      hint: "Pensá en una función: la cosa entre paréntesis al definirla vs al llamarla.",
       explanation:
         "Parámetro es la variable que aparece en la definición: function f(a, b). ARGUMENTO es el valor concreto que se pasa al llamarla: f(5, 3).",
     },
@@ -1330,7 +1330,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1,
       xpReward: 10,
       order: 4,
-      prompt: "Completa la arrow function que duplica un número:",
+      prompt: "Completá la arrow function que duplica un número:",
       codeTemplate: {
         html: "",
         cssPrefix: "const doble = x ",
@@ -1373,7 +1373,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "const f = function => x * 2;", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Con un solo parámetro, no necesitas paréntesis.",
+      hint: "Con un solo parámetro, no necesitás paréntesis.",
       explanation: "const f = x => x * 2 es la sintaxis correcta. Con un parámetro los paréntesis son opcionales.",
     },
     {
@@ -1519,7 +1519,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3,
       xpReward: 30,
       order: 14,
-      prompt: "Completa el caso base del factorial recursivo:",
+      prompt: "Completá el caso base del factorial recursivo:",
       codeTemplate: {
         html: "",
         cssPrefix: "function factorial(n) { if (n ",
@@ -1545,7 +1545,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Una función que no devuelve nada", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en 'array.push()' o 'string.toUpperCase()'.",
+      hint: "Pensá en 'array.push()' o 'string.toUpperCase()'.",
       explanation:
         "Un método es una función guardada como propiedad de un objeto. Por eso podemos llamarlos con notación de punto: objeto.método().",
     },

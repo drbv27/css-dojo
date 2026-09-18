@@ -431,7 +431,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa para hacer una petición GET con fetch y esperar la respuesta:",
+      prompt: "Completá para hacer una petición GET con fetch y esperar la respuesta:",
       codeTemplate: {
         html: "",
         cssPrefix: "const response = ",

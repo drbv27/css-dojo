@@ -234,7 +234,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Duplica la interface", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Partial = parcial, no necesitas enviar todo.",
+      hint: "Partial = parcial, no necesitás enviar todo.",
       explanation: "¿Partial<T> convierte todas las propiedades de T en opcionales (?), útil para actualizaciones parciales.",
     },
     {

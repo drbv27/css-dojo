@@ -42,7 +42,7 @@ JavaScript fue creado por **Brendan Eich** en solo 10 días en 1995 para el nave
       title: "La consola del navegador",
       content: `## La consola del navegador
 
-La **consola** es la herramienta principal para probar código JavaScript. Puedes abrirla en cualquier navegador con **F12** o **Ctrl+Shift+J**.
+La **consola** es la herramienta principal para probar código JavaScript. Podés abrirla en cualquier navegador con **F12** o **Ctrl+Shift+J**.
 
 ### console.log()
 
@@ -101,12 +101,12 @@ En JavaScript, el punto y coma (\`;\`) al final de cada instrucción es **opcion
 
 ### Buenas prácticas desde el inicio
 
-1. Escribe código **legible** y bien indentado
-2. Usa **nombres descriptivos** para tus variables
+1. Escribí código **legible** y bien indentado
+2. Usá **nombres descriptivos** para tus variables
 3. Comenta el código cuando sea necesario
 4. Prueba tu código frecuentemente
 
-> **Recuerda:** Aprender a programar es como aprender un idioma nuevo. La práctica constante es la clave.`,
+> **Recordá:** Aprender a programar es como aprender un idioma nuevo. La práctica constante es la clave.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -183,7 +183,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 4,
-      prompt: 'Completa el código para mostrar "Hola Mundo" en la consola:',
+      prompt: 'Completá el código para mostrar "Hola Mundo" en la consola:',
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -191,7 +191,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         blanks: ["console.log"],
       },
       validation: { type: "exact", answer: "console.log" },
-      hint: "Usa el objeto console y su método para imprimir.",
+      hint: "Usá el objeto console y su método para imprimir.",
       explanation:
         'console.log("Hola Mundo") imprime el texto "Hola Mundo" en la consola del navegador.',
     },
@@ -209,7 +209,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "** comentario **", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Usa dos caracteres iguales al inicio de la línea.",
+      hint: "Usá dos caracteres iguales al inicio de la línea.",
       explanation:
         "En JavaScript, los comentarios de una línea comienzan con //. Los comentarios de múltiples líneas usan /* */. <!-- --> es para HTML y # es para Python.",
     },

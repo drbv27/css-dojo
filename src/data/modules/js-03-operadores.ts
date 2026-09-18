@@ -36,7 +36,7 @@ x--;  // x vuelve a ser 5
 
 ### Orden de operaciones
 
-JavaScript sigue las reglas matemáticas: primero \`**\`, luego \`*\`, \`/\`, \`%\`, y por último \`+\` y \`-\`. Usa paréntesis para cambiar el orden.`,
+JavaScript sigue las reglas matemáticas: primero \`**\`, luego \`*\`, \`/\`, \`%\`, y por último \`+\` y \`-\`. Usá paréntesis para cambiar el orden.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -79,7 +79,7 @@ Siempre usa \`===\` (igualdad estricta). El \`==\` hace conversión de tipos y p
 0 === ""   // false (tipos diferentes)
 \`\`\`
 
-> **Regla:** Siempre usa \`===\` y \`!==\`. Evita \`==\` y \`!=\`.`,
+> **Regla:** Siempre usa \`===\` y \`!==\`. Evitá \`==\` y \`!=\`.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -209,7 +209,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 4,
-      prompt: "Completa el operador para verificar igualdad estricta entre dos valores:",
+      prompt: "Completá el operador para verificar igualdad estricta entre dos valores:",
       codeTemplate: {
         html: "",
         cssPrefix: "const resultado = 5 ",
@@ -217,7 +217,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["==="],
       },
       validation: { type: "exact", answer: "===" },
-      hint: "Usa tres signos de igual para comparación estricta.",
+      hint: "Usá tres signos de igual para comparación estricta.",
       explanation:
         "=== es el operador de igualdad estricta. Compara tanto el valor como el tipo de dato.",
     },

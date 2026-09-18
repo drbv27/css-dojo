@@ -83,7 +83,7 @@ mostrar();`,
       title: "JSON y localStorage",
       content: `## Almacenar objetos y arrays
 
-localStorage solo acepta strings, pero puedes guardar objetos usando **JSON**:
+localStorage solo acepta strings, pero podés guardar objetos usando **JSON**:
 
 ### JSON.stringify() — Objeto a string
 \`\`\`javascript
@@ -192,7 +192,7 @@ input.addEventListener("input", function() {
 input.value = localStorage.getItem("borrador") || "";
 \`\`\`
 
-> **Recuerda:** localStorage es ideal para preferencias de usuario, borradores y datos no sensibles.`,
+> **Recordá:** localStorage es ideal para preferencias de usuario, borradores y datos no sensibles.`,
       codeExample: {
         html: '<h3 id="titulo">Mi nota</h3>\n<textarea id="nota" rows="3" placeholder="Escribe una nota..."></textarea>\n<p id="estado"></p>\n<div id="resultado"></div>',
         css: '#nota { width: 100%; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; resize: vertical; box-sizing: border-box; } #estado { font-size: 12px; color: #a6adc8; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -259,7 +259,7 @@ nota.addEventListener("input", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para convertir un objeto a string JSON:",
+      prompt: "Completá para convertir un objeto a string JSON:",
       codeTemplate: {
         html: "",
         cssPrefix: "const texto = JSON.",

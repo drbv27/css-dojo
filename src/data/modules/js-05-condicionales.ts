@@ -46,7 +46,7 @@ if (nota >= 90) {
 }
 \`\`\`
 
-> **Importante:** La condición se evalua como booleano. Recuerda los valores falsy y truthy.`,
+> **Importante:** La condición se evalua como booleano. Recordá los valores falsy y truthy.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -105,7 +105,7 @@ switch (dia) {
 ### Importante sobre switch
 - Cada \`case\` necesita un \`break\` para evitar que siga ejecutando los siguientes casos
 - \`default\` es como el \`else\` — se ejecuta si ningun case coincide
-- Usa switch cuando tengas 3 o más comparaciones con el mismo valor`,
+- Usá switch cuando tengas 3 o más comparaciones con el mismo valor`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; }',
@@ -144,7 +144,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Condiciones compuestas",
       content: `## Condiciones compuestas
 
-Puedes combinar múltiples condiciones usando operadores lógicos:
+Podés combinar múltiples condiciones usando operadores lógicos:
 
 ### AND (&&) — Ambas deben ser verdaderas
 \`\`\`javascript
@@ -169,7 +169,7 @@ if (!estaLloviendo) {
 
 ### Anidación de condicionales
 
-Puedes poner un if dentro de otro, pero no abuses:
+Podés poner un if dentro de otro, pero no abuses:
 
 \`\`\`javascript
 if (usuario) {
@@ -183,7 +183,7 @@ if (usuario && usuario.esAdmin) {
 }
 \`\`\`
 
-> **Tip:** Evita anidar más de 2-3 niveles. Refactoriza usando funciones o early returns.`,
+> **Tip:** Evitá anidar más de 2-3 niveles. Refactoriza usando funciones o early returns.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cdd6f4; border-radius: 8px; white-space: pre-line; }',
@@ -255,7 +255,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa la estructura condicional para manejar el caso en que la condición sea falsa:",
+      prompt: "Completá la estructura condicional para manejar el caso en que la condición sea falsa:",
       codeTemplate: {
         html: "",
         cssPrefix: 'if (edad >= 18) {\n  acceso = "Si";\n} ',
@@ -298,7 +298,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "if (x between 10 and 20)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Necesitas que ambas condiciones sean verdaderas al mismo tiempo.",
+      hint: "Necesitás que ambas condiciones sean verdaderas al mismo tiempo.",
       explanation:
         "Se usa && porque x debe cumplir AMBAS condiciones: ser >= 10 Y <= 20. Con || cualquier número sería valido.",
     },

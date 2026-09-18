@@ -105,7 +105,7 @@ HTML5 tiene validación nativa:
 
 Pero JavaScript te da **control total** sobre mensajes y lógica.
 
-> **Recuerda:** Siempre valida también en el servidor. La validación del frontend puede ser evadida.`,
+> **Recordá:** Siempre valida también en el servidor. La validación del frontend puede ser evadida.`,
       codeExample: {
         html: '<form id="formulario">\n  <input id="email" placeholder="Email" />\n  <span class="error"></span>\n  <input id="pass" type="password" placeholder="Contrasena (min 6)" />\n  <span class="error"></span>\n  <button type="submit">Enviar</button>\n</form>\n<div id="resultado"></div>',
         css: 'form { display: flex; flex-direction: column; gap: 4px; } input { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } input.invalido { border-color: #f38ba8; } .error { color: #f38ba8; font-size: 12px; min-height: 16px; } button { padding: 8px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -184,7 +184,7 @@ boton.disabled = true;  // deshabilita
 boton.disabled = false; // habilita
 \`\`\`
 
-> **FormData** es especialmente útil con formularios grandes y cuando necesitas enviar datos al servidor.`,
+> **FormData** es especialmente útil con formularios grandes y cuando necesitás enviar datos al servidor.`,
       codeExample: {
         html: '<form id="registro">\n  <input name="nombre" placeholder="Nombre" required />\n  <input name="email" type="email" placeholder="Email" required />\n  <select name="plan">\n    <option value="free">Gratuito</option>\n    <option value="pro">Pro</option>\n    <option value="enterprise">Enterprise</option>\n  </select>\n  <button type="submit">Registrar</button>\n  <button type="button" id="reset">Limpiar</button>\n</form>\n<div id="resultado"></div>',
         css: 'form { display: flex; flex-direction: column; gap: 4px; } input, select { padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; } button { padding: 8px; border: none; border-radius: 4px; cursor: pointer; } button[type="submit"] { background: #a6e3a1; color: #1e1e2e; } #reset { background: #45475a; color: #cdd6f4; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -259,7 +259,7 @@ document.getElementById("reset").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para obtener si un checkbox está marcado:",
+      prompt: "Completá para obtener si un checkbox está marcado:",
       codeTemplate: {
         html: "",
         cssPrefix: "const marcado = checkbox.",

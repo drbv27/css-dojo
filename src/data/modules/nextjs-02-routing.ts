@@ -150,7 +150,7 @@ layout.tsx      <- estructura
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cómo creas una ruta dinámica en Next.js App Router?",
+      prompt: "¿Cómo creás una ruta dinámica en Next.js App Router?",
       options: [
         { id: "a", text: "Usando :id en el nombre del archivo", isCorrect: false },
         { id: "b", text: "Creando una carpeta con [brackets]", isCorrect: true },

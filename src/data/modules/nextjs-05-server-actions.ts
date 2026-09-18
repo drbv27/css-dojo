@@ -59,7 +59,7 @@ export default function NuevoPost() {
 4. La función \`crearPost\` se ejecuta en el servidor
 5. \`revalidatePath\` actualiza los datos en la página
 
-> No necesitas crear un API route + fetch + useState. La Server Action hace todo.`,
+> No necesitás crear un API route + fetch + useState. La Server Action hace todo.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cba6f7; border-radius: 8px; white-space: pre-line; }',
@@ -192,7 +192,7 @@ revalidateTag("posts");
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Se pasa como prop action del <form>.",
-      explanation: "En Next.js, la prop action del form acepta una Server Action directamente. No necesitas fetch.",
+      explanation: "En Next.js, la prop action del form acepta una Server Action directamente. No necesitás fetch.",
     },
     {
       id: "njs05-ej-03",
@@ -234,7 +234,7 @@ revalidateTag("posts");
         type: "exact",
         answer: { "drag-2": "zone-1", "drag-4": "zone-2", "drag-3": "zone-3", "drag-1": "zone-4" },
       },
-      hint: "Empieza con el usuario, termina con la UI actualizada.",
+      hint: "Empezá con el usuario, termina con la UI actualizada.",
       explanation: "El flujo: submit → serializar FormData → ejecutar en servidor → revalidar y actualizar UI.",
     },
     {
