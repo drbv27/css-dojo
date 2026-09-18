@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { ALL_MODULES } from "./index";
+import { GRID_LEVELS } from "@/data/games/grid-levels";
+import { FLEXBOX_LEVELS } from "@/data/games/flexbox-levels";
 
 /**
  * El curriculum se escribio sin tildes ni ñ: 3.030 palabras mal escritas en 101
@@ -282,6 +284,49 @@ function prosaDe(m: (typeof ALL_MODULES)[number]): string {
 }
 
 /**
+ * ## Los niveles de los juegos
+ *
+ * `src/data/games/` no lo miraba NINGUN test, y ahi se corrigieron 44 palabras
+ * mal escritas el 2026-09-18. Un arreglo sin red no es un arreglo, es una
+ * pausa: ese contenido ya volvio una vez y podia volver otra sin que nada
+ * fallara. Los titulos son lo peor de todo porque son lo primero que se ve en
+ * la lista de niveles ("Salto de linea", "Cuadricula completa").
+ *
+ * ### Que es prosa y que es codigo, dicho y no supuesto
+ *
+ * PROSA (se mide). Las tres se renderizan al alumno:
+ *   - `title`       -> GameEngine.tsx:275
+ *   - `description` -> GameEngine.tsx:278
+ *   - `hint`        -> GameEngine.tsx:314
+ *
+ * CODIGO (no se mide): `property` (nombre de propiedad CSS, se renderiza tal
+ * cual y como placeholder), `initialCSS`, `solutionCSS`, `validateFn`,
+ * `boardConfig.columns/rows/highlightCells`, `items[].id`, `items[].color`,
+ * `items[].targetArea`, `targets[].gridArea`, `containerStyle`, `id`,
+ * `xpReward`.
+ *
+ * AMBIGUO, y por eso se declara en vez de decidirlo en silencio:
+ * `boardConfig.items[].label`. SE RENDERIZA al alumno (GridBoard.tsx:262,
+ * FlexboxBoard.tsx:227), asi que por visibilidad seria prosa. Pero sus valores
+ * son digitos (`1`..`6`), simbolos (`!`) y nombres de area de layout en ingles
+ * (`Header`, `Nav`, `Sidebar`, `Content`, `Hero`, `Footer`), que funcionan como
+ * etiquetas tecnicas pareadas con los tokens de `gridArea`/`targetArea`.
+ * NO se mide: acentuarlos seria un error, y traducirlos es una decision de
+ * producto. Si algun dia se decide que el tablero hable castellano, ese campo
+ * entra aca y hay que revisarlo.
+ */
+type Nivel = (typeof GRID_LEVELS)[number] | (typeof FLEXBOX_LEVELS)[number];
+
+const NIVELES: { juego: string; nivel: Nivel }[] = [
+  ...GRID_LEVELS.map((nivel) => ({ juego: "grid", nivel })),
+  ...FLEXBOX_LEVELS.map((nivel) => ({ juego: "flexbox", nivel })),
+];
+
+function prosaDeNivel(n: Nivel): string {
+  return [n.title, n.description, n.hint].map(sinCodigo).join("\n");
+}
+
+/**
  * Palabras de CON_FLEXION que ADEMAS son una forma verbal escrita SIN tilde. El
  * sustantivo `limite` lleva tilde, pero el subjuntivo de `limitar` no la lleva y
  * se escribe igual: "un ancho que limite el crecimiento". Igual pasa con la
@@ -460,6 +505,65 @@ describe("reglas por terminacion", () => {
       for (const regla of REGLAS) {
         for (const w of faltasPorRegla(prosa, regla)) {
           fallas.push(`${m.dojo}/${m.slug}: "${w}" (${regla.nombre})`);
+        }
+      }
+    }
+
+    expect(fallas).toEqual([]);
+  });
+});
+
+describe("acentuacion de los niveles de los juegos", () => {
+  /**
+   * Control positivo de la EXTRACCION, no de las reglas: prueba que
+   * `prosaDeNivel` realmente llega a los tres campos. Sin esto, un typo en el
+   * extractor devolveria cadena vacia, el barrido daria cero, y el cero se
+   * leeria como "los juegos estan limpios".
+   */
+  it("prosaDeNivel lee title, description y hint", () => {
+    const falso = {
+      title: "Tituloxx",
+      description: "Descripcionxx",
+      hint: "Pistaxx",
+    } as unknown as Nivel;
+    const prosa = prosaDeNivel(falso);
+    expect(prosa).toContain("Tituloxx");
+    expect(prosa).toContain("Descripcionxx");
+    expect(prosa).toContain("Pistaxx");
+  });
+
+  it("hay niveles que revisar", () => {
+    // Si alguien renombra el export, el barrido de abajo pasaria sobre cero
+    // niveles y nadie se enteraria. Ver la nota de la regla de vacuidad.
+    expect(NIVELES.length).toBeGreaterThan(40);
+  });
+
+  it("ninguna palabra inequivoca aparece sin su tilde o su ñ", () => {
+    const fallas: string[] = [];
+
+    for (const { juego, nivel } of NIVELES) {
+      const prosa = prosaDeNivel(nivel);
+      for (const [mal, bien] of AGUDAS_SINGULAR) {
+        const n = ocurrenciasQueSonError(prosa, mal, "");
+        if (n > 0) fallas.push(`${juego}/${nivel.id}: "${mal}" x${n} (va "${bien}")`);
+      }
+      for (const [mal, bien] of CON_FLEXION) {
+        const n = ocurrenciasQueSonError(prosa, mal, "(s|es|a|as|os)?");
+        if (n > 0) fallas.push(`${juego}/${nivel.id}: "${mal}" x${n} (va "${bien}")`);
+      }
+    }
+
+    expect(fallas).toEqual([]);
+  });
+
+  it("ninguna terminacion mal escrita sobrevive en los niveles", () => {
+    const fallas: string[] = [];
+
+    for (const { juego, nivel } of NIVELES) {
+      const prosa = prosaDeNivel(nivel);
+      for (const regla of REGLAS) {
+        for (const w of faltasPorRegla(prosa, regla)) {
+          fallas.push(`${juego}/${nivel.id}: "${w}" (${regla.nombre})`);
         }
       }
     }
