@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { DojoType } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
@@ -69,12 +70,18 @@ function MobileNavLink({
   );
 }
 
-export function MobileMenu() {
+export function MobileMenu({ conteos }: { conteos: Record<DojoType, number> }) {
   const pathname = usePathname();
-  return <MobileMenuDrawer key={pathname} pathname={pathname} />;
+  return <MobileMenuDrawer key={pathname} pathname={pathname} conteos={conteos} />;
 }
 
-function MobileMenuDrawer({ pathname }: { pathname: string }) {
+function MobileMenuDrawer({
+  pathname,
+  conteos,
+}: {
+  pathname: string;
+  conteos: Record<DojoType, number>;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
 
@@ -136,7 +143,7 @@ function MobileMenuDrawer({ pathname }: { pathname: string }) {
         </div>
 
         {/* Track Selector (mismo que desktop) */}
-        <DojoSwitcher />
+        <DojoSwitcher conteos={conteos} />
 
         <div className="mx-3 border-t border-editor-border" />
 

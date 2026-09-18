@@ -6,6 +6,8 @@ import SidebarXP from "@/components/gamification/SidebarXP";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import ApprovalGate from "@/components/auth/ApprovalGate";
 import DojoSwitcher from "@/components/layout/DojoSwitcher";
+import { ALL_MODULES } from "@/data/modules";
+import type { DojoType } from "@/types";
 
 export default async function AppLayout({
   children,
@@ -17,6 +19,13 @@ export default async function AppLayout({
   if (!session) {
     redirect("/login");
   }
+
+  // Se cuenta ACA, en el servidor. `ALL_MODULES` no debe cruzar a un componente
+  // de cliente: son 2,3 MB de curriculum con las respuestas adentro.
+  const conteosPorDojo = ALL_MODULES.reduce<Record<string, number>>((acc, m) => {
+    acc[m.dojo] = (acc[m.dojo] ?? 0) + 1;
+    return acc;
+  }, {}) as Record<DojoType, number>;
 
   const navItems = [
     { href: "/dashboard", icon: "home", label: "Dashboard" },
@@ -47,7 +56,7 @@ export default async function AppLayout({
         </div>
 
         {/* Track Selector */}
-        <DojoSwitcher />
+        <DojoSwitcher conteos={conteosPorDojo} />
 
         <div className="mx-3 border-t border-editor-border" />
 
@@ -103,7 +112,7 @@ export default async function AppLayout({
       <div className="flex-1 flex flex-col min-w-0 relative">
         {/* Mobile menu button - only on mobile */}
         <div className="lg:hidden fixed top-3 left-3 z-50">
-          <MobileMenu />
+          <MobileMenu conteos={conteosPorDojo} />
         </div>
 
         {/* Page content */}

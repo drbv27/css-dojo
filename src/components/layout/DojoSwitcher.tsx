@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FaHtml5, FaReact, FaVuejs, FaPython, FaNodeJs, FaRobot, FaLaptopCode, FaServer } from "react-icons/fa";
 import { SiCss, SiJavascript, SiNextdotjs } from "react-icons/si";
 import { useDojo } from "@/hooks/useDojo";
-import { ALL_MODULES } from "@/data/modules";
 import type { DojoType } from "@/types";
 
 type Estado = "disponible" | "gratis" | "premium";
@@ -86,14 +85,25 @@ function Badge({ estado }: { estado: Estado }) {
   return null;
 }
 
-export default function DojoSwitcher() {
+/**
+ * Los conteos llegan por prop, calculados en el servidor.
+ *
+ * Antes este componente —que es de CLIENTE y vive en el layout raiz de toda el
+ * area autenticada— importaba `ALL_MODULES` solo para contar modulos por dojo.
+ * Eso metia los 113 modulos del curriculum, con sus enunciados y sus
+ * RESPUESTAS, en el bundle de cada pagina logueada. Un numero por dojo no
+ * justifica enviar el curriculum entero al navegador del alumno.
+ */
+export default function DojoSwitcher({
+  conteos,
+}: {
+  conteos: Record<DojoType, number>;
+}) {
   const { activeDojo, setActiveDojo } = useDojo();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
-  const counts = Object.fromEntries(
-    SELECTABLE.map((t) => [t.dojo, ALL_MODULES.filter((m) => m.dojo === t.dojo).length])
-  ) as Record<DojoType, number>;
+  const counts = conteos;
 
   const activeTech = SELECTABLE.find((t) => t.dojo === activeDojo) ?? SELECTABLE[0];
   const activeRuta = RUTAS.find((r) => r.techs.some((t) => t.dojo === activeDojo)) ?? RUTAS[0];
