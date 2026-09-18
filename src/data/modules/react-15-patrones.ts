@@ -58,7 +58,7 @@ function Layout({ header, sidebar, children }) {
 ### Composición vs Herencia
 - React **no usa herencia** entre componentes
 - La composición es más flexible y predecible
-- Puedes pasar componentes como props (slots)
+- Podés pasar componentes como props (slots)
 
 > **Principio:** Favorece la composición sobre la herencia. Es más flexible y más fácil de razonar.`,
       codeExample: {
@@ -168,7 +168,7 @@ const ListaConLoader = withLoader(Lista);
 | Patrón | Cuando usar |
 |--------|-------------|
 | Custom Hooks | **Preferido** para compartir lógica |
-| Render Props | Cuando necesitas control sobre el render |
+| Render Props | Cuando necesitás control sobre el render |
 | HOCs | Legacy, menos común en código moderno |
 
 > **Nota:** Los custom hooks han reemplazado en gran medida a render props y HOCs en React moderno.`,
@@ -256,7 +256,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       title: "Compound Components y patrones avanzados",
       content: `## Compound Components
 
-Los **compound components** trabajan juntos compartiendo estado implícito. Piensa en \`<select>\` y \`<option>\`.
+Los **compound components** trabajan juntos compartiendo estado implícito. Pensá en \`<select>\` y \`<option>\`.
 
 \`\`\`jsx
 // API deseada:
@@ -456,7 +456,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: { d1: "contenido", d2: "funcion", d3: "envuelve", d4: "implicito" } },
       hint: "Cada patrón tiene un mecanismo diferente para compartir o inyectar funcionalidad.",
-      explanation: "Children inyecta contenido, render props usa funciones, HOCs envuelven componentes, y compound components comparten estado via Context implicitamente.",
+      explanation: "Children inyecta contenido, render props usa funciones, HOCs envuelven componentes, y compound components comparten estado via Context implícitamente.",
     },
     {
       id: "react15-ej-05",
@@ -481,7 +481,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el render prop para mostrar las coordenadas del mouse:",
+      prompt: "Completá el render prop para mostrar las coordenadas del mouse:",
       codeTemplate: {
         html: "",
         cssPrefix: "<MouseTracker\n  render={({ x, y }) => (\n    <p>Mouse en: {x}, {",

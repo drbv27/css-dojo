@@ -28,21 +28,21 @@ for (inicializacion; condicion; incremento) {
 2. **Condición:** se evalua antes de cada iteración (\`i < 5\`)
 3. **Incremento:** se ejecuta al final de cada iteración (\`i++\`)
 
-### Ejemplo clasico
+### Ejemplo clásico
 \`\`\`javascript
 for (let i = 0; i < 5; i++) {
   console.log(i); // 0, 1, 2, 3, 4
 }
 \`\`\`
 
-### Iterando hacia atras
+### Iterando hacia atrás
 \`\`\`javascript
 for (let i = 10; i > 0; i--) {
   console.log(i); // 10, 9, 8, ..., 1
 }
 \`\`\`
 
-> **Cuidado:** Si la condición nunca se hace falsa, tendras un **ciclo infinito** que colgara tu navegador.`,
+> **Cuidado:** Si la condición nunca se hace falsa, tendrás un **ciclo infinito** que colgara tu navegador.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -65,7 +65,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "while y do...while",
       content: `## Ciclo while
 
-Repite mientras la condición sea verdadera. Útil cuando **no sabes cuantas veces** se repetira:
+Repite mientras la condición sea verdadera. Útil cuando **no sabés cuantas veces** se repetira:
 
 \`\`\`javascript
 while (condicion) {
@@ -96,7 +96,7 @@ do {
 - \`while\`: verifica **antes** de ejecutar
 - \`do...while\`: ejecuta **antes** de verificar
 
-> **Tip:** Usa \`for\` cuando sepas cuantas iteraciones necesitas. Usa \`while\` cuando dependas de una condición.`,
+> **Tip:** Usá \`for\` cuando sepas cuantas iteraciones necesitás. Usá \`while\` cuando dependas de una condición.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -249,7 +249,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el ciclo for para iterar de 0 a 4:",
+      prompt: "Completá el ciclo for para iterar de 0 a 4:",
       codeTemplate: {
         html: "",
         cssPrefix: "for (let i = 0; i ",
@@ -257,7 +257,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["<"],
       },
       validation: { type: "exact", answer: "<" },
-      hint: "Necesitas un operador de comparación que sea verdadero para 0,1,2,3,4.",
+      hint: "Necesitás un operador de comparación que sea verdadero para 0,1,2,3,4.",
       explanation: "i < 5 es verdadero para i = 0, 1, 2, 3, 4, dando exactamente 5 iteraciones.",
     },
     {
@@ -312,7 +312,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "c" },
       hint: "Si i siempre crece y la condición es >= 0...",
       explanation:
-        "Como i empieza en 0 y siempre incrementa, la condición i >= 0 siempre sera true, creando un ciclo infinito.",
+        "Como i empieza en 0 y siempre incrementa, la condición i >= 0 siempre será true, creando un ciclo infinito.",
     },
   ],
 };

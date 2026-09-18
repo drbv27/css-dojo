@@ -46,7 +46,7 @@ Las **media queries** permiten aplicar estilos CSS solo cuando se cumplen cierta
 
 ### Tipos de media
 
-Puedes especificar el tipo de medio:
+Podés especificar el tipo de medio:
 
 \`\`\`css
 @media screen and (min-width: 768px) { /* Solo pantallas */ }
@@ -88,11 +88,11 @@ Puedes especificar el tipo de medio:
 
 ### ¿Qué son los breakpoints?
 
-Los **breakpoints** son los puntos de ancho donde el diseño cambia para adaptarse mejor al dispositivo. Son los valores que usas en tus media queries.
+Los **breakpoints** son los puntos de ancho donde el diseño cambia para adaptarse mejor al dispositivo. Son los valores que usás en tus media queries.
 
 ### Breakpoints comunes
 
-| Nombre | Ancho | Dispositivo tipico |
+| Nombre | Ancho | Dispositivo típico |
 |--------|-------|-------------------|
 | sm | 640px | Móviles grandes |
 | md | 768px | Tablets |
@@ -129,7 +129,7 @@ La estrategia **mobile-first** consiste en escribir los estilos base para móvil
 
 ### Enfoque Desktop-First (alternativa)
 
-Usa \`max-width\` para empezar desde escritorio y reducir:
+Usá \`max-width\` para empezar desde escritorio y reducir:
 
 \`\`\`css
 /* Base: escritorio */
@@ -155,7 +155,7 @@ Usa \`max-width\` para empezar desde escritorio y reducir:
 ### ¿Por que preferir Mobile-First?
 
 1. **Rendimiento**: Los móviles cargan solo los estilos básicos
-2. **Simplicidad**: Empiezas con lo más simple y agregas complejidad
+2. **Simplicidad**: Empezás con lo más simple y agregás complejidad
 3. **Progresivo**: Es más fácil agregar que quitar
 4. **Estándar**: Es la convención de la industria (Tailwind, Bootstrap)
 
@@ -452,7 +452,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       validation: { type: "exact", answer: "c" },
       hint: "Es una regla que empieza con @ y se refiere al 'medio' o dispositivo.",
       explanation:
-        "La regla @media permite aplicar estilos condicionalmente según las caracteristicas del dispositivo, como el ancho de la pantalla, la orientación o la resolución.",
+        "La regla @media permite aplicar estilos condicionalmente según las características del dispositivo, como el ancho de la pantalla, la orientación o la resolución.",
     },
     {
       id: "17-ej-02",
@@ -461,7 +461,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la media query para que los estilos se apliquen en pantallas de 768px o más (enfoque mobile-first):",
+        "Completá la media query para que los estilos se apliquen en pantallas de 768px o más (enfoque mobile-first):",
       codeTemplate: {
         html: `<div class="contenedor">Contenido</div>`,
         cssPrefix: "@media (",
@@ -532,7 +532,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 5,
       prompt:
-        "Escribe una media query mobile-first que cambie el background-color de .caja a #27ae60 cuando la pantalla sea de al menos 600px. Los estilos base de .caja son: padding: 20px; background-color: #e74c3c; color: white;",
+        "Escribí una media query mobile-first que cambie el background-color de .caja a #27ae60 cuando la pantalla sea de al menos 600px. Los estilos base de .caja son: padding: 20px; background-color: #e74c3c; color: white;",
       codeTemplate: {
         html: `<div class="caja">Cambia de color en pantallas grandes</div>`,
         cssPrefix: "",
@@ -557,7 +557,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la función CSS para crear un font-size fluido con un mínimo de 1rem, un valor ideal de 3vw, y un máximo de 2rem:",
+        "Completá la función CSS para crear un font-size fluido con un mínimo de 1rem, un valor ideal de 3vw, y un máximo de 2rem:",
       codeTemplate: {
         html: `<h1 class="titulo">Titulo fluido</h1>`,
         cssPrefix: ".titulo {\n  font-size: ",
@@ -576,7 +576,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un layout responsivo mobile-first: una cuadricula con clase 'grid-responsivo' que tenga 1 columna por defecto, 2 columnas a partir de 500px y 3 columnas a partir de 800px. Usa gap de 16px y display: grid.",
+        "Creá un layout responsivo mobile-first: una cuadrícula con clase 'grid-responsivo' que tenga 1 columna por defecto, 2 columnas a partir de 500px y 3 columnas a partir de 800px. Usá gap de 16px y display: grid.",
       codeTemplate: {
         html: `<div class="grid-responsivo">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
         cssPrefix: ".item {\n  background: #8e44ad;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 8px;\n}\n\n",
@@ -590,9 +590,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Empieza con estilos base de 1 columna, luego agrega media queries para 500px (2 columnas) y 800px (3 columnas).",
+      hint: "Empezá con estilos base de 1 columna, luego agregá media queries para 500px (2 columnas) y 800px (3 columnas).",
       explanation:
-        "El patrón mobile-first define la base con 1 columna (grid-template-columns: 1fr), luego agrega columnas en breakpoints mayores: 2 columnas a 500px y 3 a 800px, usando @media (min-width).",
+        "El patrón mobile-first define la base con 1 columna (grid-template-columns: 1fr), luego agregá columnas en breakpoints mayores: 2 columnas a 500px y 3 a 800px, usando @media (min-width).",
     },
     {
       id: "17-ej-08",
@@ -620,7 +620,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 20,
       order: 9,
       prompt:
-        "Escribis @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. ¿Qué pasa?",
+        "Escribís @container (min-width: 400px) { .tarjeta { display: flex; } } pero ningun elemento tiene container-type. ¿Qué pasa?",
       options: [
         {
           id: "a",
@@ -647,7 +647,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 25,
       order: 10,
       prompt:
-        "Haz que la tarjeta responda al espacio que tiene, no a la pantalla. A la clase 'columna' dale container-type: inline-size. A 'tarjeta' dale display: flex y flex-direction: column. Y dentro de un @container (min-width: 400px), a 'tarjeta' dale flex-direction: row.",
+        "Hacé que la tarjeta responda al espacio que tiene, no a la pantalla. A la clase 'columna' dale container-type: inline-size. A 'tarjeta' dale display: flex y flex-direction: column. Y dentro de un @container (min-width: 400px), a 'tarjeta' dale flex-direction: row.",
       codeTemplate: {
         html: `<div class="columna">\n  <article class="tarjeta">\n    <img src="https://placehold.co/60x60" alt="Miniatura" />\n    <p>Se acomoda segun el lugar de la columna.</p>\n  </article>\n</div>`,
         cssPrefix: "",
@@ -672,7 +672,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 25,
       order: 11,
       prompt:
-        "Usa subgrid con red de contención. Dentro de un @supports (grid-template-rows: subgrid), a la clase 'tarjeta' dale grid-row: span 3 y grid-template-rows: subgrid. Y dentro de un @supports not (grid-template-rows: subgrid), dale min-height: 180px.",
+        "Usá subgrid con red de contención. Dentro de un @supports (grid-template-rows: subgrid), a la clase 'tarjeta' dale grid-row: span 3 y grid-template-rows: subgrid. Y dentro de un @supports not (grid-template-rows: subgrid), dale min-height: 180px.",
       codeTemplate: {
         html: `<div class="galeria">\n  <article class="tarjeta"><h4>Una</h4><p>Texto.</p><button>Ver</button></article>\n  <article class="tarjeta"><h4>Un titulo de dos lineas</h4><p>Texto.</p><button>Ver</button></article>\n</div>`,
         cssPrefix: ".galeria {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-template-rows: auto 1fr auto;\n  gap: 12px;\n}\n.tarjeta {\n  display: grid;\n  gap: 8px;\n}\n\n",
@@ -698,7 +698,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 60,
       order: 12,
       prompt:
-        "Reto integrador. Mobile-first de verdad: primero lo chico, y después lo que cambia al haber lugar. Nunca al reves.",
+        "Reto integrador. Mobile-first de verdad: primero lo chico, y después lo que cambia al haber lugar. Nunca al revés.",
       retoPasos: [
         {
           instruccion:
@@ -707,7 +707,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         },
         {
           instruccion:
-            "Con `.tarjeta`, dale un padding de 16px y un fondo #eef2f7. Esto vale en todos los tamaños, asi que va afuera de cualquier media query.",
+            "Con `.tarjeta`, dale un padding de 16px y un fondo #eef2f7. Esto vale en todos los tamaños, así que va afuera de cualquier media query.",
           esperado: ".tarjeta { padding: 16px; background-color: #eef2f7; }",
         },
         {
@@ -732,9 +732,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       referenceSolution:
         ".tarjetas {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.tarjeta {\n  padding: 16px;\n  background-color: #eef2f7;\n}\n\n@media (min-width: 600px) {\n  .tarjetas {\n    flex-direction: row;\n  }\n}\n\n@supports (display: grid) {\n  .tarjetas {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n  }\n}",
-      hint: "Mobile-first significa que el CSS de base es el de pantalla chica y las media queries AGREGAN, con `min-width`. Al reves -empezar grande y restar con `max-width`- se llama desktop-first y obliga a deshacer estilos.",
+      hint: "Mobile-first significa que el CSS de base es el de pantalla chica y las media queries AGREGAN, con `min-width`. Al revés -empezar grande y restar con `max-width`- se llama desktop-first y obliga a deshacer estilos.",
       explanation:
-        "El orden de los pasos ES la leccion. Los pasos 1 y 2 son la base, la que ve cualquier dispositivo. El 3 agrega lo que solo tiene sentido con ancho. Y el 4 muestra `@supports`, que pregunta si una propiedad existe antes de usarla: la diferencia con una media query es que una pregunta por el TAMAÑO y la otra por la CAPACIDAD.",
+        "El orden de los pasos ES la lección. Los pasos 1 y 2 son la base, la que ve cualquier dispositivo. El 3 agrega lo que solo tiene sentido con ancho. Y el 4 muestra `@supports`, que pregunta si una propiedad existe antes de usarla: la diferencia con una media query es que una pregunta por el TAMAÑO y la otra por la CAPACIDAD.",
     },
   ],
 };

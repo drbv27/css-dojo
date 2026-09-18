@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const react19Module: ModuleData = {
   slug: "react-19-nuevas-features",
-  title: "React 19: Nuevas Caracteristicas",
+  title: "React 19: Nuevas Características",
   description:
     "Explora las novedades de React 19: React Compiler, hook use(), Actions, useActionState, useFormStatus, useOptimistic, ref como prop, metadata y más.",
   order: 218,
@@ -53,7 +53,9 @@ function Componente({ items, filtro }) {
 }
 \`\`\`
 
-El compilador analiza tu código y agrega memorización donde sea beneficioso. **No necesitas cambiar tu código.**
+El compilador analiza tu código y agrega memorización donde sea beneficioso, así que **no necesitás cambiar tu código**... pero sí necesitás instalarlo.
+
+> **Ojo con esto, porque es la confusión más común:** el React Compiler **no viene activado** por actualizar a React 19. Es una herramienta de build aparte y opcional, que se agrega como plugin de Babel (\`babel-plugin-react-compiler\`) o del bundler y se configura en el proyecto. Si actualizás a React 19 y no tocás nada más, tus \`useMemo\` y \`useCallback\` manuales siguen siendo los que hacen el trabajo. El Compiler es una decisión que tomás vos, no un regalo de la versión.
 
 ### El hook use()
 
@@ -398,7 +400,7 @@ function ListaMensajes({ mensajes, enviarMensaje }) {
 
 ### ref como prop (sin forwardRef!)
 
-En React 19, ya **no necesitas forwardRef**. Los refs se pasan como props normales:
+En React 19, ya **no necesitás forwardRef**. Los refs se pasan como props normales:
 
 #### Antes (React 18):
 \`\`\`jsx
@@ -418,7 +420,7 @@ function MiInput({ ref, ...props }) {
 ### Beneficios
 - Código más simple y legible
 - Menos indirecciones
-- \`forwardRef\` sera deprecado en futuras versiones
+- \`forwardRef\` será deprecado en futuras versiones
 
 > **useOptimistic** mejora drasticamente la experiencia del usuario al eliminar la sensación de espera en operaciones de red.`,
       codeExample: {
@@ -533,7 +535,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Chat />);
 
 ### Document Metadata en Componentes
 
-En React 19, puedes renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automáticamente al \`<head>\` del documento.
+En React 19, podés renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automáticamente al \`<head>\` del documento.
 
 \`\`\`jsx
 function PaginaProducto({ producto }) {
@@ -550,7 +552,7 @@ function PaginaProducto({ producto }) {
 }
 \`\`\`
 
-Ya no necesitas \`react-helmet\` o \`next/head\` para esto!
+Ya no necesitás \`react-helmet\` o \`next/head\` para esto!
 
 ### Server Components (Concepto)
 
@@ -568,7 +570,7 @@ async function ListaProductos() {
 }
 \`\`\`
 
-**Caracteristicas de los Server Components:**
+**Características de los Server Components:**
 - Acceden directamente a la base de datos
 - No envian JavaScript al cliente (bundle más pequeño)
 - Pueden ser \`async\` directamente
@@ -766,7 +768,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Automatiza algo que antes hacias manualmente para optimizar rendimiento.",
-      explanation: "El React Compiler analiza tu código y agrega automáticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente.",
+      explanation: "El React Compiler analiza tu código y agrega automáticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente. Eso sí: es una herramienta de build opcional que se instala y configura aparte (plugin de Babel o del bundler). Actualizar a React 19 no lo activa solo.",
     },
     {
       id: "react18-ej-02",
@@ -782,7 +784,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
         { id: "d", text: "use() reemplaza todos los hooks", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Rompe una de las reglas clasicas de los hooks.",
+      hint: "Rompe una de las reglas clásicas de los hooks.",
       explanation: "A diferencia de useContext que solo puede llamarse en el nivel superior, use() puede usarse dentro de if, for y otras estructuras condicionales.",
     },
     {
@@ -835,7 +837,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa para pasar ref como prop normal en React 19 (sin forwardRef):",
+      prompt: "Completá para pasar ref como prop normal en React 19 (sin forwardRef):",
       codeTemplate: {
         html: "",
         cssPrefix: "function MiInput({ ",
@@ -844,7 +846,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       },
       validation: { type: "exact", answer: "ref" },
       hint: "En React 19, ref se pasa como cualquier otra prop.",
-      explanation: "En React 19, ref es una prop regular que se desestructura como cualquier otra. Ya no necesitas forwardRef para recibirla.",
+      explanation: "En React 19, ref es una prop regular que se desestructura como cualquier otra. Ya no necesitás forwardRef para recibirla.",
     },
     {
       id: "react18-ej-06",
@@ -869,7 +871,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Qué caracteristica tienen los Server Components que los Client Components no?",
+      prompt: "¿Qué característica tienen los Server Components que los Client Components no?",
       options: [
         { id: "a", text: "Pueden usar useState y useEffect", isCorrect: false },
         { id: "b", text: "Pueden ser funciones async y acceder a la base de datos directamente", isCorrect: true },
@@ -886,7 +888,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa para renderizar metadata directamente en un componente React 19:",
+      prompt: "Completá para renderizar metadata directamente en un componente React 19:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Pagina({ titulo }) {\n  return (\n    <article>\n      <",
@@ -895,7 +897,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       },
       validation: { type: "exact", answer: "title" },
       hint: "Es la etiqueta HTML que define el título de la página.",
-      explanation: "En React 19, puedes renderizar <title> directamente dentro de tus componentes. React automáticamente lo eleva al <head> del documento.",
+      explanation: "En React 19, podés renderizar <title> directamente dentro de tus componentes. React automáticamente lo eleva al <head> del documento.",
     },
   ],
 };

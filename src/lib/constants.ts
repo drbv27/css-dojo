@@ -54,6 +54,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Leaderboard", href: "/leaderboard", icon: "Trophy" },
   { label: "Certificados", href: "/certificados", icon: "Award" },
   { label: "Perfil", href: "/perfil", icon: "User" },
+  { label: "Acerca", href: "/acerca", icon: "Info" },
 ];
 
 export const TEACHER_NAV_ITEMS: NavItem[] = [

@@ -19,13 +19,13 @@ export const reactQueEsModule: ModuleData = {
 
 ### ¿Por que React?
 
-- **Declarativo:** describes *que* quieres ver, no *como* lograrlo paso a paso
+- **Declarativo:** describes *que* querés ver, no *como* lograrlo paso a paso
 - **Basado en componentes:** divides tu UI en piezas reutilizables
 - **Aprende una vez, escribe en cualquier lugar:** React Native para móviles, React para web
 
 ### React NO es un framework
 
-A diferencia de Angular o Vue, React es solo una **libreria** enfocada en la capa de vista. Para routing, manejo de estado global, etc., necesitas librerias adicionales o frameworks como **Next.js**.
+A diferencia de Angular o Vue, React es solo una **libreria** enfocada en la capa de vista. Para routing, manejo de estado global, etc., necesitás librerias adicionales o frameworks como **Next.js**.
 
 ### ¿Quién usa React?
 
@@ -62,7 +62,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 En una aplicación tradicional, cada vez que el usuario navega, el servidor envia una **página HTML completa**. Esto causa recargas completas del navegador.
 
 ### SPA (Single-Page Application)
-React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho más fluida.
+React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinámicamente** el contenido sin recargar. Esto da una experiencia mucho más fluida.
 
 ## El Virtual DOM
 
@@ -118,7 +118,7 @@ React tiene un ecosistema enorme. Estas son las herramientas más importantes:
 |---|---|
 | **React DevTools** | Extensión del navegador para inspeccionar componentes |
 | **npm/yarn/pnpm** | Gestores de paquetes |
-| **ESLint** | Analisis estático de código |
+| **ESLint** | Análisis estático de código |
 | **Prettier** | Formateo de código |
 
 ### Introducción a JSX
@@ -129,7 +129,7 @@ React tiene un ecosistema enorme. Estas son las herramientas más importantes:
 const elemento = <h1>Hola Mundo</h1>;
 \`\`\`
 
-Esto NO es HTML ni un string. Es JSX, y Babel lo transforma en llamadas a \`React.createElement()\`. Lo veremos en detalle en el proximo modulo.
+Esto NO es HTML ni un string. Es JSX, y Babel lo transforma en llamadas a \`React.createElement()\`. Lo veremos en detalle en el próximo módulo.
 
 > **Importante:** En este dojo, usaremos React directamente en el navegador con Babel para practicar. En proyectos reales, usaras Vite o Next.js.`,
       codeExample: {
@@ -206,12 +206,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       prompt: "¿Qué es una SPA (Single-Page Application)?",
       options: [
         { id: "a", text: "Una aplicación que solo tiene una página de contenido", isCorrect: false },
-        { id: "b", text: "Una aplicación que carga un solo HTML y actualiza el contenido dinamicamente sin recargar", isCorrect: true },
+        { id: "b", text: "Una aplicación que carga un solo HTML y actualiza el contenido dinámicamente sin recargar", isCorrect: true },
         { id: "c", text: "Una aplicación que no usa JavaScript", isCorrect: false },
         { id: "d", text: "Una aplicación que solo funciona en móviles", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando navegas por la aplicación.",
+      hint: "Pensá en que pasa cuando navegas por la aplicación.",
       explanation:
         "Una SPA carga una única página HTML y JavaScript se encarga de actualizar el contenido de forma dinámica sin necesidad de recargar el navegador.",
     },
@@ -251,7 +251,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el código para renderizar un componente React en el elemento con id 'root':",
+      prompt: "Completá el código para renderizar un componente React en el elemento con id 'root':",
       codeTemplate: {
         html: "",
         cssPrefix: "ReactDOM.createRoot(document.getElementById(\"root\")).",

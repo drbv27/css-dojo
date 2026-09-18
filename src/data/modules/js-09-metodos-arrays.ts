@@ -23,7 +23,7 @@ const dobles = nums.map(n => n * 2);
 // [2, 4, 6, 8]
 \`\`\`
 
-### Caracteristicas de map
+### Características de map
 - **No modifica** el array original
 - Devuelve un array de la **misma longitud**
 - Cada elemento se transforma con la función dada
@@ -38,12 +38,12 @@ const pares = nums.filter(n => n % 2 === 0);
 // [2, 4, 6]
 \`\`\`
 
-### Caracteristicas de filter
+### Características de filter
 - Devuelve un array con **igual o menos** elementos
 - La función debe devolver **true** o **false**
 - No modifica el array original
 
-> **Tip:** Puedes encadenar map y filter: \`array.filter(...).map(...)\``,
+> **Tip:** Podés encadenar map y filter: \`array.filter(...).map(...)\``,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -246,7 +246,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "4", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Suma todos los elementos empezando desde 0.",
+      hint: "Sumá todos los elementos empezando desde 0.",
       explanation: "reduce acumula: 0+1=1, 1+2=3, 3+3=6, 6+4=10. El resultado es 10.",
     },
     {
@@ -272,7 +272,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el método para verificar si TODOS los elementos cumplen la condición:",
+      prompt: "Completá el método para verificar si TODOS los elementos cumplen la condición:",
       codeTemplate: {
         html: "",
         cssPrefix: "const todosPares = [2, 4, 6].",
@@ -280,7 +280,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["every"],
       },
       validation: { type: "exact", answer: "every" },
-      hint: "En ingles significa 'cada uno' o 'todos'.",
+      hint: "En inglés significa 'cada uno' o 'todos'.",
       explanation: "every() devuelve true solo si TODOS los elementos cumplen la condición.",
     },
     {

@@ -12,11 +12,11 @@ export async function POST(request: Request) {
   const { currentPassword, newPassword } = await request.json();
 
   if (!currentPassword || !newPassword) {
-    return NextResponse.json({ error: "Ambas contrasenas son requeridas" }, { status: 400 });
+    return NextResponse.json({ error: "Ambas contraseñas son requeridas" }, { status: 400 });
   }
 
   if (newPassword.length < 6) {
-    return NextResponse.json({ error: "La nueva contrasena debe tener al menos 6 caracteres" }, { status: 400 });
+    return NextResponse.json({ error: "La nueva contraseña debe tener al menos 6 caracteres" }, { status: 400 });
   }
 
   await dbConnect();
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
   const isValid = await comparePassword(currentPassword, user.password);
   if (!isValid) {
-    return NextResponse.json({ error: "La contrasena actual es incorrecta" }, { status: 401 });
+    return NextResponse.json({ error: "La contraseña actual es incorrecta" }, { status: 401 });
   }
 
   user.password = await hashPassword(newPassword);

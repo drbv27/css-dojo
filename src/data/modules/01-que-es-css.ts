@@ -30,7 +30,7 @@ Si HTML es el esqueleto de una página web, **CSS es la piel, la ropa y el maqui
 
 ### Un poco de historia
 
-CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (CSS1) se público en 1996. Actualmente trabajamos con CSS3, que se desarrolla en modulos independientes.
+CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (CSS1) se público en 1996. Actualmente trabajamos con CSS3, que se desarrolla en módulos independientes.
 
 > **Dato curioso:** Antes de CSS, los estilos se aplicaban directamente en HTML con etiquetas como \`<font>\` y atributos como \`bgcolor\`. Era un caos absoluto.`,
       codeExample: {
@@ -48,7 +48,7 @@ CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (
 Una **regla CSS** se compone de tres partes fundamentales:
 
 ### 1. Selector
-Indica **a que elemento(s)** HTML se le aplicaran los estilos. En el ejemplo de abajo, \`main\` es el selector.
+Indica **a que elemento(s)** HTML se le aplicarán los estilos. En el ejemplo de abajo, \`main\` es el selector.
 
 ### 2. Propiedad
 Es el **aspecto visual** que queremos cambiar. Por ejemplo, \`background-color\` cambia el color de fondo.
@@ -68,7 +68,7 @@ Cada par \`propiedad: valor\` se llama **declaración** y termina con punto y co
 
 ### Múltiples declaraciones
 
-Puedes incluir tantas declaraciones como necesites dentro de una misma regla:
+Podés incluir tantas declaraciones como necesites dentro de una misma regla:
 
 \`\`\`css
 main {
@@ -138,7 +138,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
 - **Separación de responsabilidades:** HTML para contenido, CSS para presentación
 - **Reutilización:** Un mismo archivo CSS para múltiples páginas
 - **Cache del navegador:** Se descarga una vez y se reutiliza
-- **Mantenimiento:** Cambias un archivo y se actualiza todo el sitio
+- **Mantenimiento:** Cambiás un archivo y se actualiza todo el sitio
 
 > **Recomendación:** Siempre usa hojas de estilo externas en proyectos reales.`,
       codeExample: {
@@ -186,7 +186,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         { id: "d", text: "Usando JavaScript para modificar estilos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en cual opción permite reutilizar estilos en múltiples páginas.",
+      hint: "Pensá en cual opción permite reutilizar estilos en múltiples páginas.",
       explanation:
         "La hoja de estilos externa es la forma recomendada porque separa el contenido (HTML) de la presentación (CSS), permite reutilizar estilos en múltiples páginas y el navegador puede almacenarla en cache.",
     },
@@ -197,7 +197,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa el selector para que esta regla CSS aplique estilos a todos los elementos <p> del documento:",
+        "Completá el selector para que esta regla CSS aplique estilos a todos los elementos <p> del documento:",
       codeTemplate: {
         html: "",
         cssPrefix: "___",
@@ -254,7 +254,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa la etiqueta HTML para importar correctamente una hoja de estilos externa llamada 'estilos.css':",
+        "Completá la etiqueta HTML para importar correctamente una hoja de estilos externa llamada 'estilos.css':",
       codeTemplate: {
         html: `<head>\n  <link rel="___" href="estilos.css">\n</head>`,
         cssPrefix: "",
@@ -289,7 +289,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         { id: "d", text: "Ninguna", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Un anti-patrón es una práctica que parece funcionar pero genera problemas a largo plazo. Piensa en cual forma mezcla contenido y presentación directamente.",
+      hint: "Un anti-patrón es una práctica que parece funcionar pero genera problemas a largo plazo. Pensá en cual forma mezcla contenido y presentación directamente.",
       explanation:
         "Los estilos en línea (inline) se consideran un anti-patrón porque mezclan contenido con presentación, no se pueden reutilizar, tienen una especificidad muy alta y hacen que el código sea difícil de mantener.",
     },
@@ -310,7 +310,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         },
         {
           instruccion:
-            "Con un selector de tipo, dale a TODOS los parrafos el color #7f8c8d y un interlineado de 1.6. Fijate que alcanza a los dos, tambien al que tiene clase.",
+            "Con un selector de tipo, dale a TODOS los párrafos el color #7f8c8d y un interlineado de 1.6. Fijate que alcanza a los dos, también al que tiene clase.",
           esperado: "p { color: #7f8c8d; line-height: 1.6; }",
         },
         {

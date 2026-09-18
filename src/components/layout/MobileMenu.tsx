@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { DojoType } from "@/types";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
@@ -19,6 +20,7 @@ import {
   Megaphone,
   Inbox,
   Award,
+  Info,
 } from "lucide-react";
 import { NAV_ITEMS, TEACHER_NAV_ITEMS } from "@/lib/constants";
 import { LevelBadge } from "@/components/gamification/LevelBadge";
@@ -27,6 +29,7 @@ import DojoSwitcher from "@/components/layout/DojoSwitcher";
 import type { NavItem } from "@/types";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
+  Info,
   LayoutDashboard,
   BookOpen,
   Gamepad2,
@@ -67,12 +70,18 @@ function MobileNavLink({
   );
 }
 
-export function MobileMenu() {
+export function MobileMenu({ conteos }: { conteos: Record<DojoType, number> }) {
   const pathname = usePathname();
-  return <MobileMenuDrawer key={pathname} pathname={pathname} />;
+  return <MobileMenuDrawer key={pathname} pathname={pathname} conteos={conteos} />;
 }
 
-function MobileMenuDrawer({ pathname }: { pathname: string }) {
+function MobileMenuDrawer({
+  pathname,
+  conteos,
+}: {
+  pathname: string;
+  conteos: Record<DojoType, number>;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useAuth();
 
@@ -134,7 +143,7 @@ function MobileMenuDrawer({ pathname }: { pathname: string }) {
         </div>
 
         {/* Track Selector (mismo que desktop) */}
-        <DojoSwitcher />
+        <DojoSwitcher conteos={conteos} />
 
         <div className="mx-3 border-t border-editor-border" />
 

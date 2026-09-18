@@ -176,7 +176,7 @@ function RegistroForm() {
         { id: "d", text: "Funciona sin React", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en performance y cuantas veces se re-renderiza.",
+      hint: "Pensá en performance y cuantas veces se re-renderiza.",
       explanation: "React Hook Form usa refs internamente, evitando re-renders en cada keystroke a diferencia de useState controlado.",
     },
     {

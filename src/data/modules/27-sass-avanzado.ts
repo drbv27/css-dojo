@@ -101,7 +101,7 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 
 ### Cuando usar @extend vs @mixin
 
-| Caracteristica | @extend | @mixin |
+| Característica | @extend | @mixin |
 |---------------|---------|--------|
 | Parámetros | No acepta | Si acepta |
 | CSS generado | Agrupa selectores (menos código) | Duplica declaraciones |
@@ -130,7 +130,7 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 }
 \`\`\`
 
-> **Regla práctica:** Si necesitas parámetros, usa @mixin. Si todos los selectores comparten exactamente los mismos estilos base, usa @extend con %.`,
+> **Regla práctica:** Si necesitás parámetros, usa @mixin. Si todos los selectores comparten exactamente los mismos estilos base, usa @extend con %.`,
       codeExample: {
         html: `<div class="extend-demo">\n  <div class="msg msg-exito">Operacion exitosa</div>\n  <div class="msg msg-error">Ha ocurrido un error</div>\n  <div class="msg msg-info">Informacion importante</div>\n</div>`,
         css: `.extend-demo {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n  padding: 16px;\n}\n\n.msg {\n  padding: 12px 20px;\n  border-radius: 8px;\n  border: 1px solid transparent;\n  font-weight: 500;\n}\n\n.msg-exito {\n  background: #d4edda;\n  border-color: #c3e6cb;\n  color: #155724;\n}\n\n.msg-error {\n  background: #f8d7da;\n  border-color: #f5c6cb;\n  color: #721c24;\n}\n\n.msg-info {\n  background: #d1ecf1;\n  border-color: #bee5eb;\n  color: #0c5460;\n}`,
@@ -491,7 +491,7 @@ sass/
 
 ### BEM + Sass
 
-La metodologia BEM (Block, Element, Modifier) combina perfectamente con el nesting de Sass:
+La metodología BEM (Block, Element, Modifier) combina perfectamente con el nesting de Sass:
 
 \`\`\`scss
 // Bloque
@@ -603,7 +603,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
 }
 \`\`\`
 
-> **Consejo:** No necesitas seguir el patrón 7-1 al pie de la letra. Adapta la estructura a tu proyecto. Para proyectos pequeños, 3-4 carpetas pueden ser suficientes.`,
+> **Consejo:** No necesitás seguir el patrón 7-1 al pie de la letra. Adapta la estructura a tu proyecto. Para proyectos pequeños, 3-4 carpetas pueden ser suficientes.`,
       codeExample: {
         html: `<div class="arq-demo">\n  <div class="card">\n    <div class="card__header">Tarjeta BEM</div>\n    <div class="card__body">\n      <p class="card__text">Estructura Block__Element--Modifier</p>\n    </div>\n    <div class="card__footer">\n      <button class="card__btn card__btn--primary">Aceptar</button>\n      <button class="card__btn card__btn--secondary">Cancelar</button>\n    </div>\n  </div>\n</div>`,
         css: `.arq-demo {\n  padding: 20px;\n}\n\n.card {\n  background: white;\n  border-radius: 12px;\n  overflow: hidden;\n  box-shadow: 0 2px 8px rgba(0,0,0,0.1);\n  max-width: 320px;\n}\n\n.card__header {\n  background: #3498db;\n  color: white;\n  padding: 16px;\n  font-weight: bold;\n  font-size: 1.1rem;\n}\n\n.card__body {\n  padding: 16px;\n}\n\n.card__text {\n  color: #555;\n  line-height: 1.5;\n}\n\n.card__footer {\n  padding: 12px 16px;\n  display: flex;\n  gap: 8px;\n  border-top: 1px solid #eee;\n}\n\n.card__btn {\n  padding: 8px 16px;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-weight: 500;\n}\n\n.card__btn--primary {\n  background: #3498db;\n  color: white;\n}\n\n.card__btn--secondary {\n  background: #ecf0f1;\n  color: #333;\n}`,
@@ -628,7 +628,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
         { id: "d", text: "Define una función personalizada", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en herencia: un selector recibe los estilos de otro.",
+      hint: "Pensá en herencia: un selector recibe los estilos de otro.",
       explanation:
         "@extend permite que un selector herede todas las declaraciones de otro. Sass agrupa los selectores en el CSS generado, evitando duplicación de código.",
     },
@@ -639,7 +639,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el simbolo para crear un placeholder selector en Sass (selector que solo existe para ser extendido):",
+        "Completá el símbolo para crear un placeholder selector en Sass (selector que solo existe para ser extendido):",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "",
@@ -647,9 +647,9 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
         blanks: ["%"],
       },
       validation: { type: "exact", answer: "%" },
-      hint: "Es un simbolo que parece un porcentaje. Los placeholders no generan CSS a menos que alguien los extienda.",
+      hint: "Es un símbolo que parece un porcentaje. Los placeholders no generan CSS a menos que alguien los extienda.",
       explanation:
-        "El simbolo % define un placeholder selector en Sass. A diferencia de las clases normales, los placeholders solo generan CSS cuando alguien los extiende con @extend.",
+        "El símbolo % define un placeholder selector en Sass. A diferencia de las clases normales, los placeholders solo generan CSS cuando alguien los extiende con @extend.",
     },
     {
       id: "22-ej-03",
@@ -666,7 +666,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
         { id: "d", text: "'through' cuenta de 2 en 2", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en 'through' como 'a traves de' (incluyendo) y 'to' como 'hasta' (sin incluir).",
+      hint: "Pensá en 'through' como 'a traves de' (incluyendo) y 'to' como 'hasta' (sin incluir).",
       explanation:
         "@for $i from 1 through 5 itera de 1 a 5 incluyendo el 5 (1,2,3,4,5). @for $i from 1 to 5 itera de 1 a 4, excluyendo el 5 (1,2,3,4).",
     },
@@ -677,7 +677,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa la directiva del bucle Sass para iterar sobre cada color de la lista:",
+        "Completá la directiva del bucle Sass para iterar sobre cada color de la lista:",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "$colores: rojo, azul, verde;\n\n",
@@ -729,7 +729,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 20,
       order: 6,
       prompt:
-        "¿En la metodologia BEM con Sass, cómo se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
+        "¿En la metodología BEM con Sass, cómo se escribe el selector para el elemento 'título' del bloque 'tarjeta'?",
       options: [
         { id: "a", text: ".tarjeta { .título { } }", isCorrect: false },
         { id: "b", text: ".tarjeta { &__título { } }", isCorrect: true },
@@ -748,7 +748,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 30,
       order: 7,
       prompt:
-        "Completa la función de mapa para obtener el valor de la clave 'primario' del mapa $colores:",
+        "Completá la función de mapa para obtener el valor de la clave 'primario' del mapa $colores:",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "$colores: (\n  'primario': #3498db,\n  'secundario': #2ecc71,\n);\n\n.boton {\n  background: ",

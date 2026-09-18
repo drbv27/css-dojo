@@ -42,7 +42,7 @@ frutas[2]  // "uva"
 frutas[1] = "banana"; // reemplaza "pera"
 \`\`\`
 
-> **Nota:** A diferencia de los strings, los arrays SI son mutables. Puedes cambiar sus elementos.`,
+> **Nota:** A diferencia de los strings, los arrays SI son mutables. Podés cambiar sus elementos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -121,7 +121,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Recorrer arrays",
       content: `## Recorrer arrays
 
-### for clasico
+### for clásico
 \`\`\`javascript
 const nums = [10, 20, 30];
 for (let i = 0; i < nums.length; i++) {
@@ -145,7 +145,7 @@ nums.forEach(function(num, indice) {
 
 ### Desestructuración de arrays
 
-Puedes extraer valores en variables individuales:
+Podés extraer valores en variables individuales:
 
 \`\`\`javascript
 const [primero, segundo, ...resto] = [1, 2, 3, 4, 5];
@@ -219,7 +219,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "insert()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en 'empujar' un elemento al final.",
+      hint: "Pensá en 'empujar' un elemento al final.",
       explanation: "push() agrega uno o más elementos al final del array y devuelve la nueva longitud.",
     },
     {
@@ -228,7 +228,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el método para obtener la cantidad de elementos del array:",
+      prompt: "Completá el método para obtener la cantidad de elementos del array:",
       codeTemplate: {
         html: "",
         cssPrefix: 'const arr = [1, 2, 3];\nconst cantidad = arr.',
@@ -307,7 +307,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       xpReward: 25,
       order: 7,
       prompt:
-        "Escribí `ultimo(lista)` que devuelva el último elemento de un array, o `undefined` si está vacío.\n\n  ultimo([1, 2, 3])   → 3\n  ultimo([\"a\"])       → \"a\"\n  ultimo([])          → undefined",
+        "Escribí `ultimo(lista)` que devuelva el último elemento de un array, o `undefined` si está vacío.\n\n  último([1, 2, 3])   → 3\n  último([\"a\"])       → \"a\"\n  último([])          → undefined",
       codeTemplate: {
         html: "",
         cssPrefix: "function ultimo(lista) {\n  // tu código\n}",

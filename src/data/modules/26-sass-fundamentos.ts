@@ -16,7 +16,7 @@ export const sassFundamentosModule: ModuleData = {
       title: "¿Qué es Sass?",
       content: `## ¿Qué es Sass?
 
-**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con caracteristicas como variables, nesting, mixins, funciones y más. El código Sass se **compila** a CSS estándar que los navegadores pueden interpretar.
+**Sass** (Syntactically Awesome Style Sheets) es un **preprocesador CSS** que extiende el lenguaje CSS con características como variables, nesting, mixins, funciones y más. El código Sass se **compila** a CSS estándar que los navegadores pueden interpretar.
 
 ### ¿Por que usar Sass?
 
@@ -25,7 +25,7 @@ CSS es poderoso, pero a medida que los proyectos crecen, mantener hojas de estil
 - **Variables** para reutilizar valores (colores, fuentes, tamanios)
 - **Nesting** para anidar selectores siguiendo la estructura HTML
 - **Mixins** para reutilizar bloques de código
-- **Funciones** para calcular valores dinamicamente
+- **Funciones** para calcular valores dinámicamente
 - **Partials** para dividir el CSS en archivos modulares
 - **Herencia** para compartir estilos entre selectores
 
@@ -59,7 +59,7 @@ Existen dos sintaxis:
 
 ### Compilación
 
-El navegador **no entiende Sass**. Necesitas compilarlo a CSS:
+El navegador **no entiende Sass**. Necesitás compilarlo a CSS:
 
 \`\`\`bash
 # Instalar Sass globalmente
@@ -75,7 +75,7 @@ sass --watch estilos.scss:estilos.css
 sass --watch scss/:css/
 \`\`\`
 
-También puedes usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automáticamente en tu proyecto.
+También podés usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automáticamente en tu proyecto.
 
 ### CSS generado
 
@@ -259,7 +259,7 @@ Sass permite anidar propiedades con el mismo prefijo:
 
 ### Mixins con @mixin y @include
 
-Los mixins son bloques reutilizables de CSS. Los defines una vez y los incluyes donde quieras:
+Los mixins son bloques reutilizables de CSS. Los definís una vez y los incluyes donde quieras:
 
 \`\`\`scss
 // Definir un mixin
@@ -386,7 +386,7 @@ ceil(4.1);        // 5
 floor(4.9);       // 4
 \`\`\`
 
-> **Regla general:** Usa **mixins** cuando necesitas generar múltiples declaraciones CSS. Usa **funciones** cuando necesitas calcular y retornar un solo valor.`,
+> **Regla general:** Usá **mixins** cuando necesitás generar múltiples declaraciones CSS. Usá **funciones** cuando necesitás calcular y retornar un solo valor.`,
       codeExample: {
         html: `<div class="mixin-demo">\n  <button class="btn-p">Primario</button>\n  <button class="btn-s">Secundario</button>\n  <button class="btn-d">Peligro</button>\n</div>`,
         css: `.mixin-demo {\n  display: flex;\n  gap: 12px;\n  padding: 20px;\n}\n\n.mixin-demo button {\n  padding: 10px 24px;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: opacity 0.3s, transform 0.2s;\n}\n.mixin-demo button:hover {\n  opacity: 0.85;\n  transform: translateY(-2px);\n}\n.btn-p { background: #3498db; }\n.btn-s { background: #2ecc71; }\n.btn-d { background: #e74c3c; }`,
@@ -413,7 +413,7 @@ scss/
 
 ### @use (moderno, recomendado)
 
-\`@use\` carga un partial como un **modulo con namespace**:
+\`@use\` carga un partial como un **módulo con namespace**:
 
 \`\`\`scss
 // _variables.scss
@@ -458,7 +458,7 @@ body {
 @use 'abstracts' as *;
 \`\`\`
 
-### Patrón de organización tipico
+### Patrón de organización típico
 
 \`\`\`
 scss/
@@ -518,7 +518,7 @@ Diferencias clave:
 | Puede duplicar código | Carga cada archivo una sola vez |
 | Deprecado | Recomendado |
 
-> **Consejo:** Siempre usa \`@use\` y \`@forward\` en proyectos nuevos. \`@import\` sera eliminado en futuras versiones de Sass.`,
+> **Consejo:** Siempre usa \`@use\` y \`@forward\` en proyectos nuevos. \`@import\` será eliminado en futuras versiones de Sass.`,
       codeExample: {
         html: `<div class="partials-demo">\n  <div class="estructura">\n    <div class="carpeta">scss/</div>\n    <div class="archivo partial">  _variables.scss</div>\n    <div class="archivo partial">  _mixins.scss</div>\n    <div class="archivo partial">  _botones.scss</div>\n    <div class="archivo main">  main.scss</div>\n    <div class="resultado">→ main.css</div>\n  </div>\n</div>`,
         css: `.partials-demo {\n  font-family: 'Courier New', monospace;\n  background: #1e1e2e;\n  padding: 20px;\n  border-radius: 12px;\n}\n.estructura {\n  display: flex;\n  flex-direction: column;\n  gap: 4px;\n}\n.carpeta {\n  color: #f9e2af;\n  font-weight: bold;\n  font-size: 1.1rem;\n}\n.archivo {\n  color: #cdd6f4;\n  padding: 4px 8px;\n  border-radius: 4px;\n}\n.archivo.partial {\n  color: #a6adc8;\n}\n.archivo.main {\n  color: #89b4fa;\n  font-weight: bold;\n}\n.resultado {\n  color: #a6e3a1;\n  font-weight: bold;\n  margin-top: 8px;\n  padding-top: 8px;\n  border-top: 1px dashed #45475a;\n}`,
@@ -562,7 +562,7 @@ Diferencias clave:
         { id: "d", text: "No hay diferencia, son exactamente iguales", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en cómo se delimitan los bloques de código en cada sintaxis.",
+      hint: "Pensá en cómo se delimitan los bloques de código en cada sintaxis.",
       explanation:
         "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentación para definir la estructura. SCSS es la sintaxis más popular.",
     },
@@ -573,7 +573,7 @@ Diferencias clave:
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la declaración de la variable Sass para definir un color primario. Recuerda que las variables Sass usan un simbolo especial:",
+        "Completá la declaración de la variable Sass para definir un color primario. Recordá que las variables Sass usan un símbolo especial:",
       codeTemplate: {
         html: `<!-- SCSS -->\n<!-- Declaracion de variable Sass -->`,
         cssPrefix: "",
@@ -581,7 +581,7 @@ Diferencias clave:
         blanks: ["$"],
       },
       validation: { type: "exact", answer: "$" },
-      hint: "Las variables en Sass empiezan con un simbolo de dolar.",
+      hint: "Las variables en Sass empiezan con un símbolo de dolar.",
       explanation:
         "En Sass, las variables se declaran con el signo $ seguido del nombre: $color-primario: #3498db;. Luego se usan con el mismo prefijo $.",
     },
@@ -592,7 +592,7 @@ Diferencias clave:
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa el selector padre de Sass para generar '.boton:hover':",
+        "Completá el selector padre de Sass para generar '.boton:hover':",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: ".boton {\n  background: #3498db;\n  color: white;\n\n  ",
@@ -600,9 +600,9 @@ Diferencias clave:
         blanks: ["&"],
       },
       validation: { type: "exact", answer: "&" },
-      hint: "Es un simbolo que referencia al selector padre actual en Sass.",
+      hint: "Es un símbolo que referencia al selector padre actual en Sass.",
       explanation:
-        "El simbolo & en Sass referencia al selector padre. Dentro de .boton, &:hover se compila a .boton:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
+        "El símbolo & en Sass referencia al selector padre. Dentro de .boton, &:hover se compila a .boton:hover. Es fundamental para pseudo-clases, pseudo-elementos y variaciones BEM.",
     },
     {
       id: "21-ej-05",
@@ -619,7 +619,7 @@ Diferencias clave:
         { id: "d", text: "Los mixins solo funcionan con colores", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que produce cada uno: un mixin genera declaraciones CSS, una función calcula algo.",
+      hint: "Pensá en que produce cada uno: un mixin genera declaraciones CSS, una función calcula algo.",
       explanation:
         "Los @mixin generan bloques completos de declaraciones CSS y se usan con @include. Las @function calculan y retornan un solo valor con @return, y se usan como valor de una propiedad.",
     },
@@ -630,7 +630,7 @@ Diferencias clave:
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la directiva para incluir (usar) un mixin llamado 'flex-center' dentro de un selector:",
+        "Completá la directiva para incluir (usar) un mixin llamado 'flex-center' dentro de un selector:",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.contenedor {\n  ",
@@ -649,7 +649,7 @@ Diferencias clave:
       xpReward: 20,
       order: 7,
       prompt:
-        "Arrastra cada caracteristica de Sass a su descripción correcta:",
+        "Arrastra cada característica de Sass a su descripción correcta:",
       dragItems: [
         { id: "drag-1", content: "$variable", correctZone: "zone-var" },
         { id: "drag-2", content: "@mixin / @include", correctZone: "zone-mixin" },

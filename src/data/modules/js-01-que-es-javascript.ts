@@ -15,18 +15,18 @@ export const jsQueEsModule: ModuleData = {
       title: "¿Qué es JavaScript?",
       content: `## ¿Qué es JavaScript?
 
-**JavaScript** es el lenguaje de programación de la web. Es el único lenguaje que los navegadores ejecutan de forma nativa, y hoy en dia se usa tanto en el **frontend** como en el **backend**.
+**JavaScript** es el lenguaje de programación de la web. Es el único lenguaje que los navegadores ejecutan de forma nativa, y hoy en día se usa tanto en el **frontend** como en el **backend**.
 
 ### ¿Para que sirve?
 
-- **Interactividad:** hacer que botones, formularios y menus respondan al usuario
+- **Interactividad:** hacer que botones, formularios y menús respondan al usuario
 - **Manipular el DOM:** cambiar el contenido y estilos de una página sin recargarla
 - **Comunicación con servidores:** enviar y recibir datos (AJAX, Fetch API)
 - **Aplicaciones completas:** desde juegos hasta editores de texto en el navegador
 
 ### Un poco de historia
 
-JavaScript fue creado por **Brendan Eich** en solo 10 dias en 1995 para el navegador Netscape. A pesar de su nombre, **no tiene relación con Java**. Hoy es mantenido bajo el estándar **ECMAScript**.
+JavaScript fue creado por **Brendan Eich** en solo 10 días en 1995 para el navegador Netscape. A pesar de su nombre, **no tiene relación con Java**. Hoy es mantenido bajo el estándar **ECMAScript**.
 
 > **Dato curioso:** JavaScript se llamo originalmente "Mocha", luego "LiveScript", y finalmente "JavaScript" como estrategia de marketing.`,
       codeExample: {
@@ -42,7 +42,7 @@ JavaScript fue creado por **Brendan Eich** en solo 10 dias en 1995 para el naveg
       title: "La consola del navegador",
       content: `## La consola del navegador
 
-La **consola** es la herramienta principal para probar código JavaScript. Puedes abrirla en cualquier navegador con **F12** o **Ctrl+Shift+J**.
+La **consola** es la herramienta principal para probar código JavaScript. Podés abrirla en cualquier navegador con **F12** o **Ctrl+Shift+J**.
 
 ### console.log()
 
@@ -101,12 +101,12 @@ En JavaScript, el punto y coma (\`;\`) al final de cada instrucción es **opcion
 
 ### Buenas prácticas desde el inicio
 
-1. Escribe código **legible** y bien indentado
-2. Usa **nombres descriptivos** para tus variables
+1. Escribí código **legible** y bien indentado
+2. Usá **nombres descriptivos** para tus variables
 3. Comenta el código cuando sea necesario
 4. Prueba tu código frecuentemente
 
-> **Recuerda:** Aprender a programar es como aprender un idioma nuevo. La práctica constante es la clave.`,
+> **Recordá:** Aprender a programar es como aprender un idioma nuevo. La práctica constante es la clave.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -139,7 +139,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       validation: { type: "exact", answer: "a" },
       hint: "Fue creado para el navegador Netscape en muy poco tiempo.",
       explanation:
-        "Brendan Eich creo JavaScript en 1995 en solo 10 dias para el navegador Netscape Navigator.",
+        "Brendan Eich creo JavaScript en 1995 en solo 10 días para el navegador Netscape Navigator.",
     },
     {
       id: "js01-ej-02",
@@ -183,7 +183,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 1 ,
       xpReward: 10,
       order: 4,
-      prompt: 'Completa el código para mostrar "Hola Mundo" en la consola:',
+      prompt: 'Completá el código para mostrar "Hola Mundo" en la consola:',
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -191,7 +191,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         blanks: ["console.log"],
       },
       validation: { type: "exact", answer: "console.log" },
-      hint: "Usa el objeto console y su método para imprimir.",
+      hint: "Usá el objeto console y su método para imprimir.",
       explanation:
         'console.log("Hola Mundo") imprime el texto "Hola Mundo" en la consola del navegador.',
     },
@@ -209,7 +209,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "** comentario **", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Usa dos caracteres iguales al inicio de la línea.",
+      hint: "Usá dos caracteres iguales al inicio de la línea.",
       explanation:
         "En JavaScript, los comentarios de una línea comienzan con //. Los comentarios de múltiples líneas usan /* */. <!-- --> es para HTML y # es para Python.",
     },
@@ -219,7 +219,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Clasifica cada tecnologia web según su función principal:",
+      prompt: "Clasifica cada tecnología web según su función principal:",
       dragItems: [
         { id: "drag-1", content: "HTML", correctZone: "zone-estructura" },
         { id: "drag-2", content: "CSS", correctZone: "zone-estilos" },
@@ -238,7 +238,7 @@ document.getElementById("resultado").textContent = mensaje;`,
           "drag-3": "zone-interactividad",
         },
       },
-      hint: "Cada tecnologia tiene un rol específico en la web.",
+      hint: "Cada tecnología tiene un rol específico en la web.",
       explanation:
         "HTML define la estructura del contenido, CSS controla la presentación visual y JavaScript añade interactividad y lógica de programación.",
     },

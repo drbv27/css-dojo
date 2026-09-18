@@ -26,7 +26,7 @@ p { color: blue; }
 #principal p { color: red; }
 \`\`\`
 
-Si un párrafo tiene clase "intro" y está dentro de \`#principal\`, ¿qué color tendra? La respuesta es **rojo**, porque \`#principal p\` tiene mayor especificidad.
+Si un párrafo tiene clase "intro" y está dentro de \`#principal\`, ¿qué color tendrá? La respuesta es **rojo**, porque \`#principal p\` tiene mayor especificidad.
 
 ### La cascada CSS
 
@@ -108,7 +108,7 @@ Un solo ID **(1,0,0)** gana a cinco clases **(0,5,0)**, y cinco clases ganan a d
 p:not(.especial) { }  /* (0,1,1) */
 \`\`\`
 
-> **Consejo práctico:** No necesitas memorizar números exactos. Lo importante es la jerarquía: IDs > clases > tipos. Si entiendes esto, puedes predecir que regla ganara.`,
+> **Consejo práctico:** No necesitás memorizar números exactos. Lo importante es la jerarquía: IDs > clases > tipos. Si entendés esto, podés predecir que regla ganara.`,
       codeExample: {
         html: `<div id="pagina">\n  <p class="texto importante">Que especificidad gana?</p>\n</div>`,
         css: `/* (0,0,1) - Un tipo */\np {\n  color: blue;\n  border: 2px solid blue;\n  padding: 10px;\n}\n\n/* (0,1,1) - Una clase + un tipo */\np.texto {\n  color: green;\n  border-color: green;\n}\n\n/* (0,2,1) - Dos clases + un tipo */\np.texto.importante {\n  color: orange;\n  border-color: orange;\n}\n\n/* (1,0,1) - Un ID + un tipo = GANA */\n#pagina p {\n  color: crimson;\n  border-color: crimson;\n  font-weight: bold;\n}`,
@@ -168,16 +168,16 @@ Si ambas reglas tienen \`!important\`, se vuelve a aplicar la **especificidad no
 
 - Rompe el flujo natural de la cascada
 - Hace el código **difícil de mantener** y depurar
-- Crea una "guerra de !important" donde necesitas más !important para sobreescribir
+- Crea una "guerra de !important" donde necesitás más !important para sobreescribir
 - Se considera una **mala práctica** en la mayoria de casos
 
 ### Usos legitimos de !important
 
-- Sobreescribir estilos de **librerias externas** que no puedes modificar
+- Sobreescribir estilos de **librerias externas** que no podés modificar
 - Clases de **utilidad** que siempre deben ganar: \`.hidden { display: none !important; }\`
 - **Accesibilidad**: forzar tamaños de fuente mínimos
 
-> **Regla de oro:** Si necesitas usar \`!important\`, probablemente hay un problema de arquitectura CSS. Intenta primero aumentar la especificidad del selector.`,
+> **Regla de oro:** Si necesitás usar \`!important\`, probablemente hay un problema de arquitectura CSS. Intenta primero aumentar la especificidad del selector.`,
       codeExample: {
         html: `<p id="demo" class="azul" style="color: orange;">Texto con estilo en linea (orange)</p>\n<p id="demo2" class="forzado">Texto con !important</p>`,
         css: `/* El estilo en linea (orange) gana a estos selectores */\n#demo { color: blue; }\n.azul { color: green; }\np { color: purple; }\n\n/* !important gana incluso a estilos en linea */\n.forzado {\n  color: crimson !important;\n  font-weight: bold;\n  font-size: 18px;\n}\n\n/* Este ID pierde contra !important de la clase */\n#demo2 {\n  color: navy;\n}`,
@@ -436,11 +436,11 @@ En lugar de usar \`!important\`, tenés estas salidas, de la más limpia a la m�
 2. **Bajar el peso del estilo base** con \`:where()\`, para que una clase cualquiera pueda sobrescribirlo.
 3. **Reordenar** las reglas (la última gana si hay empate).
 4. **Añadir una clase** más específica.
-5. **Duplicar la clase** para aumentar especificidad: \`.btn.btn { }\`. Funciona, pero es un truco: el dia que alguien lo lea no va a entender por que está escrito dos veces.
+5. **Duplicar la clase** para aumentar especificidad: \`.btn.btn { }\`. Funciona, pero es un truco: el día que alguien lo lea no va a entender por que está escrito dos veces.
 
 Las dos primeras son las que aprendiste en las lecciones anteriores, y son las únicas que no dejan deuda. Las últimas tres son lo que se hacia cuando \`@layer\` y \`:where()\` no existian.
 
-> **Consejo final:** Piensa en la especificidad como una herramienta, no como un obstaculo. Y si te encontras escribiendo \`!important\` en tu propio código, el problema casi nunca es la especificidad: es que falta ordenar la cascada.`,
+> **Consejo final:** Pensá en la especificidad como una herramienta, no como un obstaculo. Y si te encontras escribiendo \`!important\` en tu propio código, el problema casi nunca es la especificidad: es que falta ordenar la cascada.`,
       codeExample: {
         html: `<nav class="nav">\n  <a href="#" class="nav-link activo">Inicio</a>\n  <a href="#" class="nav-link">Blog</a>\n  <a href="#" class="nav-link">Contacto</a>\n</nav>`,
         css: `/* Nivel 1: estilos base del componente */\n.nav {\n  display: flex;\n  gap: 4px;\n  background: #f5f5f5;\n  padding: 8px;\n  border-radius: 8px;\n}\n\n/* Nivel 2: elementos del componente */\n.nav-link {\n  padding: 8px 16px;\n  text-decoration: none;\n  color: #555;\n  border-radius: 4px;\n}\n\n/* Nivel 3: estados */\n.nav-link:hover {\n  background: #e0e0e0;\n  color: #333;\n}\n\n.nav-link.activo {\n  background: steelblue;\n  color: white;\n}`,
@@ -465,7 +465,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         { id: "d", text: "Selector universal (*)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "De los selectores normales (sin contar estilos en línea o !important), hay uno que usa el simbolo # y tiene el mayor peso.",
+      hint: "De los selectores normales (sin contar estilos en línea o !important), hay uno que usa el símbolo # y tiene el mayor peso.",
       explanation:
         "De los selectores CSS normales, el selector de ID (#) tiene la mayor especificidad. La jerarquía es: universal (*) < tipo (p) < clase (.card) < ID (#header). Solo los estilos en línea y !important superan a los IDs.",
     },
@@ -519,7 +519,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       validation: { type: "exact", answer: "b" },
       hint: "Cuenta: cuantos IDs tiene (#header), cuantas clases (.nav), cuantos tipos (a). Forma un número con cada conteo.",
       explanation:
-        "El selector '#header .nav a' tiene: 1 ID (#header) + 1 clase (.nav) + 1 tipo (a) = especificidad (1,1,1). Recuerda: IDs suman en la primera posición, clases en la segunda y tipos en la tercera.",
+        "El selector '#header .nav a' tiene: 1 ID (#header) + 1 clase (.nav) + 1 tipo (a) = especificidad (1,1,1). Recordá: IDs suman en la primera posición, clases en la segunda y tipos en la tercera.",
     },
     {
       id: "09-ej-04",
@@ -528,7 +528,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       xpReward: 20,
       order: 4,
       prompt:
-        "El texto deberia ser rojo, pero la clase .azul lo esta sobreescribiendo. Completa la declaración para forzar que sea rojo sin cambiar el selector:",
+        "El texto debería ser rojo, pero la clase .azul lo esta sobreescribiendo. Completá la declaración para forzar que sea rojo sin cambiar el selector:",
       codeTemplate: {
         html: `<p class="azul rojo">Debe ser rojo</p>`,
         cssPrefix: `.azul { color: blue; }\n.rojo { color: red`,
@@ -538,7 +538,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       validation: { type: "exact", answer: " !important" },
       hint: "Hay una palabra clave especial que se añade después del valor y antes del punto y coma para forzar la prioridad.",
       explanation:
-        "La declaración '!important' fuerza la prioridad de una regla sobre todas las demas (excepto otro !important con mayor especificidad). Se escribe después del valor: 'color: red !important;'. Sin embargo, su uso debe ser excepcional.",
+        "La declaración '!important' fuerza la prioridad de una regla sobre todas las demás (excepto otro !important con mayor especificidad). Se escribe después del valor: 'color: red !important;'. Sin embargo, su uso debe ser excepcional.",
     },
     {
       id: "09-ej-05",
@@ -555,7 +555,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         { id: "d", text: "Depende del orden en el HTML", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Recuerda: un solo ID tiene más peso que cualquier cantidad de clases.",
+      hint: "Recordá: un solo ID tiene más peso que cualquier cantidad de clases.",
       explanation:
         "El selector B '#principal p' tiene especificidad (1,0,1) y A '.card .título' tiene (0,2,0). Aunque A tiene dos clases, un solo ID (1,0,0) supera a cualquier número de clases (0,n,0). El ID siempre gana.",
     },
@@ -566,7 +566,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       xpReward: 30,
       order: 6,
       prompt:
-        "El párrafo deberia ser de color steelblue, pero la regla existente lo pone rojo. Escribe un selector con suficiente especificidad para que sea steelblue SIN usar !important. Pista: usa el ID del contenedor.",
+        "El párrafo debería ser de color steelblue, pero la regla existente lo pone rojo. Escribí un selector con suficiente especificidad para que sea steelblue SIN usar !important. Pista: usá el ID del contenedor.",
       codeTemplate: {
         html: `<div id="contenedor">\n  <p class="texto">Este texto debe ser steelblue.</p>\n</div>`,
         cssPrefix: ".texto { color: red; }\n\n",
@@ -579,7 +579,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Para superar la especificidad de .texto (0,1,0), necesitas un selector con al menos un ID. Usa #contenedor combinado con .texto.",
+      hint: "Para superar la especificidad de .texto (0,1,0), necesitás un selector con al menos un ID. Usá #contenedor combinado con .texto.",
       explanation:
         "El selector '#contenedor .texto' tiene especificidad (1,1,0), que supera a '.texto' con (0,1,0). Al combinar el ID del padre con la clase, obtenemos suficiente especificidad para ganar sin recurrir a !important.",
     },
@@ -623,7 +623,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       xpReward: 30,
       order: 8,
       prompt:
-        "Hay tres reglas en conflicto. El resultado objetivo muestra el texto en color crimson con font-size 20px. Escribe un selector con especificidad suficiente para ganar a los dos selectores existentes y aplica esos estilos.",
+        "Hay tres reglas en conflicto. El resultado objetivo muestra el texto en color crimson con font-size 20px. Escribí un selector con especificidad suficiente para ganar a los dos selectores existentes y aplicá esos estilos.",
       codeTemplate: {
         html: `<section id="seccion">\n  <article class="articulo">\n    <p class="texto">Este parrafo debe ser crimson y 20px.</p>\n  </article>\n</section>`,
         cssPrefix: "p { color: blue; font-size: 14px; }\n.articulo .texto { color: green; font-size: 16px; }\n\n",
@@ -636,7 +636,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "La regla más fuerte actual tiene especificidad (0,2,0). Para ganarle, usa el ID #seccion combinado con las clases existentes.",
+      hint: "La regla más fuerte actual tiene especificidad (0,2,0). Para ganarle, usá el ID #seccion combinado con las clases existentes.",
       explanation:
         "Las reglas existentes tienen especificidad (0,0,1) y (0,2,0). El selector '#seccion .articulo .texto' tiene (1,2,0), que supera a ambas. Al incluir el ID del ancestro, ganamos sin necesidad de !important.",
     },
@@ -665,7 +665,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       xpReward: 20,
       order: 10,
       prompt:
-        "Declaras @layer libreria, componentes; La capa libreria tiene .botón.botón-primario (0-2-0) y la capa componentes tiene .mi-botón (0-1-0). Ambas definen background. ¿Cuál gana?",
+        "Declarás @layer libreria, componentes; La capa libreria tiene .botón.botón-primario (0-2-0) y la capa componentes tiene .mi-botón (0-1-0). Ambas definen background. ¿Cuál gana?",
       options: [
         { id: "a", text: "La de libreria, porque su selector es más específico", isCorrect: false },
         { id: "b", text: "La de componentes, porque su capa se declaro después", isCorrect: true },
@@ -684,7 +684,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       xpReward: 25,
       order: 11,
       prompt:
-        "El estilo base pinta el título de navy con especificidad 0-1-1, así que una clase suelta no puede ganarle. Reescribilo para que sea fácil de sobrescribir: usa :where(.contenido) h2 con color: navy, y después una regla .destacado con color: crimson.",
+        "El estilo base pinta el título de navy con especificidad 0-1-1, así que una clase suelta no puede ganarle. Reescribilo para que sea fácil de sobrescribir: usá :where(.contenido) h2 con color: navy, y después una regla .destacado con color: crimson.",
       codeTemplate: {
         html: `<div class="contenido">\n  <h2>Titulo normal</h2>\n  <h2 class="destacado">Titulo destacado</h2>\n</div>`,
         cssPrefix: "",
@@ -714,7 +714,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
       retoPasos: [
         {
           instruccion:
-            "Arranca con lo mas debil: con el selector de tipo `h2`, dale color #95a5a6. Especificidad (0,0,1).",
+            "Arranca con lo más debil: con el selector de tipo `h2`, dale color #95a5a6. Especificidad (0,0,1).",
           esperado: "h2 { color: #95a5a6; }",
         },
         {
@@ -724,12 +724,12 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         },
         {
           instruccion:
-            "Con `#principal .titulo`, dale color #e74c3c. Un id mas una clase dan (1,1,0), y el id le gana a cualquier cantidad de clases.",
+            "Con `#principal .titulo`, dale color #e74c3c. Un id más una clase dan (1,1,0), y el id le gana a cualquier cantidad de clases.",
           esperado: "#principal .titulo { color: #e74c3c; }",
         },
         {
           instruccion:
-            "Ahora el truco: con `:where(#principal) .titulo`, dale un font-size de 28px. `:where()` aporta CERO especificidad, asi que ese selector pesa (0,1,0) aunque tenga un id adentro.",
+            "Ahora el truco: con `:where(#principal) .titulo`, dale un font-size de 28px. `:where()` aporta CERO especificidad, así que ese selector pesa (0,1,0) aunque tenga un id adentro.",
           esperado: ":where(#principal) .titulo { font-size: 28px; }",
         },
       ],
@@ -746,7 +746,7 @@ Las dos primeras son las que aprendiste en las lecciones anteriores, y son las �
         "h2 {\n  color: #95a5a6;\n}\n\n.contenido .titulo {\n  color: #3498db;\n}\n\n#principal .titulo {\n  color: #e74c3c;\n}\n\n:where(#principal) .titulo {\n  font-size: 28px;\n}",
       hint: "La especificidad se cuenta como (ids, clases, tipos) y se compara de izquierda a derecha. Un solo id le gana a diez clases.",
       explanation:
-        "El texto termina en #e74c3c porque (1,1,0) le gana a (0,2,0) y a (0,0,1). El paso 4 es el que sorprende: `:where()` envuelve un id y aun asi aporta cero, asi que sirve para escribir selectores amplios sin dejar una bomba de especificidad para el que venga después. Esa es la alternativa a `!important`, que no se toca en ningun paso a proposito.",
+        "El texto termina en #e74c3c porque (1,1,0) le gana a (0,2,0) y a (0,0,1). El paso 4 es el que sorprende: `:where()` envuelve un id y aun así aporta cero, así que sirve para escribir selectores amplios sin dejar una bomba de especificidad para el que venga después. Esa es la alternativa a `!important`, que no se toca en ningun paso a proposito.",
     },
   ],
 };

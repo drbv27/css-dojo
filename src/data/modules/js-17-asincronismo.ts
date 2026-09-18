@@ -294,7 +294,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa la palabra clave para declarar una función asíncrona:",
+      prompt: "Completá la palabra clave para declarar una función asíncrona:",
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -345,7 +345,7 @@ document.getElementById("cargar").addEventListener("click", function() {
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "¿Qué sucede si usas await fuera de una función async?",
+      prompt: "¿Qué sucede si usás await fuera de una función async?",
       options: [
         { id: "a", text: "Funciona normalmente", isCorrect: false },
         { id: "b", text: "Error de sintaxis", isCorrect: true },
@@ -353,7 +353,7 @@ document.getElementById("cargar").addEventListener("click", function() {
         { id: "d", text: "Se convierte en una Promise", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "await solo es valido dentro de funciones async (o modulos de nivel superior).",
+      hint: "await solo es valido dentro de funciones async (o módulos de nivel superior).",
       explanation: "await solo puede usarse dentro de funciones marcadas como async. Fuera de ellas, produce un error de sintaxis.",
     },
   ],

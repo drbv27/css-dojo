@@ -16,7 +16,7 @@ export const reactContextModule: ModuleData = {
       content: `## Prop Drilling y Context API
 
 ### El problema
-Cuando necesitas pasar datos a componentes profundamente anidados, tienes que pasarlos por cada nivel intermedio:
+Cuando necesitás pasar datos a componentes profundamente anidados, tenés que pasarlos por cada nivel intermedio:
 
 \`\`\`jsx
 <App usuario={usuario}>
@@ -169,7 +169,7 @@ function Perfil() {
 \`\`\`
 
 ### Múltiples Contexts
-Puedes anidar varios Providers para diferentes datos:
+Podés anidar varios Providers para diferentes datos:
 \`\`\`jsx
 <AuthProvider>
   <TemaProvider>
@@ -261,7 +261,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
 ### Usa Props cuando:
 - Los datos solo bajan 1-2 niveles
 - Los componentes intermedios necesitan los datos
-- Quieres componentes reutilizables (reciben props explicitas)
+- Querés componentes reutilizables (reciben props explicitas)
 
 ### Usa Context cuando:
 - Muchos componentes en diferentes niveles necesitan el mismo dato
@@ -286,7 +286,7 @@ Antes de usar Context, considera la **composición**:
 ### Cuidado con Context
 - **No para todo:** No pongas todo el estado en Context
 - **Re-renders:** Todos los consumidores se re-renderizan cuando el valor cambia
-- **Separar:** Usa diferentes contexts para datos no relacionados
+- **Separar:** Usá diferentes contexts para datos no relacionados
 
 \`\`\`jsx
 // MAL: un contexto gigante
@@ -298,7 +298,7 @@ Antes de usar Context, considera la **composición**:
     <CarritoProvider>
 \`\`\`
 
-> **Recuerda:** Props para datos locales, Context para datos compartidos ampliamente.`,
+> **Recordá:** Props para datos locales, Context para datos compartidos ampliamente.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para consumir el contexto de tema dentro de un componente:",
+      prompt: "Completá para consumir el contexto de tema dentro de un componente:",
       codeTemplate: {
         html: "",
         cssPrefix: "const TemaContext = createContext('claro');\n\nfunction Boton() {\n  const tema = ",
@@ -468,7 +468,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el Provider para pasar el valor del tema:",
+      prompt: "Completá el Provider para pasar el valor del tema:",
       codeTemplate: {
         html: "",
         cssPrefix: "const TemaContext = createContext('claro');\n\nfunction App() {\n  const [tema, setTema] = useState('oscuro');\n  return (\n    <TemaContext.",
@@ -493,8 +493,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Reduce el tamaño del bundle", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando cambia solo uno de los valores.",
-      explanation: "Si cambias el tema en un contexto que también tiene carrito e idioma, TODOS los consumidores se re-renderizan. Separando, solo los que leen el tema se actualizan.",
+      hint: "Pensá en que pasa cuando cambia solo uno de los valores.",
+      explanation: "Si cambiás el tema en un contexto que también tiene carrito e idioma, TODOS los consumidores se re-renderizan. Separando, solo los que leen el tema se actualizan.",
     },
     {
       id: "react12-ej-08",

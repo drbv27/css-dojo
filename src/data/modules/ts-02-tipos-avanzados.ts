@@ -47,7 +47,7 @@ userId = 42; // tambien valido
 
 ### Interface vs Type
 
-| Caracteristica | Interface | Type |
+| Característica | Interface | Type |
 |---------------|-----------|------|
 | Objetos | Si | Si |
 | Extender | extends | & (intersection) |
@@ -64,10 +64,31 @@ type Animal2 = { nombre: string };
 type Perro2 = Animal2 & { raza: string };
 \`\`\`
 
-> Usa **interface** para objetos y **type** para uniones, tuplas y tipos complejos.`,
+> Usá **interface** para objetos y **type** para uniones, tuplas y tipos complejos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
+        // El sandbox corre JavaScript: las interfaces y los type aliases se
+        // borran al compilar y no dejan NADA en el bundle. Lo que sigue es el
+        // objeto que sobrevive, sin su contrato.
+        js: `// interface Usuario { id: number; nombre: string; email?: string }
+// Compilado, la interface desaparece por completo. Queda el objeto solo:
+var usuario = { id: 1, nombre: "Ana", email: "ana@mail.com" };
+var sinEmail = { id: 2, nombre: "Beto" };
+
+var salida = [];
+salida.push("usuario:  " + JSON.stringify(usuario));
+salida.push("sinEmail: " + JSON.stringify(sinEmail));
+salida.push("");
+salida.push("El email es opcional, asi que esto es undefined y no un error:");
+salida.push("  sinEmail.email -> " + sinEmail.email);
+salida.push("");
+salida.push("Pero nada impide escribir una propiedad que la interface no declara,");
+salida.push("porque en runtime la interface ya no existe:");
+sinEmail.telefno = "555-0000";   // el typo que TypeScript habria marcado
+salida.push("  " + JSON.stringify(sinEmail) + "   <- 'telefno', con el typo");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 1,
@@ -135,6 +156,35 @@ function procesar(valor: string | number | boolean) {
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #cba6f7; border-radius: 8px; white-space: pre-line; }',
+        js: `// type Estado = "cargando" | "listo" | "error";  <- union de literales.
+// En runtime no queda nada de eso, asi que el chequeo lo escribis vos:
+var ESTADOS = ["cargando", "listo", "error"];
+
+function describir(estado) {
+  switch (estado) {
+    case "cargando": return "Buscando datos...";
+    case "listo":    return "Todo en orden";
+    case "error":    return "Algo se rompio";
+    default:         return "estado desconocido: " + estado;
+  }
+}
+
+var salida = [];
+ESTADOS.forEach(function (e) { salida.push(e + " -> " + describir(e)); });
+
+salida.push("");
+salida.push("La union de TypeScript habria rechazado esto en el editor;");
+salida.push("aca cae en el default y nadie se entera hasta que pasa:");
+salida.push("  " + describir("lsito"));
+
+// Intersection: A & B es, en runtime, un solo objeto con todo junto.
+var persona = { nombre: "Ana" };
+var empleada = { legajo: 42 };
+var ambas = Object.assign({}, persona, empleada);
+salida.push("");
+salida.push("Persona & Empleada -> " + JSON.stringify(ambas));
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 2,
@@ -152,7 +202,7 @@ function procesar(valor: string | number | boolean) {
         { id: "a", text: "Una función reutilizable", isCorrect: false },
         { id: "b", text: "La forma/estructura de un objeto", isCorrect: true },
         { id: "c", text: "Una clase abstracta", isCorrect: false },
-        { id: "d", text: "Un modulo importable", isCorrect: false },
+        { id: "d", text: "Un módulo importable", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Las interfaces describen que propiedades tiene un objeto.",
@@ -181,7 +231,7 @@ function procesar(valor: string | number | boolean) {
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa el tipo para que acepte string O number:",
+      prompt: "Completá el tipo para que acepte string O number:",
       codeTemplate: {
         html: "",
         cssPrefix: "type ID = string ",

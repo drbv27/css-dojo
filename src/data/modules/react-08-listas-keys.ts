@@ -400,7 +400,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa el código para renderizar una lista de nombres con map():",
+      prompt: "Completá el código para renderizar una lista de nombres con map():",
       codeTemplate: {
         html: "",
         cssPrefix: "nombres.",
@@ -446,7 +446,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "c" },
       hint: "El index es problematico cuando el orden de los elementos puede cambiar.",
       explanation:
-        "El index como key es seguro solo en listas estáticas que no se reordenan, filtran o modifican dinamicamente. Para listas dinámicas, usa un ID único y estable.",
+        "El index como key es seguro solo en listas estáticas que no se reordenan, filtran o modifican dinámicamente. Para listas dinámicas, usa un ID único y estable.",
     },
     {
       id: "react08-ej-05",
@@ -454,7 +454,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el código para filtrar solo los productos en stock antes de renderizar:",
+      prompt: "Completá el código para filtrar solo los productos en stock antes de renderizar:",
       codeTemplate: {
         html: "",
         cssPrefix: "const enStock = productos.",
@@ -464,7 +464,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "filter" },
       hint: "Es un método de array que retorna solo los elementos que cumplen una condición.",
       explanation:
-        "filter() crea un nuevo array con solo los elementos que pasan la condición. En este caso, solo los productos donde 'disponible' es true. Luego puedes usar map() para renderizarlos.",
+        "filter() crea un nuevo array con solo los elementos que pasan la condición. En este caso, solo los productos donde 'disponible' es true. Luego podés usar map() para renderizarlos.",
     },
     {
       id: "react08-ej-06",
@@ -512,7 +512,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "Porque React no detecta arrays ordenados", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Recuerda el principio de inmutabilidad en React.",
+      hint: "Recordá el principio de inmutabilidad en React.",
       explanation:
         "sort() modifica (muta) el array original. En React, el estado debe ser inmutable. Crear una copia con [...array] permite ordenar sin mutar el estado original, asegurando que React detecte el cambio.",
     },

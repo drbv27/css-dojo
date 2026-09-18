@@ -51,7 +51,7 @@ function Boton() {
 
 ### Funciones inline
 
-También puedes usar funciones de flecha directamente:
+También podés usar funciones de flecha directamente:
 
 \`\`\`jsx
 <button onClick={() => alert("Hola!")}>Clic</button>
@@ -267,7 +267,7 @@ function Registro() {
 }
 \`\`\`
 
-> **Patrón clave:** Usa \`[name]\` como propiedad computada para manejar múltiples inputs con un solo handler.`,
+> **Patrón clave:** Usá \`[name]\` como propiedad computada para manejar múltiples inputs con un solo handler.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -355,11 +355,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       options: [
         { id: "a", text: "Falta el atributo type en el button", isCorrect: false },
         { id: "b", text: "handleClick() se ejecuta inmediatamente en vez de al hacer clic", isCorrect: true },
-        { id: "c", text: "onClick deberia ser onclick", isCorrect: false },
+        { id: "c", text: "onClick debería ser onclick", isCorrect: false },
         { id: "d", text: "No hay ningun error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Observa los paréntesis después de handleClick.",
+      hint: "Observá los paréntesis después de handleClick.",
       explanation:
         "Al escribir handleClick() con paréntesis, la función se ejecuta inmediatamente durante el renderizado. Se debe pasar como referencia sin paréntesis: handleClick.",
     },
@@ -369,7 +369,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el handler para prevenir el comportamiento por defecto del formulario:",
+      prompt: "Completá el handler para prevenir el comportamiento por defecto del formulario:",
       codeTemplate: {
         html: "",
         cssPrefix: "function handleSubmit(e) {\n  e.",
@@ -405,7 +405,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el input controlado para que actualice el estado 'nombre' al cambiar:",
+      prompt: "Completá el input controlado para que actualice el estado 'nombre' al cambiar:",
       codeTemplate: {
         html: "",
         cssPrefix: "<input\n  value={nombre}\n  onChange={(e) => setNombre(e.",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Cómo pasas un argumento adicional a un event handler en JSX?",
+      prompt: "¿Cómo pasás un argumento adicional a un event handler en JSX?",
       options: [
         { id: "a", text: "onClick={handleDelete, item.id}", isCorrect: false },
         { id: "b", text: "onClick={() => handleDelete(item.id)}", isCorrect: true },
@@ -463,7 +463,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
         { id: "d", text: "onClick={handleDelete} args={item.id}", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Envuelve la llamada en una función de flecha para evitar la ejecución inmediata.",
+      hint: "Envolvé la llamada en una función de flecha para evitar la ejecución inmediata.",
       explanation:
         "Para pasar argumentos a un handler, envuelvelo en una función de flecha: onClick={() => handleDelete(item.id)}. Esto crea una función nueva que se ejecutara solo al hacer clic.",
     },

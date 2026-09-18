@@ -86,7 +86,7 @@ box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
 \`\`\`
 
-> **Consejo:** Usa siempre colores con transparencia (rgba o hsla) para sombras. Nunca uses negro puro, queda muy artificial.`,
+> **Consejo:** Usá siempre colores con transparencia (rgba o hsla) para sombras. Nunca uses negro puro, queda muy artificial.`,
       codeExample: {
         html: `<div class="demo-sombras">\n  <div class="sombra-sutil">Sutil</div>\n  <div class="sombra-media">Media</div>\n  <div class="sombra-fuerte">Fuerte</div>\n  <div class="sombra-glow">Glow</div>\n  <h2 class="texto-sombra">Texto con sombra</h2>\n</div>`,
         css: `.demo-sombras {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 20px;\n  align-items: center;\n}\n\n.demo-sombras > div {\n  padding: 20px 28px;\n  background: white;\n  border-radius: 12px;\n  font-weight: bold;\n  color: #333;\n}\n\n.sombra-sutil {\n  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);\n}\n.sombra-media {\n  box-shadow: 0 4px 12px rgba(0,0,0,0.15);\n}\n.sombra-fuerte {\n  box-shadow: 0 12px 40px rgba(0,0,0,0.25);\n}\n.sombra-glow {\n  box-shadow: 0 0 20px rgba(52, 152, 219, 0.6);\n  color: #3498db;\n}\n.texto-sombra {\n  font-size: 2rem;\n  color: #2c3e50;\n  text-shadow: 2px 2px 6px rgba(0,0,0,0.2);\n}`,
@@ -156,7 +156,7 @@ Crea un degradado circular o eliptico:
 
 ### Degradados múltiples
 
-Puedes superponer degradados:
+Podés superponer degradados:
 
 \`\`\`css
 .fondo {
@@ -181,7 +181,7 @@ Puedes superponer degradados:
 }
 \`\`\`
 
-> **Recuerda:** Los degradados son valores de \`background-image\`, no de \`background-color\`. Por eso usamos la propiedad abreviada \`background\`.`,
+> **Recordá:** Los degradados son valores de \`background-image\`, no de \`background-color\`. Por eso usamos la propiedad abreviada \`background\`.`,
       codeExample: {
         html: `<div class="demo-gradientes">\n  <div class="grad-lineal">Linear</div>\n  <div class="grad-angulo">45deg</div>\n  <div class="grad-radial">Radial</div>\n  <div class="grad-multi">Multi</div>\n  <div class="grad-rayas">Rayas</div>\n</div>`,
         css: `.demo-gradientes {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 16px;\n}\n\n.demo-gradientes > div {\n  width: 130px;\n  height: 100px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 12px;\n  color: white;\n  font-weight: bold;\n  font-size: 0.9rem;\n}\n\n.grad-lineal {\n  background: linear-gradient(to right, #3498db, #8e44ad);\n}\n.grad-angulo {\n  background: linear-gradient(45deg, #e74c3c, #f39c12);\n}\n.grad-radial {\n  background: radial-gradient(circle, #1abc9c, #16213e);\n}\n.grad-multi {\n  background:\n    linear-gradient(45deg, rgba(231,76,60,0.7), transparent),\n    linear-gradient(135deg, rgba(52,152,219,0.7), transparent),\n    #2c3e50;\n}\n.grad-rayas {\n  background: repeating-linear-gradient(\n    45deg,\n    #9b59b6 0px, #9b59b6 10px,\n    #8e44ad 10px, #8e44ad 20px\n  );\n}`,
@@ -234,7 +234,7 @@ Combina varios filtros separados por espacio:
 
 ### backdrop-filter
 
-Aplica filtros al **fondo detras** del elemento (no al elemento mismo). Ideal para efectos de cristal esmerilado:
+Aplica filtros al **fondo detrás** del elemento (no al elemento mismo). Ideal para efectos de cristal esmerilado:
 
 \`\`\`css
 .barra-navegacion {
@@ -260,7 +260,7 @@ Controla la transparencia de un elemento completo (incluidos sus hijos):
 }
 \`\`\`
 
-> **Diferencia importante:** \`opacity\` afecta al elemento Y todos sus hijos. Si solo quieres transparencia en el fondo, usa \`rgba()\` o \`hsla()\` en el background-color.
+> **Diferencia importante:** \`opacity\` afecta al elemento Y todos sus hijos. Si solo querés transparencia en el fondo, usa \`rgba()\` o \`hsla()\` en el background-color.
 
 ### Filtros en hover
 
@@ -314,7 +314,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para agregar una sombra de caja con 4px de desplazamiento horizontal, 4px vertical, 10px de desenfoque y color negro con 20% de opacidad:",
+        "Completá la propiedad para agregar una sombra de caja con 4px de desplazamiento horizontal, 4px vertical, 10px de desenfoque y color negro con 20% de opacidad:",
       codeTemplate: {
         html: `<div class="tarjeta">Tarjeta con sombra</div>`,
         cssPrefix: ".tarjeta {\n  padding: 20px;\n  background: white;\n  border-radius: 8px;\n  ",
@@ -366,7 +366,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa el valor para crear un degradado lineal de izquierda a derecha, de #3498db a #8e44ad:",
+        "Completá el valor para crear un degradado lineal de izquierda a derecha, de #3498db a #8e44ad:",
       codeTemplate: {
         html: `<div class="caja-gradiente">Degradado</div>`,
         cssPrefix: ".caja-gradiente {\n  background: linear-gradient(",
@@ -374,7 +374,7 @@ Los filtros son excelentes para interacciones:
         blanks: ["to right"],
       },
       validation: { type: "regex", answer: "to\\s+right" },
-      hint: "Necesitas indicar la dirección con las palabras clave 'to' y la dirección en ingles.",
+      hint: "Necesitás indicar la dirección con las palabras clave 'to' y la dirección en inglés.",
       explanation:
         "La dirección 'to right' indica que el degradado va de izquierda a derecha. Otras opciones son 'to bottom' (por defecto), 'to top', 'to left' o angulos como '90deg' (equivale a 'to right').",
     },
@@ -385,7 +385,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea un efecto de glassmorphism: un contenedor .glass-container con background: linear-gradient(135deg, #667eea, #764ba2), y dentro un .glass-card con background rgba(255,255,255,0.15), backdrop-filter: blur(10px), border de 1px solid rgba(255,255,255,0.2), padding de 24px y border-radius de 12px.",
+        "Creá un efecto de glassmorphism: un contenedor .glass-container con background: linear-gradient(135deg, #667eea, #764ba2), y dentro un .glass-card con background rgba(255,255,255,0.15), backdrop-filter: blur(10px), border de 1px solid rgba(255,255,255,0.2), padding de 24px y border-radius de 12px.",
       codeTemplate: {
         html: `<div class="glass-container">\n  <div class="glass-card">\n    <h3>Glassmorphism</h3>\n    <p>Efecto de cristal esmerilado</p>\n  </div>\n</div>`,
         cssPrefix: "",
@@ -401,7 +401,7 @@ Los filtros son excelentes para interacciones:
       },
       hint: "El contenedor necesita un fondo con degradado. El card usa backdrop-filter: blur(10px) y un background semi-transparente con rgba.",
       explanation:
-        "El efecto glassmorphism se crea con: un contenedor con fondo colorido (degradado), y un card hijo con fondo semi-transparente (rgba con baja opacidad), backdrop-filter: blur() para desenfocar lo que hay detras, y un borde sutil semi-transparente.",
+        "El efecto glassmorphism se crea con: un contenedor con fondo colorido (degradado), y un card hijo con fondo semi-transparente (rgba con baja opacidad), backdrop-filter: blur() para desenfocar lo que hay detrás, y un borde sutil semi-transparente.",
     },
     {
       id: "20-ej-06",
@@ -413,14 +413,14 @@ Los filtros son excelentes para interacciones:
         "¿Cuál es la diferencia entre 'filter' y 'backdrop-filter'?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
-        { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detras del elemento", isCorrect: true },
+        { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detrás del elemento", isCorrect: true },
         { id: "c", text: "filter es para imágenes; backdrop-filter es para texto", isCorrect: false },
         { id: "d", text: "backdrop-filter no existe en CSS", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "'backdrop' significa 'telon de fondo'. Piensa en que parte del elemento afecta cada propiedad.",
+      hint: "'backdrop' significa 'telon de fondo'. Pensá en que parte del elemento afecta cada propiedad.",
       explanation:
-        "'filter' aplica efectos visuales directamente al elemento y su contenido. 'backdrop-filter' aplica efectos al area detras del elemento, visible a traves de fondos semi-transparentes. Esto es la base del efecto glassmorphism.",
+        "'filter' aplica efectos visuales directamente al elemento y su contenido. 'backdrop-filter' aplica efectos al area detrás del elemento, visible a traves de fondos semi-transparentes. Esto es la base del efecto glassmorphism.",
     },
     {
       id: "20-ej-07",
@@ -429,7 +429,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra más fuerte (0 12px 30px rgba(0,0,0,0.15)). Agrega una transición de 0.3s ease sobre transform y box-shadow.",
+        "Creá una tarjeta con clase 'tarjeta-visual' que tenga: fondo blanco, border-radius de 16px, padding de 24px, una sombra de caja sutil (0 4px 15px rgba(0,0,0,0.1)), y que al hacer hover suba 4px (translateY(-4px)) y tenga sombra más fuerte (0 12px 30px rgba(0,0,0,0.15)). Agregá una transición de 0.3s ease sobre transform y box-shadow.",
       codeTemplate: {
         html: `<div class="tarjeta-visual">\n  <h3>Tarjeta con efectos</h3>\n  <p>Hover para ver la animacion de sombra</p>\n</div>`,
         cssPrefix: "",
@@ -443,7 +443,7 @@ Los filtros son excelentes para interacciones:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define los estilos base con box-shadow sutil y transition, luego en :hover aumenta la sombra y agrega translateY negativo para que 'suba'.",
+      hint: "Definí los estilos base con box-shadow sutil y transition, luego en :hover aumenta la sombra y agrega translateY negativo para que 'suba'.",
       explanation:
         "La tarjeta combina box-shadow para profundidad, transition para suavidad, y en :hover usa translateY(-4px) para elevarla y una sombra más grande. Este patrón es muy usado en interfaces modernas para indicar interactividad.",
     },
@@ -454,7 +454,7 @@ Los filtros son excelentes para interacciones:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un elemento con clase 'imagen-filtro' que tenga un fondo linear-gradient(135deg, #e74c3c, #3498db, #2ecc71) (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agrega transition: filter 0.3s ease. Tamaño: 200px por 150px con border-radius de 12px.",
+        "Creá un elemento con clase 'imagen-filtro' que tenga un fondo linear-gradient(135deg, #e74c3c, #3498db, #2ecc71) (simulando una imagen), y al hacer hover aplique los filtros brightness(1.1) y saturate(1.3). Agregá transition: filter 0.3s ease. Tamaño: 200px por 150px con border-radius de 12px.",
       codeTemplate: {
         html: `<div class="imagen-filtro"></div>`,
         cssPrefix: "",
@@ -468,7 +468,7 @@ Los filtros son excelentes para interacciones:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define el elemento con tamaño fijo, fondo de degradado y transition para filter. En :hover aplica los dos filtros separados por espacio.",
+      hint: "Definí el elemento con tamaño fijo, fondo de degradado y transition para filter. En :hover aplica los dos filtros separados por espacio.",
       explanation:
         "El elemento usa un degradado como fondo y transition: filter 0.3s para animar suavemente los filtros. Al hover, brightness(1.1) aumenta el brillo 10% y saturate(1.3) intensifica los colores 30%. Los filtros múltiples se separan con espacio.",
     },

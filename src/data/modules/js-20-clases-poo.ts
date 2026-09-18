@@ -219,7 +219,7 @@ class CuentaBancaria {
 }
 \`\`\`
 
-> Los campos privados con # son una caracteristica moderna. Solo la propia clase puede acceder a ellos.`,
+> Los campos privados con # son una característica moderna. Solo la propia clase puede acceder a ellos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -354,7 +354,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa para que la clase Perro herede de Animal:",
+      prompt: "Completá para que la clase Perro herede de Animal:",
       codeTemplate: {
         html: "",
         cssPrefix: "class Perro ",

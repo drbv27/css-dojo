@@ -60,7 +60,7 @@ import { Link, NavLink } from 'react-router-dom';
 </NavLink>
 \`\`\`
 
-> **Importante:** Nunca uses \`<a href>\` para navegación interna. Usa \`<Link>\` para evitar recargar la página.`,
+> **Importante:** Nunca uses \`<a href>\` para navegación interna. Usá \`<Link>\` para evitar recargar la página.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -408,8 +408,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         { id: "d", text: "<Redirect>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Su nombre significa 'enlace' en ingles.",
-      explanation: "Link de React Router navega sin recargar la página (SPA). Usa <a href> solo para enlaces externos.",
+      hint: "Su nombre significa 'enlace' en inglés.",
+      explanation: "Link de React Router navega sin recargar la página (SPA). Usá <a href> solo para enlaces externos.",
     },
     {
       id: "react13-ej-03",
@@ -417,7 +417,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para definir una ruta con parámetro dinámico para el ID de usuario:",
+      prompt: "Completá para definir una ruta con parámetro dinámico para el ID de usuario:",
       codeTemplate: {
         html: "",
         cssPrefix: "<Route path=\"/usuario/",
@@ -451,7 +451,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa para leer el parámetro 'id' de la URL /producto/:id:",
+      prompt: "Completá para leer el parámetro 'id' de la URL /producto/:id:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Producto() {\n  const { id } = ",
@@ -503,7 +503,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
         { id: "d", text: "Protege la ruta con autenticación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es un comodin que captura todo lo demas.",
+      hint: "Es un comodin que captura todo lo demás.",
       explanation: "path='*' es una ruta comodin que coincide con cualquier URL que no haya sido capturada por rutas anteriores. Se usa para páginas 404.",
     },
     {
@@ -521,7 +521,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<SimuladorRutasAnida
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Es como un 'enchufe' donde se conectan las rutas hijas.",
-      explanation: "Outlet actua como un placeholder en el componente layout padre. React Router renderiza ahi el componente de la ruta hija que coincida.",
+      explanation: "Outlet actua como un placeholder en el componente layout padre. React Router renderiza ahí el componente de la ruta hija que coincida.",
     },
   ],
 };

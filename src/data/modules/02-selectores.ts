@@ -72,15 +72,15 @@ El **selector de clase** selecciona todos los elementos que tengan un atributo \
 
 ### Ventajas de las clases
 
-- **Reutilizables:** Puedes aplicar la misma clase a múltiples elementos
+- **Reutilizables:** Podés aplicar la misma clase a múltiples elementos
 - **Múltiples clases:** Un elemento puede tener varias clases separadas por espacios: \`class="destacado grande"\`
 - **Flexibles:** Funcionan con cualquier elemento HTML
 
 ### Buenas prácticas para nombrar clases
 
-- Usa nombres **descriptivos**: \`.boton-primario\` en vez de \`.bp\`
-- Usa **guiones** para separar palabras: \`.tarjeta-producto\`
-- Evita nombres que describan el estilo: \`.texto-rojo\` (si luego lo cambias a azul, el nombre pierde sentido)
+- Usá nombres **descriptivos**: \`.boton-primario\` en vez de \`.bp\`
+- Usá **guiones** para separar palabras: \`.tarjeta-producto\`
+- Evitá nombres que describan el estilo: \`.texto-rojo\` (si luego lo cambiás a azul, el nombre pierde sentido)
 
 > **Convención:** Los selectores de clase son los más utilizados en CSS profesional. Dominarlos es fundamental.`,
       codeExample: {
@@ -113,11 +113,11 @@ El **selector de ID** selecciona un elemento único que tenga el atributo \`id\`
 
 ### Regla fundamental
 
-> **Un ID debe ser único en toda la página.** No puede haber dos elementos con el mismo ID. Si necesitas aplicar el mismo estilo a varios elementos, usa una clase en su lugar.
+> **Un ID debe ser único en toda la página.** No puede haber dos elementos con el mismo ID. Si necesitás aplicar el mismo estilo a varios elementos, usá una clase en su lugar.
 
 ### ID vs Clase
 
-| Caracteristica | ID (\`#\`) | Clase (\`.\`) |
+| Característica | ID (\`#\`) | Clase (\`.\`) |
 |----------------|-----------|--------------|
 | Unicidad | Único por página | Reutilizable |
 | Especificidad | Alta (1,0,0) | Media (0,1,0) |
@@ -142,7 +142,7 @@ El **selector de ID** selecciona un elemento único que tenga el atributo \`id\`
       title: "Combinando selectores",
       content: `## Combinando selectores
 
-En CSS puedes combinar selectores de distintas formas para crear reglas más precisas y eficientes.
+En CSS podés combinar selectores de distintas formas para crear reglas más precisas y eficientes.
 
 ### Agrupación con comas
 
@@ -189,7 +189,7 @@ Selecciona **todos** los elementos. Útil para resets:
 }
 \`\`\`
 
-> **Resumen:** Combinar selectores te da un control preciso sobre que elementos reciben estilos. Empieza simple y combina solo cuando sea necesario.`,
+> **Resumen:** Combinar selectores te da un control preciso sobre que elementos reciben estilos. Empezá simple y combina solo cuando sea necesario.`,
       codeExample: {
         html: `<article>\n  <h1>Titulo</h1>\n  <p class="intro">Parrafo introductorio.</p>\n  <p>Parrafo regular.</p>\n</article>\n<p>Parrafo fuera del article.</p>`,
         css: `/* Agrupacion */\nh1, .intro {\n  color: darkslateblue;\n}\n\n/* Descendiente */\narticle p {\n  font-size: 18px;\n  line-height: 1.6;\n}\n\n/* Selector multiple */\np.intro {\n  font-weight: bold;\n  border-left: 3px solid tomato;\n  padding-left: 12px;\n}`,
@@ -213,7 +213,7 @@ Selecciona **todos** los elementos. Útil para resets:
         { id: "d", text: "*h1", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Un selector de tipo usa directamente el nombre de la etiqueta, sin ningun simbolo delante.",
+      hint: "Un selector de tipo usa directamente el nombre de la etiqueta, sin ningun símbolo delante.",
       explanation:
         "El selector de tipo 'h1' (sin ningun prefijo) selecciona todos los elementos <h1>. El punto (.) es para clases, el numeral (#) para IDs, y el asterisco (*) es el selector universal.",
     },
@@ -224,7 +224,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el selector de clase para aplicar color rojo a los elementos con la clase 'destacado':",
+        "Completá el selector de clase para aplicar color rojo a los elementos con la clase 'destacado':",
       codeTemplate: {
         html: `<p class="destacado">Texto destacado</p>\n<p>Texto normal</p>`,
         cssPrefix: "",
@@ -243,7 +243,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa el selector de ID para aplicar padding al elemento con id 'primario':",
+        "Completá el selector de ID para aplicar padding al elemento con id 'primario':",
       codeTemplate: {
         html: `<div id="primario">Contenido principal</div>`,
         cssPrefix: "",
@@ -251,7 +251,7 @@ Selecciona **todos** los elementos. Útil para resets:
         blanks: ["#primario"],
       },
       validation: { type: "exact", answer: "#primario" },
-      hint: "Los selectores de ID empiezan con el simbolo numeral (#) seguido del nombre del ID.",
+      hint: "Los selectores de ID empiezan con el símbolo numeral (#) seguido del nombre del ID.",
       explanation:
         "El selector '#primario' usa el numeral (#) como prefijo para indicar que es un selector de ID. Selecciona el elemento único que tenga id=\"primario\".",
     },
@@ -292,7 +292,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 20,
       order: 5,
       prompt:
-        "Escribe una regla CSS para que todos los párrafos (<p>) tengan color azul (blue).",
+        "Escribí una regla CSS para que todos los párrafos (<p>) tengan color azul (blue).",
       codeTemplate: {
         html: `<p>Primer parrafo</p>\n<p>Segundo parrafo</p>\n<p>Tercer parrafo</p>`,
         cssPrefix: "",
@@ -305,7 +305,7 @@ Selecciona **todos** los elementos. Útil para resets:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas un selector de tipo 'p' y la propiedad 'color' con valor 'blue'.",
+      hint: "Necesitás un selector de tipo 'p' y la propiedad 'color' con valor 'blue'.",
       explanation:
         "La regla 'p { color: blue; }' usa un selector de tipo para aplicar el color azul a todos los elementos <p>.",
     },
@@ -323,7 +323,7 @@ Selecciona **todos** los elementos. Útil para resets:
         { id: "d", text: "* (asterisco)", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en la notación que usamos en el ejemplo: .destacado { ... }",
+      hint: "Pensá en la notación que usamos en el ejemplo: .destacado { ... }",
       explanation:
         "Los selectores de clase usan el punto (.) como prefijo. Por ejemplo, '.mi-clase' selecciona todos los elementos con class=\"mi-clase\".",
     },
@@ -334,7 +334,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 30,
       order: 7,
       prompt:
-        "Escribe CSS para: 1) Aplicar color verde (green) al elemento con clase `.activo`. 2) Aplicar font-size de 20px al elemento con id `#titulo`.",
+        "Escribí CSS para: 1) Aplicar color verde (green) al elemento con clase `.activo`. 2) Aplicar font-size de 20px al elemento con id `#titulo`.",
       codeTemplate: {
         html: `<h1 id="titulo">Bienvenido</h1>\n<p class="activo">Elemento activo</p>\n<p>Elemento inactivo</p>`,
         cssPrefix: "",
@@ -348,7 +348,7 @@ Selecciona **todos** los elementos. Útil para resets:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una con selector de clase (.activo) y otra con selector de ID (#titulo).",
+      hint: "Necesitás dos reglas: una con selector de clase (.activo) y otra con selector de ID (#titulo).",
       explanation:
         "Se necesitan dos reglas: '.activo { color: green; }' usa un selector de clase, y '#titulo { font-size: 20px; }' usa un selector de ID.",
     },
@@ -359,7 +359,7 @@ Selecciona **todos** los elementos. Útil para resets:
       xpReward: 30,
       order: 8,
       prompt:
-        "Observa el resultado objetivo: el <h1> debe ser de color rojo (red) y los párrafos de color azul (blue). Escribe el CSS necesario para lograr ese resultado.",
+        "Observá el resultado objetivo: el <h1> debe ser de color rojo (red) y los párrafos de color azul (blue). Escribí el CSS necesario para lograr ese resultado.",
       codeTemplate: {
         html: `<h1>Titulo Importante</h1>\n<p>Primer parrafo del contenido.</p>\n<p>Segundo parrafo del contenido.</p>`,
         cssPrefix: "",
@@ -372,7 +372,7 @@ Selecciona **todos** los elementos. Útil para resets:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos selectores de tipo: uno para h1 y otro para p, cada uno con su propiedad color.",
+      hint: "Necesitás dos selectores de tipo: uno para h1 y otro para p, cada uno con su propiedad color.",
       explanation:
         "Se usan dos selectores de tipo: 'h1 { color: red; }' para el título en rojo y 'p { color: blue; }' para los párrafos en azul.",
     },
@@ -388,12 +388,12 @@ Selecciona **todos** los elementos. Útil para resets:
       retoPasos: [
         {
           instruccion:
-            "Con un selector de TIPO, dale a todos los parrafos el color #555 y un margen de 8px.",
+            "Con un selector de TIPO, dale a todos los párrafos el color #555 y un margen de 8px.",
           esperado: "p { color: #555; margin: 8px; }",
         },
         {
           instruccion:
-            "Con un selector de CLASE, dale a .destacado un fondo #fff3cd. Fijate que alcanza al h2 y al parrafo por igual.",
+            "Con un selector de CLASE, dale a .destacado un fondo #fff3cd. Fijate que alcanza al h2 y al párrafo por igual.",
           esperado: ".destacado { background-color: #fff3cd; }",
         },
         {
@@ -415,7 +415,7 @@ Selecciona **todos** los elementos. Útil para resets:
         "p {\n  color: #555;\n  margin: 8px;\n}\n\n.destacado {\n  background-color: #fff3cd;\n}\n\n#cabecera {\n  padding: 16px;\n  border: 1px solid #ddd;\n}",
       hint: "El tipo se escribe tal cual (`p`), la clase con punto (`.destacado`) y el id con numeral (`#cabecera`).",
       explanation:
-        "Cada selector elige por un criterio distinto: el de tipo por el nombre del elemento, el de clase por un atributo que podes repetir, y el de id por un atributo que es único en la página. Por eso `.destacado` alcanza a dos elementos diferentes y `#cabecera` a uno solo.",
+        "Cada selector elige por un criterio distinto: el de tipo por el nombre del elemento, el de clase por un atributo que podés repetir, y el de id por un atributo que es único en la página. Por eso `.destacado` alcanza a dos elementos diferentes y `#cabecera` a uno solo.",
     },
   ],
 };

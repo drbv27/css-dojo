@@ -53,7 +53,7 @@ function Cronometro() {
 | .current es mutable | Inmutable (setter) |
 | Persiste entre renders | Persiste entre renders |
 
-> **Regla:** Usa useRef cuando necesites un valor que persista pero no necesite re-renderizar la UI.`,
+> **Regla:** Usá useRef cuando necesites un valor que persista pero no necesite re-renderizar la UI.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -134,7 +134,7 @@ const handleClick = useCallback(() => {
   setCount(c => c + 1);
 }, []);
 \`\`\`
-Devuelve la misma referencia de función entre renders. Útil cuando pasas callbacks a componentes hijos optimizados con React.memo.
+Devuelve la misma referencia de función entre renders. Útil cuando pasás callbacks a componentes hijos optimizados con React.memo.
 
 ### ¿Cuándo usarlos?
 
@@ -150,7 +150,7 @@ Devuelve la misma referencia de función entre renders. Útil cuando pasas callb
 - Para calculos simples (el costo de memorizar supera el beneficio)
 - Si no hay problemas de rendimiento reales
 
-> **Regla:** No optimices prematuramente. Usa useMemo/useCallback solo cuando hay un problema de rendimiento real.`,
+> **Regla:** No optimices prematuramente. Usá useMemo/useCallback solo cuando hay un problema de rendimiento real.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -350,7 +350,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Qué pasa cuando cambias el valor de useRef.current?",
+      prompt: "¿Qué pasa cuando cambiás el valor de useRef.current?",
       options: [
         { id: "a", text: "El componente se re-renderiza", isCorrect: false },
         { id: "b", text: "Se lanza un error", isCorrect: false },
@@ -367,7 +367,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para enfocar el input usando useRef:",
+      prompt: "Completá para enfocar el input usando useRef:",
       codeTemplate: {
         html: "",
         cssPrefix: "const inputRef = useRef(null);\n\nconst enfocar = () => {\n  inputRef.",
@@ -376,7 +376,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "current" },
       hint: "Accede al elemento DOM real a traves de la propiedad del ref.",
-      explanation: "inputRef.current contiene el elemento DOM real del input, sobre el cual puedes llamar .focus().",
+      explanation: "inputRef.current contiene el elemento DOM real del input, sobre el cual podés llamar .focus().",
     },
     {
       id: "react10-ej-04",
@@ -442,7 +442,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa el nombre del custom hook (debe empezar con 'use'):",
+      prompt: "Completá el nombre del custom hook (debe empezar con 'use'):",
       codeTemplate: {
         html: "",
         cssPrefix: "function ",

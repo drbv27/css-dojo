@@ -16,7 +16,7 @@ export const selectoresDescendientesModule: ModuleData = {
       title: "Selector descendiente",
       content: `## Selector descendiente (espacio)
 
-El **selector descendiente** selecciona elementos que estan **dentro de** otro elemento, sin importar la profundidad de anidamiento. Se escribe separando los selectores con un **espacio**.
+El **selector descendiente** selecciona elementos que están **dentro de** otro elemento, sin importar la profundidad de anidamiento. Se escribe separando los selectores con un **espacio**.
 
 ### Sintaxis
 
@@ -64,7 +64,7 @@ El selector \`.contenedor p\` seleccionara ese párrafo aunque haya varios nivel
 
 ### Combinando con clases e IDs
 
-Puedes combinar selectores de tipo, clase e ID:
+Podés combinar selectores de tipo, clase e ID:
 
 \`\`\`css
 /* Enlaces con clase destacado dentro de h3 */
@@ -74,7 +74,7 @@ h3.destacado a {
 }
 \`\`\`
 
-> **Atención:** Evita encadenar demasiados selectores descendientes (más de 3 niveles). Esto hace el CSS difícil de mantener y aumenta la especificidad innecesariamente.`,
+> **Atención:** Evitá encadenar demasiados selectores descendientes (más de 3 niveles). Esto hace el CSS difícil de mantener y aumenta la especificidad innecesariamente.`,
       codeExample: {
         html: `<header>\n  <nav>\n    <a href="#">Inicio</a>\n    <a href="#">Servicios</a>\n    <a href="#">Contacto</a>\n  </nav>\n  <p>Bienvenido al sitio</p>\n</header>\n<p>Este parrafo esta FUERA del header.</p>`,
         css: `header nav a {\n  color: white;\n  background-color: steelblue;\n  padding: 8px 16px;\n  text-decoration: none;\n  margin-right: 4px;\n  border-radius: 4px;\n}\n\nheader p {\n  color: gray;\n  font-style: italic;\n}`,
@@ -87,7 +87,7 @@ h3.destacado a {
       title: "Selector hijo directo (>)",
       content: `## Selector hijo directo (>)
 
-El **selector hijo directo** selecciona solo los elementos que son **hijos inmediatos** de otro elemento. Se escribe con el simbolo **mayor que (>)**.
+El **selector hijo directo** selecciona solo los elementos que son **hijos inmediatos** de otro elemento. Se escribe con el símbolo **mayor que (>)**.
 
 ### Sintaxis
 
@@ -129,11 +129,11 @@ padre > hijo {
 |----------|-----------|
 | \`nav > ul\` | Solo los \`<ul>\` hijos directos de \`<nav>\` |
 | \`.card > h2\` | Solo los \`<h2>\` directos dentro de \`.card\` |
-| \`#menu > li > a\` | Enlaces directos en items directos del menu |
+| \`#menu > li > a\` | Enlaces directos en items directos del menú |
 
 ### Cuando usarlo
 
-- Cuando tienes **estructuras anidadas** (menus con submenus, listas con sublistas)
+- Cuando tenés **estructuras anidadas** (menús con submenus, listas con sublistas)
 - Para evitar que los estilos **se filtren** a elementos más profundos
 - Para crear selectores más **predecibles** y controlados
 
@@ -150,7 +150,7 @@ padre > hijo {
       title: "Selectores de hermanos (+ y ~)",
       content: `## Selectores de hermanos
 
-Los selectores de hermanos seleccionan elementos que **comparten el mismo padre** y estan al **mismo nivel** en el HTML.
+Los selectores de hermanos seleccionan elementos que **comparten el mismo padre** y están al **mismo nivel** en el HTML.
 
 ### Hermano adyacente (+)
 
@@ -210,7 +210,7 @@ img + p {
 }
 \`\`\`
 
-> **Importante:** Los selectores de hermanos solo miran **hacia adelante** en el DOM. No pueden seleccionar elementos que estan ANTES.`,
+> **Importante:** Los selectores de hermanos solo miran **hacia adelante** en el DOM. No pueden seleccionar elementos que están ANTES.`,
       codeExample: {
         html: `<h2>Titulo de seccion</h2>\n<p>Primer parrafo (hermano adyacente al h2)</p>\n<p>Segundo parrafo</p>\n<div class="nota">Una nota intermedia</div>\n<p>Tercer parrafo</p>`,
         css: `/* Hermano adyacente: solo el primer p despues de h2 */\nh2 + p {\n  font-size: 18px;\n  color: steelblue;\n  font-weight: bold;\n}\n\n/* Hermano general: todos los p despues de h2 */\nh2 ~ p {\n  padding-left: 16px;\n  border-left: 3px solid #ddd;\n}`,
@@ -276,12 +276,12 @@ div.card {
 
 | Patrón | Uso |
 |--------|-----|
-| \`nav > ul > li > a\` | Enlaces del menu principal |
+| \`nav > ul > li > a\` | Enlaces del menú principal |
 | \`.form-group > label + input\` | Input justo después de su label |
 | \`table tbody tr\` | Filas del cuerpo de una tabla |
 | \`.card > .card-body p\` | Párrafos en el cuerpo de una tarjeta |
 
-> **Regla de oro:** Un buen selector es lo suficientemente específico para seleccionar lo que necesitas, pero no más. Selectores demasiado largos son fragiles y difíciles de mantener.`,
+> **Regla de oro:** Un buen selector es lo suficientemente específico para seleccionar lo que necesitás, pero no más. Selectores demasiado largos son fragiles y difíciles de mantener.`,
       codeExample: {
         html: `<div id="principal">\n  <section>\n    <h3 class="destacado">Titulo destacado</h3>\n    <p>Primer parrafo con un <a href="#">enlace</a>.</p>\n    <p>Segundo parrafo.</p>\n  </section>\n  <section>\n    <h3>Titulo normal</h3>\n    <p>Otro parrafo.</p>\n  </section>\n</div>`,
         css: `/* Selector con ID, descendiente y tipo+clase */\n#principal section h3.destacado {\n  color: tomato;\n  border-bottom: 2px solid tomato;\n  padding-bottom: 4px;\n}\n\n/* Hermano adyacente del h3 */\nh3 + p {\n  font-weight: bold;\n  color: #333;\n}\n\n/* Enlace dentro de la seccion principal */\n#principal section p a {\n  color: steelblue;\n  font-weight: bold;\n}`,
@@ -298,7 +298,7 @@ div.card {
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Qué selector CSS aplica estilos a TODOS los párrafos que estan dentro de un <header>, sin importar la profundidad?",
+        "¿Qué selector CSS aplica estilos a TODOS los párrafos que están dentro de un <header>, sin importar la profundidad?",
       options: [
         { id: "a", text: "header > p", isCorrect: false },
         { id: "b", text: "header p", isCorrect: true },
@@ -306,7 +306,7 @@ div.card {
         { id: "d", text: "header ~ p", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El selector descendiente usa un espacio simple entre los dos elementos. No utiliza ningun simbolo especial.",
+      hint: "El selector descendiente usa un espacio simple entre los dos elementos. No utiliza ningun símbolo especial.",
       explanation:
         "El selector 'header p' (con espacio) es el selector descendiente. Selecciona todos los <p> dentro de <header>, sin importar cuantos niveles de profundidad haya. El selector '>' es solo para hijos directos.",
     },
@@ -317,7 +317,7 @@ div.card {
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el selector para aplicar estilos solo a los enlaces (<a>) que estan dentro del <nav>:",
+        "Completá el selector para aplicar estilos solo a los enlaces (<a>) que están dentro del <nav>:",
       codeTemplate: {
         html: `<nav>\n  <a href="#">Inicio</a>\n  <a href="#">Acerca</a>\n</nav>\n<a href="#">Enlace fuera del nav</a>`,
         cssPrefix: "",
@@ -325,9 +325,9 @@ div.card {
         blanks: ["nav a"],
       },
       validation: { type: "exact", answer: "nav a" },
-      hint: "Necesitas un selector descendiente: primero el contenedor, luego un espacio, luego el elemento hijo.",
+      hint: "Necesitás un selector descendiente: primero el contenedor, luego un espacio, luego el elemento hijo.",
       explanation:
-        "El selector 'nav a' selecciona todos los enlaces (<a>) que estan dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relación de descendencia.",
+        "El selector 'nav a' selecciona todos los enlaces (<a>) que están dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relación de descendencia.",
     },
     {
       id: "06-ej-03",
@@ -388,7 +388,7 @@ div.card {
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa el selector para aplicar estilos solo al primer párrafo que aparece inmediatamente después de un <h2>:",
+        "Completá el selector para aplicar estilos solo al primer párrafo que aparece inmediatamente después de un <h2>:",
       codeTemplate: {
         html: `<h2>Titulo</h2>\n<p>Primer parrafo</p>\n<p>Segundo parrafo</p>`,
         cssPrefix: "",
@@ -396,9 +396,9 @@ div.card {
         blanks: ["h2 + p"],
       },
       validation: { type: "exact", answer: "h2 + p" },
-      hint: "Necesitas el combinador de hermano adyacente. Es un simbolo matemático que usamos para sumar.",
+      hint: "Necesitás el combinador de hermano adyacente. Es un símbolo matemático que usamos para sumar.",
       explanation:
-        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente después de un <h2>, no los demas párrafos.",
+        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente después de un <h2>, no los demás párrafos.",
     },
     {
       id: "06-ej-06",
@@ -407,7 +407,7 @@ div.card {
       xpReward: 20,
       order: 6,
       prompt:
-        "Escribe CSS para que los enlaces (<a>) dentro de #principal tengan color tomato y los <li> hijos directos de .menu tengan font-weight: bold.",
+        "Escribí CSS para que los enlaces (<a>) dentro de #principal tengan color tomato y los <li> hijos directos de .menu tengan font-weight: bold.",
       codeTemplate: {
         html: `<div id="principal">\n  <p>Visita nuestro <a href="#">sitio web</a>.</p>\n</div>\n<ul class="menu">\n  <li>Item 1\n    <ul><li>Sub-item</li></ul>\n  </li>\n  <li>Item 2</li>\n</ul>`,
         cssPrefix: "",
@@ -421,7 +421,7 @@ div.card {
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una con selector descendiente (#principal a) y otra con selector hijo directo (.menu > li).",
+      hint: "Necesitás dos reglas: una con selector descendiente (#principal a) y otra con selector hijo directo (.menu > li).",
       explanation:
         "La primera regla '#principal a' usa un selector descendiente para pintar los enlaces dentro de #principal. La segunda '.menu > li' usa el hijo directo para aplicar negrita solo a los <li> del primer nivel.",
     },
@@ -481,7 +481,7 @@ div.card {
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa nav > a para hijos directos del nav y nav + p para el párrafo inmediatamente después del nav.",
+      hint: "Usá nav > a para hijos directos del nav y nav + p para el párrafo inmediatamente después del nav.",
       explanation:
         "Se usan dos combinadores: 'nav > a' selecciona los enlaces que son hijos directos del nav, y 'nav + p' selecciona el párrafo que está inmediatamente después del nav (hermano adyacente).",
     },
@@ -493,11 +493,11 @@ div.card {
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Los cuatro combinadores del modulo sobre el mismo marcado. Fijate que cada uno elige un conjunto DISTINTO de elementos, y esa es toda la diferencia entre ellos.",
+        "Reto integrador. Los cuatro combinadores del módulo sobre el mismo marcado. Fijate que cada uno elige un conjunto DISTINTO de elementos, y esa es toda la diferencia entre ellos.",
       retoPasos: [
         {
           instruccion:
-            "Con el DESCENDIENTE `.menu a`, dale a todos los enlaces del menu el color #2c3e50, incluido el que esta anidado dos niveles adentro.",
+            "Con el DESCENDIENTE `.menu a`, dale a todos los enlaces del menú el color #2c3e50, incluido el que esta anidado dos niveles adentro.",
           esperado: ".menu a { color: #2c3e50; }",
         },
         {
@@ -507,12 +507,12 @@ div.card {
         },
         {
           instruccion:
-            "Con el HERMANO ADYACENTE `.menu + .aviso`, dale al parrafo que sigue al menu un fondo #fff3cd. Solo al que va inmediatamente despues.",
+            "Con el HERMANO ADYACENTE `.menu + .aviso`, dale al párrafo que sigue al menú un fondo #fff3cd. Solo al que va inmediatamente después.",
           esperado: ".menu + .aviso { background-color: #fff3cd; }",
         },
         {
           instruccion:
-            "Con el HERMANO GENERAL `.menu ~ p`, dale a TODOS los parrafos hermanos posteriores un color #7f8c8d. Este si alcanza a los dos.",
+            "Con el HERMANO GENERAL `.menu ~ p`, dale a TODOS los párrafos hermanos posteriores un color #7f8c8d. Este si alcanza a los dos.",
           esperado: ".menu ~ p { color: #7f8c8d; }",
         },
       ],

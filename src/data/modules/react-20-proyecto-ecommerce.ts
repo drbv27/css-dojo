@@ -589,7 +589,7 @@ const addToCart = (product) => {
 - useMemo para filtros y totales
 - Lazy load para páginas de detalle
 
-> **Recuerda:** Un buen e-commerce es rápido, accesible y funciona en cualquier dispositivo.`,
+> **Recordá:** Un buen e-commerce es rápido, accesible y funciona en cualquier dispositivo.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -738,7 +738,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Completa para calcular el total del carrito:",
+      prompt: "Completá para calcular el total del carrito:",
       codeTemplate: {
         html: "",
         cssPrefix: "const total = items.",
@@ -804,7 +804,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Una sola fuente de verdad.",
-      explanation: "Si el total fuera estado separado, podria desincronizarse de los items. Calcularlo como valor derivado garantiza que siempre sea correcto.",
+      explanation: "Si el total fuera estado separado, podría desincronizarse de los items. Calcularlo como valor derivado garantiza que siempre sea correcto.",
     },
     {
       id: "react20-ej-06",
@@ -812,7 +812,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa la CSS Grid para un layout responsive de productos:",
+      prompt: "Completá la CSS Grid para un layout responsive de productos:",
       codeTemplate: {
         html: "",
         cssPrefix: "display: grid;\ngrid-template-columns: repeat(",

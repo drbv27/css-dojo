@@ -29,9 +29,9 @@ El **W3C Markup Validation Service** (validator.w3.org) analiza tu HTML y report
 
 ### Buenas prácticas de código limpio
 
-1. **Indentación consistente:** Usa 2 o 4 espacios (nunca mezcles tabs y espacios)
+1. **Indentación consistente:** Usá 2 o 4 espacios (nunca mezcles tabs y espacios)
 2. **Cierra todas las etiquetas:** Incluso las opcionales como \`</li>\` y \`</p>\`
-3. **Usa minúsculas:** Para nombres de etiquetas y atributos
+3. **Usá minúsculas:** Para nombres de etiquetas y atributos
 4. **Comillas dobles:** En valores de atributos
 5. **Un atributo por línea:** En elementos con muchos atributos
 6. **Comentarios útiles:** Explica el "por que", no el "que"
@@ -115,7 +115,7 @@ ul { padding-left: 20px; }`,
       title: "Etiquetas obsoletas y alternativas modernas",
       content: `## Etiquetas obsoletas y alternativas modernas
 
-HTML5 elimino muchas etiquetas presentacionales. Aquí estan las más comunes y sus **alternativas correctas**:
+HTML5 elimino muchas etiquetas presentacionales. Aquí están las más comunes y sus **alternativas correctas**:
 
 ### Etiquetas obsoletas
 
@@ -138,7 +138,7 @@ Estas NO son obsoletas pero tienen significados diferentes:
 | \`<b>\` | Texto visualmente en negrita (sin importancia semántica) |
 | \`<strong>\` | Texto importante (negrita con significado) |
 | \`<i>\` | Texto visualmente en cursiva (términos técnicos, títulos) |
-| \`<em>\` | Enfasis (cursiva con significado) |
+| \`<em>\` | Énfasis (cursiva con significado) |
 
 ### Ejemplo
 
@@ -230,7 +230,7 @@ La posición y atributos de \`<script>\` afectan el rendimiento:
 | \`defer\` | En paralelo | Al terminar el DOM, en orden |
 | \`async\` | En paralelo | Apenas descarga, sin orden |
 
-> **Regla general:** Usa \`defer\` para la mayoria de scripts. Usa \`async\` solo para scripts independientes como analytics.
+> **Regla general:** Usá \`defer\` para la mayoria de scripts. Usá \`async\` solo para scripts independientes como analytics.
 
 ### Preload y prefetch
 
@@ -423,7 +423,7 @@ function borrar() {
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el atributo para que el script se ejecute cuando el DOM este listo, sin bloquear la carga:",
+      prompt: "Completá el atributo para que el script se ejecute cuando el DOM este listo, sin bloquear la carga:",
       codeTemplate: {
         html: "",
         cssPrefix: '<script src="app.js" ',
@@ -431,7 +431,7 @@ function borrar() {
         blanks: ["defer"],
       },
       validation: { type: "exact", answer: "defer" },
-      hint: "Significa 'diferir' o 'posponer' en ingles.",
+      hint: "Significa 'diferir' o 'posponer' en inglés.",
       explanation:
         "El atributo defer hace que el script se descargue en paralelo pero se ejecute solo cuando el DOM este completamente construido, manteniendo el orden de los scripts.",
     },

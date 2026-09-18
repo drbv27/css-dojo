@@ -31,17 +31,17 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 
 ### Usos comunes
 
-- **Menus de navegación**: la mayoria de menus web son listas no ordenadas estilizadas con CSS
-- **Listas de caracteristicas**: funcionalidades de un producto
+- **Menús de navegación**: la mayoria de menús web son listas no ordenadas estilizadas con CSS
+- **Listas de características**: funcionalidades de un producto
 - **Ingredientes**: en una receta de cocina
 - **Cualquier grupo** de elementos donde el orden no importa
 
 ### Reglas importantes
 
 1. Dentro de \`<ul>\`, **solo** deben ir elementos \`<li>\` como hijos directos
-2. Dentro de cada \`<li>\` puedes poner cualquier contenido: texto, enlaces, imágenes, incluso otras listas
+2. Dentro de cada \`<li>\` podés poner cualquier contenido: texto, enlaces, imágenes, incluso otras listas
 
-> **Dato:** La etiqueta \`<ul>\` es una de las más usadas en la web. Casi todos los menus de navegación estan construidos con listas no ordenadas.`,
+> **Dato:** La etiqueta \`<ul>\` es una de las más usadas en la web. Casi todos los menús de navegación están construidos con listas no ordenadas.`,
       codeExample: {
         html: `<h2>Lista de compras</h2>\n<ul>\n  <li>Pan integral</li>\n  <li>Leche descremada</li>\n  <li>Huevos</li>\n  <li>Frutas frescas</li>\n  <li>Verduras variadas</li>\n</ul>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nul {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n}\n\nli {\n  padding: 2px 0;\n}`,
@@ -98,7 +98,7 @@ Numera los elementos de mayor a menor:
 </ol>
 \`\`\`
 
-> **Tip:** Usa \`<ol>\` siempre que el orden de los elementos sea relevante: pasos de instrucciones, rankings, procedimientos.`,
+> **Tip:** Usá \`<ol>\` siempre que el orden de los elementos sea relevante: pasos de instrucciones, rankings, procedimientos.`,
       codeExample: {
         html: `<h2>Pasos para crear una pagina web</h2>\n<ol>\n  <li>Crear el archivo HTML</li>\n  <li>Escribir la estructura basica</li>\n  <li>Agregar contenido</li>\n  <li>Aplicar estilos CSS</li>\n</ol>\n\n<h2>Top 3 lenguajes (reversed)</h2>\n<ol reversed type="1">\n  <li>JavaScript</li>\n  <li>Python</li>\n  <li>HTML/CSS</li>\n</ol>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n  margin-top: 16px;\n}\n\nol {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n}\n\nli {\n  padding: 2px 0;\n}`,
@@ -113,7 +113,7 @@ Numera los elementos de mayor a menor:
 
 ### Listas anidadas
 
-Puedes colocar una lista **dentro de otra** para crear subniveles. La lista hija va dentro de un \`<li>\`:
+Podés colocar una lista **dentro de otra** para crear subniveles. La lista hija va dentro de un \`<li>\`:
 
 \`\`\`html
 <ul>
@@ -132,7 +132,7 @@ Puedes colocar una lista **dentro de otra** para crear subniveles. La lista hija
 </ul>
 \`\`\`
 
-Puedes anidar \`<ul>\` dentro de \`<ol>\` y viceversa. No hay límite de niveles, pero se recomienda no pasar de **3 niveles** para mantener la legibilidad.
+Podés anidar \`<ul>\` dentro de \`<ol>\` y viceversa. No hay límite de niveles, pero se recomienda no pasar de **3 niveles** para mantener la legibilidad.
 
 ### Listas de descripción: \`<dl>\`, \`<dt>\`, \`<dd>\`
 
@@ -191,7 +191,7 @@ Las listas de descripción asocian **términos con sus definiciones**:
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa las etiquetas de apertura y cierre para que esta sea una lista ordenada:",
+      prompt: "Completá las etiquetas de apertura y cierre para que esta sea una lista ordenada:",
       codeTemplate: {
         html: `<_____>\n  <li>Primero</li>\n  <li>Segundo</li>\n  <li>Tercero</li>\n</_____>`,
         cssPrefix: "",
@@ -253,7 +253,7 @@ Las listas de descripción asocian **términos con sus definiciones**:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una lista no ordenada <ul> con 3 elementos. El segundo elemento debe contener una lista ordenada <ol> anidada con 2 sub-elementos.",
+        "Creá una lista no ordenada <ul> con 3 elementos. El segundo elemento debe contener una lista ordenada <ol> anidada con 2 sub-elementos.",
       codeTemplate: {
         html: `<!-- Crea la lista con anidacion -->`,
         cssPrefix: "",
@@ -279,7 +279,7 @@ Las listas de descripción asocian **términos con sus definiciones**:
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa la lista ordenada para que empiece en el número 5 y use letras mayúsculas:",
+      prompt: "Completá la lista ordenada para que empiece en el número 5 y use letras mayúsculas:",
       codeTemplate: {
         html: `<ol _____="5" _____="A">\n  <li>Elemento E</li>\n  <li>Elemento F</li>\n  <li>Elemento G</li>\n</ol>`,
         cssPrefix: "",
@@ -298,7 +298,7 @@ Las listas de descripción asocian **términos con sus definiciones**:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una lista de descripción <dl> con al menos 2 términos (<dt>) y sus definiciones (<dd>). Tema: conceptos básicos de desarrollo web.",
+        "Creá una lista de descripción <dl> con al menos 2 términos (<dt>) y sus definiciones (<dd>). Tema: conceptos básicos de desarrollo web.",
       codeTemplate: {
         html: `<!-- Crea la lista de descripcion -->`,
         cssPrefix: "",
@@ -314,7 +314,7 @@ Las listas de descripción asocian **términos con sus definiciones**:
           "dl > dd >> 2",
         ],
       },
-      hint: "Usa dl como contenedor, dt para cada término y dd para cada definición.",
+      hint: "Usá dl como contenedor, dt para cada término y dd para cada definición.",
       explanation:
         "Las listas de descripción <dl> son ideales para glosarios: <dt> define el término y <dd> su descripción.",
     },

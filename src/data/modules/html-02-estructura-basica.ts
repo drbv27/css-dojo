@@ -47,7 +47,7 @@ Esto ayuda a:
 - Los **motores de busqueda** a clasificar la página por idioma
 - Los **traductores automáticos** a identificar el idioma original
 
-> **Buena práctica:** Siempre específica el atributo \`lang\` en la etiqueta \`<html>\`. Para espanol usa \`"es"\`, para ingles \`"en"\`.`,
+> **Buena práctica:** Siempre específica el atributo \`lang\` en la etiqueta \`<html>\`. Para español usa \`"es"\`, para inglés \`"en"\`.`,
       codeExample: {
         html: `<!DOCTYPE html>\n<html lang="es">\n  <head>\n    <title>Documento en espanol</title>\n  </head>\n  <body>\n    <p>Este documento esta en espanol.</p>\n  </body>\n</html>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n}`,
@@ -145,7 +145,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
 
 #### Reglas recomendadas:
 
-1. Usa **2 o 4 espacios** de indentación (se consistente)
+1. Usá **2 o 4 espacios** de indentación (se consistente)
 2. Indenta los **elementos hijos** un nivel más que su padre
 3. Las etiquetas de **apertura y cierre** deben estar al mismo nivel
 4. Los elementos que van **en una sola línea** no necesitan indentación extra
@@ -162,7 +162,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
 </body>
 \`\`\`
 
-> **Consejo:** La mayoria de los editores de código como VS Code pueden formatear automáticamente tu HTML. Usa el atajo Shift + Alt + F.`,
+> **Consejo:** La mayoria de los editores de código como VS Code pueden formatear automáticamente tu HTML. Usá el atajo Shift + Alt + F.`,
       codeExample: {
         html: `<!-- Seccion de bienvenida -->\n<header>\n  <h1>Bienvenido</h1>\n  <!-- TODO: agregar logo aqui -->\n</header>\n\n<!-- Contenido principal -->\n<main>\n  <p>Este codigo esta bien indentado y comentado.</p>\n  <p>Los comentarios ayudan a entender la estructura.</p>\n</main>`,
         css: `header {\n  background-color: #edf2f7;\n  padding: 16px;\n  border-radius: 8px;\n  margin-bottom: 12px;\n}\n\nh1 {\n  color: #2d3748;\n  font-family: sans-serif;\n  margin: 0;\n}\n\np {\n  color: #4a5568;\n  font-family: sans-serif;\n}`,
@@ -196,7 +196,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la etiqueta meta para definir la codificación de caracteres como UTF-8:",
+      prompt: "Completá la etiqueta meta para definir la codificación de caracteres como UTF-8:",
       codeTemplate: {
         html: `<head>\n  <meta _____="UTF-8">\n  <title>Mi pagina</title>\n</head>`,
         cssPrefix: "",
@@ -232,7 +232,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa la meta etiqueta viewport para dispositivos móviles:",
+      prompt: "Completá la meta etiqueta viewport para dispositivos móviles:",
       codeTemplate: {
         html: `<meta name="_____" content="width=device-width, initial-scale=1.0">`,
         cssPrefix: "",
@@ -276,7 +276,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea un documento HTML5 completo con: DOCTYPE, html con lang='es', head con meta charset UTF-8, meta viewport, título 'Dev Dojo', y un body con un párrafo que diga 'Aprendiendo HTML'.",
+        "Creá un documento HTML5 completo con: DOCTYPE, html con lang='es', head con meta charset UTF-8, meta viewport, título 'Dev Dojo', y un body con un párrafo que diga 'Aprendiendo HTML'.",
       codeTemplate: {
         html: `<!-- Escribe el documento HTML completo -->`,
         cssPrefix: "",
@@ -296,7 +296,7 @@ La indentación no afecta cómo se muestra la página, pero hace que el código 
           "body > p",
         ],
       },
-      hint: "Recuerda la estructura: DOCTYPE, html, head (con meta y title), body (con p).",
+      hint: "Recordá la estructura: DOCTYPE, html, head (con meta y title), body (con p).",
       explanation:
         "Un documento HTML5 completo incluye DOCTYPE, html con lang, head con charset, viewport y title, y body con el contenido.",
     },

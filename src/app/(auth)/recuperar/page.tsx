@@ -27,7 +27,7 @@ export default function RecuperarPage() {
 
       if (!res.ok) {
         const data = await res.json();
-        setError(data.message || "Error al enviar el codigo");
+        setError(data.message || "Error al enviar el código");
         setLoading(false);
         return;
       }
@@ -53,14 +53,14 @@ export default function RecuperarPage() {
               </div>
               <h1 className="text-3xl font-bold text-editor-text">Dev Dojo</h1>
             </div>
-            <p className="text-editor-muted">Recupera tu contrasena</p>
+            <p className="text-editor-muted">Recupera tu contraseña</p>
           </div>
 
           <div className="bg-editor-surface border border-editor-border rounded-xl p-8">
             {!sent ? (
               <>
                 <p className="text-sm text-editor-muted mb-6">
-                  Ingresa tu correo electronico y te enviaremos un codigo de 6 digitos para restablecer tu contrasena.
+                  Ingresa tu correo electrónico y te enviaremos un código de 6 dígitos para restablecer tu contraseña.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-5">
@@ -88,7 +88,7 @@ export default function RecuperarPage() {
                     className="w-full flex items-center justify-center gap-2 bg-neon-orange text-editor-bg font-medium py-3 px-4 rounded-lg hover:bg-neon-orange/90 transition-colors disabled:opacity-50"
                   >
                     {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Mail className="w-5 h-5" />}
-                    {loading ? "Enviando..." : "Enviar codigo"}
+                    {loading ? "Enviando..." : "Enviar código"}
                   </button>
                 </form>
               </>
@@ -97,8 +97,8 @@ export default function RecuperarPage() {
                 <div className="w-12 h-12 rounded-xl bg-neon-green/10 flex items-center justify-center mx-auto mb-4">
                   <Mail className="w-6 h-6 text-neon-green" />
                 </div>
-                <p className="text-neon-green font-medium mb-2">Codigo enviado!</p>
-                <p className="text-sm text-editor-muted">Redirigiendo para ingresar el codigo...</p>
+                <p className="text-neon-green font-medium mb-2">¡Código enviado!</p>
+                <p className="text-sm text-editor-muted">Redirigiendo para ingresar el código...</p>
               </div>
             )}
 

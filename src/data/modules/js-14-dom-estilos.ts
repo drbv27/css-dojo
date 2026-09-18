@@ -77,7 +77,7 @@ btn.addEventListener("click", function() {
       title: "CSS Variables desde JavaScript",
       content: `## CSS Variables (Custom Properties)
 
-Puedes leer y modificar variables CSS desde JavaScript:
+Podés leer y modificar variables CSS desde JavaScript:
 
 ### Definir en CSS
 \`\`\`css
@@ -101,7 +101,7 @@ root.style.setProperty("--tamano", "20px");
 \`\`\`
 
 ### Ventajas
-- Cambias UN valor y afecta a TODOS los elementos que lo usen
+- Cambiás UN valor y afecta a TODOS los elementos que lo usen
 - Ideal para temas (dark/light mode)
 - Más mantenible que cambiar estilos individuales
 
@@ -243,7 +243,7 @@ tabs.forEach(function(tab) {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para cambiar el color de fondo de un elemento:",
+      prompt: "Completá para cambiar el color de fondo de un elemento:",
       codeTemplate: {
         html: "",
         cssPrefix: "elemento.style.",

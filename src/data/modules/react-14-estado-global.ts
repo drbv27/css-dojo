@@ -56,7 +56,7 @@ dispatch({ type: 'reset' });
 | Pocas actualizaciones | Muchas acciones |
 | Lógica simple | Lógica predecible |
 
-> **Regla:** Si tienes más de 3-4 setState relacionados, considera useReducer.`,
+> **Regla:** Si tenés más de 3-4 setState relacionados, considera useReducer.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -487,7 +487,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para despachar una acción de tipo 'increment':",
+      prompt: "Completá para despachar una acción de tipo 'increment':",
       codeTemplate: {
         html: "",
         cssPrefix: "const [state, dispatch] = useReducer(reducer, { count: 0 });\n\n// Incrementar:\n",
@@ -544,7 +544,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa el case del reducer para agregar un item al carrito:",
+      prompt: "Completá el case del reducer para agregar un item al carrito:",
       codeTemplate: {
         html: "",
         cssPrefix: "case 'ADD_ITEM':\n  return { ...state, items: [...state.items, ",
@@ -586,7 +586,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Envolviendo el store en useMemo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Solo suscribirse a la parte del estado que necesitas.",
+      hint: "Solo suscribirse a la parte del estado que necesitás.",
       explanation: "Los selectores en Zustand solo suscriben al componente a la parte del estado que seleccionan. Si otras partes cambian, el componente no se re-renderiza.",
     },
   ],

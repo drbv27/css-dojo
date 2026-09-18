@@ -501,7 +501,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la clase de Bootstrap para crear un botón de color primario (azul):",
+        "Completá la clase de Bootstrap para crear un botón de color primario (azul):",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<button class="btn ___">Aceptar</button>`,
         cssPrefix: "",
@@ -553,7 +553,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea un layout de 3 columnas iguales usando el grid de Bootstrap. Usa un container, un row con clase g-3 para gutters, y 3 divs con clase col-md-4. Dentro de cada columna pon un div con clases 'p-3 bg-primary bg-opacity-25 rounded text-center' y el texto 'Columna N'.",
+        "Creá un layout de 3 columnas iguales usando el grid de Bootstrap. Usá un container, un row con clase g-3 para gutters, y 3 divs con clase col-md-4. Dentro de cada columna pon un div con clases 'p-3 bg-primary bg-opacity-25 rounded text-center' y el texto 'Columna N'.",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">`,
         cssPrefix: "",
@@ -587,7 +587,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la clase de Bootstrap para crear una columna que ocupe 12 columnas en móvil y 6 en pantallas medianas:",
+        "Completá la clase de Bootstrap para crear una columna que ocupe 12 columnas en móvil y 6 en pantallas medianas:",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">\n<div class="container"><div class="row"><div class="col-12 ___">Contenido responsive</div></div></div>`,
         cssPrefix: "",
@@ -595,7 +595,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
         blanks: ["col-md-6"],
       },
       validation: { type: "exact", answer: "col-md-6" },
-      hint: "Necesitas especificar el breakpoint 'md' y el número de columnas '6'.",
+      hint: "Necesitás especificar el breakpoint 'md' y el número de columnas '6'.",
       explanation:
         "col-md-6 hace que la columna ocupe 6 de 12 columnas (50%) en pantallas medianas (>= 768px). Combinado con col-12, es 100% en móvil y 50% en desktop.",
     },
@@ -606,7 +606,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un botón 'btn btn-primary' con texto 'Ver más'. Agrega la clase 'shadow' a la card para sombra.",
+        "Creá una tarjeta (card) de Bootstrap con: un card-body que contenga un card-title con 'Mi Tarjeta', un card-text con 'Esta es una tarjeta de Bootstrap 5.', un badge con clase 'badge bg-success' con texto 'Activo', y un botón 'btn btn-primary' con texto 'Ver más'. Agregá la clase 'shadow' a la card para sombra.",
       codeTemplate: {
         html: `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">`,
         cssPrefix: "",
@@ -649,7 +649,7 @@ Tamanios: \`0\`, \`1\` (0.25rem), \`2\` (0.5rem), \`3\` (1rem), \`4\` (1.5rem), 
         { id: "d", text: "class='invisible visible-md'", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Usa las clases de display (d-) con el enfoque mobile-first: primero oculta (d-none), luego muestra en md.",
+      hint: "Usá las clases de display (d-) con el enfoque mobile-first: primero oculta (d-none), luego muestra en md.",
       explanation:
         "d-none oculta el elemento en todas las pantallas. d-md-block lo muestra como block a partir del breakpoint md (768px). Este patrón mobile-first es fundamental en Bootstrap 5.",
     },

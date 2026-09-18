@@ -55,7 +55,7 @@ function saludar(nombre) {       // <- declaracion
 
 ### Parámetros vs argumentos
 
-Confusión clasica. **No son lo mismo:**
+Confusión clásica. **No son lo mismo:**
 
 \`\`\`javascript
 function sumar(a, b) {  // a y b son PARAMETROS (en la definicion)
@@ -84,11 +84,11 @@ const resultado = saludar("Ana");  // imprime "Hola Ana"
 console.log(resultado);             // undefined
 \`\`\`
 
-> **Importante:** \`console.log\` IMPRIME en pantalla. \`return\` DEVUELVE un valor que puedes guardar y usar después. No son lo mismo.
+> **Importante:** \`console.log\` IMPRIME en pantalla. \`return\` DEVUELVE un valor que podés guardar y usar después. No son lo mismo.
 
 ### Argumentos faltantes
 
-Si pasas menos argumentos de los que espera, los faltantes son \`undefined\`:
+Si pasás menos argumentos de los que espera, los faltantes son \`undefined\`:
 
 \`\`\`javascript
 function presentarse(nombre, edad) {
@@ -196,13 +196,13 @@ const calcular = function(a, b) {
 calcular = function() { return 0; };  // Error: Assignment to constant
 \`\`\`
 
-Con una declaración normal, otro código podria redefinir tu función accidentalmente.
+Con una declaración normal, otro código podría redefinir tu función accidentalmente.
 
 ### ¿Cuándo usar expresión de funciones?
 
-1. Cuando quieres ser **explícito** sobre el orden de definición (no quieres hoisting).
+1. Cuando querés ser **explícito** sobre el orden de definición (no querés hoisting).
 2. Cuando vas a **pasar la función como argumento** a otra función (callbacks).
-3. Cuando creas funciones **condicionalmente**:
+3. Cuando creás funciones **condicionalmente**:
 
 \`\`\`javascript
 let operacion;
@@ -215,7 +215,7 @@ if (modo === "suma") {
 
 ### Expresión de función nombrada (raro pero útil)
 
-También puedes darle nombre a la función Después de \`function\`:
+También podés darle nombre a la función Después de \`function\`:
 
 \`\`\`javascript
 const factorial = function fact(n) {
@@ -283,7 +283,7 @@ const sumar = (a, b) => {
 
 ### Retorno implícito (una línea)
 
-Si el cuerpo es UNA SOLA EXPRESIÓN, puedes omitir las llaves Y el \`return\`:
+Si el cuerpo es UNA SOLA EXPRESIÓN, podés omitir las llaves Y el \`return\`:
 
 \`\`\`javascript
 // Forma larga
@@ -311,7 +311,7 @@ const sumar = (a, b) => a + b;
 
 ### Múltiples líneas: llaves obligatorias
 
-Cuando hay más de UNA expresión, necesitas llaves Y \`return\` explícito:
+Cuando hay más de UNA expresión, necesitás llaves Y \`return\` explícito:
 
 \`\`\`javascript
 const procesar = texto => {
@@ -323,7 +323,7 @@ const procesar = texto => {
 
 ### Trampa: devolver un objeto literal
 
-Si quieres devolver un objeto directo, **envuelvelo en paréntesis**:
+Si querés devolver un objeto directo, **envuelvelo en paréntesis**:
 
 \`\`\`javascript
 // MAL: las llaves se interpretan como bloque de codigo
@@ -365,7 +365,7 @@ const dobles = numeros.map(n => n * 2);  // [2, 4, 6, 8, 10]
 const pares = numeros.filter(n => n % 2 === 0);  // [2, 4]
 \`\`\`
 
-> Esto lo veremos en detalle en el modulo de **métodos de arrays**.`,
+> Esto lo veremos en detalle en el módulo de **métodos de arrays**.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -412,7 +412,7 @@ JavaScript ofrece **tres maneras** de crear funciones. Todas hacen lo mismo, per
 
 ### Tabla comparativa
 
-| Caracteristica | Declaración | Expresión | Arrow |
+| Característica | Declaración | Expresión | Arrow |
 |----------------|-------------|-----------|-------|
 | Sintaxis | \`function f() {}\` | \`const f = function() {}\` | \`const f = () => {}\` |
 | Hoisting | Si | No | No |
@@ -488,9 +488,9 @@ const multiplicar = (a, b) => a * b;
 **Regla pragmatica para principiantes:**
 
 - **Por defecto:** Arrow functions. Son cortas, modernas y son lo que vas a ver en cualquier codebase actual (React, Vue, Node moderno).
-- **Si necesitas hoisting** (poder usar la función antes de declararla): declaración tradicional.
-- **Si trabajas con \`this\` o eres método de un objeto:** declaración o expresión (NO arrow).
-- **Si pasas la función como callback:** arrow function (corta y limpia).
+- **Si necesitás hoisting** (poder usar la función antes de declararla): declaración tradicional.
+- **Si trabajás con \`this\` o sos método de un objeto:** declaración o expresión (NO arrow).
+- **Si pasás la función como callback:** arrow function (corta y limpia).
 
 > **En entrevistas:** te van a preguntar la diferencia entre las 3 formas. Memoricen la tabla.`,
       codeExample: {
@@ -549,7 +549,7 @@ saludar("Ana");     // "Hola Ana!"
 
 ### Detalle importante: solo activa con \`undefined\`
 
-El valor por defecto **solo se usa cuando el parámetro es \`undefined\`** (osea cuando NO se paso). Si pasas \`null\`, \`0\`, \`""\` o \`false\`, usa ESE valor (no el default).
+El valor por defecto **solo se usa cuando el parámetro es \`undefined\`** (osea cuando NO se paso). Si pasás \`null\`, \`0\`, \`""\` o \`false\`, usa ESE valor (no el default).
 
 \`\`\`javascript
 const saludar = (nombre = "amigo") => "Hola " + nombre;
@@ -719,7 +719,7 @@ function ejemplo() {
 
 ### Scope de función
 
-Variables declaradas DENTRO de una función. Solo visibles ahi.
+Variables declaradas DENTRO de una función. Solo visibles ahí.
 
 \`\`\`javascript
 function calcular() {
@@ -745,9 +745,9 @@ console.log(bloque);  // ReferenceError ✗
 
 > **Importante:** \`var\` NO respeta el scope de bloque (solo el de función). Otra razón más para usar \`const\` y \`let\`.
 
-### Acceso jerarquico
+### Acceso jerárquico
 
-Las funciones pueden ver variables de scopes "arriba", pero no al reves:
+Las funciones pueden ver variables de scopes "arriba", pero no al revés:
 
 \`\`\`javascript
 const externa = "padre";
@@ -768,7 +768,7 @@ function nivel1() {
 
 Un **closure** es una función que **recuerda** las variables del scope donde fue creada, **incluso después** de que ese scope haya terminado.
 
-### Ejemplo clasico: contador privado
+### Ejemplo clásico: contador privado
 
 \`\`\`javascript
 function crearContador() {
@@ -849,7 +849,7 @@ Son la base de:
 - **Eventos:** \`boton.addEventListener("click", callback)\`
 - **Asincronía:** \`setTimeout(callback, 1000)\`, fetch, promesas
 
-> Lo veremos a fondo en los modulos de **Arrays**, **DOM/Eventos** y **Asincronismo**.`,
+> Lo veremos a fondo en los módulos de **Arrays**, **DOM/Eventos** y **Asincronismo**.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -914,7 +914,7 @@ Una **función recursiva** es una función que **se llama a si misma**. Es una h
 
 Toda función recursiva necesita **dos partes**:
 
-1. **Caso base:** la condición para DETENER la recursión (sino sera infinita).
+1. **Caso base:** la condición para DETENER la recursión (sino será infinita).
 2. **Caso recursivo:** la función se llama a si misma con un problema más pequeño.
 
 \`\`\`javascript
@@ -929,7 +929,7 @@ function recursiva(parametro) {
 }
 \`\`\`
 
-### Ejemplo clasico: factorial
+### Ejemplo clásico: factorial
 
 El factorial de N (escrito \`N!\`) es la multiplicación de todos los números del 1 al N.
 
@@ -1009,9 +1009,9 @@ La recursión **siempre se puede reescribir como un ciclo**. La elección depend
 | Problemas matematicos definidos recursivamente (factorial, fibonacci) | Recursión |
 | Cuando importa el rendimiento | Ciclo (es más rápido) |
 
-> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usa recursión cuando aporte claridad.
+> **¿Tip:** Antes de usar recursión, pregunta: "Puedo resolverlo con un ciclo?". Si la respuesta es si, **el ciclo es más eficiente**. Usá recursión cuando aporte claridad.
 
-### Número de Fibonacci (otro clasico)
+### Número de Fibonacci (otro clásico)
 
 \`\`\`javascript
 function fibonacci(n) {
@@ -1110,7 +1110,7 @@ const calculadora = {
 };
 \`\`\`
 
-> Las dos hacen exactamente lo mismo. Usa la corta en código moderno.
+> Las dos hacen exactamente lo mismo. Usá la corta en código moderno.
 
 ## La palabra clave \`this\`
 
@@ -1128,7 +1128,7 @@ const persona = {
 persona.presentarse();  // "Soy Ana y tengo 25 anos"
 \`\`\`
 
-> Sin \`this\`, el método no podria acceder a las otras propiedades del objeto.
+> Sin \`this\`, el método no podría acceder a las otras propiedades del objeto.
 
 ### \`this\` apunta al objeto a la IZQUIERDA del punto
 
@@ -1163,7 +1163,7 @@ persona.saludarBien();  // "Hola Ana"
 persona.saludarMal();   // "Hola undefined"
 \`\`\`
 
-> **Regla de oro:** Para definir métodos, usa **función tradicional** o **sintaxis corta ES6**. NO uses arrow functions.
+> **Regla de oro:** Para definir métodos, usá **función tradicional** o **sintaxis corta ES6**. NO uses arrow functions.
 
 ## Métodos que modifican el propio objeto
 
@@ -1188,7 +1188,7 @@ contador.cuenta;         // 0
 
 ## Encadenamiento de métodos
 
-Si un método devuelve \`this\`, puedes encadenar llamadas:
+Si un método devuelve \`this\`, podés encadenar llamadas:
 
 \`\`\`javascript
 const lista = {
@@ -1220,7 +1220,7 @@ console.log("hi");            // metodo de console
 
 > Todos los \`.algo()\` que has usado son métodos. Strings, arrays, Math, console... todos son objetos con métodos.
 
-> **Nota:** Veremos más a fondo objetos y métodos en el modulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
+> **Nota:** Veremos más a fondo objetos y métodos en el módulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f38ba8; border-radius: 8px; white-space: pre-line; }',
@@ -1286,7 +1286,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "send", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "En ingles significa 'devolver' o 'retornar'.",
+      hint: "En inglés significa 'devolver' o 'retornar'.",
       explanation: "return devuelve un valor desde la función y termina su ejecución.",
     },
     {
@@ -1320,7 +1320,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "El parámetro es opcional, el argumento obligatorio", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en una función: la cosa entre paréntesis al definirla vs al llamarla.",
+      hint: "Pensá en una función: la cosa entre paréntesis al definirla vs al llamarla.",
       explanation:
         "Parámetro es la variable que aparece en la definición: function f(a, b). ARGUMENTO es el valor concreto que se pasa al llamarla: f(5, 3).",
     },
@@ -1330,7 +1330,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1,
       xpReward: 10,
       order: 4,
-      prompt: "Completa la arrow function que duplica un número:",
+      prompt: "Completá la arrow function que duplica un número:",
       codeTemplate: {
         html: "",
         cssPrefix: "const doble = x ",
@@ -1373,7 +1373,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "const f = function => x * 2;", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Con un solo parámetro, no necesitas paréntesis.",
+      hint: "Con un solo parámetro, no necesitás paréntesis.",
       explanation: "const f = x => x * 2 es la sintaxis correcta. Con un parámetro los paréntesis son opcionales.",
     },
     {
@@ -1519,7 +1519,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 3,
       xpReward: 30,
       order: 14,
-      prompt: "Completa el caso base del factorial recursivo:",
+      prompt: "Completá el caso base del factorial recursivo:",
       codeTemplate: {
         html: "",
         cssPrefix: "function factorial(n) { if (n ",
@@ -1545,7 +1545,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "Una función que no devuelve nada", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en 'array.push()' o 'string.toUpperCase()'.",
+      hint: "Pensá en 'array.push()' o 'string.toUpperCase()'.",
       explanation:
         "Un método es una función guardada como propiedad de un objeto. Por eso podemos llamarlos con notación de punto: objeto.método().",
     },

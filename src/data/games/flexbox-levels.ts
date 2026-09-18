@@ -29,11 +29,11 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       items: [{ id: "i1", color: "#5EEAD4", label: "1" }],
     },
     xpReward: 1,
-    hint: "justify-content controla la alineacion horizontal del aprendiz. Prueba con 'center'.",
+    hint: "justify-content controla la alineación horizontal del aprendiz. Prueba con 'center'.",
   },
   {
     id: 2,
-    title: "Posicion final",
+    title: "Posición final",
     description: "Envia al aprendiz al extremo derecho de la arena con justify-content.",
     property: "justify-content",
     initialCSS: "",
@@ -47,7 +47,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 3,
-    title: "Formacion abierta",
+    title: "Formación abierta",
     description: "Distribuye a los 3 aprendices con espacio igual entre ellos usando justify-content.",
     property: "justify-content",
     initialCSS: "",
@@ -61,7 +61,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "space-between pone el maximo espacio posible entre cada aprendiz.",
+    hint: "space-between pone el máximo espacio posible entre cada aprendiz.",
   },
   {
     id: 4,
@@ -96,7 +96,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       containerStyle: { minHeight: "250px" },
     },
     xpReward: 1,
-    hint: "align-items controla la alineacion vertical del aprendiz en la arena (eje cruzado).",
+    hint: "align-items controla la alineación vertical del aprendiz en la arena (eje cruzado).",
   },
   {
     id: 6,
@@ -118,7 +118,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 7,
-    title: "Expansion de ki",
+    title: "Expansión de ki",
     description: "Haz que los aprendices se estiren para ocupar toda la altura de la arena con align-items.",
     property: "align-items",
     initialCSS: "",
@@ -156,7 +156,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   // ===== FLEX-DIRECTION (9-12) =====
   {
     id: 9,
-    title: "Formacion en columna",
+    title: "Formación en columna",
     description: "Ordena a los aprendices en columna vertical usando flex-direction.",
     property: "flex-direction",
     initialCSS: "",
@@ -188,7 +188,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "column-reverse invierte la formacion: el primer aprendiz va al fondo.",
+    hint: "column-reverse invierte la formación: el primer aprendiz va al fondo.",
   },
   {
     id: 11,
@@ -231,7 +231,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   // ===== FLEX-WRAP & GAP (13-16) =====
   {
     id: 13,
-    title: "Salto de linea",
+    title: "Salto de línea",
     description: "Los 6 aprendices no caben en una fila; haz que salten a la siguiente con flex-wrap.",
     property: "flex-wrap",
     initialCSS: "",
@@ -248,7 +248,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "flex-wrap: wrap permite que los aprendices salten a nuevas lineas.",
+    hint: "flex-wrap: wrap permite que los aprendices salten a nuevas líneas.",
   },
   {
     id: 14,
@@ -267,7 +267,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "wrap-reverse invierte la direccion del wrapping.",
+    hint: "wrap-reverse invierte la dirección del wrapping.",
   },
   {
     id: 15,
@@ -289,7 +289,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 16,
-    title: "Formacion envolvente",
+    title: "Formación envolvente",
     description: "Envuelve a los aprendices y distribuye el espacio uniformemente con wrap y justify-content.",
     property: "flex-wrap + justify-content",
     initialCSS: "",
@@ -312,7 +312,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   {
     id: 17,
     title: "Cambiar de rango",
-    description: "El aprendiz rojo (#item-2) debe liderar la formacion usando la propiedad order.",
+    description: "El aprendiz rojo (#item-2) debe liderar la formación usando la propiedad order.",
     property: "order",
     initialCSS: "#item-2 {\n  \n}",
     solutionCSS: "#item-2 {\n  order: -1;\n}",
@@ -325,7 +325,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "order con un valor negativo mueve al aprendiz antes que los demas (order default es 0).",
+    hint: "order con un valor negativo mueve al aprendiz antes que los demás (order default es 0).",
   },
   {
     id: 18,
@@ -348,7 +348,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 19,
-    title: "Expansion del aprendiz",
+    title: "Expansión del aprendiz",
     description: "Haz que el aprendiz verde (#item-2) crezca para dominar todo el espacio disponible con flex-grow.",
     property: "flex-grow",
     initialCSS: "#item-2 {\n  \n}",
@@ -366,7 +366,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 20,
-    title: "Jerarquia de poder",
+    title: "Jerarquía de poder",
     description: "El primer aprendiz debe ocupar el doble de espacio que los otros dos usando flex-grow en los tres.",
     property: "flex-grow",
     initialCSS: "#item-1 {\n  \n}\n#item-2 {\n  \n}\n#item-3 {\n  \n}",
@@ -407,7 +407,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   {
     id: 22,
     title: "Posiciones de combate",
-    description: "Asigna a cada aprendiz su posicion vertical: inicio, centro y final con align-self.",
+    description: "Asigna a cada aprendiz su posición vertical: inicio, centro y final con align-self.",
     property: "align-self",
     initialCSS: "justify-content: space-around;\n\n#item-1 {\n  \n}\n#item-2 {\n  \n}\n#item-3 {\n  \n}",
     solutionCSS: "justify-content: space-around;\n\n#item-1 {\n  align-self: flex-start;\n}\n#item-2 {\n  align-self: center;\n}\n#item-3 {\n  align-self: flex-end;\n}",
@@ -425,7 +425,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
   },
   {
     id: 23,
-    title: "Meditacion central",
+    title: "Meditación central",
     description: "Centra al aprendiz exactamente en el medio de la arena; hay varias formas de lograrlo.",
     property: "centrado total",
     initialCSS: "",
@@ -436,7 +436,7 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       containerStyle: { minHeight: "300px" },
     },
     xpReward: 1,
-    hint: "La forma clasica: justify-content: center + align-items: center.",
+    hint: "La forma clásica: justify-content: center + align-items: center.",
   },
   {
     id: 24,
@@ -455,6 +455,6 @@ export const FLEXBOX_LEVELS: FlexboxLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "margin-right: auto en el primer aprendiz empuja a todos los demas a la derecha.",
+    hint: "margin-right: auto en el primer aprendiz empuja a todos los demás a la derecha.",
   },
 ];

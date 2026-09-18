@@ -47,7 +47,7 @@ response.text()    // obtener como texto
 response.headers   // headers de respuesta
 \`\`\`
 
-> **Nota:** fetch NO rechaza la Promise en errores HTTP (404, 500). Solo rechaza en errores de red. Debes verificar \`response.ok\`.`,
+> **Nota:** fetch NO rechaza la Promise en errores HTTP (404, 500). Solo rechaza en errores de red. Debés verificar \`response.ok\`.`,
       codeExample: {
         html: '<button id="cargar">Cargar usuarios</button>\n<div id="resultado"></div>',
         css: '#cargar { padding: 8px 16px; background: #89b4fa; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; margin-top: 8px; min-height: 80px; font-size: 13px; }',
@@ -119,7 +119,7 @@ fetch(url, { method: "DELETE" })
 fetch(url, { method: "PATCH", body: JSON.stringify(cambios) })
 \`\`\`
 
-> **Content-Type** debe ser "application/json" cuando envias JSON. Si usas FormData, no lo pongas (el navegador lo configura automáticamente).`,
+> **Content-Type** debe ser "application/json" cuando envias JSON. Si usás FormData, no lo pongas (el navegador lo configura automáticamente).`,
       codeExample: {
         html: '<input id="titulo" placeholder="Titulo del post" />\n<textarea id="cuerpo" placeholder="Contenido..." rows="2"></textarea>\n<button id="enviar">Enviar POST</button>\n<div id="resultado"></div>',
         css: 'input, textarea { display: block; width: 100%; margin: 4px 0; padding: 8px; border: 1px solid #45475a; border-radius: 4px; background: #313244; color: #cdd6f4; box-sizing: border-box; } #enviar { padding: 8px 16px; background: #a6e3a1; color: #1e1e2e; border: none; border-radius: 4px; cursor: pointer; margin-top: 4px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; font-size: 13px; }',
@@ -279,11 +279,11 @@ document.getElementById("error").addEventListener("click", function() {
         { id: "a", text: "Si, siempre rechaza en errores HTTP", isCorrect: false },
         { id: "b", text: "No, solo rechaza en errores de red", isCorrect: true },
         { id: "c", text: "Depende del navegador", isCorrect: false },
-        { id: "d", text: "Solo si se configura explicitamente", isCorrect: false },
+        { id: "d", text: "Solo si se configura explícitamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Debes verificar response.ok manualmente.",
-      explanation: "fetch solo rechaza la Promise en errores de red (sin conexion). Para errores HTTP (404, 500), debes verificar response.ok.",
+      hint: "Debés verificar response.ok manualmente.",
+      explanation: "fetch solo rechaza la Promise en errores de red (sin conexión). Para errores HTTP (404, 500), debés verificar response.ok.",
     },
     {
       id: "js18-ej-04",
@@ -291,7 +291,7 @@ document.getElementById("error").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa el header para indicar que envias datos JSON:",
+      prompt: "Completá el header para indicar que envias datos JSON:",
       codeTemplate: {
         html: "",
         cssPrefix: 'headers: { "Content-Type": "application/',

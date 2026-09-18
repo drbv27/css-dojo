@@ -39,7 +39,7 @@ El atributo \`target\` controla **donde se abre** el enlace:
 
 ### Seguridad con rel="noopener"
 
-Cuando usas \`target="_blank"\`, es importante agregar \`rel="noopener noreferrer"\` por seguridad:
+Cuando usás \`target="_blank"\`, es importante agregar \`rel="noopener noreferrer"\` por seguridad:
 
 \`\`\`html
 <a href="https://ejemplo.com" target="_blank" rel="noopener noreferrer">
@@ -64,7 +64,7 @@ Esto evita que la página de destino tenga acceso a la ventana que la abrio.
 
 ### Enlaces internos (anclas)
 
-Puedes crear enlaces que naveguen a **secciones dentro de la misma página** usando el atributo \`id\`:
+Podés crear enlaces que naveguen a **secciones dentro de la misma página** usando el atributo \`id\`:
 
 \`\`\`html
 <!-- Enlace que apunta a una seccion -->
@@ -78,7 +78,7 @@ Puedes crear enlaces que naveguen a **secciones dentro de la misma página** usa
 
 El \`#\` seguido del id del elemento indica que es un enlace interno.
 
-### Enlaces de correo electronico
+### Enlaces de correo electrónico
 
 Usa el esquema \`mailto:\` para abrir el cliente de correo del usuario:
 
@@ -86,7 +86,7 @@ Usa el esquema \`mailto:\` para abrir el cliente de correo del usuario:
 <a href="mailto:info@ejemplo.com">Envianos un correo</a>
 \`\`\`
 
-Puedes incluir asunto y cuerpo:
+Podés incluir asunto y cuerpo:
 
 \`\`\`html
 <a href="mailto:info@ejemplo.com?subject=Hola&body=Quiero%20informacion">
@@ -153,7 +153,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
 - \`../\` — Carpeta superior (padre)
 - \`/\` — Raíz del sitio web
 
-> **Buena práctica:** Usa URLs relativas para enlaces dentro de tu propio sitio. Esto facilita mover el sitio a otro dominio sin romper enlaces.`,
+> **Buena práctica:** Usá URLs relativas para enlaces dentro de tu propio sitio. Esto facilita mover el sitio a otro dominio sin romper enlaces.`,
       codeExample: {
         html: `<h2>Ejemplos de URLs</h2>\n\n<h3>URL absoluta:</h3>\n<p><a href="https://developer.mozilla.org" target="_blank" rel="noopener noreferrer">MDN (absoluta)</a></p>\n\n<h3>URL relativa:</h3>\n<p><a href="contacto.html">Contacto (relativa)</a></p>\n<p><a href="../index.html">Inicio (carpeta superior)</a></p>\n\n<h3>Enlace interno:</h3>\n<p><a href="#top">Volver arriba (ancla)</a></p>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nh3 {\n  font-family: sans-serif;\n  color: #4a5568;\n  font-size: 14px;\n  margin-bottom: 4px;\n}\n\na {\n  color: #3182ce;\n  font-family: sans-serif;\n}\n\np {\n  margin: 4px 0;\n  font-family: sans-serif;\n}`,
@@ -187,7 +187,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa el enlace para que abra en una nueva pestana:",
+      prompt: "Completá el enlace para que abra en una nueva pestana:",
       codeTemplate: {
         html: `<a href="https://ejemplo.com" _____="_blank" rel="noopener noreferrer">\n  Visitar ejemplo\n</a>`,
         cssPrefix: "",
@@ -213,7 +213,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
         { id: "d", text: "<a link='#info'>Info</a>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los enlaces internos usan un simbolo especial seguido del id.",
+      hint: "Los enlaces internos usan un símbolo especial seguido del id.",
       explanation:
         "Para enlazar a una sección dentro de la misma página, se usa # seguido del id del elemento destino: href='#info'.",
     },
@@ -251,7 +251,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una lista de navegación con 3 enlaces internos: 'Inicio' que apunte a #inicio, 'Servicios' que apunte a #servicios, y 'Contacto' que apunte a #contacto. Luego crea un enlace de correo a info@devdojo.com.",
+        "Creá una lista de navegación con 3 enlaces internos: 'Inicio' que apunte a #inicio, 'Servicios' que apunte a #servicios, y 'Contacto' que apunte a #contacto. Luego crea un enlace de correo a info@devdojo.com.",
       codeTemplate: {
         html: `<!-- Crea la navegacion y el enlace de correo -->`,
         cssPrefix: "",
@@ -269,7 +269,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
           "a[href^=\"mailto:\"]",
         ],
       },
-      hint: "Usa etiquetas <a> con href que empiecen con # para enlaces internos y mailto: para correo.",
+      hint: "Usá etiquetas <a> con href que empiecen con # para enlaces internos y mailto: para correo.",
       explanation:
         "Los enlaces internos usan #id en el href, y los enlaces de correo usan el esquema mailto: seguido de la dirección.",
     },
@@ -279,7 +279,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el enlace de correo electronico:",
+      prompt: "Completá el enlace de correo electrónico:",
       codeTemplate: {
         html: `<a href="_____:contacto@miempresa.com">Escribenos</a>`,
         cssPrefix: "",
@@ -289,7 +289,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       validation: { type: "exact", answer: ["mailto"] },
       hint: "Es un esquema de URL que abre el cliente de correo.",
       explanation:
-        "El esquema mailto: en el href abre el cliente de correo electronico del usuario con la dirección predefinida.",
+        "El esquema mailto: en el href abre el cliente de correo electrónico del usuario con la dirección predefinida.",
     },
     {
       id: "html-04-ej-07",
@@ -297,7 +297,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "¿Por que es importante agregar rel='noopener noreferrer' cuando usas target='_blank'?",
+      prompt: "¿Por que es importante agregar rel='noopener noreferrer' cuando usás target='_blank'?",
       options: [
         { id: "a", text: "Para que el enlace cargue más rápido", isCorrect: false },
         { id: "b", text: "Para mejorar el SEO de la página", isCorrect: false },
@@ -307,7 +307,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       validation: { type: "exact", answer: "c" },
       hint: "Tiene que ver con proteger tu página de posibles accesos no autorizados.",
       explanation:
-        "Sin rel='noopener noreferrer', la página que se abre en nueva pestana podria acceder al objeto window.opener de tu página, lo cual es un riesgo de seguridad.",
+        "Sin rel='noopener noreferrer', la página que se abre en nueva pestana podría acceder al objeto window.opener de tu página, lo cual es un riesgo de seguridad.",
     },
   ],
 };

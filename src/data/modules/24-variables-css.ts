@@ -51,7 +51,7 @@ Se accede a las variables con la función \`var()\`:
 
 ### El selector :root
 
-\`:root\` apunta al elemento raíz del documento (\`<html>\`). Las variables declaradas ahi estan disponibles en **todo el documento**:
+\`:root\` apunta al elemento raíz del documento (\`<html>\`). Las variables declaradas ahí están disponibles en **todo el documento**:
 
 \`\`\`css
 :root {
@@ -70,7 +70,7 @@ Se accede a las variables con la función \`var()\`:
 - Pueden contener letras, números, guiones y guiones bajos
 - Convención común: \`--categoria-nombre\` (ejemplo: \`--color-texto\`, \`--tamanio-titulo\`)
 
-> **Ventaja clave:** Si necesitas cambiar un color usado en 50 lugares, solo lo cambias en la variable. Sin variables, tendrias que buscar y reemplazar en 50 reglas.`,
+> **Ventaja clave:** Si necesitás cambiar un color usado en 50 lugares, solo lo cambiás en la variable. Sin variables, tendrías que buscar y reemplazar en 50 reglas.`,
       codeExample: {
         html: `<div class="tarjeta">\n  <h2 class="tarjeta-titulo">Variables CSS</h2>\n  <p class="tarjeta-texto">Las variables hacen tu CSS mas mantenible y consistente.</p>\n  <button class="tarjeta-btn">Aprender mas</button>\n</div>`,
         css: `:root {\n  --color-primario: #3498db;\n  --color-texto: #2c3e50;\n  --color-fondo: #f8f9fa;\n  --espaciado: 16px;\n  --radio: 12px;\n}\n\n.tarjeta {\n  background: var(--color-fondo);\n  padding: calc(var(--espaciado) * 2);\n  border-radius: var(--radio);\n  border: 1px solid #e0e0e0;\n}\n\n.tarjeta-titulo {\n  color: var(--color-texto);\n  margin-bottom: var(--espaciado);\n}\n\n.tarjeta-texto {\n  color: #666;\n  margin-bottom: var(--espaciado);\n}\n\n.tarjeta-btn {\n  background: var(--color-primario);\n  color: white;\n  border: none;\n  padding: calc(var(--espaciado) * 0.75) calc(var(--espaciado) * 1.5);\n  border-radius: calc(var(--radio) / 2);\n  cursor: pointer;\n  font-size: 1rem;\n}`,
@@ -107,7 +107,7 @@ Las variables CSS siguen las reglas de **cascada y herencia**. Una variable decl
 
 ### Variables locales
 
-Puedes declarar variables en cualquier selector para limitar su alcance:
+Podés declarar variables en cualquier selector para limitar su alcance:
 
 \`\`\`css
 .alerta {
@@ -135,7 +135,7 @@ La función \`var()\` acepta un segundo parámetro como **valor de respaldo** po
 }
 \`\`\`
 
-Puedes encadenar fallbacks con variables anidadas:
+Podés encadenar fallbacks con variables anidadas:
 
 \`\`\`css
 .elemento {
@@ -160,7 +160,7 @@ Las variables se pueden usar dentro de \`calc()\` para calculos dinámicos:
 }
 \`\`\`
 
-> **Buena práctica:** Siempre proporciona un valor de respaldo para variables que podrian no estar definidas, especialmente en componentes reutilizables.`,
+> **Buena práctica:** Siempre proporciona un valor de respaldo para variables que podrían no estar definidas, especialmente en componentes reutilizables.`,
       codeExample: {
         html: `<div class="componente tema-a">\n  <p>Tema A: variables locales</p>\n</div>\n<div class="componente tema-b">\n  <p>Tema B: variables diferentes</p>\n</div>\n<div class="componente">\n  <p>Sin tema: usa fallback</p>\n</div>`,
         css: `:root {\n  --base: 8px;\n}\n\n.tema-a {\n  --comp-fondo: #e8f4fd;\n  --comp-borde: #3498db;\n  --comp-texto: #1a5276;\n}\n\n.tema-b {\n  --comp-fondo: #eafaf1;\n  --comp-borde: #27ae60;\n  --comp-texto: #1e8449;\n}\n\n.componente {\n  background: var(--comp-fondo, #f5f5f5);\n  border-left: 4px solid var(--comp-borde, #999);\n  color: var(--comp-texto, #333);\n  padding: calc(var(--base) * 2);\n  margin-bottom: calc(var(--base) * 1.5);\n  border-radius: 6px;\n}\n\n.componente p {\n  margin: 0;\n  font-weight: bold;\n}`,
@@ -294,7 +294,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la función CSS para usar la variable --color-primario como color de fondo:",
+        "Completá la función CSS para usar la variable --color-primario como color de fondo:",
       codeTemplate: {
         html: `<div class="caja">Contenido</div>`,
         cssPrefix: ":root { --color-primario: #3498db; }\n.caja {\n  background-color: ",
@@ -354,7 +354,7 @@ Detecta automáticamente la preferencia del sistema operativo:
           "drag-4": "zone-calculo",
         },
       },
-      hint: ":root es donde se definen las variables globales. var() con dos argumentos incluye un fallback. -- declara. calc() calcula.",
+      hint: ":root es donde se definen las variables globales. var() con dos argumentos incluye un fallback. -- declará. calc() calcula.",
       explanation:
         ":root se usa para declarar variables disponibles globalmente. var(--x, blue) usa la variable con fallback 'blue'. --mi-color: red declara la variable. calc(var(--base) * 2) permite operaciones matemáticas con variables.",
     },
@@ -365,7 +365,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 5,
       prompt:
-        "Define tres variables en :root: --color-primario (#e74c3c), --color-fondo (#f8f9fa) y --espaciado (16px). Luego crea una clase .caja que use estas variables para background, un borde de 2px solido con el color primario, y padding.",
+        "Definí tres variables en :root: --color-primario (#e74c3c), --color-fondo (#f8f9fa) y --espaciado (16px). Luego crea una clase .caja que use estas variables para background, un borde de 2px solido con el color primario, y padding.",
       codeTemplate: {
         html: `<div class="caja">\n  <h3>Caja con variables</h3>\n  <p>Usando custom properties de CSS.</p>\n</div>`,
         cssPrefix: "",
@@ -390,7 +390,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa el selector CSS para que las variables se apliquen cuando el documento tenga el atributo data-tema='oscuro':",
+        "Completá el selector CSS para que las variables se apliquen cuando el documento tenga el atributo data-tema='oscuro':",
       codeTemplate: {
         html: `<div>Contenido tematico</div>`,
         cssPrefix: "",
@@ -398,7 +398,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         blanks: ['[data-tema="oscuro"]'],
       },
       validation: { type: "regex", answer: '\\[data-tema\\s*=\\s*["\']oscuro["\']\\]' },
-      hint: "Es un selector de atributo que busca un atributo data-tema con valor 'oscuro'. Usa corchetes.",
+      hint: "Es un selector de atributo que busca un atributo data-tema con valor 'oscuro'. Usá corchetes.",
       explanation:
         "El selector [data-tema=\"oscuro\"] selecciona cualquier elemento que tenga el atributo data-tema con valor 'oscuro'. Al cambiar este atributo con JavaScript, las variables se sobreescriben y todo el tema cambia.",
     },
@@ -409,7 +409,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un sistema de temas usando variables. Define en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Crea una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplica las variables a .pagina (background, color) y .boton (background con --acento, color white).",
+        "Creá un sistema de temas usando variables. Definí en :root las variables --fondo (#ffffff), --texto (#1a1a1a), --acento (#3498db). Creá una clase .tema-oscuro que sobreescriba: --fondo a #1e1e2f, --texto a #e0e0e0, --acento a #5dade2. Aplicá las variables a .pagina (background, color) y .boton (background con --acento, color white).",
       codeTemplate: {
         html: `<div class="pagina">\n  <h2>Sistema de temas</h2>\n  <p>Cambiando variables se cambia todo el aspecto.</p>\n  <button class="boton">Accion</button>\n</div>`,
         cssPrefix: ".pagina {\n  padding: 24px;\n  border-radius: 12px;\n}\n\n.boton {\n  border: none;\n  padding: 10px 24px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n\n",
@@ -423,7 +423,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .pagina y .boton.",
+      hint: "Definí las variables en :root para el tema claro, sobreescribelas en .tema-oscuro, y usalas con var() en .pagina y .boton.",
       explanation:
         "El sistema de temas funciona declarando variables en :root (tema claro) y sobreescribiendolas en .tema-oscuro. Los estilos usan var() y se adaptan automáticamente al tema activo.",
     },
@@ -434,7 +434,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Si declaras --color: blue en :root y --color: red en .sección, que color tendra un <p> dentro de .sección?",
+        "¿Si declarás --color: blue en :root y --color: red en .sección, que color tendrá un <p> dentro de .sección?",
       options: [
         { id: "a", text: "blue (la variable global tiene prioridad)", isCorrect: false },
         { id: "b", text: "red (la variable más cercana tiene prioridad)", isCorrect: true },
@@ -458,7 +458,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       retoPasos: [
         {
           instruccion:
-            "Declara las variables en `:root`: --fondo con #ffffff, --texto con #1a1a2e y --acento con #3498db.",
+            "Declará las variables en `:root`: --fondo con #ffffff, --texto con #1a1a2e y --acento con #3498db.",
           esperado: ":root { --fondo: #ffffff; --texto: #1a1a2e; --acento: #3498db; }",
         },
         {
@@ -468,12 +468,12 @@ Detecta automáticamente la preferencia del sistema operativo:
         },
         {
           instruccion:
-            "Con `.tema-oscuro`, sobreescribi --fondo con #1a1a2e y --texto con #e0e0e0. No repetis ni una propiedad: solo cambias los valores y todo lo que las usa se actualiza.",
+            "Con `.tema-oscuro`, sobreescribi --fondo con #1a1a2e y --texto con #e0e0e0. No repetís ni una propiedad: solo cambiás los valores y todo lo que las usa se actualiza.",
           esperado: ".tema-oscuro { --fondo: #1a1a2e; --texto: #e0e0e0; }",
         },
         {
           instruccion:
-            "Con `.boton`, usa var con VALOR DE RESPALDO: background-color con var(--acento, #666) y color white. Si algun dia --acento desaparece, el boton sigue viendose en vez de quedar transparente.",
+            "Con `.boton`, usa var con VALOR DE RESPALDO: background-color con var(--acento, #666) y color white. Si algun día --acento desaparece, el botón sigue viendose en vez de quedar transparente.",
           esperado: ".boton { background-color: var(--acento, #666); color: white; }",
         },
       ],
@@ -488,9 +488,9 @@ Detecta automáticamente la preferencia del sistema operativo:
       },
       referenceSolution:
         ":root {\n  --fondo: #ffffff;\n  --texto: #1a1a2e;\n  --acento: #3498db;\n}\n\n.pagina {\n  background-color: var(--fondo);\n  color: var(--texto);\n  padding: 20px;\n}\n\n.tema-oscuro {\n  --fondo: #1a1a2e;\n  --texto: #e0e0e0;\n}\n\n.boton {\n  background-color: var(--acento, #666);\n  color: white;\n}",
-      hint: "Las variables se heredan, asi que redeclararlas en `.tema-oscuro` alcanza a todo lo que este adentro sin tocar ninguna regla de color.",
+      hint: "Las variables se heredan, así que redeclararlas en `.tema-oscuro` alcanza a todo lo que este adentro sin tocar ninguna regla de color.",
       explanation:
-        "El paso 3 es el que muestra para que sirven de verdad: dos bloques con el mismo marcado y el mismo CSS de presentacion terminan con temas distintos, solo porque uno redeclara dos variables. Y el paso 4 es la red: `var(--acento, #666)` sigue funcionando el dia que alguien renombre la variable, que es exactamente cuando un tema se rompe en silencio.",
+        "El paso 3 es el que muestra para que sirven de verdad: dos bloques con el mismo marcado y el mismo CSS de presentación terminan con temas distintos, solo porque uno redeclara dos variables. Y el paso 4 es la red: `var(--acento, #666)` sigue funcionando el día que alguien renombre la variable, que es exactamente cuando un tema se rompe en silencio.",
     },
   ],
 };

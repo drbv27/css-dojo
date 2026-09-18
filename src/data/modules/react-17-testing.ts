@@ -30,7 +30,7 @@ export const reactTestingModule: ModuleData = {
 | Herramienta | Propósito |
 |-------------|-----------|
 | **Vitest** | Test runner rápido (compatible con Vite) |
-| **Jest** | Test runner clasico |
+| **Jest** | Test runner clásico |
 | **React Testing Library** | Renderizar y consultar componentes |
 | **Playwright/Cypress** | Tests E2E |
 
@@ -82,40 +82,60 @@ function Contador({ inicial = 0 }) {
   );
 }
 
-// Simulacion visual de tests
+// Mini test runner de verdad: monta el componente en un contenedor aparte y lo
+// INTERROGA. Hasta el 2026-09-18 cada test se empujaba con paso: true fijo, sin
+// leer nada del DOM, asi que el boton siempre daba 4/4 aunque el Contador
+// estuviera roto. Un modulo de testing cuyo ejemplo no verifica nada ensenia
+// justo lo contrario de lo que dice ensenar.
 function TestRunner() {
   const [resultados, setResultados] = useState([]);
 
-  const ejecutarTests = () => {
+  const ejecutarTests = async () => {
+    const contenedor = document.createElement('div');
+    contenedor.style.display = 'none';
+    document.body.appendChild(contenedor);
+    const raiz = ReactDOM.createRoot(contenedor);
+
+    // React aplica el estado de forma asincrona, asi que cada paso espera un
+    // tick antes de leer el DOM. Es lo que act() hace por vos en Vitest.
+    const tick = () => new Promise(function (listo) { setTimeout(listo, 0); });
+    const pintar = async (elemento) => { raiz.render(elemento); await tick(); };
+    const clickEn = async (texto) => {
+      const boton = Array.from(contenedor.querySelectorAll('button'))
+        .find(function (b) { return b.textContent === texto; });
+      if (!boton) throw new Error('no existe el boton ' + texto);
+      boton.click();
+      await tick();
+    };
+    const textoVisible = () => contenedor.querySelector('p').textContent;
+
     const tests = [];
+    const verificar = (nombre, esperado, obtenido) => {
+      tests.push({
+        nombre: nombre,
+        paso: obtenido === esperado,
+        detalle: 'esperaba "' + esperado + '" y encontro "' + obtenido + '"'
+      });
+    };
 
-    // Test 1: Renderiza valor inicial
-    tests.push({
-      nombre: 'muestra el valor inicial',
-      paso: true,
-      detalle: 'Encuentra texto "Count: 0" en el DOM'
-    });
+    try {
+      await pintar(<Contador />);
+      verificar('muestra el valor inicial', 'Count: 0', textoVisible());
 
-    // Test 2: Incrementa al click
-    tests.push({
-      nombre: 'incrementa al hacer click en "Incrementar"',
-      paso: true,
-      detalle: 'Click en boton → texto cambia a "Count: 1"'
-    });
+      await clickEn('Incrementar');
+      verificar('incrementa al hacer click en "Incrementar"', 'Count: 1', textoVisible());
 
-    // Test 3: Reset funciona
-    tests.push({
-      nombre: 'resetea a 0 al hacer click en "Reset"',
-      paso: true,
-      detalle: 'Click en Reset → texto vuelve a "Count: 0"'
-    });
+      await clickEn('Reset');
+      verificar('resetea a 0 al hacer click en "Reset"', 'Count: 0', textoVisible());
 
-    // Test 4: Valor inicial custom
-    tests.push({
-      nombre: 'acepta prop inicial personalizada',
-      paso: true,
-      detalle: 'render(<Contador inicial={5} />) → "Count: 5"'
-    });
+      await pintar(<Contador inicial={5} />);
+      verificar('acepta prop inicial personalizada', 'Count: 5', textoVisible());
+    } catch (error) {
+      tests.push({ nombre: 'el runner pudo correr', paso: false, detalle: String(error) });
+    } finally {
+      raiz.unmount();
+      contenedor.remove();
+    }
 
     setResultados(tests);
   };
@@ -353,7 +373,7 @@ test('carga datos de la API', async () => {
 });
 \`\`\`
 
-### Mocking de modulos
+### Mocking de módulos
 \`\`\`jsx
 // Mock de un modulo completo
 vi.mock('./api', () => ({
@@ -475,7 +495,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "querySelector", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Busca elementos por su rol accesible, como lo haria un usuario con lector de pantalla.",
+      hint: "Busca elementos por su rol accesible, como lo haría un usuario con lector de pantalla.",
       explanation: "getByRole es la query preferida porque usa roles accesibles (button, textbox, heading), lo que también verifica la accesibilidad del componente.",
     },
     {
@@ -484,7 +504,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para encontrar un botón con el texto 'Enviar':",
+      prompt: "Completá para encontrar un botón con el texto 'Enviar':",
       codeTemplate: {
         html: "",
         cssPrefix: "const boton = screen.",
@@ -541,7 +561,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa para esperar a que aparezca un elemento asíncrono:",
+      prompt: "Completá para esperar a que aparezca un elemento asíncrono:",
       codeTemplate: {
         html: "",
         cssPrefix: "const usuario = await screen.",
@@ -558,16 +578,16 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Qué debes mockear al testear un componente que hace fetch?",
+      prompt: "¿Qué debés mockear al testear un componente que hace fetch?",
       options: [
         { id: "a", text: "Los hooks de React", isCorrect: false },
-        { id: "b", text: "La función fetch o el modulo de API", isCorrect: true },
+        { id: "b", text: "La función fetch o el módulo de API", isCorrect: true },
         { id: "c", text: "El componente completo", isCorrect: false },
         { id: "d", text: "React DOM", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Mockea las dependencias externas, no React.",
-      explanation: "Se mockea fetch o el modulo de API para controlar las respuestas sin hacer peticiones reales. Nunca mockees React ni sus hooks.",
+      explanation: "Se mockea fetch o el módulo de API para controlar las respuestas sin hacer peticiones reales. Nunca mockees React ni sus hooks.",
     },
     {
       id: "react17-ej-08",

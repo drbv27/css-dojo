@@ -15,7 +15,7 @@ export const jsPatronesModule: ModuleData = {
       title: "Patrón Module y IIFE",
       content: `## Patrón Module
 
-Encapsula código en un modulo con interfaz pública y datos privados.
+Encapsula código en un módulo con interfaz pública y datos privados.
 
 ### IIFE (Immediately Invoked Function Expressión)
 
@@ -32,7 +32,7 @@ const miModulo = (function() {
 })();
 \`\`\`
 
-### Modulos ES6 (import/export)
+### Módulos ES6 (import/export)
 
 \`\`\`javascript
 // archivo: utils.js
@@ -229,7 +229,7 @@ const Database = (function() {
 
 | Patrón | Usar cuando... |
 |--------|---------------|
-| Module | Necesitas encapsulación |
+| Module | Necesitás encapsulación |
 | Observer | Comunicar componentes desacoplados |
 | Factory | Crear objetos de diferentes tipos |
 | Singleton | Solo debe existir una instancia |
@@ -307,7 +307,7 @@ document.getElementById("crear-viewer").addEventListener("click", function() {
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "¿Qué patrón se usa cuando necesitas notificar a múltiples componentes sobre un cambio?",
+      prompt: "¿Qué patrón se usa cuando necesitás notificar a múltiples componentes sobre un cambio?",
       options: [
         { id: "a", text: "Singleton", isCorrect: false },
         { id: "b", text: "Factory", isCorrect: false },

@@ -21,7 +21,7 @@ Una **variable** es un contenedor con nombre para almacenar datos. En JavaScript
 \`\`\`javascript
 var nombre = "Ana";
 \`\`\`
-Es la forma clasica. Tiene **alcance de función** y permite redeclaración. **No se recomienda** en código moderno.
+Es la forma clásica. Tiene **alcance de función** y permite redeclaración. **No se recomienda** en código moderno.
 
 ### let (moderna)
 \`\`\`javascript
@@ -37,7 +37,7 @@ const PI = 3.14159;
 \`\`\`
 Igual que let pero **no se puede reasignar**. Usala siempre que el valor no cambie.
 
-> **Regla de oro:** Usa \`const\` por defecto. Solo usa \`let\` si necesitas reasignar. Nunca uses \`var\`.`,
+> **Regla de oro:** Usá \`const\` por defecto. Solo usa \`let\` si necesitás reasignar. Nunca uses \`var\`.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -144,7 +144,7 @@ JavaScript intenta convertir automáticamente cuando mezclas tipos:
 Estos valores se convierten a \`false\`:
 \`0\`, \`""\`, \`null\`, \`undefined\`, \`NaN\`, \`false\`
 
-Todo lo demas es **truthy** (se convierte a \`true\`).
+Todo lo demás es **truthy** (se convierte a \`true\`).
 
 > **Cuidado:** La coerción implícita es fuente común de bugs. Prefiere las conversiones explicitas.`,
       codeExample: {
@@ -170,7 +170,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuál es la forma recomendada de declarar una variable que no cambiara de valor?",
+      prompt: "¿Cuál es la forma recomendada de declarar una variable que no cambiará de valor?",
       options: [
         { id: "a", text: "var", isCorrect: false },
         { id: "b", text: "let", isCorrect: false },
@@ -206,7 +206,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Declara una constante llamada 'edad' con el valor 25:",
+      prompt: "Declará una constante llamada 'edad' con el valor 25:",
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -214,7 +214,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["const"],
       },
       validation: { type: "exact", answer: "const" },
-      hint: "Usa la palabra clave para declarar una variable que no cambia.",
+      hint: "Usá la palabra clave para declarar una variable que no cambia.",
       explanation: "const edad = 25; declara una constante que no puede ser reasignada.",
     },
     {

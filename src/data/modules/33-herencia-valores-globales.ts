@@ -292,7 +292,7 @@ Dos preguntas, y cubren casi todo lo que te va a pasar con CSS el resto de tu ca
         { id: "d", text: "Transparente, porque initial borra el valor", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "initial no mira al padre ni al navegador: mira la especificación de CSS. Preguntate qué dice la especificación que vale color cuando nadie la tocó.",
+      hint: "initial no mira al padre ni al navegador: mirá la especificación de CSS. Preguntate qué dice la especificación que vale color cuando nadie la tocó.",
       explanation:
         "initial vuelve al valor que la especificación le da a la propiedad, y para color ese valor es negro. En una página de fondo oscuro eso es texto negro sobre negro. Lo que casi siempre se quería en su lugar era unset o revert.",
     },

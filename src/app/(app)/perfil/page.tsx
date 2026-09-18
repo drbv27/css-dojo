@@ -32,11 +32,11 @@ export default function PerfilPage() {
     setPasswordSuccess(false);
 
     if (newPassword !== confirmPassword) {
-      setPasswordError("Las contrasenas no coinciden");
+      setPasswordError("Las contraseñas no coinciden");
       return;
     }
     if (newPassword.length < 6) {
-      setPasswordError("La nueva contrasena debe tener al menos 6 caracteres");
+      setPasswordError("La nueva contraseña debe tener al menos 6 caracteres");
       return;
     }
 
@@ -49,7 +49,7 @@ export default function PerfilPage() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setPasswordError(data.error || "Error al cambiar la contrasena");
+        setPasswordError(data.error || "Error al cambiar la contraseña");
       } else {
         setPasswordSuccess(true);
         setCurrentPassword("");
@@ -181,7 +181,7 @@ export default function PerfilPage() {
               onClick={() => setShowPasswordForm(true)}
               className="text-sm text-neon-blue hover:text-neon-blue/80 transition-colors font-medium"
             >
-              Cambiar contrasena
+              Cambiar contraseña
             </button>
           )}
         </div>
@@ -216,7 +216,7 @@ export default function PerfilPage() {
             </div>
 
             <div>
-              <label className="block text-sm text-editor-muted mb-1">Nueva contrasena</label>
+              <label className="block text-sm text-editor-muted mb-1">Nueva contraseña</label>
               <div className="relative">
                 <input
                   type={showNew ? "text" : "password"}
@@ -234,7 +234,7 @@ export default function PerfilPage() {
             </div>
 
             <div>
-              <label className="block text-sm text-editor-muted mb-1">Confirmar nueva contrasena</label>
+              <label className="block text-sm text-editor-muted mb-1">Confirmar nueva contraseña</label>
               <input
                 type="password"
                 value={confirmPassword}
@@ -264,7 +264,7 @@ export default function PerfilPage() {
         )}
 
         {!showPasswordForm && !passwordSuccess && (
-          <p className="text-sm text-editor-muted">Tu contrasena fue configurada al registrarte.</p>
+          <p className="text-sm text-editor-muted">Tu contraseña fue configurada al registrarte.</p>
         )}
       </div>
     </div>

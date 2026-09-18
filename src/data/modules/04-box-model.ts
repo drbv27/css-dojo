@@ -49,7 +49,7 @@ Ancho total = width + padding-left + padding-right + border-left + border-right 
 Alto total  = height + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom
 \`\`\`
 
-Por ejemplo, si defines:
+Por ejemplo, si definís:
 
 \`\`\`css
 .caja {
@@ -60,9 +60,9 @@ Por ejemplo, si defines:
 }
 \`\`\`
 
-El ancho total ocupado sera: 300 + 20 + 20 + 5 + 5 + 10 + 10 = **370px**
+El ancho total ocupado será: 300 + 20 + 20 + 5 + 5 + 10 + 10 = **370px**
 
-> **Importante:** Puedes inspeccionar el Box Model de cualquier elemento en las DevTools del navegador (pestaña "Computed" o "Calculado").`,
+> **Importante:** Podés inspeccionar el Box Model de cualquier elemento en las DevTools del navegador (pestaña "Computed" o "Calculado").`,
       codeExample: {
         html: `<div class="caja-modelo">Inspecciona esta caja con DevTools</div>`,
         css: `.caja-modelo {\n  width: 300px;\n  height: 150px;\n  padding: 20px;\n  border: 5px solid #333;\n  margin: 15px;\n  background-color: #e0f0ff;\n  color: #333;\n  font-family: sans-serif;\n}`,
@@ -93,7 +93,7 @@ La propiedad \`box-sizing\` cambia **cómo se calcula** el ancho y alto de un el
 
 ### border-box
 
-\`width\` y \`height\` incluyen el contenido, el padding **y** el border. El tamaño visible es exactamente lo que defines:
+\`width\` y \`height\` incluyen el contenido, el padding **y** el border. El tamaño visible es exactamente lo que definís:
 
 \`\`\`css
 .caja {
@@ -125,7 +125,7 @@ La gran mayoria de proyectos modernos usan este reset al inicio de sus estilos:
 
 Esto hace que **todos los elementos** usen \`border-box\`, lo cual simplifica enormemente el calculo de layouts.
 
-> **Recuerda:** El \`margin\` nunca se incluye en el calculo de \`box-sizing\`. Siempre se suma por fuera, sin importar si usas content-box o border-box.`,
+> **Recordá:** El \`margin\` nunca se incluye en el calculo de \`box-sizing\`. Siempre se suma por fuera, sin importar si usás content-box o border-box.`,
       codeExample: {
         html: `<div class="content-box">content-box: 300px + padding + border</div>\n<div class="border-box">border-box: 300px total</div>`,
         css: `.content-box {\n  box-sizing: content-box;\n  width: 300px;\n  padding: 20px;\n  border: 5px solid tomato;\n  background-color: #ffe0e0;\n  margin-bottom: 10px;\n}\n.border-box {\n  box-sizing: border-box;\n  width: 300px;\n  padding: 20px;\n  border: 5px solid steelblue;\n  background-color: #e0e8ff;\n}`,
@@ -140,9 +140,9 @@ Esto hace que **todos los elementos** usen \`border-box\`, lo cual simplifica en
 
 Entender como interactuan \`width\`, \`padding\` y \`border\` es clave para evitar sorpresas en tus layouts.
 
-### Problema clasico: elementos que se desbordan
+### Problema clásico: elementos que se desbordan
 
-Imagina que tienes un contenedor de 500px y quieres poner dos cajas de 50% lado a lado:
+Imagina que tenés un contenedor de 500px y querés poner dos cajas de 50% lado a lado:
 
 \`\`\`css
 .contenedor { width: 500px; }
@@ -160,7 +160,7 @@ Con \`border-box\`, cada caja ocupa exactamente **250px**. Dos cajas = 500px. **
 
 ### Porcentajes y border-box
 
-Cuando usas anchos en porcentaje, \`border-box\` es especialmente valioso:
+Cuando usás anchos en porcentaje, \`border-box\` es especialmente valioso:
 
 \`\`\`css
 .columna {
@@ -175,7 +175,7 @@ Cada columna ocupa exactamente un tercio del padre, sin importar cuanto padding 
 
 ### Height y overflow
 
-Si defines un \`height\` fijo y el contenido es más grande, se desborda:
+Si definís un \`height\` fijo y el contenido es más grande, se desborda:
 
 \`\`\`css
 .caja {
@@ -196,7 +196,7 @@ En general, es mejor usar \`min-height\` para que la caja crezca si el contenido
 }
 \`\`\`
 
-> **Tip:** Usa las DevTools para inspeccionar el Box Model. Podras ver exactamente cuanto mide cada capa y detectar problemas rapidamente.`,
+> **Tip:** Usá las DevTools para inspeccionar el Box Model. Podras ver exactamente cuanto mide cada capa y detectar problemas rápidamente.`,
       codeExample: {
         html: `<div class="contenedor">\n  <div class="mitad izq">50% con border-box</div>\n  <div class="mitad der">50% con border-box</div>\n</div>`,
         css: `.contenedor {\n  width: 400px;\n  background-color: #f0f0f0;\n  overflow: hidden;\n}\n.mitad {\n  box-sizing: border-box;\n  width: 50%;\n  padding: 15px;\n  border: 3px solid;\n  float: left;\n}\n.izq {\n  background-color: #d4edda;\n  border-color: #28a745;\n}\n.der {\n  background-color: #cce5ff;\n  border-color: #007bff;\n}`,
@@ -222,7 +222,7 @@ Existe otra propiedad que dibuja una línea alrededor de un elemento: \`outline\
 
 ### Diferencias clave entre outline y border
 
-| Caracteristica | border | outline |
+| Característica | border | outline |
 |---------------|--------|---------|
 | Forma parte del Box Model | Si | No |
 | Afecta el tamaño del elemento | Si | No |
@@ -256,7 +256,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
 }
 \`\`\`
 
-> **Accesibilidad:** Siempre asegurate de que los elementos interactivos tengan un indicador de foco visible. Si quitas el outline por defecto, agrega uno personalizado.`,
+> **Accesibilidad:** Siempre asegurate de que los elementos interactivos tengan un indicador de foco visible. Si quitás el outline por defecto, agrega uno personalizado.`,
       codeExample: {
         html: `<div class="con-border">Tengo border (afecta el tamano)</div>\n<div class="con-outline">Tengo outline (no afecta el tamano)</div>\n<button class="boton-accesible">Haz clic o usa Tab</button>`,
         css: `.con-border {\n  width: 250px;\n  padding: 15px;\n  border: 5px solid tomato;\n  margin-bottom: 10px;\n  background-color: #fff5f5;\n}\n.con-outline {\n  width: 250px;\n  padding: 15px;\n  outline: 5px solid steelblue;\n  outline-offset: 3px;\n  margin-bottom: 20px;\n  background-color: #f5f8ff;\n}\n.boton-accesible {\n  padding: 10px 20px;\n  font-size: 16px;\n  cursor: pointer;\n}\n.boton-accesible:focus-visible {\n  outline: 3px solid #4a90d9;\n  outline-offset: 2px;\n}`,
@@ -281,7 +281,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         { id: "d", text: "padding, content, margin, border", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa desde el contenido hacia afuera: primero el relleno interior, luego la línea del borde, y finalmente el espacio exterior.",
+      hint: "Pensá desde el contenido hacia afuera: primero el relleno interior, luego la línea del borde, y finalmente el espacio exterior.",
       explanation:
         "El Box Model tiene 4 capas desde adentro hacia afuera: content (contenido), padding (relleno), border (borde) y margin (margen). Este orden es fundamental para calcular el tamaño total de un elemento.",
     },
@@ -311,7 +311,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la propiedad para que el width incluya padding y border en el calculo del tamaño:",
+        "Completá la propiedad para que el width incluya padding y border en el calculo del tamaño:",
       codeTemplate: {
         html: `<div class="caja">Contenido</div>`,
         cssPrefix: ".caja {\n  ",
@@ -379,7 +379,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una caja con clase 'tarjeta' que use box-sizing: border-box, width: 350px, padding: 25px, border: 3px solid #333, y background-color: #f9f9f9.",
+        "Creá una caja con clase 'tarjeta' que use box-sizing: border-box, width: 350px, padding: 25px, border: 3px solid #333, y background-color: #f9f9f9.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h3>Mi tarjeta</h3>\n  <p>Esta tarjeta debe medir exactamente 350px de ancho.</p>\n</div>`,
         cssPrefix: "",
@@ -393,7 +393,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas box-sizing: border-box para que el ancho total sea 350px, incluyendo el padding y el border.",
+      hint: "Necesitás box-sizing: border-box para que el ancho total sea 350px, incluyendo el padding y el border.",
       explanation:
         "Con box-sizing: border-box, el ancho total visible de la tarjeta es exactamente 350px. El contenido se reduce automáticamente para dejar espacio al padding (25px * 2) y al border (3px * 2).",
     },
@@ -404,7 +404,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 30,
       order: 6,
       prompt:
-        "Reproduce el diseño: dos cajas de 50% de ancho lado a lado dentro de un contenedor. Ambas con padding: 15px, border: 2px solid #666 y box-sizing: border-box. La izquierda con background-color: #d4edda y la derecha con background-color: #cce5ff. Usa float: left en ambas.",
+        "Reproduce el diseño: dos cajas de 50% de ancho lado a lado dentro de un contenedor. Ambas con padding: 15px, border: 2px solid #666 y box-sizing: border-box. La izquierda con background-color: #d4edda y la derecha con background-color: #cce5ff. Usá float: left en ambas.",
       codeTemplate: {
         html: `<div class="contenedor">\n  <div class="mitad izq">Columna izquierda</div>\n  <div class="mitad der">Columna derecha</div>\n</div>`,
         cssPrefix: ".contenedor {\n  width: 100%;\n  overflow: hidden;\n}\n\n",
@@ -429,7 +429,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       xpReward: 20,
       order: 7,
       prompt:
-        "Completa el reset universal para que todos los elementos y pseudo-elementos usen border-box:",
+        "Completá el reset universal para que todos los elementos y pseudo-elementos usen border-box:",
       codeTemplate: {
         html: `<div class="caja">Contenido</div>`,
         cssPrefix: "*, *::before, *::after {\n  box-sizing: ",
@@ -439,7 +439,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       validation: { type: "exact", answer: "border-box" },
       hint: "Es el valor que hace que width y height incluyan padding y border.",
       explanation:
-        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una práctica estándar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en practicamente todos los frameworks CSS modernos.",
+        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una práctica estándar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en prácticamente todos los frameworks CSS modernos.",
     },
     {
       id: "11-ej-08",
@@ -456,7 +456,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
         { id: "d", text: "No hay diferencia, son sinonimos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que propiedad ocupa espacio en el layout y cual no.",
+      hint: "Pensá en que propiedad ocupa espacio en el layout y cual no.",
       explanation:
         "El outline NO forma parte del Box Model: no ocupa espacio, no afecta las dimensiones del elemento ni mueve a otros elementos. El border si forma parte del Box Model y suma al tamaño total del elemento.",
     },

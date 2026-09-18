@@ -28,7 +28,7 @@ La **accesibilidad web** (a11y) significa crear sitios que todas las personas pu
 Las **Pautas de Accesibilidad para el Contenido Web** (WCAG) se basan en:
 
 1. **Perceptible:** La información debe poder percibirse (no solo visual)
-2. **Operable:** La interfaz debe poder operarse (teclado, no solo raton)
+2. **Operable:** La interfaz debe poder operarse (teclado, no solo ratón)
 3. **Comprensible:** El contenido debe ser fácil de entender
 4. **Robusto:** Debe funcionar con diferentes tecnologias asistivas
 
@@ -36,7 +36,7 @@ Las **Pautas de Accesibilidad para el Contenido Web** (WCAG) se basan en:
 
 Usar etiquetas semánticas es el **primer paso** hacia un sitio accesible. Los lectores de pantalla dependen de la estructura HTML para navegar.
 
-> **Recuerda:** La accesibilidad no es un extra, es una parte fundamental del desarrollo web.`,
+> **Recordá:** La accesibilidad no es un extra, es una parte fundamental del desarrollo web.`,
       codeExample: {
         html: `<!-- Ejemplo: Sitio NO accesible -->
 <div onclick="alert('clic')" style="padding:12px;background:#e17055;color:white;margin-bottom:16px;border-radius:4px;">
@@ -70,7 +70,7 @@ button:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
 
 ### Regla de oro de ARIA
 
-> No uses ARIA si puedes usar HTML semántico. Un \`<button>\` es mejor que \`<div role="button">\`.
+> No uses ARIA si podés usar HTML semántico. Un \`<button>\` es mejor que \`<div role="button">\`.
 
 ### Roles ARIA comunes
 
@@ -174,7 +174,7 @@ Un enlace oculto que permite a usuarios de teclado **saltar al contenido princip
 - Todos los elementos interactivos deben ser **enfocables con Tab**
 - El **orden de foco** debe ser lógico (izquierda a derecha, arriba a abajo)
 - Nunca uses \`outline: none\` sin una alternativa visual
-- Usa \`:focus-visible\` para mostrar indicadores de foco solo con teclado
+- Usá \`:focus-visible\` para mostrar indicadores de foco solo con teclado
 
 ### Contraste de colores
 
@@ -278,7 +278,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el atributo para ocultar un icono decorativo de los lectores de pantalla:",
+      prompt: "Completá el atributo para ocultar un icono decorativo de los lectores de pantalla:",
       codeTemplate: {
         html: "",
         cssPrefix: '<span ',
@@ -286,7 +286,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
         blanks: ["aria-hidden"],
       },
       validation: { type: "exact", answer: "aria-hidden" },
-      hint: "Este atributo ARIA oculta elementos de la tecnologia asistiva.",
+      hint: "Este atributo ARIA oculta elementos de la tecnología asistiva.",
       explanation:
         'aria-hidden="true" oculta un elemento de los lectores de pantalla. Es útil para iconos decorativos que no aportan información.',
     },
@@ -300,11 +300,11 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       options: [
         { id: "a", text: "Siempre usar el máximo de atributos ARIA posible", isCorrect: false },
         { id: "b", text: "ARIA solo funciona en formularios", isCorrect: false },
-        { id: "c", text: "No usar ARIA si puedes usar HTML semántico nativo", isCorrect: true },
+        { id: "c", text: "No usar ARIA si podés usar HTML semántico nativo", isCorrect: true },
         { id: "d", text: "Cada elemento debe tener al menos un atributo ARIA", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Piensa en que es mejor: un botón real o un div con role='button'.",
+      hint: "Pensá en que es mejor: un botón real o un div con role='button'.",
       explanation:
         'La regla de oro es preferir HTML semántico sobre ARIA. Un <button> nativo ya tiene toda la accesibilidad integrada, mientras que <div role="button"> requiere implementar teclado y foco manualmente.',
     },
@@ -336,7 +336,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       },
       hint: "El alt debe describir el contenido de la imagen de forma útil.",
       explanation:
-        'Un buen alt describe especificamente la imagen. Para imágenes decorativas se usa alt="" vacío. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
+        'Un buen alt describe específicamente la imagen. Para imágenes decorativas se usa alt="" vacío. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
     },
     {
       id: "html12-ej-06",
@@ -348,13 +348,13 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       options: [
         { id: "a", text: "Un enlace para saltar animaciones CSS", isCorrect: false },
         { id: "b", text: "Un enlace oculto que permite saltar al contenido principal", isCorrect: true },
-        { id: "c", text: "Un botón para desactivar el menu de navegación", isCorrect: false },
+        { id: "c", text: "Un botón para desactivar el menú de navegación", isCorrect: false },
         { id: "d", text: "Un atributo ARIA para ignorar la navegación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es útil para usuarios que navegan con teclado.",
       explanation:
-        "Un skip navigation link es un enlace (generalmente oculto visualmente) que aparece al presionar Tab y permite a usuarios de teclado saltar directamente al contenido principal, sin tener que recorrer todo el menu.",
+        "Un skip navigation link es un enlace (generalmente oculto visualmente) que aparece al presionar Tab y permite a usuarios de teclado saltar directamente al contenido principal, sin tener que recorrer todo el menú.",
     },
     {
       id: "html12-ej-07",
@@ -381,7 +381,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       xpReward: 30,
       order: 8,
       prompt:
-        "Haz accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al botón de icono, y conecta el label con el input usando for e id.",
+        "Hacé accesible este bloque: dale un alt descriptivo a la imagen, un aria-label al botón de icono, y conecta el label con el input usando for e id.",
       codeTemplate: {
         html: `<img src="logo.png">\n<button>🔍</button>\n<label>Correo</label>\n<input type="email" id="correo">`,
         cssPrefix: "",

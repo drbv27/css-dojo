@@ -34,7 +34,7 @@ Necesitamos:
 
 ### El modelo de datos
 
-Cada tarea tendra:
+Cada tarea tendrá:
 \`\`\`javascript
 {
   id: 1,
@@ -355,7 +355,7 @@ renderApp();`,
         { id: "d", text: "delete()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Crea un nuevo array sin el elemento a eliminar.",
+      hint: "Creá un nuevo array sin el elemento a eliminar.",
       explanation: "filter() crea un nuevo array excluyendo la tarea con el id dado: tareas.filter(t => t.id !== idAEliminar).",
     },
     {
@@ -389,7 +389,7 @@ renderApp();`,
         { id: "d", text: "submit", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Necesitas detectar que tecla se presiono.",
+      hint: "Necesitás detectar que tecla se presiono.",
       explanation: 'El evento keydown con la verificación e.key === "Enter" detecta cuando el usuario presiona la tecla Enter.',
     },
     {
@@ -415,7 +415,7 @@ renderApp();`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa para filtrar solo las tareas no completadas:",
+      prompt: "Completá para filtrar solo las tareas no completadas:",
       codeTemplate: {
         html: "",
         cssPrefix: "const pendientes = tareas.filter(function(t) { return ",
@@ -423,7 +423,7 @@ renderApp();`,
         blanks: ["!t.completada"],
       },
       validation: { type: "exact", answer: "!t.completada" },
-      hint: "Necesitas las tareas donde completada sea false.",
+      hint: "Necesitás las tareas donde completada sea false.",
       explanation: "!t.completada es true cuando la tarea NO esta completada, filtrando solo las tareas pendientes.",
     },
   ],

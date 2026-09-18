@@ -50,6 +50,9 @@ function prosaDe(m: (typeof ALL_MODULES)[number]): string {
     partes.push(e.prompt, e.hint ?? "", e.explanation ?? "");
     for (const o of e.options ?? []) partes.push(sinCodigo(o.text));
     for (const z of e.dropZones ?? []) partes.push(z.label);
+    // Mismo punto ciego que en acentuacion.test.ts: `retoPasos[].instruccion` es
+    // prosa y no se estaba mirando. `esperado` queda fuera porque es CSS.
+    for (const p of e.retoPasos ?? []) partes.push(sinCodigo(p.instruccion));
   }
   return partes.map(sinCodigo).join("\n");
 }

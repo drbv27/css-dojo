@@ -10,14 +10,14 @@ export async function POST(request: Request) {
 
     if (!name || !email || !password) {
       return NextResponse.json(
-        { error: "Nombre, email y contrasena son requeridos" },
+        { error: "Nombre, email y contraseña son requeridos" },
         { status: 400 }
       );
     }
 
     if (password.length < 6) {
       return NextResponse.json(
-        { error: "La contrasena debe tener al menos 6 caracteres" },
+        { error: "La contraseña debe tener al menos 6 caracteres" },
         { status: 400 }
       );
     }

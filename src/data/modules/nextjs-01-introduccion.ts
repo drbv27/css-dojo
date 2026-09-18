@@ -17,7 +17,7 @@ export const nextjsIntroModule: ModuleData = {
 Next.js es un **framework** construido sobre React que agrega:
 
 - **Rendering en el servidor** (SSR) y generación estática (SSG)
-- **Routing basado en archivos** — no necesitas React Router
+- **Routing basado en archivos** — no necesitás React Router
 - **Server Components** — componentes que se ejecutan en el servidor
 - **API Routes** — backend integrado
 - **Optimización automática** — imágenes, fonts, scripts
@@ -26,7 +26,7 @@ Next.js es un **framework** construido sobre React que agrega:
 
 Next.js tiene dos sistemas de routing:
 
-| Caracteristica | Pages Router (legacy) | App Router (moderno) |
+| Característica | Pages Router (legacy) | App Router (moderno) |
 |---------------|----------------------|---------------------|
 | Directorio | \`pages/\` | \`app/\` |
 | Componentes | Client por defecto | Server por defecto |
@@ -156,7 +156,7 @@ export const metadata: Metadata = {
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "En App Router, ¿dónde creas la página para la ruta /about?",
+      prompt: "En App Router, ¿dónde creás la página para la ruta /about?",
       options: [
         { id: "a", text: "pages/about.tsx", isCorrect: false },
         { id: "b", text: "app/about/page.tsx", isCorrect: true },

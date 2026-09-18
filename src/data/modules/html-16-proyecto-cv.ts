@@ -22,17 +22,17 @@ Llegaste al cierre de HTML. Vamos a **juntar todo** lo aprendido en un solo docu
 
 ### Una aclaración importante
 
-HTML **no** hace que las cosas se vean bonitas: eso es trabajo de **CSS**, que viene en el proximo modulo.
+HTML **no** hace que las cosas se vean bonitas: eso es trabajo de **CSS**, que viene en el próximo módulo.
 Así que este CV va a verse **plano a propósito** — texto negro sobre fondo blanco. Y esta perfecto:
 
 > **HTML es el esqueleto.** Lo que evaluamos aca no es el diseño, sino que el documento tenga una
-> **estructura correcta, semántica, accesible y valida**. En el modulo de CSS retomaras **este mismo CV**
+> **estructura correcta, semántica, accesible y valida**. En el módulo de CSS retomaras **este mismo CV**
 > y le pondras la piel (colores, tipografía, columnas). Hoy construyes; después decoras.
 
 ### Por que un CV
 
 Porque es un **documento real** (no un "sitio"): se compone de texto, títulos, listas y una tabla —
-justo lo que HTML hace bien. Y al terminar tendras algo tuyo, listo para reutilizar.
+justo lo que HTML hace bien. Y al terminar tendrás algo tuyo, listo para reutilizar.
 
 ### Lo que va a tener
 
@@ -112,7 +112,7 @@ Un buen documento HTML no solo "funciona": es **accesible** y **valido**.
 ### Validación (el corrector ortografico del HTML)
 
 El **validador del W3C** (validator.w3.org) revisa que tu HTML este bien escrito: etiquetas cerradas,
-anidación correcta, atributos validos. Pega tu código ahi y corrige lo que marque.
+anidación correcta, atributos validos. Pega tu código ahí y corrige lo que marque.
 
 > **Meta del proyecto:** que tu CV pase el validador **sin errores** y respete la jerarquía de títulos.
 > Eso es HTML de nivel profesional.`,
@@ -133,7 +133,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       xpReward: 15,
       order: 1,
       prompt:
-        "Paso 1 - El esqueleto. Escribe la estructura base del documento: DOCTYPE, <html> con lang=\"es\", <head> con <title> 'CV de Ana Martinez', y un <body> vacío.",
+        "Paso 1 - El esqueleto. Escribí la estructura base del documento: DOCTYPE, <html> con lang=\"es\", <head> con <title> 'CV de Ana Martinez', y un <body> vacío.",
       codeTemplate: { html: `<!-- Escribe aqui el esqueleto -->`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -147,7 +147,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
           "body",
         ],
       },
-      hint: "Empieza con <!DOCTYPE html> y recuerda el atributo lang en la etiqueta <html>.",
+      hint: "Empezá con <!DOCTYPE html> y recuerda el atributo lang en la etiqueta <html>.",
       explanation:
         "Todo documento parte del esqueleto: DOCTYPE, html (con lang), head (con title) y body.",
     },
@@ -229,7 +229,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       xpReward: 20,
       order: 5,
       prompt:
-        "Paso 4 - Experiencia. Crea una <section> con <h2> 'Experiencia', un <h3> con el cargo y una lista <ul> con 2 logros.",
+        "Paso 4 - Experiencia. Creá una <section> con <h2> 'Experiencia', un <h3> con el cargo y una lista <ul> con 2 logros.",
       codeTemplate: { html: `<section>\n  \n</section>`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -253,7 +253,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       xpReward: 25,
       order: 6,
       prompt:
-        "Paso 5 - Habilidades en tabla. Crea una <table> con <thead> (columnas 'Habilidad' y 'Nivel' en <th>) y un <tbody> con al menos 2 filas (<tr> con <td>).",
+        "Paso 5 - Habilidades en tabla. Creá una <table> con <thead> (columnas 'Habilidad' y 'Nivel' en <th>) y un <tbody> con al menos 2 filas (<tr> con <td>).",
       codeTemplate: { html: `<section>\n  <h2>Habilidades</h2>\n  \n</section>`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with
@@ -277,7 +277,7 @@ anidación correcta, atributos validos. Pega tu código ahi y corrige lo que mar
       xpReward: 20,
       order: 7,
       prompt:
-        "Paso 6 - Tu foto. Usa un <figure> con una <img> (con su atributo alt descriptivo) y un <figcaption>.",
+        "Paso 6 - Tu foto. Usá un <figure> con una <img> (con su atributo alt descriptivo) y un <figcaption>.",
       codeTemplate: { html: `<figure>\n  \n</figure>`, cssPrefix: "", cssSuffix: "" },
       validation: {
         // Parses the submitted HTML into a DOM and checks each expectation with

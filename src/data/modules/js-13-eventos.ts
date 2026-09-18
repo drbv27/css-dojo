@@ -98,7 +98,7 @@ elemento.addEventListener("mousemove", function(e) {
 
 ## removeEventListener()
 
-Para quitar un listener, necesitas pasar la misma función:
+Para quitar un listener, necesitás pasar la misma función:
 
 \`\`\`javascript
 function handler() { /* ... */ }
@@ -106,7 +106,7 @@ btn.addEventListener("click", handler);
 btn.removeEventListener("click", handler);
 \`\`\`
 
-> **Nota:** Con funciones anonimas no puedes usar removeEventListener. Usa funciones con nombre.`,
+> **Nota:** Con funciones anonimas no podés usar removeEventListener. Usá funciones con nombre.`,
       codeExample: {
         html: '<div id="zona" style="height:80px;display:flex;align-items:center;justify-content:center;">Mueve el mouse aqui</div>\n<div id="resultado"></div>',
         css: '#zona { background: #313244; color: #cdd6f4; border-radius: 8px; cursor: crosshair; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -130,7 +130,7 @@ zona.addEventListener("click", function(e) {
       title: "Delegación de eventos",
       content: `## Delegación de eventos
 
-En lugar de agregar un listener a cada elemento hijo, agregas UNO al padre:
+En lugar de agregar un listener a cada elemento hijo, agregás UNO al padre:
 
 \`\`\`javascript
 lista.addEventListener("click", function(e) {
@@ -225,7 +225,7 @@ document.getElementById("agregar").addEventListener("click", function() {
         { id: "d", text: "e.origin", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Target significa 'objetivo' en ingles.",
+      hint: "Target significa 'objetivo' en inglés.",
       explanation: "e.target es el elemento que origino el evento (por ejemplo, el botón que fue clickeado).",
     },
     {
@@ -234,7 +234,7 @@ document.getElementById("agregar").addEventListener("click", function() {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para escuchar el evento click en un botón:",
+      prompt: "Completá para escuchar el evento click en un botón:",
       codeTemplate: {
         html: "",
         cssPrefix: 'boton.addEventListener("',

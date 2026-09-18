@@ -67,7 +67,7 @@ Define la dirección del **eje principal**:
 .en-linea { display: inline-flex; } /* El contenedor es inline */
 \`\`\`
 
-> **Clave:** Flexbox trabaja en **una sola dimensión** a la vez: fila O columna. Si necesitas filas Y columnas simultaneamente, considera CSS Grid.`,
+> **Clave:** Flexbox trabaja en **una sola dimensión** a la vez: fila O columna. Si necesitás filas Y columnas simultaneamente, considera CSS Grid.`,
       codeExample: {
         html: `<div class="flex-row">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>\n<h4>flex-direction: column</h4>\n<div class="flex-col">\n  <div class="item">A</div>\n  <div class="item">B</div>\n  <div class="item">C</div>\n</div>`,
         css: `.flex-row {\n  display: flex;\n  flex-direction: row;\n  gap: 10px;\n  margin-bottom: 15px;\n}\n.flex-col {\n  display: flex;\n  flex-direction: column;\n  gap: 10px;\n}\n.item {\n  background-color: steelblue;\n  color: white;\n  padding: 15px 25px;\n  border-radius: 6px;\n  font-weight: bold;\n  font-size: 18px;\n  text-align: center;\n}`,
@@ -121,7 +121,7 @@ Controla la alineación en el **eje cruzado** (perpendicular al principal):
 
 ### El truco del centrado perfecto
 
-Con solo 3 líneas, puedes centrar un elemento **vertical y horizontalmente**:
+Con solo 3 líneas, podés centrar un elemento **vertical y horizontalmente**:
 
 \`\`\`css
 .centrado-perfecto {
@@ -143,7 +143,7 @@ Un item puede sobreescribir el \`align-items\` del contenedor:
 }
 \`\`\`
 
-> **Recuerda:** justify-content trabaja en el eje principal (horizontal en row, vertical en column). align-items trabaja en el eje cruzado.`,
+> **Recordá:** justify-content trabaja en el eje principal (horizontal en row, vertical en column). align-items trabaja en el eje cruzado.`,
       codeExample: {
         html: `<h4>justify-content: space-between</h4>\n<div class="demo-justify">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>\n<h4>align-items: center (con alturas diferentes)</h4>\n<div class="demo-align">\n  <div class="item alto">Alto</div>\n  <div class="item">Normal</div>\n  <div class="item bajo">Bajo</div>\n</div>`,
         css: `.demo-justify {\n  display: flex;\n  justify-content: space-between;\n  background-color: #f0f0f0;\n  padding: 10px;\n  margin-bottom: 15px;\n  border-radius: 6px;\n}\n.demo-align {\n  display: flex;\n  align-items: center;\n  height: 150px;\n  background-color: #f0f0f0;\n  padding: 10px;\n  gap: 10px;\n  border-radius: 6px;\n}\n.item {\n  background-color: steelblue;\n  color: white;\n  padding: 15px 25px;\n  border-radius: 6px;\n  font-weight: bold;\n}\n.alto { padding: 30px 25px; }\n.bajo { padding: 8px 25px; }`,
@@ -158,7 +158,7 @@ Un item puede sobreescribir el \`align-items\` del contenedor:
 
 ### flex-wrap
 
-Por defecto, los flex items intentan caber en **una sola línea**, incluso si eso significa reducir su tamaño. Con \`flex-wrap\` puedes permitir que se muevan a la siguiente línea:
+Por defecto, los flex items intentan caber en **una sola línea**, incluso si eso significa reducir su tamaño. Con \`flex-wrap\` podés permitir que se muevan a la siguiente línea:
 
 \`\`\`css
 .contenedor {
@@ -209,7 +209,7 @@ La propiedad \`gap\` define el **espacio entre** los flex items. Es mucho más l
 ### Ventajas de gap sobre margin
 
 - No crea espacio extra en los bordes del contenedor
-- No necesitas selectores como \`:last-child\` para quitar el margen final
+- No necesitás selectores como \`:last-child\` para quitar el margen final
 - Es más fácil de mantener y modificar
 
 ### align-content (múltiples líneas)
@@ -297,7 +297,7 @@ Cambia el **orden visual** de los items sin modificar el HTML:
 
 Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`order\` mantienen su orden del DOM.
 
-### Patrón común: layout clasico con sidebar
+### Patrón común: layout clásico con sidebar
 
 \`\`\`css
 .layout { display: flex; }
@@ -305,7 +305,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
 .contenido { flex: 1; }          /* Ocupa todo el espacio restante */
 \`\`\`
 
-> **Buena práctica:** Usa el shorthand \`flex\` en lugar de las propiedades individuales. Los valores más comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamaño fijo).`,
+> **Buena práctica:** Usá el shorthand \`flex\` en lugar de las propiedades individuales. Los valores más comunes son \`flex: 1\` (crece para llenar) y \`flex: none\` (tamaño fijo).`,
       codeExample: {
         html: `<div class="layout">\n  <aside class="sidebar">Sidebar (flex: 0 0 150px)</aside>\n  <main class="contenido">Contenido principal (flex: 1)</main>\n  <aside class="panel">Panel (flex: 0 0 100px)</aside>\n</div>`,
         css: `.layout {\n  display: flex;\n  gap: 10px;\n  height: 150px;\n}\n.sidebar {\n  flex: 0 0 150px;\n  background-color: #2c3e50;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}\n.contenido {\n  flex: 1;\n  background-color: #ecf0f1;\n  padding: 15px;\n  border-radius: 6px;\n}\n.panel {\n  flex: 0 0 100px;\n  background-color: #3498db;\n  color: white;\n  padding: 15px;\n  border-radius: 6px;\n}`,
@@ -341,7 +341,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para centrar los items horizontalmente en el eje principal:",
+        "Completá la propiedad para centrar los items horizontalmente en el eje principal:",
       codeTemplate: {
         html: `<div class="contenedor">\n  <div class="item">1</div>\n  <div class="item">2</div>\n</div>`,
         cssPrefix: ".contenedor {\n  display: flex;\n  ",
@@ -349,7 +349,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         blanks: ["justify-content"],
       },
       validation: { type: "exact", answer: "justify-content" },
-      hint: "Es la propiedad que controla la distribución de items en el eje principal. Empieza con 'justify'.",
+      hint: "Es la propiedad que controla la distribución de items en el eje principal. Empezá con 'justify'.",
       explanation:
         "justify-content: center centra los items a lo largo del eje principal. En flex-direction: row (por defecto), esto centra horizontalmente. En column, centraria verticalmente.",
     },
@@ -421,7 +421,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un centrado perfecto: el contenedor (clase 'centrado') debe usar display: flex, justify-content: center, align-items: center, height: 200px, y background-color: #f0f0f0. El item (clase 'caja') debe tener padding: 20px, background-color: steelblue, color: white y border-radius: 8px.",
+        "Creá un centrado perfecto: el contenedor (clase 'centrado') debe usar display: flex, justify-content: center, align-items: center, height: 200px, y background-color: #f0f0f0. El item (clase 'caja') debe tener padding: 20px, background-color: steelblue, color: white y border-radius: 8px.",
       codeTemplate: {
         html: `<div class="centrado">\n  <div class="caja">Centrado perfecto</div>\n</div>`,
         cssPrefix: "",
@@ -435,7 +435,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas display: flex en el contenedor, junto con justify-content: center y align-items: center para centrar en ambos ejes.",
+      hint: "Necesitás display: flex en el contenedor, junto con justify-content: center y align-items: center para centrar en ambos ejes.",
       explanation:
         "El centrado perfecto con Flexbox requiere solo 3 propiedades: display: flex activa Flexbox, justify-content: center centra en el eje principal (horizontal), y align-items: center centra en el eje cruzado (vertical). El contenedor necesita altura definida para que el centrado vertical sea visible.",
     },
@@ -454,7 +454,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         { id: "d", text: "Centra los items automáticamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando los items son demasiado anchos para caber en una sola línea.",
+      hint: "Pensá en que pasa cuando los items son demasiado anchos para caber en una sola línea.",
       explanation:
         "flex-wrap: wrap permite que los items que no caben en una línea bajen a la siguiente, creando múltiples filas. Sin wrap (nowrap por defecto), los items se comprimen para caber en una sola línea.",
     },
@@ -465,7 +465,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa el shorthand flex para que el sidebar tenga un ancho fijo de 250px sin crecer ni encogerse:",
+        "Completá el shorthand flex para que el sidebar tenga un ancho fijo de 250px sin crecer ni encogerse:",
       codeTemplate: {
         html: `<div class="layout">\n  <aside class="sidebar">Sidebar</aside>\n  <main class="contenido">Main</main>\n</div>`,
         cssPrefix: ".layout { display: flex; gap: 15px; }\n.sidebar {\n  flex: ",
@@ -484,7 +484,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una barra de navegación con Flexbox. El contenedor (clase 'nav') debe usar display: flex, justify-content: space-between, align-items: center, padding: 10px 20px, background-color: #2c3e50. El logo (clase 'logo') con color: white, font-size: 20px, font-weight: bold. Los links (clase 'links') con display: flex y gap: 15px. Cada link (clase 'link') con color: #ecf0f1 y text-decoration: none.",
+        "Creá una barra de navegación con Flexbox. El contenedor (clase 'nav') debe usar display: flex, justify-content: space-between, align-items: center, padding: 10px 20px, background-color: #2c3e50. El logo (clase 'logo') con color: white, font-size: 20px, font-weight: bold. Los links (clase 'links') con display: flex y gap: 15px. Cada link (clase 'link') con color: #ecf0f1 y text-decoration: none.",
       codeTemplate: {
         html: `<nav class="nav">\n  <div class="logo">MiSitio</div>\n  <div class="links">\n    <a class="link" href="#">Inicio</a>\n    <a class="link" href="#">Sobre</a>\n    <a class="link" href="#">Contacto</a>\n  </div>\n</nav>`,
         cssPrefix: "",
@@ -563,7 +563,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Una barra de navegación completa: contenedor, alineación, separación y un item que se estira. Los cuatro pasos son las cuatro lecciones del modulo.",
+        "Reto integrador. Una barra de navegación completa: contenedor, alineación, separación y un item que se estira. Los cuatro pasos son las cuatro lecciones del módulo.",
       retoPasos: [
         {
           instruccion:
@@ -599,7 +599,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         ".barra {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.logo {\n  flex-grow: 1;\n}",
       hint: "`justify-content` reparte sobre el eje principal y `align-items` sobre el cruzado. Con `flex-grow: 1` en el logo, el `space-between` deja de hacer falta: ya no queda espacio para repartir.",
       explanation:
-        "Los cuatro pasos son las cuatro lecciones. El paso 1 crea el contexto flex -sin el, nada de lo demas existe-. El 2 alinea en los dos ejes. El 3 agrega el respiro y la red de seguridad para pantallas chicas. Y el 4 muestra que `flex-grow` reparte el sobrante entre los hijos, que es otra forma de resolver lo mismo que `space-between`.",
+        "Los cuatro pasos son las cuatro lecciones. El paso 1 crea el contexto flex -sin el, nada de lo demás existe-. El 2 alinea en los dos ejes. El 3 agrega el respiro y la red de seguridad para pantallas chicas. Y el 4 muestra que `flex-grow` reparte el sobrante entre los hijos, que es otra forma de resolver lo mismo que `space-between`.",
     },
   ],
 };

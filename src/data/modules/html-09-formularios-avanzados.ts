@@ -278,7 +278,7 @@ button {
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el código para hacer que el campo de email sea obligatorio:",
+      prompt: "Completá el código para hacer que el campo de email sea obligatorio:",
       codeTemplate: {
         html: "",
         cssPrefix: '<input type="email" ',
@@ -304,7 +304,7 @@ button {
         { id: "d", text: "disabled solo funciona en inputs de texto", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando se envia el formulario.",
+      hint: "Pensá en que pasa cuando se envia el formulario.",
       explanation:
         "Un campo disabled no se puede editar NI se envia con el formulario. Un campo readonly no se puede editar pero SI se envia su valor.",
     },
@@ -334,7 +334,7 @@ button {
           "drag-4": "zone-ux",
         },
       },
-      hint: "Piensa en cuales atributos impiden enviar el formulario y cuales mejoran la interfaz.",
+      hint: "Pensá en cuales atributos impiden enviar el formulario y cuales mejoran la interfaz.",
       explanation:
         "required y pattern son atributos de validación que impiden enviar datos incorrectos. placeholder y autofocus mejoran la experiencia del usuario sin validar nada.",
     },
@@ -344,7 +344,7 @@ button {
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el atributo para que el input solo acepte números entre 1 y 10:",
+      prompt: "Completá el atributo para que el input solo acepte números entre 1 y 10:",
       codeTemplate: {
         html: "",
         cssPrefix: '<input type="number" min="1" ',
@@ -372,7 +372,7 @@ button {
       validation: { type: "exact", answer: "b" },
       hint: "Está relacionado con la validación del formato del texto ingresado.",
       explanation:
-        'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 digitos.',
+        'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 dígitos.',
     },
   ],
 };

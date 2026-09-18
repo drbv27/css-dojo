@@ -40,7 +40,7 @@ h1 { color: #4682B4; }  /* Steel Blue */
 span { color: #000000; } /* Negro */
 \`\`\`
 
-También existe la forma abreviada de 3 digitos: \`#F00\` es igual a \`#FF0000\`.
+También existe la forma abreviada de 3 dígitos: \`#F00\` es igual a \`#FF0000\`.
 
 #### 3. RGB y RGBA
 Usa valores de 0 a 255 para cada canal. RGBA agrega un canal **alfa** (opacidad) de 0 a 1:
@@ -71,7 +71,7 @@ h1 { color: hsla(210, 50%, 50%, 0.8); } /* Azul semi-transparente */
       title: "Fondos con background",
       content: `## Fondos con background
 
-Las propiedades de fondo te permiten personalizar lo que aparece **detras del contenido** de un elemento.
+Las propiedades de fondo te permiten personalizar lo que aparece **detrás del contenido** de un elemento.
 
 ### background-color
 
@@ -114,7 +114,7 @@ CSS puede crear degradados sin necesidad de imágenes:
 
 ### Propiedad abreviada background
 
-Puedes combinar varias propiedades de fondo en una sola línea:
+Podés combinar varias propiedades de fondo en una sola línea:
 
 \`\`\`css
 .hero {
@@ -122,7 +122,7 @@ Puedes combinar varias propiedades de fondo en una sola línea:
 }
 \`\`\`
 
-> **Recuerda:** \`color\` es para el texto, \`background-color\` es para el fondo. No los confundas.`,
+> **Recordá:** \`color\` es para el texto, \`background-color\` es para el fondo. No los confundas.`,
       codeExample: {
         html: `<div class="tarjeta">\n  <h2>Tarjeta con fondo</h2>\n  <p>Contenido de ejemplo.</p>\n</div>\n<div class="degradado">\n  <p>Fondo con degradado</p>\n</div>`,
         css: `.tarjeta {\n  background-color: aliceblue;\n  padding: 20px;\n  margin-bottom: 10px;\n}\n\n.degradado {\n  background: linear-gradient(135deg, #667eea, #764ba2);\n  color: white;\n  padding: 20px;\n}`,
@@ -159,7 +159,7 @@ La forma más común usa tres valores: **ancho**, **estilo** y **color**:
 
 ### Bordes individuales
 
-Puedes definir el borde de cada lado por separado:
+Podés definir el borde de cada lado por separado:
 
 \`\`\`css
 .elemento {
@@ -221,7 +221,7 @@ Redondea las esquinas de un elemento:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad CSS para cambiar el color del texto del título a rojo (#FF0000):",
+        "Completá la propiedad CSS para cambiar el color del texto del título a rojo (#FF0000):",
       codeTemplate: {
         html: `<h1 class="titulo">Mi titulo rojo</h1>`,
         cssPrefix: ".titulo {\n  ",
@@ -240,7 +240,7 @@ Redondea las esquinas de un elemento:
       xpReward: 20,
       order: 3,
       prompt:
-        "Aplica color de fondo lightblue al body y color de texto darkblue a todos los párrafos.",
+        "Aplicá color de fondo lightblue al body y color de texto darkblue a todos los párrafos.",
       codeTemplate: {
         html: `<body>\n  <h1>Bienvenido</h1>\n  <p>Primer parrafo.</p>\n  <p>Segundo parrafo.</p>\n</body>`,
         cssPrefix: "",
@@ -254,7 +254,7 @@ Redondea las esquinas de un elemento:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una para 'body' con background-color y otra para 'p' con color.",
+      hint: "Necesitás dos reglas: una para 'body' con background-color y otra para 'p' con color.",
       explanation:
         "Se usan dos reglas: 'body { background-color: lightblue; }' para el fondo de la página y 'p { color: darkblue; }' para el texto de los párrafos.",
     },
@@ -288,7 +288,7 @@ Redondea las esquinas de un elemento:
           "drag-3": "zone-rgb",
         },
       },
-      hint: "El formato hexadecimal empieza con #, el RGB usa la función rgb(), y los nombres son palabras en ingles.",
+      hint: "El formato hexadecimal empieza con #, el RGB usa la función rgb(), y los nombres son palabras en inglés.",
       explanation:
         "'#FF0000' es formato hexadecimal (prefijo #). 'red' es un nombre de color estándar. 'rgb(255, 0, 0)' usa la función RGB con valores de 0 a 255.",
     },
@@ -299,7 +299,7 @@ Redondea las esquinas de un elemento:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa la propiedad border para que la caja tenga un borde solido rojo. El ancho ya está definido como 2px:",
+        "Completá la propiedad border para que la caja tenga un borde solido rojo. El ancho ya está definido como 2px:",
       codeTemplate: {
         html: `<div class="caja">Contenido de la caja</div>`,
         cssPrefix: ".caja {\n  border: ",
@@ -318,7 +318,7 @@ Redondea las esquinas de un elemento:
       xpReward: 30,
       order: 6,
       prompt:
-        "Reproduce la tarjeta objetivo: fondo azul (steelblue), texto blanco (white), borde de 2px solido gris (gray) y esquinas redondeadas de 10px. Agrega padding de 20px.",
+        "Reproduce la tarjeta objetivo: fondo azul (steelblue), texto blanco (white), borde de 2px solido gris (gray) y esquinas redondeadas de 10px. Agregá padding de 20px.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h2>Mi Tarjeta</h2>\n  <p>Contenido de la tarjeta.</p>\n</div>`,
         cssPrefix: "",
@@ -332,7 +332,7 @@ Redondea las esquinas de un elemento:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas 5 propiedades: background-color, color, border, border-radius y padding.",
+      hint: "Necesitás 5 propiedades: background-color, color, border, border-radius y padding.",
       explanation:
         "La tarjeta combina varias propiedades: background-color para el fondo azul, color para el texto blanco, border para el borde gris, border-radius para las esquinas y padding para el espacio interior.",
     },
@@ -343,7 +343,7 @@ Redondea las esquinas de un elemento:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un botón con: fondo verde (green), texto blanco (white), borde redondeado de 8px (border-radius) y padding de 10px arriba/abajo y 20px izquierda/derecha.",
+        "Creá un botón con: fondo verde (green), texto blanco (white), borde redondeado de 8px (border-radius) y padding de 10px arriba/abajo y 20px izquierda/derecha.",
       codeTemplate: {
         html: `<button class="boton">Hacer clic</button>`,
         cssPrefix: "",
@@ -357,7 +357,7 @@ Redondea las esquinas de un elemento:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa padding con dos valores: el primero para arriba/abajo y el segundo para izquierda/derecha.",
+      hint: "Usá padding con dos valores: el primero para arriba/abajo y el segundo para izquierda/derecha.",
       explanation:
         "El botón usa background-color: green para el fondo, color: white para el texto, border-radius: 8px para esquinas redondeadas y padding: 10px 20px para el espacio interior (vertical y horizontal).",
     },
@@ -387,7 +387,7 @@ Redondea las esquinas de un elemento:
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Arma una tarjeta de aviso usando las tres familias de propiedades del modulo: color de texto, fondo y borde.",
+        "Reto integrador. Arma una tarjeta de aviso usando las tres familias de propiedades del módulo: color de texto, fondo y borde.",
       retoPasos: [
         {
           instruccion:
@@ -423,7 +423,7 @@ Redondea las esquinas de un elemento:
         ".aviso {\n  color: #856404;\n  background-color: #fff3cd;\n  border: 1px solid #ffeaa7;\n  border-radius: 8px;\n  padding: 16px;\n}",
       hint: "`border` es un atajo que junta ancho, estilo y color en una sola declaración. Sin el estilo (`solid`) el borde no se ve, aunque tenga ancho y color.",
       explanation:
-        "Las tres familias trabajan juntas: `color` pinta el texto, `background-color` pinta la caja detras, y `border` la delimita. El `padding` es lo que evita que el texto quede pegado al borde, y `border-radius` suaviza las esquinas sin cambiar nada más.",
+        "Las tres familias trabajan juntas: `color` pinta el texto, `background-color` pinta la caja detrás, y `border` la delimita. El `padding` es lo que evita que el texto quede pegado al borde, y `border-radius` suaviza las esquinas sin cambiar nada más.",
     },
   ],
 };

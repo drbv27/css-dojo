@@ -40,7 +40,7 @@ elemento.innerText = "Texto visible";
 | innerHTML | Si interpreta | Más lento |
 | innerText | No interpreta | Más lento (recalcula estilos) |
 
-> **Seguridad:** Evita usar innerHTML con datos del usuario. Puede causar ataques XSS. Prefiere textContent.`,
+> **Seguridad:** Evitá usar innerHTML con datos del usuario. Puede causar ataques XSS. Prefiere textContent.`,
       codeExample: {
         html: '<h3 id="titulo">Titulo original</h3>\n<div id="contenido">Contenido original</div>\n<div id="resultado"></div>',
         css: '#titulo { color: #cba6f7; } #contenido { padding: 8px; border: 1px solid #45475a; border-radius: 4px; color: #cdd6f4; margin: 8px 0; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -98,7 +98,7 @@ viejo.replaceWith(nuevo);
 const clon = elemento.cloneNode(true); // true = copia profunda
 \`\`\`
 
-> **Performance:** Si necesitas agregar muchos elementos, usa \`DocumentFragment\` para evitar múltiples re-renders.`,
+> **Performance:** Si necesitás agregar muchos elementos, usa \`DocumentFragment\` para evitar múltiples re-renders.`,
       codeExample: {
         html: '<ul id="lista"></ul>\n<div id="resultado"></div>',
         css: '#lista { list-style: none; padding: 0; } #lista li { padding: 4px 8px; margin: 2px 0; background: #313244; color: #cdd6f4; border-radius: 4px; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -161,7 +161,7 @@ elemento.dataset.userId  // "123"
 elemento.dataset.role    // "admin"
 \`\`\`
 
-> **classList** es la forma moderna y segura de manipular clases. Evita usar \`className\` directamente ya que sobreescribe todas las clases.`,
+> **classList** es la forma moderna y segura de manipular clases. Evitá usar \`className\` directamente ya que sobreescribe todas las clases.`,
       codeExample: {
         html: '<button id="btn" class="boton" data-action="saludar">Click me</button>\n<div id="resultado"></div>',
         css: '.boton { padding: 8px 16px; border: none; border-radius: 4px; background: #89b4fa; color: #1e1e2e; cursor: pointer; font-size: 14px; } .boton.activo { background: #a6e3a1; } #resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f9e2af; border-radius: 8px; white-space: pre-line; margin-top: 8px; }',
@@ -228,7 +228,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa para agregar un elemento hijo al final del padre:",
+      prompt: "Completá para agregar un elemento hijo al final del padre:",
       codeTemplate: {
         html: "",
         cssPrefix: "padre.",

@@ -52,15 +52,15 @@ Define el **método HTTP** para enviar los datos:
 
 ### Diferencias entre GET y POST
 
-| Caracteristica | GET | POST |
+| Característica | GET | POST |
 |---------------|-----|------|
 | Datos en URL | Si | No |
 | Marcadores | Se puede guardar | No se puede |
 | Límite de datos | ~2000 caracteres | Sin límite práctico |
 | Seguridad | Menos seguro | Más seguro |
-| Uso tipico | Busquedas, filtros | Login, registro, pagos |
+| Uso típico | Busquedas, filtros | Login, registro, pagos |
 
-> **Regla de oro:** Usa POST para formularios que envian datos sensibles (contrasenas, datos personales) y GET para busquedas y filtros.`,
+> **Regla de oro:** Usá POST para formularios que envian datos sensibles (contrasenas, datos personales) y GET para busquedas y filtros.`,
       codeExample: {
         html: `<form action="/buscar" method="GET">\n  <label for="query">Buscar:</label>\n  <input type="text" id="query" name="query" placeholder="Escribe aqui...">\n  <button type="submit">Buscar</button>\n</form>`,
         css: `form {\n  font-family: sans-serif;\n  display: flex;\n  gap: 8px;\n  align-items: center;\n}\n\nlabel {\n  color: #2d3748;\n  font-weight: bold;\n}\n\ninput {\n  padding: 8px 12px;\n  border: 2px solid #e2e8f0;\n  border-radius: 6px;\n  font-size: 14px;\n}\n\nbutton {\n  padding: 8px 16px;\n  background-color: #3182ce;\n  color: white;\n  border: none;\n  border-radius: 6px;\n  cursor: pointer;\n  font-size: 14px;\n}`,
@@ -89,7 +89,7 @@ Es el elemento más versatil de los formularios. El atributo \`type\` define que
 <input type="email" name="correo" placeholder="tu@correo.com">
 \`\`\`
 
-#### Contrasena (oculta los caracteres)
+#### Contraseña (oculta los caracteres)
 \`\`\`html
 <input type="password" name="clave" placeholder="Tu contrasena">
 \`\`\`
@@ -159,7 +159,7 @@ Para textos largos (comentarios, mensajes, descripciones), usa \`<textarea>\`:
 
 ### \`<select>\` — Lista desplegable
 
-Crea un menu de opciones para que el usuario elija:
+Crea un menú de opciones para que el usuario elija:
 
 \`\`\`html
 <label for="pais">Pais:</label>
@@ -246,7 +246,7 @@ Ambos envian el formulario, pero \`<button>\` es más flexible porque puede cont
 
 ### Ejemplo completo de formulario
 
-Un formulario tipico incluye campos, validación básica y botones de acción:
+Un formulario típico incluye campos, validación básica y botones de acción:
 
 \`\`\`html
 <form action="/registro" method="POST">
@@ -313,7 +313,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el label y el input para que esten correctamente asociados:",
+      prompt: "Completá el label y el input para que esten correctamente asociados:",
       codeTemplate: {
         html: `<label _____="correo">Email:</label>\n<input type="email" _____="correo" name="email">`,
         cssPrefix: "",
@@ -360,7 +360,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el select para crear una lista desplegable con opciones:",
+      prompt: "Completá el select para crear una lista desplegable con opciones:",
       codeTemplate: {
         html: `<label for="color">Color favorito:</label>\n<_____ id="color" name="color">\n  <option value="">Elige un color</option>\n  <option value="rojo">Rojo</option>\n  <option value="azul">Azul</option>\n</_____>`,
         cssPrefix: "",
@@ -370,7 +370,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       validation: { type: "exact", answer: ["select", "select"] },
       hint: "Es la etiqueta que crea una lista desplegable.",
       explanation:
-        "La etiqueta <select> crea un menu desplegable con opciones definidas por <option>.",
+        "La etiqueta <select> crea un menú desplegable con opciones definidas por <option>.",
     },
     {
       id: "html-08-ej-06",
@@ -379,7 +379,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea un formulario de registro con: form (action='/registro', method='POST'), un campo de texto para nombre con su label, un campo email con su label, un campo password con su label, y un botón de tipo submit que diga 'Registrarse'.",
+        "Creá un formulario de registro con: form (action='/registro', method='POST'), un campo de texto para nombre con su label, un campo email con su label, un campo password con su label, y un botón de tipo submit que diga 'Registrarse'.",
       codeTemplate: {
         html: `<!-- Crea el formulario de registro -->`,
         cssPrefix: "",
@@ -428,7 +428,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       xpReward: 30,
       order: 8,
       prompt:
-        "Crea un formulario de contacto completo con: un campo de texto para nombre, un email, un textarea para el mensaje, un select con 3 opciones de asunto, y botones de submit ('Enviar') y reset ('Limpiar'). Cada campo debe tener su label asociado correctamente.",
+        "Creá un formulario de contacto completo con: un campo de texto para nombre, un email, un textarea para el mensaje, un select con 3 opciones de asunto, y botones de submit ('Enviar') y reset ('Limpiar'). Cada campo debe tener su label asociado correctamente.",
       codeTemplate: {
         html: `<!-- Crea el formulario de contacto completo -->`,
         cssPrefix: "",

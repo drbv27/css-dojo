@@ -36,7 +36,7 @@ export default function LoginPage() {
             </div>
             <h1 className="text-3xl font-bold text-editor-text">Dev Dojo</h1>
           </div>
-          <p className="text-editor-muted">Inicia sesion para continuar</p>
+          <p className="text-editor-muted">Inicia sesión para continuar</p>
         </div>
 
         <div className="bg-editor-surface border border-editor-border rounded-xl p-8">
@@ -67,7 +67,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full px-4 py-3 bg-editor-bg border border-editor-border rounded-lg text-editor-text placeholder-editor-muted focus:outline-none focus:border-neon-blue transition-colors pr-12"
-                  placeholder="Tu contrasena"
+                  placeholder="Tu contraseña"
                   required
                 />
                 <button
@@ -86,13 +86,13 @@ export default function LoginPage() {
               className="w-full flex items-center justify-center gap-2 bg-neon-blue text-editor-bg font-medium py-3 px-4 rounded-lg hover:bg-neon-blue/90 transition-colors disabled:opacity-50"
             >
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <LogIn className="w-5 h-5" />}
-              {loading ? "Iniciando sesion..." : "Iniciar Sesion"}
+              {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
             </button>
           </form>
 
           <div className="mt-4 text-center">
             <Link href="/recuperar" className="text-sm text-editor-muted hover:text-neon-orange transition-colors">
-              Olvidaste tu contrasena?
+              ¿Olvidaste tu contraseña?
             </Link>
           </div>
 

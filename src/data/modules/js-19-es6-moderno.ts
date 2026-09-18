@@ -4,7 +4,7 @@ export const jsEs6ModernoModule: ModuleData = {
   slug: "js-es6-moderno",
   title: "ES6+ JavaScript Moderno",
   description:
-    "Domina las caracteristicas modernas de JavaScript: desestructuración, spread, optional chaining, modulos y más.",
+    "Domina las características modernas de JavaScript: desestructuración, spread, optional chaining, módulos y más.",
   order: 119,
   category: "js-advanced",
   icon: "Sparkles",
@@ -343,7 +343,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa para eliminar duplicados de un array usando Set:",
+      prompt: "Completá para eliminar duplicados de un array usando Set:",
       codeTemplate: {
         html: "",
         cssPrefix: "const unicos = [...new ",

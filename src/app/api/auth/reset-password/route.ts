@@ -9,11 +9,11 @@ export async function POST(request: Request) {
     const { resetToken, password } = await request.json();
 
     if (!resetToken || !password) {
-      return NextResponse.json({ message: "Token y contrasena son obligatorios" }, { status: 400 });
+      return NextResponse.json({ message: "Token y contraseña son obligatorios" }, { status: 400 });
     }
 
     if (password.length < 6) {
-      return NextResponse.json({ message: "La contrasena debe tener al menos 6 caracteres" }, { status: 400 });
+      return NextResponse.json({ message: "La contraseña debe tener al menos 6 caracteres" }, { status: 400 });
     }
 
     const secret = getJwtSecretRaw();
@@ -41,6 +41,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "Contrasena actualizada correctamente" });
   } catch (error: any) {
     console.error("Reset password error:", error);
-    return NextResponse.json({ message: "Error al restablecer la contrasena" }, { status: 500 });
+    return NextResponse.json({ message: "Error al restablecer la contraseña" }, { status: 500 });
   }
 }
