@@ -690,7 +690,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "useReducer no necesita re-renders", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en cuantas acciones diferentes tiene un Task Manager.",
+      hint: "Pensá en cuantas acciones diferentes tiene un Task Manager.",
       explanation: "Un Task Manager tiene muchas acciones (agregar, editar, eliminar, toggle, filtrar) y estado complejo, lo que hace a useReducer más organizado y predecible.",
     },
     {
@@ -699,7 +699,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 2,
-      prompt: "Completa la acción del reducer para marcar una tarea como completada/no completada:",
+      prompt: "Completá la acción del reducer para marcar una tarea como completada/no completada:",
       codeTemplate: {
         html: "",
         cssPrefix: "case 'TOGGLE':\n  return state.map(t =>\n    t.id === action.payload\n      ? { ...t, completada: ",
@@ -725,7 +725,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "useReducer acepta tres argumentos: reducer, initialArg, init.",
-      explanation: "El tercer argumento de useReducer es una función inicializadora que se ejecuta solo una vez. Ahí puedes leer de localStorage para hidratar el estado.",
+      explanation: "El tercer argumento de useReducer es una función inicializadora que se ejecuta solo una vez. Ahí podés leer de localStorage para hidratar el estado.",
     },
     {
       id: "react19-ej-04",
@@ -773,7 +773,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa para guardar el estado en localStorage cada vez que cambie:",
+      prompt: "Completá para guardar el estado en localStorage cada vez que cambie:",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  localStorage.",

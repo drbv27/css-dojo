@@ -150,7 +150,7 @@ function App() {
 
 ### Suspense
 - **Suspense** muestra un fallback mientras el componente lazy se carga
-- Puedes anidar Suspense para diferentes secciones
+- Podés anidar Suspense para diferentes secciones
 - El fallback puede ser un spinner, skeleton, o cualquier JSX
 
 ### Mejores prácticas
@@ -291,11 +291,11 @@ function ColorPicker({ children }) {
 ### Checklist de performance
 1. Identifica re-renders innecesarios con DevTools
 2. Mueve estado local hacia abajo
-3. Usa React.memo en componentes pesados
-4. Usa useMemo/useCallback para estabilizar props
+3. Usá React.memo en componentes pesados
+4. Usá useMemo/useCallback para estabilizar props
 5. Lazy load rutas y componentes pesados
 
-> **Recuerda:** Mide antes de optimizar. La optimización prematura es la raíz de todo mal.`,
+> **Recordá:** Mide antes de optimizar. La optimización prematura es la raíz de todo mal.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -407,7 +407,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para cargar un componente de forma lazy:",
+      prompt: "Completá para cargar un componente de forma lazy:",
       codeTemplate: {
         html: "",
         cssPrefix: "const Dashboard = ",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
         { id: "d", text: "Las funciones inline son más lentas", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en la comparación superficial de objetos/funciones.",
+      hint: "Pensá en la comparación superficial de objetos/funciones.",
       explanation: "Cada render crea una nueva instancia de la función con diferente referencia. La comparación superficial de memo ve que es 'diferente' y re-renderiza.",
     },
     {
@@ -481,7 +481,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa para memorizar un componente con React.memo:",
+      prompt: "Completá para memorizar un componente con React.memo:",
       codeTemplate: {
         html: "",
         cssPrefix: "const MiLista = React.",

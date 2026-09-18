@@ -15,7 +15,7 @@ export const reactRenderizadoModule: ModuleData = {
       title: "Operador ternario y &&",
       content: `## Renderizado condicional en JSX
 
-En React, frecuentemente necesitas mostrar diferentes cosas según una condición. Como JSX no soporta \`if/else\` directamente, usamos **expresiones**.
+En React, frecuentemente necesitás mostrar diferentes cosas según una condición. Como JSX no soporta \`if/else\` directamente, usamos **expresiones**.
 
 ### Operador ternario
 
@@ -29,7 +29,7 @@ function Saludo({ logueado }) {
 }
 \`\`\`
 
-El ternario es ideal cuando tienes **dos opciones**: si es verdadero muestra A, si no muestra B.
+El ternario es ideal cuando tenés **dos opciones**: si es verdadero muestra A, si no muestra B.
 
 ### Operador && (AND lógico)
 
@@ -43,7 +43,7 @@ function Alerta({ mostrar, mensaje }) {
 }
 \`\`\`
 
-\`&&\` es ideal cuando quieres mostrar algo **o nada**. Si la condición es \`true\`, renderiza lo de la derecha. Si es \`false\`, no renderiza nada.
+\`&&\` es ideal cuando querés mostrar algo **o nada**. Si la condición es \`true\`, renderiza lo de la derecha. Si es \`false\`, no renderiza nada.
 
 ### Cuidado con && y números
 
@@ -108,7 +108,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "if/else y retornos tempranos",
       content: `## if/else fuera de JSX
 
-Aunque no puedes usar \`if/else\` dentro de JSX, puedes usarlo **antes del return**:
+Aunque no podés usar \`if/else\` dentro de JSX, podés usarlo **antes del return**:
 
 \`\`\`jsx
 function Pagina({ estado }) {
@@ -356,7 +356,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "<if condición><p>Texto</p></if>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Necesitas un operador lógico que evalua la parte derecha solo si la izquierda es verdadera.",
+      hint: "Necesitás un operador lógico que evalua la parte derecha solo si la izquierda es verdadera.",
       explanation:
         "El operador && renderiza el elemento de la derecha solo si la condición de la izquierda es verdadera. Es la forma más común de renderizar 'algo o nada' en JSX.",
     },
@@ -368,15 +368,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       order: 2,
       prompt: "¿Cuándo es mejor usar el operador ternario en vez de && para renderizado condicional?",
       options: [
-        { id: "a", text: "Cuando necesitas mostrar una cosa u otra alternativa", isCorrect: true },
-        { id: "b", text: "Cuando solo quieres mostrar algo o nada", isCorrect: false },
+        { id: "a", text: "Cuando necesitás mostrar una cosa u otra alternativa", isCorrect: true },
+        { id: "b", text: "Cuando solo querés mostrar algo o nada", isCorrect: false },
         { id: "c", text: "Cuando la condición es un número", isCorrect: false },
         { id: "d", text: "Siempre se debe usar ternario", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
       hint: "El ternario tiene dos ramas: una para verdadero y otra para falso.",
       explanation:
-        "¿El operador ternario (condición ? A : B) es ideal cuando necesitas mostrar un elemento u otro alternativo. El operador && es mejor cuando quieres mostrar algo o nada.",
+        "¿El operador ternario (condición ? A : B) es ideal cuando necesitás mostrar un elemento u otro alternativo. El operador && es mejor cuando querés mostrar algo o nada.",
     },
     {
       id: "react07-ej-03",
@@ -384,7 +384,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 3,
-      prompt: "Completa el renderizado condicional: si 'logueado' es true muestra 'Dashboard', si no muestra 'Login':",
+      prompt: "Completá el renderizado condicional: si 'logueado' es true muestra 'Dashboard', si no muestra 'Login':",
       codeTemplate: {
         html: "",
         cssPrefix: "{logueado ",
@@ -410,7 +410,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "No funciona con números", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando count es 0. El número 0 es falsy pero...",
+      hint: "Pensá en que pasa cuando count es 0. El número 0 es falsy pero...",
       explanation:
         "Cuando count es 0, JavaScript evalua 0 && ... y retorna 0 (no false). React renderiza el número 0 en pantalla. La solución es usar count > 0 && ... para asegurar un booleano.",
     },
@@ -420,7 +420,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el retorno temprano para cuando no hay usuario:",
+      prompt: "Completá el retorno temprano para cuando no hay usuario:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Perfil({ usuario }) {\n  if (!usuario) return ",
@@ -478,9 +478,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "¿style.className = activo ? \"activo\" : \"\"", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Usa className con una expresión ternaria o template literal.",
+      hint: "Usá className con una expresión ternaria o template literal.",
       explanation:
-        "className acepta un string, y puedes usar una expresión ternaria para elegir entre dos strings de clases. También puedes usar template literals: className={`btn \${activo ? 'activo' : ''}`}.",
+        "className acepta un string, y podés usar una expresión ternaria para elegir entre dos strings de clases. También podés usar template literals: className={`btn \${activo ? 'activo' : ''}`}.",
     },
   ],
 };

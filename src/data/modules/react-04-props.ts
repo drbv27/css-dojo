@@ -49,7 +49,7 @@ function Saludo({ nombre }) {
 }
 \`\`\`
 
-> **Piensa en las props como parámetros de una función:** los recibes, los usas, pero no los modificas.`,
+> **Pensá en las props como parámetros de una función:** los recibís, los usás, pero no los modificas.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -91,7 +91,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
     {
       id: "react04-leccion-02",
       title: "Tipos de datos en props",
-      content: `## Tipos de datos que puedes pasar como props
+      content: `## Tipos de datos que podés pasar como props
 
 ### Strings
 Se pasan con comillas (sin llaves):
@@ -123,7 +123,7 @@ Se pasan con llaves:
 \`\`\`
 
 ### Spread de props
-Puedes pasar todas las propiedades de un objeto con el operador spread:
+Podés pasar todas las propiedades de un objeto con el operador spread:
 \`\`\`jsx
 const datos = { nombre: "Ana", edad: 25, rol: "dev" };
 <Perfil {...datos} />
@@ -194,7 +194,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Valores por defecto",
       content: `## Valores por defecto en props
 
-Puedes asignar **valores por defecto** a las props usando la sintaxis de desestructuración de JavaScript:
+Podés asignar **valores por defecto** a las props usando la sintaxis de desestructuración de JavaScript:
 
 \`\`\`jsx
 function Boton({ texto = "Clic aqui", color = "blue", tamano = "md" }) {
@@ -296,7 +296,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Prop drilling",
       content: `## Prop drilling
 
-**Prop drilling** ocurre cuando necesitas pasar datos a traves de **muchos niveles** de componentes que no los necesitan directamente.
+**Prop drilling** ocurre cuando necesitás pasar datos a traves de **muchos niveles** de componentes que no los necesitan directamente.
 
 ### El problema
 
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la desestructuración de props en este componente:",
+      prompt: "Completá la desestructuración de props en este componente:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Saludo(",
@@ -465,7 +465,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa la prop con un valor por defecto de \"Invitado\":",
+      prompt: "Completá la prop con un valor por defecto de \"Invitado\":",
       codeTemplate: {
         html: "",
         cssPrefix: "function Saludo({ nombre ",
@@ -535,7 +535,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa el código para pasar todas las propiedades del objeto 'datos' como props al componente:",
+      prompt: "Completá el código para pasar todas las propiedades del objeto 'datos' como props al componente:",
       codeTemplate: {
         html: "",
         cssPrefix: "const datos = { nombre: \"Ana\", edad: 25 };\n<Perfil ",
@@ -543,7 +543,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         blanks: ["{..."],
       },
       validation: { type: "exact", answer: "{..." },
-      hint: "Usa el operador spread de JavaScript dentro de llaves JSX.",
+      hint: "Usá el operador spread de JavaScript dentro de llaves JSX.",
       explanation:
         "El operador spread {...datos} expande todas las propiedades del objeto datos como props individuales. Es equivalente a <Perfil nombre=\"Ana\" edad={25} />.",
     },

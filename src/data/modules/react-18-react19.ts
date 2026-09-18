@@ -53,7 +53,7 @@ function Componente({ items, filtro }) {
 }
 \`\`\`
 
-El compilador analiza tu código y agrega memorización donde sea beneficioso, así que **no necesitas cambiar tu código**... pero sí necesitas instalarlo.
+El compilador analiza tu código y agrega memorización donde sea beneficioso, así que **no necesitás cambiar tu código**... pero sí necesitás instalarlo.
 
 > **Ojo con esto, porque es la confusión más común:** el React Compiler **no viene activado** por actualizar a React 19. Es una herramienta de build aparte y opcional, que se agrega como plugin de Babel (\`babel-plugin-react-compiler\`) o del bundler y se configura en el proyecto. Si actualizás a React 19 y no tocás nada más, tus \`useMemo\` y \`useCallback\` manuales siguen siendo los que hacen el trabajo. El Compiler es una decisión que tomás vos, no un regalo de la versión.
 
@@ -400,7 +400,7 @@ function ListaMensajes({ mensajes, enviarMensaje }) {
 
 ### ref como prop (sin forwardRef!)
 
-En React 19, ya **no necesitas forwardRef**. Los refs se pasan como props normales:
+En React 19, ya **no necesitás forwardRef**. Los refs se pasan como props normales:
 
 #### Antes (React 18):
 \`\`\`jsx
@@ -535,7 +535,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Chat />);
 
 ### Document Metadata en Componentes
 
-En React 19, puedes renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automáticamente al \`<head>\` del documento.
+En React 19, podés renderizar \`<title>\`, \`<meta>\` y \`<link>\` directamente en tus componentes. React los eleva automáticamente al \`<head>\` del documento.
 
 \`\`\`jsx
 function PaginaProducto({ producto }) {
@@ -552,7 +552,7 @@ function PaginaProducto({ producto }) {
 }
 \`\`\`
 
-Ya no necesitas \`react-helmet\` o \`next/head\` para esto!
+Ya no necesitás \`react-helmet\` o \`next/head\` para esto!
 
 ### Server Components (Concepto)
 
@@ -837,7 +837,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa para pasar ref como prop normal en React 19 (sin forwardRef):",
+      prompt: "Completá para pasar ref como prop normal en React 19 (sin forwardRef):",
       codeTemplate: {
         html: "",
         cssPrefix: "function MiInput({ ",
@@ -846,7 +846,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       },
       validation: { type: "exact", answer: "ref" },
       hint: "En React 19, ref se pasa como cualquier otra prop.",
-      explanation: "En React 19, ref es una prop regular que se desestructura como cualquier otra. Ya no necesitas forwardRef para recibirla.",
+      explanation: "En React 19, ref es una prop regular que se desestructura como cualquier otra. Ya no necesitás forwardRef para recibirla.",
     },
     {
       id: "react18-ej-06",
@@ -888,7 +888,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa para renderizar metadata directamente en un componente React 19:",
+      prompt: "Completá para renderizar metadata directamente en un componente React 19:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Pagina({ titulo }) {\n  return (\n    <article>\n      <",
@@ -897,7 +897,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       },
       validation: { type: "exact", answer: "title" },
       hint: "Es la etiqueta HTML que define el título de la página.",
-      explanation: "En React 19, puedes renderizar <title> directamente dentro de tus componentes. React automáticamente lo eleva al <head> del documento.",
+      explanation: "En React 19, podés renderizar <title> directamente dentro de tus componentes. React automáticamente lo eleva al <head> del documento.",
     },
   ],
 };

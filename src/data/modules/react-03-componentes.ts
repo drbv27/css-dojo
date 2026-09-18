@@ -212,7 +212,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Children y estructura de archivos",
       content: `## La prop children
 
-\`children\` es una prop especial que contiene **todo lo que pones entre las etiquetas** de un componente:
+\`children\` es una prop especial que contiene **todo lo que ponés entre las etiquetas** de un componente:
 
 \`\`\`jsx
 function Caja({ children }) {
@@ -343,7 +343,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la definición de un componente de función en React:",
+      prompt: "Completá la definición de un componente de función en React:",
       codeTemplate: {
         html: "",
         cssPrefix: "",
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "Una función para recorrer arrays", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en lo que va entre <Componente>...aquí...</Componente>.",
+      hint: "Pensá en lo que va entre <Componente>...aquí...</Componente>.",
       explanation:
         "La prop children contiene todo lo que se coloca entre las etiquetas de apertura y cierre de un componente. Puede ser texto, otros elementos JSX, o componentes.",
     },
@@ -397,7 +397,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el componente para que renderice su contenido hijo dentro de un div:",
+      prompt: "Completá el componente para que renderice su contenido hijo dentro de un div:",
       codeTemplate: {
         html: "",
         cssPrefix: "function Caja({ ",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "Las funciones usan menos memoria", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en la feature que se introdujo en React 16.8.",
+      hint: "Pensá en la feature que se introdujo en React 16.8.",
       explanation:
         "Desde React 16.8, los Hooks permiten usar estado y otras features en componentes de función, resultando en código más simple y fácil de reutilizar. Los componentes de clase siguen funcionando pero ya no se recomiendan para código nuevo.",
     },

@@ -173,7 +173,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<BuscadorUsuario />)
       title: "Funciones de limpieza (cleanup)",
       content: `## Cleanup en useEffect
 
-Cuando un efecto crea suscripciones, temporizadores o listeners, necesitas **limpiarlos** para evitar memory leaks.
+Cuando un efecto crea suscripciones, temporizadores o listeners, necesitás **limpiarlos** para evitar memory leaks.
 
 ### Sintaxis
 \`\`\`jsx
@@ -300,7 +300,7 @@ useEffect(() => {
 const fullName = firstName + ' ' + lastName;
 \`\`\`
 
-> **Regla de oro:** Si puedes calcular algo durante el render, no necesitas useEffect.`,
+> **Regla de oro:** Si podés calcular algo durante el render, no necesitás useEffect.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -399,7 +399,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa el hook para que el efecto se ejecute solo cuando cambie 'query':",
+      prompt: "Completá el hook para que el efecto se ejecute solo cuando cambie 'query':",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  fetchData(query);\n}, ",
@@ -439,7 +439,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa la función de limpieza para limpiar un intervalo:",
+      prompt: "Completá la función de limpieza para limpiar un intervalo:",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  const id = setInterval(tick, 1000);\n  return () => ",
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
         blanks: ["clearInterval(id)"],
       },
       validation: { type: "exact", answer: "clearInterval(id)" },
-      hint: "Usa clearInterval para detener el temporizador.",
+      hint: "Usá clearInterval para detener el temporizador.",
       explanation: "La función de retorno del useEffect es el cleanup. clearInterval(id) detiene el intervalo cuando el componente se desmonta.",
     },
     {
@@ -481,7 +481,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
         { id: "d", text: "Hacer fetch de datos al montar el componente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Si puedes calcularlo durante el render, no necesitas useEffect.",
+      hint: "Si podés calcularlo durante el render, no necesitás useEffect.",
       explanation: "Calcular valores derivados no necesita useEffect. Se puede hacer directamente en el cuerpo del componente durante el render.",
     },
     {
@@ -490,7 +490,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<Ejemplo />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa para cancelar una petición fetch con AbortController en el cleanup:",
+      prompt: "Completá para cancelar una petición fetch con AbortController en el cleanup:",
       codeTemplate: {
         html: "",
         cssPrefix: "useEffect(() => {\n  const controller = new AbortController();\n  fetch(url, { signal: controller.signal });\n  return () => controller.",

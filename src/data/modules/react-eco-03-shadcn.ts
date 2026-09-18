@@ -20,7 +20,7 @@ Shadcn/ui **no es una libreria** que instalas. Es una colección de componentes 
 
 - Los componentes son **tuyos** — viven en tu código
 - Basado en **Radix UI** (accesibilidad) + **Tailwind CSS** (estilos)
-- Totalmente personalizable — cambias lo que quieras
+- Totalmente personalizable — cambiás lo que quieras
 - No agrega dependencias pesadas
 
 ### Instalación
@@ -62,7 +62,7 @@ cn("px-4 py-2", isActive && "bg-blue-500", className);
 // Resuelve conflictos: cn("px-4", "px-8") => "px-8"
 \`\`\`
 
-> Shadcn es ideal para proyectos donde necesitas control total sobre los componentes.`,
+> Shadcn es ideal para proyectos donde necesitás control total sobre los componentes.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
@@ -177,7 +177,7 @@ const buttonVariants = cva("inline-flex items-center rounded-md", {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "No se instala como dependencia npm.",
-      explanation: "Shadcn copia los componentes a tu proyecto — tienes control total del código fuente.",
+      explanation: "Shadcn copia los componentes a tu proyecto — tenés control total del código fuente.",
     },
     {
       id: "reco03-ej-02",

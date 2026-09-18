@@ -170,7 +170,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<TarjetaPerfil />);
 
 ### Inmutabilidad
 
-En React, **nunca debes mutar el estado directamente**. Siempre debes crear una **copia nueva**:
+En React, **nunca debés mutar el estado directamente**. Siempre debés crear una **copia nueva**:
 
 \`\`\`jsx
 // MAL - mutacion directa
@@ -211,7 +211,7 @@ setItems(items.map(item =>
 ));
 \`\`\`
 
-> **Clave:** Usa spread (\`...\`), \`map()\`, \`filter()\`, y \`concat()\` para crear copias nuevas. Evita \`push()\`, \`pop()\`, \`splice()\` y asignaciones directas.`,
+> **Clave:** Usá spread (\`...\`), \`map()\`, \`filter()\`, y \`concat()\` para crear copias nuevas. Evitá \`push()\`, \`pop()\`, \`splice()\` y asignaciones directas.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -393,7 +393,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa la declaración de useState para inicializar un contador en 0:",
+      prompt: "Completá la declaración de useState para inicializar un contador en 0:",
       codeTemplate: {
         html: "",
         cssPrefix: "const [cuenta, setCuenta] = React.",
@@ -421,7 +421,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       validation: { type: "exact", answer: "b" },
       hint: "React necesita saber cuando algo cambia para actualizar la pantalla.",
       explanation:
-        "Cuando cambias una variable con let, React no se entera del cambio y no re-renderiza el componente. useState notifica a React que el estado cambio y debe actualizar la UI.",
+        "Cuando cambiás una variable con let, React no se entera del cambio y no re-renderiza el componente. useState notifica a React que el estado cambio y debe actualizar la UI.",
     },
     {
       id: "react05-ej-04",
@@ -437,9 +437,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
         { id: "d", text: "usuario = { nombre: \"Nuevo\" }; setUsuario(usuario);", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Debes crear un objeto nuevo, no mutar el existente.",
+      hint: "Debés crear un objeto nuevo, no mutar el existente.",
       explanation:
-        "Para actualizar un objeto en el estado, debes crear una copia nueva con spread (...usuario) y sobrescribir la propiedad que cambia. Nunca mutes el objeto directamente.",
+        "Para actualizar un objeto en el estado, debés crear una copia nueva con spread (...usuario) y sobrescribir la propiedad que cambia. Nunca mutes el objeto directamente.",
     },
     {
       id: "react05-ej-05",
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 2 ,
       xpReward: 20,
       order: 5,
-      prompt: "Completa el código para agregar un elemento a un array en el estado sin mutarlo:",
+      prompt: "Completá el código para agregar un elemento a un array en el estado sin mutarlo:",
       codeTemplate: {
         html: "",
         cssPrefix: "setItems([",
@@ -455,7 +455,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
         blanks: ["..."],
       },
       validation: { type: "exact", answer: "..." },
-      hint: "Usa el operador de expansión para copiar los elementos existentes.",
+      hint: "Usá el operador de expansión para copiar los elementos existentes.",
       explanation:
         "El operador spread (...items) crea una copia de todos los elementos existentes del array, y luego se agrega nuevoItem al final. Esto crea un array completamente nuevo.",
     },
@@ -491,7 +491,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       },
       hint: "Las operaciones correctas siempre crean copias nuevas. Las incorrectas modifican el dato original.",
       explanation:
-        "En React, el estado debe actualizarse de forma inmutable. Usa spread (...), map(), filter() para crear copias nuevas. Evita push(), splice(), y asignaciones directas que mutan el original.",
+        "En React, el estado debe actualizarse de forma inmutable. Usá spread (...), map(), filter() para crear copias nuevas. Evitá push(), splice(), y asignaciones directas que mutan el original.",
     },
     {
       id: "react05-ej-07",
@@ -499,7 +499,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<ConversorTemperatur
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "Completa la actualización funcional del estado que usa el valor anterior:",
+      prompt: "Completá la actualización funcional del estado que usa el valor anterior:",
       codeTemplate: {
         html: "",
         cssPrefix: "setCuenta(",

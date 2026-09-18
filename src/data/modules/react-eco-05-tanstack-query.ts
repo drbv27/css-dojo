@@ -76,7 +76,7 @@ useQuery({ queryKey: ["usuario", id], queryFn: () => fetchUsuario(id) });
 useQuery({ queryKey: ["usuarios", { rol: "admin" }], queryFn: ... });
 \`\`\`
 
-> TanStack Query cachea automáticamente: si ya tienes los datos, los muestra al instante mientras re-valida en background.`,
+> TanStack Query cachea automáticamente: si ya tenés los datos, los muestra al instante mientras re-valida en background.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',

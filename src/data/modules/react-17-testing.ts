@@ -504,7 +504,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 3,
-      prompt: "Completa para encontrar un botón con el texto 'Enviar':",
+      prompt: "Completá para encontrar un botón con el texto 'Enviar':",
       codeTemplate: {
         html: "",
         cssPrefix: "const boton = screen.",
@@ -561,7 +561,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 6,
-      prompt: "Completa para esperar a que aparezca un elemento asíncrono:",
+      prompt: "Completá para esperar a que aparezca un elemento asíncrono:",
       codeTemplate: {
         html: "",
         cssPrefix: "const usuario = await screen.",
@@ -578,7 +578,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Qué debes mockear al testear un componente que hace fetch?",
+      prompt: "¿Qué debés mockear al testear un componente que hace fetch?",
       options: [
         { id: "a", text: "Los hooks de React", isCorrect: false },
         { id: "b", text: "La función fetch o el módulo de API", isCorrect: true },

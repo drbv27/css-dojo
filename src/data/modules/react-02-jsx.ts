@@ -40,11 +40,11 @@ const titulo = React.createElement("h1", null, "Hola");
 
 ### Reglas básicas de JSX
 
-1. **Siempre debes retornar UN solo elemento raíz** (o usar Fragments)
+1. **Siempre debés retornar UN solo elemento raíz** (o usar Fragments)
 2. **Todas las etiquetas deben cerrarse**: \`<img />\`, \`<br />\`, \`<input />\`
 3. **La mayoria de atributos usan camelCase**: \`className\`, \`onClick\`, \`htmlFor\`
 
-> **Recuerda:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu código más legible y fácil de escribir.`,
+> **Recordá:** JSX es solo azucar sintactica sobre \`React.createElement()\`. Hace tu código más legible y fácil de escribir.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -73,7 +73,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Expresiones en JSX",
       content: `## Expresiones en JSX con { }
 
-Dentro de JSX puedes insertar **cualquier expresión de JavaScript** usando llaves \`{ }\`:
+Dentro de JSX podés insertar **cualquier expresión de JavaScript** usando llaves \`{ }\`:
 
 ### Variables y valores
 
@@ -101,12 +101,12 @@ const edad = 20;
 return <p>{edad >= 18 ? "Mayor de edad" : "Menor de edad"}</p>;
 \`\`\`
 
-### Que NO puedes poner en { }
+### Que NO podés poner en { }
 
 - **Sentencias** como \`if\`, \`for\`, \`while\` (no son expresiones)
 - **Objetos** directamente: \`{miObjeto}\` causara error
 
-> **Regla clave:** Si puedes ponerlo a la derecha de un \`=\` en JavaScript, puedes ponerlo dentro de \`{ }\` en JSX.`,
+> **Regla clave:** Si podés ponerlo a la derecha de un \`=\` en JavaScript, podés ponerlo dentro de \`{ }\` en JSX.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -140,7 +140,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Diferencias JSX vs HTML",
       content: `## Diferencias entre JSX y HTML
 
-JSX se parece a HTML, pero hay diferencias importantes que debes conocer:
+JSX se parece a HTML, pero hay diferencias importantes que debés conocer:
 
 ### 1. className en vez de class
 
@@ -224,7 +224,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       title: "Fragments y listas en JSX",
       content: `## Fragments
 
-En JSX debes retornar **un solo elemento raíz**. Si no quieres agregar un \`<div>\` extra, usa **Fragments**:
+En JSX debés retornar **un solo elemento raíz**. Si no querés agregar un \`<div>\` extra, usa **Fragments**:
 
 \`\`\`jsx
 // Con Fragment largo:
@@ -367,7 +367,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
         { id: "d", text: "<div class=\"caja\"><input type=\"text\" /></div>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Recuerda las dos reglas: className y cerrar todas las etiquetas.",
+      hint: "Recordá las dos reglas: className y cerrar todas las etiquetas.",
       explanation:
         "JSX requiere usar className en vez de class, y todas las etiquetas deben cerrarse explícitamente (como <input />). La opción b cumple ambas reglas.",
     },
@@ -411,7 +411,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el código para usar un Fragment corto que envuelva dos elementos:",
+      prompt: "Completá el código para usar un Fragment corto que envuelva dos elementos:",
       codeTemplate: {
         html: "",
         cssPrefix: "return (\n  ",
@@ -447,7 +447,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa el código para renderizar una lista de nombres usando map(). Cada <li> necesita una prop única:",
+      prompt: "Completá el código para renderizar una lista de nombres usando map(). Cada <li> necesita una prop única:",
       codeTemplate: {
         html: "",
         cssPrefix: "nombres.map((nombre, index) => (\n  <li ",

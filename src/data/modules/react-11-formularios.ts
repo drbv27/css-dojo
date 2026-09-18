@@ -33,7 +33,7 @@ function Formulario() {
 
 ### ¿Por que controlados?
 - **Una sola fuente de verdad** (el estado de React)
-- Puedes **validar** y **transformar** el valor en cada cambio
+- Podés **validar** y **transformar** el valor en cada cambio
 - Fácil de **resetear** el formulario
 - El valor siempre está disponible sin consultar el DOM
 
@@ -52,7 +52,7 @@ const handleChange = (e) => {
 <input name="email" value={form.email} onChange={handleChange} />
 \`\`\`
 
-> **Tip:** Usa el atributo \`name\` del input como clave dinámica para manejar muchos campos con un solo handler.`,
+> **Tip:** Usá el atributo \`name\` del input como clave dinámica para manejar muchos campos con un solo handler.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -139,7 +139,7 @@ function Formulario() {
 - \`defaultValue\` = valor inicial, luego el DOM lo maneja
 
 ### ¿Cuándo usar no controlados?
-- Formularios simples donde no necesitas validar en tiempo real
+- Formularios simples donde no necesitás validar en tiempo real
 - Integración con librerias externas
 - Inputs de tipo file (siempre son no controlados)
 
@@ -161,7 +161,7 @@ const fileRef = useRef(null);
 </select>
 \`\`\`
 
-> **Recomendación:** Prefiere componentes controlados. Usa no controlados solo cuando sea necesario.`,
+> **Recomendación:** Prefiere componentes controlados. Usá no controlados solo cuando sea necesario.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
@@ -387,7 +387,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "Completa el evento para prevenir el envio por defecto del formulario:",
+      prompt: "Completá el evento para prevenir el envio por defecto del formulario:",
       codeTemplate: {
         html: "",
         cssPrefix: "const handleSubmit = (e) => {\n  e.",
@@ -421,7 +421,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Completa para manejar múltiples inputs con un solo handler usando name dinámico:",
+      prompt: "Completá para manejar múltiples inputs con un solo handler usando name dinámico:",
       codeTemplate: {
         html: "",
         cssPrefix: "const handleChange = (e) => {\n  setForm({\n    ...form,\n    [e.target.",
@@ -495,7 +495,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<FormConValidacion /
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "Completa la validación para verificar que el email contiene '@':",
+      prompt: "Completá la validación para verificar que el email contiene '@':",
       codeTemplate: {
         html: "",
         cssPrefix: "const validar = () => {\n  const errores = {};\n  if (!email.",
