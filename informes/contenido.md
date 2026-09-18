@@ -33,14 +33,14 @@ campos de prosa extraídos del objeto de datos (`description`, `lessons[].title`
 `dropZones[].label`, `retoPasos[].instruccion`), con los bloques ` ``` ` y los spans
 de backticks enmascarados. Esa distinción no es cosmética: la primera pasada, hecha
 sobre el archivo crudo, daba **1.472 supuestos errores**, y al separar prosa de código
-quedaron **339**. Los otros 1.133 eran nombres de clase CSS, identificadores y
+quedaron **361**. Los otros 1.111 eran nombres de clase CSS, identificadores y
 variables de los ejemplos.
 
 ### Estado general por track
 
 - **css (36)** — El más trabajado y el más desparejo. Los módulos narrativos nuevos
   (31-36, 22, 30) son de lo mejor del repo; los de catálogo (03, 12, 19, 21, 23, 26-29)
-  son listas de sintaxis. Concentra 191 de los 339 errores de tilde y casi toda la
+  son listas de sintaxis. Concentra 205 de los 361 errores de tilde y casi toda la
   mezcla tú/vos.
 - **html (17)** — El más homogéneo en tono (tuteo puro, sin mezcla) y sin errores
   factuales relevantes. Su problema es de ejemplos: el módulo de formularios avanzados
@@ -60,8 +60,8 @@ variables de los ejemplos.
 
 1. **El campo `retoPasos[].instruccion` no lo mira ningún guard.** El test
    `acentuacion.test.ts` recolecta la prosa en `prosaDe()` (líneas 128-138) y nunca
-   incluye `retoPasos`. Hay 92 de esos pasos en 23 módulos, y contienen 33 errores de
-   tilde, de los cuales **15 son palabras que el propio diccionario del guard ya tiene**
+   incluye `retoPasos`. Hay 92 de esos pasos en 23 módulos, y contienen 35 errores de
+   tilde, de los cuales **16 son palabras que el propio diccionario del guard ya tiene**
    (`parrafos`, `titulo`, `linea`, `pagina`, `boton`, `despues`, `tambien`, `unico`,
    `relacion`). El guard está verde y el texto está mal. Es el hallazgo estructural del
    informe: no es una falta más, es un agujero en la red.
@@ -113,23 +113,23 @@ duplicado:
 - **`solo` sin tilde y `esta` demostrativo sin tilde están bien** y el guard lo documenta
   a propósito. No hace falta revisarlos.
 
-### 2.2 Dónde están los 339 errores de tilde/ñ en los módulos
+### 2.2 Dónde están los 361 errores de tilde/ñ en los módulos
 
 | Track | Errores | Módulos afectados |
 |---|---|---|
-| css | 191 | 24 de 36 |
-| html | 63 | 15 de 17 |
-| js | 49 | 24 de 29 |
+| css | 205 | 24 de 36 |
+| html | 65 | 15 de 17 |
+| js | 55 | 25 de 29 |
 | react | 32 | 13 de 20 |
 | react-eco | 3 | 2 de 5 |
 | nextjs | 1 | 1 de 5 |
-| **Total** | **339** | **79 de 112** |
+| **Total** | **361** | **80 de 112** |
 
 Archivos más cargados: `18-css-grid.ts` (29), `10-selectores-descendientes.ts` (18),
 `30-proyecto-cv-css.ts` (15), `js-07-funciones.ts` (10), `html-10-semantica.ts` (10),
 `html-17-elementos-interactivos.ts` (10).
 
-**33 módulos no tienen ni un error de prosa.** Están bien escritos.
+**32 módulos no tienen ni un error de prosa.** Están bien escritos.
 
 ### 2.3 Agrupado por palabra (módulos)
 
@@ -204,7 +204,7 @@ No se encontró `anos` por `años` en prosa. No hay más ñ mutiladas que estas.
 `acentuacion.test.ts:128-138` (`prosaDe`) arma la prosa a auditar con `m.title`,
 `m.description`, `l.title`, `l.content`, `e.prompt`, `e.hint`, `e.explanation`,
 `o.text` y `z.label`. **Falta `e.retoPasos[].instruccion`.** Hay 92 en 23 módulos y
-acumulan 33 errores, 15 de ellos de palabras que el diccionario del guard ya tiene:
+acumulan 35 errores, 16 de ellos de palabras que el diccionario del guard ya tiene:
 
 | Archivo:línea | Palabra | Va |
 |---|---|---|
@@ -781,7 +781,7 @@ identificadores, JSX). Los resultados se cruzaron contra el diccionario de
 **Errores míos que corregí en el camino, por si sirven de aviso:**
 
 1. La primera medición, hecha con `rg` sobre el archivo crudo, dio 1.472 errores. El 77%
-   eran código. El número correcto es 339.
+   eran código. El número correcto es 361.
 2. Reporté 560 interrogativas sin `¿`. Era un bug de mi detector, que empezaba a contar
    después del propio `¿`. El número real es cero: los signos están puestos. Lo verifiqué
    contra el fuente (`01-que-es-css.ts:5`) y contra el guard, que pasa.
@@ -791,11 +791,23 @@ identificadores, JSX). Los resultados se cruzaron contra el diccionario de
 4. Busqué `z.string().email()` con un patrón que exigía paréntesis vacíos, así que
    `react-eco-04-react-hook-form.ts:101` —que pasa un mensaje— no apareció, y estuve a
    punto de marcar ese hallazgo como no confirmado. Lo era.
+5. **Mi filtro de falsos positivos descartaba toda palabra seguida de dos puntos.** Lo
+   había puesto para excluir `propiedad:` de los ejemplos, pero en prosa "palabra:" es
+   la forma normal de introducir una lista. Lo detecté barriendo los juegos: `rg` veía
+   "La forma clasica:" en `flexbox-levels.ts:439` y mi scanner no. Al quitar el filtro
+   aparecieron **22 errores más en los módulos** (`### Problema clasico:`,
+   `**Caracteristicas:**`, `Segui el orden del modulo:`, `no podria:`…), todos prosa
+   legítima, ninguno código. **La primera versión de este informe decía 339; el número
+   real es 361.** Las tablas, el reparto por track y los listados de §2.3 y §2.6 ya
+   están recalculados.
 
-Los cuatro son la misma falla: **una herramienta de medición rota no da error, da un
-número creíble.** Los tres primeros inflaban o inventaban hallazgos; el cuarto los
-escondía. Cualquier medición que se repita sobre este contenido conviene que traiga su
-control positivo, como el que se agregó en el punto 3.
+Los cinco son la misma falla: **una herramienta de medición rota no da error, da un
+número creíble.** Los tres primeros inflaban hallazgos; el cuarto y el quinto los
+escondían — y el quinto es el peor, porque un recuento que falta por defecto se lee como
+buena noticia y nadie lo audita. Cualquier medición que se repita sobre este contenido
+conviene que traiga su control positivo, como el que se agregó en el punto 3, y que
+compare su resultado contra un `rg` crudo sobre un caso conocido, que es lo que
+finalmente destapó el punto 5.
 
 **Cobertura, honestamente:**
 
@@ -824,6 +836,602 @@ control positivo, como el que se agregó en el punto 3.
 - **Fuera de alcance por acuerdo:** la rigidez de los `validation`/`answer` de los
   ejercicios, que audita otra sesión. Lo único que miré de los ejercicios fue su prosa
   (`prompt`, `hint`, `explanation`, `options[].text`).
-- No se revisaron `src/data/games/*` salvo de refilón (`grid-levels.ts` apareció en la
-  primera pasada de ortografía, que después se descartó por contaminada). **Ese archivo
-  tiene errores de tilde y quedó sin medir con el método bueno.**
+- `src/data/games/*` sí se midió, en una pasada posterior: ver §6, con la clasificación
+  de campos declarada.
+
+---
+
+## 6. Los juegos (`src/data/games/`)
+
+Barrido posterior, pedido aparte y hecho con el mismo método que los módulos: los dos
+archivos se convirtieron a JSON con node y se midió solo sobre los campos de prosa.
+
+### 6.1 Qué conté como prosa y qué como código
+
+`FLEXBOX_LEVELS` y `GRID_LEVELS` tienen 24 niveles cada uno, 48 en total. Declaro la
+clasificación en vez de decidir en silencio, y verifiqué contra el renderizador
+(`src/components/games/GameEngine.tsx`) cuáles llegan efectivamente a la pantalla:
+
+**Prosa (se mide):** `title` (renderizado en `GameEngine.tsx:275`), `description`
+(`:278`) y `hint` (`:314`). Son 144 bloques: 48 títulos, 48 descripciones, 48 pistas.
+
+**Código (no se mide):** `property` (nombre de propiedad CSS, renderizado en `:273` y
+como `placeholder` en `:343`), `initialCSS`, `solutionCSS` (renderizado en `:369`),
+`validateFn`, `boardConfig.columns`/`rows`/`highlightCells`, `items[].id`,
+`items[].color`, `items[].targetArea`, `targets[].gridArea`, `containerStyle`,
+`id` y `xpReward`.
+
+**Ambiguo, y por eso lo declaro en vez de contarlo:** `boardConfig.items[].label`. Se
+renderiza al usuario (`GridBoard.tsx:262`, `FlexboxBoard.tsx:227`), así que por
+visibilidad sería prosa. Pero los valores son dígitos (`1`…`6`), símbolos (`!`) y
+nombres de área de layout en inglés (`Header`, `Nav`, `Sidebar`, `Content`, `Main`,
+`Hero`, `Footer`, `Features`, `Side`, `Logo`), que funcionan como etiquetas técnicas
+pareadas con los tokens de `gridArea`/`targetArea`. **No los medí**, porque acentuarlos
+sería un error y porque traducirlos es una decisión de producto, no de ortografía.
+Si se decide que el tablero hable español, ese campo entra al alcance y hay que revisarlo.
+
+### 6.2 Resultado: 28 errores de tilde en 48 niveles
+
+Ningún test del repo lee `src/data/games/`: `rg -l` sobre los archivos `.test.ts*` no
+devuelve ninguna referencia a `GRID_LEVELS`, `FLEXBOX_LEVELS` ni a la ruta. Los dos
+guards de ortografía corren solo sobre `src/data/modules`. **Estos 28 errores nunca
+estuvieron cubiertos por nada.**
+
+| Archivo | Errores |
+|---|---|
+| `grid-levels.ts` | 16 |
+| `flexbox-levels.ts` | 12 |
+
+- **cuadricula** → cuadrícula (5) — `grid-levels.ts`:87 (nivel 4, hint), :223 (nivel 12, title), :224 (nivel 12, description), :240 (nivel 12, hint), :436 (nivel 22, description)
+- **linea** → línea (5) — `flexbox-levels.ts`:234 (nivel 13, title); `grid-levels.ts`:41 (nivel 2, description), :53 (nivel 2, hint), :87 (nivel 4, hint), :123 (nivel 6, hint)
+- **alineacion** → alineación (3) — `flexbox-levels.ts`:32 (nivel 1, hint), :99 (nivel 5, hint); `grid-levels.ts`:457 (nivel 23, title)
+- **posicion** → posición (3) — `flexbox-levels.ts`:36 (nivel 2, title), :410 (nivel 22, description); `grid-levels.ts`:40 (nivel 2, title)
+- **clasica** → clásica (2) — `flexbox-levels.ts`:439 (nivel 23, hint); `grid-levels.ts`:369 (nivel 19, title)
+- **demas** → demás (2) — `flexbox-levels.ts`:328 (nivel 17, hint), :458 (nivel 24, hint)
+- Una sola vez cada una: **direccion** → dirección (`flexbox-levels.ts`:270, nivel 14, hint); **jerarquia** → jerarquía (`flexbox-levels.ts`:369, nivel 20, title); **limite** → límite (`grid-levels.ts`:74, nivel 4, title — es el sustantivo, "Avance hasta el limite", no el subjuntivo de *limitar*); **lineas** → líneas (`flexbox-levels.ts`:251, nivel 13, hint); **maximo** → máximo (`flexbox-levels.ts`:64, nivel 3, hint); **minimo** → mínimo (`grid-levels.ts`:414, nivel 21, description); **separacion** → separación (`grid-levels.ts`:247, nivel 13, description); **ultima** → última (`grid-levels.ts`:87, nivel 4, hint)
+
+Los títulos son los peores porque son lo primero que se ve en la lista de niveles:
+"Salto de linea", "Avance hasta el limite", "Cuadricula completa", "La forma clasica".
+
+No hay ñ mutiladas en los juegos, y no hay interrogativas sin `¿` (los textos de los
+niveles son imperativos, no preguntas).
+
+### 6.3 El patrón: guards verdes con punto ciego
+
+Tres casos en el mismo repo, y ya no se puede llamar coincidencia:
+
+1. **`acentuacion.test.ts`** pasa sobre 92 `retoPasos[].instruccion` que su `prosaDe()`
+   nunca lee (§2.5).
+2. **`src/data/games/`** no lo cubre ningún test. 28 errores que nunca tuvieron red.
+3. **`nav-iconos.test.ts`** — reportado por la otra sesión, y lo corroboré por encima:
+   las líneas 24-26 guardan `Sidebar.tsx`, `MobileMenu.tsx` y `MobileNav.tsx`, pero
+   `src/app/(app)/layout.tsx` solo importa `MobileMenu` (línea 6, renderizado en :106).
+   No importa `Sidebar.tsx` — la línea 39 es el comentario `{/* Sidebar */}` — ni
+   `MobileNav`, y `MobileMenu.tsx` define su propio `MobileNavLink` local en vez de usar
+   el componente guardado. O sea: de los tres archivos que el test protege, uno se
+   renderiza. Es un spot check, no una auditoría completa de ese test.
+
+La forma es siempre la misma: **el guard afirma sobre el conjunto que su propia función
+de extracción decide mirar, y ese conjunto se quedó atrás cuando los datos crecieron.**
+Un test verde se lee como "esto está cubierto", y la lectura es falsa sin que nada falle.
+No hace falta desconfiar de los tests; hace falta que cada guard de contenido declare
+—y verifique— su denominador: cuántos campos existen contra cuántos mira.
+
+---
+
+## 7. Qué se corrigió (pasada de arreglos, 2026-09-18)
+
+Territorio autorizado: `src/data/modules/**` (solo campos de prosa),
+`src/data/modules/acentuacion.test.ts` y `src/data/games/**`. No se tocó
+`src/app/**`, `src/components/**`, `src/lib/**`, ni los campos del corrector
+(`validation`, `retoPasos[].esperado`, `codeTemplate`, `blanks`, `targetCSS`).
+Sin commits.
+
+### 7.1 El guard ciego
+
+`acentuacion.test.ts` y `signos-interrogacion.test.ts` ahora incluyen
+`retoPasos[].instruccion` en `prosaDe()`. `esperado` queda fuera a propósito: es
+el CSS que el alumno tiene que escribir, no prosa.
+
+El ciclo se hizo en el orden que lo prueba: **rojo primero.** Con el campo
+agregado y antes de corregir nada, `acentuacion.test.ts` falló con 18
+ocurrencias en 12 módulos — errores que llevaban ahí desde siempre y que el
+guard ya sabía reconocer pero nunca miraba. Después de la corrección, verde.
+
+Ese rojo también encontró dos palabras que mi propio diccionario no tenía:
+`mas` ×2 en `14-especificidad` y `vacio` en `12-pseudo-elementos`.
+
+### 7.2 Ortografía
+
+| Dónde | Errores hallados | Corregidos | Sin tocar a propósito |
+|---|---|---|---|
+| `src/data/modules/**` (81 archivos de contenido) | 372 | 370 | 2 |
+| `src/data/games/**` (2 archivos) | 44 | 44 | 0 |
+
+Cómo se compone el 372 de módulos, porque vino de tres instrumentos distintos y
+ninguno solo lo habría dado entero:
+
+- **361** del scanner con diccionario de 300 formas (§2.2).
+- **+3** que aportó el guard al ponerse rojo: `mas` ×2 en `14-especificidad` y
+  `vacio` en `12-pseudo-elementos`, ninguna en mi diccionario.
+- **+8** del barrido morfológico `-ción/-sión`, que no depende de una lista de
+  palabras: `leccion` ×3, `negacion` ×3, `fraccion`, `presentacion`.
+
+Los 44 de juegos son los 28 del §6 más 16 de esa misma familia `-ción`
+(`formacion` ×9, `expansion` ×3, `meditacion`, `fraccion`, y dos más).
+
+Contra-verificación del total: comparando la prosa extraída del commit base
+`64e4802` contra el estado actual, aparecen 388 palabras acentuadas nuevas en
+los módulos. La diferencia con los 370 son las ~18 que vienen en la prosa que se
+agregó en esta pasada (la sección de XSS y la nota del Compiler), no en
+correcciones.
+
+**Dos casos que se dejaron sin tilde a propósito**, y conviene que queden por
+escrito para que nadie los "arregle" después:
+
+- `18-css-grid.ts:150,151` — "Grid areas" es el término técnico en inglés,
+  pareado con `grid-template-areas`. Acentuar la segunda palabra de un compuesto
+  inglés ("Grid Áreas") es peor que dejarlo. En cambio "las **áreas** de la
+  cuadrícula" (`:155`) sí es prosa española y sí lleva tilde.
+- Los 7 restantes de la familia `-ción` son código: `#seccion` en
+  `14-especificidad` (es un id), `{condicion}` en
+  `react-07-renderizado-condicional` (es JSX en las opciones) y `action={funcion}`
+  en `react-18-react19` (es una celda de tabla con código).
+
+### 7.3 Una sobrecorrección que introduje, y cómo apareció
+
+Al acentuar la prosa escribí `artículo` en
+`15-float-display.ts:420`, donde esa palabra **nombraba la clase CSS
+`.articulo`**. Un enunciado que manda a estilar `.artículo` es peor que uno sin
+tilde: el sin tilde se lee raro, el otro directamente no funciona — es el mismo
+defecto que `selectores-del-enunciado.test.ts` existe para prevenir, y que su
+propio encabezado documenta (un alumno sacó 67/100 haciendo exactamente lo que
+el enunciado le pedía).
+
+No lo encontré yo: lo encontró ese guard, que mira otra cosa. El arreglo sigue
+la convención que el propio test fija — un selector se nombra como selector — y
+quedó `El contenedor \`.articulo\` debe tener overflow: hidden`.
+
+Barrí el resto del diff buscando la misma familia (toda palabra que acentué y
+que además fuera nombre de clase, id o variable en ese módulo): dieron 7
+candidatos, y el guard confirma que los otros 6 son prosa legítima ("el botón
+sigue viéndose", "contra la página entera"), no nombres de identificadores.
+
+**El caso latente también se cerró.** El mismo enunciado nombraba la otra clase
+como `(clase 'foto')`, entre comillas en vez de como selector. No fallaba
+—`foto` no lleva tilde— pero era la misma forma que produjo el defecto,
+esperando a una palabra acentuable. Quedó como `.foto`, que además es la
+convención que ese mismo archivo ya usaba en su reto (`:513`): era el único
+enunciado del archivo que no la seguía.
+
+### 7.4 Los cuatro bugs pedagógicos
+
+1. **`react-17-testing.ts`** — el runner ahora corre de verdad. Monta el
+   `Contador` en un contenedor oculto con `createRoot`, hace click en los
+   botones reales y compara el texto del DOM contra lo esperado; el `detalle` de
+   cada test dice qué esperaba y qué encontró. Antes los cuatro tests se
+   empujaban con `paso: true` literal y el botón siempre daba 4/4 aunque el
+   componente estuviera roto. La UI ya soportaba `paso: false`; no hizo falta
+   tocarla.
+2. **`js-25-proyecto-weather.ts`** — el nombre de ciudad que escribe el usuario
+   ya no entra por `innerHTML`. **Eran cinco sitios**, repartidos en las tres
+   lecciones del módulo: el estado "Buscando clima de…" (`:73`), el render del
+   resultado (`:98`), el encabezado del pronóstico (`:200`), el render de
+   favoritos (`:333`) y el botón de favoritos (`:296`). Los cinco pasaron a
+   `textContent`, y con ellos los tres `error.message` / `err.message` /
+   `e.message` que se concatenaban en los `catch` (`:85`, `:215`, `:343`).
+
+   El de favoritos es el peor de los cinco y conviene decir por qué: esa ciudad
+   sale de `localStorage`, así que un payload inyectado ahí **sobrevive al
+   reload** y se vuelve a ejecutar en cada visita.
+
+   Se agregó una sección a la lección ("El dato que escribe el usuario no se
+   pega con innerHTML") porque el módulo nunca mencionaba XSS, aunque
+   `js-12-dom-manipulacion` sí advierte del riesgo. Y se agregó la **excepción**,
+   que es la parte que enseña: las temperaturas y la descripción siguen
+   concatenándose en `innerHTML` porque ese marcado lo escribe el autor y esos
+   valores vienen de la API. La regla quedó formulada como una pregunta sobre el
+   origen, no sobre el tipo: **no es "¿es un dato?", es "¿quién lo escribió?"**.
+
+   > **Corrección de este mismo informe.** La primera versión de §7 decía que
+   > eran "tres sitios, no dos" y daba el punto por cerrado. Eran cinco. Los dos
+   > que faltaban aparecieron recién al barrer los 15 `innerHTML` del archivo en
+   > vez de ir a los que ya estaban señalados. Es el mismo defecto que este
+   > informe describe en §7.7, cometido por quien lo escribió: **contar los
+   > casos que alguien te marcó no es medir el conjunto.**
+3. **`react-18-react19.ts`** — la lección y la explicación del quiz
+   `react18-ej-01` ahora dicen que el React Compiler es una herramienta de build
+   opcional, que se instala y configura aparte, y que actualizar a React 19 no
+   lo activa solo.
+4. **`ts-01` a `ts-04`** — las 8 lecciones tienen `codeExample.js`. El tab de JS
+   sí se renderiza para ellas (`showJS={mod.dojo === "js"}` y los `ts-*`
+   declaran `dojo: "js"`), así que estaba apareciendo vacío. El sandbox ejecuta
+   JavaScript, no TypeScript, y eso se convirtió en el contenido: cada ejemplo
+   muestra **lo que queda después de compilar** —los tipos borrados— y a
+   continuación el error que TypeScript habría frenado en el editor y que
+   JavaScript deja pasar en silencio.
+
+### 7.5 Resultado de los gates
+
+Corridos sobre el árbol completo, después de todos los cambios:
+
+| Gate | Resultado |
+|---|---|
+| `npm run typecheck` | limpio, cero errores |
+| `npm run test:run` | **453 de 453**, 42 archivos |
+| `npm run lint` | 0 errores, 53 warnings preexistentes (`no-explicit-any`), **ninguno en `src/data`** |
+
+Durante la pasada el typecheck estuvo rojo un rato por
+`src/components/layout/MobileMenu.tsx(140,32): TS2304: Cannot find name 'conteos'`,
+de otra sesión que en ese momento enhebraba una prop por tres componentes.
+Se reportó igual en vez de darlo por verde: un gate rojo por trabajo ajeno sigue
+siendo un gate rojo, y esconderlo detrás de "no es mío" es justo lo que este
+informe le critica a los guards de §6.3. Ya está resuelto por su dueño.
+
+**Nota para quien trabaje sobre este árbol:** hay una sesión sacando
+`ALL_MODULES` del bundle de cliente — `DojoSwitcher` vive en el layout raíz del
+área autenticada e importaba el currículum entero (~2,3 MB, con las respuestas
+adentro) solo para contar módulos por dojo. Mientras la prop del conteo viaja de
+un archivo al siguiente, un `TS2304` transitorio en `src/components` o
+`src/app` es esperable.
+
+No se corrió `npm run build`, `npm run dev` ni `test:e2e`: el `.env.local`
+apunta a producción y el build pisaría el `.next` de las otras sesiones.
+
+Verificación independiente del resultado: re-medido con el scanner sobre el
+estado final, quedan **2 ocurrencias** en módulos (las dos de "Grid areas",
+intencionales) y **0** en juegos.
+
+### 7.6 Lo que NO se hizo
+
+- **Tú/vos.** Resuelto después: ver §8.
+- **Ampliar el diccionario del guard.** Tiene 61 formas; los errores corregidos
+  incluyen 67 palabras que no están en esa lista, así que hoy el guard protege
+  una fracción de lo que se arregló. Queda pendiente a propósito: con tres
+  sesiones escribiendo sobre el mismo árbol, un diccionario de 300 palabras
+  pondría en rojo contenido ajeno y nadie podría distinguir si el rojo es un
+  error real o el diccionario nuevo. Se hace cuando el árbol esté libre.
+
+  **Cuando se haga, el orden importa: primero terminaciones, después lista.**
+  El conjunto de palabras mal escritas no es enumerable; el de terminaciones sí.
+  Un diccionario de 300 formas iba a fallar por la misma razón que falló el de
+  61 — `formacion`, `expansion` y `meditacion` no estaban en ninguno de los dos,
+  y las tres las encontró una regla de tres letras. Si el guard nuevo se arma
+  enumerando, arranca con el mismo agujero que el viejo, solo que más grande y
+  más difícil de ver. Reglas morfológicas candidatas: `-ción`/`-sión` en
+  singular, `-ía` en hiato (`jerarquía`, `categoría`), esdrújulas en `-ico`/`-ica`,
+  y la familia `ni`/`n` por `ñ`.
+- **`¿Cuando` vs `¿Cuándo` y otras tildes diacríticas** en interrogativas
+  indirectas ("### Cuando usar areas vs líneas"). No estaban medidas y no se
+  tocaron; es una categoría aparte, sin guard.
+- El copy de `src/app/**` y `src/components/**`, incluidas las 20 "contrasena"
+  sin ñ: territorio de otra sesión.
+
+### 7.7 El patrón, ahora con cuatro casos
+
+Los cuatro defectos de medición de esta sesión los encontró **una herramienta
+distinta de la que produjo el resultado**, nunca la autorrevisión:
+
+1. `rg` crudo contra mi scanner → el filtro de dos puntos escondía 22 errores.
+2. Mi scanner contra `rg` → "La forma clasica:" visible para uno, invisible para
+   el otro.
+3. Un barrido genérico `-ción/-sión` contra mi diccionario de 300 palabras → 32
+   errores más que ninguna lista enumerada iba a tener ("formacion", "expansion",
+   "meditacion").
+4. `selectores-del-enunciado.test.ts` contra mi corrección de tildes → la
+   sobrecorrección de `.articulo`.
+5. Un barrido de los 15 `innerHTML` del archivo contra los tres casos que ya
+   estaban señalados → los otros dos sitios de XSS, incluido el que persiste en
+   `localStorage`.
+
+El quinto merece su propia línea, porque es el más incómodo: los tres casos de
+XSS venían señalados en este mismo informe, se arreglaron los tres, y el punto
+se dio por cerrado. Eran cinco. **Contar los casos que alguien te marcó no es
+medir el conjunto**, y la diferencia solo aparece cuando se enumera el conjunto
+entero — acá, todos los `innerHTML` del archivo, no los que estaban en la lista.
+
+Y es la misma forma que el §6.3: **un guard afirma sobre el conjunto que su
+propia función de extracción decide mirar.** Revisar esa función con la misma
+cabeza que la escribió no sirve; hace falta un segundo instrumento que mire
+desde otro ángulo. Para el contenido de este repo eso significa, en concreto:
+ninguna medición de ortografía debería aceptarse sin contrastarla contra un
+barrido morfológico genérico —terminaciones, no palabras— y sin un control
+positivo que demuestre que la herramienta detecta un caso que ya se sabe malo.
+
+---
+
+## 8. Unificación en voseo
+
+**Decisión de Diego: voseo para toda la plataforma**, porque es como habla él.
+Se ejecuta en dos etapas, con una parada entre medio.
+
+### 8.1 Etapa A — los 13 módulos que se contradecían (hecha)
+
+Estos no eran una decisión de voz, eran un defecto: el mismo archivo cambiaba de
+registro entre un párrafo y el siguiente. **171 conversiones**, 158 líneas, y en
+todas el número de palabras es idéntico a ambos lados del diff — son
+conjugaciones, no reescrituras.
+
+Vinieron en tres tandas, porque una sola pasada no alcanzó:
+
+1. **159 automáticas.** 70 formas inequívocas de 2ª persona
+   (`necesitas`→`necesitás`, `puedes`→`podés`, `tienes`→`tenés`) y 89
+   imperativos dirigidos al alumno (`usa`→`usá`, `completa`→`completá`).
+2. **10 imperativos a mitad de oración**, que la regla de "arranque de oración"
+   no veía: "…a varios elementos, **usa** una clase", "luego **agrega** media
+   queries", "Para evitar repetir valores, **usa** `repeat()`".
+3. **12 residuos** que encontró un barrido por terminación `-as`/`-es`, no por
+   lista de palabras.
+
+### 8.2 Lo que NO se convirtió, que es la mitad del trabajo
+
+De 129 candidatos a imperativo, **43 eran tercera persona del indicativo**, no
+órdenes:
+
+| Aparece como | Y en realidad es |
+|---|---|
+| "El **selector de clase** selecciona todos los elementos" | el selector *selecciona* |
+| "`map()` **crea** un nuevo array" | map *crea* |
+| "`max-width` **define** el ancho máximo" | max-width *define* |
+| "una **propiedad** guarda un valor" | la propiedad *guarda* |
+| "Si el navegador no encuentra la primera, **prueba** la siguiente" | el navegador *prueba* |
+
+Los 13 `selecciona`, los 5 `define` y los 2 `guarda` del lote son todos
+descripción. Convertirlos habría roto la prosa en silencio, y ningún test lo
+habría detectado: `selecciona` → `seleccioná` es sintácticamente impecable y
+semánticamente absurdo.
+
+### 8.3 Dos hallazgos laterales que el barrido morfológico destapó
+
+Los dos confirman, por tercera vez en este informe, que una lista enumerada no
+cierra:
+
+- **Cuatro tuteos que no estaban en ninguna lista:** `pasas`, `quitas`,
+  `trabajas`, `arrancas`. Aparecieron buscando la *terminación* `-as`/`-es`
+  precedida de `si`/`cuando`/`que`, no buscando palabras.
+- **Cinco formas de voseo escritas sin tilde**, que el barrido de ortografía de
+  §2 **no podía ver** porque `podes`, `tenes` y `estas` no figuran en ningún
+  diccionario de tuteo: `02-selectores.ts:418` ("un atributo que **podes**
+  repetir"), `30-proyecto-cv-css.ts:52` ("Si no **tenes** tu CV", "cuando
+  **estas** estilando"), `:88` ("**Estas** atando tus estilos"), `:431` ("algo
+  que **podes** mostrar"). Estaban desde antes de esta pasada. Un guard de
+  acentuación construido solo sobre tuteo tiene ese punto ciego por diseño.
+
+### 8.4 Etapa B — medición antes de tocar nada
+
+No se ejecutó. Se midió primero, a propósito: convertir dos tracks enteros que
+hoy son coherentes no es arreglar un defecto, es cambiar una voz, y eso se
+aprueba con una muestra, no con un informe.
+
+| track | módulos | strings | 2ª persona | imperativos (candidatos) | total |
+|---|---|---|---|---|---|
+| html | 17/17 | 106 | 24 | 104 | 128 |
+| react | 20/20 | 120 | 65 | 87 | 152 |
+| js | 28/29 | 86 | 36 | 74 | 110 |
+| css (los 23 restantes) | 28/36 | 177 | 66 | 162 | 228 |
+| nextjs | 5/5 | 11 | 8 | 4 | 12 |
+| react-eco | 4/5 | 8 | 4 | 5 | 9 |
+| **TOTAL** | **102** | **508** | **203** | **436** | **639** |
+
+**La columna de imperativos son candidatos, no trabajo.** En la Etapa A, de 129
+candidatos solo 86 resultaron órdenes reales: el 67%. Con esa proporción, el
+trabajo efectivo ronda las **490 conversiones**, y las ~150 restantes son
+precisamente las que hay que dejar quietas — que son las que cuestan.
+
+html (128) y react (152) suman 280, menos de la mitad del total: el grueso está
+en los 23 módulos de css que quedaron fuera de la Etapa A.
+
+### 8.5 Qué cambia y qué no
+
+Cambian las **conjugaciones**, no los posesivos:
+
+- Imperativos: `usa`→`usá`, `escribe`→`escribí`, `mira`→`mirá`, `pon`→`poné`,
+  `haz`→`hacé`, `ten`→`tené`.
+- Presentes: `tienes`→`tenés`, `puedes`→`podés`, `quieres`→`querés`,
+  `necesitas`→`necesitás`, `defines`→`definís`.
+- Pronombre: `tú`→`vos`, `ti`→`vos`, `contigo`→`con vos`.
+- **No cambian:** `tu código`, `tus estilos`, `te queda`, `se te rompe` — son
+  iguales en las dos formas, y tocarlos es ruido en el diff.
+- **No cambian los subjuntivos:** `cuando quieras`, `mientras tengas`, `siempre
+  que puedas` son idénticos en voseo rioplatense.
+- **No se toca** nada dentro de backticks, bloques de código, `codeExample` ni
+  strings de HTML/CSS/JS, ni nada que nombre un identificador. Es la misma
+  trampa del `.articulo` de §7.3, con más superficie.
+
+### 8.6 Etapa B — ejecutada (los 87 módulos restantes)
+
+**549 conversiones aplicadas. 1.113 candidatos descartados por ser tercera
+persona** — el doble de lo que se convirtió. Ahí estuvo el trabajo.
+
+| track | archivos | conversiones | descartados 3ª pers. |
+|---|---|---|---|
+| html | 17 | 115 | 146 |
+| react | 20 | 143 | 174 |
+| js | 26 | 88 | 188 |
+| css (los 23 restantes) | 16 | 187 | 537 |
+| nextjs | 5 | 11 | 30 |
+| react-eco | 3 | 5 | 38 |
+| **TOTAL** | **87** | **549** | **1.113** |
+
+661 líneas cambiadas, con el mismo número de palabras a ambos lados en las 661:
+cero cambios estructurales. Gates: typecheck limpio, **453/453**, lint 0 errores.
+Residuo medido al cierre sobre los 112 módulos: **cero** formas inequívocas de
+tuteo y cero voseo sin tilde.
+
+### 8.7 Las cuatro clases de tercera persona que ninguna regla local ve
+
+El clasificador se fue endureciendo a medida que aparecían. Se dejan escritas
+porque cualquier pasada futura sobre esta prosa se va a topar con las mismas:
+
+1. **Sujeto que es una cosa.** "El **sistema** de grid usa 12 columnas", "La
+   **etiqueta** `<ol>` crea una lista", "`<dt>` **define** el término". Se
+   detecta por la lista de sujetos típicos (la etiqueta, el elemento, la
+   propiedad, el selector, el navegador, el sistema…) y por una etiqueta HTML
+   inmediatamente antes.
+2. **Títulos de lección.** `13-attribute-selectors` tiene uno llamado "Empieza
+   con, termina con, contiene": nombra tres operadores, no ordena nada. Se
+   deniegan todos los títulos por regla. Perder un título imperativo es
+   cosmético; convertir uno nominal rompe la prosa.
+3. **Etiquetas de `dropZones` y textos de `options`.** "Define el orden de
+   tabulación" describe lo que hace `tabindex`, no se lo pide al alumno.
+4. **Sujeto en la oración anterior.** `28-bootstrap`: "El sistema de grid es la
+   base de Bootstrap. **Usa** un sistema de 12 columnas". Ninguna regla local lo
+   alcanza. Se denegó a mano, en vez de ensanchar una regla que se habría
+   llevado puestos casos legítimos.
+
+A eso se suma el criterio de fondo, que vale más que las cuatro reglas: **ante
+la duda, no tocar.** Un tuteo que sobrevive es un defecto cosmético; una
+descripción convertida en orden es prosa rota, y no hay test que la vea.
+
+### 8.8 Un bug de la Etapa A, encontrado durante la B
+
+La máscara de código tapaba las cercas ` ``` ` pero **no las escapadas**
+(`` \`\`\` ``), que es como aparecen dentro de un template literal en el fuente
+`.ts`. En la Etapa A eso dejó pasar **tres conversiones dentro de bloques de
+código**: `14-especificidad.ts` (`/* Primero declarás el orden */`),
+`26-sass-fundamentos.ts` (`// SCSS que escribís`) y `js-09-metodos-arrays.ts`
+(`// Para numeros, necesitás una funcion`).
+
+Las tres son **comentarios en español**, no código que se rompa, y quedan
+convertidas — pero quedan así por decisión, no por descuido. La máscara ya
+cubre ambas formas.
+
+El bug se encontró leyendo la salida del clasificador y viendo aparecer texto
+que debería haber estado enmascarado: `<!-- Usa strong cuando el texto es
+IMPORTANTE -->`. Primero verifiqué que el barrido de ortografía de §2 no
+estuviera afectado — no lo estaba, porque ese medía sobre el JSON evaluado,
+donde las cercas ya vienen sin escapar — y recién después lo arreglé para la
+Etapa B.
+
+---
+
+## 9. El diccionario del guard: terminaciones primero
+
+Última pasada. Se amplió `acentuacion.test.ts` en el orden acordado —**reglas
+morfológicas primero, lista después**— porque el conjunto de palabras mal
+escritas no es enumerable y el de terminaciones sí. Un diccionario armado
+enumerando nace con el mismo agujero que tenía el viejo, solo que más grande.
+
+### 9.1 Las cuatro reglas
+
+1. **`-ción`/`-sión` en singular.** El plural pierde la tilde (`funciones`), y el
+   `\b` final ya lo deja afuera. Excepción declarada: `ion`.
+2. **Familias de sufijo con `i` tónica:** `-grafía`, `-logía`, `-metría`,
+   `-nomía`, `-arquía`, `-goría`. **No vale una regla general de `-ía`**:
+   `materia`, `historia`, `distancia` y `democracia` van sin tilde, y exigírsela
+   sería un error peor que la omisión.
+3. **Formas que solo existen en voseo** (`podes`, `tenes`, `escribis`, `decis`,
+   `repetis`…). Son invisibles para los dos barridos anteriores: no son tuteo,
+   así que un barrido de voz no las ve, y no figuran en ningún diccionario
+   armado sobre tuteo. **Lo que deliberadamente NO está:** `estas` (demostrativo)
+   y `puedes`/`sabes`/`haces` (tuteo válido en castellano). Eso es cuestión de
+   voz, no de ortografía, y no es de este guard.
+4. **La `ñ` escrita como `n` o `ni`** (`espanol`, `contrasena`, `tamanio`,
+   `anos`). La más grave, porque sale en pantalla y se lee como otro idioma.
+
+Cada regla trae **control positivo y control negativo, en tests distintos**: uno
+prueba que caza lo que debe, el otro que no se pasa de rosca. Un solo control no
+distingue "la regla anda" de "la regla matchea todo".
+
+### 9.2 La trampa en la que caí, que el propio archivo ya documentaba
+
+La primera versión de las reglas dio **10 fallas, y las 10 eran falsos
+positivos**. En JavaScript `\b` es ASCII, así que entre `n` y `ó` hay frontera
+de palabra: `-cion\b` matchea **dentro** de `funcionó`, `fusionó`, `Seleccioná`
+e `inspeccionás` — todas perfectamente escritas. El guard reclamaba tildes que
+ya estaban puestas.
+
+`acentuacion.test.ts` **ya advertía exactamente de esto** en el comentario de
+`ocurrenciasQueSonError`, con la misma medición y la misma conclusión: "un guard
+que rechaza prosa correcta no protege la ortografía, empuja a escribirla peor
+para callarlo". Lo leí al empezar la sesión, lo cité en §7, y aun así escribí la
+regla sin el lookahead. Ahora las cuatro llevan `(?![a-záéíóúñüA-ZÁÉÍÓÚÑÜ])`.
+
+Y el falso positivo no lo vi leyendo la regla: lo vi cuando imprimí **de dónde
+salía cada match**. La lista de fallas se leía como diez errores plausibles;
+el contexto mostraba diez palabras bien escritas.
+
+**Un resultado que parece razonable es el más peligroso de todos, porque no
+pide que lo mires dos veces.** Diez fallas de ortografía en un currículum de
+112 módulos es exactamente lo que uno espera encontrar: no sorprende, no chirría,
+invita a arreglarlas y seguir. Si el número hubiera sido cero o mil, habría
+mirado. Fue plausible, y por eso casi pasa.
+
+Y hay algo peor que anotar, porque no es anécdota: **saber que una trampa existe
+no alcanza para no pisarla.** Esa advertencia estaba escrita, medida y fechada
+en el archivo que yo estaba editando. La misma sesión la vio repetirse en el
+otro sentido: el barrido de residuo al cerrar la Etapa B volvió a medir sobre el
+archivo crudo contando código como prosa —el error corregido nueve horas
+antes— y reportó diez errores que no existían. Dos veces el mismo defecto, en
+dos manos distintas, con la corrección ya escrita.
+
+Esa es la razón por la que las verificaciones cruzadas no son burocracia: **si
+leer la advertencia bastara, el guard sobraría.**
+
+### 9.3 Dos palabras que el guard NO puede exigir
+
+- **`areas`.** `\b` trata el guion como frontera, así que
+  `grid-template-areas` —el nombre de la propiedad, que va sin tilde— matchea
+  `areas`, y el guard reclamaría una tilde que rompería el código.
+- **`menu`.** `<menu>` es un elemento HTML real (aparece como opción de quiz en
+  `html-semantica`) y `.menu` es una clase corriente.
+
+Las dos quedan sin cubrir **a propósito y con el motivo escrito en el código**.
+Es el precio de no romper lo que nombran.
+
+### 9.4 Lo que el guard nuevo encontró
+
+Fue rojo primero, como corresponde. Descontando los 10 falsos positivos, los
+errores reales fueron **31**, todos invisibles para los barridos previos:
+
+- **17 que escondía un filtro mío**, el mismo defecto que el de los dos puntos
+  en §7: mi scanner descartaba toda palabra seguida de `)`. En prosa el
+  paréntesis que cierra un inciso es constante — "(horizontal en espanol)",
+  "(elementos de cuadricula)", "(problema en ingles)" —, así que el filtro
+  silenciaba una categoría entera.
+- **6 que ninguna lista tenía**, cazados por terminación: `tecnologia` ×4,
+  `metodologia` ×2, `repetis`.
+- **8 formas flexionadas** que la búsqueda por palabra exacta no alcanza:
+  `clasicos`, `clasicas`, `cuadriculas` ×3, `tendras` ×3, `tendrias`,
+  `proximos`.
+
+Estado final: `acentuacion.test.ts` pasa sus **16 tests**, y la suite completa
+**456 de 456**, typecheck limpio, lint 0 errores.
+
+### 9.5 El hueco de los juegos, cerrado
+
+`acentuacion.test.ts` ahora también recorre `GRID_LEVELS` y `FLEXBOX_LEVELS`.
+Era el último agujero de §6.3: se corrigieron 44 palabras en
+`src/data/games/**` y ningún test las cuidaba. **Un arreglo sin red no es un
+arreglo, es una pausa** — ese contenido ya se escribió mal una vez y podía
+volver sin que nada fallara.
+
+Los campos se declaran en el propio test, no se suponen. **Prosa:** `title`,
+`description` y `hint`, las tres renderizadas al alumno (`GameEngine.tsx:275`,
+`:278`, `:314`). **Código:** `property`, `initialCSS`, `solutionCSS`,
+`validateFn`, `boardConfig.*`, `id`, `xpReward`. **Ambiguo y declarado como
+tal:** `boardConfig.items[].label`, que *sí* se renderiza (`GridBoard.tsx:262`,
+`FlexboxBoard.tsx:227`) pero cuyos valores son dígitos, símbolos y nombres de
+área de layout en inglés (`Header`, `Nav`, `Sidebar`). No se mide: acentuarlos
+sería un error y traducirlos es una decisión de producto.
+
+**Rojo primero, demostrado y no afirmado.** Como el contenido ya estaba
+corregido, el guard nuevo nacía verde, y un guard que nace verde no probó nada.
+Se corrieron las mismas reglas contra la versión de los juegos en el commit
+base `64e4802`: **52 fallas sobre 48 niveles**. Sobre el estado actual, cero.
+
+El test trae además dos controles que no dependen del contenido: uno verifica
+que `prosaDeNivel` realmente llega a los tres campos —si el extractor se
+rompiera, el barrido daría cero y el cero se leería como "los juegos están
+limpios"— y otro exige que haya más de 40 niveles, para que renombrar un export
+no deje el barrido corriendo sobre el conjunto vacío.
+
+### 9.6 Lo que sigue sin guard
+
+- **El copy de `src/app/**` y `src/components/**`.** El guard solo mira
+  `src/data/modules` y `src/data/games`.
+- **Tildes diacríticas en interrogativas indirectas** ("Cuando usar" →
+  "Cuándo usar").
+- **La voz.** El guard cuida la ortografía, no el registro. Que vuelva a
+  aparecer `puedes` en vez de `podés` es correcto en castellano y ningún test
+  lo va a marcar.
