@@ -260,7 +260,15 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         cssSuffix: "];",
         blanks: ['"edad"'],
       },
-      validation: { type: "exact", answer: '"edad"' },
+      // El hint dice "entre comillas" sin decir cuales, y en JavaScript las tres
+      // formas son el mismo string: 'edad', "edad" y `edad`. El `exact` anterior
+      // aceptaba solo la doble y le daba CERO a las otras dos.
+      //
+      // La referencia atras (`\1`) no es adorno: exige que la comilla cierre
+      // igual que abre. Sin ella, `['"`]` a cada lado aprobaria `'edad"`, que no
+      // es JavaScript valido -- aceptar codigo invalido es peor que rechazar
+      // codigo valido.
+      validation: { type: "regex", answer: "^\\s*(['\"`])edad\\1\\s*$" },
       hint: "La clave debe ir como string entre comillas.",
       explanation: 'persona["edad"] accede a la propiedad edad usando notación de corchetes.',
     },

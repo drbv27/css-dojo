@@ -287,7 +287,9 @@ function normalizarSelectores(prelude: string): string[] {
  * Si no es valida sin comillas (`"2toons"`, que arranca con un digito, o una
  * cadena vacia `""`), se deja EXACTAMENTE como esta: la clave sigue distinta y
  * sigue fallando. Aceptar CSS invalido es peor que rechazar CSS valido, la
- * misma decision que ya toman `unCorchete` y `equivalentesDe`.
+ * misma decision que ya toman `unCorchete` y `canonizarDeclaracion` -- esta
+ * ultima con `esColorSolo`, que es lo que impide que `background` se pliegue
+ * sobre `background-color` cuando el valor no es un color literal.
  *
  * SEGUNDA VUELTA, medida sobre el arbol con el arreglo de arriba ya puesto:
  * una generica o una palabra clave global ENTRE COMILLAS tambien es un
