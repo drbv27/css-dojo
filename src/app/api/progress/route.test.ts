@@ -11,7 +11,7 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 const db = {
   progreso: [] as Record<string, unknown>[],
-  usuario: { _id: "u1", xp: 0, streak: 0, lastActivityDate: null as Date | null, save: async () => {} },
+  usuario: { _id: "u1", xp: 0, streak: 0, lastActivityDate: null as Date | null, approved: true, save: async () => {} },
   mismatches: [] as Record<string, unknown>[],
   mismatchFalla: false,
 };
@@ -49,8 +49,11 @@ vi.mock("@/lib/models/User", () => {
   const findById = () => {
     const p = Promise.resolve(db.usuario) as Promise<typeof db.usuario> & {
       lean: () => Promise<typeof db.usuario>;
+      select: () => { lean: () => Promise<typeof db.usuario> };
     };
     p.lean = async () => db.usuario;
+    // `vetoPorCuentaNoAprobada` lee con `.select("approved").lean()`.
+    p.select = () => ({ lean: async () => db.usuario });
     return p;
   };
   return { default: { findById } };
@@ -136,7 +139,7 @@ beforeEach(() => {
   db.progreso = [];
   db.mismatches = [];
   db.mismatchFalla = false;
-  db.usuario = { _id: "u1", xp: 0, streak: 0, lastActivityDate: null, save: async () => {} };
+  db.usuario = { _id: "u1", xp: 0, streak: 0, lastActivityDate: null, approved: true, save: async () => {} };
 });
 
 describe("POST /api/progress: corrige el servidor", () => {
@@ -148,6 +151,40 @@ describe("POST /api/progress: corrige el servidor", () => {
    * que existen los certificados, eso era otorgarse la credencial entera desde
    * la consola del navegador.
    */
+  /**
+   * `ApprovalGate` es de cliente: esconde la interfaz, no cierra la puerta.
+   * Un alumno recien registrado tiene cookie valida y ve "esperando
+   * aprobacion"; sin este veto podia postear desde la consola y sumar XP.
+   */
+  it("un alumno sin aprobar no suma progreso ni XP", async () => {
+    db.usuario.approved = false;
+
+    const res = await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-quiz",
+      exerciseType: "quiz",
+      score: 100,
+      userAnswer: "b",
+    });
+
+    expect(res.status).toBe(403);
+    expect(progresoDe("ej-quiz")).toBeUndefined();
+    expect(db.usuario.xp).toBe(0);
+  });
+
+  it("un alumno aprobado si suma, con la misma respuesta", async () => {
+    const res = await postear({
+      moduleId: "modulo-demo",
+      exerciseId: "ej-quiz",
+      exerciseType: "quiz",
+      score: 100,
+      userAnswer: "b",
+    });
+
+    expect(res.status).not.toBe(403);
+    expect(progresoDe("ej-quiz")).toBeDefined();
+  });
+
   it("un score 100 forjado con respuesta VACIA no completa nada", async () => {
     await postear({
       moduleId: "modulo-demo",

@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
+import { vetoPorCuentaNoAprobada } from "@/lib/autorizacion";
 import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
 import { checkAchievements, SEED_ACHIEVEMENTS } from "@/lib/achievements";
@@ -27,6 +28,9 @@ export async function POST() {
   if (!session) {
     return NextResponse.json({ error: "No autorizado" }, { status: 401 });
   }
+
+  const veto = await vetoPorCuentaNoAprobada(session);
+  if (veto) return veto;
 
   const newBadgeSlugs = await checkAchievements(session.id);
 
