@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
 import { comparePassword, createToken, getTokenCookieOptions } from "@/lib/auth";
+import { excedeLimite, limpiarLimite } from "@/lib/limite";
 
 export async function POST(request: Request) {
   try {
@@ -15,6 +16,15 @@ export async function POST(request: Request) {
     }
 
     await dbConnect();
+
+    // Sin contador, probar contrasenas es gratis y no deja rastro.
+    const claveLimite = `login:${String(email).toLowerCase()}`;
+    if (await excedeLimite(claveLimite, 10, 300)) {
+      return NextResponse.json(
+        { error: "Demasiados intentos. Esperá unos minutos." },
+        { status: 429 }
+      );
+    }
 
     const user = await User.findOne({ email: email.toLowerCase() });
     if (!user) {
@@ -31,6 +41,10 @@ export async function POST(request: Request) {
         { status: 401 }
       );
     }
+
+    // Entro bien: el contador se borra, asi que un tecleo mal escrito hoy no
+    // le cuesta el acceso a nadie manana.
+    await limpiarLimite(claveLimite);
 
     const token = await createToken({
       id: user._id.toString(),

@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
-import { comparePassword } from "@/lib/auth";
+import { comparePassword, getJwtSecretRaw } from "@/lib/auth";
+import { excedeLimite, limpiarLimite } from "@/lib/limite";
 import jwt from "jsonwebtoken";
 
 export async function POST(request: Request) {
@@ -13,6 +14,16 @@ export async function POST(request: Request) {
     }
 
     await dbConnect();
+
+    // Seis digitos son un millon de combinaciones y el codigo vive diez
+    // minutos: sin contador, un script lo agota y se queda con la cuenta.
+    const claveLimite = `otp:${String(email).toLowerCase()}`;
+    if (await excedeLimite(claveLimite, 5, 600)) {
+      return NextResponse.json(
+        { message: "Demasiados intentos. Solicitá un código nuevo." },
+        { status: 429 }
+      );
+    }
 
     const user = await User.findOne({ email: email.toLowerCase() }).select("+resetOtp +resetOtpExpiresAt");
 
@@ -33,12 +44,14 @@ export async function POST(request: Request) {
     }
 
     // Generate short-lived reset token (5 min)
-    const secret = process.env.JWT_SECRET || "css-dojo-secret-key-cambiar-en-produccion";
+    const secret = getJwtSecretRaw();
     const resetToken = jwt.sign(
       { userId: user._id.toString(), purpose: "password-reset" },
       secret,
       { expiresIn: "5m" }
     );
+
+    await limpiarLimite(claveLimite);
 
     // Clear OTP
     user.resetOtp = undefined;

@@ -92,3 +92,22 @@ export function getTokenCookieOptions() {
 }
 
 export const COOKIE_TOKEN_NAME = COOKIE_NAME;
+
+/**
+ * El mismo secreto, en crudo, para `verify-otp` y `reset-password`, que firman
+ * con `jsonwebtoken` en vez de `jose`. Existe para que esos dos NO repitan el
+ * fallback literal que se elimino de este archivo.
+ *
+ * Que los tokens de reseteo compartan secreto con los de sesion sigue siendo
+ * deuda: lo que lo hace inofensivo hoy es que `verifyToken` valida la FORMA
+ * del payload, asi que un token de reseteo ya no pasa por sesion.
+ */
+export function getJwtSecretRaw(): string {
+  const secret = process.env.JWT_SECRET;
+  if (!secret) {
+    throw new Error(
+      "Please define the JWT_SECRET environment variable inside .env.local"
+    );
+  }
+  return secret;
+}

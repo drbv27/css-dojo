@@ -3,6 +3,7 @@ import dbConnect from "@/lib/db";
 import User from "@/lib/models/User";
 import { hashPassword } from "@/lib/auth";
 import { generateOtp, sendOtpEmail } from "@/lib/email";
+import { excedeLimite } from "@/lib/limite";
 
 export async function POST(request: Request) {
   try {
@@ -13,6 +14,13 @@ export async function POST(request: Request) {
     }
 
     await dbConnect();
+
+    // Cada llamada manda un correo por Resend: sin tope, este endpoint es un
+    // caño de spam con el dominio del dojo como remitente.
+    if (await excedeLimite(`forgot:${String(email).toLowerCase()}`, 3, 900)) {
+      // Mismo mensaje que el camino feliz: no revela si el correo existe.
+      return NextResponse.json({ message: "Si el correo esta registrado, recibiras un codigo" });
+    }
 
     const user = await User.findOne({ email: email.toLowerCase() });
 
