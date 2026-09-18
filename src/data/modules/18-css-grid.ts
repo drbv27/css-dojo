@@ -385,7 +385,15 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         cssSuffix: ";\n}",
         blanks: ["repeat(3, 1fr)"],
       },
-      validation: { type: "regex", answer: "repeat\\s*\\(\\s*3\\s*,\\s*1fr\\s*\\)" },
+      // Las DOS formas, porque el hint y la explicación prometen las dos: "También
+      // podrías escribir '1fr 1fr 1fr'". El regex anterior aceptaba solo repeat()
+      // y le marcaba error a la forma que el propio texto declara equivalente.
+      // El anclaje `^…$` cierra ademas un agujero aparte: `test()` no esta
+      // anclado, asi que "basura repeat(3,1fr) basura" aprobaba.
+      validation: {
+        type: "regex",
+        answer: "^\\s*(repeat\\s*\\(\\s*3\\s*,\\s*1fr\\s*\\)|1fr\\s+1fr\\s+1fr)\\s*$",
+      },
       hint: "Usá la función repeat() con 3 repeticiones de 1fr. También podrías escribir '1fr 1fr 1fr'.",
       explanation:
         "La expresión 'repeat(3, 1fr)' crea 3 columnas de igual tamaño. La unidad 'fr' reparte el espacio disponible de forma proporcional. Es equivalente a escribir '1fr 1fr 1fr'.",
