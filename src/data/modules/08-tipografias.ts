@@ -38,7 +38,7 @@ h1 {
 
 1. Intenta usar **Georgia**
 2. Si no está disponible, prueba **Times New Roman** (entre comillas porque tiene espacios)
-3. Como último recurso, usa cualquier fuente **serif** del sistema
+3. Como último recurso, usá cualquier fuente **serif** del sistema
 
 ### Fuentes seguras para la web (web safe fonts)
 
@@ -75,7 +75,7 @@ Siempre termina tu lista con una **familia genérica**:
       title: "Tamaño de fuente",
       content: `## Tamaño de fuente
 
-La propiedad \`font-size\` controla el **tamaño del texto**. Existen varias unidades que puedes usar.
+La propiedad \`font-size\` controla el **tamaño del texto**. Existen varias unidades que podés usar.
 
 ### Unidades absolutas
 
@@ -121,10 +121,10 @@ Relativa al tamaño de fuente del **elemento padre**:
 ### ¿Cuál usar?
 
 - **rem** es la unidad **recomendada actualmente** para la mayoria de los casos
-- **px** es útil cuando necesitas un tamaño exacto e inmutable
+- **px** es útil cuando necesitás un tamaño exacto e inmutable
 - **em** es útil para componentes que deben escalar proporcionalmente
 
-> **Consejo profesional:** Usa \`rem\` como unidad predeterminada. Facilita la accesibilidad porque respeta las preferencias de tamaño de texto del usuario.`,
+> **Consejo profesional:** Usá \`rem\` como unidad predeterminada. Facilita la accesibilidad porque respeta las preferencias de tamaño de texto del usuario.`,
       codeExample: {
         html: `<h1>Titulo en 2rem (32px)</h1>\n<h2>Subtitulo en 1.5rem (24px)</h2>\n<p>Parrafo en 1rem (16px)</p>\n<small>Texto pequeno en 0.875rem (14px)</small>`,
         css: `h1 {\n  font-size: 2rem;\n}\nh2 {\n  font-size: 1.5rem;\n}\np {\n  font-size: 1rem;\n}\nsmall {\n  font-size: 0.875rem;\n}`,
@@ -189,7 +189,7 @@ strong { font-weight: bold; } /* Equivale a 700 */
 .bold { font-weight: 700; }
 \`\`\`
 
-> **Nota:** No todas las fuentes soportan los 9 pesos. Si usas un peso que la fuente no tiene, el navegador usara el más cercano disponible.`,
+> **Nota:** No todas las fuentes soportan los 9 pesos. Si usás un peso que la fuente no tiene, el navegador usara el más cercano disponible.`,
       codeExample: {
         html: `<p class="light">Texto Light (300)</p>\n<p class="regular">Texto Regular (400)</p>\n<p class="semibold">Texto Semi Bold (600)</p>\n<p class="bold">Texto Bold (700)</p>\n<p class="italica">Texto en cursiva</p>`,
         css: `.light { font-weight: 300; }\n.regular { font-weight: 400; }\n.semibold { font-weight: 600; }\n.bold { font-weight: 700; }\n.italica {\n  font-style: italic;\n  color: slategray;\n}`,
@@ -340,7 +340,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la familia genérica de respaldo para esta lista de fuentes serif:",
+        "Completá la familia genérica de respaldo para esta lista de fuentes serif:",
       codeTemplate: {
         html: `<p>Texto con fuente serif</p>`,
         cssPrefix: 'p {\n  font-family: Georgia, "Times New Roman", ',
@@ -393,7 +393,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 20,
       order: 4,
       prompt:
-        "Aplica a todos los párrafos (<p>): la pila Arial, sans-serif, tamaño de 18px, peso 600 y estilo italica.",
+        "Aplicá a todos los párrafos (<p>): la pila Arial, sans-serif, tamaño de 18px, peso 600 y estilo italica.",
       codeTemplate: {
         html: `<p>Primer parrafo de prueba.</p>\n<p>Segundo parrafo de prueba.</p>`,
         cssPrefix: "",
@@ -407,7 +407,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas cuatro propiedades: font-family, font-size, font-weight y font-style.",
+      hint: "Necesitás cuatro propiedades: font-family, font-size, font-weight y font-style.",
       explanation:
         "Se combinan cuatro propiedades tipográficas: font-family: Arial para la fuente, font-size: 18px para el tamaño, font-weight: 600 para semi-negrita y font-style: italic para cursiva.",
     },
@@ -437,7 +437,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       xpReward: 10,
       order: 6,
       prompt:
-        "El diseño pide que el título h1 este en negrita. Completa el valor de font-weight:",
+        "El diseño pide que el título h1 este en negrita. Completá el valor de font-weight:",
       codeTemplate: {
         html: `<h1>Titulo en negrita</h1>`,
         cssPrefix: "h1 {\n  font-weight: ",
@@ -470,7 +470,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una para h1 (Georgia, 36px, bold) y otra para p (Arial, 16px, normal).",
+      hint: "Necesitás dos reglas: una para h1 (Georgia, 36px, bold) y otra para p (Arial, 16px, normal).",
       explanation:
         "Se crean dos reglas: h1 con Georgia serif a 36px en negrita para un título clásico, y p con Arial sans-serif a 16px con peso normal para un cuerpo de texto limpio y legible.",
     },

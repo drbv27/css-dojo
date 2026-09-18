@@ -65,7 +65,7 @@ Las unidades absolutas **no se adaptan** al tamaño de la pantalla o las prefere
 }
 \`\`\`
 
-> **Consejo:** Usa \`px\` para detalles pequeños (bordes, sombras, border-radius) y unidades relativas para tamaños de texto, anchos y alturas.`,
+> **Consejo:** Usá \`px\` para detalles pequeños (bordes, sombras, border-radius) y unidades relativas para tamaños de texto, anchos y alturas.`,
       codeExample: {
         html: `<div class="caja-px">300px de ancho</div>\n<div class="caja-pt">Texto en 14pt</div>\n<div class="borde-demo">Borde de 2px solido</div>`,
         css: `.caja-px {\n  width: 300px;\n  padding: 16px;\n  background-color: lightblue;\n  margin-bottom: 8px;\n}\n\n.caja-pt {\n  font-size: 14pt;\n  padding: 16px;\n  background-color: lightyellow;\n  margin-bottom: 8px;\n}\n\n.borde-demo {\n  border: 2px solid steelblue;\n  border-radius: 8px;\n  padding: 16px;\n  box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n}`,
@@ -140,7 +140,7 @@ p { font-size: 1rem; }    /* Siempre 16px */
 | Herencia compuesta | Si (puede acumularse) | No (siempre relativo a root) |
 | Uso ideal | Padding/margin proporcionales | Tamaños de fuente consistentes |
 
-> **Buena práctica:** Usa \`rem\` para tamaños de fuente y \`em\` para padding y margin que deben escalar proporcionalmente al texto del componente.`,
+> **Buena práctica:** Usá \`rem\` para tamaños de fuente y \`em\` para padding y margin que deben escalar proporcionalmente al texto del componente.`,
       codeExample: {
         html: `<div class="contenedor">\n  <h2>Titulo en rem</h2>\n  <p class="grande">Texto grande con padding en em</p>\n  <p class="normal">Texto normal</p>\n  <div class="hijo">Hijo al 80% del ancho</div>\n</div>`,
         css: `html { font-size: 16px; }\n\n.contenedor {\n  width: 100%;\n  max-width: 600px;\n  padding: 1rem;\n  background: #f9f9f9;\n  border: 1px solid #ddd;\n}\n\nh2 { font-size: 1.75rem; } /* 28px */\n\n.grande {\n  font-size: 1.25rem; /* 20px */\n  padding: 1em; /* 20px (relativo a su font-size) */\n  background: lightblue;\n}\n\n.normal {\n  font-size: 1rem; /* 16px */\n  padding: 1em; /* 16px */\n  background: lightyellow;\n}\n\n.hijo {\n  width: 80%;\n  padding: 0.5rem;\n  background: lightgreen;\n  margin-top: 8px;\n}`,
@@ -404,7 +404,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa la unidad para que la sección hero ocupe exactamente el 100% de la altura de la ventana:",
+        "Completá la unidad para que la sección hero ocupe exactamente el 100% de la altura de la ventana:",
       codeTemplate: {
         html: `<section class="hero">Seccion a pantalla completa</section>`,
         cssPrefix: ".hero {\n  width: 100%;\n  height: 100",
@@ -412,7 +412,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         blanks: ["vh"],
       },
       validation: { type: "exact", answer: "vh" },
-      hint: "Necesitas una unidad de viewport que represente el alto (height) de la ventana. 100 de esta unidad = todo el alto.",
+      hint: "Necesitás una unidad de viewport que represente el alto (height) de la ventana. 100 de esta unidad = todo el alto.",
       explanation:
         "La unidad 'vh' (viewport height) representa el 1% de la altura de la ventana. 100vh = 100% de la altura visible del navegador, creando una sección de pantalla completa.",
     },
@@ -447,7 +447,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "La 'r' en rem significa 'root'. Piensa en que es la referencia de calculo para cada unidad.",
+      hint: "La 'r' en rem significa 'root'. Pensá en que es la referencia de calculo para cada unidad.",
       explanation:
         "em se calcula relativa al font-size del propio elemento (o del padre si se usa en font-size). rem ('root em') siempre se calcula relativa al font-size del <html>. Esto hace que rem sea más predecible y evite la acumulación de herencia.",
     },
@@ -458,7 +458,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea un contenedor responsivo con clase 'contenedor' que use: width: 90%, max-width: 800px, margin: 0 auto, padding: 1.5rem. Agrega un h1 con font-size: 2rem y un párrafo con font-size: 1rem y line-height: 1.6.",
+        "Creá un contenedor responsivo con clase 'contenedor' que use: width: 90%, max-width: 800px, margin: 0 auto, padding: 1.5rem. Agregá un h1 con font-size: 2rem y un párrafo con font-size: 1rem y line-height: 1.6.",
       codeTemplate: {
         html: `<div class="contenedor">\n  <h1>Titulo Responsivo</h1>\n  <p>Este contenedor se adapta al tamano de la pantalla usando unidades relativas.</p>\n</div>`,
         cssPrefix: "",
@@ -472,7 +472,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas tres reglas: .contenedor con ancho relativo y máximo fijo, h1 con fuente grande en rem, y p con fuente base en rem.",
+      hint: "Necesitás tres reglas: .contenedor con ancho relativo y máximo fijo, h1 con fuente grande en rem, y p con fuente base en rem.",
       explanation:
         "El contenedor combina width: 90% (flexible) con max-width: 800px (límite). Las fuentes usan rem para respetar las preferencias del usuario. Este es un patrón muy común en diseño web moderno.",
     },
@@ -483,7 +483,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       xpReward: 30,
       order: 7,
       prompt:
-        "Completa la unidad del padding para que escale proporcionalmente con el font-size del propio botón (no con el root):",
+        "Completá la unidad del padding para que escale proporcionalmente con el font-size del propio botón (no con el root):",
       codeTemplate: {
         html: `<button class="btn">Boton escalable</button>`,
         cssPrefix: ".btn {\n  font-size: 1.25rem;\n  padding: 0.75",
@@ -491,9 +491,9 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         blanks: ["em"],
       },
       validation: { type: "exact", answer: "em" },
-      hint: "Necesitas una unidad relativa al font-size del PROPIO elemento, no del root. Es una unidad de dos letras.",
+      hint: "Necesitás una unidad relativa al font-size del PROPIO elemento, no del root. Es una unidad de dos letras.",
       explanation:
-        "La unidad 'em' hace que el padding sea proporcional al font-size del botón (1.25rem = 20px). Así, 0.75em = 15px y 1.5em = 30px. Si cambias el font-size del botón, el padding se ajusta automáticamente.",
+        "La unidad 'em' hace que el padding sea proporcional al font-size del botón (1.25rem = 20px). Así, 0.75em = 15px y 1.5em = 30px. Si cambiás el font-size del botón, el padding se ajusta automáticamente.",
     },
     {
       id: "10-ej-08",
@@ -524,7 +524,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       },
       hint: "Tres unidades en un solo ejercicio: vh para el alto y el padding vertical, % para el padding horizontal, y clamp() con rem y vw en el título. El padding acepta dos valores: primero vertical, después horizontal.",
       explanation:
-        "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahí es donde entra el box-sizing: border-box del módulo anterior.",
+        "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitás width y padding juntos, ahí es donde entra el box-sizing: border-box del módulo anterior.",
     },
     {
       id: "10-ej-09",
@@ -592,7 +592,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       retoPasos: [
         {
           instruccion:
-            "Dale a .hero una altura de 60vh. Una unidad de viewport es la que sirve cuando queres una fracción de la PANTALLA.",
+            "Dale a .hero una altura de 60vh. Una unidad de viewport es la que sirve cuando querés una fracción de la PANTALLA.",
           esperado: ".hero { height: 60vh; }",
         },
         {

@@ -76,7 +76,7 @@ Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el
 }
 \`\`\`
 
-Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y el borde se descuentan del contenido en vez de sumarse por fuera. La caja del ejemplo mide 300px, y si le agregas padding el contenido se encoge pero la caja no se mueve.
+Con \`border-box\`, \`width: 300px\` significa **300px totales**: el padding y el borde se descuentan del contenido en vez de sumarse por fuera. La caja del ejemplo mide 300px, y si le agregás padding el contenido se encoge pero la caja no se mueve.
 
 > **Buena práctica:** ponelo en todos tus proyectos, en el selector universal, antes que cualquier otra regla. Es el ajuste que más dolores de cabeza evita en CSS -- sin el, cada padding que agregues te corre el layout.`,
       codeExample: {
@@ -168,7 +168,7 @@ El \`padding\` es el **espacio entre el contenido** de un elemento y **su borde*
 
 ### Propiedad abreviada (shorthand)
 
-Puedes escribir padding con 1, 2, 3 o 4 valores:
+Podés escribir padding con 1, 2, 3 o 4 valores:
 
 #### 1 valor: aplica a los 4 lados
 \`\`\`css
@@ -196,9 +196,9 @@ Puedes escribir padding con 1, 2, 3 o 4 valores:
 
 ### Regla mnemotecnica
 
-Los 4 valores van en **sentido del reloj** empezando por arriba: **T**op, **R**ight, **B**ottom, **L**eft. Recuerda: **TR**ou**BL**e (problema en ingles).
+Los 4 valores van en **sentido del reloj** empezando por arriba: **T**op, **R**ight, **B**ottom, **L**eft. Recordá: **TR**ou**BL**e (problema en ingles).
 
-> **Importante:** El padding NUNCA puede ser negativo. Si necesitas valores negativos, usa margin.`,
+> **Importante:** El padding NUNCA puede ser negativo. Si necesitás valores negativos, usá margin.`,
       codeExample: {
         html: `<div class="sin-padding">Sin padding</div>\n<div class="con-padding">Con padding: 20px</div>\n<div class="padding-mixto">Padding: 10px arriba/abajo, 40px lados</div>`,
         css: `.sin-padding {\n  background-color: tomato;\n  color: white;\n  margin-bottom: 8px;\n}\n.con-padding {\n  background-color: steelblue;\n  color: white;\n  padding: 20px;\n  margin-bottom: 8px;\n}\n.padding-mixto {\n  background-color: seagreen;\n  color: white;\n  padding: 10px 40px;\n}`,
@@ -260,7 +260,7 @@ Cuando dos márgenes verticales se tocan, **no se suman sino que se fusionan**: 
 
 Este comportamiento solo ocurre con **márgenes verticales** (top/bottom), nunca con horizontales.
 
-> **Atención:** El colapso de márgenes es una de las fuentes de confusión más comunes en CSS. Recuerda: márgenes verticales adyacentes se fusionan, los horizontales no.`,
+> **Atención:** El colapso de márgenes es una de las fuentes de confusión más comunes en CSS. Recordá: márgenes verticales adyacentes se fusionan, los horizontales no.`,
       codeExample: {
         html: `<div class="caja-1">Caja 1 (margin-bottom: 30px)</div>\n<div class="caja-2">Caja 2 (margin-top: 20px)</div>\n<div class="centrada">Caja centrada con margin: 20px auto</div>`,
         css: `.caja-1 {\n  background-color: lightcoral;\n  padding: 15px;\n  margin-bottom: 30px;\n}\n.caja-2 {\n  background-color: lightblue;\n  padding: 15px;\n  margin-top: 20px;\n  margin-bottom: 20px;\n}\n.centrada {\n  width: 300px;\n  margin: 20px auto;\n  background-color: lightgreen;\n  padding: 15px;\n  text-align: center;\n  border-radius: 8px;\n}`,
@@ -362,7 +362,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 2,
       prompt:
-        "Completa la propiedad para limitar el ancho máximo del contenedor a 800px, permitiendo que sea más pequeño en pantallas chicas:",
+        "Completá la propiedad para limitar el ancho máximo del contenedor a 800px, permitiendo que sea más pequeño en pantallas chicas:",
       codeTemplate: {
         html: `<div class="contenedor">Contenido del contenedor</div>`,
         cssPrefix: ".contenedor {\n  ",
@@ -381,7 +381,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 3,
       prompt:
-        "Crea una caja con la clase 'caja' que tenga: ancho de 300px, alto de 200px, padding de 20px y margin de 10px. Agrega background-color: lightblue para visualizarla.",
+        "Creá una caja con la clase 'caja' que tenga: ancho de 300px, alto de 200px, padding de 20px y margin de 10px. Agregá background-color: lightblue para visualizarla.",
       codeTemplate: {
         html: `<div class="caja">Contenido de la caja</div>`,
         cssPrefix: "",
@@ -395,7 +395,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas 5 propiedades: width, height, padding, margin y background-color.",
+      hint: "Necesitás 5 propiedades: width, height, padding, margin y background-color.",
       explanation:
         "La caja se define con width: 300px para el ancho, height: 200px para el alto, padding: 20px para el espacio interior, margin: 10px para el espacio exterior y background-color para visualizarla.",
     },
@@ -476,7 +476,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa el valor de margin para centrar horizontalmente este contenedor de 600px de ancho:",
+        "Completá el valor de margin para centrar horizontalmente este contenedor de 600px de ancho:",
       codeTemplate: {
         html: `<div class="centrado">Contenido centrado</div>`,
         cssPrefix: ".centrado {\n  margin: ",
@@ -484,7 +484,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         blanks: ["0"],
       },
       validation: { type: "exact", answer: "0" },
-      hint: "Necesitas 0 de margen vertical y auto para horizontal. El primer valor es para arriba y abajo.",
+      hint: "Necesitás 0 de margen vertical y auto para horizontal. El primer valor es para arriba y abajo.",
       explanation:
         "La declaración 'margin: 0 auto' usa 0 para los márgenes verticales (top/bottom) y 'auto' para los horizontales (left/right). El valor 'auto' reparte el espacio equitativamente, centrando el elemento.",
     },
@@ -495,7 +495,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 30,
       order: 7,
       prompt:
-        "Reproduce el diseño objetivo: una caja centrada horizontalmente con ancho de 500px, padding de 30px, margin de 20px auto, borde de 1px solid #ccc y border-radius de 8px. Agrega background-color: white.",
+        "Reproduce el diseño objetivo: una caja centrada horizontalmente con ancho de 500px, padding de 30px, margin de 20px auto, borde de 1px solid #ccc y border-radius de 8px. Agregá background-color: white.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h2>Tarjeta centrada</h2>\n  <p>Esta tarjeta esta centrada y tiene espaciado correcto.</p>\n</div>`,
         cssPrefix: "",
@@ -509,7 +509,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas: width, padding, margin con auto para centrar, border, border-radius y background-color.",
+      hint: "Necesitás: width, padding, margin con auto para centrar, border, border-radius y background-color.",
       explanation:
         "La tarjeta combina width: 500px para el ancho, padding: 30px para espacio interior, margin: 20px auto para centrado horizontal, border para el borde, border-radius para esquinas redondeadas y background-color: white.",
     },
@@ -520,7 +520,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 20,
       order: 8,
       prompt:
-        "Centra horizontalmente un div con clase 'centrado' de 400px de ancho usando margin: 0 auto. Agrega background-color: lightyellow y padding: 20px para visualizarlo.",
+        "Centra horizontalmente un div con clase 'centrado' de 400px de ancho usando margin: 0 auto. Agregá background-color: lightyellow y padding: 20px para visualizarlo.",
       codeTemplate: {
         html: `<div class="centrado">\n  <p>Este contenido debe estar centrado en la pagina.</p>\n</div>`,
         cssPrefix: "",
@@ -534,7 +534,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Para centrar un elemento necesitas dos cosas: un ancho definido (width) y margin: 0 auto.",
+      hint: "Para centrar un elemento necesitás dos cosas: un ancho definido (width) y margin: 0 auto.",
       explanation:
         "Para centrar horizontalmente se necesita: 1) Un ancho definido (width: 400px) para que haya espacio sobrante, y 2) margin: 0 auto que reparte ese espacio equitativamente a ambos lados.",
     },
@@ -545,7 +545,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       xpReward: 15,
       order: 9,
       prompt:
-        "Escribis .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. ¿Qué forma termina teniendo la caja?",
+        "Escribís .caja { width: 400px; height: 100px; aspect-ratio: 1 / 1; }. ¿Qué forma termina teniendo la caja?",
       options: [
         { id: "a", text: "Un cuadrado de 400x400", isCorrect: false },
         { id: "b", text: "Un cuadrado de 100x100", isCorrect: false },

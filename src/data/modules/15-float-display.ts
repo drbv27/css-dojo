@@ -136,7 +136,7 @@ Para contenedores con hijos flotados, el clearfix más utilizado es:
 }
 \`\`\`
 
-Aplicas la clase \`clearfix\` al contenedor padre y automáticamente se expande para envolver a sus hijos flotados.
+Aplicás la clase \`clearfix\` al contenedor padre y automáticamente se expande para envolver a sus hijos flotados.
 
 > **En la práctica moderna:** Para layouts de columnas, usa Flexbox o Grid en lugar de floats. Reserva \`float\` para su propósito original: envolver texto alrededor de elementos.`,
       codeExample: {
@@ -202,7 +202,7 @@ Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **blo
 | Acepta margin vertical | Si | No | Si |
 | Ocupa todo el ancho | Si | No | No |
 
-> **Consejo:** Puedes cambiar el display de cualquier elemento. Un \`span\` puede ser block y un \`div\` puede ser inline. El display por defecto es solo una sugerencia del navegador.`,
+> **Consejo:** Podés cambiar el display de cualquier elemento. Un \`span\` puede ser block y un \`div\` puede ser inline. El display por defecto es solo una sugerencia del navegador.`,
       codeExample: {
         html: `<div class="bloque">Soy display: block (ocupo todo el ancho)</div>\n<span class="en-linea">inline 1</span>\n<span class="en-linea">inline 2</span>\n<span class="en-linea">inline 3</span>\n<br><br>\n<span class="inline-bloque">inline-block 1</span>\n<span class="inline-bloque">inline-block 2</span>`,
         css: `.bloque {\n  display: block;\n  background-color: #d4edda;\n  padding: 10px;\n  margin-bottom: 10px;\n  border: 2px solid #28a745;\n}\n.en-linea {\n  display: inline;\n  background-color: #cce5ff;\n  padding: 5px 10px;\n  border: 2px solid #007bff;\n}\n.inline-bloque {\n  display: inline-block;\n  width: 150px;\n  height: 60px;\n  background-color: #f8d7da;\n  padding: 10px;\n  border: 2px solid #dc3545;\n  text-align: center;\n  vertical-align: top;\n}`,
@@ -307,7 +307,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         { id: "d", text: "Para animar elementos", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en cómo se ven las imágenes en una revista o periodico, con texto fluyendo alrededor.",
+      hint: "Pensá en cómo se ven las imágenes en una revista o periodico, con texto fluyendo alrededor.",
       explanation:
         "Float fue diseñado originalmente para envolver texto alrededor de imágenes, similar al efecto que vemos en revistas impresas. Aunque se uso mucho para layouts de columnas, hoy Flexbox y Grid son mejores opciones para eso.",
     },
@@ -318,7 +318,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para que el footer aparezca debajo de todos los elementos flotados:",
+        "Completá la propiedad para que el footer aparezca debajo de todos los elementos flotados:",
       codeTemplate: {
         html: `<div class="col" style="float:left">Columna</div>\n<footer class="pie">Footer</footer>`,
         cssPrefix: ".pie {\n  ",
@@ -406,7 +406,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         { id: "d", text: "display: none solo funciona en elementos block", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa con el espacio que ocupaba el elemento cuando se oculta.",
+      hint: "Pensá en que pasa con el espacio que ocupaba el elemento cuando se oculta.",
       explanation:
         "display: none oculta el elemento Y lo saca del flujo (no ocupa espacio, como si no existiera). visibility: hidden oculta el elemento visualmente pero conserva su espacio en el layout (queda un hueco vacío).",
     },
@@ -417,7 +417,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una imagen `.foto` flotada a la izquierda con float: left, width: 120px, height: 120px, margin: 0 15px 10px 0, y background-color: #4682b4. El contenedor `.articulo` debe tener overflow: hidden para envolver el float.",
+        "Creá una imagen `.foto` flotada a la izquierda con float: left, width: 120px, height: 120px, margin: 0 15px 10px 0, y background-color: #4682b4. El contenedor `.articulo` debe tener overflow: hidden para envolver el float.",
       codeTemplate: {
         html: `<div class="articulo">\n  <div class="foto"></div>\n  <p>Este texto debe fluir alrededor de la imagen flotada a la izquierda. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>\n</div>`,
         cssPrefix: "",
@@ -442,7 +442,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa el valor de display para que estos span acepten width y height pero se mantengan en la misma línea:",
+        "Completá el valor de display para que estos span acepten width y height pero se mantengan en la misma línea:",
       codeTemplate: {
         html: `<span class="chip">HTML</span>\n<span class="chip">CSS</span>\n<span class="chip">JS</span>`,
         cssPrefix: ".chip {\n  display: ",
@@ -450,7 +450,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         blanks: ["inline-block"],
       },
       validation: { type: "exact", answer: "inline-block" },
-      hint: "Necesitas un display que permita dimensiones (como block) pero que no rompa la línea (como inline).",
+      hint: "Necesitás un display que permita dimensiones (como block) pero que no rompa la línea (como inline).",
       explanation:
         "Display inline-block combina lo mejor de ambos mundos: los elementos se mantienen en la misma línea (como inline) pero aceptan width, height y margin/padding completos (como block).",
     },
@@ -461,7 +461,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea tres botones (clase 'btn') en la misma línea usando display: inline-block, con padding: 10px 25px, background-color: #007bff, color: white, border: none, border-radius: 4px, margin: 5px, font-size: 14px y cursor: pointer.",
+        "Creá tres botones (clase 'btn') en la misma línea usando display: inline-block, con padding: 10px 25px, background-color: #007bff, color: white, border: none, border-radius: 4px, margin: 5px, font-size: 14px y cursor: pointer.",
       codeTemplate: {
         html: `<button class="btn">Aceptar</button>\n<button class="btn">Cancelar</button>\n<button class="btn">Ayuda</button>`,
         cssPrefix: "",
@@ -475,7 +475,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa display: inline-block para que los botones se mantengan en la misma línea pero acepten padding y dimensiones.",
+      hint: "Usá display: inline-block para que los botones se mantengan en la misma línea pero acepten padding y dimensiones.",
       explanation:
         "Display inline-block es perfecto para botones que deben estar en la misma línea. Cada botón acepta padding, border-radius y margin completos mientras se mantiene al lado de los otros botones.",
     },
@@ -525,7 +525,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         },
         {
           instruccion:
-            "Ahora con `.articulo` cambia a display flex y dale un gap de 12px. Mira la vista previa: con flex el float deja de hacer falta.",
+            "Ahora con `.articulo` cambia a display flex y dale un gap de 12px. Mirá la vista previa: con flex el float deja de hacer falta.",
           esperado: ".articulo { display: flex; gap: 12px; }",
         },
       ],

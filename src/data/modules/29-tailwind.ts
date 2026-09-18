@@ -42,7 +42,7 @@ export const tailwindModule: ModuleData = {
 
 1. **No inventas nombres de clases** - No más ".contenedor-principal-wrapper"
 2. **CSS no crece** - Reutilizas clases existentes, el archivo CSS no crece con cada componente
-3. **Cambios seguros** - Modificar una clase solo afecta al elemento donde la usas
+3. **Cambios seguros** - Modificar una clase solo afecta al elemento donde la usás
 4. **Diseño consistente** - Sistema de espaciado y colores predefinido
 5. **Responsive built-in** - Prefijos como \`md:\`, \`lg:\` para cada breakpoint
 
@@ -67,7 +67,7 @@ npx tailwindcss init
 |---------|-----------|-------------|
 | Enfoque | Componentes predefinidos | Clases utilitarias |
 | Personalización | Sobreescribir variables | Configurar tailwind.config.js |
-| Tamaño final | Incluye todo | Solo lo que usas (purge) |
+| Tamaño final | Incluye todo | Solo lo que usás (purge) |
 | Curva de aprendizaje | Rápido al inicio | Memorizar clases, luego rápido |
 | Diseño | Sitios "Bootstrap-like" | Diseño totalmente personalizado |
 
@@ -216,7 +216,7 @@ El sistema de espaciado de Tailwind usa una escala de 4px:
 <div class="max-w-md">max-width: 28rem</div>
 \`\`\`
 
-> **Consejo:** La escala de 4px de Tailwind (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24...) crea un ritmo visual consistente. Usa siempre estas unidades para mantener la armonia.`,
+> **Consejo:** La escala de 4px de Tailwind (0, 1, 2, 3, 4, 5, 6, 8, 10, 12, 16, 20, 24...) crea un ritmo visual consistente. Usá siempre estas unidades para mantener la armonia.`,
       codeExample: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-6 bg-gray-100">\n  <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto">\n    <div class="bg-blue-500 text-white p-6 rounded-lg text-center font-bold">1</div>\n    <div class="bg-green-500 text-white p-6 rounded-lg text-center font-bold">2</div>\n    <div class="bg-purple-500 text-white p-6 rounded-lg text-center font-bold">3</div>\n  </div>\n  <div class="flex justify-between items-center mt-6 max-w-4xl mx-auto bg-white p-4 rounded-lg shadow">\n    <span class="font-bold text-gray-700">Flex layout</span>\n    <div class="flex gap-2">\n      <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">Tag 1</span>\n      <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm">Tag 2</span>\n    </div>\n  </div>\n</div>`,
         css: ``,
@@ -541,7 +541,7 @@ Los prefijos se pueden combinar:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la clase de Tailwind para agregar padding de 1rem (16px) a un elemento:",
+        "Completá la clase de Tailwind para agregar padding de 1rem (16px) a un elemento:",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="___">Contenido con padding</div>`,
         cssPrefix: "",
@@ -549,7 +549,7 @@ Los prefijos se pueden combinar:
         blanks: ["p-4"],
       },
       validation: { type: "exact", answer: "p-4" },
-      hint: "En Tailwind, p = padding y el número sigue la escala de 4px. Para 16px, necesitas 16/4 = 4.",
+      hint: "En Tailwind, p = padding y el número sigue la escala de 4px. Para 16px, necesitás 16/4 = 4.",
       explanation:
         "En Tailwind, p-4 aplica padding de 1rem (16px) en todos los lados. La escala de espaciado multiplica el número por 4px: p-1 = 4px, p-2 = 8px, p-3 = 12px, p-4 = 16px.",
     },
@@ -612,7 +612,7 @@ Los prefijos se pueden combinar:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa el prefijo de Tailwind para que el fondo solo cambie en pantallas medianas (768px) y superiores:",
+        "Completá el prefijo de Tailwind para que el fondo solo cambie en pantallas medianas (768px) y superiores:",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="bg-white ___:bg-blue-500">Fondo azul en desktop</div>`,
         cssPrefix: "",
@@ -631,7 +631,7 @@ Los prefijos se pueden combinar:
       xpReward: 20,
       order: 6,
       prompt:
-        "Crea una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un botón con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver más'.",
+        "Creá una tarjeta con Tailwind que tenga: un div contenedor con clases 'max-w-sm mx-auto bg-white rounded-xl shadow-lg overflow-hidden', dentro un div con 'p-6', un h2 con 'text-xl font-bold text-gray-900 mb-2' con texto 'Mi Tarjeta', un p con 'text-gray-600 text-sm' con un texto descriptivo, y un botón con 'mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors' con texto 'Ver más'.",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="p-8 bg-gray-100 min-h-[200px] flex items-center justify-center">`,
         cssPrefix: "",
@@ -685,7 +685,7 @@ Los prefijos se pueden combinar:
       xpReward: 30,
       order: 8,
       prompt:
-        "Completa el prefijo de Tailwind para aplicar un fondo oscuro cuando el modo oscuro está activo:",
+        "Completá el prefijo de Tailwind para aplicar un fondo oscuro cuando el modo oscuro está activo:",
       codeTemplate: {
         html: `<script src="https://cdn.tailwindcss.com"></script>\n<div class="bg-white ___:bg-gray-900 text-gray-900 dark:text-white p-6 rounded-lg">\n  Contenido con dark mode\n</div>`,
         cssPrefix: "",
@@ -705,7 +705,7 @@ Los prefijos se pueden combinar:
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Aca no escribis CSS: escribis HTML con clases utilitarias, que es todo el punto de Tailwind. Arma la tarjeta agregando las clases que pide cada paso.",
+        "Reto integrador. Aca no escribís CSS: escribís HTML con clases utilitarias, que es todo el punto de Tailwind. Arma la tarjeta agregando las clases que pide cada paso.",
       retoPasos: [
         {
           instruccion:

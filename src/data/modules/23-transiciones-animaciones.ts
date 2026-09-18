@@ -55,7 +55,7 @@ Sin la transición, el cambio de color sería instantaneo. Con ella, el color ca
 
 ### Transiciones múltiples
 
-Puedes animar varias propiedades separandolas con comas:
+Podés animar varias propiedades separandolas con comas:
 
 \`\`\`css
 .tarjeta {
@@ -79,7 +79,7 @@ O anima todas las propiedades con \`all\`:
 }
 \`\`\`
 
-> **Consejo de rendimiento:** Evita usar \`transition: all\` en producción. Es mejor especificar cada propiedad para evitar transiciones no deseadas y mejorar el rendimiento.`,
+> **Consejo de rendimiento:** Evitá usar \`transition: all\` en producción. Es mejor especificar cada propiedad para evitar transiciones no deseadas y mejorar el rendimiento.`,
       codeExample: {
         html: `<button class="btn-transicion">Pasa el cursor sobre mi</button>\n<div class="tarjeta-hover">\n  <h3>Tarjeta interactiva</h3>\n  <p>Hover para ver el efecto</p>\n</div>`,
         css: `.btn-transicion {\n  background-color: #3498db;\n  color: white;\n  padding: 12px 32px;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  cursor: pointer;\n  transition: background-color 0.3s ease, transform 0.2s ease;\n}\n.btn-transicion:hover {\n  background-color: #2980b9;\n  transform: scale(1.05);\n}\n\n.tarjeta-hover {\n  margin-top: 16px;\n  padding: 24px;\n  background: white;\n  border: 1px solid #ddd;\n  border-radius: 12px;\n  transition: transform 0.3s ease, box-shadow 0.3s ease;\n}\n.tarjeta-hover:hover {\n  transform: translateY(-4px);\n  box-shadow: 0 8px 25px rgba(0,0,0,0.1);\n}`,
@@ -115,7 +115,7 @@ Para control total, usa \`cubic-bezier(x1, y1, x2, y2)\`:
 }
 \`\`\`
 
-Los cuatro números definen dos puntos de control de una curva Bezier. Puedes experimentar con herramientas como **cubic-bezier.com**.
+Los cuatro números definen dos puntos de control de una curva Bezier. Podés experimentar con herramientas como **cubic-bezier.com**.
 
 ### Función steps()
 
@@ -167,7 +167,7 @@ Usa \`@keyframes\` para definir los pasos:
 }
 \`\`\`
 
-También puedes usar porcentajes para más control:
+También podés usar porcentajes para más control:
 
 \`\`\`css
 @keyframes rebotar {
@@ -216,7 +216,7 @@ Controla el estado del elemento fuera del tiempo de la animación:
 - \`backwards\`: Aplica los estilos del primer keyframe durante el delay
 - \`both\`: Combina forwards y backwards
 
-> **Importante:** \`forwards\` es esencial cuando quieres que el elemento mantenga su estado final después de animarse (por ejemplo, permanecer visible después de un fade-in).`,
+> **Importante:** \`forwards\` es esencial cuando querés que el elemento mantenga su estado final después de animarse (por ejemplo, permanecer visible después de un fade-in).`,
       codeExample: {
         html: `<div class="contenedor-animaciones">\n  <div class="pulso">Pulso</div>\n  <div class="flotante">Flotante</div>\n  <div class="entrada">Entrada</div>\n</div>`,
         css: `@keyframes pulsar {\n  0% { transform: scale(1); }\n  50% { transform: scale(1.1); }\n  100% { transform: scale(1); }\n}\n\n@keyframes flotar {\n  0% { transform: translateY(0); }\n  50% { transform: translateY(-10px); }\n  100% { transform: translateY(0); }\n}\n\n@keyframes entrar {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n.contenedor-animaciones {\n  display: flex;\n  gap: 20px;\n  justify-content: center;\n  padding: 20px;\n}\n\n.pulso, .flotante, .entrada {\n  padding: 20px 28px;\n  border-radius: 12px;\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.pulso {\n  background: #e74c3c;\n  animation: pulsar 2s ease-in-out infinite;\n}\n.flotante {\n  background: #3498db;\n  animation: flotar 3s ease-in-out infinite;\n}\n.entrada {\n  background: #27ae60;\n  animation: entrar 1s ease-out forwards;\n}`,
@@ -274,7 +274,7 @@ Indica al navegador que una propiedad va a cambiar para que se prepare:
 
 ### Respetar preferencias del usuario
 
-Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-reduced-motion\`:
+Algunos usuarios prefieren movimiento reducido. Usá la media query \`prefers-reduced-motion\`:
 
 \`\`\`css
 @keyframes flotar {
@@ -304,7 +304,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
 | Repetición | Una vez por trigger | Se puede repetir infinitamente |
 | Control | Limitado | Total (pausar, revertir, iterar) |
 
-> **Regla práctica:** Usa transiciones para interacciones simples (hover, focus, toggle de clases). Usa animaciones para efectos complejos, automáticos o repetitivos.`,
+> **Regla práctica:** Usá transiciones para interacciones simples (hover, focus, toggle de clases). Usá animaciones para efectos complejos, automáticos o repetitivos.`,
       codeExample: {
         html: `<div class="demo-rendimiento">\n  <div class="bueno">Buen rendimiento<br>(transform)</div>\n  <div class="accesible">Respetuoso<br>(reduced-motion)</div>\n</div>`,
         css: `@keyframes mover-bien {\n  0% { transform: translateX(0); }\n  50% { transform: translateX(30px); }\n  100% { transform: translateX(0); }\n}\n\n.demo-rendimiento {\n  display: flex;\n  gap: 20px;\n  padding: 20px;\n}\n\n.bueno, .accesible {\n  padding: 24px;\n  border-radius: 12px;\n  color: white;\n  font-weight: bold;\n  text-align: center;\n}\n\n.bueno {\n  background: #27ae60;\n  will-change: transform;\n  animation: mover-bien 2s ease-in-out infinite;\n}\n\n.accesible {\n  background: #8e44ad;\n  animation: mover-bien 2s ease-in-out infinite;\n}\n\n@media (prefers-reduced-motion: reduce) {\n  .accesible {\n    animation: none;\n  }\n}`,
@@ -329,7 +329,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         { id: "d", text: "No hay diferencia, son lo mismo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en la cantidad de estados que cada una puede manejar.",
+      hint: "Pensá en la cantidad de estados que cada una puede manejar.",
       explanation:
         "Las transiciones cambian suavemente de un estado A a un estado B (requieren un trigger como :hover). Las animaciones con @keyframes pueden definir múltiples estados intermedios con porcentajes y ejecutarse automáticamente.",
     },
@@ -340,7 +340,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para que el cambio de color del botón dure 0.3 segundos con curva ease:",
+        "Completá la propiedad para que el cambio de color del botón dure 0.3 segundos con curva ease:",
       codeTemplate: {
         html: `<button class="btn">Hover</button>`,
         cssPrefix: ".btn {\n  background-color: #3498db;\n  ",
@@ -392,7 +392,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa la regla para definir una animación llamada 'girar' que rote el elemento 360 grados:",
+        "Completá la regla para definir una animación llamada 'girar' que rote el elemento 360 grados:",
       codeTemplate: {
         html: `<div class="icono">*</div>`,
         cssPrefix: "@",
@@ -411,7 +411,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una animación @keyframes llamada 'fadeIn' que cambie opacity de 0 a 1. Aplica esta animación a un elemento con clase 'aparecer' con duración de 1s, ease-out, y animation-fill-mode: forwards.",
+        "Creá una animación @keyframes llamada 'fadeIn' que cambie opacity de 0 a 1. Aplicá esta animación a un elemento con clase 'aparecer' con duración de 1s, ease-out, y animation-fill-mode: forwards.",
       codeTemplate: {
         html: `<div class="aparecer">\n  <h2>Hola mundo!</h2>\n  <p>Este contenido aparece con animacion.</p>\n</div>`,
         cssPrefix: "",
@@ -425,7 +425,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define @keyframes fadeIn con from { opacity: 0 } y to { opacity: 1 }, luego aplica la animación en .aparecer.",
+      hint: "Definí @keyframes fadeIn con from { opacity: 0 } y to { opacity: 1 }, luego aplica la animación en .aparecer.",
       explanation:
         "Se define @keyframes fadeIn con opacity de 0 a 1. Luego se aplica con 'animation: fadeIn 1s ease-out forwards'. El 'forwards' asegura que el elemento mantenga opacity: 1 al terminar la animación.",
     },
@@ -455,7 +455,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un botón con clase 'btn-animado' que tenga transición suave al hover: fondo de #3498db a #2c3e50, transformación scale(1.05), y box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2). La transición va sobre background-color, transform y box-shadow, todas 0.3s ease.",
+        "Creá un botón con clase 'btn-animado' que tenga transición suave al hover: fondo de #3498db a #2c3e50, transformación scale(1.05), y box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2). La transición va sobre background-color, transform y box-shadow, todas 0.3s ease.",
       codeTemplate: {
         html: `<button class="btn-animado">Boton Animado</button>`,
         cssPrefix: ".btn-animado {\n  color: white;\n  padding: 14px 32px;\n  border: none;\n  border-radius: 8px;\n  font-size: 1rem;\n  cursor: pointer;\n}\n\n",
@@ -469,7 +469,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Define los estilos base del botón con transition para las 3 propiedades, y en :hover cambia el fondo, agrega scale y box-shadow.",
+      hint: "Definí los estilos base del botón con transition para las 3 propiedades, y en :hover cambia el fondo, agrega scale y box-shadow.",
       explanation:
         "El botón usa transition para animar suavemente background-color, transform y box-shadow en 0.3s. Al hover, se oscurece el fondo, se agranda ligeramente con scale(1.05) y se agrega una sombra.",
     },

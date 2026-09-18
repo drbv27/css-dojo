@@ -59,7 +59,7 @@ Existen dos sintaxis:
 
 ### Compilación
 
-El navegador **no entiende Sass**. Necesitas compilarlo a CSS:
+El navegador **no entiende Sass**. Necesitás compilarlo a CSS:
 
 \`\`\`bash
 # Instalar Sass globalmente
@@ -75,12 +75,12 @@ sass --watch estilos.scss:estilos.css
 sass --watch scss/:css/
 \`\`\`
 
-También puedes usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automáticamente en tu proyecto.
+También podés usar herramientas como **Vite**, **Webpack** o **Parcel** que compilan Sass automáticamente en tu proyecto.
 
 ### CSS generado
 
 \`\`\`scss
-// SCSS que escribes
+// SCSS que escribís
 $color-primario: #3498db;
 
 .boton {
@@ -259,7 +259,7 @@ Sass permite anidar propiedades con el mismo prefijo:
 
 ### Mixins con @mixin y @include
 
-Los mixins son bloques reutilizables de CSS. Los defines una vez y los incluyes donde quieras:
+Los mixins son bloques reutilizables de CSS. Los definís una vez y los incluyes donde quieras:
 
 \`\`\`scss
 // Definir un mixin
@@ -386,7 +386,7 @@ ceil(4.1);        // 5
 floor(4.9);       // 4
 \`\`\`
 
-> **Regla general:** Usa **mixins** cuando necesitas generar múltiples declaraciones CSS. Usa **funciones** cuando necesitas calcular y retornar un solo valor.`,
+> **Regla general:** Usá **mixins** cuando necesitás generar múltiples declaraciones CSS. Usá **funciones** cuando necesitás calcular y retornar un solo valor.`,
       codeExample: {
         html: `<div class="mixin-demo">\n  <button class="btn-p">Primario</button>\n  <button class="btn-s">Secundario</button>\n  <button class="btn-d">Peligro</button>\n</div>`,
         css: `.mixin-demo {\n  display: flex;\n  gap: 12px;\n  padding: 20px;\n}\n\n.mixin-demo button {\n  padding: 10px 24px;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  cursor: pointer;\n  transition: opacity 0.3s, transform 0.2s;\n}\n.mixin-demo button:hover {\n  opacity: 0.85;\n  transform: translateY(-2px);\n}\n.btn-p { background: #3498db; }\n.btn-s { background: #2ecc71; }\n.btn-d { background: #e74c3c; }`,
@@ -562,7 +562,7 @@ Diferencias clave:
         { id: "d", text: "No hay diferencia, son exactamente iguales", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
-      hint: "Piensa en cómo se delimitan los bloques de código en cada sintaxis.",
+      hint: "Pensá en cómo se delimitan los bloques de código en cada sintaxis.",
       explanation:
         "SCSS (.scss) usa llaves {} y punto y coma ;, similar a CSS normal. Sass indentado (.sass) elimina llaves y punto y coma, usando indentación para definir la estructura. SCSS es la sintaxis más popular.",
     },
@@ -573,7 +573,7 @@ Diferencias clave:
       xpReward: 10,
       order: 3,
       prompt:
-        "Completa la declaración de la variable Sass para definir un color primario. Recuerda que las variables Sass usan un símbolo especial:",
+        "Completá la declaración de la variable Sass para definir un color primario. Recordá que las variables Sass usan un símbolo especial:",
       codeTemplate: {
         html: `<!-- SCSS -->\n<!-- Declaracion de variable Sass -->`,
         cssPrefix: "",
@@ -592,7 +592,7 @@ Diferencias clave:
       xpReward: 20,
       order: 4,
       prompt:
-        "Completa el selector padre de Sass para generar '.boton:hover':",
+        "Completá el selector padre de Sass para generar '.boton:hover':",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: ".boton {\n  background: #3498db;\n  color: white;\n\n  ",
@@ -619,7 +619,7 @@ Diferencias clave:
         { id: "d", text: "Los mixins solo funcionan con colores", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que produce cada uno: un mixin genera declaraciones CSS, una función calcula algo.",
+      hint: "Pensá en que produce cada uno: un mixin genera declaraciones CSS, una función calcula algo.",
       explanation:
         "Los @mixin generan bloques completos de declaraciones CSS y se usan con @include. Las @function calculan y retornan un solo valor con @return, y se usan como valor de una propiedad.",
     },
@@ -630,7 +630,7 @@ Diferencias clave:
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la directiva para incluir (usar) un mixin llamado 'flex-center' dentro de un selector:",
+        "Completá la directiva para incluir (usar) un mixin llamado 'flex-center' dentro de un selector:",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "@mixin flex-center {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.contenedor {\n  ",

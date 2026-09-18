@@ -36,7 +36,7 @@ selector::pseudo-elemento {
 
 ### Regla importante
 
-> Un selector solo puede tener **un pseudo-elemento**. No puedes escribir \`p::first-letter::before\`. Pero si puedes combinar pseudo-clases con un pseudo-elemento: \`p:first-child::first-letter\`.
+> Un selector solo puede tener **un pseudo-elemento**. No podés escribir \`p::first-letter::before\`. Pero si podés combinar pseudo-clases con un pseudo-elemento: \`p:first-child::first-letter\`.
 
 ### Pseudo-elementos principales
 
@@ -190,10 +190,10 @@ El uso más común es \`content: ""\` combinado con posicionamiento para crear *
 
 - Son **hijos** del elemento (no hermanos)
 - Por defecto son elementos **en línea** (\`display: inline\`)
-- **No aparecen** en el DOM real (no los puedes seleccionar como texto)
+- **No aparecen** en el DOM real (no los podés seleccionar como texto)
 - No funcionan en elementos **vacíos** como \`<img>\`, \`<input>\`, \`<br>\`
 
-> **Buena práctica:** Usa ::before y ::after para decoraciones visuales, no para contenido importante. El contenido insertado con \`content\` no es accesible para lectores de pantalla de la misma manera que el HTML real.`,
+> **Buena práctica:** Usá ::before y ::after para decoraciones visuales, no para contenido importante. El contenido insertado con \`content\` no es accesible para lectores de pantalla de la misma manera que el HTML real.`,
       codeExample: {
         html: `<h2 class="titulo">Nuestros Servicios</h2>\n<p class="nota">Este es un mensaje informativo.</p>\n<label class="requerido">Nombre completo</label>\n<br>\n<a href="#" class="enlace-ext">Documentacion oficial</a>`,
         css: `.titulo::after {\n  content: "";\n  display: block;\n  width: 60px;\n  height: 3px;\n  background-color: tomato;\n  margin-top: 8px;\n}\n\n.nota::before {\n  content: "ℹ ";\n  color: steelblue;\n  font-weight: bold;\n}\n\n.requerido::after {\n  content: " *";\n  color: red;\n  font-weight: bold;\n}\n\n.enlace-ext::after {\n  content: " ↗";\n  font-size: 0.8em;\n  color: gray;\n}`,
@@ -291,7 +291,7 @@ Crear triangulos, circulos y otras formas:
 }
 \`\`\`
 
-> **Resumen:** ::before y ::after son dos de las herramientas más poderosas de CSS. Dominandolos puedes crear interfaces ricas sin agregar HTML extra.`,
+> **Resumen:** ::before y ::after son dos de las herramientas más poderosas de CSS. Dominandolos podés crear interfaces ricas sin agregar HTML extra.`,
       codeExample: {
         html: `<blockquote class="cita">\n  El unico modo de hacer un gran trabajo es amar lo que haces.\n</blockquote>\n<div class="etiqueta" data-estado="Nuevo">Producto Premium</div>`,
         css: `.cita {\n  font-style: italic;\n  font-size: 18px;\n  color: #555;\n  padding: 16px 24px;\n  border-left: 4px solid steelblue;\n  position: relative;\n}\n\n.cita::before {\n  content: "\\201C";\n  font-size: 4em;\n  color: steelblue;\n  position: absolute;\n  top: -10px;\n  left: 8px;\n  opacity: 0.3;\n}\n\n.etiqueta {\n  display: inline-block;\n  padding: 8px 16px;\n  background: #f0f0f0;\n  border-radius: 4px;\n  margin-top: 20px;\n}\n\n.etiqueta::before {\n  content: attr(data-estado);\n  background: tomato;\n  color: white;\n  padding: 2px 8px;\n  border-radius: 3px;\n  font-size: 12px;\n  margin-right: 8px;\n}`,
@@ -327,7 +327,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el pseudo-elemento para estilizar la primera letra de los párrafos:",
+        "Completá el pseudo-elemento para estilizar la primera letra de los párrafos:",
       codeTemplate: {
         html: `<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>`,
         cssPrefix: "p::",
@@ -356,7 +356,7 @@ Crear triangulos, circulos y otras formas:
       validation: { type: "exact", answer: "c" },
       hint: "Es la propiedad que define QUE contenido se inserta. Sin ella, el pseudo-elemento no existe.",
       explanation:
-        "La propiedad 'content' es absolutamente obligatoria para ::before y ::after. Incluso si no quieres mostrar texto, necesitas content: \"\" (cadena vacía). Sin esta propiedad, el pseudo-elemento simplemente no se renderiza.",
+        "La propiedad 'content' es absolutamente obligatoria para ::before y ::after. Incluso si no querés mostrar texto, necesitás content: \"\" (cadena vacía). Sin esta propiedad, el pseudo-elemento simplemente no se renderiza.",
     },
     {
       id: "08-ej-04",
@@ -398,7 +398,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa la propiedad para que ::after muestre un asterisco rojo después del label:",
+        "Completá la propiedad para que ::after muestre un asterisco rojo después del label:",
       codeTemplate: {
         html: `<label class="requerido">Email</label>`,
         cssPrefix: `.requerido::after {\n  `,
@@ -417,7 +417,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 20,
       order: 6,
       prompt:
-        "Escribe CSS para crear una línea decorativa después del h2 usando ::after. La línea debe ser un bloque (display: block) con width: 80px, height: 3px, background-color: tomato y margin-top: 8px. Recuerda la propiedad content.",
+        "Escribí CSS para crear una línea decorativa después del h2 usando ::after. La línea debe ser un bloque (display: block) con width: 80px, height: 3px, background-color: tomato y margin-top: 8px. Recordá la propiedad content.",
       codeTemplate: {
         html: `<h2 class="titulo">Seccion Importante</h2>\n<p>Contenido de la seccion.</p>`,
         cssPrefix: "",
@@ -431,7 +431,7 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa .titulo::after con content: \"\" (vacío, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
+      hint: "Usá .titulo::after con content: \"\" (vacío, solo queremos la línea visual). Luego display: block para que ocupe su propia línea, y las dimensiones indicadas.",
       explanation:
         "Se usa ::after con content: \"\" para crear un elemento visual sin texto. display: block hace que ocupe su propia línea. Luego se define el tamaño (width/height) y el color de fondo para crear la línea decorativa.",
     },
@@ -479,7 +479,7 @@ Crear triangulos, circulos y otras formas:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una para el párrafo (.editorial) con sus estilos base, y otra para .editorial::first-letter con la capitular decorativa.",
+      hint: "Necesitás dos reglas: una para el párrafo (.editorial) con sus estilos base, y otra para .editorial::first-letter con la capitular decorativa.",
       explanation:
         "Se combina el estilo base del párrafo con el pseudo-elemento ::first-letter para crear una capitular. La primera letra se muestra grande (2.5em), en color steelblue y negrita, mientras el resto del texto mantiene sus estilos normales.",
     },

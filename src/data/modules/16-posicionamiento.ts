@@ -55,7 +55,7 @@ El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a
 | \`left\` | Mueve hacia la derecha | Mueve hacia la izquierda |
 | \`right\` | Mueve hacia la izquierda | Mueve hacia la derecha |
 
-> **Nota:** \`top\` y \`bottom\` son opuestos. Si defines ambos, \`top\` tiene prioridad. Lo mismo con \`left\` y \`right\` (gana \`left\`).`,
+> **Nota:** \`top\` y \`bottom\` son opuestos. Si definís ambos, \`top\` tiene prioridad. Lo mismo con \`left\` y \`right\` (gana \`left\`).`,
       codeExample: {
         html: `<div class="caja">Caja normal (static)</div>\n<div class="caja relativa">Caja relative (desplazada 20px abajo y 30px derecha)</div>\n<div class="caja">Caja normal (no se mueve aunque la anterior se desplazo)</div>`,
         css: `.caja {\n  padding: 15px;\n  margin: 10px;\n  background-color: #e0e0e0;\n  border: 2px solid #999;\n}\n.relativa {\n  position: relative;\n  top: 20px;\n  left: 30px;\n  background-color: #cce5ff;\n  border-color: #007bff;\n}`,
@@ -101,9 +101,9 @@ Este es uno de los patrones más usados en CSS:
 
 - El elemento **sale del flujo**: no ocupa espacio
 - Se posiciona respecto al **ancestro posicionado** más cercano
-- Puedes usar \`top\`, \`right\`, \`bottom\`, \`left\` para ubicarlo
+- Podés usar \`top\`, \`right\`, \`bottom\`, \`left\` para ubicarlo
 - Pierde su ancho de bloque: se ajusta al contenido (como un inline)
-- Si defines \`top\` y \`bottom\` simultaneamente (o \`left\` y \`right\`), el elemento se **estira**
+- Si definís \`top\` y \`bottom\` simultaneamente (o \`left\` y \`right\`), el elemento se **estira**
 
 ### Truco: centrado con absolute
 
@@ -118,7 +118,7 @@ Este es uno de los patrones más usados en CSS:
 
 Esto centra el elemento **vertical y horizontalmente** respecto a su contenedor posicionado.
 
-> **Cuidado:** Los elementos absolutos pueden superponerse a otros elementos. Usa \`z-index\` para controlar cual se muestra encima.`,
+> **Cuidado:** Los elementos absolutos pueden superponerse a otros elementos. Usá \`z-index\` para controlar cual se muestra encima.`,
       codeExample: {
         html: `<div class="contenedor">\n  <div class="badge">3</div>\n  <p>Tarjeta con badge posicionado en la esquina</p>\n</div>`,
         css: `.contenedor {\n  position: relative;\n  padding: 30px;\n  background-color: #f0f0f0;\n  border: 2px solid #ccc;\n  border-radius: 8px;\n  margin: 20px;\n}\n.badge {\n  position: absolute;\n  top: -12px;\n  right: -12px;\n  width: 30px;\n  height: 30px;\n  background-color: tomato;\n  color: white;\n  border-radius: 50%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-weight: bold;\n  font-size: 14px;\n}`,
@@ -354,7 +354,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 3,
       prompt:
-        "Completa la propiedad del contenedor para que su hijo absoluto se posicione respecto a el, no respecto al viewport:",
+        "Completá la propiedad del contenedor para que su hijo absoluto se posicione respecto a el, no respecto al viewport:",
       codeTemplate: {
         html: `<div class="contenedor">\n  <div class="hijo">Absoluto</div>\n</div>`,
         cssPrefix: ".contenedor {\n  position: ",
@@ -373,7 +373,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un botón flotante fijo en la esquina inferior derecha. Usa position: fixed, bottom: 20px, right: 20px. Dale padding: 15px 20px, background-color: tomato, color: white, border: none y border-radius: 50%.",
+        "Creá un botón flotante fijo en la esquina inferior derecha. Usá position: fixed, bottom: 20px, right: 20px. Dale padding: 15px 20px, background-color: tomato, color: white, border: none y border-radius: 50%.",
       codeTemplate: {
         html: `<button class="btn-flotante">+</button>\n<p>Contenido de la pagina. El boton debe permanecer fijo en la esquina inferior derecha.</p>`,
         cssPrefix: "",
@@ -387,7 +387,7 @@ Define una escala organizada para tu proyecto:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas position: fixed para que el botón no se mueva con el scroll. Usa bottom y right para posicionarlo en la esquina inferior derecha.",
+      hint: "Necesitás position: fixed para que el botón no se mueva con el scroll. Usá bottom y right para posicionarlo en la esquina inferior derecha.",
       explanation:
         "Position fixed posiciona el elemento respecto al viewport. Con bottom: 20px y right: 20px, el botón queda a 20px del borde inferior y derecho de la ventana, sin moverse al hacer scroll.",
     },
@@ -417,7 +417,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la propiedad para crear un encabezado que se pegue al top del contenedor al hacer scroll:",
+        "Completá la propiedad para crear un encabezado que se pegue al top del contenedor al hacer scroll:",
       codeTemplate: {
         html: `<header class="encabezado">Menu de navegacion</header>`,
         cssPrefix: ".encabezado {\n  position: ",
@@ -436,7 +436,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea una tarjeta (clase 'tarjeta') con position: relative, width: 300px, height: 180px, background-color: #f0f0f0, border: 1px solid #ddd, border-radius: 8px y padding: 20px. Dentro, posiciona un badge (clase 'badge') con position: absolute, top: -10px, right: -10px, background-color: #e74c3c, color: white, width: 28px, height: 28px, border-radius: 50%, text-align: center, y line-height: 28px.",
+        "Creá una tarjeta (clase 'tarjeta') con position: relative, width: 300px, height: 180px, background-color: #f0f0f0, border: 1px solid #ddd, border-radius: 8px y padding: 20px. Dentro, posiciona un badge (clase 'badge') con position: absolute, top: -10px, right: -10px, background-color: #e74c3c, color: white, width: 28px, height: 28px, border-radius: 50%, text-align: center, y line-height: 28px.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <span class="badge">5</span>\n  <h3>Notificaciones</h3>\n  <p>Tienes mensajes nuevos</p>\n</div>`,
         cssPrefix: "",
@@ -469,7 +469,7 @@ Define una escala organizada para tu proyecto:
         { id: "d", text: "Ambos se muestran al mismo nivel", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en contextos de apilamiento. El hijo esta limitado por el z-index de su padre.",
+      hint: "Pensá en contextos de apilamiento. El hijo esta limitado por el z-index de su padre.",
       explanation:
         "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este último siempre se mostrará encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
     },

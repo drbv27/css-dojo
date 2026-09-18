@@ -26,7 +26,7 @@ Pero no todos los idiomas se escriben de izquierda a derecha y de arriba abajo. 
 
 ### El problema
 
-Si usas propiedades fisicas, tu layout se rompe al cambiar de idioma:
+Si usás propiedades fisicas, tu layout se rompe al cambiar de idioma:
 
 \`\`\`css
 /* Esto funciona bien en espanol (LTR) */
@@ -106,7 +106,7 @@ Las propiedades lógicas \`inline-size\` y \`block-size\` reemplazan a \`width\`
 
 ### Con writing-mode
 
-Cuando cambias el modo de escritura, las propiedades lógicas se adaptan automáticamente:
+Cuando cambiás el modo de escritura, las propiedades lógicas se adaptan automáticamente:
 
 \`\`\`css
 .vertical {
@@ -164,7 +164,7 @@ CSS ofrece shorthands muy prácticos:
 }
 \`\`\`
 
-También puedes dar dos valores (start y end):
+También podés dar dos valores (start y end):
 
 \`\`\`css
 .elemento {
@@ -258,11 +258,11 @@ Complementa a \`writing-mode\` para definir si el texto va de izquierda a derech
 }
 \`\`\`
 
-> **Mejor práctica:** Usa el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la dirección del texto. El atributo HTML es más semántico y accesible.
+> **Mejor práctica:** Usá el atributo HTML \`dir="rtl"\` en lugar de la propiedad CSS \`direction\` para indicar la dirección del texto. El atributo HTML es más semántico y accesible.
 
 ### Uso creativo de writing-mode
 
-Puedes usar \`writing-mode\` para efectos visuales interesantes:
+Podés usar \`writing-mode\` para efectos visuales interesantes:
 
 \`\`\`css
 .titulo-lateral {
@@ -285,7 +285,7 @@ Controla la orientación de los caracteres en texto vertical:
 }
 \`\`\`
 
-> **Recuerda:** Las propiedades lógicas se adaptan automáticamente al writing-mode. Si cambias el modo de escritura, \`inline-size\`, \`margin-inline\`, etc. cambian de eje automáticamente.`,
+> **Recordá:** Las propiedades lógicas se adaptan automáticamente al writing-mode. Si cambiás el modo de escritura, \`inline-size\`, \`margin-inline\`, etc. cambian de eje automáticamente.`,
       codeExample: {
         html: `<div class="contenedor-wm">\n  <div class="modo-h">horizontal-tb (por defecto)</div>\n  <div class="modo-vrl">vertical-rl</div>\n  <div class="modo-vlr">vertical-lr</div>\n</div>`,
         css: `.contenedor-wm {\n  display: flex;\n  gap: 15px;\n  align-items: flex-start;\n}\n.modo-h, .modo-vrl, .modo-vlr {\n  padding: 15px;\n  border: 2px solid;\n  border-radius: 4px;\n  font-size: 14px;\n}\n.modo-h {\n  writing-mode: horizontal-tb;\n  inline-size: 180px;\n  background-color: #d4edda;\n  border-color: #28a745;\n}\n.modo-vrl {\n  writing-mode: vertical-rl;\n  inline-size: 150px;\n  background-color: #cce5ff;\n  border-color: #007bff;\n}\n.modo-vlr {\n  writing-mode: vertical-lr;\n  inline-size: 150px;\n  background-color: #f8d7da;\n  border-color: #dc3545;\n}`,
@@ -370,7 +370,7 @@ Controla la orientación de los caracteres en texto vertical:
       xpReward: 20,
       order: 3,
       prompt:
-        "Completa la propiedad lógica para centrar horizontalmente este contenedor (equivalente a 'margin-left: auto; margin-right: auto'):",
+        "Completá la propiedad lógica para centrar horizontalmente este contenedor (equivalente a 'margin-left: auto; margin-right: auto'):",
       codeTemplate: {
         html: `<div class="centrado">Contenido centrado</div>`,
         cssPrefix: ".centrado {\n  max-inline-size: 600px;\n  ",
@@ -408,7 +408,7 @@ Controla la orientación de los caracteres en texto vertical:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una tarjeta (clase 'tarjeta') usando solo propiedades lógicas: max-inline-size: 400px, margin-inline: auto, padding-inline: 25px, padding-block: 20px, border-inline-start: 4px solid steelblue, y background-color: #f0f4f8.",
+        "Creá una tarjeta (clase 'tarjeta') usando solo propiedades lógicas: max-inline-size: 400px, margin-inline: auto, padding-inline: 25px, padding-block: 20px, border-inline-start: 4px solid steelblue, y background-color: #f0f4f8.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <h3>Tarjeta con propiedades logicas</h3>\n  <p>Todo el espaciado usa propiedades logicas en lugar de fisicas.</p>\n</div>`,
         cssPrefix: "",
@@ -422,7 +422,7 @@ Controla la orientación de los caracteres en texto vertical:
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa inline-size en lugar de width, margin-inline en lugar de margin-left/right, padding-inline/padding-block en lugar de padding individual.",
+      hint: "Usá inline-size en lugar de width, margin-inline en lugar de margin-left/right, padding-inline/padding-block en lugar de padding individual.",
       explanation:
         "Esta tarjeta usa exclusivamente propiedades lógicas. Si el sitio se traduce a un idioma RTL, el borde decorativo (border-inline-start) automáticamente se movera al lado derecho, y el centrado con margin-inline: auto seguira funcionando correctamente.",
     },
@@ -433,7 +433,7 @@ Controla la orientación de los caracteres en texto vertical:
       xpReward: 10,
       order: 6,
       prompt:
-        "Completa la propiedad para agregar padding de 20px a los lados superior e inferior usando la propiedad lógica shorthand:",
+        "Completá la propiedad para agregar padding de 20px a los lados superior e inferior usando la propiedad lógica shorthand:",
       codeTemplate: {
         html: `<div class="seccion">Contenido</div>`,
         cssPrefix: ".seccion {\n  ",
@@ -511,7 +511,7 @@ Controla la orientación de los caracteres en texto vertical:
         { id: "d", text: "No hay ninguna ventaja, es exactamente lo mismo", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa cuando cambias de un idioma LTR a un RTL.",
+      hint: "Pensá en que pasa cuando cambiás de un idioma LTR a un RTL.",
       explanation:
         "margin-inline: auto tiene dos ventajas: 1) Es un shorthand más conciso (una línea en lugar de dos). 2) Se adapta automáticamente al modo de escritura, funcionando correctamente tanto en idiomas LTR como RTL sin cambios adicionales.",
     },

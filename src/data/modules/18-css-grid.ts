@@ -20,7 +20,7 @@ CSS Grid es un sistema de **diseño bidimensional** que permite controlar filas 
 
 ### Activar Grid
 
-Para crear un contenedor grid, usa \`display: grid\`:
+Para crear un contenedor grid, usá \`display: grid\`:
 
 \`\`\`css
 .contenedor {
@@ -32,7 +32,7 @@ Todos los hijos directos del contenedor se convierten en **grid items** (element
 
 ### Definir columnas y filas
 
-Usa \`grid-template-columns\` y \`grid-template-rows\` para definir la estructura:
+Usá \`grid-template-columns\` y \`grid-template-rows\` para definir la estructura:
 
 \`\`\`css
 .contenedor {
@@ -54,7 +54,7 @@ La unidad \`fr\` reparte el espacio disponible de forma **proporcional**:
 }
 \`\`\`
 
-Puedes mezclar unidades fijas y flexibles:
+Podés mezclar unidades fijas y flexibles:
 
 \`\`\`css
 .layout {
@@ -64,7 +64,7 @@ Puedes mezclar unidades fijas y flexibles:
 
 ### La función repeat()
 
-Para evitar repetir valores, usa \`repeat()\`:
+Para evitar repetir valores, usá \`repeat()\`:
 
 \`\`\`css
 .contenedor {
@@ -73,7 +73,7 @@ Para evitar repetir valores, usa \`repeat()\`:
 }
 \`\`\`
 
-> **Consejo:** CSS Grid no reemplaza a Flexbox. Usa Grid para layouts generales de página y Flexbox para alinear elementos dentro de componentes.`,
+> **Consejo:** CSS Grid no reemplaza a Flexbox. Usá Grid para layouts generales de página y Flexbox para alinear elementos dentro de componentes.`,
       codeExample: {
         html: `<div class="grid-contenedor">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
         css: `.grid-contenedor {\n  display: grid;\n  grid-template-columns: repeat(3, 1fr);\n  grid-template-rows: 100px 100px;\n  gap: 10px;\n}\n.item {\n  background-color: #4a90d9;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-radius: 8px;\n}`,
@@ -112,7 +112,7 @@ Cada elemento puede ocupar múltiples celdas usando \`grid-column\` y \`grid-row
 }
 \`\`\`
 
-También puedes usar \`span\` para indicar cuantas celdas ocupa:
+También podés usar \`span\` para indicar cuantas celdas ocupa:
 
 \`\`\`css
 .header {
@@ -137,7 +137,7 @@ También puedes usar \`span\` para indicar cuantas celdas ocupa:
 
 Los valores comunes son: \`start\`, \`end\`, \`center\`, \`stretch\` (por defecto).
 
-> **Recuerda:** Las líneas de la cuadrícula se numeran empezando en 1, no en 0.`,
+> **Recordá:** Las líneas de la cuadrícula se numeran empezando en 1, no en 0.`,
       codeExample: {
         html: `<div class="layout">\n  <div class="header">Header (3 columnas)</div>\n  <div class="sidebar">Sidebar</div>\n  <div class="main">Contenido principal</div>\n  <div class="footer">Footer (3 columnas)</div>\n</div>`,
         css: `.layout {\n  display: grid;\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 60px 200px 50px;\n  gap: 10px;\n}\n.header {\n  grid-column: 1 / 4;\n  background: #2c3e50;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.sidebar {\n  background: #3498db;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.main {\n  grid-column: span 2;\n  background: #ecf0f1;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}\n.footer {\n  grid-column: 1 / 4;\n  background: #2c3e50;\n  color: white;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 6px;\n}`,
@@ -152,7 +152,7 @@ Los valores comunes son: \`start\`, \`end\`, \`center\`, \`stretch\` (por defect
 
 ### grid-template-areas
 
-Puedes asignar **nombres a las áreas** de la cuadrícula para crear layouts de forma visual e intuitiva:
+Podés asignar **nombres a las áreas** de la cuadrícula para crear layouts de forma visual e intuitiva:
 
 \`\`\`css
 .contenedor {
@@ -171,7 +171,7 @@ Puedes asignar **nombres a las áreas** de la cuadrícula para crear layouts de 
 .footer  { grid-area: footer; }
 \`\`\`
 
-Cada cadena entre comillas representa una **fila**. Los nombres repetidos indican que el area ocupa varias celdas. Usa un punto (\`.\`) para celdas vacías:
+Cada cadena entre comillas representa una **fila**. Los nombres repetidos indican que el area ocupa varias celdas. Usá un punto (\`.\`) para celdas vacías:
 
 \`\`\`css
 grid-template-areas:
@@ -182,7 +182,7 @@ grid-template-areas:
 
 ### Líneas nombradas
 
-Puedes dar nombres a las líneas de la cuadrícula entre corchetes:
+Podés dar nombres a las líneas de la cuadrícula entre corchetes:
 
 \`\`\`css
 .contenedor {
@@ -200,7 +200,7 @@ Puedes dar nombres a las líneas de la cuadrícula entre corchetes:
 
 - **Áreas**: Ideal para layouts de página completa donde la estructura es clara y descriptiva
 - **Líneas con números**: Para posicionamiento rápido y preciso
-- **Líneas nombradas**: Cuando necesitas referenciar posiciones con nombres significativos
+- **Líneas nombradas**: Cuando necesitás referenciar posiciones con nombres significativos
 
 > **Buena práctica:** \`grid-template-areas\` es una de las formas más legibles de definir un layout. Usala siempre que puedas.`,
       codeExample: {
@@ -247,7 +247,7 @@ Estas palabras clave dentro de \`repeat()\` crean cuadriculas **responsivas auto
 - **auto-fill**: Crea columnas incluso si están vacías. Las columnas vacías ocupan espacio
 - **auto-fit**: Colapsa las columnas vacías, permitiendo que las ocupadas se expandan
 
-En la práctica, cuando tienes suficientes elementos para llenar todas las columnas, ambos se comportan igual. La diferencia se nota cuando hay **pocos elementos**.
+En la práctica, cuando tenés suficientes elementos para llenar todas las columnas, ambos se comportan igual. La diferencia se nota cuando hay **pocos elementos**.
 
 ### Grid implícito
 
@@ -378,7 +378,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la propiedad para crear una cuadrícula de 3 columnas iguales usando la unidad fracción:",
+        "Completá la propiedad para crear una cuadrícula de 3 columnas iguales usando la unidad fracción:",
       codeTemplate: {
         html: `<div class="grid">\n  <div>A</div><div>B</div><div>C</div>\n</div>`,
         cssPrefix: ".grid {\n  display: grid;\n  grid-template-columns: ",
@@ -386,7 +386,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         blanks: ["repeat(3, 1fr)"],
       },
       validation: { type: "regex", answer: "repeat\\s*\\(\\s*3\\s*,\\s*1fr\\s*\\)" },
-      hint: "Usa la función repeat() con 3 repeticiones de 1fr. También podrías escribir '1fr 1fr 1fr'.",
+      hint: "Usá la función repeat() con 3 repeticiones de 1fr. También podrías escribir '1fr 1fr 1fr'.",
       explanation:
         "La expresión 'repeat(3, 1fr)' crea 3 columnas de igual tamaño. La unidad 'fr' reparte el espacio disponible de forma proporcional. Es equivalente a escribir '1fr 1fr 1fr'.",
     },
@@ -435,7 +435,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
           "drag-4": "zone-areas",
         },
       },
-      hint: "Piensa en que controla cada propiedad: estructura, espacio, expansión o nombres.",
+      hint: "Pensá en que controla cada propiedad: estructura, espacio, expansión o nombres.",
       explanation:
         "'grid-template-columns' define las columnas. 'gap' controla el espacio entre celdas. 'grid-column: span 2' expande un item a 2 columnas. 'grid-template-areas' permite nombrar regiones visualmente.",
     },
@@ -446,7 +446,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 20,
       order: 4,
       prompt:
-        "Crea un layout con CSS Grid: un contenedor con clase 'layout' que tenga 3 columnas (200px, 1fr, 1fr), 2 filas de 150px, y un gap de 15px. Agrega display: grid.",
+        "Creá un layout con CSS Grid: un contenedor con clase 'layout' que tenga 3 columnas (200px, 1fr, 1fr), 2 filas de 150px, y un gap de 15px. Agregá display: grid.",
       codeTemplate: {
         html: `<div class="layout">\n  <div class="celda">1</div>\n  <div class="celda">2</div>\n  <div class="celda">3</div>\n  <div class="celda">4</div>\n  <div class="celda">5</div>\n  <div class="celda">6</div>\n</div>`,
         cssPrefix: "",
@@ -460,7 +460,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas display: grid, grid-template-columns con 3 valores, grid-template-rows con 2 valores, y gap.",
+      hint: "Necesitás display: grid, grid-template-columns con 3 valores, grid-template-rows con 2 valores, y gap.",
       explanation:
         "El layout combina display: grid para activar la cuadrícula, grid-template-columns: 200px 1fr 1fr para 3 columnas (una fija y dos flexibles), grid-template-rows: 150px 150px para 2 filas, y gap: 15px para el espaciado.",
     },
@@ -490,7 +490,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 20,
       order: 6,
       prompt:
-        "Completa la propiedad para que el elemento .header ocupe desde la columna 1 hasta la columna 4 (las 3 columnas completas):",
+        "Completá la propiedad para que el elemento .header ocupe desde la columna 1 hasta la columna 4 (las 3 columnas completas):",
       codeTemplate: {
         html: `<div class="grid"><div class="header">Header</div></div>`,
         cssPrefix: ".header {\n  grid-column: ",
@@ -498,7 +498,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         blanks: ["1 / 4"],
       },
       validation: { type: "regex", answer: "1\\s*/\\s*4" },
-      hint: "Usa la sintaxis línea-inicio / línea-fin. En una cuadrícula de 3 columnas, las líneas van del 1 al 4.",
+      hint: "Usá la sintaxis línea-inicio / línea-fin. En una cuadrícula de 3 columnas, las líneas van del 1 al 4.",
       explanation:
         "La notación 'grid-column: 1 / 4' indica que el elemento empieza en la línea 1 y termina en la línea 4. En una cuadrícula de 3 columnas, esto hace que ocupe las 3 columnas completas.",
     },
@@ -523,7 +523,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Usa repeat(auto-fit, minmax(150px, 1fr)) para las columnas y grid-auto-rows para las filas automáticas.",
+      hint: "Usá repeat(auto-fit, minmax(150px, 1fr)) para las columnas y grid-auto-rows para las filas automáticas.",
       explanation:
         "La galeria responsiva usa repeat(auto-fit, minmax(150px, 1fr)) para columnas que se adaptan automáticamente, grid-auto-rows: 120px para filas de alto fijo, y gap: 12px para el espaciado entre items.",
     },
@@ -576,7 +576,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
       xpReward: 20,
       order: 9,
       prompt:
-        "Escribis .tarjeta { display: grid; grid-template-rows: subgrid; } pero no le pones grid-row: span 3. ¿Qué pasa?",
+        "Escribís .tarjeta { display: grid; grid-template-rows: subgrid; } pero no le ponés grid-row: span 3. ¿Qué pasa?",
       options: [
         {
           id: "a",
@@ -648,7 +648,7 @@ Podés heredar uno y definir el otro a mano. Son decisiones independientes.
         },
         {
           instruccion:
-            "Ahora lo importante: cambia `.galeria` a columnas responsivas con repeat auto-fit y minmax de 150px a 1fr. Fijate que la galeria se reacomoda sola al cambiar el ancho, sin ninguna media query.",
+            "Ahora lo importante: cambiá `.galeria` a columnas responsivas con repeat auto-fit y minmax de 150px a 1fr. Fijate que la galeria se reacomoda sola al cambiar el ancho, sin ninguna media query.",
           esperado: ".galeria { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }",
         },
       ],

@@ -322,7 +322,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa la pseudo-clase para que el botón cambie de color al pasar el cursor:",
+        "Completá la pseudo-clase para que el botón cambie de color al pasar el cursor:",
       codeTemplate: {
         html: `<button class="btn">Hover me</button>`,
         cssPrefix: `.btn {\n  background: steelblue;\n  color: white;\n  padding: 10px 20px;\n  border: none;\n}\n\n.btn`,
@@ -365,7 +365,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa en que pasa si antes del <li> hay un <h2>. Uno de los selectores fallaria y el otro no.",
+      hint: "Pensá en que pasa si antes del <li> hay un <h2>. Uno de los selectores fallaria y el otro no.",
       explanation:
         "li:first-child solo funciona si el <li> es literalmente el primer hijo de su padre. li:first-of-type selecciona el primer <li> sin importar si hay otros tipos de elementos antes. Esta diferencia es clave.",
     },
@@ -412,7 +412,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 20,
       order: 5,
       prompt:
-        "Completa el selector para aplicar un fondo gris a las filas pares de una tabla:",
+        "Completá el selector para aplicar un fondo gris a las filas pares de una tabla:",
       codeTemplate: {
         html: `<table>\n  <tr><td>Fila 1</td></tr>\n  <tr><td>Fila 2</td></tr>\n  <tr><td>Fila 3</td></tr>\n  <tr><td>Fila 4</td></tr>\n</table>`,
         cssPrefix: "tr",
@@ -420,7 +420,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         blanks: [":nth-child(even)"],
       },
       validation: { type: "exact", answer: ":nth-child(even)" },
-      hint: "Necesitas la pseudo-clase :nth-child con la palabra clave para números pares (2, 4, 6...).",
+      hint: "Necesitás la pseudo-clase :nth-child con la palabra clave para números pares (2, 4, 6...).",
       explanation:
         "El selector 'tr:nth-child(even)' selecciona todas las filas pares. La palabra clave 'even' equivale a '2n'. También existe 'odd' para las impares.",
     },
@@ -431,7 +431,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 20,
       order: 6,
       prompt:
-        "Escribe CSS para que: 1) Los enlaces cambien a color tomato al pasar el cursor (:hover). 2) El primer <li> de la lista tenga font-weight: bold.",
+        "Escribí CSS para que: 1) Los enlaces cambien a color tomato al pasar el cursor (:hover). 2) El primer <li> de la lista tenga font-weight: bold.",
       codeTemplate: {
         html: `<ul>\n  <li><a href="#">Primer enlace</a></li>\n  <li><a href="#">Segundo enlace</a></li>\n  <li><a href="#">Tercer enlace</a></li>\n</ul>`,
         cssPrefix: "",
@@ -445,7 +445,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas dos reglas: una con a:hover para el color del enlace y otra con li:first-child para la negrita del primer item.",
+      hint: "Necesitás dos reglas: una con a:hover para el color del enlace y otra con li:first-child para la negrita del primer item.",
       explanation:
         "La regla 'a:hover { color: tomato; }' cambia el color de los enlaces al pasar el cursor. La regla 'li:first-child { font-weight: bold; }' aplica negrita al primer <li> de la lista.",
     },
@@ -493,7 +493,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         // searching the submission for loose words. See src/lib/cssRules.ts.
         type: "css-rules",
       },
-      hint: "Necesitas 4 reglas: padding general, :nth-child(even) para fondo alterno, :first-child para el primero, y :not(:last-child) para los bordes.",
+      hint: "Necesitás 4 reglas: padding general, :nth-child(even) para fondo alterno, :first-child para el primero, y :not(:last-child) para los bordes.",
       explanation:
         "Se combinan varias pseudo-clases: :nth-child(even) para filas alternas, :first-child para destacar el primer item, y :not(:last-child) para poner bordes en todos menos el último.",
     },
@@ -504,7 +504,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 15,
       order: 9,
       prompt:
-        "Escribis .tarjeta:has(img) { border-color: red; }. ¿A que elemento se le aplica el borde rojo?",
+        "Escribís .tarjeta:has(img) { border-color: red; }. ¿A que elemento se le aplica el borde rojo?",
       options: [
         { id: "a", text: "A la imagen que está dentro de la tarjeta", isCorrect: false },
         { id: "b", text: "A la tarjeta que contiene una imagen", isCorrect: true },
@@ -523,7 +523,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 25,
       order: 10,
       prompt:
-        "Usa :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase `.tarjeta` que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase `.opcion` que contengan un input marcado, dales font-weight: bold.",
+        "Usá :has() para que el CSS reaccione al contenido. Regla 1: a las tarjetas con clase `.tarjeta` que contengan una img, dales border-color: steelblue. Regla 2: a las que NO contengan img, dales background-color: whitesmoke. Regla 3: a las etiquetas con clase `.opcion` que contengan un input marcado, dales font-weight: bold.",
       codeTemplate: {
         html: `<div class="tarjeta">\n  <img src="https://placehold.co/60x40" alt="Miniatura" />\n  <p>Con imagen</p>\n</div>\n<div class="tarjeta">\n  <p>Sin imagen</p>\n</div>\n<label class="opcion"><input type="checkbox" checked /> Marcada</label>`,
         cssPrefix: "",

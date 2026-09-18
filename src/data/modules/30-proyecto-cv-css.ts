@@ -16,7 +16,7 @@ export const proyectoCvCssModule: ModuleData = {
   slug: "proyecto-cv-css",
   title: "Proyecto: Estiliza tu CV con CSS",
   description:
-    "Toma el CV que escribiste en HTML y convertilo en una página presentable: clases, tipografía, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
+    "Tomá el CV que escribiste en HTML y convertilo en una página presentable: clases, tipografía, box model, flexbox, grid, tabla y responsive. El cierre del track de CSS.",
   order: 36,
   dojo: "css" as const,
   nivel: "obligatorio",
@@ -49,7 +49,7 @@ Vas a partir del mismo CV y llegar a una página que podrías mandar a una entre
 
 Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV con tipografía mala y sombras hermosas se ve peor que uno con tipografía buena y cero sombras.** La jerarquía visual se construye con tamaño, peso y espacio; el resto es decoración.
 
-> Si no tenes tu CV a mano, cada paso trae el HTML que necesita. Pero si guardaste el tuyo, usalo: el proyecto vale mucho más cuando estas estilando tus propios datos.`,
+> Si no tenés tu CV a mano, cada paso trae el HTML que necesita. Pero si guardaste el tuyo, usalo: el proyecto vale mucho más cuando estás estilando tus propios datos.`,
       codeExample: {
         html: `<header>\n  <h1>Ana Martinez</h1>\n  <p>Desarrolladora Frontend</p>\n</header>`,
         css: `/* Sin CSS: el navegador aplica sus estilos por defecto */\n/* h1 grande y negrita, p normal, todo apilado y pegado al borde */`,
@@ -65,7 +65,7 @@ Vas a querer saltar directo a las sombras y los degradados. No lo hagas. **Un CV
 
 Tu CV usa \`<p>\` en varios lugares distintos: el título profesional debajo del nombre, el párrafo del perfil, y la descripción de cada trabajo.
 
-Si escribis esto:
+Si escribís esto:
 
 \`\`\`css
 p {
@@ -85,7 +85,7 @@ header p { font-size: 20px; }        /* el titulo profesional */
 main section:first-child p { }       /* el perfil... creo? */
 \`\`\`
 
-Funciona hasta que movas una sección. **Estas atando tus estilos al orden del HTML**, y el orden cambia.
+Funciona hasta que movás una sección. **Estás atando tus estilos al orden del HTML**, y el orden cambia.
 
 ### La clase nombra la intención
 
@@ -99,7 +99,7 @@ Funciona hasta que movas una sección. **Estas atando tus estilos al orden del H
 .perfil { font-size: 16px; line-height: 1.7; }
 \`\`\`
 
-Ahora el estilo dice **que es** cada cosa, no **donde esta**. Podes reordenar todo el CV y nada se rompe.
+Ahora el estilo dice **que es** cada cosa, no **donde esta**. Podés reordenar todo el CV y nada se rompe.
 
 ### Cómo nombrar
 
@@ -145,7 +145,7 @@ body {
 
 ### 2. Tipografía antes que layout
 
-Antes de decidir donde va cada caja, decidi cómo se lee. Si cambias el \`font-size\` base después de maquetar, todos los espacios que ajustaste quedan mal.
+Antes de decidir donde va cada caja, decidi cómo se lee. Si cambiás el \`font-size\` base después de maquetar, todos los espacios que ajustaste quedan mal.
 
 ### 3. Layout de afuera hacia adentro
 
@@ -153,7 +153,7 @@ Primero el contenedor general, después las secciones, al final los detalles. Al
 
 ### 4. Responsive al final, pero pensado desde el principio
 
-No dejes anchos fijos en px si sabes que vas a hacer responsive. \`max-width\` con \`width: 100%\` se adapta solo.
+No dejes anchos fijos en px si sabés que vas a hacer responsive. \`max-width\` con \`width: 100%\` se adapta solo.
 
 ### La estructura que vamos a lograr
 
@@ -186,7 +186,7 @@ body
       xpReward: 20,
       order: 1,
       prompt:
-        "Paso 1 - Las clases. Tomamos el encabezado de tu CV y le agregamos clases que nombren la función de cada parte. Agrega: clase 'encabezado' al <header>, clase 'nombre' al <h1>, clase 'título-profesional' al <p>, y clase 'contacto' al <nav> que envuelve los enlaces. No cambies las etiquetas, solo agrega los atributos class.",
+        "Paso 1 - Las clases. Tomamos el encabezado de tu CV y le agregamos clases que nombren la función de cada parte. Agregá: clase 'encabezado' al <header>, clase 'nombre' al <h1>, clase 'título-profesional' al <p>, y clase 'contacto' al <nav> que envuelve los enlaces. No cambies las etiquetas, solo agrega los atributos class.",
       codeTemplate: {
         html: `<header>\n  <h1>Ana Martinez</h1>\n  <p>Desarrolladora Frontend</p>\n  <nav>\n    <a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a>\n    <a href="tel:+541100000000">+54 11 0000 0000</a>\n  </nav>\n</header>`,
         cssPrefix: "",
@@ -215,7 +215,7 @@ body
       xpReward: 20,
       order: 2,
       prompt:
-        "Paso 2 - Reset y tipografía. Escribe el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .titulo-profesional, font-size: 20px, color: #666 y margin-top: 0.",
+        "Paso 2 - Reset y tipografía. Escribí el CSS base: al selector universal (*) ponele box-sizing: border-box. Al body, margin: 0, font-family: system-ui, sans-serif, font-size: 16px, line-height: 1.6 y color: #333. Al .nombre, font-size: 32px y margin-bottom: 4px. Al .titulo-profesional, font-size: 20px, color: #666 y margin-top: 0.",
       codeTemplate: {
         html: `<header class="encabezado">\n  <h1 class="nombre">Ana Martinez</h1>\n  <p class="titulo-profesional">Desarrolladora Frontend</p>\n</header>`,
         cssPrefix: "",
@@ -313,7 +313,7 @@ body
       },
       hint: "Pensa en alguien con daltonismo, y en alguien que navega con Tab en vez de mouse.",
       explanation:
-        "El color NUNCA debe ser la única forma de transmitir información: es una de las reglas más citadas de WCAG. Si quitas el subrayado, agrega otra señal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
+        "El color NUNCA debe ser la única forma de transmitir información: es una de las reglas más citadas de WCAG. Si quitás el subrayado, agregá otra señal (un subrayado en :hover, un borde inferior, un icono) y asegurate de que :focus-visible se vea claramente. cursor: pointer no sirve: solo existe si hay mouse, y quien usa teclado o lector de pantalla nunca lo ve.",
     },
     {
       id: "25-ej-06",
@@ -391,7 +391,7 @@ body
       xpReward: 30,
       order: 9,
       prompt:
-        "Paso 8 - Responsive. Escribe una media query para pantallas de hasta 600px que: al .encabezado le ponga flex-direction: column, align-items: flex-start y text-align: left; al .nombre le baje el font-size a 26px; y al .contenido le deje padding: 0 16px.",
+        "Paso 8 - Responsive. Escribí una media query para pantallas de hasta 600px que: al .encabezado le ponga flex-direction: column, align-items: flex-start y text-align: left; al .nombre le baje el font-size a 26px; y al .contenido le deje padding: 0 16px.",
       codeTemplate: {
         html: `<header class="encabezado">\n  <div>\n    <h1 class="nombre">Ana Martinez</h1>\n    <p class="titulo-profesional">Desarrolladora Frontend</p>\n  </div>\n  <nav class="contacto"><a href="mailto:a@b.com">a@b.com</a></nav>\n</header>\n<main class="contenido"><p>Perfil profesional.</p></main>`,
         cssPrefix: "* { box-sizing: border-box; }\nbody { margin: 0; font-family: system-ui, sans-serif; line-height: 1.6; }\n.encabezado { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 32px 24px; }\n.nombre { font-size: 32px; margin: 0; }\n.contenido { max-width: 700px; margin: 0 auto; padding: 0 24px; }\n",
@@ -414,7 +414,7 @@ body
       xpReward: 40,
       order: 10,
       prompt:
-        "Cierre integrador. Estiliza el CV completo desde cero. Necesitas: box-sizing: border-box en *; body con margin: 0, font-family: system-ui, sans-serif y line-height: 1.6; .encabezado con display: flex, justify-content: space-between y flex-wrap: wrap; .nombre con font-size: 32px; .contenido con max-width: 700px y margin: 0 auto; .experiencia con display: grid y gap: 20px; .habilidades con width: 100% y border-collapse: collapse; .foto img con object-fit: cover y border-radius: 50%; y una media query de hasta 600px que ponga .encabezado en flex-direction: column.",
+        "Cierre integrador. Estiliza el CV completo desde cero. Necesitás: box-sizing: border-box en *; body con margin: 0, font-family: system-ui, sans-serif y line-height: 1.6; .encabezado con display: flex, justify-content: space-between y flex-wrap: wrap; .nombre con font-size: 32px; .contenido con max-width: 700px y margin: 0 auto; .experiencia con display: grid y gap: 20px; .habilidades con width: 100% y border-collapse: collapse; .foto img con object-fit: cover y border-radius: 50%; y una media query de hasta 600px que ponga .encabezado en flex-direction: column.",
       codeTemplate: {
         html: `<header class="encabezado">\n  <div>\n    <h1 class="nombre">Ana Martinez</h1>\n    <p class="titulo-profesional">Desarrolladora Frontend</p>\n  </div>\n  <nav class="contacto"><a href="mailto:ana@ejemplo.com">ana@ejemplo.com</a></nav>\n</header>\n<main class="contenido">\n  <section><h2>Perfil</h2><p>Desarrolladora con foco en accesibilidad.</p></section>\n  <section>\n    <h2>Experiencia</h2>\n    <div class="experiencia">\n      <article class="trabajo"><h3>Frontend</h3><p>Design system.</p></article>\n      <article class="trabajo"><h3>Junior</h3><p>Performance.</p></article>\n    </div>\n  </section>\n  <section>\n    <h2>Habilidades</h2>\n    <table class="habilidades">\n      <thead><tr><th>Habilidad</th><th>Nivel</th></tr></thead>\n      <tbody><tr><td>CSS</td><td>Avanzado</td></tr></tbody>\n    </table>\n  </section>\n  <figure class="foto">\n    <img src="https://placehold.co/300x200" alt="Retrato de Ana Martinez">\n    <figcaption>Ana Martinez</figcaption>\n  </figure>\n</main>`,
         cssPrefix: "",
@@ -428,7 +428,7 @@ body
       },
       hint: "Segui el orden del módulo: reset, tipografía, contenedor, header, secciones, tabla, foto, y la media query al final.",
       explanation:
-        "Terminaste el track de CSS con algo que podes mostrar. Y fijate el orden en que lo escribiste: reset, tipografía, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancas por las sombras, vas a reescribir tres veces.",
+        "Terminaste el track de CSS con algo que podés mostrar. Y fijate el orden en que lo escribiste: reset, tipografía, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancás por las sombras, vas a reescribir tres veces.",
     },
     {
       /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
@@ -442,7 +442,7 @@ body
       retoPasos: [
         {
           instruccion:
-            "Del módulo de variables: declara en `:root` la variable --cv-acento con el valor #2c3e50.",
+            "Del módulo de variables: declará en `:root` la variable --cv-acento con el valor #2c3e50.",
           esperado: ":root { --cv-acento: #2c3e50; }",
         },
         {
@@ -462,7 +462,7 @@ body
         },
         {
           instruccion:
-            "Del módulo de media queries: adentro de `@media (min-width: 600px)`, cambia `.cv-cabecera` a flex-direction row y align-items flex-start, para que en pantalla ancha la foto quede al costado.",
+            "Del módulo de media queries: adentro de `@media (min-width: 600px)`, cambiá `.cv-cabecera` a flex-direction row y align-items flex-start, para que en pantalla ancha la foto quede al costado.",
           esperado: "@media (min-width: 600px) { .cv-cabecera { flex-direction: row; align-items: flex-start; } }",
         },
       ],
