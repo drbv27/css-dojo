@@ -480,32 +480,576 @@ function esColorSolo(valor: string): boolean {
 }
 
 /**
- * Las OTRAS formas de escribir la MISMA declaracion.
+ * CANONICALIZACION DE DECLARACIONES: las OTRAS formas de escribir lo mismo.
  *
- * Hoy hay un solo par: `background: <color>` y `background-color: <color>`.
- * Con un color solo pintan exactamente igual -el atajo resetea imagen,
- * posicion y repeticion a sus valores iniciales, que es donde ya estaban- asi
- * que rechazar una de las dos es marcarle un error a CSS correcto.
+ * `normalizarDeclaracion` deja la declaracion en una forma estable -minusculas,
+ * espacios, comas, comillas de `font-family`- pero sigue comparando CADENAS. Y
+ * CSS tiene muchas maneras de escribir exactamente el mismo estilo: `padding:
+ * 16px` y `padding: 16px 16px 16px 16px`, `border: 1px solid red` y `border:
+ * solid 1px red`, `#fff` y `#ffffff`, `bold` y `700`. Comparar cadenas las
+ * rechaza todas.
  *
- * MEDIDO EL 2026-08-31, y por eso existe esto: 49 ejercicios castigaban al
- * alumno que elegia la otra propiedad. 12 esperaban el atajo y bajaban a
- * 78-91; 37 esperaban la especifica y bajaban hasta 0, porque los mini retos
- * son todo o nada. Un alumno que escribia `background: red` donde el ejercicio
- * queria `background-color: red` sacaba CERO con CSS impecable.
+ * MEDIDO EL 2026-09-18 corriendo el corrector real sobre los 652 ejercicios de
+ * css/js/html: 71 de los 120 ejercicios `css-rules` rechazaban al menos una
+ * forma equivalente, con 157 rechazos en total. TRECE de esos son mini retos,
+ * que puntuan cien o cero: ahi una sola declaracion escrita en su otra forma
+ * valida no bajaba el puntaje, lo borraba. Informe en `informes/ejercicios.md`.
  *
- * LA REGLA ES ESTRICTA A PROPOSITO: solo con un color literal. Aceptar de mas
- * aca es aprobar CSS que no hace lo mismo, y eso es peor que rechazar CSS
- * valido.
+ * COMO SE APLICA, y por que asi: `compararReglas` prueba PRIMERO la igualdad
+ * exacta y solo despues la canonica. La forma canonica unicamente AGREGA
+ * aceptaciones, nunca quita ninguna, asi que ningun alumno que antes sacaba 100
+ * puede sacar menos por esto.
+ *
+ * EL LIMITE, que es el mismo de siempre: se acepta lo EQUIVALENTE, nunca lo
+ * INVALIDO. Un grader que aprueba CSS invalido le ensena algo falso al alumno y
+ * lo descubre recien cuando no le funciona en el navegador. Cada regla de abajo
+ * falla CERRADA: si no puede probar que las dos formas hacen lo mismo, deja la
+ * declaracion como estaba y la comparacion sigue siendo estricta.
  */
-function equivalentesDe(declaracion: string): string[] {
+
+/**
+ * Palabras clave validas en CUALQUIER propiedad. Tienen que ir solas, asi que
+ * bloquean la expansion de un shorthand: `padding: inherit` es valido y
+ * `padding: inherit inherit inherit inherit` no lo es.
+ */
+const PALABRAS_CLAVE_GLOBALES = new Set([
+  "inherit",
+  "initial",
+  "unset",
+  "revert",
+  "revert-layer",
+]);
+
+/**
+ * Propiedades de CAJA que aceptan de 1 a 4 valores y los reparten por los
+ * cuatro lados. Expandirlas a sus cuatro valores vuelve identicas todas sus
+ * escrituras: `16px`, `16px 16px`, `16px 16px 16px` y `16px 16px 16px 16px`.
+ */
+const CAJA_CUATRO_VALORES = new Set([
+  "margin",
+  "padding",
+  "inset",
+  "border-width",
+  "border-style",
+  "border-color",
+  "border-radius",
+  "scroll-margin",
+  "scroll-padding",
+]);
+
+/** Propiedades de caja que reparten 1 o 2 valores sobre un solo eje. */
+const CAJA_DOS_VALORES = new Set([
+  "gap",
+  "overflow",
+  "margin-inline",
+  "margin-block",
+  "padding-inline",
+  "padding-block",
+  "inset-inline",
+  "inset-block",
+  "scroll-margin-inline",
+  "scroll-margin-block",
+  "scroll-padding-inline",
+  "scroll-padding-block",
+]);
+
+/**
+ * Atajos cuyos tres componentes -ancho, estilo y color- NO tienen orden fijo.
+ * `border: 1px solid red` y `border: solid red 1px` son la misma declaracion.
+ */
+const ATAJOS_DE_LINEA = new Set([
+  "border",
+  "border-top",
+  "border-right",
+  "border-bottom",
+  "border-left",
+  "border-inline",
+  "border-block",
+  "border-inline-start",
+  "border-inline-end",
+  "border-block-start",
+  "border-block-end",
+  "outline",
+  "column-rule",
+]);
+
+/**
+ * Propiedades donde un `0` suelto SOLO puede ser una longitud, y por lo tanto
+ * `0` y `0px` son el mismo valor.
+ *
+ * La lista es corta a proposito. `opacity`, `z-index`, `line-height`,
+ * `flex-grow`, `flex-shrink` y `order` NO estan, y no pueden estar: ahi el `0`
+ * es un numero y `0px` es directamente invalido. Aceptarlo seria aprobar CSS
+ * que el navegador descarta.
+ */
+const LONGITUD_PURA = new Set([
+  ...CAJA_CUATRO_VALORES,
+  ...CAJA_DOS_VALORES,
+  ...ATAJOS_DE_LINEA,
+  "top",
+  "right",
+  "bottom",
+  "left",
+  // Los lados sueltos. Estaban `margin` y `padding` pero no `margin-top`, y esa
+  // asimetria dejaba un rechazo vivo en `25-ej-02`: medido, no supuesto.
+  "margin-top",
+  "margin-right",
+  "margin-bottom",
+  "margin-left",
+  "padding-top",
+  "padding-right",
+  "padding-bottom",
+  "padding-left",
+  "margin-inline-start",
+  "margin-inline-end",
+  "margin-block-start",
+  "margin-block-end",
+  "padding-inline-start",
+  "padding-inline-end",
+  "padding-block-start",
+  "padding-block-end",
+  "inset-inline-start",
+  "inset-inline-end",
+  "inset-block-start",
+  "inset-block-end",
+  "width",
+  "height",
+  "min-width",
+  "min-height",
+  "max-width",
+  "max-height",
+  "row-gap",
+  "column-gap",
+  "border-top-width",
+  "border-right-width",
+  "border-bottom-width",
+  "border-left-width",
+  "outline-width",
+  "outline-offset",
+  "text-indent",
+  "letter-spacing",
+  "word-spacing",
+  "box-shadow",
+  "text-shadow",
+]);
+
+/** Propiedades cuyo valor puede llevar un color con nombre. Ver `canonizarColor`. */
+const LLEVAN_COLOR = new Set([
+  ...ATAJOS_DE_LINEA,
+  "color",
+  "background",
+  "background-color",
+  "border-color",
+  "border-top-color",
+  "border-right-color",
+  "border-bottom-color",
+  "border-left-color",
+  "outline-color",
+  "column-rule-color",
+  "text-decoration",
+  "text-decoration-color",
+  "caret-color",
+  "box-shadow",
+  "text-shadow",
+  "fill",
+  "stroke",
+]);
+
+/** Estilos de linea (`border-style`), para clasificar los tokens de un atajo. */
+const ESTILOS_DE_LINEA = new Set([
+  "none",
+  "hidden",
+  "dotted",
+  "dashed",
+  "solid",
+  "double",
+  "groove",
+  "ridge",
+  "inset",
+  "outset",
+]);
+
+/** Anchos con nombre (`border-width`), para lo mismo. */
+const ANCHOS_CON_NOMBRE = new Set(["thin", "medium", "thick"]);
+
+/** Una longitud cero con unidad: `0px`, `0rem`, `0vh`. `0%` NO, ver `canonizarCero`. */
+const CERO_CON_UNIDAD =
+  /^0(px|em|rem|ex|ch|vh|vw|vmin|vmax|cm|mm|in|pt|pc|q)$/;
+
+/** Un numero con unidad de longitud, o un cero pelado: sirve de ancho en un atajo. */
+const ES_LONGITUD = /^-?(\d+(\.\d+)?|\.\d+)(px|em|rem|ex|ch|vh|vw|vmin|vmax|cm|mm|in|pt|pc|q|%)?$/;
+
+/**
+ * Los 148 colores con nombre de CSS y su hex.
+ *
+ * NO se escribio de memoria. Se genero desde `color-name` y se contrasto entera
+ * contra la tabla independiente de Three.js: 148 nombres cada una, CERO
+ * discrepancias. Importa que sea exacta, porque una entrada equivocada no
+ * rechaza de mas: aprueba un color que no es el pedido, que es el error caro.
+ *
+ * Un nombre que no este aca se deja intacto y no gana equivalencia, que es el
+ * modo correcto de fallar.
+ */
+const COLORES_CON_NOMBRE: Record<string, string> = {
+  aliceblue: "#f0f8ff",
+  antiquewhite: "#faebd7",
+  aqua: "#00ffff",
+  aquamarine: "#7fffd4",
+  azure: "#f0ffff",
+  beige: "#f5f5dc",
+  bisque: "#ffe4c4",
+  black: "#000000",
+  blanchedalmond: "#ffebcd",
+  blue: "#0000ff",
+  blueviolet: "#8a2be2",
+  brown: "#a52a2a",
+  burlywood: "#deb887",
+  cadetblue: "#5f9ea0",
+  chartreuse: "#7fff00",
+  chocolate: "#d2691e",
+  coral: "#ff7f50",
+  cornflowerblue: "#6495ed",
+  cornsilk: "#fff8dc",
+  crimson: "#dc143c",
+  cyan: "#00ffff",
+  darkblue: "#00008b",
+  darkcyan: "#008b8b",
+  darkgoldenrod: "#b8860b",
+  darkgray: "#a9a9a9",
+  darkgreen: "#006400",
+  darkgrey: "#a9a9a9",
+  darkkhaki: "#bdb76b",
+  darkmagenta: "#8b008b",
+  darkolivegreen: "#556b2f",
+  darkorange: "#ff8c00",
+  darkorchid: "#9932cc",
+  darkred: "#8b0000",
+  darksalmon: "#e9967a",
+  darkseagreen: "#8fbc8f",
+  darkslateblue: "#483d8b",
+  darkslategray: "#2f4f4f",
+  darkslategrey: "#2f4f4f",
+  darkturquoise: "#00ced1",
+  darkviolet: "#9400d3",
+  deeppink: "#ff1493",
+  deepskyblue: "#00bfff",
+  dimgray: "#696969",
+  dimgrey: "#696969",
+  dodgerblue: "#1e90ff",
+  firebrick: "#b22222",
+  floralwhite: "#fffaf0",
+  forestgreen: "#228b22",
+  fuchsia: "#ff00ff",
+  gainsboro: "#dcdcdc",
+  ghostwhite: "#f8f8ff",
+  gold: "#ffd700",
+  goldenrod: "#daa520",
+  gray: "#808080",
+  green: "#008000",
+  greenyellow: "#adff2f",
+  grey: "#808080",
+  honeydew: "#f0fff0",
+  hotpink: "#ff69b4",
+  indianred: "#cd5c5c",
+  indigo: "#4b0082",
+  ivory: "#fffff0",
+  khaki: "#f0e68c",
+  lavender: "#e6e6fa",
+  lavenderblush: "#fff0f5",
+  lawngreen: "#7cfc00",
+  lemonchiffon: "#fffacd",
+  lightblue: "#add8e6",
+  lightcoral: "#f08080",
+  lightcyan: "#e0ffff",
+  lightgoldenrodyellow: "#fafad2",
+  lightgray: "#d3d3d3",
+  lightgreen: "#90ee90",
+  lightgrey: "#d3d3d3",
+  lightpink: "#ffb6c1",
+  lightsalmon: "#ffa07a",
+  lightseagreen: "#20b2aa",
+  lightskyblue: "#87cefa",
+  lightslategray: "#778899",
+  lightslategrey: "#778899",
+  lightsteelblue: "#b0c4de",
+  lightyellow: "#ffffe0",
+  lime: "#00ff00",
+  limegreen: "#32cd32",
+  linen: "#faf0e6",
+  magenta: "#ff00ff",
+  maroon: "#800000",
+  mediumaquamarine: "#66cdaa",
+  mediumblue: "#0000cd",
+  mediumorchid: "#ba55d3",
+  mediumpurple: "#9370db",
+  mediumseagreen: "#3cb371",
+  mediumslateblue: "#7b68ee",
+  mediumspringgreen: "#00fa9a",
+  mediumturquoise: "#48d1cc",
+  mediumvioletred: "#c71585",
+  midnightblue: "#191970",
+  mintcream: "#f5fffa",
+  mistyrose: "#ffe4e1",
+  moccasin: "#ffe4b5",
+  navajowhite: "#ffdead",
+  navy: "#000080",
+  oldlace: "#fdf5e6",
+  olive: "#808000",
+  olivedrab: "#6b8e23",
+  orange: "#ffa500",
+  orangered: "#ff4500",
+  orchid: "#da70d6",
+  palegoldenrod: "#eee8aa",
+  palegreen: "#98fb98",
+  paleturquoise: "#afeeee",
+  palevioletred: "#db7093",
+  papayawhip: "#ffefd5",
+  peachpuff: "#ffdab9",
+  peru: "#cd853f",
+  pink: "#ffc0cb",
+  plum: "#dda0dd",
+  powderblue: "#b0e0e6",
+  purple: "#800080",
+  rebeccapurple: "#663399",
+  red: "#ff0000",
+  rosybrown: "#bc8f8f",
+  royalblue: "#4169e1",
+  saddlebrown: "#8b4513",
+  salmon: "#fa8072",
+  sandybrown: "#f4a460",
+  seagreen: "#2e8b57",
+  seashell: "#fff5ee",
+  sienna: "#a0522d",
+  silver: "#c0c0c0",
+  skyblue: "#87ceeb",
+  slateblue: "#6a5acd",
+  slategray: "#708090",
+  slategrey: "#708090",
+  snow: "#fffafa",
+  springgreen: "#00ff7f",
+  steelblue: "#4682b4",
+  tan: "#d2b48c",
+  teal: "#008080",
+  thistle: "#d8bfd8",
+  tomato: "#ff6347",
+  turquoise: "#40e0d0",
+  violet: "#ee82ee",
+  wheat: "#f5deb3",
+  white: "#ffffff",
+  whitesmoke: "#f5f5f5",
+  yellow: "#ffff00",
+  yellowgreen: "#9acd32",
+};
+
+/**
+ * Parte un valor por sus espacios de PRIMER NIVEL, sin entrar en parentesis ni
+ * en comillas: `0 4px rgba(0, 0, 0, 0.1)` son tres tokens, no cinco.
+ *
+ * Devuelve `null` si las comillas o los parentesis quedan sin cerrar, para que
+ * quien llama deje el valor como estaba en vez de canonizar algo mal partido.
+ */
+function tokenizarValor(valor: string): string[] | null {
+  const tokens: string[] = [];
+  let actual = "";
+  let profundidad = 0;
+  let comilla: string | null = null;
+
+  for (let i = 0; i < valor.length; i++) {
+    const c = valor[i];
+    if (comilla) {
+      actual += c;
+      if (c === "\\") {
+        if (i + 1 < valor.length) actual += valor[++i];
+      } else if (c === comilla) {
+        comilla = null;
+      }
+      continue;
+    }
+    if (c === '"' || c === "'") {
+      comilla = c;
+      actual += c;
+      continue;
+    }
+    if (c === "(") profundidad++;
+    if (c === ")") profundidad--;
+    if (c === " " && profundidad === 0) {
+      if (actual) tokens.push(actual);
+      actual = "";
+      continue;
+    }
+    actual += c;
+  }
+  if (comilla || profundidad !== 0) return null;
+  if (actual) tokens.push(actual);
+  return tokens;
+}
+
+/**
+ * Unifica el CARACTER de comilla de cada string a `"`, sin sacarla nunca.
+ *
+ * Sacarla estaria mal y ya se midio por que: `content: ""` desaparece si se
+ * desnuda -`normalizarDeclaracion` descarta la declaracion de valor vacio- y
+ * `08-ej-06` bajaba de 6 declaraciones esperadas a 5. Aca solo cambia el
+ * caracter, asi que `content: ''` y `content: ""` se encuentran y `content: ""`
+ * sigue existiendo.
+ *
+ * Un string que ya contiene una comilla doble o una barra de escape se deja
+ * como esta: reescribirlo cambiaria el escapado, y eso ya no es la misma cadena.
+ */
+function canonizarComillas(valor: string): string {
+  return valor.replace(/'([^'\\"]*)'/g, '"$1"');
+}
+
+/** `#fff` -> `#ffffff` y `#ffff` -> `#ffffffff`. Un hex es un color en cualquier propiedad. */
+function canonizarHex(token: string): string {
+  const m = /^#([0-9a-f]{3,4})$/.exec(token);
+  if (!m) return token;
+  return "#" + [...m[1]].map((c) => c + c).join("");
+}
+
+/**
+ * Un color con nombre a su hex, SOLO en propiedades que llevan color.
+ *
+ * La restriccion no es decorativa: `font-family: Tomato` es una fuente que se
+ * llama Tomato, y `animation-name: tomato` es el nombre de una animacion.
+ * Convertirlos a `#ff6347` cambiaria lo que la declaracion significa.
+ */
+function canonizarColor(prop: string, token: string): string {
+  if (!LLEVAN_COLOR.has(prop)) return token;
+  return COLORES_CON_NOMBRE[token] ?? token;
+}
+
+/**
+ * `0px` -> `0`, solo donde el cero no puede ser otra cosa que una longitud.
+ *
+ * `0%` queda afuera: un porcentaje se resuelve contra otra medida y no siempre
+ * vale lo mismo que un cero absoluto.
+ */
+function canonizarCero(prop: string, token: string): string {
+  if (!LONGITUD_PURA.has(prop)) return token;
+  return CERO_CON_UNIDAD.test(token) ? "0" : token;
+}
+
+/**
+ * Reparte los valores de un atajo de caja sobre sus cuatro -o dos- lados.
+ *
+ * Devuelve `null` cuando no puede probar que la expansion conserva el
+ * significado: con `var()` adentro -una custom property puede traer dos valores
+ * y la expansion multiplicaria basura-, con una palabra clave global, con una
+ * barra -`border-radius: 10px / 20px` tiene dos radios por esquina- o con una
+ * cantidad de valores que CSS no admite.
+ */
+function expandirCaja(tokens: string[], lados: 2 | 4): string[] | null {
+  if (tokens.some((t) => t.includes("var(") || t === "/")) return null;
+  if (tokens.some((t) => PALABRAS_CLAVE_GLOBALES.has(t))) return null;
+
+  if (lados === 2) {
+    if (tokens.length === 1) return [tokens[0], tokens[0]];
+    if (tokens.length === 2) return tokens;
+    return null;
+  }
+  const [a, b, c, d] = tokens;
+  if (tokens.length === 1) return [a, a, a, a];
+  if (tokens.length === 2) return [a, b, a, b];
+  if (tokens.length === 3) return [a, b, c, b];
+  if (tokens.length === 4) return [a, b, c, d];
+  return null;
+}
+
+/**
+ * Ordena los componentes de un atajo de linea como ancho, estilo y color.
+ *
+ * Clasifica lo que reconoce y, si queda UN token sin clasificar y el lugar del
+ * color esta libre, ese token es el color: asi `border: 2px solid
+ * var(--acento)` tambien se ordena. Si algo se repite o quedan dos sin
+ * clasificar, devuelve `null` y la comparacion sigue siendo estricta -no hay
+ * forma de saber que quiso decir, y `border: solid solid red` no es CSS valido-.
+ */
+function ordenarAtajoDeLinea(tokens: string[]): string[] | null {
+  if (tokens.length === 0 || tokens.length > 3) return null;
+  if (tokens.some((t) => PALABRAS_CLAVE_GLOBALES.has(t))) return null;
+
+  let ancho: string | null = null;
+  let estilo: string | null = null;
+  let color: string | null = null;
+  const sinClasificar: string[] = [];
+
+  for (const t of tokens) {
+    if (ESTILOS_DE_LINEA.has(t)) {
+      if (estilo) return null;
+      estilo = t;
+    } else if (ANCHOS_CON_NOMBRE.has(t) || ES_LONGITUD.test(t)) {
+      if (ancho) return null;
+      ancho = t;
+    } else if (t.startsWith("#") || t.includes("(") || t in COLORES_CON_NOMBRE) {
+      if (color) return null;
+      color = t;
+    } else {
+      sinClasificar.push(t);
+    }
+  }
+
+  if (sinClasificar.length > 1) return null;
+  if (sinClasificar.length === 1) {
+    if (color) return null;
+    color = sinClasificar[0];
+  }
+  return [ancho, estilo, color].filter((x): x is string => x !== null);
+}
+
+/**
+ * La forma canonica del VALOR de una declaracion. Ver el comentario grande de
+ * arriba para el limite que respeta cada paso.
+ */
+function canonizarValor(prop: string, valor: string): string {
+  const conComillas = canonizarComillas(valor);
+  if (PALABRAS_CLAVE_GLOBALES.has(conComillas)) return conComillas;
+
+  const tokens = tokenizarValor(conComillas);
+  if (!tokens) return conComillas;
+
+  let canon = tokens.map((t) =>
+    canonizarColor(prop, canonizarCero(prop, canonizarHex(t)))
+  );
+
+  if (prop === "font-weight") {
+    if (canon.length === 1 && canon[0] === "bold") canon = ["700"];
+    else if (canon.length === 1 && canon[0] === "normal") canon = ["400"];
+  }
+
+  if (CAJA_CUATRO_VALORES.has(prop)) canon = expandirCaja(canon, 4) ?? canon;
+  else if (CAJA_DOS_VALORES.has(prop)) canon = expandirCaja(canon, 2) ?? canon;
+  else if (ATAJOS_DE_LINEA.has(prop)) canon = ordenarAtajoDeLinea(canon) ?? canon;
+
+  return canon.join(" ");
+}
+
+/**
+ * La forma canonica de una declaracion entera, ya normalizada.
+ *
+ * El ultimo paso pliega `background` sobre `background-color` cuando el valor es
+ * un color literal. Antes esto vivia en una funcion aparte que enumeraba
+ * alternativas; es la misma regla y la misma restriccion, escrita una sola vez.
+ *
+ * MEDIDO EL 2026-08-31, y por eso existe: 49 ejercicios castigaban al alumno que
+ * elegia la otra propiedad. 12 esperaban el atajo y bajaban a 78-91; 37
+ * esperaban la especifica y bajaban HASTA 0, porque los mini retos son todo o
+ * nada. Lo reporto un alumno, que es la peor forma de enterarse.
+ *
+ * Sigue valiendo SOLO con un color literal. Con un color solo las dos pintan
+ * igual, porque el atajo resetea imagen, posicion y repeticion a sus valores
+ * iniciales, que es donde ya estaban. Quedan afuera los degradados y `url()`
+ * -`background-color: linear-gradient(...)` ni siquiera es CSS valido- y
+ * `var(...)`, porque una custom property puede contener un degradado y el
+ * comparador no puede saberlo.
+ */
+function canonizarDeclaracion(declaracion: string): string {
   const i = declaracion.indexOf(":");
-  if (i === -1) return [];
+  if (i === -1) return declaracion;
   const prop = declaracion.slice(0, i).trim();
-  const valor = declaracion.slice(i + 1).trim();
-  if (!esColorSolo(valor)) return [];
-  if (prop === "background") return [`background-color: ${valor}`];
-  if (prop === "background-color") return [`background: ${valor}`];
-  return [];
+  const valor = canonizarValor(prop, declaracion.slice(i + 1).trim());
+  if (prop === "background" && esColorSolo(valor)) return `background-color: ${valor}`;
+  return `${prop}: ${valor}`;
 }
 
 /**
@@ -526,10 +1070,14 @@ export function compararReglas(
 
   for (const [selector, decls] of esp) {
     const presentes = env.get(selector);
+    // Una sola vez por selector, no una por declaracion.
+    const canonicas = presentes
+      ? new Set([...presentes].map(canonizarDeclaracion))
+      : null;
     for (const d of decls) {
       total++;
       const hallada =
-        presentes?.has(d) || equivalentesDe(d).some((alt) => presentes?.has(alt));
+        presentes?.has(d) || canonicas?.has(canonizarDeclaracion(d));
       if (hallada) encontradas++;
       else faltantes.push(`${selector} { ${d} }`);
     }
