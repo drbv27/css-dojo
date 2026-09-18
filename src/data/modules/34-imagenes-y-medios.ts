@@ -560,7 +560,7 @@ Muchos proyectos la ponen al principio de la hoja y se olvidan del problema para
         },
         {
           instruccion:
-            "Poné .tarjeta-foto en blanco y negro con un filtro, y devolvele el color en :hover.",
+            "Poné .tarjeta-foto en blanco y negro con filter: grayscale(100%), y en :hover bajá ese mismo filtro a grayscale(0%) para devolverle el color.",
           esperado:
             ".tarjeta-foto { filter: grayscale(100%); } .tarjeta-foto:hover { filter: grayscale(0%); }",
         },

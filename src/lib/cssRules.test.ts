@@ -572,3 +572,286 @@ describe("font-family comillado no penaliza CSS valido", () => {
     expect(compararReglas(target3208, variante3208).score).toBe(100);
   });
 });
+
+/**
+ * Las OTRAS formas de escribir la MISMA declaracion.
+ *
+ * MEDIDO EL 2026-09-18 corriendo `calificar()` sobre los 652 ejercicios de
+ * css/js/html: 71 de los 120 `css-rules` rechazaban al menos una forma
+ * equivalente, 157 rechazos en total, y TRECE eran mini retos -- que puntuan
+ * cien o cero, asi que ahi una declaracion escrita en su otra forma valida no
+ * bajaba el puntaje, lo borraba. Despues del arreglo: 0 rechazos, 0 regresiones
+ * sobre los 618 controles positivos. Informe en `informes/ejercicios.md`.
+ *
+ * CADA RELAJACION TIENE DOS TESTS, y el segundo es el que importa: uno prueba
+ * que la forma equivalente ahora pasa, y otro prueba que aflojar la regla de mas
+ * pone el guard en ROJO. Sin el segundo, la regla se ensancha sola con el tiempo
+ * hasta aprobar CSS invalido, y un grader que aprueba CSS invalido le ensena
+ * algo falso al alumno: lo descubre recien cuando no le funciona en el navegador.
+ */
+describe("atajos de caja: 16px y 16px 16px 16px 16px son la misma declaracion", () => {
+  it("acepta las cuatro escrituras del mismo padding", () => {
+    const target = ".a { padding: 16px; }";
+    for (const v of ["16px", "16px 16px", "16px 16px 16px", "16px 16px 16px 16px"]) {
+      expect(compararReglas(target, `.a { padding: ${v}; }`).score).toBe(100);
+    }
+  });
+
+  it("acepta la forma larga de un margin de dos valores, que es la que escribe quien duda", () => {
+    expect(compararReglas(".a { margin: 0 auto; }", ".a { margin: 0 auto 0 auto; }").score).toBe(100);
+    expect(compararReglas(".a { margin: 10px 20px; }", ".a { margin: 10px 20px 10px 20px; }").score).toBe(100);
+  });
+
+  it("tambien pliega las de dos lados: gap y overflow", () => {
+    expect(compararReglas(".a { gap: 12px; }", ".a { gap: 12px 12px; }").score).toBe(100);
+    expect(compararReglas(".a { overflow: hidden; }", ".a { overflow: hidden hidden; }").score).toBe(100);
+  });
+
+  it("GUARD: valores distintos siguen estando mal, que es lo que la expansion NO puede borrar", () => {
+    // Si la expansion se hiciera mal -- por ejemplo repitiendo el primer valor
+    // en lugar de alternar -- estos dos empezarian a dar 100.
+    expect(compararReglas(".a { padding: 10px 20px; }", ".a { padding: 20px 10px; }").score).toBe(0);
+    expect(compararReglas(".a { padding: 10px 20px; }", ".a { padding: 10px 20px 30px 40px; }").score).toBe(0);
+    // Tres valores reparten a-b-c-b: el de abajo deja 17px arriba, no 16px.
+    expect(compararReglas(".a { padding: 16px; }", ".a { padding: 17px 16px 16px; }").score).toBe(0);
+    // Cinco valores no son un shorthand valido, y no se canonizan.
+    expect(compararReglas(".a { padding: 16px; }", ".a { padding: 16px 16px 16px 16px 16px; }").score).toBe(0);
+  });
+
+  it("GUARD: NO expande un var(), porque una custom property puede traer dos valores", () => {
+    // `--e: 10px 20px` hace que `padding: var(--e)` valga dos valores, y
+    // repetirlo cuatro veces produciria una declaracion que no es CSS valido.
+    expect(
+      compararReglas(".a { padding: var(--e); }", ".a { padding: var(--e) var(--e) var(--e) var(--e); }").score
+    ).toBe(0);
+  });
+
+  it("GUARD: NO expande una palabra clave global, que tiene que ir sola", () => {
+    // `padding: inherit` es valido; `padding: inherit inherit inherit inherit` no.
+    // La regla vive en DOS lugares -- el corte temprano de `canonizarValor` y el
+    // chequeo de `expandirCaja` -- y alcanza con cualquiera de los dos.
+    // Verificado por mutacion: sacando los dos, este par salta de 0 a 100.
+    expect(
+      compararReglas(".a { padding: inherit; }", ".a { padding: inherit inherit inherit inherit; }").score
+    ).toBe(0);
+    expect(compararReglas(".a { margin: initial; }", ".a { margin: initial initial; }").score).toBe(0);
+  });
+
+  it("GUARD: NO expande un border-radius con barra, que lleva dos radios por esquina", () => {
+    expect(
+      compararReglas(".a { border-radius: 10px / 20px; }", ".a { border-radius: 10px 10px 10px 10px; }").score
+    ).toBe(0);
+    // El par que de verdad prueba el chequeo de la barra: sin el, los tres
+    // tokens `10px / 20px` se reparten como a-b-c-b y producen `10px / 20px /`,
+    // que pasaria a valer lo mismo. Verificado por mutacion: 0 -> 100.
+    expect(
+      compararReglas(".a { border-radius: 10px / 20px; }", ".a { border-radius: 10px / 20px /; }").score
+    ).toBe(0);
+  });
+});
+
+describe("atajos de linea: border no tiene orden fijo", () => {
+  it("acepta los seis ordenes de ancho, estilo y color", () => {
+    const target = ".a { border: 1px solid red; }";
+    const ordenes = [
+      "1px solid red",
+      "1px red solid",
+      "solid 1px red",
+      "solid red 1px",
+      "red 1px solid",
+      "red solid 1px",
+    ];
+    for (const v of ordenes) {
+      expect(compararReglas(target, `.a { border: ${v}; }`).score).toBe(100);
+    }
+  });
+
+  it("ordena aunque el color sea un var(), que es como lo escribe el curriculum", () => {
+    expect(
+      compararReglas(
+        ".a { border: 2px solid var(--acento); }",
+        ".a { border: solid 2px var(--acento); }"
+      ).score
+    ).toBe(100);
+    expect(
+      compararReglas(
+        ".a { border-bottom: 3px solid var(--cv-acento); }",
+        ".a { border-bottom: solid var(--cv-acento) 3px; }"
+      ).score
+    ).toBe(100);
+  });
+
+  it("vale para los otros atajos que se escriben igual", () => {
+    expect(compararReglas(".a { outline: 2px dashed blue; }", ".a { outline: dashed blue 2px; }").score).toBe(100);
+  });
+
+  it("GUARD: reordenar no puede tapar un componente DISTINTO", () => {
+    expect(compararReglas(".a { border: 1px solid red; }", ".a { border: 2px solid red; }").score).toBe(0);
+    expect(compararReglas(".a { border: 1px solid red; }", ".a { border: 1px dashed red; }").score).toBe(0);
+    expect(compararReglas(".a { border: 1px solid red; }", ".a { border: 1px solid blue; }").score).toBe(0);
+  });
+
+  it("GUARD: un atajo que NO es CSS valido no se ordena ni se acepta", () => {
+    // Dos estilos, o dos anchos, no son un `border`. Si la clasificacion
+    // aceptara repetidos, el segundo pisaria al primero y un atajo INVALIDO
+    // quedaria igual a uno valido: verificado por mutacion, sacando el chequeo
+    // de repetidos este par salta de 0 a 100.
+    expect(compararReglas(".a { border: solid red; }", ".a { border: solid solid red; }").score).toBe(0);
+    expect(compararReglas(".a { border: 1px red; }", ".a { border: 1px 2px red; }").score).toBe(0);
+    expect(compararReglas(".a { border: 1px solid red; }", ".a { border: solid solid red; }").score).toBe(0);
+    expect(compararReglas(".a { border: 1px solid red; }", ".a { border: 1px 2px solid; }").score).toBe(0);
+  });
+
+  it("GUARD: el orden libre NO se derrama a border-width, que SI reparte por lado", () => {
+    // `border-width: 1px 2px` es arriba/abajo y costados, no ancho y estilo.
+    expect(compararReglas(".a { border-width: 1px 2px; }", ".a { border-width: 2px 1px; }").score).toBe(0);
+  });
+});
+
+describe("colores: el mismo color escrito de otra manera", () => {
+  it("acepta el hex corto contra el largo, y al reves", () => {
+    expect(compararReglas(".a { color: #ffffff; }", ".a { color: #fff; }").score).toBe(100);
+    expect(compararReglas(".a { color: #fff; }", ".a { color: #ffffff; }").score).toBe(100);
+    expect(compararReglas(".a { border: 1px solid #cccccc; }", ".a { border: 1px solid #ccc; }").score).toBe(100);
+  });
+
+  it("acepta el nombre contra su hex en las propiedades que llevan color", () => {
+    expect(compararReglas(".a { color: white; }", ".a { color: #ffffff; }").score).toBe(100);
+    expect(compararReglas(".a { background-color: #ff0000; }", ".a { background-color: red; }").score).toBe(100);
+    expect(compararReglas(".a { border: 1px solid steelblue; }", ".a { border: 1px solid #4682b4; }").score).toBe(100);
+  });
+
+  it("GUARD: dos colores DISTINTOS no se confunden, aunque se parezcan de nombre", () => {
+    // Una sola entrada mal copiada en la tabla de 148 nombres aprobaria un color
+    // que no es el pedido, que es el error caro. Por eso la tabla se genero
+    // desde `color-name` y se contrasto entera contra la de Three.js.
+    expect(compararReglas(".a { color: red; }", ".a { color: darkred; }").score).toBe(0);
+    expect(compararReglas(".a { color: #ffffff; }", ".a { color: #fffffe; }").score).toBe(0);
+    expect(compararReglas(".a { color: gray; }", ".a { color: darkgray; }").score).toBe(0);
+  });
+
+  it("GUARD: un nombre de color NO se traduce fuera de una propiedad de color", () => {
+    // `Tomato` es una fuente que se llama Tomato, y `tomato` puede ser el nombre
+    // de una animacion. Traducirlos a #ff6347 cambiaria lo que dicen.
+    expect(compararReglas(".a { font-family: tomato; }", ".a { font-family: #ff6347; }").score).toBe(0);
+    expect(compararReglas(".a { animation-name: tomato; }", ".a { animation-name: #ff6347; }").score).toBe(0);
+  });
+});
+
+describe("cero: 0 y 0px son la misma longitud, y solo donde es una longitud", () => {
+  it("acepta el cero con unidad y sin ella", () => {
+    expect(compararReglas(".a { margin: 0 auto; }", ".a { margin: 0px auto; }").score).toBe(100);
+    expect(compararReglas(".a { margin-top: 0; }", ".a { margin-top: 0px; }").score).toBe(100);
+    expect(compararReglas(".a { box-shadow: 0 4px 15px red; }", ".a { box-shadow: 0px 4px 15px red; }").score).toBe(100);
+  });
+
+  it("GUARD: donde el cero es un NUMERO, 0px es invalido y tiene que seguir fallando", () => {
+    // El navegador descarta `opacity: 0px`. Aceptarlo seria ensenarle al alumno
+    // que esa declaracion funciona.
+    expect(compararReglas(".a { opacity: 0; }", ".a { opacity: 0px; }").score).toBe(0);
+    expect(compararReglas(".a { z-index: 0; }", ".a { z-index: 0px; }").score).toBe(0);
+    expect(compararReglas(".a { line-height: 0; }", ".a { line-height: 0px; }").score).toBe(0);
+    expect(compararReglas(".a { flex-grow: 0; }", ".a { flex-grow: 0px; }").score).toBe(0);
+    expect(compararReglas(".a { flex: 0 0 250px; }", ".a { flex: 0px 0px 250px; }").score).toBe(0);
+  });
+
+  it("GUARD: 0% NO es 0, porque un porcentaje se resuelve contra otra medida", () => {
+    expect(compararReglas(".a { width: 0; }", ".a { width: 0%; }").score).toBe(0);
+  });
+
+  it("GUARD: un cero no se come un valor que no lo es", () => {
+    expect(compararReglas(".a { margin: 0; }", ".a { margin: 1px; }").score).toBe(0);
+  });
+});
+
+describe("font-weight: bold y 700 son el mismo peso", () => {
+  it("acepta la palabra contra el numero", () => {
+    expect(compararReglas(".a { font-weight: bold; }", ".a { font-weight: 700; }").score).toBe(100);
+    expect(compararReglas(".a { font-weight: 700; }", ".a { font-weight: bold; }").score).toBe(100);
+    expect(compararReglas(".a { font-weight: normal; }", ".a { font-weight: 400; }").score).toBe(100);
+  });
+
+  it("GUARD: dos pesos distintos siguen siendo distintos", () => {
+    expect(compararReglas(".a { font-weight: bold; }", ".a { font-weight: 800; }").score).toBe(0);
+    expect(compararReglas(".a { font-weight: normal; }", ".a { font-weight: 300; }").score).toBe(0);
+  });
+
+  it("GUARD: la equivalencia NO se derrama a otras propiedades", () => {
+    expect(compararReglas(".a { --peso: bold; }", ".a { --peso: 700; }").score).toBe(0);
+  });
+});
+
+describe("comillas fuera de font-family: se unifica el caracter, NUNCA se saca", () => {
+  it("acepta comilla simple en content, url y format", () => {
+    expect(compararReglas('.a::after { content: ""; }', ".a::after { content: ''; }").score).toBe(100);
+    expect(compararReglas('.a::before { content: "— "; }', ".a::before { content: '— '; }").score).toBe(100);
+    expect(
+      compararReglas(
+        '@font-face { font-family: "Nota"; src: url("/f/n.woff2") format("woff2"); }',
+        "@font-face { font-family: 'Nota'; src: url('/f/n.woff2') format('woff2'); }"
+      ).score
+    ).toBe(100);
+  });
+
+  it("GUARD: la comilla NO se saca, asi que content vacio SIGUE EXISTIENDO", () => {
+    // Desnudar la comilla evaporaria `content: ""`: `normalizarDeclaracion`
+    // descarta la declaracion de valor vacio, y `08-ej-06` bajaria de 6
+    // declaraciones esperadas a 5 -- se mediria como ejercicio mas facil, no
+    // como bug. Si `content` desapareciera, quien no lo escribe sacaria 100.
+    expect(compararReglas('.a::after { content: ""; display: block; }', ".a::after { display: block; }").score).toBe(50);
+  });
+
+  it("GUARD: la generica comillada sigue siendo distinta de la generica, que es lo que la leccion ensena", () => {
+    // `font-family: serif` es LA generica; `font-family: "serif"` es una familia
+    // que se llama serif. El hint de 32-ej-02 dice "la generica va ultima,
+    // siempre sin comillas".
+    expect(compararReglas('.a { font-family: "serif"; }', ".a { font-family: serif; }").score).toBe(0);
+    expect(compararReglas('.a { font-family: "inherit"; }', ".a { font-family: inherit; }").score).toBe(0);
+  });
+
+  it("GUARD: dos strings distintos siguen siendo distintos", () => {
+    expect(compararReglas('.a::after { content: "x"; }', ".a::after { content: 'y'; }").score).toBe(0);
+  });
+});
+
+describe("la canonicalizacion solo AGREGA aceptaciones", () => {
+  it("todo ejercicio css-rules del curriculum sigue puntuando 100 con su propia respuesta", () => {
+    // El control positivo, adentro de la suite. Si una regla de canonicalizacion
+    // rompiera una declaracion en vez de plegarla, el target dejaria de
+    // encontrarse a si mismo y esto se pondria rojo antes de llegar a un alumno.
+    const ejercicios = ALL_MODULES.flatMap((m) =>
+      m.exercises
+        .filter((e) => e.validation.type === "css-rules")
+        .map((e) => ({ slug: m.slug, id: e.id, target: cssEsperadoDe(e) }))
+    ).filter((x) => x.target.trim());
+
+    expect(ejercicios.length).toBeGreaterThan(100);
+
+    const rotos = ejercicios
+      .filter((x) => compararReglas(x.target, x.target).score !== 100)
+      .map((x) => `${x.slug}/${x.id}`);
+
+    expect(rotos).toEqual([]);
+  });
+});
+
+describe("BRECHA CONOCIDA: un color con nombre dentro de una custom property", () => {
+  /**
+   * `--fondo: white` NO puntua contra `--fondo: #ffffff`, y queda asi a
+   * proposito. Una custom property es un flujo de tokens, no un valor tipado:
+   * `--animacion: tomato` puede ser el nombre de una animacion, y traducirlo a
+   * `#ff6347` cambiaria lo que dice. El hex SI se pliega -- `#fff` y `#ffffff`
+   * son el mismo token en cualquier lado -- porque ahi no hay ambiguedad.
+   *
+   * Afecta a dos ejercicios de `variables-css` (19-ej-07 y 19-ej-reto). Se
+   * deja documentado en vez de arreglado: cerrarlo pide decidir que una
+   * custom property siempre lleva un color, y eso no es cierto.
+   */
+  it("el hex se pliega dentro de una custom property", () => {
+    expect(compararReglas(".a { --fondo: #ffffff; }", ".a { --fondo: #fff; }").score).toBe(100);
+  });
+
+  it("el NOMBRE no, y por eso esto sigue en cero", () => {
+    expect(compararReglas(".a { --fondo: #ffffff; }", ".a { --fondo: white; }").score).toBe(0);
+  });
+});
