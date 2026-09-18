@@ -241,7 +241,7 @@ Usando \`<source>\` dentro de \`<video>\` o \`<audio>\`, puedes ofrecer **múlti
         type: "exact",
         answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4", d5: "z5" },
       },
-      hint: "Piensa en que hace cada atributo por su nombre en ingles.",
+      hint: "Piensa en que hace cada atributo por su nombre en inglés.",
       explanation:
         "controls muestra los controles, autoplay inicia automáticamente, muted silencia, poster define la imagen previa, y loop repite el video.",
     },

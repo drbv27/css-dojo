@@ -31,8 +31,8 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 
 ### Usos comunes
 
-- **Menus de navegación**: la mayoria de menus web son listas no ordenadas estilizadas con CSS
-- **Listas de caracteristicas**: funcionalidades de un producto
+- **Menús de navegación**: la mayoria de menús web son listas no ordenadas estilizadas con CSS
+- **Listas de características**: funcionalidades de un producto
 - **Ingredientes**: en una receta de cocina
 - **Cualquier grupo** de elementos donde el orden no importa
 
@@ -41,7 +41,7 @@ Por defecto, los elementos se muestran con **viñetas** (puntos negros).
 1. Dentro de \`<ul>\`, **solo** deben ir elementos \`<li>\` como hijos directos
 2. Dentro de cada \`<li>\` puedes poner cualquier contenido: texto, enlaces, imágenes, incluso otras listas
 
-> **Dato:** La etiqueta \`<ul>\` es una de las más usadas en la web. Casi todos los menus de navegación estan construidos con listas no ordenadas.`,
+> **Dato:** La etiqueta \`<ul>\` es una de las más usadas en la web. Casi todos los menús de navegación están construidos con listas no ordenadas.`,
       codeExample: {
         html: `<h2>Lista de compras</h2>\n<ul>\n  <li>Pan integral</li>\n  <li>Leche descremada</li>\n  <li>Huevos</li>\n  <li>Frutas frescas</li>\n  <li>Verduras variadas</li>\n</ul>`,
         css: `h2 {\n  font-family: sans-serif;\n  color: #2d3748;\n}\n\nul {\n  font-family: sans-serif;\n  color: #4a5568;\n  line-height: 1.8;\n}\n\nli {\n  padding: 2px 0;\n}`,

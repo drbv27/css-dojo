@@ -26,7 +26,7 @@ Next.js es un **framework** construido sobre React que agrega:
 
 Next.js tiene dos sistemas de routing:
 
-| Caracteristica | Pages Router (legacy) | App Router (moderno) |
+| Característica | Pages Router (legacy) | App Router (moderno) |
 |---------------|----------------------|---------------------|
 | Directorio | \`pages/\` | \`app/\` |
 | Componentes | Client por defecto | Server por defecto |

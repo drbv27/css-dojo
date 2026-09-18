@@ -446,7 +446,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "c" },
       hint: "El index es problematico cuando el orden de los elementos puede cambiar.",
       explanation:
-        "El index como key es seguro solo en listas estáticas que no se reordenan, filtran o modifican dinamicamente. Para listas dinámicas, usa un ID único y estable.",
+        "El index como key es seguro solo en listas estáticas que no se reordenan, filtran o modifican dinámicamente. Para listas dinámicas, usa un ID único y estable.",
     },
     {
       id: "react08-ej-05",

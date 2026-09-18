@@ -336,7 +336,7 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       },
       hint: "El alt debe describir el contenido de la imagen de forma útil.",
       explanation:
-        'Un buen alt describe especificamente la imagen. Para imágenes decorativas se usa alt="" vacío. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
+        'Un buen alt describe específicamente la imagen. Para imágenes decorativas se usa alt="" vacío. Nunca se debe omitir el atributo ni usar textos genéricos como "imagen".',
     },
     {
       id: "html12-ej-06",
@@ -348,13 +348,13 @@ a:focus { outline: 3px solid #fdcb6e; outline-offset: 2px; }`,
       options: [
         { id: "a", text: "Un enlace para saltar animaciones CSS", isCorrect: false },
         { id: "b", text: "Un enlace oculto que permite saltar al contenido principal", isCorrect: true },
-        { id: "c", text: "Un botón para desactivar el menu de navegación", isCorrect: false },
+        { id: "c", text: "Un botón para desactivar el menú de navegación", isCorrect: false },
         { id: "d", text: "Un atributo ARIA para ignorar la navegación", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Es útil para usuarios que navegan con teclado.",
       explanation:
-        "Un skip navigation link es un enlace (generalmente oculto visualmente) que aparece al presionar Tab y permite a usuarios de teclado saltar directamente al contenido principal, sin tener que recorrer todo el menu.",
+        "Un skip navigation link es un enlace (generalmente oculto visualmente) que aparece al presionar Tab y permite a usuarios de teclado saltar directamente al contenido principal, sin tener que recorrer todo el menú.",
     },
     {
       id: "html12-ej-07",

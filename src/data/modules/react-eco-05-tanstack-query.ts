@@ -144,7 +144,7 @@ useQuery({
 
 ### TanStack Query vs useEffect + fetch
 
-| Caracteristica | useEffect + fetch | TanStack Query |
+| Característica | useEffect + fetch | TanStack Query |
 |---------------|------------------|----------------|
 | Cache | Manual | Automático |
 | Loading/Error | Manual con useState | Built-in |

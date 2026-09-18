@@ -184,7 +184,7 @@ console.timeEnd("operacion");  // muestra tiempo
 En DevTools (F12):
 1. Abre la pestana **Sources**
 2. Haz click en el número de línea para poner un breakpoint
-3. El código se pausa ahi y puedes inspeccionar variables
+3. El código se pausa ahí y puedes inspeccionar variables
 
 ### debugger
 
@@ -348,7 +348,7 @@ function procesar(datos) {
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Funciona como un breakpoint programatico.",
-      explanation: "debugger pausa la ejecución del código en ese punto si las DevTools del navegador estan abiertas.",
+      explanation: "debugger pausa la ejecución del código en ese punto si las DevTools del navegador están abiertas.",
     },
   ],
 };

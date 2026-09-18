@@ -92,7 +92,7 @@ Los **breakpoints** son los puntos de ancho donde el diseño cambia para adaptar
 
 ### Breakpoints comunes
 
-| Nombre | Ancho | Dispositivo tipico |
+| Nombre | Ancho | Dispositivo típico |
 |--------|-------|-------------------|
 | sm | 640px | Móviles grandes |
 | md | 768px | Tablets |
@@ -452,7 +452,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       validation: { type: "exact", answer: "c" },
       hint: "Es una regla que empieza con @ y se refiere al 'medio' o dispositivo.",
       explanation:
-        "La regla @media permite aplicar estilos condicionalmente según las caracteristicas del dispositivo, como el ancho de la pantalla, la orientación o la resolución.",
+        "La regla @media permite aplicar estilos condicionalmente según las características del dispositivo, como el ancho de la pantalla, la orientación o la resolución.",
     },
     {
       id: "17-ej-02",
@@ -576,7 +576,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 30,
       order: 7,
       prompt:
-        "Crea un layout responsivo mobile-first: una cuadricula con clase 'grid-responsivo' que tenga 1 columna por defecto, 2 columnas a partir de 500px y 3 columnas a partir de 800px. Usa gap de 16px y display: grid.",
+        "Crea un layout responsivo mobile-first: una cuadrícula con clase 'grid-responsivo' que tenga 1 columna por defecto, 2 columnas a partir de 500px y 3 columnas a partir de 800px. Usa gap de 16px y display: grid.",
       codeTemplate: {
         html: `<div class="grid-responsivo">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n  <div class="item">4</div>\n  <div class="item">5</div>\n  <div class="item">6</div>\n</div>`,
         cssPrefix: ".item {\n  background: #8e44ad;\n  color: white;\n  padding: 20px;\n  text-align: center;\n  border-radius: 8px;\n}\n\n",
@@ -698,7 +698,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       xpReward: 60,
       order: 12,
       prompt:
-        "Reto integrador. Mobile-first de verdad: primero lo chico, y después lo que cambia al haber lugar. Nunca al reves.",
+        "Reto integrador. Mobile-first de verdad: primero lo chico, y después lo que cambia al haber lugar. Nunca al revés.",
       retoPasos: [
         {
           instruccion:
@@ -707,7 +707,7 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
         },
         {
           instruccion:
-            "Con `.tarjeta`, dale un padding de 16px y un fondo #eef2f7. Esto vale en todos los tamaños, asi que va afuera de cualquier media query.",
+            "Con `.tarjeta`, dale un padding de 16px y un fondo #eef2f7. Esto vale en todos los tamaños, así que va afuera de cualquier media query.",
           esperado: ".tarjeta { padding: 16px; background-color: #eef2f7; }",
         },
         {
@@ -732,9 +732,9 @@ Para un color o una sombra que degrada solo, no lo necesitás: la tolerancia nat
       },
       referenceSolution:
         ".tarjetas {\n  display: flex;\n  flex-direction: column;\n  gap: 12px;\n}\n\n.tarjeta {\n  padding: 16px;\n  background-color: #eef2f7;\n}\n\n@media (min-width: 600px) {\n  .tarjetas {\n    flex-direction: row;\n  }\n}\n\n@supports (display: grid) {\n  .tarjetas {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n  }\n}",
-      hint: "Mobile-first significa que el CSS de base es el de pantalla chica y las media queries AGREGAN, con `min-width`. Al reves -empezar grande y restar con `max-width`- se llama desktop-first y obliga a deshacer estilos.",
+      hint: "Mobile-first significa que el CSS de base es el de pantalla chica y las media queries AGREGAN, con `min-width`. Al revés -empezar grande y restar con `max-width`- se llama desktop-first y obliga a deshacer estilos.",
       explanation:
-        "El orden de los pasos ES la leccion. Los pasos 1 y 2 son la base, la que ve cualquier dispositivo. El 3 agrega lo que solo tiene sentido con ancho. Y el 4 muestra `@supports`, que pregunta si una propiedad existe antes de usarla: la diferencia con una media query es que una pregunta por el TAMAÑO y la otra por la CAPACIDAD.",
+        "El orden de los pasos ES la lección. Los pasos 1 y 2 son la base, la que ve cualquier dispositivo. El 3 agrega lo que solo tiene sentido con ancho. Y el 4 muestra `@supports`, que pregunta si una propiedad existe antes de usarla: la diferencia con una media query es que una pregunta por el TAMAÑO y la otra por la CAPACIDAD.",
     },
   ],
 };

@@ -226,7 +226,7 @@ El atributo \`srcset\` en \`<img>\` permite al navegador elegir la mejor imagen 
 
 ### Lazy loading
 
-El atributo \`loading="lazy"\` retrasa la carga de imágenes e iframes hasta que estan **a punto de ser visibles**:
+El atributo \`loading="lazy"\` retrasa la carga de imágenes e iframes hasta que están **a punto de ser visibles**:
 
 \`\`\`html
 <img src="foto.jpg" alt="Foto" loading="lazy">
@@ -235,7 +235,7 @@ El atributo \`loading="lazy"\` retrasa la carga de imágenes e iframes hasta que
 
 Esto mejora el **rendimiento** y ahorra datos, especialmente en páginas con muchas imágenes.
 
-> **Tip:** No uses lazy loading en imágenes visibles inmediatamente (above the fold). Solo en las que estan más abajo.`,
+> **Tip:** No uses lazy loading en imágenes visibles inmediatamente (above the fold). Solo en las que están más abajo.`,
       codeExample: {
         html: `<h3>Elemento picture con formatos modernos</h3>
 <div style="background:#1e1e2e;color:#cdd6f4;padding:16px;border-radius:8px;font-family:monospace;font-size:13px;white-space:pre;overflow-x:auto;">&lt;picture&gt;
@@ -309,7 +309,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
       difficulty: 1 ,
       xpReward: 10,
       order: 2,
-      prompt: "¿Qué atributo retrasa la carga de imágenes hasta que estan a punto de ser visibles?",
+      prompt: "¿Qué atributo retrasa la carga de imágenes hasta que están a punto de ser visibles?",
       options: [
         { id: "a", text: 'loading="defer"', isCorrect: false },
         { id: "b", text: 'loading="lazy"', isCorrect: true },
@@ -317,7 +317,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
         { id: "d", text: 'defer="true"', isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "'Lazy' significa perezoso en ingles.",
+      hint: "'Lazy' significa perezoso en inglés.",
       explanation:
         'loading="lazy" es un atributo nativo que retrasa la carga de imágenes e iframes hasta que el usuario hace scroll cerca de ellos. Mejora el rendimiento de la página.',
     },
@@ -335,7 +335,7 @@ code { background: #e8e8e8; padding: 2px 6px; border-radius: 4px; }`,
         blanks: ["circle"],
       },
       validation: { type: "exact", answer: "circle" },
-      hint: "Es la forma geometrica redonda en ingles.",
+      hint: "Es la forma geometrica redonda en inglés.",
       explanation:
         "El elemento <circle> de SVG dibuja un circulo. cx y cy definen el centro, y r define el radio.",
     },

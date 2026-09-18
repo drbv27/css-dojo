@@ -297,7 +297,7 @@ Cambia el **orden visual** de los items sin modificar el HTML:
 
 Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`order\` mantienen su orden del DOM.
 
-### Patrón común: layout clasico con sidebar
+### Patrón común: layout clásico con sidebar
 
 \`\`\`css
 .layout { display: flex; }
@@ -563,7 +563,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Una barra de navegación completa: contenedor, alineación, separación y un item que se estira. Los cuatro pasos son las cuatro lecciones del modulo.",
+        "Reto integrador. Una barra de navegación completa: contenedor, alineación, separación y un item que se estira. Los cuatro pasos son las cuatro lecciones del módulo.",
       retoPasos: [
         {
           instruccion:
@@ -599,7 +599,7 @@ Los items se ordenan de menor a mayor valor de \`order\`. Items con el mismo \`o
         ".barra {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.logo {\n  flex-grow: 1;\n}",
       hint: "`justify-content` reparte sobre el eje principal y `align-items` sobre el cruzado. Con `flex-grow: 1` en el logo, el `space-between` deja de hacer falta: ya no queda espacio para repartir.",
       explanation:
-        "Los cuatro pasos son las cuatro lecciones. El paso 1 crea el contexto flex -sin el, nada de lo demas existe-. El 2 alinea en los dos ejes. El 3 agrega el respiro y la red de seguridad para pantallas chicas. Y el 4 muestra que `flex-grow` reparte el sobrante entre los hijos, que es otra forma de resolver lo mismo que `space-between`.",
+        "Los cuatro pasos son las cuatro lecciones. El paso 1 crea el contexto flex -sin el, nada de lo demás existe-. El 2 alinea en los dos ejes. El 3 agrega el respiro y la red de seguridad para pantallas chicas. Y el 4 muestra que `flex-grow` reparte el sobrante entre los hijos, que es otra forma de resolver lo mismo que `space-between`.",
     },
   ],
 };

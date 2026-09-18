@@ -28,7 +28,7 @@ selector::pseudo-elemento {
 
 ### Diferencia con pseudo-clases
 
-| Caracteristica | Pseudo-clase (:) | Pseudo-elemento (::) |
+| Característica | Pseudo-clase (:) | Pseudo-elemento (::) |
 |---------------|-------------------|----------------------|
 | Notación | Un dos puntos \`:hover\` | Dos puntos \`::before\` |
 | Que hace | Selecciona estados o posiciones | Crea/estiliza partes del elemento |
@@ -264,7 +264,7 @@ a[data-tooltip]::after {
 
 ### Limpiar floats (clearfix)
 
-Un patrón clasico para contener elementos flotantes:
+Un patrón clásico para contener elementos flotantes:
 
 \`\`\`css
 .clearfix::after {
@@ -316,7 +316,7 @@ Crear triangulos, circulos y otras formas:
         { id: "d", text: "Ninguno", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "CSS3 introdujo una notación con doble simbolo para diferenciarlos de las pseudo-clases.",
+      hint: "CSS3 introdujo una notación con doble símbolo para diferenciarlos de las pseudo-clases.",
       explanation:
         "Los pseudo-elementos usan doble dos puntos (::) en CSS3, como ::before, ::after, ::first-letter. Esto los diferencia de las pseudo-clases que usan un solo dos puntos (:hover, :focus).",
     },
@@ -337,7 +337,7 @@ Crear triangulos, circulos y otras formas:
       validation: { type: "exact", answer: "first-letter" },
       hint: "El nombre del pseudo-elemento describe lo que selecciona: la primera (first) letra (letter).",
       explanation:
-        "El pseudo-elemento '::first-letter' selecciona la primera letra de un elemento de bloque. Se usa comunmente para crear capitulares decorativas en articulos y libros.",
+        "El pseudo-elemento '::first-letter' selecciona la primera letra de un elemento de bloque. Se usa comunmente para crear capitulares decorativas en artículos y libros.",
     },
     {
       id: "08-ej-03",
@@ -491,7 +491,7 @@ Crear triangulos, circulos y otras formas:
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Los pseudo-elementos crean contenido que NO está en el HTML. Abri la pestaña HTML: nada de lo que vas a agregar existe ahi.",
+        "Reto integrador. Los pseudo-elementos crean contenido que NO está en el HTML. Abri la pestaña HTML: nada de lo que vas a agregar existe ahí.",
       retoPasos: [
         {
           instruccion:
@@ -500,12 +500,12 @@ Crear triangulos, circulos y otras formas:
         },
         {
           instruccion:
-            "Con `.editorial p::first-line`, ponele a la primera linea font-weight 600.",
+            "Con `.editorial p::first-line`, ponele a la primera línea font-weight 600.",
           esperado: ".editorial p::first-line { font-weight: 600; }",
         },
         {
           instruccion:
-            "Con `.titulo::after`, agrega una barra decorativa: content vacio, display block, 60px de ancho, 4px de alto y fondo #e74c3c.",
+            "Con `.titulo::after`, agrega una barra decorativa: content vacío, display block, 60px de ancho, 4px de alto y fondo #e74c3c.",
           esperado: ".titulo::after { content: \"\"; display: block; width: 60px; height: 4px; background-color: #e74c3c; }",
         },
         {

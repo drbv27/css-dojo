@@ -43,10 +43,10 @@ document.documentElement // elemento <html>
 
 ### ¿Por que es importante?
 
-Sin el DOM, JavaScript no podria:
+Sin el DOM, JavaScript no podría:
 - Cambiar el contenido de la página
 - Responder a clicks y otros eventos
-- Crear elementos dinamicamente
+- Crear elementos dinámicamente
 - Modificar estilos
 
 > El DOM es el puente entre HTML y JavaScript.`,
@@ -253,7 +253,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       ],
       validation: { type: "exact", answer: "c" },
       hint: "Siempre devuelve una lista, aunque este vacía.",
-      explanation: "querySelectorAll() siempre devuelve un NodeList. Si no hay coincidencias, sera un NodeList vacío con length 0.",
+      explanation: "querySelectorAll() siempre devuelve un NodeList. Si no hay coincidencias, será un NodeList vacío con length 0.",
     },
     {
       id: "js11-ej-05",

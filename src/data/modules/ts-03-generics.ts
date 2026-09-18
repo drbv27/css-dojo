@@ -68,6 +68,36 @@ obtenerNombre({ id: 1 }); // Error! no tiene 'nombre'
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
+        // El sandbox corre JavaScript. El <T> se borra al compilar: la funcion
+        // generica y la que acepta cualquier cosa son el MISMO codigo en
+        // runtime, y esa es justo la diferencia que hay que ver.
+        js: `// TypeScript:  function primero<T>(lista: T[]): T | undefined
+// Compilado, el <T> no deja rastro:
+function primero(lista) {
+  return lista[0];
+}
+
+// TypeScript:  interface Respuesta<T> { data: T; error: string | null }
+function respuestaOk(data) {
+  return { data: data, error: null, status: 200 };
+}
+
+var salida = [];
+salida.push("primero([10, 20, 30])        = " + primero([10, 20, 30]));
+salida.push("primero(['a', 'b'])          = " + primero(["a", "b"]));
+salida.push("primero([])                  = " + primero([]));
+salida.push("");
+salida.push("Respuesta<Usuario>:");
+salida.push("  " + JSON.stringify(respuestaOk({ id: 1, nombre: "Ana" })));
+salida.push("Respuesta<number[]>:");
+salida.push("  " + JSON.stringify(respuestaOk([1, 2, 3])));
+salida.push("");
+salida.push("Aca esta lo que compras con el generico: en TypeScript,");
+salida.push("primero([10,20]) tiene tipo number y primero(['a']) tiene string.");
+salida.push("Con 'any' el codigo corre igual, pero el editor deja de avisarte");
+salida.push("cuando le pedis .toUpperCase() a un numero.");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 1,
@@ -132,6 +162,41 @@ type ConfigCompleta = Required<Config>;
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
+        js: `// Los utility types (Partial, Pick, Omit, Required) viven SOLO en el editor:
+// no generan ni una linea de JavaScript. Lo que si podes ver es el efecto que
+// tienen sobre el objeto con el que trabajas.
+var usuario = { id: 1, nombre: "Ana", email: "ana@mail.com", activo: true };
+
+// Partial<Usuario>: todas las propiedades pasan a ser opcionales. Es el tipo
+// de un "parche" que actualiza solo lo que cambia.
+var parche = { nombre: "Ana Maria" };
+var actualizado = Object.assign({}, usuario, parche);
+
+// Pick<Usuario, "id" | "nombre">: se queda con dos.
+function pick(obj, claves) {
+  var out = {};
+  claves.forEach(function (k) { out[k] = obj[k]; });
+  return out;
+}
+// Omit<Usuario, "email">: saca una.
+function omit(obj, claves) {
+  var out = Object.assign({}, obj);
+  claves.forEach(function (k) { delete out[k]; });
+  return out;
+}
+
+var salida = [];
+salida.push("Usuario                      " + JSON.stringify(usuario));
+salida.push("Partial  (el parche)         " + JSON.stringify(parche));
+salida.push("  aplicado                   " + JSON.stringify(actualizado));
+salida.push("Pick<'id'|'nombre'>          " + JSON.stringify(pick(usuario, ["id", "nombre"])));
+salida.push("Omit<'email'>                " + JSON.stringify(omit(usuario, ["email"])));
+salida.push("");
+salida.push("Ojo: estas funciones son una ILUSTRACION del efecto.");
+salida.push("Partial, Pick y Omit no existen en runtime: son instrucciones");
+salida.push("para el compilador, y desaparecen antes de llegar al navegador.");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 2,
@@ -148,7 +213,7 @@ type ConfigCompleta = Required<Config>;
       options: [
         { id: "a", text: "Crear variables globales", isCorrect: false },
         { id: "b", text: "Crear funciones/tipos reutilizables que trabajan con cualquier tipo", isCorrect: true },
-        { id: "c", text: "Importar modulos automáticamente", isCorrect: false },
+        { id: "c", text: "Importar módulos automáticamente", isCorrect: false },
         { id: "d", text: "Compilar más rápido", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

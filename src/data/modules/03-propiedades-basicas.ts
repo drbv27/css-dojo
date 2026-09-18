@@ -40,7 +40,7 @@ h1 { color: #4682B4; }  /* Steel Blue */
 span { color: #000000; } /* Negro */
 \`\`\`
 
-También existe la forma abreviada de 3 digitos: \`#F00\` es igual a \`#FF0000\`.
+También existe la forma abreviada de 3 dígitos: \`#F00\` es igual a \`#FF0000\`.
 
 #### 3. RGB y RGBA
 Usa valores de 0 a 255 para cada canal. RGBA agrega un canal **alfa** (opacidad) de 0 a 1:
@@ -71,7 +71,7 @@ h1 { color: hsla(210, 50%, 50%, 0.8); } /* Azul semi-transparente */
       title: "Fondos con background",
       content: `## Fondos con background
 
-Las propiedades de fondo te permiten personalizar lo que aparece **detras del contenido** de un elemento.
+Las propiedades de fondo te permiten personalizar lo que aparece **detrás del contenido** de un elemento.
 
 ### background-color
 
@@ -288,7 +288,7 @@ Redondea las esquinas de un elemento:
           "drag-3": "zone-rgb",
         },
       },
-      hint: "El formato hexadecimal empieza con #, el RGB usa la función rgb(), y los nombres son palabras en ingles.",
+      hint: "El formato hexadecimal empieza con #, el RGB usa la función rgb(), y los nombres son palabras en inglés.",
       explanation:
         "'#FF0000' es formato hexadecimal (prefijo #). 'red' es un nombre de color estándar. 'rgb(255, 0, 0)' usa la función RGB con valores de 0 a 255.",
     },
@@ -387,7 +387,7 @@ Redondea las esquinas de un elemento:
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Arma una tarjeta de aviso usando las tres familias de propiedades del modulo: color de texto, fondo y borde.",
+        "Reto integrador. Arma una tarjeta de aviso usando las tres familias de propiedades del módulo: color de texto, fondo y borde.",
       retoPasos: [
         {
           instruccion:
@@ -423,7 +423,7 @@ Redondea las esquinas de un elemento:
         ".aviso {\n  color: #856404;\n  background-color: #fff3cd;\n  border: 1px solid #ffeaa7;\n  border-radius: 8px;\n  padding: 16px;\n}",
       hint: "`border` es un atajo que junta ancho, estilo y color en una sola declaración. Sin el estilo (`solid`) el borde no se ve, aunque tenga ancho y color.",
       explanation:
-        "Las tres familias trabajan juntas: `color` pinta el texto, `background-color` pinta la caja detras, y `border` la delimita. El `padding` es lo que evita que el texto quede pegado al borde, y `border-radius` suaviza las esquinas sin cambiar nada más.",
+        "Las tres familias trabajan juntas: `color` pinta el texto, `background-color` pinta la caja detrás, y `border` la delimita. El `padding` es lo que evita que el texto quede pegado al borde, y `border-radius` suaviza las esquinas sin cambiar nada más.",
     },
   ],
 };

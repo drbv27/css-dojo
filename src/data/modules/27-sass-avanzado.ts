@@ -101,7 +101,7 @@ Los placeholders son selectores que **solo existen para ser extendidos**. No gen
 
 ### Cuando usar @extend vs @mixin
 
-| Caracteristica | @extend | @mixin |
+| Característica | @extend | @mixin |
 |---------------|---------|--------|
 | Parámetros | No acepta | Si acepta |
 | CSS generado | Agrupa selectores (menos código) | Duplica declaraciones |
@@ -639,7 +639,7 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el simbolo para crear un placeholder selector en Sass (selector que solo existe para ser extendido):",
+        "Completa el símbolo para crear un placeholder selector en Sass (selector que solo existe para ser extendido):",
       codeTemplate: {
         html: `<!-- SCSS -->`,
         cssPrefix: "",
@@ -647,9 +647,9 @@ Cada componente debe tener su propio partial: \`_botones.scss\`, \`_tarjetas.scs
         blanks: ["%"],
       },
       validation: { type: "exact", answer: "%" },
-      hint: "Es un simbolo que parece un porcentaje. Los placeholders no generan CSS a menos que alguien los extienda.",
+      hint: "Es un símbolo que parece un porcentaje. Los placeholders no generan CSS a menos que alguien los extienda.",
       explanation:
-        "El simbolo % define un placeholder selector en Sass. A diferencia de las clases normales, los placeholders solo generan CSS cuando alguien los extiende con @extend.",
+        "El símbolo % define un placeholder selector en Sass. A diferencia de las clases normales, los placeholders solo generan CSS cuando alguien los extiende con @extend.",
     },
     {
       id: "22-ej-03",

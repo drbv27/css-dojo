@@ -804,7 +804,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Una sola fuente de verdad.",
-      explanation: "Si el total fuera estado separado, podria desincronizarse de los items. Calcularlo como valor derivado garantiza que siempre sea correcto.",
+      explanation: "Si el total fuera estado separado, podría desincronizarse de los items. Calcularlo como valor derivado garantiza que siempre sea correcto.",
     },
     {
       id: "react20-ej-06",

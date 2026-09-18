@@ -33,7 +33,7 @@ localStorage.removeItem("nombre");
 localStorage.clear();
 \`\`\`
 
-### Caracteristicas
+### Características
 - Almacena solo **strings**
 - Capacidad de ~5MB por dominio
 - Los datos **no expiran** (a diferencia de las cookies)

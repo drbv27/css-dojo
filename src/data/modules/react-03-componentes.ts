@@ -415,7 +415,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Ordena la jerarquía de componentes de una aplicación tipica, del más externo al más interno:",
+      prompt: "Ordena la jerarquía de componentes de una aplicación típica, del más externo al más interno:",
       dragItems: [
         { id: "drag-1", content: "App", correctZone: "zone-1" },
         { id: "drag-2", content: "Layout", correctZone: "zone-2" },
@@ -437,9 +437,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
           "drag-4": "zone-4",
         },
       },
-      hint: "App es siempre el componente raíz. Los componentes más específicos estan más adentro.",
+      hint: "App es siempre el componente raíz. Los componentes más específicos están más adentro.",
       explanation:
-        "En una aplicación React tipica, App es el componente raíz, que contiene un Layout, dentro del cual hay secciones como ListaProductos, y cada producto individual es un ProductoCard.",
+        "En una aplicación React típica, App es el componente raíz, que contiene un Layout, dentro del cual hay secciones como ListaProductos, y cada producto individual es un ProductoCard.",
     },
     {
       id: "react03-ej-07",

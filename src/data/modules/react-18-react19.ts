@@ -2,7 +2,7 @@ import type { ModuleData } from "@/types";
 
 export const react19Module: ModuleData = {
   slug: "react-19-nuevas-features",
-  title: "React 19: Nuevas Caracteristicas",
+  title: "React 19: Nuevas Características",
   description:
     "Explora las novedades de React 19: React Compiler, hook use(), Actions, useActionState, useFormStatus, useOptimistic, ref como prop, metadata y más.",
   order: 218,
@@ -53,7 +53,9 @@ function Componente({ items, filtro }) {
 }
 \`\`\`
 
-El compilador analiza tu código y agrega memorización donde sea beneficioso. **No necesitas cambiar tu código.**
+El compilador analiza tu código y agrega memorización donde sea beneficioso, así que **no necesitas cambiar tu código**... pero sí necesitas instalarlo.
+
+> **Ojo con esto, porque es la confusión más común:** el React Compiler **no viene activado** por actualizar a React 19. Es una herramienta de build aparte y opcional, que se agrega como plugin de Babel (\`babel-plugin-react-compiler\`) o del bundler y se configura en el proyecto. Si actualizás a React 19 y no tocás nada más, tus \`useMemo\` y \`useCallback\` manuales siguen siendo los que hacen el trabajo. El Compiler es una decisión que tomás vos, no un regalo de la versión.
 
 ### El hook use()
 
@@ -418,7 +420,7 @@ function MiInput({ ref, ...props }) {
 ### Beneficios
 - Código más simple y legible
 - Menos indirecciones
-- \`forwardRef\` sera deprecado en futuras versiones
+- \`forwardRef\` será deprecado en futuras versiones
 
 > **useOptimistic** mejora drasticamente la experiencia del usuario al eliminar la sensación de espera en operaciones de red.`,
       codeExample: {
@@ -568,7 +570,7 @@ async function ListaProductos() {
 }
 \`\`\`
 
-**Caracteristicas de los Server Components:**
+**Características de los Server Components:**
 - Acceden directamente a la base de datos
 - No envian JavaScript al cliente (bundle más pequeño)
 - Pueden ser \`async\` directamente
@@ -766,7 +768,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Automatiza algo que antes hacias manualmente para optimizar rendimiento.",
-      explanation: "El React Compiler analiza tu código y agrega automáticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente.",
+      explanation: "El React Compiler analiza tu código y agrega automáticamente useMemo, useCallback y React.memo donde sean beneficiosos, eliminando la necesidad de escribirlos manualmente. Eso sí: es una herramienta de build opcional que se instala y configura aparte (plugin de Babel o del bundler). Actualizar a React 19 no lo activa solo.",
     },
     {
       id: "react18-ej-02",
@@ -869,7 +871,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<ResumenReact19 />);
       difficulty: 3 ,
       xpReward: 30,
       order: 7,
-      prompt: "¿Qué caracteristica tienen los Server Components que los Client Components no?",
+      prompt: "¿Qué característica tienen los Server Components que los Client Components no?",
       options: [
         { id: "a", text: "Pueden usar useState y useEffect", isCorrect: false },
         { id: "b", text: "Pueden ser funciones async y acceder a la base de datos directamente", isCorrect: true },

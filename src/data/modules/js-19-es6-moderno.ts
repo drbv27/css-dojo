@@ -4,7 +4,7 @@ export const jsEs6ModernoModule: ModuleData = {
   slug: "js-es6-moderno",
   title: "ES6+ JavaScript Moderno",
   description:
-    "Domina las caracteristicas modernas de JavaScript: desestructuración, spread, optional chaining, modulos y más.",
+    "Domina las características modernas de JavaScript: desestructuración, spread, optional chaining, módulos y más.",
   order: 119,
   category: "js-advanced",
   icon: "Sparkles",

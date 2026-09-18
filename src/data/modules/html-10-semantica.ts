@@ -106,7 +106,7 @@ Contenido complementario o lateral (barras laterales, publicidad, enlaces relaci
 
 Pie de página del sitio o de una sección. Contiene información de contacto, copyright, enlaces legales.
 
-### Estructura tipica
+### Estructura típica
 
 \`\`\`html
 <header>...</header>
@@ -266,7 +266,7 @@ Solo debe existir **un elemento \`<main>\`** que contenga el contenido principal
 
 ### 3. Los encabezados importan
 
-Respeta la **jerarquía de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada sección deberia tener su encabezado.
+Respeta la **jerarquía de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada sección debería tener su encabezado.
 
 \`\`\`html
 <!-- Correcto -->
@@ -281,7 +281,7 @@ Respeta la **jerarquía de encabezados**: no saltes de \`<h1>\` a \`<h4>\`. Cada
 
 ### 4. article vs section
 
-- **article:** Contenido que tiene sentido **independiente** (se podria publicar solo)
+- **article:** Contenido que tiene sentido **independiente** (se podría publicar solo)
 - **section:** Agrupa contenido **tematicamente relacionado** dentro de una página
 
 ### 5. nav para navegación principal
@@ -291,7 +291,7 @@ No uses \`<nav>\` para cada grupo de enlaces. Reservalo para la **navegación pr
 ### Checklist de semántica
 
 - ¿[ ] Usas header, main y footer?
-- ¿[ ] Tus articulos son independientes?
+- ¿[ ] Tus artículos son independientes?
 - ¿[ ] Los encabezados siguen jerarquía?
 - ¿[ ] Usas figure para imágenes con leyenda?
 - ¿[ ] Evitas div donde hay alternativa semántica?`,
@@ -448,11 +448,11 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       options: [
         { id: "a", text: "No hay diferencia, son intercambiables", isCorrect: false },
         { id: "b", text: "article es para contenido independiente; section agrupa contenido tematico", isCorrect: true },
-        { id: "c", text: "section va dentro de article, nunca al reves", isCorrect: false },
-        { id: "d", text: "article es solo para blogs y section para todo lo demas", isCorrect: false },
+        { id: "c", text: "section va dentro de article, nunca al revés", isCorrect: false },
+        { id: "d", text: "article es solo para blogs y section para todo lo demás", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Piensa si el contenido tendria sentido publicado por separado.",
+      hint: "Piensa si el contenido tendría sentido publicado por separado.",
       explanation:
         "Un <article> contiene contenido que tiene sentido por si solo (un post, una noticia). <section> agrupa contenido relacionado tematicamente dentro de la página.",
     },
@@ -480,7 +480,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 2 ,
       xpReward: 20,
       order: 7,
-      prompt: "Organiza las etiquetas según donde van en la estructura tipica de una página:",
+      prompt: "Organiza las etiquetas según donde van en la estructura típica de una página:",
       dragItems: [
         { id: "drag-1", content: "<header>", correctZone: "zone-arriba" },
         { id: "drag-2", content: "<main>", correctZone: "zone-centro" },
@@ -501,7 +501,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
           "drag-4": "zone-arriba",
         },
       },
-      hint: "Piensa en la posición tipica de cada elemento en un sitio web.",
+      hint: "Piensa en la posición típica de cada elemento en un sitio web.",
       explanation:
         "header y nav suelen ir arriba, main contiene el contenido central, y footer va al final de la página.",
     },
@@ -511,7 +511,7 @@ article { background: #f0f0f0; padding: 12px; border-radius: 8px; margin-bottom:
       difficulty: 3 ,
       xpReward: 30,
       order: 8,
-      prompt: "¿Cuántos elementos <main> deberia tener una página HTML bien estructurada?",
+      prompt: "¿Cuántos elementos <main> debería tener una página HTML bien estructurada?",
       options: [
         { id: "a", text: "Los que sean necesarios", isCorrect: false },
         { id: "b", text: "Exactamente uno", isCorrect: true },

@@ -35,7 +35,7 @@ HTML fue creado por **Tim Berners-Lee** en 1991 como parte del proyecto World Wi
 - **HTML 4.01** (1999) — Versión madura y ampliamente usada
 - **HTML5** (2014) — Versión actual con soporte multimedia nativo
 
-> **Dato curioso:** La primera página web de la historia todavia está en línea. Fue creada por Tim Berners-Lee en 1991.`,
+> **Dato curioso:** La primera página web de la historia todavía está en línea. Fue creada por Tim Berners-Lee en 1991.`,
       codeExample: {
         html: `<h1>Mi primera pagina web</h1>\n<p>Esto es HTML en accion.</p>\n<p>Cada elemento esta definido por etiquetas.</p>`,
         css: `h1 {\n  color: #2d3748;\n  font-family: sans-serif;\n}\n\np {\n  color: #4a5568;\n  font-size: 16px;\n}`,
@@ -144,7 +144,7 @@ Contiene **todo el contenido visible** de la página: texto, imágenes, enlaces,
       validation: { type: "exact", answer: "a" },
       hint: "Piensa en 'Lenguaje de Marcado de Hipertexto'.",
       explanation:
-        "HTML significa HyperText Markup Language, o Lenguaje de Marcado de Hipertexto en espanol.",
+        "HTML significa HyperText Markup Language, o Lenguaje de Marcado de Hipertexto en español.",
     },
     {
       id: "html-01-ej-02",

@@ -20,7 +20,7 @@ export const GRID_LEVELS: GridLevel[] = [
   // ===== GRID-COLUMN (1-4) =====
   {
     id: 1,
-    title: "Kata de expansion",
+    title: "Kata de expansión",
     description: "Haz que el aprendiz ocupe 2 columnas usando grid-column.",
     property: "grid-column",
     initialCSS: "",
@@ -37,8 +37,8 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 2,
-    title: "Posicion del aprendiz",
-    description: "Coloca al aprendiz en las columnas 2 y 3 (de la linea 2 a la 4) con grid-column.",
+    title: "Posición del aprendiz",
+    description: "Coloca al aprendiz en las columnas 2 y 3 (de la línea 2 a la 4) con grid-column.",
     property: "grid-column",
     initialCSS: "",
     solutionCSS: "grid-column: 2 / 4;",
@@ -50,7 +50,7 @@ export const GRID_LEVELS: GridLevel[] = [
       highlightCells: ["2-1", "3-1"],
     },
     xpReward: 1,
-    hint: "grid-column: 2 / 4 posiciona al aprendiz desde la linea 2 hasta la 4.",
+    hint: "grid-column: 2 / 4 posiciona al aprendiz desde la línea 2 hasta la 4.",
   },
   {
     id: 3,
@@ -71,7 +71,7 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 4,
-    title: "Avance hasta el limite",
+    title: "Avance hasta el límite",
     description: "Extiende al aprendiz desde la columna 2 hasta el borde de la arena usando -1 en grid-column.",
     property: "grid-column",
     initialCSS: "",
@@ -84,7 +84,7 @@ export const GRID_LEVELS: GridLevel[] = [
       highlightCells: ["2-1", "3-1", "4-1"],
     },
     xpReward: 1,
-    hint: "-1 representa la ultima linea de la cuadricula.",
+    hint: "-1 representa la última línea de la cuadrícula.",
   },
 
   // ===== GRID-ROW (5-8) =====
@@ -120,11 +120,11 @@ export const GRID_LEVELS: GridLevel[] = [
       highlightCells: ["1-1", "1-2"],
     },
     xpReward: 1,
-    hint: "grid-row: 1 / 3 posiciona al aprendiz desde la linea 1 hasta la 3.",
+    hint: "grid-row: 1 / 3 posiciona al aprendiz desde la línea 1 hasta la 3.",
   },
   {
     id: 7,
-    title: "Formacion combinada",
+    title: "Formación combinada",
     description: "Posiciona al aprendiz en la columna 2 y que domine las filas 1 y 2 con grid-column y grid-row.",
     property: "grid-column + grid-row",
     initialCSS: "",
@@ -137,7 +137,7 @@ export const GRID_LEVELS: GridLevel[] = [
       highlightCells: ["2-1", "2-2"],
     },
     xpReward: 1,
-    hint: "Combina grid-column: 2 con grid-row: span 2 para la formacion.",
+    hint: "Combina grid-column: 2 con grid-row: span 2 para la formación.",
   },
   {
     id: 8,
@@ -176,7 +176,7 @@ export const GRID_LEVELS: GridLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "repeat(3, 1fr) divide la arena en 3 zonas de fraccion igual.",
+    hint: "repeat(3, 1fr) divide la arena en 3 zonas de fracción igual.",
   },
   {
     id: 10,
@@ -220,8 +220,8 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 12,
-    title: "Cuadricula completa",
-    description: "Construye una cuadricula de 4 columnas iguales y 2 filas de 150px con grid-template.",
+    title: "Cuadrícula completa",
+    description: "Construye una cuadrícula de 4 columnas iguales y 2 filas de 150px con grid-template.",
     property: "grid-template",
     initialCSS: "",
     solutionCSS: "grid-template-columns: repeat(4, 1fr);\ngrid-template-rows: repeat(2, 150px);",
@@ -237,14 +237,14 @@ export const GRID_LEVELS: GridLevel[] = [
       ],
     },
     xpReward: 1,
-    hint: "Usa repeat() en columnas y filas para armar toda la cuadricula.",
+    hint: "Usa repeat() en columnas y filas para armar toda la cuadrícula.",
   },
 
   // ===== GAP & ALIGNMENT (13-16) =====
   {
     id: 13,
     title: "Distancia en la arena",
-    description: "Agrega 16px de separacion entre las zonas de la arena con gap.",
+    description: "Agrega 16px de separación entre las zonas de la arena con gap.",
     property: "gap",
     initialCSS: "grid-template-columns: repeat(3, 1fr);",
     solutionCSS: "grid-template-columns: repeat(3, 1fr);\ngap: 16px;",
@@ -366,8 +366,8 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 19,
-    title: "Formacion clasica",
-    description: "Organiza la formacion: header arriba, sidebar izquierda, content centro-derecha y footer abajo con grid-template-areas.",
+    title: "Formación clásica",
+    description: "Organiza la formación: header arriba, sidebar izquierda, content centro-derecha y footer abajo con grid-template-areas.",
     property: "grid-template-areas",
     initialCSS: '#grid-container {\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 60px 1fr 40px;\n  \n}',
     solutionCSS: "#grid-container {\n  grid-template-columns: 200px 1fr 1fr;\n  grid-template-rows: 60px 1fr 40px;\n  grid-template-areas: \"header header header\" \"sidebar content content\" \"footer footer footer\";\n}",
@@ -387,8 +387,8 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 20,
-    title: "Formacion avanzada",
-    description: "Arma la formacion: header arriba (2 cols), nav izquierda (2 filas), main y footer a la derecha con grid-template-areas.",
+    title: "Formación avanzada",
+    description: "Arma la formación: header arriba (2 cols), nav izquierda (2 filas), main y footer a la derecha con grid-template-areas.",
     property: "grid-template-areas",
     initialCSS: '#grid-container {\n  grid-template-columns: 150px 1fr;\n  grid-template-rows: 60px 1fr 40px;\n  \n}',
     solutionCSS: "#grid-container {\n  grid-template-columns: 150px 1fr;\n  grid-template-rows: 60px 1fr 40px;\n  grid-template-areas: \"header header\" \"nav main\" \"nav footer\";\n}",
@@ -411,7 +411,7 @@ export const GRID_LEVELS: GridLevel[] = [
   {
     id: 21,
     title: "Arena adaptable",
-    description: "Crea columnas que se ajusten solas con minimo 120px usando auto-fill y minmax en grid-template-columns.",
+    description: "Crea columnas que se ajusten solas con mínimo 120px usando auto-fill y minmax en grid-template-columns.",
     property: "auto-fill + minmax",
     initialCSS: "",
     solutionCSS: "grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));",
@@ -433,7 +433,7 @@ export const GRID_LEVELS: GridLevel[] = [
   {
     id: 22,
     title: "Tatami de mando",
-    description: "Monta la cuadricula: 3 columnas, 2 filas de 120px, gap 12px y el primer aprendiz ocupa 2 columnas.",
+    description: "Monta la cuadrícula: 3 columnas, 2 filas de 120px, gap 12px y el primer aprendiz ocupa 2 columnas.",
     property: "template + span",
     initialCSS: "#item-1 {\n  grid-column: span 2;\n}",
     solutionCSS: "grid-template-columns: repeat(3, 1fr);\ngrid-template-rows: repeat(2, 120px);\ngap: 12px;\n\n#item-1 {\n  grid-column: span 2;\n}",
@@ -454,7 +454,7 @@ export const GRID_LEVELS: GridLevel[] = [
   },
   {
     id: 23,
-    title: "Kata de alineacion",
+    title: "Kata de alineación",
     description: "Centra a todos los aprendices con place-items y luego envia a #item-3 al rincon final con place-self.",
     property: "place-items + place-self",
     initialCSS: "grid-template-columns: repeat(2, 1fr);\ngrid-template-rows: repeat(2, 120px);\nplace-items: center;\n\n#item-3 {\n  \n}",

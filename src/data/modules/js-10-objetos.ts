@@ -244,7 +244,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "3", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "keys significa 'claves' en ingles.",
+      hint: "keys significa 'claves' en inglés.",
       explanation: 'Object.keys() devuelve un array con las claves del objeto: ["a", "b", "c"].',
     },
     {

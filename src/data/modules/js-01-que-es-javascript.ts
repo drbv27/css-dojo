@@ -15,18 +15,18 @@ export const jsQueEsModule: ModuleData = {
       title: "¿Qué es JavaScript?",
       content: `## ¿Qué es JavaScript?
 
-**JavaScript** es el lenguaje de programación de la web. Es el único lenguaje que los navegadores ejecutan de forma nativa, y hoy en dia se usa tanto en el **frontend** como en el **backend**.
+**JavaScript** es el lenguaje de programación de la web. Es el único lenguaje que los navegadores ejecutan de forma nativa, y hoy en día se usa tanto en el **frontend** como en el **backend**.
 
 ### ¿Para que sirve?
 
-- **Interactividad:** hacer que botones, formularios y menus respondan al usuario
+- **Interactividad:** hacer que botones, formularios y menús respondan al usuario
 - **Manipular el DOM:** cambiar el contenido y estilos de una página sin recargarla
 - **Comunicación con servidores:** enviar y recibir datos (AJAX, Fetch API)
 - **Aplicaciones completas:** desde juegos hasta editores de texto en el navegador
 
 ### Un poco de historia
 
-JavaScript fue creado por **Brendan Eich** en solo 10 dias en 1995 para el navegador Netscape. A pesar de su nombre, **no tiene relación con Java**. Hoy es mantenido bajo el estándar **ECMAScript**.
+JavaScript fue creado por **Brendan Eich** en solo 10 días en 1995 para el navegador Netscape. A pesar de su nombre, **no tiene relación con Java**. Hoy es mantenido bajo el estándar **ECMAScript**.
 
 > **Dato curioso:** JavaScript se llamo originalmente "Mocha", luego "LiveScript", y finalmente "JavaScript" como estrategia de marketing.`,
       codeExample: {
@@ -139,7 +139,7 @@ document.getElementById("resultado").textContent = mensaje;`,
       validation: { type: "exact", answer: "a" },
       hint: "Fue creado para el navegador Netscape en muy poco tiempo.",
       explanation:
-        "Brendan Eich creo JavaScript en 1995 en solo 10 dias para el navegador Netscape Navigator.",
+        "Brendan Eich creo JavaScript en 1995 en solo 10 días para el navegador Netscape Navigator.",
     },
     {
       id: "js01-ej-02",

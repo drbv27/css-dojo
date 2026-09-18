@@ -32,7 +32,7 @@ La API devuelve un objeto con:
 - Descripción del clima
 - Humedad
 - Velocidad del viento
-- Pronostico por dias
+- Pronostico por días
 
 ### Pasos del proyecto
 1. Crear la interfaz (input + botón + area de resultados)
@@ -40,6 +40,27 @@ La API devuelve un objeto con:
 3. Procesar la respuesta JSON
 4. Renderizar los datos en el DOM
 5. Manejar errores (ciudad no encontrada, sin conexion)
+
+### El dato que escribe el usuario no se pega con innerHTML
+
+Este es el primer proyecto donde lo que el usuario **tipea** vuelve a la
+pantalla: el nombre de la ciudad. Si ese texto se concatena dentro de
+\`innerHTML\`, el navegador no lo trata como texto sino como marcado, y alguien
+que escriba \`<img src=x onerror=alert(1)>\` como ciudad consigue que su código
+corra en la página. Se llama **XSS**.
+
+La regla es de una línea: **el marcado que vos escribís puede ir por
+\`innerHTML\`; el dato que escribió otro va por \`textContent\`.** En el ejemplo
+vas a ver el \`<p>\` creado vacío y el nombre puesto después con \`textContent\`,
+que inserta el texto tal cual y nunca lo interpreta.
+
+Y la excepción, porque en el código la vas a ver y conviene saber por qué está:
+las temperaturas y la descripción del clima **sí** se concatenan dentro de
+\`innerHTML\`. No es una licencia: es que ese marcado lo escribimos nosotros y
+esos valores vienen de la API, no del teclado de nadie. La pregunta nunca es
+"¿es un dato?", es **"¿quién lo escribió?"**. Si la respuesta es "alguien de
+afuera" —el usuario, la URL, algo guardado en \`localStorage\` que puso el
+usuario— va por \`textContent\`.
 
 ### Patrón MVC simplificado
 - **Model:** los datos del clima
@@ -53,7 +74,12 @@ La API devuelve un objeto con:
         js: `var resultado = document.getElementById("weather-result");
 
 async function buscarClima(ciudad) {
-  resultado.innerHTML = '<p style="color:#a6adc8;">Buscando clima de ' + ciudad + '...</p>';
+  // La variable ciudad sale del input, o sea que la escribe el usuario.
+  // Concatenarla dentro de innerHTML ejecuta el HTML que traiga: escribir
+  // <img src=x onerror=alert(1)> como ciudad alcanza. El texto va con
+  // textContent, que lo inserta como texto y nunca como marcado.
+  resultado.innerHTML = '<p style="color:#a6adc8;"></p>';
+  resultado.querySelector("p").textContent = "Buscando clima de " + ciudad + "...";
 
   try {
     var response = await fetch("https://wttr.in/" + encodeURIComponent(ciudad) + "?format=j1");
@@ -61,7 +87,11 @@ async function buscarClima(ciudad) {
     var data = await response.json();
     mostrarClima(data, ciudad);
   } catch (error) {
-    resultado.innerHTML = '<p style="color:#f38ba8;">Error: ' + error.message + '</p>';
+    // Mismo criterio que arriba. El mensaje de error hoy sale de un
+    // new Error() nuestro o del navegador, asi que no es peligroso; igual va
+    // por textContent, porque la regla se sigue siempre o no se sigue.
+    resultado.innerHTML = '<p style="color:#f38ba8;"></p>';
+    resultado.querySelector("p").textContent = "Error: " + error.message;
   }
 }
 
@@ -75,7 +105,7 @@ function mostrarClima(data, ciudad) {
 
   resultado.innerHTML =
     '<div style="text-align:center;">' +
-    '<p style="font-size:14px;color:#89b4fa;">' + ciudad + '</p>' +
+    '<p style="font-size:14px;color:#89b4fa;" id="nombre-ciudad"></p>' +
     '<p class="temp">' + temp + ' C</p>' +
     '<p style="color:#cdd6f4;">' + desc + '</p>' +
     '<div style="margin-top:8px;">' +
@@ -83,6 +113,10 @@ function mostrarClima(data, ciudad) {
     '<p class="detail">Humedad: ' + humedad + '%</p>' +
     '<p class="detail">Viento: ' + viento + ' km/h</p>' +
     '</div></div>';
+
+  // El nombre de la ciudad lo escribio el usuario, asi que entra por
+  // textContent y no por innerHTML. El resto son numeros que devuelve la API.
+  document.getElementById("nombre-ciudad").textContent = ciudad;
 }
 
 document.getElementById("buscar").addEventListener("click", function() {
@@ -105,7 +139,7 @@ buscarClima("Madrid");`,
       title: "Pronostico y mejoras visuales",
       content: `## Pronostico extendido
 
-La API de wttr.in también proporciona pronostico para los proximos dias:
+La API de wttr.in también proporciona pronostico para los proximos días:
 
 \`\`\`javascript
 const forecast = data.weather; // array de dias
@@ -167,7 +201,11 @@ async function verPronostico(ciudad) {
     if (!res.ok) throw new Error("No se encontro la ciudad");
     var data = await res.json();
 
-    var html = '<p style="text-align:center;color:#cdd6f4;margin-bottom:8px;">Pronostico para <strong>' + ciudad + '</strong></p>';
+    // El <strong> se crea vacio: el nombre de la ciudad lo escribio el usuario
+    // y se pone mas abajo con textContent. Las tarjetas de los dias, en cambio,
+    // se arman con innerHTML porque ese marcado lo escribimos nosotros y los
+    // valores vienen de la API, no del teclado de nadie.
+    var html = '<p style="text-align:center;color:#cdd6f4;margin-bottom:8px;">Pronostico para <strong id="ciudad-pronostico"></strong></p>';
     var dias = data.weather || [];
 
     dias.forEach(function(dia) {
@@ -180,8 +218,10 @@ async function verPronostico(ciudad) {
     });
 
     forecast.innerHTML = html;
+    document.getElementById("ciudad-pronostico").textContent = ciudad;
   } catch (err) {
-    forecast.innerHTML = '<p style="color:#f38ba8;text-align:center;">Error: ' + err.message + '</p>';
+    forecast.innerHTML = '<p style="color:#f38ba8;text-align:center;"></p>';
+    forecast.querySelector("p").textContent = "Error: " + err.message;
   }
 }
 
@@ -270,7 +310,13 @@ function renderFavs() {
   favs.forEach(function(ciudad) {
     var btn = document.createElement("button");
     btn.className = "fav-btn";
-    btn.innerHTML = ciudad + ' <span class="remove">x</span>';
+    // Mismo cuidado que en la busqueda: el nombre lo escribio el usuario y
+    // quedo guardado en localStorage, asi que va como texto, no como HTML.
+    btn.textContent = ciudad + " ";
+    var quitar = document.createElement("span");
+    quitar.className = "remove";
+    quitar.textContent = "x";
+    btn.appendChild(quitar);
     btn.addEventListener("click", function(e) {
       if (e.target.classList.contains("remove")) {
         var f = getFavs().filter(function(c) { return c !== ciudad; });
@@ -293,12 +339,17 @@ async function buscar3(ciudad) {
     var c = data.current_condition[0];
     var desc = c.lang_es && c.lang_es[0] ? c.lang_es[0].value : c.weatherDesc[0].value;
     weather3.innerHTML =
-      '<p style="color:#89b4fa;font-size:14px;">' + ciudad + '</p>' +
+      '<p style="color:#89b4fa;font-size:14px;" id="ciudad-fav"></p>' +
       '<p style="font-size:28px;font-weight:bold;color:#f9e2af;">' + c.temp_C + ' C</p>' +
       '<p>' + desc + '</p>' +
       '<p style="font-size:12px;color:#a6adc8;">Humedad: ' + c.humidity + '% | Viento: ' + c.windspeedKmph + ' km/h</p>';
+    // La ciudad la escribio el usuario y ademas quedo guardada en localStorage,
+    // asi que vuelve por textContent. La temperatura y la descripcion vienen de
+    // la API dentro de marcado que escribimos nosotros.
+    document.getElementById("ciudad-fav").textContent = ciudad;
   } catch(e) {
-    weather3.innerHTML = '<p style="color:#f38ba8;">' + e.message + '</p>';
+    weather3.innerHTML = '<p style="color:#f38ba8;"></p>';
+    weather3.querySelector("p").textContent = e.message;
   }
 }
 
@@ -414,7 +465,7 @@ weather3.innerHTML = '<p style="color:#a6adc8;">Agrega una ciudad favorita o bus
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "¿Qué deberias mostrar al usuario mientras una petición fetch está en progreso?",
+      prompt: "¿Qué deberías mostrar al usuario mientras una petición fetch está en progreso?",
       options: [
         { id: "a", text: "Nada, dejarlo en blanco", isCorrect: false },
         { id: "b", text: "Un indicador de carga (spinner o skeleton)", isCorrect: true },

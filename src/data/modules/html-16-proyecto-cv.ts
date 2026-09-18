@@ -22,11 +22,11 @@ Llegaste al cierre de HTML. Vamos a **juntar todo** lo aprendido en un solo docu
 
 ### Una aclaración importante
 
-HTML **no** hace que las cosas se vean bonitas: eso es trabajo de **CSS**, que viene en el proximo modulo.
+HTML **no** hace que las cosas se vean bonitas: eso es trabajo de **CSS**, que viene en el próximo módulo.
 Así que este CV va a verse **plano a propósito** — texto negro sobre fondo blanco. Y esta perfecto:
 
 > **HTML es el esqueleto.** Lo que evaluamos aca no es el diseño, sino que el documento tenga una
-> **estructura correcta, semántica, accesible y valida**. En el modulo de CSS retomaras **este mismo CV**
+> **estructura correcta, semántica, accesible y valida**. En el módulo de CSS retomaras **este mismo CV**
 > y le pondras la piel (colores, tipografía, columnas). Hoy construyes; después decoras.
 
 ### Por que un CV
@@ -112,7 +112,7 @@ Un buen documento HTML no solo "funciona": es **accesible** y **valido**.
 ### Validación (el corrector ortografico del HTML)
 
 El **validador del W3C** (validator.w3.org) revisa que tu HTML este bien escrito: etiquetas cerradas,
-anidación correcta, atributos validos. Pega tu código ahi y corrige lo que marque.
+anidación correcta, atributos validos. Pega tu código ahí y corrige lo que marque.
 
 > **Meta del proyecto:** que tu CV pase el validador **sin errores** y respete la jerarquía de títulos.
 > Eso es HTML de nivel profesional.`,

@@ -130,6 +130,15 @@ function prosaDe(m: (typeof ALL_MODULES)[number]): string {
     partes.push(e.prompt, e.hint ?? "", e.explanation ?? "");
     for (const o of e.options ?? []) partes.push(o.text);
     for (const z of e.dropZones ?? []) partes.push(z.label);
+    // `retoPasos[].instruccion` es PROSA y estuvo fuera de este barrido hasta el
+    // 2026-09-18: 92 pasos en 23 modulos que el guard nunca leia. Contenian 35
+    // palabras mal escritas, y 16 eran de este mismo diccionario -- o sea que el
+    // test pasaba en verde sobre errores que ya sabia reconocer. Un guard afirma
+    // sobre el conjunto que esta funcion decide mirar, y ese conjunto se quedo
+    // atras cuando el esquema crecio.
+    //
+    // `esperado` NO va: es el CSS que el alumno tiene que escribir, no prosa.
+    for (const p of e.retoPasos ?? []) partes.push(p.instruccion);
   }
   return partes.map(sinCodigo).join("\n");
 }

@@ -35,7 +35,7 @@ Cuando un elemento flota:
 3. El **texto y elementos en línea** lo rodean
 4. Los **elementos de bloque** pasan por debajo (ignoran al float)
 
-### Ejemplo clasico: imagen con texto
+### Ejemplo clásico: imagen con texto
 
 \`\`\`css
 .imagen {
@@ -195,7 +195,7 @@ Combina lo mejor de ambos: se comporta como **inline** hacia afuera y como **blo
 
 ### Tabla comparativa
 
-| Caracteristica | block | inline | inline-block |
+| Característica | block | inline | inline-block |
 |---------------|-------|--------|--------------|
 | Nueva línea | Si | No | No |
 | Acepta width/height | Si | No | Si |
@@ -282,7 +282,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
 }
 \`\`\`
 
-> **Importante:** Aprenderemos Flexbox y Grid en profundidad en modulos posteriores. Por ahora, lo importante es saber que \`display: flex\` y \`display: grid\` cambian radicalmente cómo se distribuyen los hijos de un elemento.`,
+> **Importante:** Aprenderemos Flexbox y Grid en profundidad en módulos posteriores. Por ahora, lo importante es saber que \`display: flex\` y \`display: grid\` cambian radicalmente cómo se distribuyen los hijos de un elemento.`,
       codeExample: {
         html: `<div class="flex-demo">\n  <div class="item">1</div>\n  <div class="item">2</div>\n  <div class="item">3</div>\n</div>\n<p class="visible">Soy visible</p>\n<p class="oculto-none">display: none (no me ves)</p>\n<p class="oculto-hidden">visibility: hidden (no me ves pero ocupo espacio)</p>\n<p class="visible">Soy visible tambien</p>`,
         css: `.flex-demo {\n  display: flex;\n  gap: 10px;\n  margin-bottom: 15px;\n}\n.item {\n  background-color: steelblue;\n  color: white;\n  padding: 20px 30px;\n  border-radius: 8px;\n  font-weight: bold;\n  font-size: 18px;\n}\n.visible {\n  background-color: #d4edda;\n  padding: 8px;\n}\n.oculto-none {\n  display: none;\n}\n.oculto-hidden {\n  visibility: hidden;\n  background-color: #f8d7da;\n  padding: 8px;\n}`,
@@ -417,7 +417,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una imagen (clase 'foto') flotada a la izquierda con float: left, width: 120px, height: 120px, margin: 0 15px 10px 0, y background-color: #4682b4. El contenedor (clase 'articulo') debe tener overflow: hidden para envolver el float.",
+        "Crea una imagen `.foto` flotada a la izquierda con float: left, width: 120px, height: 120px, margin: 0 15px 10px 0, y background-color: #4682b4. El contenedor `.articulo` debe tener overflow: hidden para envolver el float.",
       codeTemplate: {
         html: `<div class="articulo">\n  <div class="foto"></div>\n  <p>Este texto debe fluir alrededor de la imagen flotada a la izquierda. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>\n</div>`,
         cssPrefix: "",
@@ -486,7 +486,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 10,
       order: 8,
       prompt:
-        "¿Qué propiedad se usa hoy en dia en lugar de float para crear layouts de columnas?",
+        "¿Qué propiedad se usa hoy en día en lugar de float para crear layouts de columnas?",
       options: [
         { id: "a", text: "position: absolute", isCorrect: false },
         { id: "b", text: "display: inline", isCorrect: false },
@@ -506,7 +506,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Un articulo con una foto flotando, y el contenedor que tiene que contenerla. El paso 3 resuelve el problema clasico del float, y el paso 4 muestra por que hoy casi no se usa.",
+        "Reto integrador. Un artículo con una foto flotando, y el contenedor que tiene que contenerla. El paso 3 resuelve el problema clásico del float, y el paso 4 muestra por que hoy casi no se usa.",
       retoPasos: [
         {
           instruccion:
@@ -520,7 +520,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
         },
         {
           instruccion:
-            "El problema clasico: el `.articulo` colapsa su alto porque su unico contenido alto esta flotado. Dale overflow hidden para que lo contenga.",
+            "El problema clásico: el `.articulo` colapsa su alto porque su único contenido alto esta flotado. Dale overflow hidden para que lo contenga.",
           esperado: ".articulo { overflow: hidden; }",
         },
         {
@@ -540,7 +540,7 @@ Son las versiones en línea de flex y grid. El contenedor se comporta como inlin
       },
       referenceSolution:
         ".foto {\n  float: left;\n  width: 120px;\n  margin-right: 12px;\n}\n\n.pie {\n  clear: both;\n}\n\n.articulo {\n  overflow: hidden;\n  display: flex;\n  gap: 12px;\n}",
-      hint: "Un contenedor cuyos hijos estan todos flotados mide cero de alto. `overflow: hidden` lo obliga a contenerlos, y es el arreglo de siempre.",
+      hint: "Un contenedor cuyos hijos están todos flotados mide cero de alto. `overflow: hidden` lo obliga a contenerlos, y es el arreglo de siempre.",
       explanation:
         "Los pasos 1 a 3 son el mundo del float: flotar, limpiar y después arreglar el colapso que el float provoca. El paso 4 muestra por que hoy casi no se usa: con `display: flex` el contenedor contiene a sus hijos sin trucos y el clear deja de hacer falta. Saber float sigue importando para leer código viejo.",
     },

@@ -40,9 +40,9 @@ El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a
 }
 \`\`\`
 
-### Caracteristicas clave de relative
+### Características clave de relative
 
-- El espacio original del elemento **se conserva** en el flujo (los demas elementos no se mueven)
+- El espacio original del elemento **se conserva** en el flujo (los demás elementos no se mueven)
 - El desplazamiento es **visual**, no afecta a otros elementos
 - Crea un **contexto de posicionamiento** para hijos con \`position: absolute\`
 
@@ -68,7 +68,7 @@ El elemento **permanece en el flujo normal**, pero se puede desplazar respecto a
       title: "Position absolute",
       content: `## Position absolute
 
-Un elemento con \`position: absolute\` se **saca del flujo normal** del documento. Los demas elementos actuan como si no existiera.
+Un elemento con \`position: absolute\` se **saca del flujo normal** del documento. Los demás elementos actuan como si no existiera.
 
 ### Cómo funciona
 
@@ -97,7 +97,7 @@ Este es uno de los patrones más usados en CSS:
 }
 \`\`\`
 
-### Caracteristicas de absolute
+### Características de absolute
 
 - El elemento **sale del flujo**: no ocupa espacio
 - Se posiciona respecto al **ancestro posicionado** más cercano
@@ -150,7 +150,7 @@ El elemento se posiciona respecto al **viewport** (la ventana del navegador). No
 - Botones flotantes (como "volver arriba")
 - Modales y overlays
 
-**Caracteristicas de fixed:**
+**Características de fixed:**
 - Sale del flujo normal
 - Se posiciona respecto al viewport (o al ancestro con \`transform\`, \`filter\` o \`perspective\`)
 - No se mueve con el scroll
@@ -169,7 +169,7 @@ Es un **hibrido** entre relative y fixed. El elemento se comporta como \`relativ
 }
 \`\`\`
 
-**Caracteristicas de sticky:**
+**Características de sticky:**
 - Permanece en el flujo normal (como relative)
 - Se "pega" al alcanzar la posición definida en \`top\`, \`bottom\`, \`left\` o \`right\`
 - Solo funciona dentro de su **contenedor padre** (no se pega más allá del padre)
@@ -235,7 +235,7 @@ Un contexto de apilamiento es un **grupo aislado**. Los z-index dentro de un con
 }
 \`\`\`
 
-El \`.hijo\` con z-index: 999 nunca se mostrara encima de \`.grupo-B\` porque su contexto padre (\`.grupo-A\`) tiene z-index: 1.
+El \`.hijo\` con z-index: 999 nunca se mostrará encima de \`.grupo-B\` porque su contexto padre (\`.grupo-A\`) tiene z-index: 1.
 
 ### ¿Qué crea un nuevo contexto de apilamiento?
 
@@ -257,7 +257,7 @@ Define una escala organizada para tu proyecto:
 }
 \`\`\`
 
-> **Error común:** Usar z-index: 9999 no siempre funciona. Si el elemento está dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahi.`,
+> **Error común:** Usar z-index: 9999 no siempre funciona. Si el elemento está dentro de un contexto de apilamiento con z-index bajo, ningun valor lo sacara de ahí.`,
       codeExample: {
         html: `<div class="capa capa-1">z-index: 1</div>\n<div class="capa capa-2">z-index: 2</div>\n<div class="capa capa-3">z-index: 3</div>`,
         css: `.capa {\n  position: absolute;\n  width: 150px;\n  height: 150px;\n  padding: 10px;\n  font-weight: bold;\n  color: white;\n  border: 2px solid rgba(0,0,0,0.3);\n  border-radius: 8px;\n}\n.capa-1 {\n  z-index: 1;\n  top: 10px;\n  left: 10px;\n  background-color: tomato;\n}\n.capa-2 {\n  z-index: 2;\n  top: 40px;\n  left: 40px;\n  background-color: steelblue;\n}\n.capa-3 {\n  z-index: 3;\n  top: 70px;\n  left: 70px;\n  background-color: seagreen;\n}`,
@@ -427,7 +427,7 @@ Define una escala organizada para tu proyecto:
       validation: { type: "exact", answer: "sticky" },
       hint: "Es el valor que combina el comportamiento de relative y fixed. Se pega al alcanzar cierta posición de scroll.",
       explanation:
-        "Position sticky hace que el encabezado se comporte como relative en su posición normal, pero cuando el usuario hace scroll y el elemento llega a top: 0, se 'pega' ahi como si fuera fixed.",
+        "Position sticky hace que el encabezado se comporte como relative en su posición normal, pero cuando el usuario hace scroll y el elemento llega a top: 0, se 'pega' ahí como si fuera fixed.",
     },
     {
       id: "12-ej-07",
@@ -452,7 +452,7 @@ Define una escala organizada para tu proyecto:
       },
       hint: "La tarjeta necesita position: relative para ser el contexto de posicionamiento. El badge usa absolute para salirse de la caja y posicionarse en la esquina.",
       explanation:
-        "El patrón clasico padre-relative/hijo-absolute permite posicionar el badge en la esquina de la tarjeta. Con top: -10px y right: -10px, el badge se sale parcialmente de la tarjeta creando un efecto de notificación.",
+        "El patrón clásico padre-relative/hijo-absolute permite posicionar el badge en la esquina de la tarjeta. Con top: -10px y right: -10px, el badge se sale parcialmente de la tarjeta creando un efecto de notificación.",
     },
     {
       id: "12-ej-08",
@@ -471,7 +471,7 @@ Define una escala organizada para tu proyecto:
       validation: { type: "exact", answer: "b" },
       hint: "Piensa en contextos de apilamiento. El hijo esta limitado por el z-index de su padre.",
       explanation:
-        "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este último siempre se mostrara encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
+        "El z-index: 999 solo aplica dentro del contexto de su padre (z-index: 1). Como el padre tiene z-index: 1 y el otro elemento tiene z-index: 2, este último siempre se mostrará encima, sin importar el z-index del hijo. Los contextos de apilamiento son aislados.",
     },
     {
       /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
@@ -481,7 +481,7 @@ Define una escala organizada para tu proyecto:
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Una tarjeta con un badge encima. El paso 1 parece que no hace nada, y es el que hace posible todo lo demas.",
+        "Reto integrador. Una tarjeta con un badge encima. El paso 1 parece que no hace nada, y es el que hace posible todo lo demás.",
       retoPasos: [
         {
           instruccion:
@@ -490,7 +490,7 @@ Define una escala organizada para tu proyecto:
         },
         {
           instruccion:
-            "Con `.badge`, ponele position absolute con top 8px y right 8px. Se ubica contra la tarjeta, NO contra la pagina, gracias al paso 1.",
+            "Con `.badge`, ponele position absolute con top 8px y right 8px. Se ubica contra la tarjeta, NO contra la página, gracias al paso 1.",
           esperado: ".badge { position: absolute; top: 8px; right: 8px; }",
         },
         {

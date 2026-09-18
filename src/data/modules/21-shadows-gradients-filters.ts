@@ -234,7 +234,7 @@ Combina varios filtros separados por espacio:
 
 ### backdrop-filter
 
-Aplica filtros al **fondo detras** del elemento (no al elemento mismo). Ideal para efectos de cristal esmerilado:
+Aplica filtros al **fondo detrás** del elemento (no al elemento mismo). Ideal para efectos de cristal esmerilado:
 
 \`\`\`css
 .barra-navegacion {
@@ -374,7 +374,7 @@ Los filtros son excelentes para interacciones:
         blanks: ["to right"],
       },
       validation: { type: "regex", answer: "to\\s+right" },
-      hint: "Necesitas indicar la dirección con las palabras clave 'to' y la dirección en ingles.",
+      hint: "Necesitas indicar la dirección con las palabras clave 'to' y la dirección en inglés.",
       explanation:
         "La dirección 'to right' indica que el degradado va de izquierda a derecha. Otras opciones son 'to bottom' (por defecto), 'to top', 'to left' o angulos como '90deg' (equivale a 'to right').",
     },
@@ -401,7 +401,7 @@ Los filtros son excelentes para interacciones:
       },
       hint: "El contenedor necesita un fondo con degradado. El card usa backdrop-filter: blur(10px) y un background semi-transparente con rgba.",
       explanation:
-        "El efecto glassmorphism se crea con: un contenedor con fondo colorido (degradado), y un card hijo con fondo semi-transparente (rgba con baja opacidad), backdrop-filter: blur() para desenfocar lo que hay detras, y un borde sutil semi-transparente.",
+        "El efecto glassmorphism se crea con: un contenedor con fondo colorido (degradado), y un card hijo con fondo semi-transparente (rgba con baja opacidad), backdrop-filter: blur() para desenfocar lo que hay detrás, y un borde sutil semi-transparente.",
     },
     {
       id: "20-ej-06",
@@ -413,14 +413,14 @@ Los filtros son excelentes para interacciones:
         "¿Cuál es la diferencia entre 'filter' y 'backdrop-filter'?",
       options: [
         { id: "a", text: "No hay diferencia, son sinonimos", isCorrect: false },
-        { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detras del elemento", isCorrect: true },
+        { id: "b", text: "filter afecta al elemento; backdrop-filter afecta al fondo detrás del elemento", isCorrect: true },
         { id: "c", text: "filter es para imágenes; backdrop-filter es para texto", isCorrect: false },
         { id: "d", text: "backdrop-filter no existe en CSS", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "'backdrop' significa 'telon de fondo'. Piensa en que parte del elemento afecta cada propiedad.",
       explanation:
-        "'filter' aplica efectos visuales directamente al elemento y su contenido. 'backdrop-filter' aplica efectos al area detras del elemento, visible a traves de fondos semi-transparentes. Esto es la base del efecto glassmorphism.",
+        "'filter' aplica efectos visuales directamente al elemento y su contenido. 'backdrop-filter' aplica efectos al area detrás del elemento, visible a traves de fondos semi-transparentes. Esto es la base del efecto glassmorphism.",
     },
     {
       id: "20-ej-07",

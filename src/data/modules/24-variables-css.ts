@@ -51,7 +51,7 @@ Se accede a las variables con la función \`var()\`:
 
 ### El selector :root
 
-\`:root\` apunta al elemento raíz del documento (\`<html>\`). Las variables declaradas ahi estan disponibles en **todo el documento**:
+\`:root\` apunta al elemento raíz del documento (\`<html>\`). Las variables declaradas ahí están disponibles en **todo el documento**:
 
 \`\`\`css
 :root {
@@ -160,7 +160,7 @@ Las variables se pueden usar dentro de \`calc()\` para calculos dinámicos:
 }
 \`\`\`
 
-> **Buena práctica:** Siempre proporciona un valor de respaldo para variables que podrian no estar definidas, especialmente en componentes reutilizables.`,
+> **Buena práctica:** Siempre proporciona un valor de respaldo para variables que podrían no estar definidas, especialmente en componentes reutilizables.`,
       codeExample: {
         html: `<div class="componente tema-a">\n  <p>Tema A: variables locales</p>\n</div>\n<div class="componente tema-b">\n  <p>Tema B: variables diferentes</p>\n</div>\n<div class="componente">\n  <p>Sin tema: usa fallback</p>\n</div>`,
         css: `:root {\n  --base: 8px;\n}\n\n.tema-a {\n  --comp-fondo: #e8f4fd;\n  --comp-borde: #3498db;\n  --comp-texto: #1a5276;\n}\n\n.tema-b {\n  --comp-fondo: #eafaf1;\n  --comp-borde: #27ae60;\n  --comp-texto: #1e8449;\n}\n\n.componente {\n  background: var(--comp-fondo, #f5f5f5);\n  border-left: 4px solid var(--comp-borde, #999);\n  color: var(--comp-texto, #333);\n  padding: calc(var(--base) * 2);\n  margin-bottom: calc(var(--base) * 1.5);\n  border-radius: 6px;\n}\n\n.componente p {\n  margin: 0;\n  font-weight: bold;\n}`,
@@ -434,7 +434,7 @@ Detecta automáticamente la preferencia del sistema operativo:
       xpReward: 30,
       order: 8,
       prompt:
-        "¿Si declaras --color: blue en :root y --color: red en .sección, que color tendra un <p> dentro de .sección?",
+        "¿Si declaras --color: blue en :root y --color: red en .sección, que color tendrá un <p> dentro de .sección?",
       options: [
         { id: "a", text: "blue (la variable global tiene prioridad)", isCorrect: false },
         { id: "b", text: "red (la variable más cercana tiene prioridad)", isCorrect: true },
@@ -473,7 +473,7 @@ Detecta automáticamente la preferencia del sistema operativo:
         },
         {
           instruccion:
-            "Con `.boton`, usa var con VALOR DE RESPALDO: background-color con var(--acento, #666) y color white. Si algun dia --acento desaparece, el boton sigue viendose en vez de quedar transparente.",
+            "Con `.boton`, usa var con VALOR DE RESPALDO: background-color con var(--acento, #666) y color white. Si algun día --acento desaparece, el botón sigue viendose en vez de quedar transparente.",
           esperado: ".boton { background-color: var(--acento, #666); color: white; }",
         },
       ],
@@ -488,9 +488,9 @@ Detecta automáticamente la preferencia del sistema operativo:
       },
       referenceSolution:
         ":root {\n  --fondo: #ffffff;\n  --texto: #1a1a2e;\n  --acento: #3498db;\n}\n\n.pagina {\n  background-color: var(--fondo);\n  color: var(--texto);\n  padding: 20px;\n}\n\n.tema-oscuro {\n  --fondo: #1a1a2e;\n  --texto: #e0e0e0;\n}\n\n.boton {\n  background-color: var(--acento, #666);\n  color: white;\n}",
-      hint: "Las variables se heredan, asi que redeclararlas en `.tema-oscuro` alcanza a todo lo que este adentro sin tocar ninguna regla de color.",
+      hint: "Las variables se heredan, así que redeclararlas en `.tema-oscuro` alcanza a todo lo que este adentro sin tocar ninguna regla de color.",
       explanation:
-        "El paso 3 es el que muestra para que sirven de verdad: dos bloques con el mismo marcado y el mismo CSS de presentacion terminan con temas distintos, solo porque uno redeclara dos variables. Y el paso 4 es la red: `var(--acento, #666)` sigue funcionando el dia que alguien renombre la variable, que es exactamente cuando un tema se rompe en silencio.",
+        "El paso 3 es el que muestra para que sirven de verdad: dos bloques con el mismo marcado y el mismo CSS de presentación terminan con temas distintos, solo porque uno redeclara dos variables. Y el paso 4 es la red: `var(--acento, #666)` sigue funcionando el día que alguien renombre la variable, que es exactamente cuando un tema se rompe en silencio.",
     },
   ],
 };

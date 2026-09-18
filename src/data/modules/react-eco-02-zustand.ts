@@ -129,7 +129,7 @@ const useUsers = create<UsersStore>((set) => ({
 
 ### Zustand vs Context
 
-| Caracteristica | Context | Zustand |
+| Característica | Context | Zustand |
 |---------------|---------|---------|
 | Boilerplate | Mucho (Provider, reducer) | Mínimo |
 | Re-renders | Todo el árbol bajo Provider | Solo componentes suscritos |
@@ -204,7 +204,7 @@ const useUsers = create<UsersStore>((set) => ({
       difficulty: 2 ,
       xpReward: 20,
       order: 4,
-      prompt: "Asocia cada caracteristica con la solución correcta:",
+      prompt: "Asocia cada característica con la solución correcta:",
       dragItems: [
         { id: "drag-1", content: "Necesita Provider", correctZone: "zone-context" },
         { id: "drag-2", content: "Selectores para evitar re-renders", correctZone: "zone-zustand" },

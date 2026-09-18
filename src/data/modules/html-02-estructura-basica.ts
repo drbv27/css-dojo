@@ -47,7 +47,7 @@ Esto ayuda a:
 - Los **motores de busqueda** a clasificar la página por idioma
 - Los **traductores automáticos** a identificar el idioma original
 
-> **Buena práctica:** Siempre específica el atributo \`lang\` en la etiqueta \`<html>\`. Para espanol usa \`"es"\`, para ingles \`"en"\`.`,
+> **Buena práctica:** Siempre específica el atributo \`lang\` en la etiqueta \`<html>\`. Para español usa \`"es"\`, para inglés \`"en"\`.`,
       codeExample: {
         html: `<!DOCTYPE html>\n<html lang="es">\n  <head>\n    <title>Documento en espanol</title>\n  </head>\n  <body>\n    <p>Este documento esta en espanol.</p>\n  </body>\n</html>`,
         css: `p {\n  font-family: sans-serif;\n  color: #4a5568;\n}`,

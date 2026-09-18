@@ -34,7 +34,7 @@ Eso no es un defecto de tu HTML. **Es exactamente lo que HTML debe hacer:** deci
 
 ### Que vamos a construir
 
-Vas a partir del mismo CV y llegar a una página que podrias mandar a una entrevista. En orden:
+Vas a partir del mismo CV y llegar a una página que podrías mandar a una entrevista. En orden:
 
 1. **Clases** — el paso que cambia todo, y el primero
 2. **Reset y tipografía** — que se lea bien antes de que se vea lindo
@@ -107,7 +107,7 @@ No hay una regla universal, pero si una guia que ahorra dolor: **nombra por func
 
 | Mal | Bien | Por que |
 |---|---|---|
-| \`.texto-azul\` | \`.enlace-contacto\` | El dia que sea verde, el nombre miente |
+| \`.texto-azul\` | \`.enlace-contacto\` | El día que sea verde, el nombre miente |
 | \`.grande\` | \`.titulo-seccion\` | ¿"Grande" respecto de que? |
 | \`.div2\` | \`.tarjeta-experiencia\` | No dice nada |
 
@@ -149,7 +149,7 @@ Antes de decidir donde va cada caja, decidi cómo se lee. Si cambias el \`font-s
 
 ### 3. Layout de afuera hacia adentro
 
-Primero el contenedor general, después las secciones, al final los detalles. Al reves, cada cambio del contenedor rompe lo de adentro.
+Primero el contenedor general, después las secciones, al final los detalles. Al revés, cada cambio del contenedor rompe lo de adentro.
 
 ### 4. Responsive al final, pero pensado desde el principio
 
@@ -206,7 +206,7 @@ body
       },
       hint: "Una clase se agrega con el atributo class: <h1 class=\"nombre\">. Las etiquetas semánticas se conservan tal cual.",
       explanation:
-        "Las clases nombran la FUNCIÓN de cada parte, no su apariencia. 'título-profesional' seguira teniendo sentido si mañana lo pintas de otro color; '.texto-gris' no. Y fijate que el <header>, el <h1> y el <nav> siguen ahi: las clases se suman a la semántica, no la reemplazan.",
+        "Las clases nombran la FUNCIÓN de cada parte, no su apariencia. 'título-profesional' seguira teniendo sentido si mañana lo pintas de otro color; '.texto-gris' no. Y fijate que el <header>, el <h1> y el <nav> siguen ahí: las clases se suman a la semántica, no la reemplazan.",
     },
     {
       id: "25-ej-02",
@@ -252,7 +252,7 @@ body
       },
       hint: "margin: 0 auto centra un elemento que tiene un ancho máximo. width: 100% lo deja encogerse en pantallas chicas.",
       explanation:
-        "max-width con width: 100% es el patrón responsive más simple que existe: en pantalla ancha se detiene en 700px, en el teléfono ocupa todo. Un ancho fijo en px haria falta arreglarlo después con media queries. El padding lateral evita que el texto toque el borde en mobile.",
+        "max-width con width: 100% es el patrón responsive más simple que existe: en pantalla ancha se detiene en 700px, en el teléfono ocupa todo. Un ancho fijo en px haría falta arreglarlo después con media queries. El padding lateral evita que el texto toque el borde en mobile.",
     },
     {
       id: "25-ej-04",
@@ -357,7 +357,7 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "border-collapse: collapse junta los bordes de las celdas en una sola línea. Sin eso queda el doble borde clasico de los 90.",
+      hint: "border-collapse: collapse junta los bordes de las celdas en una sola línea. Sin eso queda el doble borde clásico de los 90.",
       explanation:
         "border-collapse: collapse es lo primero que hay que escribir en cualquier tabla: sin el, cada celda dibuja su propio borde y queda ese efecto de planilla vieja. Y text-align: left en th corrige el centrado que el navegador aplica por defecto, que casi nunca es lo que uno quiere en una tabla de datos.",
     },
@@ -426,7 +426,7 @@ body
       validation: {
         type: "css-rules",
       },
-      hint: "Segui el orden del modulo: reset, tipografía, contenedor, header, secciones, tabla, foto, y la media query al final.",
+      hint: "Segui el orden del módulo: reset, tipografía, contenedor, header, secciones, tabla, foto, y la media query al final.",
       explanation:
         "Terminaste el track de CSS con algo que podes mostrar. Y fijate el orden en que lo escribiste: reset, tipografía, layout de afuera hacia adentro, responsive al final. Ese orden no es estetico -- es el que evita que cada cambio rompa lo anterior. Si arrancas por las sombras, vas a reescribir tres veces.",
     },
@@ -438,31 +438,31 @@ body
       xpReward: 80,
       order: 11,
       prompt:
-        "Reto integrador FINAL del track. Maqueta la cabecera de tu CV usando cuatro cosas que aprendiste en modulos distintos: box-sizing, flexbox, variables y una media query. Esto es lo que junta todo el curso.",
+        "Reto integrador FINAL del track. Maqueta la cabecera de tu CV usando cuatro cosas que aprendiste en módulos distintos: box-sizing, flexbox, variables y una media query. Esto es lo que junta todo el curso.",
       retoPasos: [
         {
           instruccion:
-            "Del modulo de variables: declara en `:root` la variable --cv-acento con el valor #2c3e50.",
+            "Del módulo de variables: declara en `:root` la variable --cv-acento con el valor #2c3e50.",
           esperado: ":root { --cv-acento: #2c3e50; }",
         },
         {
           instruccion:
-            "Del modulo de box model: con `.cv-cabecera`, poné box-sizing border-box, 24px de padding y un borde inferior de 3px solid con var(--cv-acento).",
+            "Del módulo de box model: con `.cv-cabecera`, poné box-sizing border-box, 24px de padding y un borde inferior de 3px solid con var(--cv-acento).",
           esperado: ".cv-cabecera { box-sizing: border-box; padding: 24px; border-bottom: 3px solid var(--cv-acento); }",
         },
         {
           instruccion:
-            "Del modulo de flexbox: con `.cv-cabecera`, apila en columna con display flex y flex-direction column, alinea al centro con align-items y separa con un gap de 16px.",
+            "Del módulo de flexbox: con `.cv-cabecera`, apila en columna con display flex y flex-direction column, alinea al centro con align-items y separa con un gap de 16px.",
           esperado: ".cv-cabecera { display: flex; flex-direction: column; align-items: center; gap: 16px; }",
         },
         {
           instruccion:
-            "Del modulo de dimensiones: con `.cv-foto`, dale 120px de ancho y alto y hacela redonda con border-radius 50%.",
+            "Del módulo de dimensiones: con `.cv-foto`, dale 120px de ancho y alto y hacela redonda con border-radius 50%.",
           esperado: ".cv-foto { width: 120px; height: 120px; border-radius: 50%; }",
         },
         {
           instruccion:
-            "Del modulo de media queries: adentro de `@media (min-width: 600px)`, cambia `.cv-cabecera` a flex-direction row y align-items flex-start, para que en pantalla ancha la foto quede al costado.",
+            "Del módulo de media queries: adentro de `@media (min-width: 600px)`, cambia `.cv-cabecera` a flex-direction row y align-items flex-start, para que en pantalla ancha la foto quede al costado.",
           esperado: "@media (min-width: 600px) { .cv-cabecera { flex-direction: row; align-items: flex-start; } }",
         },
       ],
@@ -477,9 +477,9 @@ body
       },
       referenceSolution:
         ":root {\n  --cv-acento: #2c3e50;\n}\n\n.cv-cabecera {\n  box-sizing: border-box;\n  padding: 24px;\n  border-bottom: 3px solid var(--cv-acento);\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  gap: 16px;\n}\n\n.cv-foto {\n  width: 120px;\n  height: 120px;\n  border-radius: 50%;\n}\n\n@media (min-width: 600px) {\n  .cv-cabecera {\n    flex-direction: row;\n    align-items: flex-start;\n  }\n}",
-      hint: "Cada paso dice de que modulo sale. Si alguno no te sale, volve a ese modulo antes de mirar la pista: este reto es la prueba de que el track entero se sostiene junto.",
+      hint: "Cada paso dice de que módulo sale. Si alguno no te sale, volve a ese módulo antes de mirar la pista: este reto es la prueba de que el track entero se sostiene junto.",
       explanation:
-        "Este es el único reto del track que cruza cinco modulos distintos, y por eso cierra el curso. Un CV real necesita exactamente esto: una variable para el color de marca, box-sizing para que el padding no rompa las medidas, flex para acomodar foto y datos, dimensiones para la foto redonda, y una media query para que en el telefono se apile y en la compu se ponga al costado. Nada de lo que hiciste aca es un ejercicio de practica: es maquetado de verdad.",
+        "Este es el único reto del track que cruza cinco módulos distintos, y por eso cierra el curso. Un CV real necesita exactamente esto: una variable para el color de marca, box-sizing para que el padding no rompa las medidas, flex para acomodar foto y datos, dimensiones para la foto redonda, y una media query para que en el teléfono se apile y en la compu se ponga al costado. Nada de lo que hiciste aca es un ejercicio de practica: es maquetado de verdad.",
     },
   ],
 };

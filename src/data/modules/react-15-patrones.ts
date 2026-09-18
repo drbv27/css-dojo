@@ -456,7 +456,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: { d1: "contenido", d2: "funcion", d3: "envuelve", d4: "implicito" } },
       hint: "Cada patrón tiene un mecanismo diferente para compartir o inyectar funcionalidad.",
-      explanation: "Children inyecta contenido, render props usa funciones, HOCs envuelven componentes, y compound components comparten estado via Context implicitamente.",
+      explanation: "Children inyecta contenido, render props usa funciones, HOCs envuelven componentes, y compound components comparten estado via Context implícitamente.",
     },
     {
       id: "react15-ej-05",

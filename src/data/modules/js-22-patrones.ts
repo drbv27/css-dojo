@@ -15,7 +15,7 @@ export const jsPatronesModule: ModuleData = {
       title: "Patrón Module y IIFE",
       content: `## Patrón Module
 
-Encapsula código en un modulo con interfaz pública y datos privados.
+Encapsula código en un módulo con interfaz pública y datos privados.
 
 ### IIFE (Immediately Invoked Function Expressión)
 
@@ -32,7 +32,7 @@ const miModulo = (function() {
 })();
 \`\`\`
 
-### Modulos ES6 (import/export)
+### Módulos ES6 (import/export)
 
 \`\`\`javascript
 // archivo: utils.js

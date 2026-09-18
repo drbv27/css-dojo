@@ -353,7 +353,7 @@ document.getElementById("cargar").addEventListener("click", function() {
         { id: "d", text: "Se convierte en una Promise", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "await solo es valido dentro de funciones async (o modulos de nivel superior).",
+      hint: "await solo es valido dentro de funciones async (o módulos de nivel superior).",
       explanation: "await solo puede usarse dentro de funciones marcadas como async. Fuera de ellas, produce un error de sintaxis.",
     },
   ],

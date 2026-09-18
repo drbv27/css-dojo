@@ -62,7 +62,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 En una aplicación tradicional, cada vez que el usuario navega, el servidor envia una **página HTML completa**. Esto causa recargas completas del navegador.
 
 ### SPA (Single-Page Application)
-React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinamicamente** el contenido sin recargar. Esto da una experiencia mucho más fluida.
+React permite crear **SPAs**, donde se carga una sola página HTML y JavaScript se encarga de **actualizar dinámicamente** el contenido sin recargar. Esto da una experiencia mucho más fluida.
 
 ## El Virtual DOM
 
@@ -118,7 +118,7 @@ React tiene un ecosistema enorme. Estas son las herramientas más importantes:
 |---|---|
 | **React DevTools** | Extensión del navegador para inspeccionar componentes |
 | **npm/yarn/pnpm** | Gestores de paquetes |
-| **ESLint** | Analisis estático de código |
+| **ESLint** | Análisis estático de código |
 | **Prettier** | Formateo de código |
 
 ### Introducción a JSX
@@ -129,7 +129,7 @@ React tiene un ecosistema enorme. Estas son las herramientas más importantes:
 const elemento = <h1>Hola Mundo</h1>;
 \`\`\`
 
-Esto NO es HTML ni un string. Es JSX, y Babel lo transforma en llamadas a \`React.createElement()\`. Lo veremos en detalle en el proximo modulo.
+Esto NO es HTML ni un string. Es JSX, y Babel lo transforma en llamadas a \`React.createElement()\`. Lo veremos en detalle en el próximo módulo.
 
 > **Importante:** En este dojo, usaremos React directamente en el navegador con Babel para practicar. En proyectos reales, usaras Vite o Next.js.`,
       codeExample: {
@@ -206,7 +206,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       prompt: "¿Qué es una SPA (Single-Page Application)?",
       options: [
         { id: "a", text: "Una aplicación que solo tiene una página de contenido", isCorrect: false },
-        { id: "b", text: "Una aplicación que carga un solo HTML y actualiza el contenido dinamicamente sin recargar", isCorrect: true },
+        { id: "b", text: "Una aplicación que carga un solo HTML y actualiza el contenido dinámicamente sin recargar", isCorrect: true },
         { id: "c", text: "Una aplicación que no usa JavaScript", isCorrect: false },
         { id: "d", text: "Una aplicación que solo funciona en móviles", isCorrect: false },
       ],

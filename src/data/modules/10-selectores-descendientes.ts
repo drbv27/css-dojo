@@ -16,7 +16,7 @@ export const selectoresDescendientesModule: ModuleData = {
       title: "Selector descendiente",
       content: `## Selector descendiente (espacio)
 
-El **selector descendiente** selecciona elementos que estan **dentro de** otro elemento, sin importar la profundidad de anidamiento. Se escribe separando los selectores con un **espacio**.
+El **selector descendiente** selecciona elementos que están **dentro de** otro elemento, sin importar la profundidad de anidamiento. Se escribe separando los selectores con un **espacio**.
 
 ### Sintaxis
 
@@ -87,7 +87,7 @@ h3.destacado a {
       title: "Selector hijo directo (>)",
       content: `## Selector hijo directo (>)
 
-El **selector hijo directo** selecciona solo los elementos que son **hijos inmediatos** de otro elemento. Se escribe con el simbolo **mayor que (>)**.
+El **selector hijo directo** selecciona solo los elementos que son **hijos inmediatos** de otro elemento. Se escribe con el símbolo **mayor que (>)**.
 
 ### Sintaxis
 
@@ -129,7 +129,7 @@ padre > hijo {
 |----------|-----------|
 | \`nav > ul\` | Solo los \`<ul>\` hijos directos de \`<nav>\` |
 | \`.card > h2\` | Solo los \`<h2>\` directos dentro de \`.card\` |
-| \`#menu > li > a\` | Enlaces directos en items directos del menu |
+| \`#menu > li > a\` | Enlaces directos en items directos del menú |
 
 ### Cuando usarlo
 
@@ -150,7 +150,7 @@ padre > hijo {
       title: "Selectores de hermanos (+ y ~)",
       content: `## Selectores de hermanos
 
-Los selectores de hermanos seleccionan elementos que **comparten el mismo padre** y estan al **mismo nivel** en el HTML.
+Los selectores de hermanos seleccionan elementos que **comparten el mismo padre** y están al **mismo nivel** en el HTML.
 
 ### Hermano adyacente (+)
 
@@ -210,7 +210,7 @@ img + p {
 }
 \`\`\`
 
-> **Importante:** Los selectores de hermanos solo miran **hacia adelante** en el DOM. No pueden seleccionar elementos que estan ANTES.`,
+> **Importante:** Los selectores de hermanos solo miran **hacia adelante** en el DOM. No pueden seleccionar elementos que están ANTES.`,
       codeExample: {
         html: `<h2>Titulo de seccion</h2>\n<p>Primer parrafo (hermano adyacente al h2)</p>\n<p>Segundo parrafo</p>\n<div class="nota">Una nota intermedia</div>\n<p>Tercer parrafo</p>`,
         css: `/* Hermano adyacente: solo el primer p despues de h2 */\nh2 + p {\n  font-size: 18px;\n  color: steelblue;\n  font-weight: bold;\n}\n\n/* Hermano general: todos los p despues de h2 */\nh2 ~ p {\n  padding-left: 16px;\n  border-left: 3px solid #ddd;\n}`,
@@ -276,7 +276,7 @@ div.card {
 
 | Patrón | Uso |
 |--------|-----|
-| \`nav > ul > li > a\` | Enlaces del menu principal |
+| \`nav > ul > li > a\` | Enlaces del menú principal |
 | \`.form-group > label + input\` | Input justo después de su label |
 | \`table tbody tr\` | Filas del cuerpo de una tabla |
 | \`.card > .card-body p\` | Párrafos en el cuerpo de una tarjeta |
@@ -298,7 +298,7 @@ div.card {
       xpReward: 10,
       order: 1,
       prompt:
-        "¿Qué selector CSS aplica estilos a TODOS los párrafos que estan dentro de un <header>, sin importar la profundidad?",
+        "¿Qué selector CSS aplica estilos a TODOS los párrafos que están dentro de un <header>, sin importar la profundidad?",
       options: [
         { id: "a", text: "header > p", isCorrect: false },
         { id: "b", text: "header p", isCorrect: true },
@@ -306,7 +306,7 @@ div.card {
         { id: "d", text: "header ~ p", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "El selector descendiente usa un espacio simple entre los dos elementos. No utiliza ningun simbolo especial.",
+      hint: "El selector descendiente usa un espacio simple entre los dos elementos. No utiliza ningun símbolo especial.",
       explanation:
         "El selector 'header p' (con espacio) es el selector descendiente. Selecciona todos los <p> dentro de <header>, sin importar cuantos niveles de profundidad haya. El selector '>' es solo para hijos directos.",
     },
@@ -317,7 +317,7 @@ div.card {
       xpReward: 10,
       order: 2,
       prompt:
-        "Completa el selector para aplicar estilos solo a los enlaces (<a>) que estan dentro del <nav>:",
+        "Completa el selector para aplicar estilos solo a los enlaces (<a>) que están dentro del <nav>:",
       codeTemplate: {
         html: `<nav>\n  <a href="#">Inicio</a>\n  <a href="#">Acerca</a>\n</nav>\n<a href="#">Enlace fuera del nav</a>`,
         cssPrefix: "",
@@ -327,7 +327,7 @@ div.card {
       validation: { type: "exact", answer: "nav a" },
       hint: "Necesitas un selector descendiente: primero el contenedor, luego un espacio, luego el elemento hijo.",
       explanation:
-        "El selector 'nav a' selecciona todos los enlaces (<a>) que estan dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relación de descendencia.",
+        "El selector 'nav a' selecciona todos los enlaces (<a>) que están dentro de un <nav>. El espacio entre 'nav' y 'a' indica una relación de descendencia.",
     },
     {
       id: "06-ej-03",
@@ -396,9 +396,9 @@ div.card {
         blanks: ["h2 + p"],
       },
       validation: { type: "exact", answer: "h2 + p" },
-      hint: "Necesitas el combinador de hermano adyacente. Es un simbolo matemático que usamos para sumar.",
+      hint: "Necesitas el combinador de hermano adyacente. Es un símbolo matemático que usamos para sumar.",
       explanation:
-        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente después de un <h2>, no los demas párrafos.",
+        "El selector 'h2 + p' usa el combinador de hermano adyacente (+). Selecciona solo el <p> que aparece inmediatamente después de un <h2>, no los demás párrafos.",
     },
     {
       id: "06-ej-06",
@@ -493,11 +493,11 @@ div.card {
       xpReward: 60,
       order: 9,
       prompt:
-        "Reto integrador. Los cuatro combinadores del modulo sobre el mismo marcado. Fijate que cada uno elige un conjunto DISTINTO de elementos, y esa es toda la diferencia entre ellos.",
+        "Reto integrador. Los cuatro combinadores del módulo sobre el mismo marcado. Fijate que cada uno elige un conjunto DISTINTO de elementos, y esa es toda la diferencia entre ellos.",
       retoPasos: [
         {
           instruccion:
-            "Con el DESCENDIENTE `.menu a`, dale a todos los enlaces del menu el color #2c3e50, incluido el que esta anidado dos niveles adentro.",
+            "Con el DESCENDIENTE `.menu a`, dale a todos los enlaces del menú el color #2c3e50, incluido el que esta anidado dos niveles adentro.",
           esperado: ".menu a { color: #2c3e50; }",
         },
         {
@@ -507,12 +507,12 @@ div.card {
         },
         {
           instruccion:
-            "Con el HERMANO ADYACENTE `.menu + .aviso`, dale al parrafo que sigue al menu un fondo #fff3cd. Solo al que va inmediatamente despues.",
+            "Con el HERMANO ADYACENTE `.menu + .aviso`, dale al párrafo que sigue al menú un fondo #fff3cd. Solo al que va inmediatamente después.",
           esperado: ".menu + .aviso { background-color: #fff3cd; }",
         },
         {
           instruccion:
-            "Con el HERMANO GENERAL `.menu ~ p`, dale a TODOS los parrafos hermanos posteriores un color #7f8c8d. Este si alcanza a los dos.",
+            "Con el HERMANO GENERAL `.menu ~ p`, dale a TODOS los párrafos hermanos posteriores un color #7f8c8d. Este si alcanza a los dos.",
           esperado: ".menu ~ p { color: #7f8c8d; }",
         },
       ],

@@ -225,7 +225,7 @@ document.getElementById("agregar").addEventListener("click", function() {
         { id: "d", text: "e.origin", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Target significa 'objetivo' en ingles.",
+      hint: "Target significa 'objetivo' en inglés.",
       explanation: "e.target es el elemento que origino el evento (por ejemplo, el botón que fue clickeado).",
     },
     {

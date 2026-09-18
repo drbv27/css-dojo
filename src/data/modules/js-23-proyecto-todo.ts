@@ -34,7 +34,7 @@ Necesitamos:
 
 ### El modelo de datos
 
-Cada tarea tendra:
+Cada tarea tendrá:
 \`\`\`javascript
 {
   id: 1,

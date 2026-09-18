@@ -169,7 +169,7 @@ function App() {
 </Suspense>
 \`\`\`
 
-> **Tip:** La página principal (Home) no deberia ser lazy. Las páginas secundarias si.`,
+> **Tip:** La página principal (Home) no debería ser lazy. Las páginas secundarias si.`,
       codeExample: {
         html: `<div id="root"></div>
 <script src="https://unpkg.com/react@18/umd/react.development.js"></script>

@@ -440,7 +440,7 @@ renderScores();`,
       ],
       validation: { type: "exact", answer: "b" },
       hint: "b - a ordena de mayor a menor.",
-      explanation: "sort((a,b) => b - a) ordena de forma descendente (mayor a menor). a - b seria ascendente.",
+      explanation: "sort((a,b) => b - a) ordena de forma descendente (mayor a menor). a - b sería ascendente.",
     },
   ],
 };

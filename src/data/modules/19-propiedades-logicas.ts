@@ -42,8 +42,8 @@ Las propiedades lógicas usan conceptos **relativos al flujo de escritura**:
 
 - **Inline**: la dirección en que fluye el texto (horizontal en espanol)
 - **Block**: la dirección en que se apilan los bloques (vertical en espanol)
-- **Start**: donde empieza el texto (izquierda en espanol, derecha en arabe)
-- **End**: donde termina el texto (derecha en espanol, izquierda en arabe)
+- **Start**: donde empieza el texto (izquierda en español, derecha en arabe)
+- **End**: donde termina el texto (derecha en español, izquierda en arabe)
 
 \`\`\`css
 .menu {
@@ -53,14 +53,14 @@ Las propiedades lógicas usan conceptos **relativos al flujo de escritura**:
 
 ### Ejes lógicos vs fisicos
 
-| Eje lógico | En espanol (LTR) | En arabe (RTL) | En japones vertical |
+| Eje lógico | En español (LTR) | En arabe (RTL) | En japones vertical |
 |-----------|------------------|----------------|-------------------|
 | inline | Horizontal | Horizontal | Vertical |
 | block | Vertical | Vertical | Horizontal |
 | inline-start | Izquierda | Derecha | Arriba |
 | inline-end | Derecha | Izquierda | Abajo |
 
-> **Buena práctica:** Aunque tu sitio solo sea en espanol, usar propiedades lógicas es una buena costumbre. Hace tu CSS más semántico y preparado para el futuro.`,
+> **Buena práctica:** Aunque tu sitio solo sea en español, usar propiedades lógicas es una buena costumbre. Hace tu CSS más semántico y preparado para el futuro.`,
       codeExample: {
         html: `<div class="ejemplo-ltr" dir="ltr">\n  <div class="caja">Espanol (LTR) - margin-inline-start</div>\n</div>\n<div class="ejemplo-rtl" dir="rtl">\n  <div class="caja">عربي (RTL) - margin-inline-start</div>\n</div>`,
         css: `.ejemplo-ltr, .ejemplo-rtl {\n  background-color: #f0f0f0;\n  padding: 10px;\n  margin-bottom: 10px;\n  border: 1px solid #ddd;\n}\n.caja {\n  margin-inline-start: 30px;\n  padding: 10px;\n  background-color: steelblue;\n  color: white;\n  border-radius: 4px;\n}`,
@@ -126,7 +126,7 @@ Cuando cambias el modo de escritura, las propiedades lógicas se adaptan automá
 }
 \`\`\`
 
-> **Nota:** En la mayoria de sitios en espanol, \`inline-size\` se comporta exactamente igual que \`width\` y \`block-size\` igual que \`height\`. La ventaja aparece al cambiar de idioma o modo de escritura.`,
+> **Nota:** En la mayoria de sitios en español, \`inline-size\` se comporta exactamente igual que \`width\` y \`block-size\` igual que \`height\`. La ventaja aparece al cambiar de idioma o modo de escritura.`,
       codeExample: {
         html: `<div class="horizontal">\n  <p>Modo horizontal: inline-size = ancho</p>\n</div>\n<div class="vertical">\n  <p>Modo vertical: inline-size = alto</p>\n</div>`,
         css: `.horizontal {\n  inline-size: 300px;\n  block-size: 80px;\n  padding: 15px;\n  background-color: #d4edda;\n  border: 2px solid #28a745;\n  margin-bottom: 15px;\n}\n.vertical {\n  writing-mode: vertical-rl;\n  inline-size: 150px;\n  block-size: 200px;\n  padding: 15px;\n  background-color: #cce5ff;\n  border: 2px solid #007bff;\n}`,

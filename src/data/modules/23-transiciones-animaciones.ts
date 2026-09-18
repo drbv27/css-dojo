@@ -51,7 +51,7 @@ Las **transiciones** permiten cambiar suavemente el valor de una propiedad CSS d
 }
 \`\`\`
 
-Sin la transición, el cambio de color seria instantaneo. Con ella, el color cambia suavemente en 0.3 segundos.
+Sin la transición, el cambio de color sería instantaneo. Con ella, el color cambia suavemente en 0.3 segundos.
 
 ### Transiciones múltiples
 
@@ -297,7 +297,7 @@ Algunos usuarios prefieren movimiento reducido. Usa la media query \`prefers-red
 
 ### Transiciones vs Animaciones: cuando usar cada una
 
-| Caracteristica | Transición | Animación |
+| Característica | Transición | Animación |
 |---------------|-----------|-----------|
 | Trigger | Requiere cambio de estado (hover, clase) | Puede ser automática |
 | Complejidad | Solo A a B | Múltiples pasos |

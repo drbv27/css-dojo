@@ -66,6 +66,32 @@ const [items, setItems] = useState<string[]>([]);
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #3b82f6; border-radius: 8px; white-space: pre-line; }',
+        // El sandbox corre JavaScript plano, sin React ni JSX. Lo que se puede
+        // mostrar aca es lo unico que sobrevive a la compilacion: las props son
+        // un objeto comun, y el tipado que las protegia ya no esta.
+        js: `// interface BotonProps { texto: string; onClick: () => void; deshabilitado?: boolean }
+// function Boton({ texto, onClick, deshabilitado = false }: BotonProps) { ... }
+//
+// Compilado, las props son un objeto y nada mas. Sin JSX, asi se ve el pasaje:
+function Boton(props) {
+  var deshabilitado = props.deshabilitado === undefined ? false : props.deshabilitado;
+  return "[" + props.texto + (deshabilitado ? " (deshabilitado)" : "") + "]";
+}
+
+var salida = [];
+salida.push(Boton({ texto: "Guardar", onClick: function () {} }));
+salida.push(Boton({ texto: "Borrar", onClick: function () {}, deshabilitado: true }));
+
+salida.push("");
+salida.push("Ahora el caso que el tipado existe para evitar:");
+salida.push("  " + Boton({ txeto: "Guardar", onClick: function () {} }));
+salida.push("");
+salida.push("Con la prop mal escrita, props.texto es undefined y el boton sale");
+salida.push("vacio. TypeScript lo habria marcado en rojo en el editor:");
+salida.push("  \\"Property 'texto' is missing in type\\".");
+salida.push("En JavaScript el componente renderiza igual y el bug llega al usuario.");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 1,
@@ -134,6 +160,35 @@ const [tema, setTema] = useLocalStorage("tema", "dark");
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
+        js: `// Un evento de React envuelve al evento del DOM, pero la forma es la misma:
+// un objeto con target, y target.value cuando viene de un input.
+// TypeScript:  (e: React.ChangeEvent<HTMLInputElement>) => setValor(e.target.value)
+var input = document.createElement("input");
+input.value = "hola";
+
+var salida = [];
+salida.push("e.target.value -> " + input.value);
+salida.push("");
+salida.push("Por que el tipo lleva <HTMLInputElement>:");
+salida.push("  ChangeEvent es generico sobre el elemento que emitio el evento.");
+salida.push("  Con <HTMLInputElement>, e.target.value existe y esta tipado.");
+salida.push("  Con ChangeEvent<HTMLElement>, .value NO existe y no compila.");
+salida.push("");
+
+// useState tipado: en runtime es una variable comun. Lo que aporta el tipo es
+// que setValor(42) no compile cuando el estado es un string.
+function useStateSimulado(inicial) {
+  var valor = inicial;
+  return [function () { return valor; }, function (nuevo) { valor = nuevo; }];
+}
+var leer = useStateSimulado("")[0];
+var escribir = useStateSimulado("")[1];
+
+salida.push("useState<string>('') empieza en: \\"" + leer() + "\\"");
+salida.push("Es un string vacio, no undefined: por eso el input es controlado");
+salida.push("desde el primer render y React no protesta.");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 2,

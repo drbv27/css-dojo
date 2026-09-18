@@ -355,7 +355,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<FormularioContacto 
       options: [
         { id: "a", text: "Falta el atributo type en el button", isCorrect: false },
         { id: "b", text: "handleClick() se ejecuta inmediatamente en vez de al hacer clic", isCorrect: true },
-        { id: "c", text: "onClick deberia ser onclick", isCorrect: false },
+        { id: "c", text: "onClick debería ser onclick", isCorrect: false },
         { id: "d", text: "No hay ningun error", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },

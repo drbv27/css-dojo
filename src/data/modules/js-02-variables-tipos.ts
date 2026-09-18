@@ -21,7 +21,7 @@ Una **variable** es un contenedor con nombre para almacenar datos. En JavaScript
 \`\`\`javascript
 var nombre = "Ana";
 \`\`\`
-Es la forma clasica. Tiene **alcance de función** y permite redeclaración. **No se recomienda** en código moderno.
+Es la forma clásica. Tiene **alcance de función** y permite redeclaración. **No se recomienda** en código moderno.
 
 ### let (moderna)
 \`\`\`javascript
@@ -144,7 +144,7 @@ JavaScript intenta convertir automáticamente cuando mezclas tipos:
 Estos valores se convierten a \`false\`:
 \`0\`, \`""\`, \`null\`, \`undefined\`, \`NaN\`, \`false\`
 
-Todo lo demas es **truthy** (se convierte a \`true\`).
+Todo lo demás es **truthy** (se convierte a \`true\`).
 
 > **Cuidado:** La coerción implícita es fuente común de bugs. Prefiere las conversiones explicitas.`,
       codeExample: {
@@ -170,7 +170,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       difficulty: 1 ,
       xpReward: 10,
       order: 1,
-      prompt: "¿Cuál es la forma recomendada de declarar una variable que no cambiara de valor?",
+      prompt: "¿Cuál es la forma recomendada de declarar una variable que no cambiará de valor?",
       options: [
         { id: "a", text: "var", isCorrect: false },
         { id: "b", text: "let", isCorrect: false },

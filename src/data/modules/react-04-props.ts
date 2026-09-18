@@ -507,7 +507,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
           "drag-6": "zone-llaves",
         },
       },
-      hint: "Solo los textos literales (strings) van con comillas. Todo lo demas va con llaves.",
+      hint: "Solo los textos literales (strings) van con comillas. Todo lo demás va con llaves.",
       explanation:
         "En JSX, los strings se pasan con comillas. Los números, booleanos, arrays, objetos y funciones se pasan entre llaves porque son expresiones JavaScript.",
     },

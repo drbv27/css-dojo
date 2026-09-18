@@ -55,7 +55,7 @@ function saludar(nombre) {       // <- declaracion
 
 ### Parámetros vs argumentos
 
-Confusión clasica. **No son lo mismo:**
+Confusión clásica. **No son lo mismo:**
 
 \`\`\`javascript
 function sumar(a, b) {  // a y b son PARAMETROS (en la definicion)
@@ -196,7 +196,7 @@ const calcular = function(a, b) {
 calcular = function() { return 0; };  // Error: Assignment to constant
 \`\`\`
 
-Con una declaración normal, otro código podria redefinir tu función accidentalmente.
+Con una declaración normal, otro código podría redefinir tu función accidentalmente.
 
 ### ¿Cuándo usar expresión de funciones?
 
@@ -365,7 +365,7 @@ const dobles = numeros.map(n => n * 2);  // [2, 4, 6, 8, 10]
 const pares = numeros.filter(n => n % 2 === 0);  // [2, 4]
 \`\`\`
 
-> Esto lo veremos en detalle en el modulo de **métodos de arrays**.`,
+> Esto lo veremos en detalle en el módulo de **métodos de arrays**.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
@@ -412,7 +412,7 @@ JavaScript ofrece **tres maneras** de crear funciones. Todas hacen lo mismo, per
 
 ### Tabla comparativa
 
-| Caracteristica | Declaración | Expresión | Arrow |
+| Característica | Declaración | Expresión | Arrow |
 |----------------|-------------|-----------|-------|
 | Sintaxis | \`function f() {}\` | \`const f = function() {}\` | \`const f = () => {}\` |
 | Hoisting | Si | No | No |
@@ -719,7 +719,7 @@ function ejemplo() {
 
 ### Scope de función
 
-Variables declaradas DENTRO de una función. Solo visibles ahi.
+Variables declaradas DENTRO de una función. Solo visibles ahí.
 
 \`\`\`javascript
 function calcular() {
@@ -745,9 +745,9 @@ console.log(bloque);  // ReferenceError ✗
 
 > **Importante:** \`var\` NO respeta el scope de bloque (solo el de función). Otra razón más para usar \`const\` y \`let\`.
 
-### Acceso jerarquico
+### Acceso jerárquico
 
-Las funciones pueden ver variables de scopes "arriba", pero no al reves:
+Las funciones pueden ver variables de scopes "arriba", pero no al revés:
 
 \`\`\`javascript
 const externa = "padre";
@@ -768,7 +768,7 @@ function nivel1() {
 
 Un **closure** es una función que **recuerda** las variables del scope donde fue creada, **incluso después** de que ese scope haya terminado.
 
-### Ejemplo clasico: contador privado
+### Ejemplo clásico: contador privado
 
 \`\`\`javascript
 function crearContador() {
@@ -849,7 +849,7 @@ Son la base de:
 - **Eventos:** \`boton.addEventListener("click", callback)\`
 - **Asincronía:** \`setTimeout(callback, 1000)\`, fetch, promesas
 
-> Lo veremos a fondo en los modulos de **Arrays**, **DOM/Eventos** y **Asincronismo**.`,
+> Lo veremos a fondo en los módulos de **Arrays**, **DOM/Eventos** y **Asincronismo**.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',
@@ -914,7 +914,7 @@ Una **función recursiva** es una función que **se llama a si misma**. Es una h
 
 Toda función recursiva necesita **dos partes**:
 
-1. **Caso base:** la condición para DETENER la recursión (sino sera infinita).
+1. **Caso base:** la condición para DETENER la recursión (sino será infinita).
 2. **Caso recursivo:** la función se llama a si misma con un problema más pequeño.
 
 \`\`\`javascript
@@ -929,7 +929,7 @@ function recursiva(parametro) {
 }
 \`\`\`
 
-### Ejemplo clasico: factorial
+### Ejemplo clásico: factorial
 
 El factorial de N (escrito \`N!\`) es la multiplicación de todos los números del 1 al N.
 
@@ -1128,7 +1128,7 @@ const persona = {
 persona.presentarse();  // "Soy Ana y tengo 25 anos"
 \`\`\`
 
-> Sin \`this\`, el método no podria acceder a las otras propiedades del objeto.
+> Sin \`this\`, el método no podría acceder a las otras propiedades del objeto.
 
 ### \`this\` apunta al objeto a la IZQUIERDA del punto
 
@@ -1220,7 +1220,7 @@ console.log("hi");            // metodo de console
 
 > Todos los \`.algo()\` que has usado son métodos. Strings, arrays, Math, console... todos son objetos con métodos.
 
-> **Nota:** Veremos más a fondo objetos y métodos en el modulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
+> **Nota:** Veremos más a fondo objetos y métodos en el módulo **Objetos**. Aquí solo establecimos la base: un método es una función dentro de un objeto.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f38ba8; border-radius: 8px; white-space: pre-line; }',
@@ -1286,7 +1286,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         { id: "d", text: "send", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "En ingles significa 'devolver' o 'retornar'.",
+      hint: "En inglés significa 'devolver' o 'retornar'.",
       explanation: "return devuelve un valor desde la función y termina su ejecución.",
     },
     {

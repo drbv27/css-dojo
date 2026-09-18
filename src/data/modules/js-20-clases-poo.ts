@@ -219,7 +219,7 @@ class CuentaBancaria {
 }
 \`\`\`
 
-> Los campos privados con # son una caracteristica moderna. Solo la propia clase puede acceder a ellos.`,
+> Los campos privados con # son una característica moderna. Solo la propia clase puede acceder a ellos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #f5c2e7; border-radius: 8px; white-space: pre-line; }',

@@ -121,7 +121,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       title: "Recorrer arrays",
       content: `## Recorrer arrays
 
-### for clasico
+### for clásico
 \`\`\`javascript
 const nums = [10, 20, 30];
 for (let i = 0; i < nums.length; i++) {

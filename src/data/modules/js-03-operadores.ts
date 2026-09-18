@@ -23,7 +23,7 @@ Los operadores aritmeticos permiten realizar **calculos matematicos**:
 | \`-\` | Resta | \`5 - 3\` → \`2\` |
 | \`*\` | Multiplicación | \`5 * 3\` → \`15\` |
 | \`/\` | División | \`10 / 3\` → \`3.33\` |
-| \`%\` | Modulo (resto) | \`10 % 3\` → \`1\` |
+| \`%\` | Módulo (resto) | \`10 % 3\` → \`1\` |
 | \`**\` | Potencia | \`2 ** 3\` → \`8\` |
 
 ### Incremento y decremento

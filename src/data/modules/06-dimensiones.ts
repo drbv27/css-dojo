@@ -54,7 +54,7 @@ El valor \`auto\` deja que el navegador **calcule la dimensión** automáticamen
 
 ### Por que width no siempre mide lo que crees
 
-En el modulo anterior viste el box model: contenido, padding, border y margin. Aca es donde eso importa de verdad.
+En el módulo anterior viste el box model: contenido, padding, border y margin. Aca es donde eso importa de verdad.
 
 Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el border se suman por fuera. Así que esto:
 
@@ -66,7 +66,7 @@ Por defecto, \`width\` y \`height\` miden **solo el contenido**. El padding y el
 }
 \`\`\`
 
-...no ocupa 300px. Ocupa **350px**: 300 de contenido + 20 de padding a cada lado + 5 de borde a cada lado. Y el dia que le cambies el padding, el ancho total cambia con el.
+...no ocupa 300px. Ocupa **350px**: 300 de contenido + 20 de padding a cada lado + 5 de borde a cada lado. Y el día que le cambies el padding, el ancho total cambia con el.
 
 ### La solución: box-sizing
 
@@ -108,7 +108,7 @@ Esto crea un contenedor que ocupa todo el ancho en pantallas pequeñas pero no c
 
 ### min-width
 
-Define el **ancho mínimo**. El elemento nunca sera más estrecho que este valor:
+Define el **ancho mínimo**. El elemento nunca será más estrecho que este valor:
 
 \`\`\`css
 .boton {
@@ -580,7 +580,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
       },
       hint: "La proporción se escribe ancho / alto. Un cuadrado es 1 / 1 y una pantalla ancha es 16 / 9. Nada de height.",
       explanation:
-        "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiara, el alto acompana y la proporción se mantiene.",
+        "Declarando solo el ancho, aspect-ratio calcula el alto: el avatar queda de 80x80 y la miniatura de 240x135. Si el ancho cambiará, el alto acompana y la proporción se mantiene.",
     },
     {
       /** EL RETO INTEGRADOR del modulo. Ver src/lib/calificar.ts. */
@@ -614,7 +614,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         },
         {
           instruccion:
-            "Dale una proporcion de 16/9 con aspect-ratio. Es la unica forma de fijar la relacion entre ancho y alto sin calcular ninguno de los dos.",
+            "Dale una proporción de 16/9 con aspect-ratio. Es la única forma de fijar la relación entre ancho y alto sin calcular ninguno de los dos.",
           esperado: ".panel { aspect-ratio: 16 / 9; }",
         },
       ],
@@ -631,7 +631,7 @@ Y se combina bien con lo que ya viste: \`max-width\` limita cuánto puede crecer
         ".panel {\n  width: 100%;\n  max-width: 600px;\n  min-height: 120px;\n  padding: 24px;\n  margin: 16px;\n  aspect-ratio: 16 / 9;\n}",
       hint: "`width: 100%` y `max-width` no se pelean: el ancho manda mientras haya lugar, y el máximo lo frena cuando se pasa.",
       explanation:
-        "`width` dice cuanto quiere medir el elemento; `max-width` y `min-height` dicen hasta donde se le permite. Los límites son lo que convierte un ancho fijo en un diseño que aguanta pantallas distintas. El padding y el margin siguen siendo lo de siempre: uno adentro de la caja, el otro afuera. Y `aspect-ratio` es el que ata el alto al ancho, asi que la caja mantiene su forma sin que haya que calcular el alto a mano.",
+        "`width` dice cuanto quiere medir el elemento; `max-width` y `min-height` dicen hasta donde se le permite. Los límites son lo que convierte un ancho fijo en un diseño que aguanta pantallas distintas. El padding y el margin siguen siendo lo de siempre: uno adentro de la caja, el otro afuera. Y `aspect-ratio` es el que ata el alto al ancho, así que la caja mantiene su forma sin que haya que calcular el alto a mano.",
     },
   ],
 };

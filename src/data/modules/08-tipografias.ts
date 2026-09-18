@@ -42,7 +42,7 @@ h1 {
 
 ### Fuentes seguras para la web (web safe fonts)
 
-Estas fuentes estan disponibles en practicamente todos los dispositivos:
+Estas fuentes están disponibles en prácticamente todos los dispositivos:
 
 | Fuente | Tipo |
 |--------|------|
@@ -206,7 +206,7 @@ La distinción más importante en tipografía es entre fuentes **serif** y **san
 
 ### ¿Qué es un serif?
 
-Un **serif** (o remate) es un pequeño trazo decorativo al final de las líneas principales de una letra. La palabra "sans" viene del frances y significa "sin".
+Un **serif** (o remate) es un pequeño trazo decorativo al final de las líneas principales de una letra. La palabra "sans" viene del francés y significa "sin".
 
 ### Fuentes Serif
 
@@ -214,8 +214,8 @@ Tienen **pequeños remates** en los extremos de las letras.
 
 **Ejemplos:** Georgia, Times New Roman, Garamond, Palatino
 
-**Caracteristicas:**
-- Aspecto **clasico y elegante**
+**Características:**
+- Aspecto **clásico y elegante**
 - Facilitan la lectura en **textos impresos** largos
 - Transmiten **formalidad y tradición**
 - Ideales para: editoriales, sitios de noticias, blogs literarios
@@ -226,7 +226,7 @@ Tienen **pequeños remates** en los extremos de las letras.
 
 **Ejemplos:** Arial, Helvetica, Verdana, Roboto, Open Sans
 
-**Caracteristicas:**
+**Características:**
 - Aspecto **moderno y limpio**
 - Excelente **legibilidad en pantallas**
 - Transmiten **simplicidad y modernidad**
@@ -445,7 +445,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
         blanks: ["bold"],
       },
       validation: { type: "exact", answer: "bold" },
-      hint: "La palabra clave en ingles para 'negrita' es muy común y tiene cuatro letras.",
+      hint: "La palabra clave en inglés para 'negrita' es muy común y tiene cuatro letras.",
       explanation:
         "El valor 'bold' establece el texto en negrita, equivalente a font-weight: 700. Es la forma más común de poner texto en negrita con CSS.",
     },
@@ -472,7 +472,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       },
       hint: "Necesitas dos reglas: una para h1 (Georgia, 36px, bold) y otra para p (Arial, 16px, normal).",
       explanation:
-        "Se crean dos reglas: h1 con Georgia serif a 36px en negrita para un título clasico, y p con Arial sans-serif a 16px con peso normal para un cuerpo de texto limpio y legible.",
+        "Se crean dos reglas: h1 con Georgia serif a 36px en negrita para un título clásico, y p con Arial sans-serif a 16px con peso normal para un cuerpo de texto limpio y legible.",
     },
     {
       id: "04-ej-08",
@@ -517,7 +517,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       validation: { type: "exact", answer: "b" },
       hint: "La propiedad se llama text-align. Pensá en qué palabra tiene: alinea texto, no cajas.",
       explanation:
-        "text-align alinea el contenido que va DENTRO de la caja; no mueve la caja. El div sigue pegado a la izquierda de la página y su texto queda centrado en esos 300px. Para centrar la caja hace falta otra técnica, que ves en el modulo de dimensiones.",
+        "text-align alinea el contenido que va DENTRO de la caja; no mueve la caja. El div sigue pegado a la izquierda de la página y su texto queda centrado en esos 300px. Para centrar la caja hace falta otra técnica, que ves en el módulo de dimensiones.",
     },
     {
       id: "04-ej-10",
@@ -556,7 +556,7 @@ Por eso la vas a ver aplicada a contenedores y no a cada párrafo: se escribe un
       retoPasos: [
         {
           instruccion:
-            "Dale a .nota la familia Georgia con serif como respaldo. Siempre se declara una alternativa generica por si la primera no esta.",
+            "Dale a .nota la familia Georgia con serif como respaldo. Siempre se declara una alternativa genérica por si la primera no esta.",
           esperado: ".nota { font-family: Georgia, serif; }",
         },
         {

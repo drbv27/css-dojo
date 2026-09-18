@@ -30,7 +30,7 @@ Si HTML es el esqueleto de una página web, **CSS es la piel, la ropa y el maqui
 
 ### Un poco de historia
 
-CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (CSS1) se público en 1996. Actualmente trabajamos con CSS3, que se desarrolla en modulos independientes.
+CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (CSS1) se público en 1996. Actualmente trabajamos con CSS3, que se desarrolla en módulos independientes.
 
 > **Dato curioso:** Antes de CSS, los estilos se aplicaban directamente en HTML con etiquetas como \`<font>\` y atributos como \`bgcolor\`. Era un caos absoluto.`,
       codeExample: {
@@ -48,7 +48,7 @@ CSS fue propuesto por **Hakon Wium Lie** en 1994 y la primera versión oficial (
 Una **regla CSS** se compone de tres partes fundamentales:
 
 ### 1. Selector
-Indica **a que elemento(s)** HTML se le aplicaran los estilos. En el ejemplo de abajo, \`main\` es el selector.
+Indica **a que elemento(s)** HTML se le aplicarán los estilos. En el ejemplo de abajo, \`main\` es el selector.
 
 ### 2. Propiedad
 Es el **aspecto visual** que queremos cambiar. Por ejemplo, \`background-color\` cambia el color de fondo.
@@ -310,7 +310,7 @@ Se crea un archivo \`.css\` separado y se enlaza con la etiqueta \`<link>\`:
         },
         {
           instruccion:
-            "Con un selector de tipo, dale a TODOS los parrafos el color #7f8c8d y un interlineado de 1.6. Fijate que alcanza a los dos, tambien al que tiene clase.",
+            "Con un selector de tipo, dale a TODOS los párrafos el color #7f8c8d y un interlineado de 1.6. Fijate que alcanza a los dos, también al que tiene clase.",
           esperado: "p { color: #7f8c8d; line-height: 1.6; }",
         },
         {

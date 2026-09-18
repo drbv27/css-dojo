@@ -96,8 +96,8 @@ Indica que el texto es de **gran importancia**. Los navegadores lo muestran en *
 <p><strong>Advertencia:</strong> No borres este archivo.</p>
 \`\`\`
 
-### \`<em>\` — Enfasis
-Da **enfasis** al texto. Los navegadores lo muestran en *cursiva*.
+### \`<em>\` — Énfasis
+Da **énfasis** al texto. Los navegadores lo muestran en *cursiva*.
 
 \`\`\`html
 <p>Debes <em>siempre</em> guardar tus cambios.</p>
@@ -120,7 +120,7 @@ Representa texto de **menor importancia**, como notas al pie o texto legal.
 ### Diferencia entre semántica y presentación
 
 - \`<strong>\` significa importancia (no solo negrita)
-- \`<em>\` significa enfasis (no solo cursiva)
+- \`<em>\` significa énfasis (no solo cursiva)
 - Usa CSS si solo quieres cambiar la apariencia sin añadir significado
 
 > **Importante:** Evita usar \`<b>\` y \`<i>\` cuando quieres dar significado al texto. Usa \`<strong>\` y \`<em>\` respectivamente.`,
@@ -252,7 +252,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       ],
       dropZones: [
         { id: "z1", label: "Texto de gran importancia" },
-        { id: "z2", label: "Texto con enfasis" },
+        { id: "z2", label: "Texto con énfasis" },
         { id: "z3", label: "Texto resaltado" },
         { id: "z4", label: "Texto de menor importancia" },
         { id: "z5", label: "Cita en bloque" },
@@ -263,7 +263,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       },
       hint: "Recuerda el significado semántico de cada etiqueta.",
       explanation:
-        "Cada etiqueta de formato tiene un significado semántico específico: strong para importancia, em para enfasis, mark para resaltado, small para menor relevancia y blockquote para citas.",
+        "Cada etiqueta de formato tiene un significado semántico específico: strong para importancia, em para énfasis, mark para resaltado, small para menor relevancia y blockquote para citas.",
     },
     {
       id: "html-03-ej-05",
@@ -272,7 +272,7 @@ Para mostrar bloques de código con formato, combina ambas etiquetas:
       xpReward: 20,
       order: 5,
       prompt:
-        "Crea una página con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Articulo', un párrafo con texto que incluya una palabra en negrita usando <strong>, y una línea horizontal <hr> seguida de otro párrafo.",
+        "Crea una página con: un h1 que diga 'Mi Blog', un h2 que diga 'Primer Artículo', un párrafo con texto que incluya una palabra en negrita usando <strong>, y una línea horizontal <hr> seguida de otro párrafo.",
       codeTemplate: {
         html: `<!-- Crea la estructura pedida -->`,
         cssPrefix: "",

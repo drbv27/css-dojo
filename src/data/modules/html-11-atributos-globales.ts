@@ -49,7 +49,7 @@ Aplica estilos CSS directamente en el elemento (estilos en línea).
 
 ### title
 
-Muestra un tooltip cuando el usuario pasa el raton sobre el elemento:
+Muestra un tooltip cuando el usuario pasa el ratón sobre el elemento:
 
 \`\`\`html
 <abbr title="Hypertext Markup Language">HTML</abbr>
@@ -131,7 +131,7 @@ Hace que el contenido de un elemento sea **editable** directamente por el usuari
 
 ### draggable
 
-Hace que un elemento sea arrastrable con el raton:
+Hace que un elemento sea arrastrable con el ratón:
 
 \`\`\`html
 <div draggable="true">Arrastrame</div>

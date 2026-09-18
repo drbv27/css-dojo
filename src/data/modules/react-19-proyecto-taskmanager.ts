@@ -708,7 +708,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       },
       validation: { type: "exact", answer: "!t.completada" },
       hint: "Invierte el valor booleano actual.",
-      explanation: "!t.completada invierte el valor: si era true pasa a false y viceversa. Es el patrón toggle clasico.",
+      explanation: "!t.completada invierte el valor: si era true pasa a false y viceversa. Es el patrón toggle clásico.",
     },
     {
       id: "react19-ej-03",
@@ -725,7 +725,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(<App />);
       ],
       validation: { type: "exact", answer: "b" },
       hint: "useReducer acepta tres argumentos: reducer, initialArg, init.",
-      explanation: "El tercer argumento de useReducer es una función inicializadora que se ejecuta solo una vez. Ahi puedes leer de localStorage para hidratar el estado.",
+      explanation: "El tercer argumento de useReducer es una función inicializadora que se ejecuta solo una vez. Ahí puedes leer de localStorage para hidratar el estado.",
     },
     {
       id: "react19-ej-04",

@@ -31,7 +31,7 @@ Muestra u oculta contenido al hacer clic. **Cero JavaScript.**
 \`\`\`
 
 - El \`<summary>\` es la parte siempre visible (el título que se clickea).
-- Todo lo demas dentro del \`<details>\` se muestra/oculta.
+- Todo lo demás dentro del \`<details>\` se muestra/oculta.
 - Agrega el atributo \`open\` para que aparezca **abierto por defecto**: \`<details open>\`.
 
 ### dialog — una ventana modal nativa
@@ -45,7 +45,7 @@ Muestra u oculta contenido al hacer clic. **Cero JavaScript.**
 \`\`\`
 
 > **Honestidad técnica:** con el atributo \`open\` se muestra estática. Para **abrirla y cerrarla** con
-> botones se usa JavaScript (\`dialog.showModal()\` y \`dialog.close()\`), que veras más adelante. Hoy
+> botones se usa JavaScript (\`dialog.showModal()\` y \`dialog.close()\`), que verás más adelante. Hoy
 > aprendemos su **estructura**.`,
       codeExample: {
         html: `<details>
@@ -82,7 +82,7 @@ Para algo que **avanza** de 0 a un total: una descarga, una subida, el paso de u
 
 ### meter — una medida dentro de un rango
 
-Para una **medición fija** dentro de un rango conocido: bateria, espacio en disco, una puntuación.
+Para una **medición fija** dentro de un rango conocido: batería, espacio en disco, una puntuación.
 
 \`\`\`html
 <meter value="0.7" min="0" max="1"></meter>
@@ -121,17 +121,17 @@ Para una **medición fija** dentro de un rango conocido: bateria, espacio en dis
       difficulty: 2,
       xpReward: 15,
       order: 1,
-      prompt: "Quieres mostrar el nivel de bateria de un dispositivo (una cantidad fija en un rango). ¿Qué elemento usas?",
+      prompt: "Quieres mostrar el nivel de batería de un dispositivo (una cantidad fija en un rango). ¿Qué elemento usas?",
       options: [
         { id: "a", text: "<meter> — es una medida dentro de un rango conocido", isCorrect: true },
         { id: "b", text: "<progress> — porque siempre se usa para barras", isCorrect: false },
-        { id: "c", text: "<details> — para mostrar la bateria al hacer clic", isCorrect: false },
-        { id: "d", text: "<dialog> — abre una ventana con la bateria", isCorrect: false },
+        { id: "c", text: "<details> — para mostrar la batería al hacer clic", isCorrect: false },
+        { id: "d", text: "<dialog> — abre una ventana con la batería", isCorrect: false },
       ],
       validation: { type: "exact", answer: "a" },
       hint: "progress = avanza hacia una meta; meter = una medida fija en un rango.",
       explanation:
-        "La bateria es una medición dentro de un rango (0 a 100%), no un avance hacia una meta: por eso <meter>. <progress> es para cosas que progresan, como una descarga.",
+        "La batería es una medición dentro de un rango (0 a 100%), no un avance hacia una meta: por eso <meter>. <progress> es para cosas que progresan, como una descarga.",
     },
     {
       id: "html17-ej-02",
@@ -148,7 +148,7 @@ Para una **medición fija** dentro de un rango conocido: bateria, espacio en dis
       },
       hint: "El <summary> va primero (es lo visible); el resto del contenido va después, todo dentro de <details>.",
       explanation:
-        "<details> envuelve todo; el <summary> es la parte clickeable siempre visible, y lo demas se muestra/oculta. Sin una línea de JavaScript.",
+        "<details> envuelve todo; el <summary> es la parte clickeable siempre visible, y lo demás se muestra/oculta. Sin una línea de JavaScript.",
     },
     {
       id: "html17-ej-03",
@@ -214,7 +214,7 @@ Para una **medición fija** dentro de un rango conocido: bateria, espacio en dis
         { id: "z1", label: "Mostrar/ocultar contenido al hacer clic" },
         { id: "z2", label: "Una ventana modal (emergente)" },
         { id: "z3", label: "El avance de una descarga" },
-        { id: "z4", label: "El nivel de bateria (medida en un rango)" },
+        { id: "z4", label: "El nivel de batería (medida en un rango)" },
       ],
       validation: { type: "exact", answer: { d1: "z1", d2: "z2", d3: "z3", d4: "z4" } },
       hint: "progress = avanza; meter = mide; details = despliega; dialog = ventana.",
@@ -236,7 +236,7 @@ Para una **medición fija** dentro de un rango conocido: bateria, espacio en dis
       },
       hint: "Escribe <dialog open> ... </dialog>, y dentro un <p> y un <button>.",
       explanation:
-        "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que veras más adelante.",
+        "Con el atributo open el <dialog> se ve estático. Para abrirlo/cerrarlo con el botón se necesita JavaScript (showModal/close), que verás más adelante.",
     },
   ],
 };

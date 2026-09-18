@@ -60,7 +60,7 @@ Por ejemplo, si defines:
 }
 \`\`\`
 
-El ancho total ocupado sera: 300 + 20 + 20 + 5 + 5 + 10 + 10 = **370px**
+El ancho total ocupado será: 300 + 20 + 20 + 5 + 5 + 10 + 10 = **370px**
 
 > **Importante:** Puedes inspeccionar el Box Model de cualquier elemento en las DevTools del navegador (pestaña "Computed" o "Calculado").`,
       codeExample: {
@@ -140,7 +140,7 @@ Esto hace que **todos los elementos** usen \`border-box\`, lo cual simplifica en
 
 Entender como interactuan \`width\`, \`padding\` y \`border\` es clave para evitar sorpresas en tus layouts.
 
-### Problema clasico: elementos que se desbordan
+### Problema clásico: elementos que se desbordan
 
 Imagina que tienes un contenedor de 500px y quieres poner dos cajas de 50% lado a lado:
 
@@ -196,7 +196,7 @@ En general, es mejor usar \`min-height\` para que la caja crezca si el contenido
 }
 \`\`\`
 
-> **Tip:** Usa las DevTools para inspeccionar el Box Model. Podras ver exactamente cuanto mide cada capa y detectar problemas rapidamente.`,
+> **Tip:** Usa las DevTools para inspeccionar el Box Model. Podras ver exactamente cuanto mide cada capa y detectar problemas rápidamente.`,
       codeExample: {
         html: `<div class="contenedor">\n  <div class="mitad izq">50% con border-box</div>\n  <div class="mitad der">50% con border-box</div>\n</div>`,
         css: `.contenedor {\n  width: 400px;\n  background-color: #f0f0f0;\n  overflow: hidden;\n}\n.mitad {\n  box-sizing: border-box;\n  width: 50%;\n  padding: 15px;\n  border: 3px solid;\n  float: left;\n}\n.izq {\n  background-color: #d4edda;\n  border-color: #28a745;\n}\n.der {\n  background-color: #cce5ff;\n  border-color: #007bff;\n}`,
@@ -222,7 +222,7 @@ Existe otra propiedad que dibuja una línea alrededor de un elemento: \`outline\
 
 ### Diferencias clave entre outline y border
 
-| Caracteristica | border | outline |
+| Característica | border | outline |
 |---------------|--------|---------|
 | Forma parte del Box Model | Si | No |
 | Afecta el tamaño del elemento | Si | No |
@@ -439,7 +439,7 @@ El \`outline\` es fundamental para la **accesibilidad**. Cuando un usuario naveg
       validation: { type: "exact", answer: "border-box" },
       hint: "Es el valor que hace que width y height incluyan padding y border.",
       explanation:
-        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una práctica estándar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en practicamente todos los frameworks CSS modernos.",
+        "El reset universal '*, *::before, *::after { box-sizing: border-box; }' es una práctica estándar que simplifica el calculo de dimensiones en todo el proyecto. Se usa en prácticamente todos los frameworks CSS modernos.",
     },
     {
       id: "11-ej-08",

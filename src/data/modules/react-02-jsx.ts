@@ -343,13 +343,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       order: 3,
       prompt: "¿Cómo se inserta una expresión JavaScript dentro de JSX?",
       options: [
-        { id: "a", text: "Con doble llaves: {{ expresion }}", isCorrect: false },
-        { id: "b", text: "Con llaves simples: { expresion }", isCorrect: true },
+        { id: "a", text: "Con doble llaves: {{ expresión }}", isCorrect: false },
+        { id: "b", text: "Con llaves simples: { expresión }", isCorrect: true },
         { id: "c", text: "Con paréntesis: ( expresión )", isCorrect: false },
         { id: "d", text: "Con comillas: \"expresión\"", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Es un solo par de un tipo de simbolo.",
+      hint: "Es un solo par de un tipo de símbolo.",
       explanation:
         "En JSX, las expresiones de JavaScript se insertan usando llaves simples { }. Las dobles llaves {{ }} se usan solo para objetos inline, como en style={{ color: 'red' }}.",
     },
@@ -369,7 +369,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(<App />);
       validation: { type: "exact", answer: "b" },
       hint: "Recuerda las dos reglas: className y cerrar todas las etiquetas.",
       explanation:
-        "JSX requiere usar className en vez de class, y todas las etiquetas deben cerrarse explicitamente (como <input />). La opción b cumple ambas reglas.",
+        "JSX requiere usar className en vez de class, y todas las etiquetas deben cerrarse explícitamente (como <input />). La opción b cumple ambas reglas.",
     },
     {
       id: "react02-ej-05",

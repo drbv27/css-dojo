@@ -28,14 +28,14 @@ for (inicializacion; condicion; incremento) {
 2. **Condición:** se evalua antes de cada iteración (\`i < 5\`)
 3. **Incremento:** se ejecuta al final de cada iteración (\`i++\`)
 
-### Ejemplo clasico
+### Ejemplo clásico
 \`\`\`javascript
 for (let i = 0; i < 5; i++) {
   console.log(i); // 0, 1, 2, 3, 4
 }
 \`\`\`
 
-### Iterando hacia atras
+### Iterando hacia atrás
 \`\`\`javascript
 for (let i = 10; i > 0; i--) {
   console.log(i); // 10, 9, 8, ..., 1
@@ -312,7 +312,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "c" },
       hint: "Si i siempre crece y la condición es >= 0...",
       explanation:
-        "Como i empieza en 0 y siempre incrementa, la condición i >= 0 siempre sera true, creando un ciclo infinito.",
+        "Como i empieza en 0 y siempre incrementa, la condición i >= 0 siempre será true, creando un ciclo infinito.",
     },
   ],
 };

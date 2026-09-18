@@ -23,7 +23,7 @@ const dobles = nums.map(n => n * 2);
 // [2, 4, 6, 8]
 \`\`\`
 
-### Caracteristicas de map
+### Características de map
 - **No modifica** el array original
 - Devuelve un array de la **misma longitud**
 - Cada elemento se transforma con la función dada
@@ -38,7 +38,7 @@ const pares = nums.filter(n => n % 2 === 0);
 // [2, 4, 6]
 \`\`\`
 
-### Caracteristicas de filter
+### Características de filter
 - Devuelve un array con **igual o menos** elementos
 - La función debe devolver **true** o **false**
 - No modifica el array original
@@ -280,7 +280,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
         blanks: ["every"],
       },
       validation: { type: "exact", answer: "every" },
-      hint: "En ingles significa 'cada uno' o 'todos'.",
+      hint: "En inglés significa 'cada uno' o 'todos'.",
       explanation: "every() devuelve true solo si TODOS los elementos cumplen la condición.",
     },
     {

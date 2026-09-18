@@ -279,7 +279,7 @@ document.getElementById("error").addEventListener("click", function() {
         { id: "a", text: "Si, siempre rechaza en errores HTTP", isCorrect: false },
         { id: "b", text: "No, solo rechaza en errores de red", isCorrect: true },
         { id: "c", text: "Depende del navegador", isCorrect: false },
-        { id: "d", text: "Solo si se configura explicitamente", isCorrect: false },
+        { id: "d", text: "Solo si se configura explícitamente", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
       hint: "Debes verificar response.ok manualmente.",

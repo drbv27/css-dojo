@@ -78,7 +78,7 @@ Puedes crear enlaces que naveguen a **secciones dentro de la misma página** usa
 
 El \`#\` seguido del id del elemento indica que es un enlace interno.
 
-### Enlaces de correo electronico
+### Enlaces de correo electrónico
 
 Usa el esquema \`mailto:\` para abrir el cliente de correo del usuario:
 
@@ -213,7 +213,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
         { id: "d", text: "<a link='#info'>Info</a>", isCorrect: false },
       ],
       validation: { type: "exact", answer: "b" },
-      hint: "Los enlaces internos usan un simbolo especial seguido del id.",
+      hint: "Los enlaces internos usan un símbolo especial seguido del id.",
       explanation:
         "Para enlazar a una sección dentro de la misma página, se usa # seguido del id del elemento destino: href='#info'.",
     },
@@ -279,7 +279,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       difficulty: 2 ,
       xpReward: 20,
       order: 6,
-      prompt: "Completa el enlace de correo electronico:",
+      prompt: "Completa el enlace de correo electrónico:",
       codeTemplate: {
         html: `<a href="_____:contacto@miempresa.com">Escribenos</a>`,
         cssPrefix: "",
@@ -289,7 +289,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       validation: { type: "exact", answer: ["mailto"] },
       hint: "Es un esquema de URL que abre el cliente de correo.",
       explanation:
-        "El esquema mailto: en el href abre el cliente de correo electronico del usuario con la dirección predefinida.",
+        "El esquema mailto: en el href abre el cliente de correo electrónico del usuario con la dirección predefinida.",
     },
     {
       id: "html-04-ej-07",
@@ -307,7 +307,7 @@ Una URL relativa se basa en la **ubicación del archivo actual**. Se usa para en
       validation: { type: "exact", answer: "c" },
       hint: "Tiene que ver con proteger tu página de posibles accesos no autorizados.",
       explanation:
-        "Sin rel='noopener noreferrer', la página que se abre en nueva pestana podria acceder al objeto window.opener de tu página, lo cual es un riesgo de seguridad.",
+        "Sin rel='noopener noreferrer', la página que se abre en nueva pestana podría acceder al objeto window.opener de tu página, lo cual es un riesgo de seguridad.",
     },
   ],
 };

@@ -372,7 +372,7 @@ button {
       validation: { type: "exact", answer: "b" },
       hint: "Está relacionado con la validación del formato del texto ingresado.",
       explanation:
-        'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 digitos.',
+        'El atributo pattern acepta una expresión regular. Por ejemplo, pattern="[0-9]{5}" solo permite exactamente 5 dígitos.',
     },
   ],
 };

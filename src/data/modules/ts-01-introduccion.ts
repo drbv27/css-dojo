@@ -54,6 +54,31 @@ mensaje = 42; // Error! No puedes asignar number a string
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #a6e3a1; border-radius: 8px; white-space: pre-line; }',
+        // El sandbox ejecuta JavaScript, no TypeScript. Lejos de ser una
+        // limitacion, es LA leccion: los tipos se borran al compilar y no
+        // llegan al navegador. Abajo esta lo que queda de la leccion una vez
+        // que TypeScript hizo su trabajo.
+        js: `// En TypeScript escribiste:  let nombre: string = "Ana";
+// Al navegador llega esto, sin una sola anotacion:
+var nombre = "Ana";
+var edad = 25;
+var activo = true;
+
+var salida = [];
+salida.push("nombre: " + nombre + "  (typeof " + typeof nombre + ")");
+salida.push("edad:   " + edad + "  (typeof " + typeof edad + ")");
+salida.push("activo: " + activo + "  (typeof " + typeof activo + ")");
+
+// Y ESTE es el punto. TypeScript habria rechazado la linea de abajo antes de
+// compilar: "Type 'number' is not assignable to type 'string'". JavaScript la
+// acepta sin chistar, y el error aparece recien cuando algo se rompe.
+nombre = 42;
+salida.push("");
+salida.push("despues de  nombre = 42");
+salida.push("nombre: " + nombre + "  (typeof " + typeof nombre + ")");
+salida.push("nombre.toUpperCase() ahora explota, porque 42 no es un string.");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 1,
@@ -106,10 +131,34 @@ const filtrarMayores = (nums: number[], min: number): number[] => {
 };
 \`\`\`
 
-> Tipar funciones es donde TypeScript brilla más — evita bugs en las interfaces entre modulos.`,
+> Tipar funciones es donde TypeScript brilla más — evita bugs en las interfaces entre módulos.`,
       codeExample: {
         html: '<div id="resultado"></div>',
         css: '#resultado { font-family: monospace; padding: 16px; background: #1e1e2e; color: #89b4fa; border-radius: 8px; white-space: pre-line; }',
+        js: `// TypeScript:  function saludar(nombre: string, titulo?: string): string
+// Compilado, los tipos desaparecen y queda la funcion pelada:
+function saludar(nombre, titulo) {
+  return titulo ? "Hola, " + titulo + " " + nombre : "Hola, " + nombre;
+}
+
+function sumar(a, b) {
+  return a + b;
+}
+
+var salida = [];
+salida.push(saludar("Ana"));
+salida.push(saludar("Ana", "Dra."));
+salida.push("sumar(2, 3) = " + sumar(2, 3));
+
+// El parametro opcional existe en JavaScript: es undefined si no lo pasas.
+salida.push("");
+salida.push("saludar('Ana') dejo titulo en: " + typeof undefined);
+
+// Lo que TypeScript habria frenado en el editor, JavaScript lo deja pasar y
+// devuelve una barbaridad silenciosa:
+salida.push("sumar('2', 3) = " + sumar("2", 3) + "   <- concateno, no sumo");
+
+document.getElementById("resultado").textContent = salida.join("\\n");`,
         editable: true,
       },
       order: 2,

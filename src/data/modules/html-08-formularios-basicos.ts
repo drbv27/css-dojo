@@ -52,13 +52,13 @@ Define el **método HTTP** para enviar los datos:
 
 ### Diferencias entre GET y POST
 
-| Caracteristica | GET | POST |
+| Característica | GET | POST |
 |---------------|-----|------|
 | Datos en URL | Si | No |
 | Marcadores | Se puede guardar | No se puede |
 | Límite de datos | ~2000 caracteres | Sin límite práctico |
 | Seguridad | Menos seguro | Más seguro |
-| Uso tipico | Busquedas, filtros | Login, registro, pagos |
+| Uso típico | Busquedas, filtros | Login, registro, pagos |
 
 > **Regla de oro:** Usa POST para formularios que envian datos sensibles (contrasenas, datos personales) y GET para busquedas y filtros.`,
       codeExample: {
@@ -89,7 +89,7 @@ Es el elemento más versatil de los formularios. El atributo \`type\` define que
 <input type="email" name="correo" placeholder="tu@correo.com">
 \`\`\`
 
-#### Contrasena (oculta los caracteres)
+#### Contraseña (oculta los caracteres)
 \`\`\`html
 <input type="password" name="clave" placeholder="Tu contrasena">
 \`\`\`
@@ -159,7 +159,7 @@ Para textos largos (comentarios, mensajes, descripciones), usa \`<textarea>\`:
 
 ### \`<select>\` — Lista desplegable
 
-Crea un menu de opciones para que el usuario elija:
+Crea un menú de opciones para que el usuario elija:
 
 \`\`\`html
 <label for="pais">Pais:</label>
@@ -246,7 +246,7 @@ Ambos envian el formulario, pero \`<button>\` es más flexible porque puede cont
 
 ### Ejemplo completo de formulario
 
-Un formulario tipico incluye campos, validación básica y botones de acción:
+Un formulario típico incluye campos, validación básica y botones de acción:
 
 \`\`\`html
 <form action="/registro" method="POST">
@@ -370,7 +370,7 @@ Un formulario tipico incluye campos, validación básica y botones de acción:
       validation: { type: "exact", answer: ["select", "select"] },
       hint: "Es la etiqueta que crea una lista desplegable.",
       explanation:
-        "La etiqueta <select> crea un menu desplegable con opciones definidas por <option>.",
+        "La etiqueta <select> crea un menú desplegable con opciones definidas por <option>.",
     },
     {
       id: "html-08-ej-06",

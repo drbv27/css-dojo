@@ -223,7 +223,7 @@ document.getElementById("resultado").textContent = mensaje;`,
         { id: "d", text: "find()", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "El nombre del método significa 'incluye' en ingles.",
+      hint: "El nombre del método significa 'incluye' en inglés.",
       explanation:
         'includes() devuelve true si el string contiene el texto buscado: "Hola mundo".includes("mundo") = true.',
     },

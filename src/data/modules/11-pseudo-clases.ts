@@ -71,7 +71,7 @@ a:hover   { color: red; }
 a:active  { color: orange; }
 \`\`\`
 
-> **Consejo:** Las pseudo-clases de estado son fundamentales para crear interfaces interactivas. Todo botón deberia tener al menos un estilo :hover para indicar que es clickeable.`,
+> **Consejo:** Las pseudo-clases de estado son fundamentales para crear interfaces interactivas. Todo botón debería tener al menos un estilo :hover para indicar que es clickeable.`,
       codeExample: {
         html: `<button class="boton">Pasa el cursor aqui</button>\n<br><br>\n<input type="text" placeholder="Haz clic para ver :focus">\n<br><br>\n<a href="#" class="enlace">Enlace interactivo</a>`,
         css: `.boton {\n  background-color: steelblue;\n  color: white;\n  border: none;\n  padding: 12px 24px;\n  font-size: 16px;\n  border-radius: 6px;\n  cursor: pointer;\n}\n.boton:hover {\n  background-color: #3a7cbd;\n}\n.boton:active {\n  background-color: #2a5a8a;\n  transform: scale(0.97);\n}\n\ninput:focus {\n  border: 2px solid steelblue;\n  outline: none;\n  padding: 8px;\n  border-radius: 4px;\n}\n\n.enlace:hover {\n  color: tomato;\n  text-decoration: none;\n}`,
@@ -284,7 +284,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
 ### Dos límites que conviene saber
 
 - **No se puede anidar \`:has()\` dentro de otro \`:has()\`.** El navegador lo rechaza.
-- **Aplica el estilo al elemento de afuera**, siempre. Si escribís \`.tarjeta:has(img)\` y esperabas que cambiara la imagen, no va a pasar nada: el objetivo es la tarjeta.
+- **Aplica el estilo al elemento de afuera**, siempre. Si escribís \`.tarjeta:has(img)\` y esperabas que cambiará la imagen, no va a pasar nada: el objetivo es la tarjeta.
 
 > **La idea para llevarse:** \`:has()\` convierte a CSS en un lenguaje que puede reaccionar a su propio contenido. Muchas cosas que antes exigían JavaScript — agregar una clase al padre según lo que tiene adentro — ahora son una línea de CSS.`,
       codeExample: {
@@ -311,7 +311,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         { id: "d", text: ":visited", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "En ingles, 'hover' significa 'sobrevolar' o 'posarse sobre algo'.",
+      hint: "En inglés, 'hover' significa 'sobrevolar' o 'posarse sobre algo'.",
       explanation:
         "La pseudo-clase :hover se activa cuando el cursor del mouse está encima del elemento. :active se activa durante el clic, :focus cuando el elemento recibe foco (teclado o clic), y :visited para enlaces ya visitados.",
     },
@@ -549,7 +549,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
       xpReward: 60,
       order: 11,
       prompt:
-        "Reto integrador. Las cuatro familias de pseudo-clases del modulo: estado, posición, negacion y `:has()`. Cada paso usa una distinta.",
+        "Reto integrador. Las cuatro familias de pseudo-clases del módulo: estado, posición, negación y `:has()`. Cada paso usa una distinta.",
       retoPasos: [
         {
           instruccion:
@@ -563,12 +563,12 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         },
         {
           instruccion:
-            "De NEGACION: con `.lista li:not(:last-child)`, dale un borde inferior de 1px solid #ddd a todos MENOS al último. Asi no queda una linea colgando al final.",
+            "De NEGACIÓN: con `.lista li:not(:last-child)`, dale un borde inferior de 1px solid #ddd a todos MENOS al último. Así no queda una línea colgando al final.",
           esperado: ".lista li:not(:last-child) { border-bottom: 1px solid #ddd; }",
         },
         {
           instruccion:
-            "Con `:has()`: dale a `.tarjeta:has(img)` un padding de 16px. Es la unica que mira lo que tiene ADENTRO para decidir, y por eso solo alcanza a una de las dos tarjetas.",
+            "Con `:has()`: dale a `.tarjeta:has(img)` un padding de 16px. Es la única que mira lo que tiene ADENTRO para decidir, y por eso solo alcanza a una de las dos tarjetas.",
           esperado: ".tarjeta:has(img) { padding: 16px; }",
         },
       ],
@@ -585,7 +585,7 @@ Eso es "las tarjetas sin imagen", que antes había que resolver agregando una cl
         ".lista li:hover {\n  background-color: #eef2f7;\n}\n\n.lista li:first-child {\n  font-weight: 700;\n}\n\n.lista li:not(:last-child) {\n  border-bottom: 1px solid #ddd;\n}\n\n.tarjeta:has(img) {\n  padding: 16px;\n}",
       hint: "`:not()` y `:has()` reciben otro selector adentro. El paso 3 se lee como 'todos los li que no sean el último' y el paso 4 como 'las tarjetas que contengan una img'.",
       explanation:
-        "Las cuatro deciden con informacion distinta. El estado depende de lo que hace el usuario, la posición de donde esta el elemento entre sus hermanos, la negacion invierte otro selector, y `:has()` es la unica que mira hacia ADENTRO. Ese último es el que durante años no existio y obligaba a resolverlo con JavaScript.",
+        "Las cuatro deciden con información distinta. El estado depende de lo que hace el usuario, la posición de donde esta el elemento entre sus hermanos, la negación invierte otro selector, y `:has()` es la única que mira hacia ADENTRO. Ese último es el que durante años no existio y obligaba a resolverlo con JavaScript.",
     },
   ],
 };

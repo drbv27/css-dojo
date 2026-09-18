@@ -300,7 +300,7 @@ document.getElementById("resultado").textContent = salida.join("\\n");`,
       validation: { type: "exact", answer: "b" },
       hint: "Necesitas que ambas condiciones sean verdaderas al mismo tiempo.",
       explanation:
-        "Se usa && porque x debe cumplir AMBAS condiciones: ser >= 10 Y <= 20. Con || cualquier número seria valido.",
+        "Se usa && porque x debe cumplir AMBAS condiciones: ser >= 10 Y <= 20. Con || cualquier número sería valido.",
     },
     {
       id: "js05-ej-06",

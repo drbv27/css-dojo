@@ -115,7 +115,7 @@ ul { padding-left: 20px; }`,
       title: "Etiquetas obsoletas y alternativas modernas",
       content: `## Etiquetas obsoletas y alternativas modernas
 
-HTML5 elimino muchas etiquetas presentacionales. Aquí estan las más comunes y sus **alternativas correctas**:
+HTML5 elimino muchas etiquetas presentacionales. Aquí están las más comunes y sus **alternativas correctas**:
 
 ### Etiquetas obsoletas
 
@@ -138,7 +138,7 @@ Estas NO son obsoletas pero tienen significados diferentes:
 | \`<b>\` | Texto visualmente en negrita (sin importancia semántica) |
 | \`<strong>\` | Texto importante (negrita con significado) |
 | \`<i>\` | Texto visualmente en cursiva (términos técnicos, títulos) |
-| \`<em>\` | Enfasis (cursiva con significado) |
+| \`<em>\` | Énfasis (cursiva con significado) |
 
 ### Ejemplo
 
@@ -431,7 +431,7 @@ function borrar() {
         blanks: ["defer"],
       },
       validation: { type: "exact", answer: "defer" },
-      hint: "Significa 'diferir' o 'posponer' en ingles.",
+      hint: "Significa 'diferir' o 'posponer' en inglés.",
       explanation:
         "El atributo defer hace que el script se descargue en paralelo pero se ejecute solo cuando el DOM este completamente construido, manteniendo el orden de los scripts.",
     },

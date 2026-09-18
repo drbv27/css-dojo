@@ -134,7 +134,7 @@ p { font-size: 1rem; }    /* Siempre 16px */
 
 ### em vs rem
 
-| Caracteristica | em | rem |
+| Característica | em | rem |
 |---------------|-----|-----|
 | Referencia | Fuente del elemento/padre | Fuente del \`<html>\` |
 | Herencia compuesta | Si (puede acumularse) | No (siempre relativo a root) |
@@ -194,7 +194,7 @@ h1 {
 }
 \`\`\`
 
-**Problema:** En pantallas muy grandes el texto sera enorme, y en muy pequeñas sera diminuto.
+**Problema:** En pantallas muy grandes el texto será enorme, y en muy pequeñas será diminuto.
 
 **Solución con clamp():**
 
@@ -524,7 +524,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       },
       hint: "Tres unidades en un solo ejercicio: vh para el alto y el padding vertical, % para el padding horizontal, y clamp() con rem y vw en el título. El padding acepta dos valores: primero vertical, después horizontal.",
       explanation:
-        "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahi es donde entra el box-sizing: border-box del modulo anterior.",
+        "Cada unidad está elegida a propósito. El vh del min-height y del padding vertical es relativo a la altura de la ventana, así que el aire crece en pantallas grandes. El % del padding se calcula sobre el ANCHO del elemento -- incluso en padding-top y padding-bottom, un detalle que sorprende a casi todos. Y clamp(1.5rem, 4vw, 3rem) da tipografía fluida con piso y techo: crece con la ventana pero nunca baja de 1.5rem ni pasa de 3rem.\n\nDos decisiones que valen más que las unidades. Primero: min-height en vez de height, para que el contenido pueda crecer sin desbordar. Segundo, y por eso el enunciado te lo pidio: NO hay width. Un <section> es un elemento de bloque, así que ya ocupa todo el ancho disponible -- escribir width: 100% es redundante, y encima se pelea con el padding, porque por defecto el ancho mide solo el contenido y el padding se suma por fuera. Menos código, menos sorpresas. Si necesitas width y padding juntos, ahí es donde entra el box-sizing: border-box del módulo anterior.",
     },
     {
       id: "10-ej-09",
@@ -592,7 +592,7 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       retoPasos: [
         {
           instruccion:
-            "Dale a .hero una altura de 60vh. Una unidad de viewport es la que sirve cuando queres una fraccion de la PANTALLA.",
+            "Dale a .hero una altura de 60vh. Una unidad de viewport es la que sirve cuando queres una fracción de la PANTALLA.",
           esperado: ".hero { height: 60vh; }",
         },
         {
@@ -602,12 +602,12 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
         },
         {
           instruccion:
-            "Dale un padding de 2rem. `rem` es relativo a la raiz, asi que no se encadena aunque anides elementos.",
+            "Dale un padding de 2rem. `rem` es relativo a la raiz, así que no se encadena aunque anides elementos.",
           esperado: ".hero { padding: 2rem; }",
         },
         {
           instruccion:
-            "Ahora al titulo, con el selector descendente `.hero h1`: dale un tamaño de 2.5em. `em` SI es relativo a su propio contexto, y esa es la diferencia con rem.",
+            "Ahora al título, con el selector descendente `.hero h1`: dale un tamaño de 2.5em. `em` SI es relativo a su propio contexto, y esa es la diferencia con rem.",
           esperado: ".hero h1 { font-size: 2.5em; }",
         },
       ],
@@ -622,9 +622,9 @@ Usar \`rem\` para fuentes es una cuestion de **accesibilidad**. Si un usuario au
       },
       referenceSolution:
         ".hero {\n  height: 60vh;\n  width: 80%;\n  padding: 2rem;\n}\n\n.hero h1 {\n  font-size: 2.5em;\n}",
-      hint: "Los cuatro pasos son la respuesta a la leccion 4: `vh` para la pantalla, `%` para el padre, `rem` para la raiz y `em` para el contexto propio.",
+      hint: "Los cuatro pasos son la respuesta a la lección 4: `vh` para la pantalla, `%` para el padre, `rem` para la raiz y `em` para el contexto propio.",
       explanation:
-        "Elegir la unidad es elegir CONTRA QUE se mide. `vh` mide contra la ventana, `%` contra el elemento padre, `rem` contra la raiz del documento y `em` contra el tamaño del propio elemento. Por eso `rem` no se encadena al anidar y `em` si: es la unica diferencia entre las dos, y es la que decide cual usar.",
+        "Elegir la unidad es elegir CONTRA QUE se mide. `vh` mide contra la ventana, `%` contra el elemento padre, `rem` contra la raiz del documento y `em` contra el tamaño del propio elemento. Por eso `rem` no se encadena al anidar y `em` si: es la única diferencia entre las dos, y es la que decide cual usar.",
     },
   ],
 };

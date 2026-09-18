@@ -117,7 +117,7 @@ El **selector de ID** selecciona un elemento único que tenga el atributo \`id\`
 
 ### ID vs Clase
 
-| Caracteristica | ID (\`#\`) | Clase (\`.\`) |
+| Característica | ID (\`#\`) | Clase (\`.\`) |
 |----------------|-----------|--------------|
 | Unicidad | Único por página | Reutilizable |
 | Especificidad | Alta (1,0,0) | Media (0,1,0) |
@@ -213,7 +213,7 @@ Selecciona **todos** los elementos. Útil para resets:
         { id: "d", text: "*h1", isCorrect: false },
       ],
       validation: { type: "exact", answer: "c" },
-      hint: "Un selector de tipo usa directamente el nombre de la etiqueta, sin ningun simbolo delante.",
+      hint: "Un selector de tipo usa directamente el nombre de la etiqueta, sin ningun símbolo delante.",
       explanation:
         "El selector de tipo 'h1' (sin ningun prefijo) selecciona todos los elementos <h1>. El punto (.) es para clases, el numeral (#) para IDs, y el asterisco (*) es el selector universal.",
     },
@@ -251,7 +251,7 @@ Selecciona **todos** los elementos. Útil para resets:
         blanks: ["#primario"],
       },
       validation: { type: "exact", answer: "#primario" },
-      hint: "Los selectores de ID empiezan con el simbolo numeral (#) seguido del nombre del ID.",
+      hint: "Los selectores de ID empiezan con el símbolo numeral (#) seguido del nombre del ID.",
       explanation:
         "El selector '#primario' usa el numeral (#) como prefijo para indicar que es un selector de ID. Selecciona el elemento único que tenga id=\"primario\".",
     },
@@ -388,12 +388,12 @@ Selecciona **todos** los elementos. Útil para resets:
       retoPasos: [
         {
           instruccion:
-            "Con un selector de TIPO, dale a todos los parrafos el color #555 y un margen de 8px.",
+            "Con un selector de TIPO, dale a todos los párrafos el color #555 y un margen de 8px.",
           esperado: "p { color: #555; margin: 8px; }",
         },
         {
           instruccion:
-            "Con un selector de CLASE, dale a .destacado un fondo #fff3cd. Fijate que alcanza al h2 y al parrafo por igual.",
+            "Con un selector de CLASE, dale a .destacado un fondo #fff3cd. Fijate que alcanza al h2 y al párrafo por igual.",
           esperado: ".destacado { background-color: #fff3cd; }",
         },
         {
